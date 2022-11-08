@@ -8,4 +8,3 @@ print(curso.lower())              # Converter para Minúsculo
 print(curso.title())              # Converter para Título (primeira Maiúscula apenas)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-from
