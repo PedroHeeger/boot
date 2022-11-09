@@ -1,6 +1,6 @@
 # Geração Tech Unimed-BH - Ciência de Dados: (5)
 
-## Prepare-se Para a Jornada (Onboarding): (7)
+## 1-Prepare-se Para a Jornada (Onboarding): (7)
 ### Curso: Boas-vindas ao Bootcamp: Geração Tech Unimed-BH-Ciência de dados (1)
     - Boas-vindas ao Bootcamp: Geração Tech Unimed-BH - Ciência de dados (1)
 ### Curso: Conheça as Oportunidades da DIO (1)
@@ -33,86 +33,86 @@
     . Desafio de projeto
     . Entendendo o Desafio
 
-## Python para Cientistas de Dados: (21)
+## 2) Python para Cientistas de Dados: (21)
 
-### Curso: Ambiente de Desenvolvimento e Primeiros Passos com Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.1 Curso: Ambiente de Desenvolvimento e Primeiros Passos com Python (2)
+    2.1.1 Definindo o ambiente e primeiros passos com Python (3)   
+    2.1.2 Materiais de apoio e Questionário (2)
 
-### Curso: Conhecendo a Linguagem de Programação Python (2)
-    - Conhecendo a linguagem (5)
-    - Materiais de apoio e Questionário (2)
+### 2.2 Curso: Conhecendo a Linguagem de Programação Python (2)
+    2.2.1 Conhecendo a linguagem (5)
+    2.2.2 Materiais de apoio e Questionário (2)
 
-### Curso: Tipos de Operadores com Python (2)
-    - Tipos de Operadores (6)
-    - Materiais de apoio e Questionário (2)
+### 2.3 Curso: Tipos de Operadores com Python (2)
+    2.3.1 Tipos de Operadores (6)
+    2.3.2 Materiais de apoio e Questionário (2)
 
-### Curso: Estruturas Condicionais e de Repetição em Python (2)
-    - Dominando Strings e Fatiamento (4)
-    - Materiais de apoio e Questionário (2)
+### 2.4 Curso: Estruturas Condicionais e de Repetição em Python (2)
+    2.4.1 Dominando Strings e Fatiamento (4)
+    2.4.2 Materiais de apoio e Questionário (2)
 
-### Curso: Manipualçao de strings com Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.5 Curso: Manipualçao de strings com Python (2)
+    2.5.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.5.2 Materiais de apoio e Questionário (2)
 
-### **Desafio de código:** Desafios Iniciais Py-Unimed-BH (3)
+### 2.6 Desafio de código: Desafios Iniciais Py-Unimed-BH (3)
 
-### **Desafio de projeto:** Análise de dados com Python e Pandas (9)
-    . Como usar os desafios de projeto para criar seu portfolio
-    . Apresentação do projeto
-    . Python básico
-    . Estrutura de dados
-    . Introdução à biblioteca Pandas
-    . Trabalhando com Planilhas do Excel
-    . Trabalhando com datas
-    . Visualização de dados
-    . Análise Exploratória
+### 2.7 Desafio de projeto: Análise de dados com Python e Pandas (9)
+    2.7.1.1 Como usar os desafios de projeto para criar seu portfolio
+    2.7.1.2 Apresentação do projeto
+    2.7.1.3 Python básico
+    2.7.1.4 Estrutura de dados
+    2.7.1.5 Introdução à biblioteca Pandas
+    2.7.1.6 Trabalhando com Planilhas do Excel
+    2.7.1.7 Trabalhando com datas
+    2.7.1.8 Visualização de dados
+    2.7.1.9 Análise Exploratória
 
-### Curso: Trabalhando com Listas em Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.8 Curso: Trabalhando com Listas em Python (2)
+    2.8.1 Trabalhando com Listas em Python (3)
+    2.8.2 Materiais de apoio e Questionário (2)
 
-### Curso: Conhecendo Tuplas em Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.9 Curso: Conhecendo Tuplas em Python (2)
+    2.9.1 Conhecendo Tuplas em Python (1)
+    2.9.2 Materiais de apoio e Questionário (2)
 
-### Curso: Explorando Conjuntos em Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.10 Curso: Explorando Conjuntos em Python (2)
+    2.10.1 Explorando Conjuntos em Python (1)
+    2.10.2 Materiais de apoio e Questionário (2)
 
-### Curso: Aprendendo a Utilizar Dicionários em Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.11 Curso: Aprendendo a Utilizar Dicionários em Python (2)
+    2.11.1 Aprendendo a Utilizar Dicionários em Python (2)
+    2.11.2 Materiais de apoio e Questionário (2)
 
-### Curso: Dominando Funções Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.12 Curso: Dominando Funções Python (2)
+    2.12.1 Dominando Funções Python (3)
+    2.12.2 Materiais de apoio e Questionário (2)
 
-### Curso: Fundamentos de ETL (Extract, Transform, Load) com Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.13 Curso: Fundamentos de ETL (Extract, Transform, Load) com Python (2)
+    2.13.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.13.2 Materiais de apoio e Questionário (2)
 
-### Curso: Introdução à Programação Orientada a Objetos (POO) com Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.14 Curso: Introdução à Programação Orientada a Objetos (POO) com Python (2)
+    2.14.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.14.2 Materiais de apoio e Questionário (2)
 
-### Curso: Aprendendo o Conceito de Herença com Python
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.15 Curso: Aprendendo o Conceito de Herença com Python
+    2.15.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.15.2 Materiais de apoio e Questionário (2)
 
-### Curso: Aplicando Encapsulamento em Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.16 Curso: Aplicando Encapsulamento em Python (2)
+    2.16.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.16.2 Materiais de apoio e Questionário (2)
 
-### Curso: Conhecendo Polimorfismo em Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.17 Curso: Conhecendo Polimorfismo em Python (2)
+    2.17.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.17.2 Materiais de apoio e Questionário (2)
 
-### Curso: Ampliando o conhecimento em POO com Python (2)
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.18 Curso: Ampliando o conhecimento em POO com Python (2)
+    2.18.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.18.2 Materiais de apoio e Questionário (2)
 
-### **Desafio de código:** Desafios Intermediários Py-Unimed-BH
+### 2.19 Desafio de código: Desafios Intermediários Py-Unimed-BH
     - Definindo o ambiente e primeiros passos com Python (3)
     - Materiais de apoio e Questionário (2)
 
