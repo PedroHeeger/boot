@@ -1,6 +1,9 @@
 # 12-Dominando Funções Python
 ## 12.1-Dominando Funções Python
-### 12.1.1-Dicionários
+### 12.1.1-Funções Python - Parte 01
+from re import M
+
+
 print("Exemplos de Funções:")
 def exibir_mensagem():
     print("Olá mundo!")
@@ -49,66 +52,60 @@ def exibir_poema(data_extenso, *args, **kwargs):
 exibir_poema("Sexta-feira, 26 de Agosto de 2022", "Zen of Python", "Beautiful is better than ugly", time="20s", autor="Tim Peters", ano=1999)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-print("Parâmetros Somente por Posição:")
-def exibir_mensagem():
-    print("Olá mundo!")
+### 12.1.2-Funções Python - Parte 02
+print("Parâmetros Somente por Posição (Positional only):")
+def criar_carro(modelo, ano, placa, /, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
 
-def exibir_mensagem_2(nome):
-    print(f"Seja bem vindo {nome}!")
-
-def exibir_mensagem_3(nome="Anônimo"):
-    print(f"Seja bem vindo {nome}!")
-
-exibir_mensagem()
-exibir_mensagem_2(nome="Guilherme")
-exibir_mensagem_3()
-exibir_mensagem_3("Chappie")
+criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")                          # Válido
+# criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")       # Inválido
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-print("Parâmetros Somente por Nome:")
-def exibir_mensagem():
-    print("Olá mundo!")
+print("Parâmetros Somente por Nome (Keyword only):")
+def criar_carro(*, modelo, ano, placa, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
 
-def exibir_mensagem_2(nome):
-    print(f"Seja bem vindo {nome}!")
+criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")          # Válido
+# criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")                         # Inválido
+print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-def exibir_mensagem_3(nome="Anônimo"):
-    print(f"Seja bem vindo {nome}!")
+print("Parâmetros Híbrido (Keyword and positional only):")
+def criar_carro(modelo, ano, placa, /, *, marca, motor, combustivel):
+    print(modelo, ano, placa, marca, motor, combustivel)
 
-exibir_mensagem()
-exibir_mensagem_2(nome="Guilherme")
-exibir_mensagem_3()
-exibir_mensagem_3("Chappie")
+criar_carro("Palio", 1999, "ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")                           # Válido
+# criar_carro(modelo="Palio", ano=1999, placa="ABC-1234", marca="Fiat", motor="1.0", combustivel="Gasolina")        # Inválido
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
 print("Objetos de Primeira Classe:")
-def exibir_mensagem():
-    print("Olá mundo!")
+def somar(a, b):
+    return a + b
 
-def exibir_mensagem_2(nome):
-    print(f"Seja bem vindo {nome}!")
+def subtrair(a,b):
+    return a - b
 
-def exibir_mensagem_3(nome="Anônimo"):
-    print(f"Seja bem vindo {nome}!")
+def exibir_resultado(a, b, funcao):
+    resultado = funcao(a, b)
+    print(f"O resultado da operação é igual: {resultado}")
 
-exibir_mensagem()
-exibir_mensagem_2(nome="Guilherme")
-exibir_mensagem_3()
-exibir_mensagem_3("Chappie")
+exibir_resultado(10, 10, somar)                                # 20
+exibir_resultado(10, 10, subtrair)                             # 0
+op = somar
+print(op(1,23))                                                # 24
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
 print("Escopo Local e Global:")
-def exibir_mensagem():
-    print("Olá mundo!")
+salario = 2000
 
-def exibir_mensagem_2(nome):
-    print(f"Seja bem vindo {nome}!")
+def salario_bonus(bonus, lista):
+    global salario
+    lista_aux = lista.copy()
+    lista_aux.append(2)
+    print(f"lista aux={lista_aux}")
+    salario += bonus
+    return salario
 
-def exibir_mensagem_3(nome="Anônimo"):
-    print(f"Seja bem vindo {nome}!")
-
-exibir_mensagem()
-exibir_mensagem_2(nome="Guilherme")
-exibir_mensagem_3()
-exibir_mensagem_3("Chappie")
+lista = [1]
+print(salario_bonus(500, lista))              # 2500
+print(lista)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
