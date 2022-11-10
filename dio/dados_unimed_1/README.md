@@ -93,15 +93,15 @@
     2.13.2 Materiais de apoio e Questionário (2)
 
 ### 2.14) Curso: Introdução à Programação Orientada a Objetos (POO) com Python (2)
-    2.14.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.14.1 Introdução à Programação Orientada a Objetos (POO) com Python (4)
     2.14.2 Materiais de apoio e Questionário (2)
 
 ### 2.15) Curso: Aprendendo o Conceito de Herença com Python
-    2.15.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.15.1 Aprendendo o Conceito de Herança com Python (4)
     2.15.2 Materiais de apoio e Questionário (2)
 
 ### 2.16) Curso: Aplicando Encapsulamento em Python (2)
-    2.16.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.16.1 Aplicando Encapsulamento em Python (3)
     2.16.2 Materiais de apoio e Questionário (2)
 
 ### 2.17) Curso: Conhecendo Polimorfismo em Python (2)
@@ -178,3 +178,20 @@
 
 
 ## 4) IMERSÃO CLOUD COMPUTER (6)
+
+### 4.1) Curso: Primeiros Passos com AWS
+    4.1.1
+
+### 4.2) Desafio de projeto: Boas práticas com DynamoDB
+
+### 4.3) Curso: Desenvolvendo Soluções Serverless na AWS
+    4.3.1
+
+### 4.4) Curso: Introdução a Engenharia de Dados na AWS
+    4.4.1
+
+### 4.5) Curso: Imersão ao Ecossistema Cloud Data AWS
+    4.5.1
+
+### 4.6) Desafio de projeto: Explorando Dados Demográficos com Serviços de Big Data na AWS
+    4.6.1
