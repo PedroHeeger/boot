@@ -105,24 +105,18 @@
     2.16.2 Materiais de apoio e Questionário (2)
 
 ### 2.17) Curso: Conhecendo Polimorfismo em Python (2)
-    2.17.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.17.1 Conhecendo Polimorfismo em Python (2)
     2.17.2 Materiais de apoio e Questionário (2)
 
 ### 2.18) Curso: Ampliando o conhecimento em POO com Python (2)
-    2.18.1 Definindo o ambiente e primeiros passos com Python (3)
+    2.18.1 Ampliando o conhecimento em POO (4)
     2.18.2 Materiais de apoio e Questionário (2)
 
-### 2.19) Desafio de código: Desafios Intermediários Py-Unimed-BH
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.19) Desafio de código: Desafios Intermediários Py-Unimed-BH (3)
 
-### 2.20) Desafio de projeto: Descomplicando a criação de pacotes de processamento de imagens em Python
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.20) Desafio de projeto: Descomplicando a criação de pacotes de processamento de imagens em Python (8)
 
-### 2.21) Desafio de projeto: Criando modelos com Python e Machine Learning para prever a evolução do COVID-19 no Brasil
-    - Definindo o ambiente e primeiros passos com Python (3)
-    - Materiais de apoio e Questionário (2)
+### 2.21) Desafio de projeto: Criando modelos com Python e Machine Learning para prever a evolução do COVID-19 no Brasil (10)
 
 
 ## 3) Bancos de Dados SQL e NoSQL: (17)
