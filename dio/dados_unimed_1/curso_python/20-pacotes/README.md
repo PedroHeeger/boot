@@ -1,17 +1,18 @@
 # image_processing
 
-Description.
-The package image_processing is used to:
-    Processing:
-        - Histogram matching
-        - Structural similarity
-        - Resize image
-    Utils:
-        - Read image
-        - Save image
-        - Plot image
-        - Plot result
-        - Plot histogram
+Description.   
+The package image_processing is used to:   
+
+    Processing:   
+        - Histogram matching    
+        - Structural similarity 
+        - Resize image  
+    Utils:  
+        - Read image    
+        - Save image    
+        - Plot image    
+        - Plot result   
+        - Plot histogram    
 
 ## Installation
 
@@ -22,7 +23,7 @@ pip install image_processing
 ```
 
 ## Author
-Pedro
+Pedro Heeger
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
