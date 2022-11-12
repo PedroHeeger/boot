@@ -1,0 +1,14 @@
+README.md
+setup.py
+pedro_image_processing/__init__.py
+pedro_image_processing.egg-info/PKG-INFO
+pedro_image_processing.egg-info/SOURCES.txt
+pedro_image_processing.egg-info/dependency_links.txt
+pedro_image_processing.egg-info/requires.txt
+pedro_image_processing.egg-info/top_level.txt
+pedro_image_processing/processing/__init__.py
+pedro_image_processing/processing/combination.py
+pedro_image_processing/processing/transformation.py
+pedro_image_processing/utils/__init__.py
+pedro_image_processing/utils/io.py
+pedro_image_processing/utils/plot.py
