@@ -1,6 +1,6 @@
 # 20) Desafio de projeto: Descomplicando a criação de pacotes de processamento de imagens em Python (8)
 
-Essa pasta **20-pacotes** é referente ao desafio de projeto de criação de pacotes de processamento de imagens em Python que está dentro do módulo 2 ([Python para Cientistas de Dados do bootcamp](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-curso_python)) do bootcamp [Geração Tech Unimed-BH - Ciência de Dados](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1).
+Essa pasta **20-pacotes** é referente ao desafio de projeto de criação de pacotes de processamento de imagens em Python que está dentro do módulo 2 ([Python para Cientistas de Dados do bootcamp](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python)) do bootcamp [Geração Tech Unimed-BH - Ciência de Dados](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1).
 
 Nela está contida, além desse arquivo de **README** que explica apenas sobre o desafio de projeto e os arquivos presente nessa pasta, uma outra pasta de nome **01-criacao_pacote** que é o pacote criado de processamento de imagem igual o que foi feito durante o desafio. Também contém um arquivo ipynb de nome "07_testando" que foi o código que foi feito no Google Colab para testar o pacote depois dele pronto e armazenado no servidor do TestPyPi.
 

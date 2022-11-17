@@ -1,6 +1,6 @@
 # 9) Desafio de projeto: Construindo um Esquema Conceitual para Banco de dados (2)
 
-Essa pasta **09-desafio_projeto** é uma pasta específica para o desafio de projeto construindo um esquema conceitual para banco de dados que está dentro do módulo 3 ([Bancos de Dados SQL e NoSQL](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-curso_python)) do bootcamp [Geração Tech Unimed-BH - Ciência de Dados](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1).
+Essa pasta **09-desafio_projeto** é uma pasta específica para o desafio de projeto construindo um esquema conceitual para banco de dados que está dentro do módulo 3 ([Bancos de Dados SQL e NoSQL](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/03-modulo_database)) do bootcamp [Geração Tech Unimed-BH - Ciência de Dados](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1).
 
 Nela está contida todos os arquivos de modelagem de banco de dados que foi realizado ao longo do desafio.
 

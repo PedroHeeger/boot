@@ -51,12 +51,12 @@
         5.2.1 Materiais de apoio
         5.2.2 Certifique seu conhecimento
 
-### 6) Desafio de código: Desafios Iniciais Py-Unimed-BH (3)
+### [6) Desafio de código: Desafios Iniciais Py-Unimed-BH (3)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python/06-desafio_codigo)
         6.1.1 As Duas Torres
         6.1.2 Cachorros-Quentes
         6.1.3 Cálculo de viagem
 
-### 7) Desafio de projeto: Análise de dados com Python e Pandas (9)
+### [7) Desafio de projeto: Análise de dados com Python e Pandas (9)](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python/07-pandas)
         7.1.1 Como usar os desafios de projeto para criar seu portfolio
         7.1.2 Apresentação do projeto
         7.1.3 Python básico
@@ -106,7 +106,7 @@
         12.2.1 Materiais de apoio
         12.2.2 Certifique seu conhecimento
 
-### 13) Curso: Fundamentos de ETL (Extract, Transform, Load) com Python (2)
+### [13) Curso: Fundamentos de ETL (Extract, Transform, Load) com Python (2)](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python/07-pandas)
     13.1 Fundamentos de ETL (10)
         13.1.1 Apresentação
         13.1.2 Introdução para ETL
@@ -169,12 +169,12 @@
         18.2.1 Materiais de apoio
         18.2.2 Certifique seu conhecimento
 
-### 19) Desafio de código: Desafios Intermediários Py-Unimed-BH (3)
+### [19) Desafio de código: Desafios Intermediários Py-Unimed-BH (3)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python/19-desafio_codigo)
         19.1.1 Alfabeto
         19.1.2 Papagaio Poliglota
         19.1.3 Aumento Salarial
 
-### 20) Desafio de projeto: Descomplicando a criação de pacotes de processamento de imagens em Python (8)
+### [20) Desafio de projeto: Descomplicando a criação de pacotes de processamento de imagens em Python (8)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python/19-desafio_codigo)
         20.1.1 Parte 1
         20.1.2 Parte 2
         20.1.3 Parte 3
@@ -184,7 +184,7 @@
         20.1.7 Parte 7
         20.1.8 Materiais de apoio
 
-### 21) Desafio de projeto: Criando modelos com Python e Machine Learning para prever a evolução do COVID-19 no Brasil (10)
+### [21) Desafio de projeto: Criando modelos com Python e Machine Learning para prever a evolução do COVID-19 no Brasil (10)](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python/21-machine_learning)
         21.1.1 Introdução ao Projeto
         21.1.2 Importando informações do CSV
         21.1.3 Formatando as informações importadas

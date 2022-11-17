@@ -1,4 +1,4 @@
-# Geração Tech Unimed-BH - Ciência de Dados: (5)
+# [Geração Tech Unimed-BH - Ciência de Dados: (5)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1)
 
 ## 1) Prepare-se Para a Jornada (Onboarding): (7)
 ### 1.1) Curso: Boas-vindas ao Bootcamp: Geração Tech Unimed-BH-Ciência de dados (1)
@@ -17,7 +17,7 @@
     1.4.3 Fundamentos de algoritmos (7)
     1.4.5 Linguagens de programação (5)
     - Primeiro contato com a programação (4)
-### 1.5) Curso: Introdução ao Git e ao GitHub (7)
+### [1.5) Curso: Introdução ao Git e ao GitHub (7)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/01-modulo_01_05-curso_git)
     1.5.1 Introdução ao Git (1)
     1.5.2 Navegação via command line interface e instalação (2)
     1.5.3 Entendendo como Git funciona por baixo dos panos (3)
@@ -33,7 +33,7 @@
     1.7.1.3 Desafio de projeto
     1.7.1.4 Entendendo o Desafio
 
-## 2) Python para Cientistas de Dados: (21)
+## [2) Python para Cientistas de Dados: (21)](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python)
 
 ### 2.1) Curso: Ambiente de Desenvolvimento e Primeiros Passos com Python (2)
     2.1.1 Definindo o ambiente e primeiros passos com Python (3)   
@@ -119,7 +119,7 @@
 ### 2.21) Desafio de projeto: Criando modelos com Python e Machine Learning para prever a evolução do COVID-19 no Brasil (10)
 
 
-## 3) Bancos de Dados SQL e NoSQL: (17)
+## [3) Bancos de Dados SQL e NoSQL: (17)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/03-modulo_database)
 
 ### 3.1)  Curso: Introdução a Banco de Dados (2)
     3.1.1 Contextualização do cenário na área de Banco de Dados (12)

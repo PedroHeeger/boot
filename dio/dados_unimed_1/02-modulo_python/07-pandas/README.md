@@ -1,5 +1,5 @@
 # 7) Desafio de projeto: Análise de dados com Python e Pandas (9)
 
-Esta pasta **07-pandas** é uma pasta específica para o desafio de projeto análise de dados com Python e Pandas que está dentro do módulo 2 ([Python para Cientistas de Dados do bootcamp](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-curso_python)) do bootcamp [Geração Tech Unimed-BH - Ciência de Dados](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1).
+Esta pasta **07-pandas** é uma pasta específica para o desafio de projeto análise de dados com Python e Pandas que está dentro do módulo 2 ([Python para Cientistas de Dados do bootcamp](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python)) do bootcamp [Geração Tech Unimed-BH - Ciência de Dados](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1).
 
 Nela está contida todos os arquivos de códigos referentes as aulas práticas do desafio, além da pasta **datasets** com os arquivos de formato csv e xlsx que foram utilizados para extração dos dados. Ainda na pasta **07-pandas** temos também dois arquivos um em formato csv e o outro em png que foram arquivos gerados através das análises de dados com os códigos realizados.
