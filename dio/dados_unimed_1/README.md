@@ -1,4 +1,4 @@
-# [Geração Tech Unimed-BH - Ciência de Dados: (5)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1)
+# Geração Tech Unimed-BH - Ciência de Dados: (5)
 
 ## 1) Prepare-se Para a Jornada (Onboarding): (7)
 ### 1.1) Curso: Boas-vindas ao Bootcamp: Geração Tech Unimed-BH-Ciência de dados (1)
@@ -33,7 +33,7 @@
     1.7.1.3 Desafio de projeto
     1.7.1.4 Entendendo o Desafio
 
-## [2) Python para Cientistas de Dados: (21)](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python)
+## [2) Python para Cientistas de Dados: (21)](https://github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/02-modulo_python)
 
 ### 2.1) Curso: Ambiente de Desenvolvimento e Primeiros Passos com Python (2)
     2.1.1 Definindo o ambiente e primeiros passos com Python (3)   

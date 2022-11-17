@@ -115,7 +115,7 @@
         7.2.1 Materiais de apoio
         7.2.2 Certifique seu conhecimento
 
-### [8) Desafio de projeto: Refinando um Projeto Conceitual de Banco de Dados-E-COMMERCE (12)](github.com/PedroHeeger/boot/tree/teste/dio/dados_unimed_1/03-modulo_database/08-desafio_projeto)
+### [8) Desafio de projeto: Refinando um Projeto Conceitual de Banco de Dados-E-COMMERCE (12)](/08-desafio_projeto)
         8.1.1 Construindo seu primeiro Projeto de Banco de Dados
         8.1.2 Ferramenta de Design alternativa - Draw.io
         8.1.3 Ferramenta de Design alternativa - DBDesigner.net
