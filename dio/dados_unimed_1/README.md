@@ -121,37 +121,44 @@
 
 ## 3) Bancos de Dados SQL e NoSQL: (17)
 
-### 3.1)  Curso: Introdução a Banco de Dados
-    3.1.1
+### 3.1)  Curso: Introdução a Banco de Dados (2)
+    3.1.1 Contextualização do cenário na área de Banco de Dados (12)
+    3.1.2 Materiais de apoio e Questionário (2)
 
-### 3.2) Curso: Sistemas de Gerenciamento de Banco de Dados
-    3.2.1 
+### 3.2) Curso: Sistemas de Gerenciamento de Banco de Dados (2)
+    3.2.1 Explorando a abordagem de SGBDs (10)
+    3.2.2 Materiais de apoio e Questionário (2)
 
-### 3.3) Curso: Modelagem de Dados para Banco de Dados
-    3.3.1
+### 3.3) Curso: Modelagem de Dados para Banco de Dados (2)
+    3.3.1 Overview sobre Modelagem de Dados (7)
+    3.3.2 Materiais de apoio e Questionário (2)
 
-### 3.4) Curso: Arquitetura de Banco de Dados
-    3.4.1
+### 3.4) Curso: Arquitetura de Banco de Dados (2)
+    3.4.1 Arquitetura de Bancos de Dados (9)
+    3.4.2 Materiais de apoio e Questionário (2)
 
-### 3.5) Curso: Fundamentos de Modelagem e Projeto de Banco de Dados
-    3.5.1
+### 3.5) Curso: Fundamentos de Modelagem e Projeto de Banco de Dados (2)
+    3.5.1 Fundamentos de Modelagem e Projeto de Banco de Dados (12)
+    3.5.2 Materiais de apoio e Questionário (2)
 
-### 3.6) Curso: Modelo de Entidade Relacionamento com Banco de Dados
-    3.6.1
+### 3.6) Curso: Modelo de Entidade Relacionamento com Banco de Dados (2)
+    3.6.1 Explorando o Modelo ER - Entidade Relacionamento (12)
+    3.6.2 Materiais de apoio e Questionário (2)
 
-### 3.7) Curso: Modelo Relacionamento de Entidade Aprimorado com Banco de Dados
-    3.7.1
+### 3.7) Curso: Modelo Relacionamento de Entidade Aprimorado com Banco de Dados (2)
+    3.7.1 Modelagem de Dados com EER - Enhanced Entity Relationship (11)
+    3.7.2 Materiais de apoio e Questionário (2)
 
-### 3.8) Desafio de projeto: Refinando um Projeto Conceitual de Banco de Dados-E-COMMERCE
-    3.8.1
+### 3.8) Desafio de projeto: Refinando um Projeto Conceitual de Banco de Dados-E-COMMERCE (12)
 
-### 3.9) Desafio de projeto: Construindo um Esquema Conceitual para Banco de dados
-    3.9.1
+### 3.9) Desafio de projeto: Construindo um Esquema Conceitual para Banco de dados (2)
 
-### 3.10) Curso: Modelo Relacional e Mapeamento Relacional com Banco de Dados
-    3.10.1
+### 3.10) Curso: Modelo Relacional e Mapeamento Relacional com Banco de Dados (2)
+    3.10.1 Modelo Relacional e Mapeamento ER/Relacional (20)
+    3.10.2 Materiais de apoio e Questionário (2)
 ### 3.11) Curso: Primeiros Passos com SQL
-    3.11.1
+    3.11.1 Primeiros Passos com SQL (21)
+    3.11.2 Materiais de apoio e Questionário (2)
 
 ### 3.12) Curso: Explorando Queries com SQL
     3.12.1

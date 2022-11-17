@@ -1,7 +1,7 @@
-# MÓDULO 05 - Introdução ao Git e ao GitHub
-## AULA 01 - Introdução ao Git: TEÓRICA
-## AULA 02 - Navegação via command line interface e instalação: TEÓRICA
-## AULA 03 - Entendendo como Git funciona por baixo dos panos: (3 Aulas)
+# 5-Introdução ao Git e ao GitHub (7)
+## 5.1-Introdução ao Git: TEÓRICA
+## 5.2-Navegação via command line interface e instalação: TEÓRICA
+## 5.3-Entendendo como Git funciona por baixo dos panos: (3 Aulas)
 
 ### Comando para criar uma encriptação SHA1 no Linux
     echo "ola mundo" | openssl sha1
@@ -26,5 +26,5 @@
     ssh-add id_ed25519
 
 
-## AULA 04 - Primeiros comandos com Git: TEÓRICA
-## AULA 05 - Ciclo de vida dos arquivos no Git: TEÓRICA
+## 5.4-Primeiros comandos com Git: TEÓRICA
+## 5.5-Ciclo de vida dos arquivos no Git: TEÓRICA
