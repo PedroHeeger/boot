@@ -106,7 +106,7 @@
         12.2.1 Materiais de apoio
         12.2.2 Certifique seu conhecimento
 
-### [13) Curso: Fundamentos de ETL (Extract, Transform, Load) com Python (2)](/dio/dados_unimed_1/02-modulo_python/07-pandas)
+### [13) Curso: Fundamentos de ETL (Extract, Transform, Load) com Python (2)](/dio/dados_unimed_1/02-modulo_python/13-etl)
     13.1 Fundamentos de ETL (10)
         13.1.1 Apresentação
         13.1.2 Introdução para ETL

@@ -159,7 +159,7 @@
         10.2.1 Materiais de apoio
         10.2.2 Certifique seu conhecimento
 
-### 11) Curso: Primeiros Passos com SQL
+### 11) Curso: Primeiros Passos com SQL (2)
     11.1 Primeiros Passos com SQL (21)
         11.1.1 Introdução ao SQL
         11.1.2 Sublinguagens: Classificações de SQL-DDL
@@ -185,3 +185,107 @@
     11.2 Materiais de apoio e Questionário (2)
         11.2.1 Materiais de apoio
         11.2.2 Certifique seu conhecimento
+
+### 12) Curso: Explorando Queries com SQL (2)
+    12.1 Explorando Queries com SQL (15)
+        12.1.1 Explorando os Comandos de DDL - Data Definition Language
+        12.1.2 Manipulando o BD com comandos de DDL
+        12.1.3 Elaborando queries SQL com Expressões
+        12.1.4 Submetendo Queries SQL com Expressões ao Banco de dados
+        12.1.5 Introdução a operações de conjuntos com SQL
+        12.1.6 Mais Expressões e Operações de Conjuntos
+        12.1.7 Utilizando operadores Lógicos Like e Between
+        12.1.8 Exemplos de mais operadores lógicos
+        12.1.9 Comandos baseados em operações matemáticas: UNION, INTERSECTION & EXCEPT
+        12.1.10 Vendo na prática como funcionam as operações matemáticas com SQL
+        12.1.11 Nested Queries (Subqueries) com SQL - Parte 1
+        12.1.12 Nested Queries (Subqueries) com SQL - Parte 2
+        12.1.13 Criando subqueries para recuperar informações no banco de dados
+        12.1.14 Segundo exemplo de utilização de Subqueries SQL
+        12.1.15 Utilizando Exists, Unique e comparação com conjuntos explícitos em Queries SQL
+    12.2 Materiais de apoio e Questionário (2)
+        12.2.1 Materiais de apoio
+        12.2.2 Certifique seu conhecimento
+
+### 13) Curso: Criando Queries com Funções e Cláusulas de Agrupamentos (2)
+    13.1 Criando Queries com Funções e Cláusulas de Agrupamentos (10)
+        13.1.1 ORDER BY: Clásulas de ordenação com SQL
+        13.1.2 Ordenação com SQL utilizando expressões
+        13.1.3 Aplicando Ordenação as Consultas de Banco de Dados
+        13.1.4 Funções de agregação com SQL
+        13.1.5 GROUP BY: Clásulas de agrupamento com SQL
+        13.1.6 Agrupando registros no Banco de Dados
+        13.1.7 Explorando cláusulas de agrupamento com SQL
+        13.1.8 Entendendo o HAVING Statement
+        13.1.9 Aplicando a cláusula HAVING ao Banco de Dados
+        13.1.10 Review: Reforçando a diferença entre ORDER BY e GROUP BY
+    13.2 Materiais de apoio e Questionário (2)
+        13.2.1 Materiais de apoio
+        13.2.2 Certifique seu conhecimento
+
+### 14) Curso: Agrupando Registros e Tabelas com Join Statement (2)
+    14.1 Agrupando Registros e Tabelas com Join Statement (19)
+        14.1.1 Apresentação inicial do curso
+        14.1.2 CASE statement
+        14.1.3 Agrupamentos com CASE
+        14.1.4 O caso zero/null trick
+        14.1.5 Criando Queries com CASE statement
+        14.1.6 Entendendo Queries de múltiplas tabelas com JOIN
+        14.1.7 Queries com INNER JOIN
+        14.1.8 Aplicando JOIN statement ao cenário Employee
+        14.1.9 Agrupamento com mais de duas tabelas e JOIN
+        14.1.10 Criando uma Query SQL com JOIN entre três tabelas
+        14.1.11 A ordem importa em queries JOIN?
+        14.1.12 Nested (Subqueries) com JOIN Statement
+        14.1.13 Self JOIN: Mesma tabela em uma Query JOIN
+        14.1.14 Comparando condições de Junção e Filtros
+        14.1.15 Como utilizar o OUTER Join Statement ?
+        14.1.16 Quando aplicar o LEFT JOIN ou OUTER JOIN
+        14.1.17 Entendendo melhor os tipos de JOINs
+        14.1.18 Explorando ainda mais NATURAL JOIN
+        14.1.19 Referências para estudo
+    14.2 Materiais de apoio e Questionário (2)
+        14.2.1 Materiais de apoio
+        14.2.2 Certifique seu conhecimento
+
+### [15) Desafio de projeto: Construindo seu Primeiro Projeto Lógico de Banco de Dados (12)](/dio/dados_unimed_1/03-modulo_database/15-desafio_projeto)
+        15.1.1 Apresentando o Desafio de Projeto Lógico para Banco de Dados
+        15.1.2 Considerações sobre a Variação Esquema ER
+        15.1.3 Criando esquema Relacional a partir do Esquema Conceitual
+        15.1.4 Criando o esquema de Banco de Dados - Script SQL - Parte 1
+        15.1.5 Criando o esquema de Banco de Dados - Script SQL - Parte 2
+        15.1.6 Criando o esquema de Banco de Dados - Script SQL - Parte 3
+        15.1.7 Criando o esquema de Banco de Dados - Script SQL - Parte 4
+        15.1.8 Criando o esquema de Banco de Dados - Script SQL - Parte 5
+        15.1.9 Criando o esquema de Banco de Dados - Script SQL - Parte 6
+        15.1.10 Persistindo e Recuperando Dados a partir de Consultas SQL no Banco de Dados
+        15.1.11 Entendendo o desafio - Criando e Implementando um Projeto Lógico de Banco de Dados
+        15.1.12 Instruções para entrega
+
+### [16) Desafio de projeto: Construa um Projeto Lógico de Banco de Dados do Zero (2)](/dio/dados_unimed_1/03-modulo_database/16-desafio_projeto)
+        16.1.1 Entendendo o desafio 2 - Construa um Esquema Lógico de Banco de Dados do Zero
+        16.1.2 Instruções para entrega
+
+### [17) Curso: Introdução ao MongoDB e Bancos de Dados NoSQL (5)](/dio/dados_unimed_1/03-modulo_database/17-mongodb)
+    17.1 Introdução ao NoSQL (2)
+        17.1.1 Apresentação do curso
+        17.1.2 Introdução
+    17.2 Conhecendo os tipos de bancos de dados NoSQL (4)
+        17.2.1 Tipos de banco NoSQL
+        17.2.2 Coluna/Família de colunas
+        17.2.3 Chave-valor
+        17.2.4 Documento
+    17.3 Introdução ao MongoDB e instalação (3)
+        17.3.1 Introdução ao MongoDB
+        17.3.2 Instalação
+        17.3.3 MongoDB Cloud
+    17.4 Schema Design e boas práticas (3)
+        17.4.1 Schema Design
+        17.4.2 Boas práticas
+        17.4.3 JSON vs BSON
+    17.5 Alguns conceitos na prática (5)
+        17.5.1 Operações de manipulação de dados
+        17.5.2 Performance e índices
+        17.5.3 Agregações
+        17.5.4 Links úteis
+        17.5.5 Certifique seu conhecimento

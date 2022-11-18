@@ -1,0 +1,43 @@
+version: '3'
+
+services:  
+  mysql-app:
+    # env_file:
+    #   - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    image: mysql:8.0.30
+    networks:
+      - mysql_network
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "3306"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /home/pedro/study/boot/dio/dados_unimed_1/03-modulo_database/00-dbdata_mysql
+        target: /var/lib/mysql
+        bind:
+          create_host_path: true
+
+  phpmyadmin-app:
+    environment:
+      - PMA_ARBITRARY=1
+    image: phpmyadmin:apache
+    links:
+      - mysql-app
+    networks:
+      - mysql_network
+    ports:
+      - mode: ingress
+        target: 80
+        published: 80
+        protocol: tcp
+    restart: always
+
+networks:
+  mysql_network:
+    name: mysql_network

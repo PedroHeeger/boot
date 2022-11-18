@@ -156,43 +156,83 @@
 ### 3.10) Curso: Modelo Relacional e Mapeamento Relacional com Banco de Dados (2)
     3.10.1 Modelo Relacional e Mapeamento ER/Relacional (20)
     3.10.2 Materiais de apoio e Questionário (2)
-### 3.11) Curso: Primeiros Passos com SQL
+### 3.11) Curso: Primeiros Passos com SQL (2)
     3.11.1 Primeiros Passos com SQL (21)
     3.11.2 Materiais de apoio e Questionário (2)
 
-### 3.12) Curso: Explorando Queries com SQL
-    3.12.1
+### 3.12) Curso: Explorando Queries com SQL (2)
+    3.12.1 Explorando Queries com SQL (15)
+    3.12.2 Materiais de apoio e Questionário (2)
 
-### 3.13) Curso: Criando Queries com Funções e Cláusulas de Agrupamentos
-    3.13.1
+### 3.13) Curso: Criando Queries com Funções e Cláusulas de Agrupamentos (2)
+    3.13.1 Criando Queries com Funções e Cláusulas de Agrupamentos (10)
+    3.13.2 Materiais de apoio e Questionário (2)
 
-### 3.14) Curso: Agrupando Registros e Tabelas com Join Statement
-    3.14.1
+### 3.14) Curso: Agrupando Registros e Tabelas com Join Statement (2)
+    3.14.1 Agrupando Registros e Tabelas com Join Statement (19)
+    3.14.2 Materiais de apoio e Questionário (2)
 
-### 3.15) Desafio de projeto: Construindo seu Primeiro Projeto Lógico de Banco de Dados
-    3.15.1
+### 3.15) Desafio de projeto: Construindo seu Primeiro Projeto Lógico de Banco de Dados (2)
 
 ### 3.16) Desafio de projeto: Construa um Projeto Lógico de Banco de Dados do Zero
 
-### 3.17) Curso: Introdução ao MongoDB e Bancos de Dados NoSQL
-    3.17.1
+### 3.17) Curso: Introdução ao MongoDB e Bancos de Dados NoSQL (5)
+    3.17.1 Introdução ao NoSQL (2)
+    3.17.2 Conhecendo os tipos de bancos de dados NoSQL (4)
+    3.17.3 Introdução ao MongoDB e instalação (3)
+    3.17.4 Schema Design e boas práticas (3)
+    3.17.5 Alguns conceitos na prática (5)
 
 
-## 4) IMERSÃO CLOUD COMPUTER (6)
+## [4) Imersão Cloud Computer (6)](/dio/dados_unimed_1/04-modulo_cloud)
 
-### 4.1) Curso: Primeiros Passos com AWS
-    4.1.1
+### 4.1) Curso: Primeiros Passos com AWS (5)
+    4.1.1 Conceitos iniciais sobre AWS (2)
+    4.1.2 Criando uma conta na AWS (3)
+    4.1.3 Conhecendo o AWS IAM (5)
+    4.1.4 Criando grupos de usuários no AWS IAM (1)
+    4.1.5 Criando Roles e Policies AWS IAM (4)
 
-### 4.2) Desafio de projeto: Boas práticas com DynamoDB
+### 4.2) Desafio de projeto: Boas práticas com DynamoDB (12)
 
-### 4.3) Curso: Desenvolvendo Soluções Serverless na AWS
-    4.3.1
+### 4.3) Curso: Desenvolvendo Soluções Serverless na AWS (8)
+    4.3.1 Introdução (1)
+    4.3.2 O que é serverless (3)
+    4.3.3 Backend serverless com AWS Lambda (3)
+    4.3.4 NoSQL na Amazon com DynamoDB (5)
+    4.3.5 Trabalhando com arquivos no Amazon S3 (2)
+    4.3.6 Criando API Rest com o Amazon API Gateway (3)
+    4.3.7 Construindo nossa aplicação serverless (4)
+    4.3.8 Conclusão e revisão geral (3)
 
-### 4.4) Curso: Introdução a Engenharia de Dados na AWS
-    4.4.1
+### 4.4) Curso: Introdução a Engenharia de Dados na AWS (2)
+    4.4.1 Conheça os serviços da AWS (8)
+    4.4.2 Mãos à obra (10)
 
-### 4.5) Curso: Imersão ao Ecossistema Cloud Data AWS
-    4.5.1
 
-### 4.6) Desafio de projeto: Explorando Dados Demográficos com Serviços de Big Data na AWS
-    4.6.1
+### 4.5) Curso: Imersão ao Ecossistema Cloud Data AWS (2)
+    4.5.1 Imersão ao Ecossistema Cloud Data AWS (6)
+    4.5.2 Materiais de apoio e Questionário (2)
+
+### 4.6) Desafio de projeto: Explorando Dados Demográficos com Serviços de Big Data na AWS (8)
+
+## [5) Machine Learning (5)](/dio/dados_unimed_1/05-machine_learning)
+
+### 5.1) Curso: Linguagens de Programação para Machine Learning
+    5.1.1 Linguagens de Programação para ML (1)
+    5.1.2 Materiais de apoio e Questionário (2)
+
+### 5.2) Curso: Python para Machine Learning (2)
+    5.2.1 Python para ML (9)
+    5.2.2 Materiais de apoio e Questionário (2)
+
+### 5.3) Curso: R para Machine Learning (2)
+    5.3.1 R para Machine Learning (6)
+    5.3.2 Materiais de apoio e Questionário (2)
+
+
+### 5.4) Curso: Entendendo Machine Learning com Amazon SageMaker (2)
+    5.4.1 Entendendo Machine Learning com Amazon SageMaker (6)
+    5.4.2 Materiais de apoio e Questionário (2)
+
+### 5.5) Desafio de projeto: Treinamento de Redes Neurais com Transfer Learning
