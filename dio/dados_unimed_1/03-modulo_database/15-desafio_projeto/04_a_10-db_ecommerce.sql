@@ -7,7 +7,7 @@
 -- 15.1.8-Criando o esquema de Banco de Dados - Script SQL - Parte 5
 -- 15.1.9-Criando o esquema de Banco de Dados - Script SQL - Parte 6
 
---- Criação do banco de dados para o cenário de E-commerce
+--- CRIAÇÃO DO BANCO DE DADOS PARA O CENÁRIO DE E-COMMERCE:
 CREATE DATABASE IF NOT EXISTS ecommerce;
 USE ecommerce;
 
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS payments(
 );
 
 
---- Verificando as Constraints:
+--- VERIFICANDO AS CONSTRAINTS CRIADAS:
 USE information_schema;
 DESC table_constraints;
 DESC referential_constraints;
@@ -144,11 +144,11 @@ SELECT * FROM table_constraints
     WHERE CONSTRAINT_SCHEMA = 'ecommerce'
     ORDER BY CONSTRAINT_TYPE;
 
-DROP DATABASE ecommerce;
-DELETE FROM orders WHERE idClients IN (1,2,3,4);
+-- DROP DATABASE ecommerce;
+-- DELETE FROM orders WHERE idClients IN (1,2,3,4);
 
 -- 15.1.10-Persistindo e Recuperando Dados a partir de Consultas SQL no Banco de Dados
---- Atualizando o Auto_Increment
+--- Atualizando o Auto_Increment:
 ALTER TABLE clients AUTO_INCREMENT = 1;
 ALTER TABLE orders AUTO_INCREMENT = 1;
 ALTER TABLE products AUTO_INCREMENT = 1;
@@ -156,6 +156,7 @@ ALTER TABLE suppliers AUTO_INCREMENT = 1;
 ALTER TABLE sellers AUTO_INCREMENT = 1;
 ALTER TABLE stock AUTO_INCREMENT = 1;
 
+--- INSERÇÃO DOS DADOS NAS TABELAS:
 --- inserir na tabela cliente:
 INSERT INTO clients (Fname, Minit, Lname, CPF, Addres) VALUES
     ('Maria', 'M', 'Silva', 123456789, 'Rua Silva de Prata 29, Carangola - Cidade das Flores'),
@@ -203,6 +204,11 @@ INSERT INTO suppliers (SocialName, CNPJ, Contact) VALUES
     ('Eletrônicos Silva', 854519649143457, 21985484),
     ('Eletrônicos Valma', 934567893934695, 21975474);
 
+--- inserir na tabela produto-vendedor:
+INSERT INTO productSeller (idPSseller, idPSproduct, psQuantity) VALUES
+    (1,6,80),
+    (2,7,10);
+
 --- inserir na tabela produto-pedido:
 INSERT INTO productOrder (idPOproduct, idPOorder, poQuantity, poStatus) VALUES
     (1,5,2,null),
@@ -214,19 +220,16 @@ INSERT INTO productStock (idPEproduct, idPEstock, peLocation) VALUES
     (1,2,'RJ'),
     (2,6,'GO');
 
---- inserir na tabela produto-estoque:
+--- inserir na tabela produto-fornecedor:
 INSERT INTO productSupplier (idPFproduct, idPFsupplier, pfQuantity) VALUES
     (1,1,500),
     (1,2,400),
-    (2,4,633),
+    (2,1,633),
     (3,3,5),
-    (2,5,15);
+    (2,2,15);
 
-INSERT INTO productSeller (idPSseller, idPSproduct, psQuantity) VALUES
-    (1,6,80),
-    (2,7,10);
 
---- Verificando as tabelas:
+--- VERIFICANDO AS TABELAS:
 SELECT * FROM clients;
 SELECT * FROM products;
 SELECT * FROM orders;
@@ -239,7 +242,7 @@ SELECT * FROM productStock;
 SELECT * FROM productSeller;
 
 
---- Realizando consultas:
+--- REALIZANDO CONSULTAS:
 SELECT count(*) FROM clients;
 SELECT * FROM clients c, orders o WHERE c.idClients = o.idClients;
 
@@ -271,3 +274,23 @@ SELECT c.idClients, c.Fname, count(*) AS Number_of_orders FROM clients c
 SELECT c.idClients, c.Fname, count(*) AS Number_of_orders FROM clients c
     INNER JOIN orders o ON c.idClients = o.idClients
     GROUP BY idClients;
+
+--- recuperar se algum vendedor também é fornecedor?
+SELECT idSellers, s.SocialName, idSuppliers FROM sellers s, suppliers f
+    WHERE s.SocialName = f.SocialName ORDER BY s.SocialName ASC;
+
+--- relação de produtos, fornecedores e estoque
+SELECT p.idProducts, p.Pname AS Product_Name, f.idSuppliers, f.SocialName, pf.Quantity
+    FROM products p INNER JOIN productSupplier pf ON p.idProducts = pf.idPFproduct
+    INNER JOIN suppliers f ON pf.idPFsupplier = f.idSuppliers;
+
+SELECT p.idProducts, p.Pname AS Product_Name, f.idSuppliers, f.SocialName, e.idStock, e.Quantity AS Stock_Quantity
+    FROM products p INNER JOIN productSupplier pf ON p.idProducts = pf.idPFproduct
+    INNER JOIN suppliers f ON pf.idPFsupplier = f.idSuppliers
+    INNER JOIN (productStock pe INNER JOIN stock e ON pe.idPEstock = e.idStock) ON p.idProducts = pe.idPEproduct;
+
+4-Relação de nomes dos fornecedores e nomes dos produtos
+--- relação de nomes dos fornecedores e nomes dos produtos
+SELECT p.idProducts, p.Pname AS Product_Name, f.idSuppliers, f.SocialName
+    FROM products p INNER JOIN productSupplier pf ON p.idProducts = pf.idPFproduct
+    INNER JOIN suppliers f ON pf.idPFsupplier = f.idSuppliers;
