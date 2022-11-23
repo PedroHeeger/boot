@@ -1,4 +1,5 @@
 ## 3) Bancos de Dados SQL e NoSQL: (17)
+* Este módulo de banco de dados foi desenvolvido com uso das tecnologias Docker e MySQL Workbench, além do Git para o versionamento.
 
 ### 1) Curso: Introdução a Banco de Dados (2)
     1.1 Contextualização do cenário na área de Banco de Dados (12)
