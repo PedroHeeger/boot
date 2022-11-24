@@ -3,11 +3,21 @@
 # 2.1.8-Configurando o AWS e Criando uma Tabela
 
 ## Comandos Inicias:
-### Atualizando os pacotes e instalando o unzip e curl
+### Atualizando os pacotes
 ```
-sudo apt-get update & sudo apt-get upgrade
-sudo apt-get install unzip
-sudo apt-get install curl
+sudo apt-get update -y & sudo apt-get upgrade -y
+```
+
+### Instalando o unzip e curl
+```
+sudo apt-get install unzip -y
+sudo apt-get install curl -y
+```
+
+### Verificando as versões do unzip e curl
+```
+unzip -v
+curl -v
 ```
 
 ### Instalando o Amazon CLI
@@ -26,6 +36,7 @@ aws configure
 ----------------------------------------------------------------------------------------------
 ## Comandos para execução do experimento (DynamoDB):
 ### Criar uma tabela:
+```
 aws dynamodb create-table \
     --table-name Music \
     --attribute-definitions \
@@ -36,6 +47,7 @@ aws dynamodb create-table \
         AttributeName=SongTitle,KeyType=RANGE \
     --provisioned-throughput \
         ReadCapacityUnits=10,WriteCapacityUnits=5
+```
 
 ----------------------------------------------------------------------------------------------
 ### Inserção:
@@ -49,12 +61,12 @@ aws dynamodb put-item \
 #### Inserir múltiplos itens:
 ```
 aws dynamodb batch-write-item \
-    --request-items file://batchmusic.json
+    --request-items file://sr/batchmusic.json
 ```
 
 ----------------------------------------------------------------------------------------------
 ### Criando Índices:
-#### Criar um index global secundário baeado no título do álbum:
+#### Criar um index global secundário baseado no título do álbum:
 ```
 aws dynamodb update-table \
     --table-name Music \
@@ -85,7 +97,7 @@ aws dynamodb update-table \
         AttributeName=SongYear,AttributeType=S \
     --global-secondary-index-updates \
         "[{\"Create\":{\"IndexName\": \"SongTitleYear-index\",\"KeySchema\":[{\"AttributeName\":\"SongTitle\",\"KeyType\":\"HASH\"}, {\"AttributeName\":\"SongYear\",\"KeyType\":\"RANGE\"}], \
-        \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
+        \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5},\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
 ```
 
 ----------------------------------------------------------------------------------------------
@@ -96,14 +108,6 @@ aws dynamodb query \
     --table-name Music \
     --key-condition-expression "Artist = :artist" \
     --expression-attribute-values  '{":artist":{"S":"Iron Maiden"}}'
-```
-
-#### Pesquisar item por artista e título da música:
-```
-aws dynamodb query \
-    --table-name Music \
-    --key-condition-expression "Artist = :artist and SongTitle = :title" \
-    --expression-attribute-values file://src/keyconditions.json
 ```
 
 #### Pesquisa pelo index secundário baseado no título do álbum:
@@ -131,4 +135,12 @@ aws dynamodb query \
     --index-name SongTitleYear-index \
     --key-condition-expression "SongTitle = :v_song and SongYear = :v_year" \
     --expression-attribute-values  '{":v_song":{"S":"Wasting Love"},":v_year":{"S":"1992"} }'
+```
+
+#### Pesquisar item por artista e título da música:
+```
+aws dynamodb query \
+    --table-name Music \
+    --key-condition-expression "Artist = :artist and SongTitle = :title" \
+    --expression-attribute-values file://src/keyconditions.json
 ```
