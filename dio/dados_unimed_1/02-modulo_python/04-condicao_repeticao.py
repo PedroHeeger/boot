@@ -1,6 +1,7 @@
-# 4-Estruturas Condicionais e de Repetição em Python
-## 4.1-Estruturas Condicionais e de Repetição
-### 4.1.1-Indentação
+# 2) Python para Cientistas de Dados (21)
+## 2.4) Curso: Estruturas Condicionais e de Repetição em Python (2)
+### 2.4.1) Estruturas Condicionais e de Repetição
+#### 2.4.1.1) Indentação e blocos
 print("Indentação:")
 def sacar(valor):
     saldo = 500
@@ -17,7 +18,7 @@ print("Indentação:")
 sacar(100)      
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 4.1.2-Estruturas Condicionais
+#### 2.4.1.2) Estruturas condicionais
 print("If:")
 saldo = 2000.0
 saque = float(input("Informe o valor de saque: "))
@@ -80,7 +81,7 @@ status = "Sucesso" if saldo >= saque else "Falha"
 print(f"{status} ao realizar o saque!")
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 4.1.3-Estruturas de Repetição
+#### 2.4.1.3) Estruturas de Repetição
 print("Comando for:")
 texto = input("Informe um texto: ")
 VOGAIS = "AEIOU"

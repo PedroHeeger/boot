@@ -1,6 +1,7 @@
-# 3-Tipos de Operadores com Python
-## 3.1-Tipos de Operadores
-### 3.1.1-Operadores aritméticos
+# 2) Python para Cientistas de Dados (21)
+## 2.3) Curso: Tipos de Operadores com Python (2)
+### 2.3.1) Tipos de Operadores
+#### 2.3.1.1) Operadores aritméticos
 print("Operadores Aritméticos:")
 print(1+1)          # Adição
 print(10-2)         # Subtração
@@ -11,7 +12,7 @@ print(10%3)         # Módulo (Resto da Divisão)
 print(2**3)         # Exponeciação
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 3.1.2-Operadores de comparação
+#### 2.3.1.2) Operadores de comparação
 print("Operadores de Comparação:")
 saldo = 450
 saque = 200
@@ -23,7 +24,7 @@ print(saldo < saque)           # Menor que
 print(saldo <= saque)          # Menor ou igual
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 3.1.3-Operadores de atribuição
+#### 2.3.1.3) Operadores de atribuição
 print("Operadores de Atribuição:")
 saldo = 100                    # Atribuição Simples
 print(saldo)
@@ -43,7 +44,7 @@ saldo %= 2                     # Atribuição com Módulo (Resto da Divisão)
 print(saldo)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 3.1.4-Operadores Lógicos ou Booleanos
+#### 2.3.1.4) Operadores Lógicos
 print("Operadores de Lógicos ou Booleanos:")
 saldo = 1000
 saque = 200
@@ -55,7 +56,7 @@ print(not saldo >= saque and saque >= limite)   # Operador de Negação Not (Nã
 print(saldo >= saque and saque >= limite)       # Operador de Negação Not (Não) Inverso
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 3.1.5-Operadores de identidade
+#### 2.3.1.5) Operadores de identidade
 print("Operadores de identidade:")
 curso = "Curso de Python"
 nome_curso = curso
@@ -68,7 +69,7 @@ print(saldo is not limite)                      # Operador de Identidade Is Not 
 
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 3.1.6-Operadores de associação
+#### 2.3.1.6) Operadores de associação
 print("Operadores de associação:")
 curso = "Curso de Python"
 frutas = ["laranja", "uva", "limão"]

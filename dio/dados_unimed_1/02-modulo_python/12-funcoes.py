@@ -1,8 +1,7 @@
-# 12-Dominando Funções Python
-## 12.1-Dominando Funções Python
-### 12.1.1-Funções Python - Parte 01
-from re import M
-
+# 2) Python para Cientistas de Dados (21)
+## 2.12) Curso: Dominando Funções Python (2)
+### 2.12.1) Dominando Funções Python (2)
+#### 2.12.1.1) Funções Python - Parte 01
 
 print("Exemplos de Funções:")
 def exibir_mensagem():
@@ -52,7 +51,7 @@ def exibir_poema(data_extenso, *args, **kwargs):
 exibir_poema("Sexta-feira, 26 de Agosto de 2022", "Zen of Python", "Beautiful is better than ugly", time="20s", autor="Tim Peters", ano=1999)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 12.1.2-Funções Python - Parte 02
+#### 2.12.1.2) Funções Python - Parte 02
 print("Parâmetros Somente por Posição (Positional only):")
 def criar_carro(modelo, ano, placa, /, marca, motor, combustivel):
     print(modelo, ano, placa, marca, motor, combustivel)

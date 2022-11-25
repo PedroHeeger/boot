@@ -1,6 +1,7 @@
-# 5-Manipulação de strings com Python
-## 5.1-Dominando Strings e Fatiamento
-### 5.1.1-Strings e seus Métodos
+# 2) Python para Cientistas de Dados (21)
+## 2.5) Curso: Manipualçao de strings com Python (2)
+### 2.5.1) Dominando Strings e Fatiamento
+#### 2.5.1.1) Conhecendo métodos úteis da classe string
 print("Formatação dos caracteres da String:")
 curso = "pYtHon"
 print(curso.upper())              # Converter para Maiúsculo
@@ -21,7 +22,7 @@ print(curso.center(10, "#"))
 print(".".join(curso))             
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 5.1.2-Interpolação de variáveis
+#### 2.5.1.2) Interpolação de variáveis
 print("Old Style %:")
 nome = "Guilherme"
 idade = 28
@@ -52,7 +53,7 @@ dados = {"nome": "Guilherme", "idade": 28, "profissao": "Programador", "linguage
 print("Olá, me chamo {nome}. Eu tenho {idade} anos de idade, trabalho como {profissao} e estou matriculado no curso de {linguagem}.".format(**dados))
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 5.1.3-Fatiamento de string
+#### 2.5.1.3) Fatiamento de string
 print("Fatiamento de string:")
 nome = "Guilherme Arthur de Carvalho"
 
@@ -65,7 +66,7 @@ print(nome [ : ])             # De 0 até o último
 print(nome [ ::-1])           # Do último até o primeiro, será lido de trás para frente.
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 5.1.5-String múltiplas linhas
+#### 2.5.1.4) String múltiplas linhas
 print("String múltiplas linhas:")
 nome = "Guilherme"                  # String Simples
 print(nome)

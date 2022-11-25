@@ -1,7 +1,8 @@
-# 14-Introdução à Programação Orientada a Objetos (POO)
-## 14.1-Introdução à Programação Orientada a Objetos (POO) com Python
-### 14.1.1-Orientação à objetos (OO): Teoria.
-### 14.1.2-Classes e Objetos:
+# 2) Python para Cientistas de Dados (21)
+## 2.14) Curso: Introdução à Programação Orientada a Objetos (POO) com Python (2)
+### 2.14.1) Introdução à Programação Orientada a Objetos (POO) com Python (4)
+#### 2.14.1.1) O que é Orientação a Objetos (OO)? Teoria.
+#### 2.14.1.2) Os conceitos de Classes e Objetos
 print("Exemplos de Classe:")
 class Cachorro:
     def __init__(self, nome, cor, acordado=True):
@@ -28,7 +29,7 @@ cao_2.dormir()
 print(cao_2.acordado)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 14.1.3-Primeiro Programa:
+#### 2.14.1.3) Criando seu primeiro Programa com POO
 print("Primeiro Programa POO:")
 class Bicicleta:
     def __init__(self, cor, modelo, ano, valor):
@@ -133,7 +134,7 @@ b2 = Bicicleta("verde", "monark", 2000, 189)
 print(b2)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 14.1.4-Construtores e Destrutores:
+#### 2.14.1.4) Construtores e Destrutores
 print("Exemplo de Construtor:")
 class Cachorro:
     def __init__(self, nome, cor, acordado=True):

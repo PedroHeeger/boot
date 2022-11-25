@@ -1,7 +1,8 @@
-# 16-Aplicando Encapsulamento em Python
-## 16.1-Aplicando Encapsulamento em Python
-### 16.1.1-Encapsulamento: Teoria.
-### 16.1.2-Recursos Públicos e Privados:
+# 2) Python para Cientistas de Dados (21)
+## 2.16) Curso: Aplicando Encapsulamento em Python (2)
+### 2.16.1) Aplicando Encapsulamento em Python (3)
+#### 2.16.1.1) O que é Encapsulamento? Teoria.
+#### 2.16.1.2) Recursos públicos e privados
 print("Exemplos de Recursos Públicos:")
 class Conta:
     def __init__(self, saldo=0):
@@ -37,7 +38,7 @@ print(conta.nro_agencia)
 print(conta.mostrar_saldo())
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 16.1.3-Propriedades:
+#### 2.16.1.3) Propriedades
 print("Property:")
 class Foo:
     def __init__(self, x=None):

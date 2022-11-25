@@ -1,6 +1,7 @@
-# 9-Conhecendo Tuplas em Python
-## 9.1-Conhecendo Tuplas em Python
-### 9.1.1-Tuplas
+# 2) Python para Cientistas de Dados (21)
+## 2.9) Curso: Conhecendo Tuplas em Python (2)
+### 2.9.1) Conhecendo Tuplas em Python
+#### 2.9.1.1) Tuplas
 print("Exemplos de tuplas:")
 frutas = ("laranja", "pera", "uva",)
 print(frutas)

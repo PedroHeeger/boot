@@ -1,6 +1,7 @@
-# 15-Aprendendo o Conceito de Herança com Python
-## 15.1-Aprendendo o Conceito de Herança com Python
-### 15.1.1-Herança em POO:
+# 2) Python para Cientistas de Dados (21)
+## 2.15) Curso: Aprendendo o Conceito de Herença com Python (2)
+### 2.15.1) Aprendendo o Conceito de Herança com Python (4)
+#### 2.15.1.1) Herança em POO
 print("Exemplos de Herança:")
 class A:
     pass
@@ -9,7 +10,7 @@ class B(A):
     pass
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 15.1.2-Simples e Múltipla:
+#### 2.15.1.2) Conceituando Herança Simples e Herança Múltipla
 print("Herança Simples:")
 class A:
     pass
@@ -29,7 +30,7 @@ class C(A, B):
     pass
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 15.1.3-Herança Simples:
+#### 2.15.1.3) Hands-on: Herança Simples
 print("Herança Simples:")
 class Veiculo:
     def __init__(self, cor, placa, numero_rodas):
@@ -70,7 +71,7 @@ caminhao.esta_carregado()
 print(caminhao)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 15.1.4-Herança Múltipla:
+#### 2.15.1.4) Hands-on: Herança Múltipla
 print("Herança Múltipla:")
 class Animal:
     def __init__(self, nro_patas):

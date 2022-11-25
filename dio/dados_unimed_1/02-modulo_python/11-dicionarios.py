@@ -1,6 +1,7 @@
-# 11-Aprendendo a Utilizar Dicionários em Python
-## 11.1-Aprendendo a Utilizar Dicionários em Python
-### 11.1.1-Dicionários
+# 2) Python para Cientistas de Dados (21)
+## 2.11) Curso: Aprendendo a Utilizar Dicionários em Python (2)
+### 2.11.1) Aprendendo a Utilizar Dicionários em Python (2)
+#### 2.11.1.1) Dicionários: Criação e acesso de dados
 print("Exemplos de Dicionários:")
 pessoa = {"nome": "Guilherme", "idade": 28}
 print(pessoa)
@@ -66,7 +67,7 @@ for chave, valor in contatos.items():
     print(chave, valor)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 11.1.2-Métodos da classe dict
+#### 2.11.1.2) Métodos da classe dict
 print(".clear():")
 contatos = {
     "guilherme@gmail.com": {"nome": "Guilherme", "telefone": "3333-2221"},

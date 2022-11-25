@@ -1,7 +1,8 @@
-# 8-Trabalhando com Listas em Python
-## 8.1-Trabalhando com Listas em Python
-### 8.1.1-Introdução: Teoria
-### 8.1.2-Listas
+# 2) Python para Cientistas de Dados (21)
+## 2.8) Curso: Trabalhando com Listas em Python (2)
+### 2.8.1) Trabalhando com Listas em Python
+#### 2.8.1.1) Introdução Teoria
+#### 2.8.1.2) Listas: Criação e acesso aos dados
 print("Exemplos de listas:")
 frutas = ["laranja", "maca", "uva"]
 print(frutas)
@@ -92,7 +93,7 @@ quadrado = [numero**2 for numero in numeros]
 print(quadrado)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 8.1.3-Métodos da classe List
+#### 2.8.1.3) Métodos da classe list
 print(".append():")
 lista = []
 lista.append(1)

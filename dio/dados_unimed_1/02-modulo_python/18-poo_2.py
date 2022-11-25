@@ -1,6 +1,7 @@
-# 18-Ampliando o conhecimento em POO com Python
-## 18.1-Ampliando o conhecimento em POO
-### 18.1.1-Variáveis de classe e de instância:
+# 2) Python para Cientistas de Dados (21)
+## 2.18) Curso: Ampliando o conhecimento em POO com Python (2)
+### 2.18.1) Ampliando o conhecimento em POO (4)
+#### 2.18.1.1) Variáveis de classe e Variáveis de instância
 print("Variáveis de classe e de instância:")
 class Estudante:
     escola = "DIO"                             # Variável de Classe
@@ -32,7 +33,7 @@ aluno_3 = Estudante("Chappie", 4)
 mostrar_valores(aluno_1, aluno_2)
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 18.1.3-Métodos de classe e estático:
+#### 2.18.1.2) Métodos de classe e estático:
 print("Métodos de classe:")
 class Pessoa:
     def __init__(self, nome=None, idade=None):
@@ -73,8 +74,8 @@ print(Pessoa.e_maior_idade(18))
 print(Pessoa.e_maior_idade(8))
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 18.1.3-Interfaces: Teoria.
-### 18.1.4-Classes abstratas:
+#### 2.18.1.3) O que são Interfaces? Teoria.
+#### 2.18.1.4) Classes Abstratas
 print("Classes abstratas:")
 from abc import ABC, abstractmethod
 

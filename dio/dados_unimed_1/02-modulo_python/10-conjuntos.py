@@ -1,6 +1,7 @@
-# 10-Explorando Conjuntos em Python
-## 10.1-Explorando Conjuntos em Python
-### 10.1.1-Conjuntos
+# 2) Python para Cientistas de Dados (21)
+## 2.10) Curso: Explorando Conjuntos em Python (2)
+### 2.10.1) Explorando Conjuntos em Python (1)
+#### 2.10.1.1) Conjuntos
 print("Exemplos de conjuntos:")
 print(set([1,2,3,1,3,4]))                           # {1, 2, 3, 4}
 print(set("abacaxi"))                               # {"b", "a", "c", "x", "i"}
@@ -29,7 +30,7 @@ for indice, carro in enumerate(carros):
     print(f"{indice}: {carro}")
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 10.1.1-Conjuntos (Métodos da classe set)
+#### 2.10.1.1) Conjuntos (Métodos da classe set)
 print(".union():")
 conjunto_a = {1, 2}
 conjunto_b = {3, 4}

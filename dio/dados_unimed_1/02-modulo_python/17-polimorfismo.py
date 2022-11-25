@@ -1,12 +1,13 @@
-# 17-Conhecendo Polimorfismo em Python
-## 17.1-Conhecendo Polimorfismo em Python
-### 17.1.1-Polimorfismo:
+# 2) Python para Cientistas de Dados (21)
+## 2.17) Curso: Conhecendo Polimorfismo em Python (2)
+### 2.17.1) Conhecendo Polimorfismo em Python (2)
+#### 2.17.1.1) O que é Polimorfismo?
 print("Exemplos de Polimorfismo:")
 print(len('python'))
 print(len([10, 20, 30]))
 print("------//------//------//------//------//------//------//------//------//------//------//------//")
 
-### 17.1.2-Polimorfismo com Herança:
+#### 2.17.1.2) Polimorfismo com Herança
 print("Polimorfismo com Herança:")
 class Passaro:
     def voar(self):
