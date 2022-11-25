@@ -3,42 +3,45 @@
 * **Módulo_Bootcamp**: [4) Imersão Cloud Computer (6)](/dio/dados_unimed_1/04-modulo_cloud)
 
 # 4.4) Curso: Introdução a Engenharia de Dados na AWS (2)
-
-## Objetivos:
+## Objetivos
 * Criar um Stream Delivery com AWS Kinesis Firehose;
 * Configurar instância no AWS EC2;
 * Gerar logs de processamento de dados com Python;
 * Armazenar logs no AWS S3;
 * Manipular dados no AWS Glue Data Brew;
-
-## Arquitetura:
+## Tecnologias
+* Linguagem de Programação: Python
+* Ambiente de Desenvolvimento: VS Code; Terminal do Linux; Cloud AWS
+* Ferramentas da AWS: EC2; S3; Kinesis Firehose; Glue Data Brew
+## Arquitetura
 <img src="/dio/dados_unimed_1/04-modulo_cloud/04-aws/arquitetura.png" alt="drawing" width="800" heigth="300"/>
 
 <a id="ancora"></a>
 ## Índice
-* 4.4.1 Conheça os serviços da AWS (8)
-    * 4.4.1.1 Apresentação inicial e objetivos do curso
-    * 4.4.1.2 Conceitos básicos sobre Big Data
-    * 4.4.1.3 Visão geral de Big Data na Aws
-    * 4.4.1.4 AWS Snow Family
-    * 4.4.1.5 AWS Kinesis
-    * 4.4.1.6 AWS Elastic Mapduce
-    * 4.4.1.7 AWS Glue
-    * 4.4.1.8 AWS Redshift
-* 4.4.2 Mãos à obra (10)
-    * 4.4.2.1 Apresentação da parte prática
-    * 4.4.2.2 Criando o delivery stream
-    * [4.4.2.3 Implementando o serviço de instâncias EC2 e configurando através do Putty](#ancora1)
-    * [4.4.2.4 Iniciando o serviço Kinesis e desenvolvendo os arquivos de log](#ancora2)
-    * [4.4.2.5 Criando um data Stream e acessando os dados devolvidos](#ancora3)
-    * [4.4.2.6 Visualizando os dados com o serviço Glue Data Brew](#ancora4)
-    * 4.4.2.7 Conclusão do curso
-    * 4.4.2.8 Github
-    * 4.4.2.9 Slides
-    * 4.4.2.10 Certifique seu conhecimento
+* 4.4.1) Conheça os serviços da AWS (8)
+  * 4.4.1.1) Apresentação inicial e objetivos do curso
+  * 4.4.1.2) Conceitos básicos sobre Big Data
+  * 4.4.1.3) Visão geral de Big Data na Aws
+  * 4.4.1.4) AWS Snow Family
+  * 4.4.1.5) AWS Kinesis
+  * 4.4.1.6) AWS Elastic Mapduce
+  * 4.4.1.7) AWS Glue
+  * 4.4.1.8) AWS Redshift
+* 4.4.2) Mãos à obra (10)
+  * 4.4.2.1) Apresentação da parte prática
+  * 4.4.2.2) Criando o delivery stream
+  * [4.4.2.3) Implementando o serviço de instâncias EC2 e configurando através do Putty](#ancora1)
+  * [4.4.2.4) Iniciando o serviço Kinesis e desenvolvendo os arquivos de log](#ancora2)
+  * [4.4.2.5) Criando um data Stream e acessando os dados devolvidos](#ancora3)
+  * [4.4.2.6) Visualizando os dados com o serviço Glue Data Brew](#ancora4)
+  * 4.4.2.7) Conclusão do curso
+  * 4.4.2.8) Github
+  * 4.4.2.9) Slides
+  * 4.4.2.10) Certifique seu conhecimento
 
+----------------------------------------------------------------------------------------------
 <a id="ancora1"></a>
-### 4.4.2.3 Implementando o serviço de instâncias EC2 e configurando através do Putty
+### 4.4.2.3) Implementando o serviço de instâncias EC2 e configurando através do Putty
 [voltar](#ancora)   
 
 Após a criação da instância EC2 na AWS
@@ -118,8 +121,9 @@ sudo nano agent.json
 }
 ```
 
+----------------------------------------------------------------------------------------------
 <a id="ancora2"></a>
-### 4.4.2.4 Iniciando o serviço Kinesis e desenvolvendo os arquivos de log
+### 4.4.2.4) Iniciando o serviço Kinesis e desenvolvendo os arquivos de log
 [voltar](#ancora)   
 
 * Inicializando a instância do Kinesis Agent:
@@ -151,8 +155,9 @@ tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 sudo service aws-kinesis-agent restart
 ```
 
+----------------------------------------------------------------------------------------------
 <a id="ancora3"></a>
-## 4.4.2.5 Criando um data Stream e acessando os dados devolvidos
+## 4.4.2.5) Criando um data Stream e acessando os dados devolvidos
 [voltar](#ancora)  
 
 * Alterando de diretório para o diretório do AWS Kinesis:
@@ -210,12 +215,10 @@ sudo ./LogGenerator.py
 ```
 tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 ```
-* aa
-```
-```
 
+----------------------------------------------------------------------------------------------
 <a id="ancora4"></a>
-## 4.4.2.6 Visualizando os dados com o serviço Glue Data Brew
+## 4.4.2.6) Visualizando os dados com o serviço Glue Data Brew
 [voltar](#ancora)   
 
 Iremos no Glue Data Brew e criaremos um novo projeto determinando um nome **CovidVaccinesDIOLive**, selecionaremos um novo dataset e um registro de log gerado dentro do bucket criado **dio-aws-04-covid-vaccines**. Escolheremos o formato **csv** e passaremos um sufixo para o nome da IAM role que será criada **DIOLive**.

@@ -8,7 +8,6 @@ Investigar os dados da disseminação do COVID-19 no Brasil desde o início da p
 * Linguagem de Programação: Python
 * Ambiente de Desenvolvimento: Jupyter Notebook; VS Code; Google Colab
 * Bibliotecas: pandas; scikit-image; numpy; matplotlib; datetime; statsmodels; plotly; pmdarima; re
-
 ## Índice
 * 2.21.1.1) Introdução ao Projeto
 * [2.21.1.2) Importando informações do CSV](/dio/dados_unimed_1/02-modulo_python/21-machine_learning/21_machine_learning.ipynb)
