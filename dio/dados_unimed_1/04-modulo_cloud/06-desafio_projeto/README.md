@@ -10,7 +10,7 @@
 * Utilizar o Amazon QuickSight para visualizar os dados
 ## Tecnologias
 * Linguagem de Consulta: SQL
-* Ambiente de Desenvolvimento: VS Code; Terminal do Linux; Cloud AWS
+* Ambiente de Desenvolvimento: VS Code; Cloud AWS
 * Ferramentas da AWS: S3; Athena; Glue Crawler; Quicksight
 
 <a id="ancora"></a>

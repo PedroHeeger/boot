@@ -1,4 +1,6 @@
-## 4) Imersão Cloud Computer (6)
+* **Plataforma**: [DIO (Digital Inovation One)](/dio/)
+* **Bootcamp**: [Geração Tech Unimed-BH - Ciência de Dados: Básico; 126 Hrs](/dio/dados_unimed_1/)
+* **Módulo_Bootcamp**: [4) Imersão Cloud Computer (6)](/dio/dados_unimed_1/04-modulo_cloud/)
 
 ### 4.1) Curso: Primeiros Passos com AWS (5)
     4.1.1) Conceitos iniciais sobre AWS (2)
@@ -36,7 +38,7 @@
         4.2.1.11) Finalizando o Projeto
         4.2.1.12) Entendendo o Desafio
 
-### 4.3) Curso: Desenvolvendo Soluções Serverless na AWS (8)
+### [4.3) Curso: Desenvolvendo Soluções Serverless na AWS (8)](/dio/dados_unimed_1/04-modulo_cloud/03-lambda/)
     4.3.1) Introdução (1)
         4.3.1.1) Introdução
     4.3.2) O que é serverless (3)
@@ -70,7 +72,7 @@
         4.3.8.2) Materiais de apoio
         4.3.8.3) Certifique seu conhecimento
 
-### 4.4) Curso: Introdução a Engenharia de Dados na AWS (2)
+### [4.4) Curso: Introdução a Engenharia de Dados na AWS (2)](/dio/dados_unimed_1/04-modulo_cloud/06-desafio_projeto/)
     4.4.1) Conheça os serviços da AWS (8)
         4.4.1.1) Apresentação inicial e objetivos do curso
         4.4.1.2) Conceitos básicos sobre Big Data

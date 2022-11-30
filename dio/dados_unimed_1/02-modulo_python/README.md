@@ -1,7 +1,6 @@
 * **Plataforma**: [DIO (Digital Inovation One)](/dio/)
 * **Bootcamp**: [Geração Tech Unimed-BH - Ciência de Dados: Básico; 126 Hrs](/dio/dados_unimed_1/)
 * **Módulo_Bootcamp**: [2) Python para Cientistas de Dados (21)](/dio/dados_unimed_1/02-modulo_python/)
-* **Curso**: [4.4) Curso: Introdução a Engenharia de Dados na AWS (2)](/dio/dados_unimed_1/04-modulo_cloud/04-aws/)
 
 ### 2.1) Curso: Ambiente de Desenvolvimento e Primeiros Passos com Python (2)
     2.1.1) Definindo o ambiente e primeiros passos com Python (3)   
