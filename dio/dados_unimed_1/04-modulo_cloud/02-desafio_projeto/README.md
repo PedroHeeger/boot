@@ -56,14 +56,14 @@ unzip awscliv2.zip
 sudo ./aws/install
 aws --version
 ```
-* Configurando as credenciais de acesso
+* Configurando as credenciais de acesso     
 Conferir AWS Access Key ID e AWS Secret Access Key no arquivo csv com as credenciais do IAM User
 ```
 aws configure
 ```
 
 #### Comandos para execução do experimento (DynamoDB):
-* Criar uma tabela:
+* Criando uma tabela
 ```
 aws dynamodb create-table \
     --table-name Music \
@@ -82,13 +82,13 @@ aws dynamodb create-table \
 ### 4.2.1.9) Inserindo Itens na Tabela
 [voltar](#ancora) 
 
-* Inserir um item:
+* Inserindo um item
 ```
 aws dynamodb put-item \
     --table-name Music \
     --item file://src/itemmusic.json \
 ```
-* Inserir múltiplos itens:
+* Inserindo múltiplos itens
 ```
 aws dynamodb batch-write-item \
     --request-items file://sr/batchmusic.json
@@ -99,7 +99,7 @@ aws dynamodb batch-write-item \
 ### 4.2.1.10) Criando Index
 [voltar](#ancora) 
 
-* Criar um index global secundário baseado no título do álbum:
+* Criando um index global secundário baseado no título do álbum
 ```
 aws dynamodb update-table \
     --table-name Music \
@@ -108,7 +108,7 @@ aws dynamodb update-table \
         "[{\"Create\":{\"IndexName\": \"AlbumTitle-index\",\"KeySchema\":[{\"AttributeName\":\"AlbumTitle\",\"KeyType\":\"HASH\"}], \
         \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
 ```
-* Criar um index global secundário baseado no nome do artista e no título do álbum:
+* Criando um index global secundário baseado no nome do artista e no título do álbum
 ```
 aws dynamodb update-table \
     --table-name Music \
@@ -119,7 +119,7 @@ aws dynamodb update-table \
         "[{\"Create\":{\"IndexName\": \"ArtistAlbumTitle-index\",\"KeySchema\":[{\"AttributeName\":\"Artist\",\"KeyType\":\"HASH\"}, {\"AttributeName\":\"AlbumTitle\",\"KeyType\":\"RANGE\"}], \
         \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
 ```
-* Criar um index global secundário baseado no título da música e no ano:
+* Criando um index global secundário baseado no título da música e no ano
 ```
 aws dynamodb update-table \
     --table-name Music \
@@ -136,14 +136,14 @@ aws dynamodb update-table \
 ### 4.2.1.11) Finalizando o Projeto (Consultas)
 [voltar](#ancora) 
  
-* Pesquisar item por artista:
+* Pesquisando item por artista
 ```
 aws dynamodb query \
     --table-name Music \
     --key-condition-expression "Artist = :artist" \
     --expression-attribute-values  '{":artist":{"S":"Iron Maiden"}}'
 ```
-* Pesquisa pelo index secundário baseado no título do álbum:
+* Pesquisando pelo index secundário baseado no título do álbum
 ```
 aws dynamodb query \
     --table-name Music \
@@ -151,7 +151,7 @@ aws dynamodb query \
     --key-condition-expression "AlbumTitle = :name" \
     --expression-attribute-values  '{":name":{"S":"Fear of the Dark"}}'
 ```
-* Pesquisa pelo index secundário baseado no nome do artista e no título do álbum:
+* Pesquisando pelo index secundário baseado no nome do artista e no título do álbum
 ```
 aws dynamodb query \
     --table-name Music \
@@ -159,7 +159,7 @@ aws dynamodb query \
     --key-condition-expression "Artist = :v_artist and AlbumTitle = :v_title" \
     --expression-attribute-values  '{":v_artist":{"S":"Iron Maiden"},":v_title":{"S":"Fear of the Dark"} }'
 ```
-* Pesquisa pelo index secundário baseado no título da música e no ano:
+* Pesquisando pelo index secundário baseado no título da música e no ano
 ```
 aws dynamodb query \
     --table-name Music \
@@ -167,7 +167,7 @@ aws dynamodb query \
     --key-condition-expression "SongTitle = :v_song and SongYear = :v_year" \
     --expression-attribute-values  '{":v_song":{"S":"Wasting Love"},":v_year":{"S":"1992"} }'
 ```
-* Pesquisar item por artista e título da música:
+* Pesquisando item por artista e título da música com utilização de um arquivo JSON
 ```
 aws dynamodb query \
     --table-name Music \
