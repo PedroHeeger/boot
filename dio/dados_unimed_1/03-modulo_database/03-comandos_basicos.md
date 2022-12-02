@@ -7,6 +7,7 @@
 Aprender comandos básicos em SQL no MySQL Workbench.
 ## Tecnologias
 * Linguagem de Consulta: SQL
+* Linguagem de Serialização: YAML
 * Ambiente de Desenvolvimento: VS Code; Docker; Arquivo **.env**
 * Banco de dados: MySQL; MySQL Workbench
 
@@ -24,102 +25,136 @@ Aprender comandos básicos em SQL no MySQL Workbench.
     * 3.3.2.1) Materiais de apoio
     * 3.3.2.2) Certifique seu conhecimento
 
+## Desenvolimento
+Os cursos referente a banco de dados SQL, foram executados via docker. Através do arquivo **docker-compose.yaml** foram criados dois containers, um para o sistema de gerenciamento banco de dados (SGBD) SQL, que foi o **MySQL**, e outro para o administração do banco de dados pela internet, que foi o **phpmyadmin**, porém foi utilizado o **MySQL Workbench** para administração do banco de dados, pois já tinha instalado na maquina. Além disso, foi criado uma rede para comunicação do SGDB com o administrador.
+### Comandos Linux
+* Iniciando o serviço docker com super usuário (Digitar a senha)
+```
+sudo service docker start
+```
+* Alterando para o diretório onde a composição dos containers docker foi criada
+```
+cd /dio/dados_unimed_1/03-modulo_database
+```
+
+### Comandos Docker iniciais
+* Criando uma composição de containers docker declarado no arquivo YAML
+```
+docker compose up -d
+```
+* Parando a composição de containers docker
+```
+docker compose stop
+```
+* Iniciando a composição de containers docker
+```
+docker compose start
+```
+* Verificando o status da composição de containers docker
+```
+docker compose ps -a
+```
+* Verificando o status de todos os containers docker
+```
+docker ps -a
+```
+
 ----------------------------------------------------------------------------------------------
 <a id="ancora1"></a>
 ## 3.3.1.7) Explorando Comandos básicos SQL
 [voltar](#ancora)   
 
-* Exibindo os bancos de dados existentes
+* Exibindo os bancos de dados
 ```
 SHOW DATABASES;
 ```
-* Criando um banco de dados
+* Criando um banco de dados para o cenário de publicações
 ```
-CREATE DATABASE RegistroDePublicoes;
+CREATE DATABASE BootDio_PublicationRecord;
 ```
-* Exibindo os bancos de dados existentes
+* Exibindo os bancos de dados
 ```
 SHOW DATABASES;
 ```
 * Acessando o banco de dados criado
 ```
-USE RegistroDePublicoes;
+USE BootDio_PublicationRecord;
 ```
-* Exibindo as tabelas criadas
+* Exibindo as tabelas
+```
+SHOW TABLES;
+```
+* Removendo o banco de dados
+```
+DROP DATABASE BootDio_PublicationRecord;
+```
+* Criando um banco de dados para o cenário de publicações
+```
+CREATE DATABASE BootDio_PublicationRecord;
+```
+* Acessando o banco de dados criado
+```
+USE BootDio_PublicationRecord;
+```
+* Criando a tabela **periodicals**   
+O ISSN, Número Internacional Normalizado para Publicações Seriadas ou Número Internacional Normalizado das Publicações em Série, é um Número serial de oito dígitos, usado para identificação única de uma publicação em série, aceite internacionalmente.
+```
+CREATE TABLE periodicals(
+    publishing_company_id INT AUTO_INCREMENT,
+    name VARCHAR(20),
+    issn INT,
+    PRIMARY KEY (publishing_company_id)
+);
+```
+* Criando a tabela **publishing_company**
+```
+CREATE TABLE publishing_company(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(120) UNIQUE,
+    country VARCHAR(5)
+);
+```
+* Exibindo as tabelas
+```
+SHOW TABLES;
+```
+* Alterando a tabela **periodicals** e adicionando uma chave estrangeira
+```
+ALTER TABLE periodicals ADD CONSTRAINT fk_periodicals_1 FOREIGN KEY (publishing_company_id) REFERENCES publishing_company(id);
+```
+* Inserindo os dados na tabela **publishing_company**
+```
+INSERT INTO publishing_company (name, country) VALUES ('IEEE_EUA', 'EUA'), ('DataScienceMagazine', 'EUA');
+```
+* Selecionando os dados inseridos na tabela **publishing_company**
+```
+SELECT * FROM publishing_company;
+```
+* Inserindo os dados na tabela **publishing_company**
+```
+INSERT INTO publishing_company (name, country) VALUES ('IEEE_EU', 'EU');
+```
+* Selecionando os dados inseridos na tabela **publishing_company**
+```
+SELECT * FROM publishing_company;
+```
+* Selecionando os dados inseridos na tabela **periodicals**
+```
+SELECT * FROM periodicals;
+```
+* Inserindo os dados na tabela **periodicals**
+```
+INSERT INTO periodicals (publishing_company_id, name, issn) VALUES ('1', 'Special Issue', '156795164');
+```
+* Selecionando os dados inseridos na tabela **periodicals**
+```
+SELECT * FROM periodicals;
+```
+* Exibindo as tabelas
 ```
 SHOW TABLES;
 ```
 * Removendo o banco de dados criado
 ```
-DROP DATABASE RegistroDePublicoes;
-```
-* Criando um outro banco de dados
-```
-CREATE DATABSE firstExample;
-```
-* Acessando esse novo banco de dados criado
-```
-USE firstExample;
-```
-* Criando a tabela **periodicos**
-CREATE TABLE periodicos(
-    id INT AUTO_INCREMENT,
-    nome_periodico VARCHAR(20),
-    issn INT,
-    PRIMARY KEY (id)
-);
-* Criando a tabela **editora**
-CREATE TABLE editora(
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    nome_editora VARCHAR(120) UNIQUE,
-    pais VARCHAR(5)
-);
-
-* Exibindo todas as tabelas existentes
-```
-SHOW TABLES;
-```
-* Alterando a tabela **periodicos** e adicionando uma chave estrangeira
-```
-ALTER TABLE periodicos ADD CONSTRAINT fk_editora_periodico FOREIGN KEY (id_editora) REFERENCES editora(id);
-```
-* Inserindo os dados na tabela **editora**
-```
-INSERT INTO editora (nome_editora, pais) VALUES ('IEEE', 'EUA'), ('DataScienceMagazine', 'EUA')
-```
-* Selecionando os dados inseridos na tabela **editora**
-```
-SELECT * FROM editora;
-```
-* Inserindo mais dados na tabela **editora**
-```
-INSERT INTO editora (nome_editora, pais) VALUES ('IEEE_EU', 'EU');
-```
-* Selecionando os dados inseridos na tabela **editora**
-```
-SELECT * FROM editora;
-```
-* Selecionando os dados inseridos na tabela **periodicos**
-```
-SELECT * FROM periodicos;
-```
-* Inserindo os dados na tabela **periodicos**
-```
-INSERT INTO periodicos (nome_periodico, issn, id_editora) VALUES ('Special Issue', '156795164', '1');
-```
-* Selecionando os dados inseridos na tabela **periodicos**
-```
-SELECT * FROM periodicos;
-```
-* Tentando inserir duas linhas erradas de propósito para mostrar a variação do ID com a utilização do Auto Increment
-```
-INSERT INTO periodicos (nome_periodico, issn, id_editora) VALUES ('Special Issue 2', '186795164', '4');
-```
-* Selecionando os dados inseridos na tabela **periodicos**
-```
-SELECT * FROM periodicos;
-```
-* Exibindo todas as tabelas existentes
-```
-SHOW TABLES;
+DROP DATABASE BootDio_PublicationRecord;
 ```
