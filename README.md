@@ -3,9 +3,9 @@
 ## EM CONSTRUÇÃO
 
 #### Organização:
-- Repositório: A organização dos arquivos de estudo são divididos em três repositórios no GitHub. O primeiro é o repositório **bootcamp**, que tem alguns arquivos de bootcamps que realizei. O segundo é o repositório **course**, contendo alguns arquivos de cursos que realizei. Já o terceiro cujo o nome do repositório é **video**, contém algumas aulas em vídeo que realizei.
+- Repositório: A organização dos arquivos de estudo são divididos em três repositórios no GitHub. O primeiro é o repositório **bootcamp**, que tem alguns arquivos de bootcamps que realizei. O segundo é o repositório **course**, contendo alguns arquivos de cursos que realizei. Já o terceiro, cujo o nome do repositório é **video**, contém algumas aulas em vídeo que realizei.
 
-- Primeiro Nível de Pastas: Cada um desses três repositórios possui pastas com o nome referente a plataforma em que realizei a aula (vídeo), o curso, ou o bootcamp.
+- Primeiro Nível de Pastas: Cada um desses três repositórios possui pastas com o nome referente a plataforma em que realizei a aula (vídeo), o curso ou o bootcamp.
 
 <div align="center"><figure>
     <img src="./0-outros/logos/organizacao/nivel1.PNG" alt="nivel1"><br>
@@ -31,7 +31,7 @@
     <figcaption>Pasta com todo material da aula (vídeo), curso ou bootcamp.</figcaption>
 </figure></div><br>
 
-Obs.: Alguns arquivos contidos dentro da pasta do bootcamp, curso ou vídeo (aula), podem não estar disponíveis no GitHub, com o objetivo de diminuir a quantidade de arquivos armazenados que não são versionados como arquivos de Excel (CSV), Power BI, PowerPoint, e de imagens. Esses arquivos estão armazenados no Google Drive Pessoal. São versionados apenas arquivos relavantes e arquivos de README explicando o bootcamp, curso ou vídeo (aula).
+Obs.: Alguns arquivos contidos dentro da pasta do bootcamp, curso ou aula (vídeo), podem não estar disponíveis no GitHub, com o objetivo de diminuir a quantidade de arquivos armazenados que não são versionados como arquivos de Excel (CSV), Power BI, PowerPoint e de imagens. Esses arquivos estão armazenados no Google Drive Pessoal. São versionados apenas arquivos relavantes e arquivos de README explicando o bootcamp, curso ou aula (vídeo).
 
 #### Plataformas:
 - <a href="./dio">dio   <img src="./0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>
