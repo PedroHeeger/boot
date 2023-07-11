@@ -28,33 +28,57 @@
   - Google Drive <img src="../../../0-outros/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
   - Excel <img src="../../../0-outros/logos/software/microsoft_excel.png" alt="microsoft_excel" width="auto" height="25">
   - ChatGPT <img src="../../../0-outros/logos/software/chatgpt.png" alt="chat_gpt" width="auto" height="25">
+  - Portugol <img src="../../../0-outros/logos/software/portugol.png" alt="portugol" width="auto" height="25">
 
 ---
 
 #### Objetivo:
-- O objetivo desse projeto prático é analisar a satisfação dos feedbacks dos talentos da DIO em relação a um Bootcamp qualquer (cujo os dados foram gerados hipoteticamente apenas para fins didáticos). Essa análise é feita através do o cálculo do Net Promoter Score (NPS), uma métrica utilizada para medir a experiência do cliente e prever o crescimento dos negócios, para notas dada para esse Bootcamp. Sendo utilizado também as técnicas de Natural Language Processing (NLP) para analisar os sentimentos expressos nos comentários associados às notas.
+- Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO**.
+  "Este programa é para profissionais de tecnologia que querem aperfeiçoar seus conhecimentos no sistema operacional Linux em uma trilha imersiva, rápida e eficiente. O Linux do Zero possui apenas 44 horas, que você pode finalizar em poucos dias, de atividades 100% voltadas para os desafios do mercado de trabalho. Nesse programa você vai aprender a principal vocação do sistema operacional Linux, seus comandos fundamentais e como gerenciar serviços de um servidor."
 
 #### Estrutura:
-- A estrutura é composta por apenas um arquivo de script em Jupyter Notebook (**curso_066.ipynb**), utilizado para executar os códigos; um arquivo de Excel em CSV (**feedbacks.csv**), que é a base de dados; este arquivo de README e uma pasta contendo algumas imagens auxilares utilizadas nesse arquivo de README. A estrutura é exibida na imagem 01.
+- A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. Para melhor organização deste Bootcamp, a estruturação das pastas acompanhou a estrutura do Bootcamp. Desa forma, foram criadas sub-pastas para cada módulo ou curso desse Bootcamp, sendo que nas sub-pastas dos módulos podem estar contidas as pastas dos Desafios ou Cursos pertecentes a seu respectivo módulo. A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivosd e README.md. A imagem 01 exibe como ficou a estruturação dos arquivos.
 
 <div align="Center"><figure>
-    <img src=".//img/img01.PNG" alt="img01"><br>
+    <img src="./0-img/img01.PNG" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
 #### Desenvolvimento:
-Este projeto foi realizado em três aulas. 
+Em relação ao desenvolvimento, cada desafio ou curso tiveram seus objetivos específicos e por tanto, a explicação sobre cada um está contida na sua respectiva pasta. Abaixo, segue a estruturação determinada no Bootcamp e obedecida na construção dessa pasta. Observe que ela é composta por 4 módulos e em cada módulo alguns cursos e desafios. Os índices que forem clicáveis, direcionará para a pasta referente ao curso ou desafio selecionado e então será exibido as informações do projeto. Já os índices não clicáveis, foram apenas cursos teóricos que não houve parte prática para ser realizada.
 
-  - ##### Aula 01:
-    Na aula 1, foi criado um arquivo de Excel no formato CSV com apenas uma planilha contendo duas colunas para ser nossa base de dados e salvamos no **Google Drive**. A primeira coluna referente a **nota**, com as notas que, hipoteticamente, os alunos deram para um Bootcamp qualquer da DIO, e a segunda coluna nomeada de **comentario** com os comentários que os alunos deram para esse mesmo Bootcamp.
+  ##### Sumário do Bootcamp
+  1) Prepare-se Para a Jornada
+    1.1 Conheça as Oportunidades da DIO
+    1.2 Seja Protagonista Neste Bootcamp
+    1.3 Introdução ao Desenvolvimento Moderno de Software
+    1.4 Trabalhando em Equipes Ágeis
+    [1.5 Introdução à Programação e Pensamento Computacional](./01.05-logica_programacao/)
+    1.6 Como Entregar seu Desafio de Projeto
+    [1.7 Criando seu Primeiro Repositório no GitHub para Compartilhar seu Progresso](./01.07-github)
+    1.8 Linux do Zero-Mentoria
+  
+  2) Primeiros Passos com o Sistema Operacional Linux
+    2.1 Introdução ao Sistema Operacional Linux
+    2.2 Instalando o Linux
+    2.3 Acesso Remoto a Máquinas Linux
+    2.4 Manipulando Arquivos no Linux
+    2.5 Gerenciando Usuários no Linux
+    2.6 Gerenciamento de Pacotes Linux
+    2.7 Gerenciamento de Discos Linux
+    2.8 Copiando Arquivos e Manipulando Processos
+    2.9 Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões
 
-    Utilizei a linguagem de programação **Python** no nosso ambiente de desenvolvimento **Google Colab** para escrever nosso arquivo de script em Jupyter Notebook. Iniciei o código utilizando a biblioteca **gdown** para baixar a base de dados para a pasta **/content** do sistema de arquivos no **Google Colab**. Através da biblioteca Pandas foi realizado a leitura do arquivo em CSV para um Dataframe e o output é mostrado na imagem 02.
+  3) Configurando Servidores Linux e Introdução ao Docker
+    3.1 Servidores Arquivos com Linux
+    3.2 Criando um Servidor Web com Linux
+    3.3 Servidor de Banco de Dados com Linux
+    3.4 Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)
+    3.5 Docker: Utilização Prática no Cenário de Microsserviços
+    3.6 Mentoria - DevOps: Tudo o que você precisa saber
 
-    <div align="Center"><figure>
-      <img src=".//img/img02.PNG" alt="img02"><br>
-      <figcaption>Imagem 02.</figcaption>
-    </figure></div><br>
-
-    A partir da criação do Dataframe realizei o cálculo do **Net Promoter Score (NPS)**. O NPS é uma métrica utilizada para medir a experiência do cliente e prever o crescimento dos negócios. Ela fornece uma escala de 0 a 10 para determinar quem são os clientes Detratores (pontuação de 0 a 6), os Passivos (pontuação de 7 a 8), e os Promotores (pontuação de 9 a 10). A determinação é feita contando a quantidade de clientes Detratores e Promotores e calculando quanto porcento eles representam da quantidade total de notas, descartando os clientes Passivos. Feito a determinação, a métrica utiliza a fórmula **NPS = % Promotores - % Detratores** para cálculo do NPS.
-
-    Construí três blocos de códigos com o mesmo processo, para cada bloco foi utilizando três paradigmas de programação diferentes. O primeiro paradigma utilizado, como apresentado na imagem 03, é o **Paradigma Imperativo**, onde a implementação é realizada de uma maneira imperativa, ou seja, os comandos são executados sequencialmente. 
+  4) Fortalecendo Seu Perfil Profissional
+    4.1 Deixando Seu Linkedin Atrativo
+    4.2 Turbine Seu Currículo na DIO
+    4.3 Transformando seu Conhecimento em Artigos Técnicos
+    4.4 Se Preparando Para Uma Entrevista
