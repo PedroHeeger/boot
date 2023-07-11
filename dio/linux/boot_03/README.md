@@ -38,7 +38,7 @@
   >"Este programa é para profissionais de tecnologia que querem aperfeiçoar seus conhecimentos no sistema operacional Linux em uma trilha imersiva, rápida e eficiente. O Linux do Zero possui apenas 44 horas, que você pode finalizar em poucos dias, de atividades 100% voltadas para os desafios do mercado de trabalho. Nesse programa você vai aprender a principal vocação do sistema operacional Linux, seus comandos fundamentais e como gerenciar serviços de um servidor."
 
 #### Estrutura:
-- A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. Para melhor organização deste Bootcamp, a estruturação das pastas acompanhou a estrutura do Bootcamp. Desa forma, foram criadas sub-pastas para cada módulo ou curso desse Bootcamp, sendo que nas sub-pastas dos módulos podem estar contidas as pastas dos Desafios ou Cursos pertecentes a seu respectivo módulo. A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivosd e README.md. A imagem 01 exibe como ficou a estruturação dos arquivos.
+- A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. Para melhor organização deste Bootcamp, a estruturação das pastas acompanhou a estrutura do Bootcamp. Desa forma, foram criadas sub-pastas para cada módulo ou curso desse Bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos Desafios ou Cursos realizados. A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md. A imagem 01 exibe como ficou a estruturação dos arquivos.
 
 <div align="Center"><figure>
     <img src="./0-img/img01.PNG" alt="img01"><br>
@@ -46,7 +46,7 @@
 </figure></div><br>
 
 #### Desenvolvimento:
-Em relação ao desenvolvimento, cada desafio ou curso tiveram seus objetivos específicos e por tanto, a explicação sobre cada um está contida na sua respectiva pasta. Abaixo, segue a estruturação determinada no Bootcamp e obedecida na construção dessa pasta. Observe que ela é composta por 4 módulos e em cada módulo alguns cursos e desafios. Os índices que forem clicáveis, direcionará para a pasta referente ao curso ou desafio selecionado e então será exibido as informações do projeto. Já os índices não clicáveis, foram apenas cursos teóricos que não houve parte prática para ser realizada.
+Em relação ao desenvolvimento, cada desafio ou curso tiveram seus objetivos específicos e por tanto, a explicação sobre cada um está contida na sua respectiva pasta. Abaixo segue a estruturação determinada no Bootcamp e obedecida na construção dessa pasta. Observe que ela é composta por 4 módulos e em cada módulo alguns cursos e desafios. Os índices que forem clicáveis, direcionará para a pasta referente ao curso ou desafio selecionado e então será exibido as informações do projeto prático realizado. Já os índices não clicáveis, foram apenas cursos teóricos que não houve parte prática para ser realizada.
 
   ##### Sumário do Bootcamp
   1) Prepare-se Para a Jornada   
