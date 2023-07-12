@@ -39,7 +39,7 @@ Esta pasta é referente ao Módulo 2 **Primeiros Passos com o Sistema Operaciona
 ---
 
 #### Estrutura do Módulo 2 do Bootcamp
-2) Primeiros Passos com o Sistema Operacional Linux
+2) Primeiros Passos com o Sistema Operacional Linux   
   2.1 Introdução ao Sistema Operacional Linux   
   2.2 Instalando o Linux   
   2.3 Acesso Remoto a Máquinas Linux   
@@ -67,14 +67,14 @@ Esta pasta é referente ao Módulo 2 **Primeiros Passos com o Sistema Operaciona
 O desenvolvimento deste módulo do Bootcamp foi dividido em oito cursos e um desafio de projeto. Abaixo, é explicado o que foi desenvolvido em cada um desses cursos.
 
   ##### 2.1 Introdução ao Sistema Operacional Linux:
-    Apenas aulas teóricas sobre introdução ao sistema operacional Linux e maquinas virtuais.
+  Apenas aulas teóricas sobre introdução ao sistema operacional Linux e maquinas virtuais.
   
   ##### 2.2 Instalando o Linux
-    Neste curso foi realizado a instalação do sistema operacional Linux em três ambientes diferentes, sendo que em todos eles foi instalado a distribuição Ubuntu.O primeiro ambiente utilizado foi o software **VM Virtual Box**, onde através de uma imagem ISO do Ubuntu foi instanciado uma maquina virtual Linux voltada para servidor. Nela, também foi realizado uma configuração do Adaptador de Rede para que posteriormente fosse possível realizar o acesso remoto. O segundo ambiente foi na Cloud da AWS, através do serviço Amazon EC2 foi instanciado uma maquina virtual do Linux Ubuntu. Já o terceiro ambiente foi através do WSL, que é um subsistema do Windows para Linux. Este último não foi realizado o processo de instalação, pois o mesmo já existe na maquina física e é o que é utilizado no dia a dia.
+  Neste curso foi realizado a instalação do sistema operacional Linux em três ambientes diferentes, sendo que em todos eles foi instalado a distribuição Ubuntu.O primeiro ambiente utilizado foi o software **VM Virtual Box**, onde através de uma imagem ISO do Ubuntu foi instanciado uma maquina virtual Linux voltada para servidor. Nela, também foi realizado uma configuração do Adaptador de Rede para que posteriormente fosse possível realizar o acesso remoto. O segundo ambiente foi na Cloud da AWS, através do serviço Amazon EC2 foi instanciado uma maquina virtual do Linux Ubuntu. Já o terceiro ambiente foi através do WSL, que é um subsistema do Windows para Linux. Este último não foi realizado o processo de instalação, pois o mesmo já existe na maquina física e é o que é utilizado no dia a dia.
 
   ##### 2.3 Acesso Remoto a Máquinas Linux
-    Neste curso foi realizado o acesso remoto da maquina virtual (Linux Ubuntu) pela maquina física (Linux e Windows) em diferentes ambientes (Virtual Box, Cloud AWS, WSL) através do protocolo de rede SSH. No Windows foi necessário baixar e instalar o software PuTTY e PuTTYgen para criar esse tipo de conexão. Já no Linux foi necessário apenas instalar o **openSSH** no shell. Em ambos os casos foi necessário descobrir o IP da maquina virtual para realizar o acesso remoto.
+  Neste curso foi realizado o acesso remoto da maquina virtual (Linux Ubuntu) pela maquina física (Linux e Windows) em diferentes ambientes (Virtual Box, Cloud AWS, WSL) através do protocolo de rede SSH. No Windows foi necessário baixar e instalar o software PuTTY e PuTTYgen para criar esse tipo de conexão. Já no Linux foi necessário apenas instalar o **openSSH** no shell. Em ambos os casos foi necessário descobrir o IP da maquina virtual para realizar o acesso remoto.
        
-    Foi realizado o acesso remoto tanto de uma maquina física Linux (no caso, utilizei o WSL) na maquina virtual Linux em um ambiente de Cloud na AWS, e também de uma maquina física Windows na maquina virtual Linux para os ambientes de Cloud na AWS e através do software de maquina virtual, o VM Virtual Box. A imagem 02 a seguir, ilustra o desenvolvimento.
+  Foi realizado o acesso remoto tanto de uma maquina física Linux (no caso, utilizei o WSL) na maquina virtual Linux em um ambiente de Cloud na AWS, e também de uma maquina física Windows na maquina virtual Linux para os ambientes de Cloud na AWS e através do software de maquina virtual, o VM Virtual Box. A imagem 02 a seguir, ilustra o desenvolvimento.
        
-    No ambiente de Cloud, ao criar a instância da maquina virtual Ubuntu no serviço Amazon EC2 foi necessário criar um arquivo de credencial no formato **.pem**, esse arquivo de credencial é utilizado no Linux. Já no Windows, precisou do software PuTTYgen para abrí-lo e salvá-lo como formato **.ppk**, sendo possível criar uma senha para acesso.
+  No ambiente de Cloud, ao criar a instância da maquina virtual Ubuntu no serviço Amazon EC2 foi necessário criar um arquivo de credencial no formato **.pem**, esse arquivo de credencial é utilizado no Linux. Já no Windows, precisou do software PuTTYgen para abrí-lo e salvá-lo como formato **.ppk**, sendo possível criar uma senha para acesso.

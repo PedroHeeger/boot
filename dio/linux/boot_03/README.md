@@ -38,7 +38,7 @@
   [1.7 Criando seu Primeiro Repositório no GitHub para Compartilhar seu Progresso](./01.07-github)   
   1.8 Linux do Zero-Mentoria   
 
-2) [Primeiros Passos com o Sistema Operacional Linux](./02-linux/)
+2) [Primeiros Passos com o Sistema Operacional Linux](./02-linux/)   
   2.1 Introdução ao Sistema Operacional Linux   
   2.2 Instalando o Linux   
   2.3 Acesso Remoto a Máquinas Linux   
