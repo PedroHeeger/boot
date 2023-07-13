@@ -30,11 +30,15 @@ Esta pasta é referente ao Módulo 2 **Primeiros Passos com o Sistema Operaciona
   - Git   <img src="../../../../0-outros/logos/software/git.png" alt="git" width="auto" height="25">
 - Repositório:
   - GitHub   <img src="../../../../0-outros/logos/software/github.png" alt="github" width="auto" height="25">
+- Interpretador de Linha de Comando (CLI):
+  - cmd <img src="../../../../0-outros/logos/software/cmd_prompt.png" alt="cmd" width="auto" height="25">
+  - bash <img src="../../../../0-outros/logos/software/bash.jpg" alt="bash" width="auto" height="25">
 - Outros:
   - Google Drive <img src="../../../../0-outros/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
-  - cmd <img src="../../../../0-outros/logos/software/cmd_prompt.png" alt="cmd" width="auto" height="25">
-  - PuTTY <img src="../../../../0-outros/logos/software/putty.png" alt="wsl" width="auto" height="25">
-  - PuTTYgen <img src="../../../../0-outros/logos/software/puttygen.png" alt="wsl" width="auto" height="25">
+  - PuTTY <img src="../../../../0-outros/logos/software/putty.png" alt="putty" width="auto" height="25">
+  - PuTTYgen <img src="../../../../0-outros/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
+  - OpenSSH <img src="../../../../0-outros/logos/software/putty.png" alt="openssh" width="auto" height="25">
+  - Draw.io <img src="../../../../0-outros/logos/software/draw.io.png" alt="draw.io" width="auto" height="25">
 
 ---
 
@@ -53,10 +57,10 @@ Esta pasta é referente ao Módulo 2 **Primeiros Passos com o Sistema Operaciona
 ---
 
 #### Objetivo:
-- O objetivo neste módulo do Bootcamp é dar os primeiros passos com o sistema operacional Linux.
+- O objetivo deste módulo do Bootcamp é dar os primeiros passos com o sistema operacional Linux.
 
 #### Estrutura:
-- A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. 
+- A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
     <img src="../0-img/img01.PNG" alt="img01"><br>
@@ -72,16 +76,21 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em oito cursos e um des
   ##### 2.2 Instalando o Linux
   Neste curso foi realizado a instalação do sistema operacional Linux em três ambientes diferentes, sendo que em todos eles foi instalado a distribuição Ubuntu. O primeiro ambiente utilizado foi o software **VM Virtual Box**, onde através de uma imagem ISO do Ubuntu foi instanciado uma maquina virtual Linux voltada para servidor. Nesta maquina foi realizado uma configuração do adaptador de rede para que posteriormente fosse possível realizar o acesso remoto. O segundo ambiente foi na Cloud da **AWS**, através do serviço **Amazon EC2** foi instanciado uma maquina virtual do Linux Ubuntu. Já o terceiro ambiente foi através do **WSL**, que é um subsistema do Windows para Linux. Este último não foi realizado o processo de instalação, pois o mesmo já existe na maquina física e é o que é utilizado no dia a dia.
 
-  Para o funcionamento do **VM Vritual Box** foi necessário desabilitar o **hypervisorlaunchtype** através do Prompt de Comando do Windows (**cmd**). Já para o **WSL** foi necessário abilitar este recurso além de outros recursos como: **Plataforma de Maquina Virtual**, **Plataforma de Hipervisor do Windows** e **Subsistema do Windows para Linux**.
+  Para o funcionamento do **VM Virtual Box** foi necessário desabilitar o **hypervisorlaunchtype** através do Prompt de Comando do Windows (**cmd**). Já para o **WSL** foi necessário abilitar este recurso além de outros recursos como: **Plataforma de Maquina Virtual**, **Plataforma de Hipervisor do Windows** e **Subsistema do Windows para Linux**.
 
   ##### 2.3 Acesso Remoto a Máquinas Linux
   Neste curso foi realizado o acesso remoto da maquina virtual (Linux Ubuntu) pela maquina física (Linux e Windows) em diferentes ambientes (Virtual Box, Cloud AWS, WSL) através do protocolo de rede **SSH**. No Windows foi necessário baixar e instalar o software **PuTTY** e **PuTTYgen** para criar esse tipo de conexão. Já no Linux foi necessário apenas instalar o **openSSH** no shell. Em ambos os casos foi necessário descobrir o IP da maquina virtual para realizar o acesso remoto.
        
-  Foi realizado o acesso remoto tanto de uma maquina física Linux (no caso, utilizei o WSL) na maquina virtual Linux em um ambiente de Cloud na AWS (Linux dentro de um Windows para Linux), e também de uma maquina física Windows na maquina virtual Linux para os ambientes de Cloud na AWS e através do software de maquina virtual, o VM Virtual Box (Windows para Linux). A imagem 02 a seguir, ilustra o desenvolvimento.
+  Foi realizado o acesso remoto tanto de uma maquina física Linux (no caso, utilizei o WSL) na maquina virtual Linux em um ambiente de Cloud na AWS (Linux dentro de um Windows para Linux na Cloud), e também de uma maquina física Windows na maquina virtual Linux para os ambientes de Cloud na AWS e através do software de maquina virtual, o VM Virtual Box (Windows para Linux). A imagem 02 a seguir, ilustra o desenvolvimento.
+
+  <div align="Center"><figure>
+    <img src="../0-img/md2_img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+    </figure></div><br>
        
-  No ambiente de Cloud, ao criar a instância da maquina virtual Ubuntu no serviço Amazon EC2 foi necessário criar um arquivo de credencial no formato **.pem**, esse arquivo de credencial é utilizado no Linux. Já no Windows, precisou do software **PuTTYgen** para abrí-lo e salvá-lo como formato **.ppk**, sendo possível criar uma senha para acesso.
+  No ambiente de Cloud, ao criar a instância da maquina virtual Ubuntu no serviço Amazon EC2 foi necessário criar um arquivo de credencial no formato **.pem** para que fosse utilizado no Linux. Já no Windows, precisou do software **PuTTYgen** para abrir este arquivo e salvá-lo como formato **.ppk**, sendo possível criar uma senha para acesso.
 
   ##### 2.4 Manipulando Arquivos no Linux
-  Neste curso foi realizado os procedimentos básicos de manipulação de arquivos no sistema Linux utilizando a maquina virtual Linux Ubuntu criada no VM Virtual Box. Dentre os procedimentos foram feitos: navegação no sistema de arquivo (cd e pwd), filtragem e exibição de arquivos (ls), localização de arquivos (find), criação e exclusão de diretórios (mkdir e rmdir), criação de arquivos vazios (touch), utilização dos comandos de ajuda (help e man), execução de tarefas administrativas como root (sudo), acesso como usuário root (su), acesso remoto no Linux como usuário root pelo Windows através do PuTTY, exibição do conteúdo de um arquivo (cat), utilização de editores de textos (vi e nano), exibição do histórico de últimos comandos do usuário (history), localização de informação (grep), entre outros comandos básicos.
+  Neste curso foi realizado os procedimentos básicos de manipulação de arquivos no sistema Linux utilizando a maquina virtual Linux Ubuntu criada no VM Virtual Box. Dentre os procedimentos foram feitos: navegação no sistema de arquivo (cd e pwd), filtragem e exibição de arquivos (ls), localização de arquivos (find), criação e exclusão de diretórios (mkdir e rmdir), criação de arquivos vazios (touch), utilização dos comandos de ajuda (help e man), execução de tarefas administrativas como root (sudo), acesso como usuário root (su), acesso remoto no Linux como usuário root pelo Windows através do PuTTY, exibição do conteúdo de um arquivo (cat), utilização de editores de textos (vi e nano), exibição do histórico de últimos comandos do usuário (history), localização de informação (grep), entre outros comandos básicos. Os comandos foram executados no interpretador de linha de comando (CLI) do Linux (**bash**) via acesso remoto pelo PuTTY.
 
-  O acesso remoto como usuário root precisou realizar uma alteração no arquivo do Linux `/etc/ssh/sshd_config` modificando a linha `#PermitRootLogin prohibit-password` retirando o comentário e trocando o **prohibit-password** para **yes**. Em seguida, foi necessário reiniciar o serviço através do comando `systemctl restart sshd` para que a alteração fosse concretizada. Após isso, o procedimento foi o mesmo para o usuário criado com a utilização do **PuTTY**, a diferença foi trocar as credenciais de acesso para a do usuário root.
+  O acesso remoto como usuário root precisou realizar uma alteração no arquivo do Linux `/etc/ssh/sshd_config` modificando a linha `#PermitRootLogin prohibit-password` retirando o comentário e trocando o **prohibit-password** para **yes**. Em seguida, foi necessário reiniciar o serviço através do comando `systemctl restart sshd` para que a alteração fossem concretizada. Após isso, o procedimento foi o mesmo realizado com usuário criado através do **PuTTY**, a diferença foi trocar as credenciais de acesso para a do usuário root.

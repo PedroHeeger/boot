@@ -21,9 +21,6 @@
   - GitHub   <img src="../../../0-outros/logos/software/github.png" alt="github" width="auto" height="25">
 - Outros:
   - Google Drive <img src="../../../0-outros/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
-  - Excel <img src="../../../0-outros/logos/software/microsoft_excel.png" alt="microsoft_excel" width="auto" height="25">
-  - ChatGPT <img src="../../../0-outros/logos/software/chatgpt.png" alt="chat_gpt" width="auto" height="25">
-  - Portugol <img src="../../../0-outros/logos/software/portugol.png" alt="portugol" width="auto" height="25">
 
 ---
 
