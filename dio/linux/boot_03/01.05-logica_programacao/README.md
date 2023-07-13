@@ -4,19 +4,19 @@
 #### Plataforma: <a href="../../../">dio   <img src="../../../../0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 #### Software/Assunto: <a href="../../">linux   <img src="../../../../0-outros/logos/software/linux.png" alt="linux" width="auto" height="25"></a>
 #### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-img/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
-#### Curso: 1.05) Introdução à Programação e Pensamento Computacional
+#### Curso: 1.5) Introdução à Programação e Pensamento Computacional
 ---
 
 Esta pasta é referente ao curso **Introdução ao Desenvolvimento Moderno de Software** do Módulo 1 **Preparando-se Para a Jornada** do Bootcamp **Linux do Zero**.
 
 #### Tema:
-- Sistemas Operacionais
+- Lógica de Programação
 
 #### Ferramentas Utilizadas:
 - Pseudocódigo:
   - Portugol <img src="../../../../0-outros/logos/software/portugol.png" alt="portugol" width="auto" height="25">
 - Ambiente de Desenvolvimento (IDE):
-  - VS Code   <img src="../../../../0-outros/0-outros/logos/software/vscode.png" alt="vscode" width="auto" height="25">
+  - VS Code   <img src="../../../../0-outros/logos/software/vscode.png" alt="vscode" width="auto" height="25">
   - Portugol Studio   <img src="../../../../0-outros/logos/software/portugol.png" alt="portugol_studio" width="auto" height="25">
 - Versionamento: 
   - Git   <img src="../../../../0-outros/logos/software/git.png" alt="git" width="auto" height="25">
@@ -31,29 +31,24 @@ Esta pasta é referente ao curso **Introdução ao Desenvolvimento Moderno de So
 - O objetivo desse curso foi introduzir os conceitos básicos de lógica de programação e pensamento computacional.
 
 #### Estrutura:
-- Como esse curso foi boa parte teórico, só foram criados três arquivos de scripts em Portugol para execução de funções simples e conhecimento da lógica de programação.
+- Como esse curso foi boa parte teórico, só foram criados três arquivos de scripts em Portugol para execução de funções simples e conhecimento da lógica de programação, além deste arquivo de README.
 
 #### Desenvolvimento:
-Em relação ao desenvolvimento, os arquivos de scripts realizados foram condificações simples apenas para conhecimento do pseudocódigo **Portugol**. Esses três foram desenvolvidos na plataforma online **Portugol Studio**. O primeiro de nome **soma_intervalo.por**, onde foi criada duas funções, a primeira para receber os valores das variáveis X e Y e passá-las para uma outra função que calcula a soma de todos os números de um intervalo de números determinados. Abaixo, é exibido essa segunda função.
+Em relação ao desenvolvimento, os arquivos de scripts realizados foram codificações simples apenas para conhecimento do pseudocódigo **Portugol**. Esses três foram desenvolvidos na plataforma online **Portugol Studio**. O primeiro de nome **soma_intervalo.por**, onde foi criada duas funções, a primeira para receber os valores das variáveis X e Y e passá-las para uma outra função que calcula a soma de todos os números de um intervalo de números determinados. Abaixo é exibida essa segunda função.
 
 ```
-// Recebe as notas dos alunos e exibe o resultado do cálculo da média pela outra função
-	funcao inicio() {
-		real n1, n2, nota1, nota2
-		escreva("Digite as notas da p1 e p2 do aluno A: ")
-		leia(n1)
-		leia(n2)
-		
-		escreva("Digite as notas da p1 e p2 do aluno B: ")
-		leia(nota1)
-		leia(nota2)
-		
-		escreva("Média do aluno A: ", media_aluno(n1, n2))
-		escreva("\nMédia do aluno B: ", media_aluno(nota1, nota2))
+// Calcula a soma de todos os números de um intervalo de números determinado
+	funcao inteiro soma_intervalo(inteiro x, inteiro y){
+	    inteiro total, resultado_parcial
+	    total = y /2 
+	    resultado_parcial = y+x
+	    
+	    inteiro resultado = total * resultado_parcial
+	    retorne resultado
 	}
 ```
 
-Já no segundo arquivo de script (**media.por**), também com duas funções, sendo uma que recebe duas notas dos alunos hipotéticos A e B, chama a outra função passando a nota desses alunos, esta outra função calcula a média desses alunos e devolve para a primeira função que exibe a média desses alunos.
+Já no segundo arquivo de script (**media.por**), também com duas funções, sendo uma que recebe duas notas dos alunos hipotéticos A e B e chama uma outra função passando as notas desses alunos. Esta outra função, por sua vez, calcula a média desses alunos e devolve para a primeira função que exibe a média desses alunos.
 
 ```
 programa {

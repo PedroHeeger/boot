@@ -4,11 +4,11 @@
 #### Plataforma: <a href="../../../">dio   <img src="../../../../0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 #### Software/Assunto: <a href="../../">linux   <img src="../../../../0-outros/logos/software/linux.png" alt="linux" width="auto" height="25"></a>
 #### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-img/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
-#### Curso: 1.07) Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso
+#### Curso: 1.7) Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso
 
 ---
 
-Esta pasta é referente ao Desafio de Projeto **Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso** que faz parte do Módulo **Prepara-se Para a Jornada** do Bootcamp **Linux do Zero**.
+Esta pasta é referente ao Desafio de Projeto **Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso** que faz parte do Módulo 1 **Prepara-se Para a Jornada** do Bootcamp **Linux do Zero**.
 
 #### Tema:
 - Versionamento
@@ -30,4 +30,4 @@ Esta pasta é referente ao Desafio de Projeto **Criando seu Primeiro Repositóri
 - Como esse desafio foi apenas para criar um repositório no GitHub, nenhum arquivo além desse README.md foi necessário.
 
 #### Desenvolvimento:
-O desenvolvimento foi a criação do repositório.
+O desenvolvimento desse desafio foi somente a criação do repositório.
