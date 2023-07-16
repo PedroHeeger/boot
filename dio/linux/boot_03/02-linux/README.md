@@ -4,7 +4,7 @@
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-aux/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
-### Module: 2) Primeiros Passos com o Sistema Operacional Linux
+### Module: 2. Primeiros Passos com o Sistema Operacional Linux
 
 ---
 
@@ -30,7 +30,7 @@ This folder refers to Module 2 **Primeiros Passos com o Sistema Operacional Linu
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
-- Interpretador de Linha de Comando (CLI):
+- Command Line Interpreter (CLI):
   - cmd <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cmd_prompt.png" alt="cmd" width="auto" height="25">
   - bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
 - Others:
@@ -44,15 +44,15 @@ This folder refers to Module 2 **Primeiros Passos com o Sistema Operacional Linu
 
 ### Bootcamp Module 2 Structure
 2. <a name="item2">Primeiros Passos com o Sistema Operacional Linux</a><br> 
-  2.1. <a href="item2.1">Introdução ao Sistema Operacional Linux</a><br>
-  2.2. <a href="item2.2">Instalando o Linux</a><br>
-  2.3. <a href="item2.3">Acesso Remoto a Máquinas Linux</a><br>
-  2.4. <a href="item2.4">Manipulando Arquivos no Linux</a><br>
-  2.5. <a href="item2.5">Gerenciando Usuários no Linux</a><br>
-  2.6. <a href="item2.6">Gerenciamento de Pacotes Linux</a><br>
-  2.7. <a href="item2.7">Gerenciamento de Discos Linux</a><br>
-  2.8. <a href="item2.8">Copiando Arquivos e Manipulando Processos</a><br>
-  2.9. <a href="item2.9">Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões</a><br>
+  2.1. <a href="#item2.1">Introdução ao Sistema Operacional Linux</a><br>
+  2.2. <a href="#item2.2">Instalando o Linux</a><br>
+  2.3. <a href="#item2.3">Acesso Remoto a Máquinas Linux</a><br>
+  2.4. <a href="#item2.4">Manipulando Arquivos no Linux</a><br>
+  2.5. <a href="#item2.5">Gerenciando Usuários no Linux</a><br>
+  2.6. <a href="#item2.6">Gerenciamento de Pacotes Linux</a><br>
+  2.7. <a href="#item2.7">Gerenciamento de Discos Linux</a><br>
+  2.8. <a href="#item2.8">Copiando Arquivos e Manipulando Processos</a><br>
+  2.9. <a href="#item2.9">Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões</a><br>
 
 ---
 
