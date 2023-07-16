@@ -1,39 +1,39 @@
-# Linux do Zero - Curso Introdução à Programação e Pensamento Computacional   <img src="../0-img/logo_boot.png" alt="boot_03" width="auto" height="45">
+# Linux do Zero - Curso Introdução à Programação e Pensamento Computacional   <img src="../0-aux/logo_boot.png" alt="boot_03" width="auto" height="45">
 
-#### Repositório: [course](../../../../)   
-#### Plataforma: <a href="../../../">dio   <img src="../../../../0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-#### Software/Assunto: <a href="../../">linux   <img src="../../../../0-outros/logos/software/linux.png" alt="linux" width="auto" height="25"></a>
-#### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-img/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
-#### Curso: 1.5) Introdução à Programação e Pensamento Computacional
+### Repository: [course](../../../../)   
+### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
+### Software/Subject: <a href="../../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-aux/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
+### Course: 1.5) Introdução à Programação e Pensamento Computacional
 ---
 
-Esta pasta é referente ao curso **Introdução ao Desenvolvimento Moderno de Software** do Módulo 1 **Preparando-se Para a Jornada** do Bootcamp **Linux do Zero**.
+This folder refers to the course **Introdução ao Desenvolvimento Moderno de Software** in Module 1 **Preparando-se Para a Jornada** of Bootcamp **Linux do Zero**.
 
-#### Tema:
-- Lógica de Programação
+### Theme:
+- Programming Logic
 
-#### Ferramentas Utilizadas:
-- Pseudocódigo:
-  - Portugol <img src="../../../../0-outros/logos/software/portugol.png" alt="portugol" width="auto" height="25">
-- Ambiente de Desenvolvimento (IDE):
-  - VS Code   <img src="../../../../0-outros/logos/software/vscode.png" alt="vscode" width="auto" height="25">
-  - Portugol Studio   <img src="../../../../0-outros/logos/software/portugol.png" alt="portugol_studio" width="auto" height="25">
-- Versionamento: 
-  - Git   <img src="../../../../0-outros/logos/software/git.png" alt="git" width="auto" height="25">
-- Repositório:
-  - GitHub   <img src="../../../../0-outros/logos/software/github.png" alt="github" width="auto" height="25">
-- Outros:
-  - Google Drive <img src="../../../../0-outros/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
+### Used Tools:
+- Pseudocode:
+  - Portugol <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portugol.png" alt="portugol" width="auto" height="25">
+- Integrated Development Environment (IDE):
+  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+  - Portugol Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/portugol.png" alt="portugol_studio" width="auto" height="25">
+- Versioning: 
+  - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
+- Repository:
+  - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Others:
+  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
 
 ---
 
-#### Objetivo:
+### Objective:
 - O objetivo desse curso foi introduzir os conceitos básicos de lógica de programação e pensamento computacional.
 
-#### Estrutura:
+### Structure:
 - Como esse curso foi boa parte teórico, só foram criados três arquivos de scripts em Portugol para execução de funções simples e conhecimento da lógica de programação, além deste arquivo de README.
 
-#### Desenvolvimento:
+### Development:
 Em relação ao desenvolvimento, os arquivos de scripts realizados foram codificações simples apenas para conhecimento do pseudocódigo **Portugol**. Esses três foram desenvolvidos na plataforma online **Portugol Studio**. O primeiro de nome **soma_intervalo.por**, onde foi criada duas funções, a primeira para receber os valores das variáveis X e Y e passá-las para uma outra função que calcula a soma de todos os números de um intervalo de números determinados. Abaixo é exibida essa segunda função.
 
 ```

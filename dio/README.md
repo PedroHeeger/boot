@@ -1,11 +1,11 @@
-# Digital Innovation One   <img src="../0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="45">
+# Digital Innovation One   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="45">
 
-#### Repositório: [boot](../)
-#### Plataforma: <a href="./">dio   <img src="../0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>
+### Repository: [boot](../)
+### Platform: <a href="./">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>
 
 ---
 
-Essa pasta é referente a todos os bootcamps que realizei na plataforma DIO (Digital Innovation One).
+This folder refers to all the bootcamps I took on the Digital Innovation One (DIO) platform.
 
-#### Software/Assunto:
-- <a href="./linux">linux   <img src="../0-outros/logos/software/linux.png" alt="linux" width="auto" height="25"></a>
+### Software/Subject:
+- <a href="./linux">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>

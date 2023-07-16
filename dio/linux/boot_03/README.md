@@ -1,30 +1,30 @@
-# Linux do Zero   <img src="./0-img/logo_boot.png" alt="boot_03" width="auto" height="45">
+# Linux do Zero   <img src="./0-aux/logo_boot.png" alt="boot_03" width="auto" height="45">
 
-#### Repositório: [course](../../../)   
-#### Plataforma: <a href="../../">dio   <img src="../../../0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-#### Software/Assunto: <a href="../">linux   <img src="../../../0-outros/logos/software/linux.png" alt="linux" width="auto" height="25"></a>
-#### Bootcamp: <a href="./">boot_03 (Linux do Zero)   <img src="./0-img/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
-
----
-
-#### Tema:
-- Sistemas Operacionais
-
-#### Ferramentas Utilizadas:
-- Sistema Operacional: 
-  - Linux   <img src="../../../0-outros/logos/software/linux.png" alt="linux" width="auto" height="25">
-- Ambiente de Desenvolvimento (IDE):
-  - VS Code   <img src="../../../0-outros/logos/software/vscode.png" alt="vscode" width="auto" height="25">
-- Versionamento: 
-  - Git   <img src="../../../0-outros/logos/software/git.png" alt="git" width="auto" height="25">
-- Repositório:
-  - GitHub   <img src="../../../0-outros/logos/software/github.png" alt="github" width="auto" height="25">
-- Outros:
-  - Google Drive <img src="../../../0-outros/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
+### Repository: [course](../../../)   
+### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
+### Software/Subject: <a href="../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
+### Bootcamp: <a href="./">boot_03 (Linux do Zero)   <img src="./0-aux/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
 
 ---
 
-#### Estrutura do Bootcamp
+### Theme:
+- Operating System (OS)
+
+### Used Tools:
+- Operating System (OS): 
+  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
+- Integrated Development Environment (IDE):
+  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+- Versioning: 
+  - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
+- Repository:
+  - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Others:
+  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
+
+---
+
+### Bootcamp Structure
 1) Prepare-se Para a Jornada   
   1.1 Conheça as Oportunidades da DIO   
   1.2 Seja Protagonista Neste Bootcamp   
@@ -62,12 +62,12 @@
 
 ---
 
-#### Objetivo:
+### Objective:
 - Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO**.
   
   >Este programa é para profissionais de tecnologia que querem aperfeiçoar seus conhecimentos no sistema operacional Linux em uma trilha imersiva, rápida e eficiente. O Linux do Zero possui apenas 44 horas, que você pode finalizar em poucos dias, de atividades 100% voltadas para os desafios do mercado de trabalho. Nesse programa você vai aprender a principal vocação do sistema operacional Linux, seus comandos fundamentais e como gerenciar serviços de um servidor.
 
-#### Estrutura:
+### Structure:
 - A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. Para melhor organização deste Bootcamp, a estruturação das pastas acompanhou a estrutura do Bootcamp. Dessa forma, foram criadas sub-pastas para cada módulo ou curso desse Bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos Desafios ou Cursos realizados. A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste Bootcamp. A imagem 01 exibe como ficou a estruturação dos arquivos.
 
 <div align="Center"><figure>
@@ -75,5 +75,5 @@
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
-#### Desenvolvimento:
+### Development:
 Em relação ao desenvolvimento, cada desafio ou curso tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp. Observe que a estruturação do Bootcamp é composta por 4 módulos e em cada módulo alguns cursos e desafios. Os índices que forem clicáveis, direcionará para a pasta referente ao módulo, curso ou desafio selecionado e então será exibido as informações do projeto prático realizado. Já os índices não clicáveis, foram apenas cursos teóricos que não houveram parte prática realizada.

@@ -1,33 +1,35 @@
-# Linux do Zero - Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso   <img src="../0-img/logo_boot.png" alt="boot_03" width="auto" height="45">
+# Linux do Zero - Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso   <img src="../0-aux/logo_boot.png" alt="boot_03" width="auto" height="45">
 
-#### Repositório: [course](../../../../)   
-#### Plataforma: <a href="../../../">dio   <img src="../../../../0-outros/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-#### Software/Assunto: <a href="../../">linux   <img src="../../../../0-outros/logos/software/linux.png" alt="linux" width="auto" height="25"></a>
-#### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-img/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
-#### Curso: 1.7) Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso
-
----
-
-Esta pasta é referente ao Desafio de Projeto **Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso** que faz parte do Módulo 1 **Prepara-se Para a Jornada** do Bootcamp **Linux do Zero**.
-
-#### Tema:
-- Versionamento
-
-#### Ferramentas Utilizadas:
-- Ambiente de Desenvolvimento (IDE):
-  - VS Code   <img src="../../../../0-outros/logos/software/vscode.png" alt="vscode" width="auto" height="25">
-- Versionamento: 
-  - Git   <img src="../../../../0-outros/logos/software/git.png" alt="git" width="auto" height="25">
-- Repositório:
-  - GitHub   <img src="../../../../0-outros/logos/software/github.png" alt="github" width="auto" height="25">
+### Repository: [course](../../../../)   
+### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
+### Software/Subject: <a href="../../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-aux/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
+### Course: 1.7) Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso
 
 ---
 
-#### Objetivo:
+This folder is for the **Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso** Project Challenge that is part of Module 1 **Prepara-se Para a Jornada** of Bootcamp **Linux do Zero**.
+
+### Theme:
+- Versioning
+
+### Used Tools:
+- Integrated Development Environment (IDE):
+  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+- Versioning: 
+  - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
+- Repository:
+  - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Others:
+  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
+
+---
+
+### Objective:
 - O objetivo desse desafio de projeto é criar o primeiro repositório no GitHub para compartilhar o progresso do Bootcamp. Porém o progresso para esse Bootcamp pode ser acessado na pasta principal desse Bootcamp, [boot_03 (Linux do Zero)](../). A pasta atual é uma sub-pasta desse Bootcamp que serve apenas de referência a esse desafio. Todo material está armazenado na pasta principal do Bootcamp seguindo a estruturação proposta.
 
-#### Estrutura:
+### Structure:
 - Como esse desafio foi apenas para criar um repositório no GitHub, nenhum arquivo além desse README.md foi necessário.
 
-#### Desenvolvimento:
+### Development:
 O desenvolvimento desse desafio foi somente a criação do repositório.
