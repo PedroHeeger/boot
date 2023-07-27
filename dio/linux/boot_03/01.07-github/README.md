@@ -26,10 +26,10 @@ This folder is for the **Criando seu Primeiro Repositório no GitHub para Compar
 ---
 
 ### Objective:
-- O objetivo desse desafio de projeto é criar o primeiro repositório no GitHub para compartilhar o progresso do Bootcamp. Porém o progresso para esse Bootcamp pode ser acessado na pasta principal desse Bootcamp, [boot_03 (Linux do Zero)](../). A pasta atual é uma sub-pasta desse Bootcamp que serve apenas de referência a esse desafio. Todo material está armazenado na pasta principal do Bootcamp seguindo a estruturação proposta.
+O objetivo desse desafio de projeto é criar o primeiro repositório no GitHub para compartilhar o progresso do Bootcamp. Porém o progresso para esse Bootcamp pode ser acessado na pasta principal desse Bootcamp, [boot_03 (Linux do Zero)](../). A pasta atual é uma sub-pasta desse Bootcamp que serve apenas de referência a esse desafio. Todo material está armazenado na pasta principal do Bootcamp seguindo a estruturação proposta.
 
 ### Structure:
-- Como esse desafio foi apenas para criar um repositório no GitHub, nenhum arquivo além desse README.md foi necessário.
+Como esse desafio foi apenas para criar um repositório no GitHub, nenhum arquivo além desse README.md foi necessário.
 
 ### Development:
 O desenvolvimento desse desafio foi somente a criação do repositório.

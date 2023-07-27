@@ -28,10 +28,10 @@ This folder refers to the course **Introdução ao Desenvolvimento Moderno de So
 ---
 
 ### Objective:
-- O objetivo desse curso foi introduzir os conceitos básicos de lógica de programação e pensamento computacional.
+O objetivo desse curso foi introduzir os conceitos básicos de lógica de programação e pensamento computacional.
 
 ### Structure:
-- Como esse curso foi boa parte teórico, só foram criados três arquivos de scripts em Portugol para execução de funções simples e conhecimento da lógica de programação, além deste arquivo de README.
+Como esse curso foi boa parte teórico, só foram criados três arquivos de scripts em Portugol para execução de funções simples e conhecimento da lógica de programação, além deste arquivo de README.
 
 ### Development:
 Em relação ao desenvolvimento, os arquivos de scripts realizados foram codificações simples apenas para conhecimento do pseudocódigo **Portugol**. Esses três foram desenvolvidos na plataforma online **Portugol Studio**. O primeiro de nome **soma_intervalo.por**, onde foi criada duas funções, a primeira para receber os valores das variáveis X e Y e passá-las para uma outra função que calcula a soma de todos os números de um intervalo de números determinados. Abaixo é exibida essa segunda função.

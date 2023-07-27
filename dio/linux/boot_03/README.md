@@ -63,12 +63,12 @@
 ---
 
 ### Objective:
-- Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO**.
+Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO**.
   
-  >Este programa é para profissionais de tecnologia que querem aperfeiçoar seus conhecimentos no sistema operacional Linux em uma trilha imersiva, rápida e eficiente. O Linux do Zero possui apenas 44 horas, que você pode finalizar em poucos dias, de atividades 100% voltadas para os desafios do mercado de trabalho. Nesse programa você vai aprender a principal vocação do sistema operacional Linux, seus comandos fundamentais e como gerenciar serviços de um servidor.
+>Este programa é para profissionais de tecnologia que querem aperfeiçoar seus conhecimentos no sistema operacional Linux em uma trilha imersiva, rápida e eficiente. O Linux do Zero possui apenas 44 horas, que você pode finalizar em poucos dias, de atividades 100% voltadas para os desafios do mercado de trabalho. Nesse programa você vai aprender a principal vocação do sistema operacional Linux, seus comandos fundamentais e como gerenciar serviços de um servidor.
 
 ### Structure:
-- A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. Para melhor organização deste Bootcamp, a estruturação das pastas acompanhou a estrutura do Bootcamp. Dessa forma, foram criadas sub-pastas para cada módulo ou curso desse Bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos Desafios ou Cursos realizados. A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste Bootcamp. A imagem 01 exibe como ficou a estruturação dos arquivos.
+A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. Para melhor organização deste Bootcamp, a estruturação das pastas acompanhou a estrutura do Bootcamp. Dessa forma, foram criadas sub-pastas para cada módulo ou curso desse Bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos Desafios ou Cursos realizados. A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste Bootcamp. A imagem 01 exibe como ficou a estruturação dos arquivos.
 
 <div align="Center"><figure>
     <img src="./0-aux/img01.PNG" alt="img01"><br>

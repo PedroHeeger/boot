@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-07-13T22:10:00.853Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="PEYIroKHZQxAzIrLfoDG" version="21.6.2" type="google">
+<mxfile host="app.diagrams.net" modified="2023-07-26T12:17:11.880Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="Vm2-UA0BKPZOYy0jj8Xt" version="21.6.2" type="google">
   <diagram id="v77OiiaWH749GFRywPAt" name="Page-1">
     <mxGraphModel grid="0" page="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="0.5" pageWidth="291" pageHeight="413" math="0" shadow="0">
       <root>
@@ -86,7 +86,7 @@
         <mxCell id="CbKJTiJz_WKjZBhwlI2_-70" value="" style="group" vertex="1" connectable="0" parent="CbKJTiJz_WKjZBhwlI2_-72">
           <mxGeometry x="297" width="273.6" height="350" as="geometry" />
         </mxCell>
-        <mxCell id="CbKJTiJz_WKjZBhwlI2_-18" value="MAQUINA VIRTUAL&lt;br style=&quot;font-size: 15px;&quot;&gt;&lt;b style=&quot;font-size: 15px;&quot;&gt;VM Virtual Box&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=center;fontSize=15;" vertex="1" parent="CbKJTiJz_WKjZBhwlI2_-70">
+        <mxCell id="CbKJTiJz_WKjZBhwlI2_-18" value="MAQUINA VIRTUAL&lt;br style=&quot;font-size: 15px;&quot;&gt;&lt;b style=&quot;font-size: 15px;&quot;&gt;WSL 2&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=center;fontSize=15;" vertex="1" parent="CbKJTiJz_WKjZBhwlI2_-70">
           <mxGeometry width="273.6" height="350" as="geometry" />
         </mxCell>
         <mxCell id="CbKJTiJz_WKjZBhwlI2_-20" value="Ubuntu (Linux)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=14;" vertex="1" parent="CbKJTiJz_WKjZBhwlI2_-70">
