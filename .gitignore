@@ -1,6 +1,9 @@
 sca/
 dio/dados_unimed_1
 
-dio/linux/boot_03/0-img/diagrama1.drawio
-dio/linux/boot_03/02-linux/02.01-instalacao
-dio/linux/boot_03/03-servidor_linux
+dio/linux/boot_03/*
+!dio/linux/boot_03/README.md
+!dio/linux/boot_03/0-aux
+!dio/linux/boot_03/01.05-logica_programacao/README.md
+!dio/linux/boot_03/01.07-github/README.md
+!dio/linux/boot_03/02-linux/README.md
