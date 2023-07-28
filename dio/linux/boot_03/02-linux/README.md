@@ -15,9 +15,11 @@ This folder refers to Module 2 **Primeiros Passos com o Sistema Operacional Linu
 
 ### Used Tools:
 - Operating System (OS): 
-  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
+  - Linux <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
+  - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Linux Distribution: 
   - Ubuntu <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
+  - RedHat <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg" alt="redhat" width="auto" height="25">
 - Environment: 
   - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
   - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
@@ -103,7 +105,7 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em oito cursos e um des
 
   Neste curso foram realizados os procedimentos de gerenciamentos de usuários e grupos de usuários no sistema Linux, utilizando a maquina virtual Linux Ubuntu criada no **VM Virtual Box**. Foram utilzados comandos de criação, modificação e exclusão de usuários (`useradd`, `usermod`, `userdel`, `passwd` e `chsh`), juntamente com vários parâmetros como: criação da pasta **home**, adição de senha e comentário, definição do shell do usuário, inserção em um grupo específico e determinação de uma data de expiração para o usuário. Também foram utilizados os comandos `groupadd`, `groupdel` e `gpasswd` para adição e exclusão de grupos e remoção de usuários de um grupo.
 
-  Foi elaborado um arquivo de script em **bash** de nome **criar_user.sh**, no qual o código é exibido abaixo, para criação de vários usuários em lote. Para que fosse possível executar esse arquivo foi necessário alterar a permissão de execução com o comando `chmod`. Por fim, foram realizadas alterações de permissões de todos os tipos e para todos os grupos de usuários (proprietários, grupos e demais usuários) com o comando `chmod`, e alterações de proprietário e grupo de arquivos e pastas com o comando `chown`.
+  Foi elaborado um arquivo de script em **bash** de nome **criar_user.sh** para criação de vários usuários em lote, no qual o código é exibido abaixo e pode ser acessado na sub-pasta **02-05** deste módulo clicando [aqui](./02.05-usuarios/criar_user.sh). Para que fosse possível executar esse arquivo foi necessário alterar a permissão de execução com o comando `chmod`. Por fim, foram realizadas alterações de permissões de todos os tipos e para todos os grupos de usuários (proprietários, grupos e demais usuários) com o comando `chmod`, e alterações de proprietário e grupo de arquivos e pastas com o comando `chown`.
 
   ```
   #!/bin/bash
@@ -122,9 +124,9 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em oito cursos e um des
   useradd guest13 -c "Usuário convidado" -s /bin/bash -m -p $(openssl passwd -crypt Senha123)
   passwd guest13 -e
 
-  echo "Finalizado!!"
-
+  echo "Processo finalizado!"
   ```
+
   ###### Observação: Na aula, foi utilizado o parâmetro `-crypt` no software OpenSSL, porém para a versão mais atual desse software não funciona. Logo, foi necessário utilizar o parâmetro `-6` que usa o SHA-512 para gerar um hash criptografado da senha utilizada no OpenSSL.
   
 
@@ -144,9 +146,57 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em oito cursos e um des
 
   <a name="item2.8"><h4>2.8 Copiando Arquivos e Manipulando Processos</h4></a>[Back to summary](#item2)
 
-
-
-
-
+  Neste curso foi realizado os procedimentos de copia, movimentação e renomeação de arquivos e manipulação de processos no sistema Linux, utilizando a maquina virtual Linux Ubuntu criada no **VM Virtual Box**. Os comandos `cp` e `mv` foram utilizados para copiar, alterar arquivos de diretórios e renomeá-los. Na manipulação de processos, foram utilizados os comandos `ps`, `kill`, `w` e `who -a` para verificar os processos, incluindo processos de logon e finalizá-los.
 
   <a name="item2.9"><h4>2.9 Desafio de Projeto - Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões</h4></a>[Back to summary](#item2)
+
+  O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
+
+  > Neste projeto iremos criar um script onde toda a infraestrutura de usuários, grupos de usuários, diretórios e permissões serão criadas automaticamente. Será realizado o upload do arquivo de script no GitHub para futuras reutilizações do script. Sendo assim, toda nova máquina virtual que for iniciada já estará pronta para uso quando o script for executado.
+
+  Para iniciar esse desafio, conforme solicitado, foi necessário apagar tudo que foi realizado durante as aulas (diretórios, arquivos, grupos e usuários). Este processo foi feito manualmente. Após isso, foi criado um arquivo em **bash** de nome **iac1.sh** salvo na sub-pasta **02.09** deste módulo. Neste arquivo, foi construído um script para criação de diretórios, grupos de usuários e usuários, e também, foram estabelecidas as permissões determinadas para acesso aos diretórios. O código é exbido logo abaixo e pode ser acessado clicando [aqui](./02.09-desafio_projeto/iac1.sh).
+
+  ```
+  #!/bin/bash
+
+  echo "Iniciando o processo..."
+  echo "Criando os diretórios..."
+
+  mkdir /publico
+  mkdir /adm
+  mkdir /ven
+  mkdir /sec
+
+  echo "Criando os grupos de usuários..."
+
+  groupadd GRP_ADM
+  groupadd GRP_VEN
+  groupadd GRP_SEC
+
+  echo "Criando os usuários..."
+
+  useradd -m carlos -c "Carlos" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_ADM
+  useradd -m maria -c "Maria" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_ADM
+  useradd -m joao_ -c "João" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_ADM
+
+  useradd -m debora -c "Débora" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_VEN
+  useradd -m sebastiana -c "Sebastiana" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_VEN
+  useradd -m roberto -c "Roberto" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_VEN
+
+  useradd -m josefina -c "Josefina" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_SEC
+  useradd -m amanda -c "Amanda" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_SEC
+  useradd -m rogerio -c "Rogério" -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_SEC
+
+  echo "Concedendo permissões..."
+
+  chmod 777 /publico
+  chmod 770 /adm
+  chmod 770 /ven
+  chmod 770 /sec
+
+  chown root:GRP_ADM /adm
+  chown root:GRP_VEN /ven
+  chown root:GRP_SEC /sec
+
+  echo "Processo finalizado com sucesso!"
+  ```
