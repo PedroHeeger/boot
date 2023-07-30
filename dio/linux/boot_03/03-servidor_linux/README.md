@@ -187,4 +187,107 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos, um de
   ```
 
   <a name="item3.5"><h4>3.5 Docker: Utilização Prática no Cenário de Microsserviços</h4></a>[Back to summary](#item3)
+  
+  O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
 
+  > A tecnologia de Containers promete mudar a maneira como as operações de TI são realizadas, abstraindo ambientes de desenvolvimento e otimizando o consumo de recursos. Nesse contexto, conheça o Docker, implemente uma estrutura de Microsserviços com as melhores práticas do mercado internacional e ganhe independência entre aplicações e infraestrutura em mais um conteúdo exclusivo por aqui.
+
+  A primeira etapa desse projeto foi a criação de uma maquina virtual **Linux Ubuntu** no serviço **Amazon EC2** na cloud da **AWS**. Esta maquina teve as configurações de nível gratuito e após instanciada, foi adicionado uma nova regra no grupo de segurança para a liberação da porta **3306** do protocolo **TCP** para qualquer acesso. Isto contribui para que fosse possível realizar o acesso através do software **Dbeaver** (GUI para banco de dados SQL) ao banco de dados **MySQL** criado em um container **Docker** dentro da maquina virtual instanciada.
+
+  Através do software **PuTTY** e do arquivo de par de chave **dio-linux-boot_003-m3.2.ppk** criado no curso 2 deste módulo, foi realizado o acesso remoto ao Ubuntu da cloud. Nele, em primeiro momento, foi realizado o download dos pacotes e atualização do sistema operacional. Em seguida, foi realizado a instalação do software **Docker** para a criação de um container com base em uma imagem do **MySQL**, o comando de criação do container é exibido abaixo. Foi realizado um bind de portas para acesso ao **MySQL** pelo **DBeaver** e uma montagem do diretório do container com o diretório da maquina virtual (`/var/lib/docker/volumes/data/_data`), para que houvesse o compartilhamento de arquivos entre eles.
+
+  ```
+  sudo apt-get update -y
+  sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+  sudo apt-get update -y
+  apt-cache policy docker-ce
+  sudo apt-get install docker-ce -y
+  ```
+
+  `docker run --name mysql-A -v /var/lib/docker/volumes/data/_data:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Senha123 -d mysql:8.0.34-debian`
+
+  O objetivo dessa maquina virtual foi fornecer um serviço de banco de dados através de um container **Docker**. Com o container em execução, foi realizado o acesso a ele e também executado o download de pacotes e atualização do sistema. Na sequência, instalou-se o software de banco de dados **MySQL**, que foi acessado com o username **root** e a senha determinada na execução do container. Dentro do **MySQL** foi criado um novo banco de dados de nome **meubanco** e a partir daí, foi possível realizar o acesso a esse banco via **DBeaver**. Neste acesso, o **Host** utilizado foi o **IP** da maquina virtual instanciada no **Amazon EC2**, o usuário e senha foram os mesmos utilizados no acesso anterior pelo container. Ainda foi preciso fazer uma alteração na configuração dessa conexão de acesso, alterando para **true** a opção `allowPublicKeyRetrievel` nas propriedades do driver no **Dbeaver**. Com o acesso liberado, foi construído uma nova tabela dentro do banco com o seguinte código abaixo.
+
+  ```
+  CREATE TABLE dados (
+    AlunoID int,
+    Nome varchar(50),
+    Sobrenome varchar(50),
+    Endereco varchar(150),
+    Cidade varchar(50),
+    Host varchar(50)
+  );
+  ```
+
+  O próximo passo, foi a criação de um servidor HTTP em outro container **Docker** configurado na porta **80** do protocolo **TCP**, nesta mesma maquina virtual. Para isso, foi necessário liberar essa porta lá no grupo de segurança da maquina virtual da **EC2**, criando uma nova regra que permitiu acesso de qualquer lugar, igual foi feito para a porta **3306** para o **MySQL**. Abaixo é apresentado o código de construção do container **Docker** que utilizou uma imagem do **PHP Apache**. Neste container também foi realizado o bind de porta para que fosse possível realizar a requisição **HTTP** através do navegador na maquina física **Windows**, e montar o diretório do container com o diretório do Ubuntu (`/var/lib/docker/volumes/app/_data`) criado anteriormente.
+ 
+  `docker run --name web-server -dt -p 80:80 --mount type=volume,src=app,dst=/app/ webdevops/php-apache:alpine-php7`
+  
+  Além disso, foi necessário entrar no **MySQL** pelo container **Docker** para alterar a autenticação do usuário do **MySQL** para uma autenticação compatível com o conector do **MySQL** utilizado na aplicação PHP, que foi o **msqli**. O comando a seguir, foi o executado.
+
+  `alter user root identified with mysql_native_password by 'Senha123';`
+
+  Resumidamente, a aplicação PHP utilizada, a medida que fosse realizada uma requisição HTTP ao IP da maquina virtual na porta **80**, acessava o banco de dados com o mesmo IP da maquina mas na porta **3006** e gerava três dados aleatórios que preencheram os atributos da tabela **dados** criada no banco **meubanco** no **MySQL**. O primeiro dado era um número de ID que preenchia o atributo **AlunoID**, o segundo era uma string que preencheu os atributos **Nome**, **Sobrenome**, **Endereco** e **Cidade**, e o último, outra string que completou o atributo **Host**. Com isso, as informações foram inseridas na tabela toda vez que fosse realizado uma nova requisição (atualizasse a página). As imagens 07 e 08 a seguir, ilustram a requisição sendo executada e tabela com dados preenchidos devido as requisições realizadas. 
+
+  <div align="Center"><figure>
+    <img src="../0-aux/md3_img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+  </figure></div><br>
+
+  <div align="Center"><figure>
+    <img src="../0-aux/md3_img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+  </figure></div><br>
+
+  A etapa seguinte foi a realização do teste de estresse do container. Isso foi feito através do site **Loader.io**, onde foi passado o IP da maquina virtual, em seguida, foi gerado uma chave que foi copiada. Na maquina virtual, dentro da pasta da aplicação, foi criado um arquivo de extensão **txt** com a chave copiada **loaderio-f10acfbf961387d5a2022839f9a6953f.txt** e no corpo do arquivo foi escrito a chave copiada. De volta no **Loader** foi realizado um teste de estresse para 250 requisições por minuto que apresentou um tempo de resposta média de 10 ms. O detalhe desse teste é apresentado na imagem 09.
+
+  <div align="Center"><figure>
+    <img src="../0-aux/md3_img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+  </figure></div><br>
+
+  Foi observado que em alguns casos o tempo de resposta pode ser muito lento e para esse caso é recomendado que se crie um **Cluster**. Para isso foi necessário criar mais duas maquinas virtuais no serviço **Amazon EC2** da **AWS** na cloud. Essas maquinas funcionaram como workers deste cluster. Em cada uma delas, foi necessário fazer a instalação do **Docker**. Já na primeira maquina virtual (**Linux-Ubuntu-1**) chamada de **master** foi feito a remoção do container da aplicação com o comando `docker rm --force web-server`, permanecendo apenas o container do banco de dados. Em seguida, foi utilizado o comando `docker swarm init` para inicialização do cluster e foi fornecido código abaixo para ser executado em cada um dos nós desse cluster, após a instalação do docker. Porém, antes de executar, foi preciso liberar a porta **2237** no master adicionando uma nova regra no grupo de segurança.
+
+  `docker swarm join --token SWMTKN-1-4sz4nz7apisctmr6yhj99liw9vsoc0g9kduqvide7w7t95erf3-e73a1wh41rdimgijg2czqgxn0 172.31.89.232:2377`
+  
+  Com as duas novas maquinas virtuais adicionadas ao cluster como workers, foi verificado no master se as três maquinas estavam realmente no cluster com o comando `docker node ls` e o output do comando é mostrado na imagem 10 a seguir. Foi necessário retirar um nó do cluster e colocá-lo novamente, o comando para remover o nó do cluster foi `docker swarm leave`.
+
+  <div align="Center"><figure>
+    <img src="../0-aux/md3_img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+  </figure></div><br>
+
+  Após a adição dos três nós no cluster, foi executado o comando do **Docker** para criação do container com a aplicação de requisição HTTP com a imagem do **PHP Apache**. Só que desta vez para o cluster inteiro, replicando dez vezes entre eles.
+
+  `docker service create --name web-server --replicas 10 -dt -p 80:80 --mount type=volume,src=app,dst=/app/ webdevops/php-apache:alpine-php7`
+
+  O comando `docker service ps web-server` foi utilizado para conferir a distribuição das replicações aos nós. A imagem 11 evidencia esta etapa.
+
+  <div align="Center"><figure>
+    <img src="../0-aux/md3_img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+  </figure></div><br>
+
+  Infelizmente, a criação do serviço no cluster não compartilha os arquivos do diretório do master com os workers, para isso foi necessário realizar a montagem do diretório entre esses nós. Primeiro, foi feito a instalação do **NFS Server** com o comando `apt-get install nfs-server -y` no master, e em seguida, a instalação do **NFS Common** nos workers com o comando `apt-get install nfs-common -y`.`
+
+  Primeiro
+  `nano /etc/exports`
+
+  `/var/lib/docker/volumes/app/_data *(rw,sync,subtree_check)`
+
+  `exportfs -ar`
+
+  `showmount -e`
+
+  Workers
+
+  `mount -o v3 172.31.89.232:/var/lib/docker/volumes/app/_data /var/lib/docker/volumes/app/_data`
+  `mount -t nfs -o nfsvers=3,port=2049 172.31.89.232:/var/lib/docker/volumes/app/_data /var/lib/docker/volumes/app/_data`
+  `mount 172.31.89.232:/var/lib/docker/volumes/app/_data /var/lib/docker/volumes/app/_data`
+  Criando um Proxy
+
+
+
+  <a name="item3.6"><h4>3.6 Docker: Utilização Prática no Cenário de Microsserviços</h4></a>[Back to summary](#item3)

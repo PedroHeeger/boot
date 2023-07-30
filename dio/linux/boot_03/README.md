@@ -46,7 +46,7 @@
   2.8. Copiando Arquivos e Manipulando Processos   
   2.9. Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões   
 
-3. Configurando Servidores Linux e Introdução ao Docker   
+3. [Configurando Servidores Linux e Introdução ao Docker](./03-servidor_linux/)   
   3.1. Servidores Arquivos com Linux   
   3.2. Criando um Servidor Web com Linux   
   3.3. Servidor de Banco de Dados com Linux   
