@@ -12,3 +12,4 @@ dio/linux/boot_03/02-linux/*
 dio/linux/boot_03/03-servidor_linux/*
 !dio/linux/boot_03/03-servidor_linux/README.md
 !dio/linux/boot_03/03-servidor_linux/03.04-dp_iac
+!dio/linux/boot_03/03-servidor_linux/03.05-dp_docker
