@@ -378,13 +378,19 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
     <img src="../0-aux/md3_img15.png" alt="img15"><br>
     <figcaption>Imagem 15.</figcaption>
   </figure></div><br>
-
   
   Este desafio foi finalizado realizando novamente um teste de estresse, só que agora para um cenário de cluster com três maquinas. O procedimento é basicamente o mesmo feito para o cenário de apenas uma maquina. No site **Loader.io** foi excluído o host existente e inserido um novo host (IP da maquina master) com a porta **4500** do **nginx**. Com isso, foi gerado uma chave que foi copiada e colada em um arquivo **txt** criado com o mesmo nome da chave através do comando `nano loaderio-4239feba2515115e3bc17343a76f0afa.txt`, na mesma pasta da aplicação `/var/lib/docker/volumes/app/_data`. Em seguida, foi verificado se o site reconheceu o arquivo criado. Após reconhecido, foi criado um novo teste com 300 requisições por minuto e no path da url foi o arquivo da aplicação web **index.php**. O resultado é apresentado na imagem 16 a seguir. O tempo de resposta médio foi de 2967 ms
   
   <div align="Center"><figure>
     <img src="../0-aux/md3_img16.png" alt="img16"><br>
     <figcaption>Imagem 16.</figcaption>
+  </figure></div><br>
+
+  Por fim, a imagem 17 ilustra as inserções feita no banco de dados com diferentes hosts.
+
+  <div align="Center"><figure>
+    <img src="../0-aux/md3_img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
   </figure></div><br>
 
   <a name="item3.6"><h4>3.6 Docker: Utilização Prática no Cenário de Microsserviços</h4></a>[Back to summary](#item3)
