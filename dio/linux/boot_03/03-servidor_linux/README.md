@@ -386,7 +386,7 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
     <figcaption>Imagem 16.</figcaption>
   </figure></div><br>
 
-  Por fim, a imagem 17 ilustra as inserções feita no banco de dados com diferentes hosts.
+  Por fim, a imagem 17 ilustra as inserções feitas no banco de dados com diferentes hosts.
 
   <div align="Center"><figure>
     <img src="../0-aux/md3_img17.png" alt="img17"><br>
