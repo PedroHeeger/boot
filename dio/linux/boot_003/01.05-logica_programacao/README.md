@@ -5,6 +5,9 @@
 ### Software/Subject: <a href="../../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-aux/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
 ### Course: 1.5. Introdução à Programação e Pensamento Computacional
+
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/logica_algoritmo/(22-10-09)%20...Programa%C3%A7%C3%A3o%20e%20Pensamento%20Computacional%20PH%20DIO.pdf">Certificate</a>
+
 ---
 
 This folder refers to the course **Introdução ao Desenvolvimento Moderno de Software** in Module 1 **Preparando-se Para a Jornada** of Bootcamp **Linux do Zero**.

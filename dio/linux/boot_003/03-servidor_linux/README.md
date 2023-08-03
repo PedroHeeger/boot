@@ -78,7 +78,7 @@ A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme f
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois desafios de projeto e uma mentoria. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-  <a name="item3.1"><h4>3.1 Servidores Arquivos com Linux</h4></a>[Back to summary](#item3)
+  <a name="item3.1"><h4>3.1. Servidores Arquivos com Linux</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
   Neste curso, foi desenvolvido um servidor de arquivos no sistema Linux utilizando a maquina virtual Linux Ubuntu criada no **VM Virtual Box**. Foi necessário utilizar a pasta referente ao **disco2** criado no módulo 2 deste bootcamp e também a instalação do software **Samba** para criação do servidor. No diretório `/disk2`, foi criado uma nova pasta de nome **publica** e concedido a permissão a todos os usuários através do comando `chmod 777 publica`, já dentro da pasta do disco2. Dando sequência, foi aberto o arquivo de configuração do **Samba** com o editor de texto **nano** disponível no diretório `/etc/samba/smb.conf`. 
   
@@ -101,7 +101,7 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
     <figcaption>Imagem 02.</figcaption>
   </figure></div><br>
   
-  <a name="item3.2"><h4>3.2 Criando um Servidor Web com Linux</h4></a>[Back to summary](#item3)
+  <a name="item3.2"><h4>3.2. Criando um Servidor Web com Linux</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Criando%20um%20Servidor%20Web%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
   Neste curso, foi desenvolvido um servidor web no sistema Linux utilizando a maquina virtual Linux Ubuntu criada no **VM Virtual Box**. Para criação desse servidor, foi preciso a instalação do software **Apache HTTP Server**. Após instalação e verificação, com o comando `systemctl status apache2`, que o status estava ativo, tornou-se possível acessar o site via número de **IP** da maquina virtual. Para alterar as informações do site, foi necessário ir na pasta `/var/www/html`, onde estava o arquivo `index.html` que correspondia as informações do site. Este arquivo foi excluído e criado um novo arquivo **html** para construção do novo site. O site só podia ser acessado por clientes que estavam na mesma rede.
 
@@ -119,7 +119,7 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
     <figcaption>Imagem 03.</figcaption>
   </figure></div><br>
 
-  <a name="item3.3"><h4>3.3 Servidor de Banco de Dados com Linux</h4></a>[Back to summary](#item3)
+  <a name="item3.3"><h4>3.3. Servidor de Banco de Dados com Linux</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidor%20de%20Banco%20de%20Dados%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
   Neste curso, foi desenvolvido um servidor de banco de dados no sistema Linux utilizando a maquina virtual Linux Ubuntu criada no **VM Virtual Box**. Para execução foi necessário baixar e instalar o software **MySQL Server**. Após instalado, foi realizado o acesso com o usuário **root** do Linux ao **MySQL** com o comando `mysql -u root -p`, e digitado a senha desse usuário. Já no banco foram realizados os seguintes comandos em **SQL**:
 
@@ -167,7 +167,7 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
         <figcaption>Imagem 04.</figcaption>
     </figure></div><br>
 
-  <a name="item3.4"><h4>3.4 Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)</h4></a>[Back to summary](#item3)
+  <a name="item3.4"><h4>3.4. Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-31)%20Iac...Servidor%20Web%20(Apache)%20PH%20DIO.pdf">Certificate</a>
 
   O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
 
@@ -208,7 +208,7 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
   echo "Processo finalizado, site disponível através do IP da maquina virtual"
   ```
 
-  <a name="item3.5"><h4>3.5 Docker: Utilização Prática no Cenário de Microsserviços</h4></a>[Back to summary](#item3)
+  <a name="item3.5"><h4>3.5. Docker: Utilização Prática no Cenário de Microsserviços</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-07-31)%20Docker-Utiliza%C3%A7%C3%A3o...Cen%C3%A1rio%20de%20Microsservi%C3%A7os%20PH%20DIO.pdf">Certificate</a>
   
   O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
 
@@ -394,4 +394,4 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
     <figcaption>Imagem 17.</figcaption>
   </figure></div><br>
 
-  <a name="item3.6"><h4>3.6 Docker: Utilização Prática no Cenário de Microsserviços</h4></a>[Back to summary](#item3)
+  <a name="item3.6"><h4>3.6. Mentoria - DevOps: Tudo o que você precisa saber</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(23-08-03)%20DevOps...%20PH%20DIO.pdf">Certificate</a>
