@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_005 (Formação Linux Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_005" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/05-particip/data/excel/(23-06-22)%20Cert%20Excel%20PH%20Empowerdata%20(Semana).pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-03)%20Cert%20Formacao%20Linux%20Fundamentals%20PH%20DIO.pdf">Certificate</a>
 
 ---
 
@@ -81,7 +81,7 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 ### Development:
 Em relação ao desenvolvimento, cada desafio ou curso tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
 
-  <a name="item5.1"><h4>5.1. Conhecendo o Linux Desktop</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+  <a name="item5.1"><h4>5.1. Conhecendo o Linux Desktop</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-08-03)%20Conhecendo%20o%20Linux%20Desktop%20PH%20DIO.pdf">Certificate</a>
 
   Nesta curso foi criado uma nova maquina virtual no software **VM Virtual Box** com base uma imagem de **Linux Ubuntu** para desktop, ao invés de servidor. Ou seja, essa maquina possuíu interface gráfica. A imagem base para essa maquina foi fornecido pela plataforma do curso. Para a criação, dentro do **VM Virtual Box**, foi selecionada a opção **Importar Appliance**. Na janela aberta foi selecionada a imagem base e mantida as configurações padrões.
 
