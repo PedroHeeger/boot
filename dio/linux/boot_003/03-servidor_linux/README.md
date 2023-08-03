@@ -71,7 +71,7 @@ O objetivo deste módulo do Bootcamp foi aprender sobre servidores, como criá-l
 A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/img01.PNG" alt="img01"><br>
+    <img src="../0-aux/md3_img01.PNG" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 

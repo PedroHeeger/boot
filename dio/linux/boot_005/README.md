@@ -26,6 +26,8 @@
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Command Line Interpreter (CLI):
+  - bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
 - Others:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
 
@@ -74,15 +76,15 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 - Para melhor organização deste Bootcamp, a estruturação das pastas acompanhou a estrutura do Bootcamp. Dessa forma, foram criadas sub-pastas para cada módulo ou curso desse Bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos Desafios ou Cursos realizados.
 - Nos arquivos de README de cada módulo ou curso está descrito o que foi realizado em cada um, e podem ser acessado nos links clicáveis na opção **Bootcamp Strucutre**. Os links que não forem clicáveis, são de cursos ou módulos que, na sua maior parte ou inteiramente, foram assuntos teóricos e não possuem materiais.
 - Alguns cursos podem ter sido desenvolvidos em outro Bootcamp, já que são os mesmos cursos, portanto, a explicação sobre esses cursos e seus respectivos materiais vão está no outro Bootcamp e podem ser acessados através dos links do **Bootcamp Structure**.
-- A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste Bootcamp. A imagem 01 exibe como ficou a estruturação dos arquivos.
-
-<div align="Center"><figure>
-    <img src="./0-aux/img01.PNG" alt="img01"><br>
-    <figcaption>Imagem 01.</figcaption>
-</figure></div><br>
+- A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste Bootcamp.
 
 ### Development:
 Em relação ao desenvolvimento, cada desafio ou curso tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
 
   <a name="item5.1"><h4>5.1. Conhecendo o Linux Desktop</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
+  Nesta curso foi criado uma nova maquina virtual no software **VM Virtual Box** com base uma imagem de **Linux Ubuntu** para desktop, ao invés de servidor. Ou seja, essa maquina possuíu interface gráfica. A imagem base para essa maquina foi fornecido pela plataforma do curso. Para a criação, dentro do **VM Virtual Box**, foi selecionada a opção **Importar Appliance**. Na janela aberta foi selecionada a imagem base e mantida as configurações padrões.
+
+  Após criação, foi ligado a maquina e realizado o acesso a área de trabalho. Para redimensionar a tela da maquina virtual para que preenchesse a tela inteira, foi necessário ir na opção *dispositivos* na barra de ferramentas e selecionar a opção *inserir imagem de CD dos Adicionais para Convidado*. Assim, na doca (barra lateral do Ubuntu Desktop) surgiu um ícone de CD que era um pasta que foi acessada. Dentro da pasta, foi aberto o terminal do **Linux** e executado o arquivo `VBoxLinuxAdditions.run`. Após concluído, a maquina foi desligada e novamente ligada. Com a efetuação do login, foi possível, agora, maximizar a tela do **Ubuntu Desktop**. As credenciais de acesso para login vieram configuradas na imagem fornecida pela plataforma do curso.
+
+  Para finalizar o curso, foi explicado alguns ícones dispostos na área de trabalho e na doca do **Ubuntu**. Foi realizado a instalação do software **VS Code** através da loja **Ubuntu Software**.
