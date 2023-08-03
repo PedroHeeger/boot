@@ -59,7 +59,7 @@
   4.4. [Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/03-servidor_linux#item3.4)   
   4.5. Materiais Complementares - Serviços Linux
 
-5. <a name="#item5">Linux Desktop: Ferramentas Importantes para o Desenvolvedor</a>  
+5. <a name="item5">Linux Desktop: Ferramentas Importantes para o Desenvolvedor</a>  
   5.1. <a href="#item5.1">Conhecendo o Linux Desktop</a><br>
   5.2. Materiais Complementares - Linux Desktop: Ferramentas Importantes para o Desenvolvedor   
   5.3. Avalie esta Formação Linux Fundamentals
