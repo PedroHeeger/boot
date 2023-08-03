@@ -81,7 +81,7 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 ### Development:
 Em relação ao desenvolvimento, cada desafio ou curso tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
 
-  <a name="item5.1"><h4>5.1. Conhecendo o Linux Desktop</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-08-03)%20Conhecendo%20o%20Linux%20Desktop%20PH%20DIO.pdf">Certificate</a>
+  <a name="item5.1"><h4>5.1. Conhecendo o Linux Desktop</h4></a>[Back to summary](#item5.1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-08-03)%20Conhecendo%20o%20Linux%20Desktop%20PH%20DIO.pdf">Certificate</a>
 
   Nesta curso foi criado uma nova maquina virtual no software **VM Virtual Box** com base uma imagem de **Linux Ubuntu** para desktop, ao invés de servidor. Ou seja, essa maquina possuíu interface gráfica. A imagem base para essa maquina foi fornecido pela plataforma do curso. Para a criação, dentro do **VM Virtual Box**, foi selecionada a opção **Importar Appliance**. Na janela aberta foi selecionada a imagem base e mantida as configurações padrões.
 
