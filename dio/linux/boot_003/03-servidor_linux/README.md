@@ -395,3 +395,11 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, dois d
   </figure></div><br>
 
   <a name="item3.6"><h4>3.6. Mentoria - DevOps: Tudo o que você precisa saber</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(23-08-03)%20DevOps...%20PH%20DIO.pdf">Certificate</a>
+
+  Nesta mentoria, foi apresentado o conceito de DevOps e realizado um exemplo prático no **GitLabs** de integração contínua. Todo material deste exemplo, foi fornecido pela plataforma do bootcamp. A ideia do projeto consistiu em criar um programa, onde o usuário iria digitar as informações de entrada e essas informações iriam para um banco de dados. Porém todo processo de execução foi realizado automaticamente em um pipeline de **CI (Integração Contínua)** no **GitLabs**.
+  
+  Para isso foram criadas duas pastas, um com a aplicação, que utilizou as linguagens **PHP**, **HTML**, **CSS** e **JavaScript**, e outra com o banco de dados que foi o **MySQL**. Em cada pasta foi desenvolvido um arquivo **dockerfile** para criação das imagens no **Docker Registry**. Além das pastas, um arquivo **YAML** foi construído para determinar as etapas de execução do pipeline.
+  
+  O pipeline consistiu em duas etapas, a primeira, na criação das imagens no **Docker Registry**, sendo uma da aplicação e outra do banco de dados. Já a segunda etapa, seria o deploy em uma maquina virtual na **AWS**. Para o deploy foi instanciada uma maquina virtual **Linux Ubuntu** no serviço **Amazon EC2** e instalado o **Docker** anteriormente, e com o processo determinado no arquivo **YAML**, foi realizado o acesso remoto a essa maquina, excluídos todos os containers em execução e a partir das imagens no **Docker Registry** criado dois containers. Assim, a aplicação ficou disponível através da porta **80** para o IP da maquina virtual, enquanto o banco de dados foi liberado na porta **3306**.
+
+  Toda parte de credenciais foi realizada no **GitLabs** para que esses dados não fosse expostos nos arquivos do projeto. Assim, utilizou-se variáveis para indicá-los. Também foi necessário liberar as portas na configuração de firewall da maquina virtual no **Amazon EC2**.
