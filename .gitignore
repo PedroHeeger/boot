@@ -1,6 +1,9 @@
 sca/
 dio/dados_unimed_1
 
+dio/docker/boot_006/*
+!dio/docker/boot_006/README.md
+
 dio/linux/boot_003/02-linux/*
 !dio/linux/boot_003/02-linux/README.md
 !dio/linux/boot_003/02-linux/02.05-usuarios
