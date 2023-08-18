@@ -33,13 +33,12 @@
 ---
 
 ### Bootcamp Structure
-1. Introdução ao Docker   
+1. [Introdução ao Docker](./01-introducao_docker/)   
   1.1. Introdução e Laboratório Virtual  
   1.2. Primeiros Passos com o Docker   
-  1.3. Processamento, Logs e Rede com Docker   
-  1.4. Trabalhando em Equipes Ágeis   
+  1.3.   
+  1.4. Processamento, Logs e Rede com Docker   
   1.5. Materiais Complementares: Introdução ao Docker  
-  1.6. Como Entregar seu Desafio de Projeto   
 
 2. [Docker File e Docker Compose](./02-linux/)   
   2.1. Definição e Criação de um Docker File   
@@ -76,10 +75,4 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Todo o projeto foi desenvolvido em uma maquina virtual **Linux Ubuntu** para servidor, criada no software **VM Virtual Box**, foi nesta maquina que foi instalado o software **Docker**. Em relação ao desenvolvimento, cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
-
-
-
-
-1.1
-Aula introdutória sobre virtualização, abordando conceitos como **modelo cliente-servidor**, **cloud computing**, **maquina virtual**, **microsserviços** e **containers**. Também foi explicado o que é o software **Docker** e que com ele, aplicações monolíticas foram desmembradas em microsserviços operando em containers.
+Todo o projeto foi desenvolvido em uma maquina virtual **Linux Ubuntu** para servidor, criada no software **VM Virtual Box**, foi nesta maquina que foi instalado o software **Docker** e executado os containers. Em relação ao desenvolvimento, cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.

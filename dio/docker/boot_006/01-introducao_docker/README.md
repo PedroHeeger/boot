@@ -1,0 +1,182 @@
+# Formação Docker Fundamentals - Módulo 1   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
+
+### Repository: [course](../../../)   
+### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
+### Software/Subject: <a href="./">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
+### Bootcamp: <a href="./">boot_006 (Formação Docker Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
+### Module: 1. Introdução ao Docker 
+
+---
+
+This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Formação Docker Fundamentals**](../).
+
+### Theme:
+- Virtualization
+
+### Used Tools:
+- Operating System (OS): 
+  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
+  - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
+- Linux Distribution: 
+  - Ubuntu <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
+- Virtualization: 
+  - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
+  - Docker <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+- Integrated Development Environment (IDE):
+  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+- Versioning: 
+  - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
+- Repository:
+  - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Command Line Interpreter (CLI):
+  - bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
+- Server:
+  - Samba <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/samba.png" alt="samba" width="auto" height="25">
+  - Apache HTTP Server <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
+  - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
+- Others:
+  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
+  - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
+  - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
+
+---
+
+### Bootcamp Module 1 Structure
+1. <a name="item1">Introdução ao Docker</a><br>
+  1.1. <a href="#item1.1">Introdução e Laboratório Virtual</a><br>
+  1.2. <a href="#item1.2">Primeiros Passos com o Docker</a><br>
+  1.3. <a href="#item1.3">Armazenamento de Dados com Docker</a><br>
+  1.4. <a href="#item1.4">Processamento, Logs e Rede com Docker</a><br>
+  1.5. Materiais Complementares: Introdução ao Docker  
+
+---
+
+### Objective:
+O objetivo deste módulo do Bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
+
+### Structure:
+A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
+
+<div align="Center"><figure>
+    <img src="./0-aux/img01.PNG" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
+
+### Development:
+O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+
+<a name="item1.1"><h4>1.1 Introdução e Laboratório Virtual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+
+Curso introdutório sobre virtualização, abordando conceitos como **modelo cliente-servidor**, **cloud computing**, **maquina virtual**, **microsserviços** e **containers**. Também foi explicado o que é o software **Docker** e que com ele, é possível desmembrar aplicações monolíticas em microsserviços operando em containers.
+
+<a name="item1.2"><h4>1.2 Primeiros Passos com o Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+
+No segundo curso, foram apresentados alguns comandos básicos de docker, tanto da versão simplificada (velha sintaxe) como também da versão completa (nova sintaxe), alguns desses utilizados foram: `docker pull` (Para baixar images do **Docker Registry**), `docker run` ou `docker container run` (Para criar um container), `docker ps` e `docker ps -a` ou `docker container ls` e `docker container ls -a` (Para listar os containers ativos e todos os containers existentes), `docker images` ou `docker image ls` (Para listar imagens), `docker run -it` ou `docker container run -it` (Para criar e acessar o container), `docker exec` ou `docker container exec` (Para executar comandos no container docker sem acessá-los), `docker exec -it` ou `docker container exec -it` (Para executar o comando que acessa o container com um shell determinado), `docker --help` ou `docker container --help` (Para exibir as informações de ajuda), `docker rm` ou `docker container -rm` (Para remover containers), `docker stop` ou `docker container stop` (Para interromper containers), `docker rmi` ou `docker image rm` (Para remover imagens), entre outros.
+
+O comando `docker exec` é bastante útil, pois com ele é possível executar comandos **Linux** no container do **Docker**, sem acessá-los. Ou seja, é possível, criar diretórios, criar arquivos, mover e copiar arquivos, listar arquivos, muita das coisas básicas que são feitas no **Linux** é possível fazê-las sem acessar o container. Porém, nada impede de acessar os containers (que são maquinas virtuais **Linux**) e executar os comandos dentro do container.
+
+Outros comandos utilizado no decorrer do curso foram: `docker cp` (Para copiar um arquivo do sistema de arquivos local para o container)
+
+Alguns contaiers específicos foram criados ao longo do curso, como: Ubuntu, Debian, CentOS, Hello-World e também um container de banco de dados do **MySQL**. Neste último, foi necessário configurar a senha para um usuário root e a ligação de porta na porta **3306** para que fosse possível conectar com este banco de dados. Nesta situação, ocorreu um problema que já aconteceu outras vezes no passado quando utilizava o **Docker** e que até os estudos mais aprofundados do **Linux** não conseguia resolver. Foi digitado o comando para criação do container de banco de dados **MySQL** `docker container run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password mysql`, porém na primeira vez, foi digitado incorretamente e após remover o container não conseguia executar o comando mesmo digitando corretamente. O problema era que a porta **3006** estava ocupada na maquina virtual com um processo do mysql e mesmo o container sendo removido, a porta continuava ocupada. Para resolver, foi utilizado comando `lsof -i :3306` para identificar o **PID**, número do processo, que estava segurando essa porta e então matá-lo com o comando `kill pid_number`. Assim o processo foi removido e ao executar o comando **Docker** corretamente, o container foi criado com sucesso. Os dois últimos comando foram comandos **Linux** e que precisou da permissão do super usuário com o comando `sudo`.
+
+Com o container do **MySQL** em execução, foi realizado o acesso e ao software do **MySQL** dentro dele. Então foi criado um banco de dados de teste de nome `aula`. Após sair do **MySQL** e do container, foi realizado o acesso ao **MySQL** pela maquina virtual, pois já que está na mesma rede do container e a porta **3306** foi liberada, foi possível realizar o acesso.
+
+Devido a uma configuração feita no adaptador de rede (**modo bridge**) da maquina virtual **Linux Ubuntu** para servidor criada na **VM Virtual Box**, é possível comunicar com a maquina virtual, logo, é possível então, acessar a aplicação de banco de dados do **MySQL** que está no container pela maquina física **Windows** através de softwares de **GUIs** de banco de dados como **Dbeaver** ou **MySQL Workbench**. Para isso é necessário do IP da maquina virtual que foi o servidor host, o nome do banco criado e a senha para o usuário root determinada. Assim, foi realizado o acesso ao banco **aula** pelo software **Dbeaver** na maquina física, onde foi criado uma tabela de nome **alunos** e foi inserida uma linha de dados conforme os scripts **SQL** abaixo.
+
+```
+CREATE TABLE alunos (
+	AlunoID int,
+	Nome varchar(50),
+	Sobrenome varchar(50),
+	Endereco varchar(150),
+	Cidade varchar(50)
+);
+```
+
+```
+INSERT INTO alunos (AlunoID, Nome, Sobrenome, Endereco, Cidade) VALUES (1, 'Carlos Alberto', 'da Silva', 'Av. que sobe e desce que ninguém conhece', 'Manaus');
+```
+
+
+<div align="Center"><figure>
+    <img src="./0-aux/img02.PNG" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
+Squeler
+
+<a name="item1.3"><h4>1.3 Armazenamento de Dados com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+
+No terceiro curso do módulo 1, foram interrompidos e excluídos todos os containers existentes. O foco deste curso foi a realização da montagem de armazenamento entre a maquina virtual e o container. Portanto, foi criado um container **MySQL** configurando o volume de armazenamento com o comando abaixo. Após executado, todos os arquivos da pasta `/var/lib/mysql` do container foi compartilhada para o diretório `/home/pedro19/docker/mysql` da maquina virtual.
+
+```
+docker run -e MYSQL_ROOT_PASSWORD=Senha123 --name mysql-A -d -p 3306:3306 -v /home/pedro19/docker/mysql:/var/lib/mysql mysql
+```
+
+Na sequência, foi acessado o **MySQL** pela maquina virtual e executado os mesmos comandos **SQL** do curso anterior. Criando o banco com o comando `create database aula` e acessado o banco com o comando `use aula`. Em seguida, o **MySQL** foi encerrado, o container foi interrompido e excluído, porém os dados ficaram salvos na pasta compartilhada. Então, foi criando um novo container **MySQL** com a mesma configuração de volume e acessado novamente para verificar se os dados do banco criado foram compartilhados corretamente.
+
+Sobre os armazenamentos no **Docker** foram apresentado três tipos: o **Bind Mount**, **Named Volumes** e **Dockerfile Volumes**. As montagens Bind são do tipo que já foram feitos, basicamente apenas vincula um determinado diretório ou arquivo do host dentro do container. Com o comando a seguir, foi executado um novo container de um **Linux Debian** onde ao invês de utilizar o parâmetro `-v` que cria um armazenamento do tipo **Bind**, foi utilizado o parâmetro `--mount`, onde é possível especificar qual tipo será usado, que neste caso, foi o **Bind**. Todos os arquivos da pasta especificada da maquina virtual foram compartilhados com a pasta determinada no container e vice-versa.
+
+```
+docker run --name Debian-A -dti --mount type=bind,src=/home/pedro19/docker/data,dst=/data debian
+```
+
+Em seguida, foi executado um outro container acrescentando o parâmetro `ro` no `--mount` que determinava que o container tivesse permissão de apenas leitura neste diretório.
+
+```
+docker run --name Debian-A -dti --mount type=bind,src=/home/pedro19/docker/data,dst=/data,ro debian
+```
+
+Com os comandos `docker volume ls` e `docker volume create` foi possível visualizar os volumes criados e criar um volume com nome `data-debian`. Este volume ficou armazenado na pasta padrão do **Docker** `/var/lib/docker/volumes`, a depender do usuário **Linux** utilizado pode ser que não esteja disponível a permissão à essa pasta. O comando abaixo foi executado, desta vez, foi criado um armazenamento do tipo **Named Volumes**, sendo necessário ao invés de por o path da pasta no parâmetro `src`, só colocar o nome do volume criado. Logo os dados foram armazenados em `var/lib/docker/volumes/data-debian`.
+
+```
+docker run --name Debian-C -dti --mount type=volume,src=data-debian,dst=/data debian
+```
+
+Em seguida, os três containers debian criados, foram interrompidos e excluídos, o volume criado também foi excluído. Para inspecionar um container foi utilizado o comando `docker inspect` e com ele, é possível obter informações sobre o **Mount** (montagem dos volumes), de qual tipo é e quais diretórios estão sendo vinculados. Além de analisar o compartilhamento de portas.
+
+Ao final do curso foram criados outros tipos de containers. O primeiro com imagem do **Apache HTTP (httpd)** para fornecer um serviço web. Antes de criar o container, foi criado uma pasta que foi utilziada para configuração de volume. Dentro desta pasta, foi criado um arquivo `index.html` com um pequeno script **HTML** que segue abaixo.
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Exemplo Apache</title>
+</head>
+<body>
+<h1> OK !! Apache funcionando!!!!! </h1>
+</body>
+</html>
+```
+
+Este arquivo foi a estrutura do site fornecido pelo servidor web. Com o comando seguinte foi criado o container configurando a porta e o volume.
+
+```
+docker run --name apache-A -d -p 80:80 --volume=/home/pedro19/docker/apache-A:/usr/local/apache2/htdocs httpd
+```
+
+Como a porta **80** já estava em uso com outro servidor **Apache HTTP**, este instalado direto na maquina virtual feito no bootcamp de **Linux**. Foi decidido executar outro mapeamento de portas que na ocasião ficou `-p 81:80` e foi possível acessar esse servidor web do container na porta **81** no navegador da maquina física **Windows**.
+
+Finalizando este curso, foi construído outro container, agora um servidor web **PHP-Apache**. Abaixo está o comando utilizado, porém também foi necessário alterar a porta, pois já estava em uso, neste caso foi executado na porta `-p 82:80`. Em seguida, está o mesmo script **HTML** utilizado no container anterior com adição de comandos **PHP**. Este foi inserido em um arquivo `index.php` dentro do diretório compartilhado `php-A`.
+
+```
+docker run --name php-A -d -p 80:80 --volume=/home/pedro19/docker/php-A:/var/www/html php:7.4-apache
+```
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Exemplo Apache</title>
+</head>
+<body>
+<h1> OK !! Apache funcionando!!!!! </h1>
+
+<?php
+phpinfo();
+?>
+
+</body>
+</html>
+```

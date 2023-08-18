@@ -1,8 +1,10 @@
 sca/
 dio/dados_unimed_1
 
-dio/docker/boot_006/*
-!dio/docker/boot_006/README.md
+
+
+dio/docker/boot_006/01-introducao_docker/*
+!dio/docker/boot_006/01-introducao_docker/README.md
 
 dio/linux/boot_003/02-linux/*
 !dio/linux/boot_003/02-linux/README.md
