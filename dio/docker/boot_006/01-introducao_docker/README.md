@@ -22,6 +22,9 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 - Virtualization: 
   - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
   - Docker <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+- Language:
+  - PHP <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
+  - HTML <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
 - Integrated Development Environment (IDE):
   - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
@@ -31,13 +34,18 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 - Command Line Interpreter (CLI):
   - bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
 - Server:
-  - Samba <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/samba.png" alt="samba" width="auto" height="25">
-  - Apache HTTP Server <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
+  - Apache HTTP Server (httpd) <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
   - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
+- Linux Tools:
+  - Apt e Apt-get (Geranciadores de Pacotes)
+  - Unzip (Descompactador)
+  - Nano (Editor de Texto)
+  - Stress (Testador de Estresse)
 - Others:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
   - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
+  - Ping
 
 ---
 
@@ -80,7 +88,7 @@ Por fim, com o comando `sudo apt-get update` foi atualizado a lista de repositó
 
 Uma outra forma de instalação foi realizada na maquina virtual **Linux Ubuntu** para servidor (a utilizada para esse bootcamp). Esta apenas baixava um script em **SH** com o comando `curl -fsSL https://get.docker.com -o get-docker.sh` e o executava com o comando `sudo sh ./get-docker.sh --dry-run`. Na ocasião, foi necessário liberar a permissão para execução.
 
-Também foi necessário liberar o usuário **Linux** criado para executar os comandos **Docker** sem permissão de super usuário (sudo). Para isso, foi executado `sudo usermod -aG docker ${USER}` que adiciona o usuário corrente ao grupo Docker no Linux. Caso este grupo não tenha sido criado automaticamente, o comando `sudo groupadd docker` cria o grupo referido. Após a adição do usuário ao grupo, foi necessário rodar o comando `newgrp docker` para que fosse atualizado e o sistema entendesse que o usuário adicionado ao grupo tinha permissão de execução.
+Também foi necessário liberar o usuário **Linux** criado para executar os comandos **Docker** sem permissão de super usuário (sudo). Para isso, foi executado `sudo usermod -aG docker ${USER}` que adiciona o usuário corrente ao grupo Docker no Linux. Caso este grupo não tenha sido criado automaticamente, o comando `sudo groupadd docker` cria o grupo referido. Após a adição do usuário ao grupo, foi necessário rodar o comando `newgrp docker` para que fosse atualizado e o sistema entendesse que o usuário adicionado ao grupo tinha permissão de execução. Caso queira mais informações de como instalar, consulte a [página oficial](https://docs.docker.com/engine/) do Docker.
 
 <a name="item1.2"><h4>1.2 Primeiros Passos com o Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
@@ -216,3 +224,30 @@ Abaixo a imagem 06 ilustra o acesso ao servidor web do container **PHP-Apache** 
 </figure></div><br>
 
 <a name="item1.4"><h4>1.4 Processamento, Logs e Rede com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+
+No último curso deste módulo, foi objetivado as questões de processamento de um container, os logs e rede. Em relação ao processamento comandos como `docker update` e `docker stats` foram apresentados, sendo o primeiro para alterar configurações de um container e o segundo para exibir os status do container referente aos processamentos. Foi criado um container Debian especificando limite de memória e porcentagem de uso da cpu com o comando `docker run --name Debian-B -dti -m 128M --cpus 0.2 debian`.
+
+Acessando esse container, foi realizado a atualização dos pacotes (`apt update`) e instalação do software **stress** (`apt install stress`) que serviu para executar um estresse no container. Com comando `stress --cpu 1 --vm-bytes 50m --vm 1 --vm-bytes 50m` foi realizado o stress, para verificar o status do container foi preciso abrir um novo terminal do **PuTTY** e conferir com o comando `docker stats`. Em seguida, foi executado novamente o stress do container, só que agora, um pouco maior com o comando `stress --cpu 1 --vm-bytes 150m --vm 1 --vm-bytes 100m`. As imagens 07 e 08 a seguir, mostram o estresses executado no container.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
+
+O comando `docker info` que foi apresentado neste curso, mostrou informações sobre o **Docker** instalado. Já os comandos `docker container logs` e `docker logs` exibiu informações sobre os logs do container especificado. Para verificar os processos em execução de um container os comandos utilizados foram o `docker container top` e `docker top`.
+
+O último assunto do curso foi sobre redes. Através do comando `docker network ls` todas as redes existentes foram listadas. A rede padrão é a rede **Host**, enquanto a rede **Bridge** faz a comunicação com a rede **Host**. Todo o container criado é adicionado a rede **Bridge** se não for especificado a rede deste container. Com o comando `docker network inspect` foi possível inspecionar essas duas redes e visualizar os containers adicionados a rede **Bridge**.
+
+Foi acessado um dos containers Debian e instalado o software **Ping** (`apt-get install -y iputils-ping`) para testar a comunicação de rede entre os containers através do comando `ping ip`, sendo o IP do outro container. Em seguida, foram exlcuídos esses dois containers Debian e criado uma rede com o comando `docker network create minha-rede`. Os containers excluídos foram recriados, mas agora informando a qual rede eles pertenciam (`docker run --name Debian-A -dti --network minha-rede debian` e `docker run --name Debian-B -dti --network minha-rede debian`). Com o comando `docker network inspect minha-rede` foi verificado a adição dos containers a rede criada como mostra na imagem 09 abaixo.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
+
+O intuito de criar uma rede é uma forma de isolar containers específicos de outros containers, permitindo comunicação apenas dos containers pertencentes a mesma rede.
