@@ -1,8 +1,8 @@
 # Formação Docker Fundamentals   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
 
-### Repository: [course](../../../)   
+### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="./">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
+### Software/Subject: <a href="../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_006 (Formação Docker Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
 
 #### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-03)%20Cert%20Linux%20do%20Zero%20PH%20DIO.pdf">Certificate</a>

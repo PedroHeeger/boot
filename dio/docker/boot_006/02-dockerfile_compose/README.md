@@ -1,14 +1,14 @@
-# Formação Docker Fundamentals - Módulo 1   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
+# Formação Docker Fundamentals - Módulo 2   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_006 (Formação Docker Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
-### Module: 1. Introdução ao Docker 
+### Module: 2. Docker File e Docker Compose
 
 ---
 
-This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Formação Docker Fundamentals**](../).
+This folder refers to Module 2 **Docker File e Docker Compose** from Bootcamp [**Formação Docker Fundamentals**](../).
 
 ### Theme:
 - Virtualization
@@ -25,6 +25,8 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 - Language:
   - PHP <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
   - HTML <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
+  - Golang
+  - Python
 - Integrated Development Environment (IDE):
   - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
@@ -49,18 +51,17 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 
 ---
 
-### Bootcamp Module 1 Structure
-1. <a name="item1">Introdução ao Docker</a><br>
-  1.1. <a href="#item1.1">Introdução e Laboratório Virtual</a><br>
-  1.2. <a href="#item1.2">Primeiros Passos com o Docker</a><br>
-  1.3. <a href="#item1.3">Armazenamento de Dados com Docker</a><br>
-  1.4. <a href="#item1.4">Processamento, Logs e Rede com Docker</a><br>
-  1.5. Materiais Complementares: Introdução ao Docker  
+### Bootcamp Module 2 Structure
+2. <a name="item2">Docker File e Docker Compose</a><br>
+  2.1. <a href="#item2.1">Definição e Criação de um Docker File</a><br>
+  2.2. <a href="#item2.2">Docker Compose</a><br>
+  2.3. <a href="#item2.3">Criando um Container de uma Aplicação WEB</a><br>
+  2.4. <a href="#item2.4">Materiais Complementares: Docker File e Docker Compose</a><br>
 
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
+O objetivo deste módulo do Bootcamp foi aprender a trabalhar com **Docker File** e **Docker Compose**. Além da realização de um desafio, no qual foi criado um container com a execução de uma aplicação web.
 
 ### Structure:
 A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
@@ -71,26 +72,150 @@ A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme f
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Introdução e Laboratório Virtual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.1"><h4>2.1 Definição e Criação de um Docker File</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
-Curso introdutório sobre virtualização, abordando conceitos como **modelo cliente-servidor**, **cloud computing**, **maquina virtual**, **microsserviços** e **containers**. Também foi explicado o que é o software **Docker** e que com ele, é possível desmembrar aplicações monolíticas em microsserviços operando em containers. Em relação a instalação do **Docker**, existem duas maneiras principais de instalá-lo. A primeira delas foi executada em uma maquina virtual **Linux Ubuntu** com ambiente gráfico criada no software **VM Virtual Box**. Esta consiste em executar os seguintes comandos **Linux**: `sudo apt-get update` (Para atualizar os repositórios do sistema), `sudo apt-get install ca-certificados curl gnupg` (Para baixar três softwares importantes para instalação do **Docker**), `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg` (Com o **Curl** e **gnupg** foi baixada a chave GPG e executada), com o comando abaixo foi adicionado ao repositório do **Linux** o link para baixar o **Docker** juntamente com a chave GPG.
+##### Primeiro Docker File
+Neste curso foi realizado a criação de um container a partir de uma imagem **Linux Ubuntu** (`docker run --name ubuntu-python -dti ubuntu`), onde foram instalados o **Python** e o editor de texto **Nano** para construir uma aplicação **Python**, cujo nome do arquivo foi `app.py` armazenado no diretório `/opt`. A função desta aplicação foi receber um nome que o usuário digitasse e imprimir esse nome na tela, o script segue abaixo.
 
 ```
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$UBUNTU_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+nome = input("Qual e o seu nome? ")
+print (nome)
 ```
 
-Por fim, com o comando `sudo apt-get update` foi atualizado a lista de repositórios novamente e em seguida, com o `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin` foram instalados os seguintes componentes do **Docker**: Docker-ce, Docker-ce-cli, Containerd.io, Docker-buildx-plugin e Docker-compose-plugin.
+Para executar a aplicação dentro do container utilizou o comando `python3 app.py`. Já fora do container, na maquina virtual **Linux Ubuntu**, utilizou-se o comando `docker exec -it ubuntu-python python3 /opt/app.py`. Este modo de execução foi o modo manual, onde foi necessário entrar no container e fazer as instalações. Porém, existe uma outra forma que é através de um arquivo **Docker File**.
 
-Uma outra forma de instalação foi realizada na maquina virtual **Linux Ubuntu** para servidor (a utilizada para esse bootcamp). Esta apenas baixava um script em **SH** com o comando `curl -fsSL https://get.docker.com -o get-docker.sh` e o executava com o comando `sudo sh ./get-docker.sh --dry-run`. Na ocasião, foi necessário liberar a permissão para execução.
+Um arquivo **Docker File** é um arquivo que utiliza uma imagem base e em cima dela é realizada toda a configuração desejada no container. Com este arquivo é possível construir uma imagem com as modificações realizadas e enviá-la para um repositório **Docker**, no caso, **Docker Registry**. Este repositório armazena todas as imagens **Docker** utilizadas para construção dos containers. Uma vez que a imagem está armazenada no **Docker Registry**, não é mais necessário fazer as configurações desejadas no container, pois estas, já estão salvas na imagem. Sendo necessário, apenas baixá-la e executar a criação do container, que vai ser desenvolvido o container com as modificações determinadas.
 
-Também foi necessário liberar o usuário **Linux** criado para executar os comandos **Docker** sem permissão de super usuário (sudo). Para isso, foi executado `sudo usermod -aG docker ${USER}` que adiciona o usuário corrente ao grupo Docker no Linux. Caso este grupo não tenha sido criado automaticamente, o comando `sudo groupadd docker` cria o grupo referido. Após a adição do usuário ao grupo, foi necessário rodar o comando `newgrp docker` para que fosse atualizado e o sistema entendesse que o usuário adicionado ao grupo tinha permissão de execução. Caso queira mais informações de como instalar, consulte a [página oficial](https://docs.docker.com/engine/) do Docker.
+Dando sequência neste curso, foi removido o container com aplicação de **Python** (`docker rm -f ubuntu-python`) para reconstruí-lo utilizado um arquivo **Docker File**. Para isso, foi criada a pasta `images/ubuntu-python` dentro do diretório `docker`, onde foi construído o arquivo de script da aplicação **Python** (`app.py`). Neste mesmo diretório, foi criado o arquivo `dockerfile` para configuração da imagem deseja, com o script abaixo.
 
-<a name="item1.2"><h4>1.2 Primeiros Passos com o Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+```
+FROM ubuntu
+
+RUN apt update && apt install -y python3 && apt clean
+
+COPY app.py /opt/app.py
+
+CMD python3 /opt/app.py
+```
+
+Com os dois arquivos prontos, foi realizado o build da imagem criada pelo arquivo **Docker File** com o comando `docker build -t ubuntu-python .`. O ponto neste comando anterior representa o diretório corrente, logo, o arquivo **Docker File** tem que está neste diretório, ou informar o path completo até o diretório onde está o arquivo. Para verificar esta imagem foi dado um `docker images` para listar todas as imagens. Por enquanto, está imagem só estava na maquina, ainda não tinha sido enviada para o repositório do **Docker**. Seguindo, foi reconstruído o container com base na imagem criada com o comando `docker run --name ubuntu-python -ti ubuntu-python`, assim que o container subiu, a aplicação foi executada apenas uma vez e encerrando o container logo após.
+
+##### Criando uma imagem personalizada do Apache
+A próxima etapa foi a criação de uma outra imagem, desta vez, uma imagem personalizada do **Apache HTTP**, funcionando como um container web server com arquivos **HTML**, **CSS**, **JavaScript** e arquivos de imagens construído o site. Para isso foi criado um diretório específico dentro de `images` chamado de `debian-apache` e dentro dele, um outro diretório chamado `site`. Dentro da pasta `site` foi realizado o download dos arquivos de construção do site com o comando `wget http://site1368633667.hospedagemdesites.ws/site1.zip`. Foi preciso descompactar este arquivo (`unzip site1.zip`), excluir o arquivo zip (`rm site1.zip`) e compactar com o software **Tar** (`tar -czf site.tar ./`). O novo arquivo compactado `site.tar` foi copiado para pasta anterior com o comando `cp site.tar ../` e o diretório site foi excluído com o comando `rm -Rf site`, permanecendo apenas o arquivo compactado no formato **Tar**.
+
+No mesmo diretório (`debian-apache`) foi criado o arquivo `dockerfile` conforme o script abaixo.
+
+```
+FROM debian
+
+RUN apt-get update && apt-get install -y apache2 && apt-get clean
+
+ENV APACHE_LOCK_DIR="var/lock"
+ENV APACHE_PID_FILE="var/run/apache2.pid"
+ENV APACHE_RUN_USER="www-data"
+ENV APACHE_RUN_GROUP="www-data"
+ENV APACHE_LOG_DIR="/var/log/apache2"
+
+ADD site.tar /var/www/html
+
+LABEL description = "Apache webserver 1.0"
+
+VOLUME /var/www/html
+
+EXPOSE 80
+
+ENTRYPOINT ["/usr/sbin/apachectl"]
+
+CMD ["-D", "FOREGROUND"]
+```
+
+A variável **APACHE_LOCK_DIR** é para evitar que tenha mais de uma execução de apache em um mesmo container. A variável **APACHE_PID_FILE** é o local onde vai ficar o arquivo **Pid** que é um arquivo que contém o número de identificação do processo (pid). Já o **APACHE_RUN_USER** e o **APACHE_RUN_GROUP** é o usuário e o grupo que irá executar o Apache. Enquanto a variável **APACHE_LOG_DIR** é o diretório de logs. Para buildar a imagem foi utilziado o comando `docker image build -t debian-apache:1.0 .`. Em seguida, o container foi criado com o comando `docker run --name debian-apache -dti -p 80:80 debian-apache:1.0`
+
+###### Criando imagens personalizadas a partir de imagens de linguagens de programação
+
+Essa etapa iniciou com download da imagem do **Python** e a criação de um diretório dentro da pasta `images` chamado `python`, onde foi elaborado a aplicação `app.py` que foi a mesma da executada anteriormente. Em seguida, no mesmo diretório `python` foi criado o arquivo `dockerfile` conforme o segundo script abaixo.
+
+```
+nome = input("Qual e o seu nome? ")
+print (nome)
+```
+
+```
+FROM python
+
+WORKDIR /usr/src/app
+
+COPY app.py /usr/src/app
+
+CMD ["python", "./app.py"]
+```
+
+Com o arquivo **Docker File** foi realizado o build da imagem (`docker image build -t app-python:1.0 .`) e executado o container com a imagem criada (`docker run --name app-python -ti app-python:1.0`)
+
+###### Gerando uma imagem MULTISTAGE
+
+Primeiro foi realizado a criação da pasta `golang` no diretório `images` e baixado as imagens base `docker pull golang` e `docker pull alpine`. Dentro do diretório `golang` foi construída a aplicação `app.go` conforme o script a seguir. Essa aplicação funcionou da mesma forma que a da linguagem **Python**. O arquivo de configuração da imagem `dockerfile` segue após o script da aplicação.
+
+```
+package main
+import (
+    "fmt"
+)
+
+func main() {
+  fmt.Println("Qual é o seu nome:? ")
+  var name string
+  fmt.Scanln(&name)
+  fmt.Printf("Oi, %s! Eu sou a linguagem Go! ", name)
+}
+```
+
+```
+FROM golang as exec
+
+COPY app.go /go/src/app/
+
+ENV GO111MODULE=auto
+
+WORKDIR /go/src/app
+
+RUN go build -o app.go .
+
+FROM alpine
+
+WORKDIR /appexec
+
+COPY --from=exec /go/src/app /appexec
+RUN chmod -R 755 /appexec
+ENTRYPOINT ./app.go
+```
+
+A variável `GO111MODULE=auto` permite gerar o arquivo executável a partir de qualquer local dentro do container. Para criar a imagem utilizou o comando `docker image build -t app-go:1.0 .`. Já para criar o container foi através do comando `docker run --name app-go -ti app-go:1.0`. Foi percebido que durante a construção da imagem, foi criado um estágio a partir da imagem **Golang**, sendo esse estágio utilizado na construção da imagem **Alpine**. Como a imagem **Alpine** utiliza pouco espaço, a imagem construída fica bem leve em relação a utilização da imagem **Golang**.
+
+###### Realizando o upload de imagens para o Hub do Docker
+
+Para enviar uma imagem para o **Docker Hub**, que é uma plataforma de **Docker Registry** onde as imagens de diversos softwares são armazenadas em repositórios, é necessário criar uma conta na plataforma. Uma conta gratuíta possui o direito de apenas um repositório privado, porém ilimitados repositórios públicos. Primeiro passo feito foi realizar o login no **Docker Hub** tanto pelo navegador como pelo CLI com o comando `docker login` informando o login e a senha, ou, em alguns casos, o **personal acess token (pat)**.
+
+Após logado, foi removido a última imagem criada (`docker image rm app-go:1.0`), e recriada novamente porém a nomeclatura da imagem teve que possuir o nome do usuário do **Docker Hub** na frente, que é uma padronização adotada na plataforma. O comando utilizado foi o `docker image build -t pedroheeger/app-go:1.0 .`. Para enviar para o **Docker Hub** utilizou o comando `docker push pedroheeger/app-go:1.0` e com isso, a imagem ficou disponível no repositório e qualquer usuário poderia baixá-la.
+
+###### Registry Criando um servidor de imagens
+
+Nesta última etapa pode ter um pouco de confusão, pois a maquina virtual utilizada durante esse bootcamp foi um **Linux Ubuntu** para servidor, e o servidor de imagens acabou sendo criado em outra maquina virtual, também no **VM Virtual Box**, porém foi em uma maquina **Linux Ubuntu** com ambiente gráfico. Então, a maquina com ambiente gráfico acabou tornando servidor e a maquina de servidor um cliente. Isso só aconteceu, por só ter essas duas maquinas no momento, e a do servidor já está sendo usada como a maquina padrão deste bootcamp. Mas o correto seria ao contrário, apesar de não ter interferido na atividade.
+
+Para criar um repositório local de imagens, ou seja, um servidor de imagens **Docker** utilizou o comando `docker pull registry:2` baixando a imagem `registry` em outra maquina virtual, esta um **Linux Ubuntu** com ambiente gráfico criada também na **VM Virtual Box**. O container foi desenvolvido com o comando `docker run -d -p 5000:5000 --restart=always --name registry registry:2`. De volta a maquina virtual anterior **Linux Ubuntu** para servidor, utilizou a imagem criada `app-python` anteriormente para ser disponibilizada no servidor. Portanto, com o comando `docker image tag 3518f3a713fc 192.168.5.172:5000/app-python:1.0` foi duplicado essa imagem com uma nova tag, no qual o nome dela começa com o IP da outra maquina virtual usada como servidor.
+
+Ainda na maquina virtual **Linux Ubuntu** para servidor, foi verificado as imagens existentes no servidor com o comando `curl 192.168.5.172:5000/v2/_catalog`. Para enviar a imagem para o servidor o comando `docker push 192.168.5.172:5000/app-python:1.0` foi executado. Pode acontcer um pequeno problema informando que o servidor está retornando HTTP, sendo que o ideal é que retornasse HTTPS. Dessa forma, foi preciso informar ao **Docker** que esse IP era seguro, pois estava na rede interna. Para isso foi aberto com o comando `nano /etc/docker/daemon.json` o arquivo **JSON** vazio e informado o número de IP do servidor (maquina virtual com ambiente gráfico) através do comando `{ "insecure-registries":["192.168.5.172:5000"] }`. Em seguida, foi necessário reiniciar o **Docker** com o comando `systemctl restart docker` para executar novamente o comando `docker push 192.168.5.172:5000/app-python:1.0`. Abaixo é ilustrado (imagem 02) a imagem **Docker** disponível no servidor.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
+
+Assim a imagem foi removida da maquina padrão e foi baixada novamente, agora, a partir do servidor construído no container registry da outra maquina virtual. Com o container interrompido, a maquina padrão não consegue acessar a imagem.
+
+<a name="item2.2"><h4>2.2 Docker Compose</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
 No segundo curso, foram apresentados alguns comandos básicos de docker, tanto da versão simplificada (velha sintaxe) como também da versão completa (nova sintaxe), alguns desses utilizados foram: `docker pull` (Para baixar images do **Docker Registry**), `docker run` ou `docker container run` (Para criar um container), `docker ps` e `docker ps -a` ou `docker container ls` e `docker container ls -a` (Para listar os containers ativos e todos os containers existentes), `docker images` ou `docker image ls` (Para listar imagens), `docker run -it` ou `docker container run -it` (Para criar e acessar o container), `docker exec` ou `docker container exec` (Para executar comandos no container docker sem acessá-los), `docker exec -it` ou `docker container exec -it` (Para executar o comando que acessa o container com um shell determinado), `docker --help` ou `docker container --help` (Para exibir as informações de ajuda), `docker rm` ou `docker container -rm` (Para remover containers), `docker stop` ou `docker container stop` (Para interromper containers), `docker rmi` ou `docker image rm` (Para remover imagens), `docker cp` (Para copiar um arquivo do sistema de arquivos local para o container), entre outros.
 
