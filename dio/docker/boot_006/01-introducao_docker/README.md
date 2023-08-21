@@ -32,19 +32,24 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Command Line Interpreter (CLI):
-  - bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
+  - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
+  - ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="zshell" width="auto" height="25">
+  - Oh My ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="oh_my_zshell" width="auto" height="25">
 - Server:
   - Apache HTTP Server (httpd) <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
   - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
 - Linux Tools:
   - Apt e Apt-get (Geranciadores de Pacotes)
   - Unzip (Descompactador)
-  - Nano (Editor de Texto)
   - Stress (Testador de Estresse)
+  - Systemctl
+  - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="nano" width="auto" height="25">
+  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="curl" width="auto" height="25">
+- Database Administration Tool:
+  - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
 - Others:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
   - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
-  - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
   - Ping
 
 ---
@@ -66,7 +71,7 @@ O objetivo deste módulo do Bootcamp foi aprender sobre os conceitos de virtuali
 A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="./0-aux/img01.PNG" alt="img01"><br>
+    <img src="../0-aux/md1-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
@@ -100,7 +105,7 @@ Alguns contaiers específicos foram criados ao longo do curso, como: Ubuntu, Deb
 
 Com o container do **MySQL** em execução, foi realizado o acesso e ao software do **MySQL** dentro do container. Então foi criado um banco de dados de teste de nome `aula` com o comando `create database aula;`. Após sair do **MySQL** e do container, foi efetuado o acesso ao **MySQL** pela maquina virtual, pois já que estavam na mesma rede do container e a porta **3306** foi liberada através da ligação de portas construída, foi possível realizar o acesso.
 
-Devido a uma configuração feita no adaptador de rede (**modo bridge**) da maquina virtual **Linux Ubuntu** para servidor criada na **VM Virtual Box**, foi possível comunicar com a maquina virtual, logo, foi possível então, acessar a aplicação de banco de dados do **MySQL** que estava no container pela maquina física **Windows** através de softwares de **GUIs** de banco de dados como **Dbeaver** ou **MySQL Workbench**. Para isso foi necessário do IP da maquina virtual que era o servidor host, o nome do banco criado e a senha para o usuário root especificada. Assim, foi realizado o acesso ao banco **aula** pelo software **Dbeaver** na maquina física, onde foi criado uma tabela de nome **alunos** e foi inserida uma linha de dados conforme os scripts **SQL** abaixo.
+Devido a uma configuração feita no adaptador de rede (**modo bridge**) da maquina virtual **Linux Ubuntu** para servidor criada na **VM Virtual Box**, foi possível comunicar com a maquina virtual, logo, foi possível então, acessar a aplicação de banco de dados do **MySQL** que estava no container pela maquina física **Windows** através de softwares de **GUIs** de banco de dados como **Dbeaver** ou **MySQL Workbench**. Para isso foi necessário do IP da maquina virtual que era o servidor host, o nome do banco criado e a senha para o usuário root especificada. Assim, foi realizado o acesso ao banco **aula** pelo software **Dbeaver** na maquina física, onde foi criado uma tabela de nome **alunos** e foi inserida uma linha de dados conforme os scripts **SQL** abaixo ([`sql.sql`](./sql.sql)).
 
 ```
 CREATE TABLE alunos (
@@ -164,7 +169,7 @@ docker run --name Debian-C -dti --mount type=volume,src=data-debian,dst=/data de
 
 Em seguida, os três containers debian criados, foram interrompidos e excluídos, o volume criado também foi excluído. Para inspecionar um container foi utilizado o comando `docker inspect` e com ele foi possível obter informações sobre o **Mount** (montagem dos volumes), o seu tipo e quais diretórios foram vinculados. Além de analisar o compartilhamento de portas.
 
-Ao final do curso foram criados outros tipos de containers. O primeiro com imagem do **Apache HTTP (httpd)** para fornecer um serviço web. Antes de criar o container, foi criado uma pasta que foi utilizada para configuração de volume. Dentro desta pasta, foi criado um arquivo `index.html` com um pequeno script **HTML** que segue abaixo. Este arquivo foi compartilhado para o diretório padrão do **Apache HTTP** que é `/usr/local/apache2/htdocs`.
+Ao final do curso foram criados outros tipos de containers. O primeiro com imagem do **Apache HTTP (httpd)** para fornecer um serviço web. Antes de criar o container, foi criado uma pasta que foi utilizada para configuração de volume. Dentro desta pasta, foi criado um arquivo [`index.html`](index.html) com um pequeno script **HTML** que segue abaixo. Este arquivo foi compartilhado para o diretório padrão do **Apache HTTP** que é `/usr/local/apache2/htdocs`.
 
 ```
 <!DOCTYPE html>
@@ -192,7 +197,7 @@ Como a porta **80** já estava em uso com outro servidor **Apache HTTP**, este i
     <figcaption>Imagem 05.</figcaption>
 </figure></div><br>
 
-Finalizando este curso, foi construído outro container, agora um servidor web **PHP-Apache**. Abaixo está o comando utilizado, porém também foi necessário alterar a porta, pois já estava em uso, neste caso foi executado na porta `-p 82:80`. Em seguida, está o mesmo script **HTML** utilizado no container anterior com adição de comandos **PHP**. Este foi inserido em um arquivo `index.php` dentro do diretório compartilhado `php-A`. O diretório padrão do **PHP-Apache** é o `/var/www/html`.
+Finalizando este curso, foi construído outro container, agora um servidor web **PHP-Apache**. Abaixo está o comando utilizado, porém também foi necessário alterar a porta, pois já estava em uso, neste caso foi executado na porta `-p 82:80`. Em seguida, é exibido o mesmo script **HTML** utilizado no container anterior com adição de comandos **PHP**. Este foi inserido em um arquivo [`index.php`](./index.php) dentro do diretório compartilhado `php-A`. O diretório padrão do **PHP-Apache** é o `/var/www/html`.
 
 ```
 docker run --name php-A -d -p 80:80 --volume=/home/pedro19/docker/php-A:/var/www/html php:7.4-apache

@@ -40,7 +40,7 @@
   1.4. Processamento, Logs e Rede com Docker   
   1.5. Materiais Complementares: Introdução ao Docker  
 
-2. [Docker File e Docker Compose](./02-linux/)   
+2. [Docker File e Docker Compose](./02-dockerfile_compose/)   
   2.1. Definição e Criação de um Docker File   
   2.2. Docker Compose   
   2.3. Criando um Container de uma Aplicação WEB   
