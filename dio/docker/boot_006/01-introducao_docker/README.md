@@ -1,9 +1,9 @@
-# Formação Docker Fundamentals - Módulo 1   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
+# Formação Docker Fundamentals - Módulo 1   <img src="../0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
-### Bootcamp: <a href="../">boot_006 (Formação Docker Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_006 (Formação Docker Fundamentals)   <img src="../0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
 ### Module: 1. Introdução ao Docker 
 
 ---
@@ -32,6 +32,7 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Command Line Interpreter (CLI):
+  - Sh <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="sh" width="auto" height="25">
   - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
   - ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="zshell" width="auto" height="25">
   - Oh My ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="oh_my_zshell" width="auto" height="25">

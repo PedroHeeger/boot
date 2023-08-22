@@ -1,9 +1,9 @@
-# Formação Docker Fundamentals - Módulo 2   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
+# Formação Docker Fundamentals - Módulo 2   <img src="../0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
-### Bootcamp: <a href="../">boot_006 (Formação Docker Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_006 (Formação Docker Fundamentals)   <img src="../0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
 ### Module: 2. Docker File e Docker Compose
 
 ---
@@ -69,7 +69,7 @@ This folder refers to Module 2 **Docker File e Docker Compose** from Bootcamp [*
   2.1. <a href="#item2.1">Definição e Criação de um Docker File</a><br>
   2.2. <a href="#item2.2">Docker Compose</a><br>
   2.3. <a href="#item2.3">Criando um Container de uma Aplicação WEB</a><br>
-  2.4. <a href="#item2.4">Materiais Complementares: Docker File e Docker Compose</a><br>
+  2.4. Materiais Complementares: Docker File e Docker Compose
 
 ---
 
@@ -326,7 +326,7 @@ Na pasta `Documentos` dentro de `Arquivos` foi adicionado um arquivo de imagem a
     <figcaption>Imagem 11.</figcaption>
 </figure></div><br>
 
-<a name="item2.3"><h4>2.3 Criando um Container de uma Aplicação WEB</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.3"><h4>2.3 Criando um Container de uma Aplicação WEB</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
 
 O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
 

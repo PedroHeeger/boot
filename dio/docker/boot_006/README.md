@@ -36,7 +36,7 @@
 1. [Introdução ao Docker](./01-introducao_docker/)   
   1.1. Introdução e Laboratório Virtual  
   1.2. Primeiros Passos com o Docker   
-  1.3.   
+  1.3. Armazenamento de Dados com Docker  
   1.4. Processamento, Logs e Rede com Docker   
   1.5. Materiais Complementares: Introdução ao Docker  
 
