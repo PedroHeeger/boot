@@ -32,24 +32,22 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Command Line Interpreter (CLI):
-  - Sh <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="sh" width="auto" height="25">
+  - Sh
   - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
-  - ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="zshell" width="auto" height="25">
-  - Oh My ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="oh_my_zshell" width="auto" height="25">
+  - ZShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zshell.png" alt="zshell" width="auto" height="25">
+  - Oh My ZShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/oh_my_zshell.png" alt="oh_my_zshell" width="auto" height="25">
 - Server:
   - Apache HTTP Server (httpd) <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
   - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
 - Linux Tools:
   - Apt e Apt-get (Geranciadores de Pacotes)
-  - Unzip (Descompactador)
   - Stress (Testador de Estresse)
-  - Systemctl
-  - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="nano" width="auto" height="25">
-  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="curl" width="auto" height="25">
+  - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
+  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
 - Database Administration Tool:
   - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
 - Others:
-  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
+  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
   - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - Ping
 
@@ -79,7 +77,7 @@ A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme f
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Introdução e Laboratório Virtual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Introdução e Laboratório Virtual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
 
 Curso introdutório sobre virtualização, abordando conceitos como **modelo cliente-servidor**, **cloud computing**, **maquina virtual**, **microsserviços** e **containers**. Também foi explicado o que é o software **Docker** e que com ele, é possível desmembrar aplicações monolíticas em microsserviços operando em containers. Em relação a instalação do **Docker**, existem duas maneiras principais de instalá-lo. A primeira delas foi executada em uma maquina virtual **Linux Ubuntu** com ambiente gráfico criada no software **VM Virtual Box**. Esta consiste em executar os seguintes comandos **Linux**: `sudo apt-get update` (Para atualizar os repositórios do sistema), `sudo apt-get install ca-certificados curl gnupg` (Para baixar três softwares importantes para instalação do **Docker**), `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg` (Com o **Curl** e **gnupg** foi baixada a chave GPG e executada), com o comando abaixo foi adicionado ao repositório do **Linux** o link para baixar o **Docker** juntamente com a chave GPG.
 
@@ -96,7 +94,7 @@ Uma outra forma de instalação foi realizada na maquina virtual **Linux Ubuntu*
 
 Também foi necessário liberar o usuário **Linux** criado para executar os comandos **Docker** sem permissão de super usuário (sudo). Para isso, foi executado `sudo usermod -aG docker ${USER}` que adiciona o usuário corrente ao grupo Docker no Linux. Caso este grupo não tenha sido criado automaticamente, o comando `sudo groupadd docker` cria o grupo referido. Após a adição do usuário ao grupo, foi necessário rodar o comando `newgrp docker` para que fosse atualizado e o sistema entendesse que o usuário adicionado ao grupo tinha permissão de execução. Caso queira mais informações de como instalar, consulte a [página oficial](https://docs.docker.com/engine/) do Docker.
 
-<a name="item1.2"><h4>1.2 Primeiros Passos com o Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.2"><h4>1.2 Primeiros Passos com o Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Primeiros%20Passos%20com%20o%20Docker%20PH%20DIO.pdf">Certificate</a>
 
 No segundo curso, foram apresentados alguns comandos básicos de docker, tanto da versão simplificada (velha sintaxe) como também da versão completa (nova sintaxe), alguns desses utilizados foram: `docker pull` (Para baixar images do **Docker Registry**), `docker run` ou `docker container run` (Para criar um container), `docker ps` e `docker ps -a` ou `docker container ls` e `docker container ls -a` (Para listar os containers ativos e todos os containers existentes), `docker images` ou `docker image ls` (Para listar imagens), `docker run -it` ou `docker container run -it` (Para criar e acessar o container), `docker exec` ou `docker container exec` (Para executar comandos no container docker sem acessá-los), `docker exec -it` ou `docker container exec -it` (Para executar o comando que acessa o container com um shell determinado), `docker --help` ou `docker container --help` (Para exibir as informações de ajuda), `docker rm` ou `docker container -rm` (Para remover containers), `docker stop` ou `docker container stop` (Para interromper containers), `docker rmi` ou `docker image rm` (Para remover imagens), `docker cp` (Para copiar um arquivo do sistema de arquivos local para o container), entre outros.
 
@@ -106,7 +104,7 @@ Alguns contaiers específicos foram criados ao longo do curso, como: Ubuntu, Deb
 
 Com o container do **MySQL** em execução, foi realizado o acesso e ao software do **MySQL** dentro do container. Então foi criado um banco de dados de teste de nome `aula` com o comando `create database aula;`. Após sair do **MySQL** e do container, foi efetuado o acesso ao **MySQL** pela maquina virtual, pois já que estavam na mesma rede do container e a porta **3306** foi liberada através da ligação de portas construída, foi possível realizar o acesso.
 
-Devido a uma configuração feita no adaptador de rede (**modo bridge**) da maquina virtual **Linux Ubuntu** para servidor criada na **VM Virtual Box**, foi possível comunicar com a maquina virtual, logo, foi possível então, acessar a aplicação de banco de dados do **MySQL** que estava no container pela maquina física **Windows** através de softwares de **GUIs** de banco de dados como **Dbeaver** ou **MySQL Workbench**. Para isso foi necessário do IP da maquina virtual que era o servidor host, o nome do banco criado e a senha para o usuário root especificada. Assim, foi realizado o acesso ao banco **aula** pelo software **Dbeaver** na maquina física, onde foi criado uma tabela de nome **alunos** e foi inserida uma linha de dados conforme os scripts **SQL** abaixo ([`sql.sql`](./sql.sql)).
+Devido a uma configuração feita no adaptador de rede (**modo bridge**) da maquina virtual **Linux Ubuntu** para servidor criada na **VM Virtual Box**, foi possível comunicar com a maquina virtual, logo, foi possível então, acessar a aplicação de banco de dados do **MySQL** que estava no container pela maquina física **Windows** através de softwares de **GUIs** de banco de dados como **Dbeaver** ou **MySQL Workbench**. Para isso foi necessário do IP da maquina virtual que era o servidor host, o nome do banco criado e a senha para o usuário root especificada. Assim, foi realizado o acesso ao banco **aula** pelo software **Dbeaver** na maquina física, onde foi criado uma tabela de nome **alunos** e foi inserida uma linha de dados conforme os scripts **SQL** abaixo ([sql.sql](./sql.sql)).
 
 ```
 CREATE TABLE alunos (
@@ -140,7 +138,7 @@ As três imagens a seguir (02, 03 e 04) ilustram os acessos ao banco de dados **
 </figure></div><br>
 
 
-<a name="item1.3"><h4>1.3 Armazenamento de Dados com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.3"><h4>1.3 Armazenamento de Dados com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Armazenamento%20de%20Dados%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
 No terceiro curso do módulo 1, foram interrompidos e excluídos todos os containers existentes. O foco deste curso foi a realização da montagem de armazenamento entre a maquina virtual e o container. Portanto, foi criado um container **MySQL** configurando o volume de armazenamento com o comando abaixo. Após executado, todos os arquivos da pasta `/var/lib/mysql` do container foram compartilhados para o diretório `/home/pedro19/docker/mysql` da maquina virtual. Assim como todos arquivos da maquina virtual seriam compartilhados para o container.
 
@@ -170,7 +168,7 @@ docker run --name Debian-C -dti --mount type=volume,src=data-debian,dst=/data de
 
 Em seguida, os três containers debian criados, foram interrompidos e excluídos, o volume criado também foi excluído. Para inspecionar um container foi utilizado o comando `docker inspect` e com ele foi possível obter informações sobre o **Mount** (montagem dos volumes), o seu tipo e quais diretórios foram vinculados. Além de analisar o compartilhamento de portas.
 
-Ao final do curso foram criados outros tipos de containers. O primeiro com imagem do **Apache HTTP (httpd)** para fornecer um serviço web. Antes de criar o container, foi criado uma pasta que foi utilizada para configuração de volume. Dentro desta pasta, foi criado um arquivo [`index.html`](index.html) com um pequeno script **HTML** que segue abaixo. Este arquivo foi compartilhado para o diretório padrão do **Apache HTTP** que é `/usr/local/apache2/htdocs`.
+Ao final do curso foram criados outros tipos de containers. O primeiro com imagem do **Apache HTTP (httpd)** para fornecer um serviço web. Antes de criar o container, foi criado uma pasta que foi utilizada para configuração de volume. Dentro desta pasta, foi criado um arquivo [index.html](index.html) com um pequeno script **HTML** que segue abaixo. Este arquivo foi compartilhado para o diretório padrão do **Apache HTTP** que é `/usr/local/apache2/htdocs`.
 
 ```
 <!DOCTYPE html>
@@ -198,7 +196,7 @@ Como a porta **80** já estava em uso com outro servidor **Apache HTTP**, este i
     <figcaption>Imagem 05.</figcaption>
 </figure></div><br>
 
-Finalizando este curso, foi construído outro container, agora um servidor web **PHP-Apache**. Abaixo está o comando utilizado, porém também foi necessário alterar a porta, pois já estava em uso, neste caso foi executado na porta `-p 82:80`. Em seguida, é exibido o mesmo script **HTML** utilizado no container anterior com adição de comandos **PHP**. Este foi inserido em um arquivo [`index.php`](./index.php) dentro do diretório compartilhado `php-A`. O diretório padrão do **PHP-Apache** é o `/var/www/html`.
+Finalizando este curso, foi construído outro container, agora um servidor web **PHP-Apache**. Abaixo está o comando utilizado, porém também foi necessário alterar a porta, pois já estava em uso, neste caso foi executado na porta `-p 82:80`. Em seguida, é exibido o mesmo script **HTML** utilizado no container anterior com adição de comandos **PHP**. Este foi inserido em um arquivo [index.php](./index.php) dentro do diretório compartilhado `php-A`. O diretório padrão do **PHP-Apache** é o `/var/www/html`.
 
 ```
 docker run --name php-A -d -p 80:80 --volume=/home/pedro19/docker/php-A:/var/www/html php:7.4-apache
@@ -229,7 +227,7 @@ Abaixo a imagem 06 ilustra o acesso ao servidor web do container **PHP-Apache** 
     <figcaption>Imagem 06.</figcaption>
 </figure></div><br>
 
-<a name="item1.4"><h4>1.4 Processamento, Logs e Rede com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.4"><h4>1.4 Processamento, Logs e Rede com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
 No último curso deste módulo, foi objetivado as questões de processamento de um container, os logs e rede. Em relação ao processamento comandos como `docker update` e `docker stats` foram apresentados, sendo o primeiro para alterar configurações de um container e o segundo para exibir os status do container referente aos processamentos. Foi criado um container Debian especificando limite de memória e porcentagem de uso da cpu com o comando `docker run --name Debian-B -dti -m 128M --cpus 0.2 debian`.
 

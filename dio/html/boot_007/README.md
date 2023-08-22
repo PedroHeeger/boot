@@ -1,16 +1,16 @@
-# Formação Docker Fundamentals   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
+# Formação HTML Web Developer   <img src="./0-aux/logo_boot.png" alt="boot_007" width="auto" height="45">
 
 ### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
-### Bootcamp: <a href="./">boot_006 (Formação Docker Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
+### Software/Subject: <a href="../">html   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25"></a>
+### Bootcamp: <a href="./">boot_007 (Formação HTML Web Developer)   <img src="./0-aux/logo_boot.png" alt="boot_007" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/virtualization/docker/(23-08-22)%20Cert%20Formacao%20Docker%20Fundamentals%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-03)%20Cert%20Linux%20do%20Zero%20PH%20DIO.pdf">Certificate</a>
 
 ---
 
 ### Theme:
-- Virtualization
+- ??
 
 ### Used Tools:
 - Operating System (OS): 
@@ -21,6 +21,8 @@
 - Virtualization: 
   - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
   - Docker <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+- Language:
+  - HTML <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
 - Integrated Development Environment (IDE):
   - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
@@ -33,34 +35,36 @@
 ---
 
 ### Bootcamp Structure
-1. [Introdução ao Docker](./01-introducao_docker/)   
-  1.1. Introdução e Laboratório Virtual  
-  1.2. Primeiros Passos com o Docker   
-  1.3. Armazenamento de Dados com Docker  
-  1.4. Processamento, Logs e Rede com Docker   
-  1.5. Materiais Complementares: Introdução ao Docker  
+1. [Primeiros Passos com HTML](./01-introducao_docker/)   
+  1.1. Entendendo Comunicação Client x Server  
+  1.2. Introdução ao HTML na Prática   
+  1.3. Como Entregar seu Desafio de Projeto  
+  1.4. Criar Uma Página Web Utilizando as Tags Aprendidas   
+  1.5. Materiais Complementares - Primeiros Passos com HTML  
 
-2. [Docker File e Docker Compose](./02-dockerfile_compose/)   
-  2.1. Definição e Criação de um Docker File   
-  2.2. Docker Compose   
-  2.3. Criando um Container de uma Aplicação WEB   
-  2.4. Materiais Complementares: Docker File e Docker Compose   
+2. [HTML I: Conceitos Básicos](./02-dockerfile_compose/)   
+  2.1. Trabalhando com Formulários em HTML   
+  2.2. Estruturando seu HTML + Formatações   
+  2.3. Trabalhando com Mídias utilizando HTML   
+  2.4. Criando Tabelas com HTML   
+  2.5. Criando seu Primeiro Site Completo com HTML
+  2.6. Materiais Complementares - Conceitos Básicos
 
-3. [Trabalhando com Cluster e Docker Swarm](./03-docker_swarm/)   
-  3.1. Criando um Cluster com o Docker Swarm   
-  3.2. Load Balancer  
-  3.3. Definição de um Cluster Swarm Local com o Vagrant   
-  3.4. Materiais Complementares: Cluster e Docker Swarm   
-  3.5. Avalie a Formação de Docker Fundamentals   
+3. [HTML II: Ampliando o Conhecimento](./03-docker_swarm/)   
+  3.1. Entendendo HTML Semântico   
+  3.2. HTML: Recursos Especiais  
+  3.3. Recriando o Wikipedia com Layout Moderno   
+  3.4. Materiais Complementares - Ampliando Conhecimento  
+  3.5. Avalie a Formação de HTML Web Developer   
+  3.6.   
+  3.7. Avalie a Formação CSS Web Developer
 
 ---
 
 ### Objective:
 Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO**.
   
->Nesta Formação você irá aprender a criar, testar e implementar contêineres Docker com atividades práticas e reais. Você aprenderá Docker começando por entender o que é um contêiner e como é o seu funcionamento. Irá realizar atividades práticas em laboratórios virtuais para entender como os contêineres são criados e implementados em uma infraestrutura real. Depois de entender o que é um contêiner, você aprenderá como trabalhar com eles usando comandos básicos do CLI do Docker.
-
->A seguir, você aprenderá a criar suas próprias imagens personalizadas e como armazená-las na nuvem ou em uma infraestrutura local. A Formação também aborda a criação de um cluster de contêineres utilizando ferramentas específicas da AWS e também a criar um cluster de contêineres em uma infraestrutura local.
+>Você quer começar no mundo do Front-end? Então essa é a Formação perfeita para você começar a sua jornada: entenda como trabalhar com HTML, a base para criar suas primeiras páginas WEB! Aprenda na prática a como estruturar a marcação da sua página e como funciona cada tag, conheça os elementos semânticos e outras boas práticas na hora de construir sua primeira página.
 
 ### Structure:
 - A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. 
@@ -75,4 +79,4 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Todo o projeto foi realizado em uma maquina virtual **Linux Ubuntu** para servidor, criada no software **VM Virtual Box**, foi nesta maquina que foi instalado o software **Docker** e executado os containers. Em alguns casos, foram utilizados a maquina física **windows** como apoio, o ambiente de cloud **AWS** e outras maquinas virtuais criadas no **VM Virtual Box**. Em relação as atividades, cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada uma está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
+Todo o projeto foi desenvolvido em uma maquina virtual **Linux Ubuntu** para servidor, criada no software **VM Virtual Box**, foi nesta maquina que foi instalado o software **Docker** e executado os containers. Em relação ao desenvolvimento, cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.

@@ -32,27 +32,25 @@ This folder refers to Module 3 **Trabalhando com Cluster e Docker Swarm** from B
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Command Line Interpreter (CLI):
-  - Sh <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="sh" width="auto" height="25">
+  - Sh
   - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
-  - ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="zshell" width="auto" height="25">
-  - Oh My ZShell <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="oh_my_zshell" width="auto" height="25">
+  - Windows PowerShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
 - Server:
   - Apache HTTP Server (httpd) <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
   - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
+  - NFS Server <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nfs_server.jpeg" alt="nfs_server" width="auto" height="25">
 - Linux Tools:
   - Apt e Apt-get (Geranciadores de Pacotes)
-  - Unzip (Descompactador)
-  - Stress (Testador de Estresse)
   - Systemctl
-  - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="nano" width="auto" height="25">
-  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="curl" width="auto" height="25">
+  - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
+  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
 - Database Administration Tool:
   - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
 - Others:
-  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" width="auto" height="25">
+  - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
   - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
   - Vagrant <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
-  - Ping
+  - Loader.io <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
 
 ---
 
@@ -67,7 +65,7 @@ This folder refers to Module 3 **Trabalhando com Cluster e Docker Swarm** from B
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
+O objetivo deste módulo do Bootcamp foi aprender sobre o assunto clusterização, como criar clusters com o **Docker Swarm** tanto no ambiente de cloud **AWS** como no ambiente local com utilização dos softwares **Vagrant** e **VM Virtual Box**, além de entender como realizar o balanceamento das cargas (**Load Balancer**).
 
 ### Structure:
 A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
@@ -80,13 +78,13 @@ A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme f
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item3.1"><h4>3.1 Criando um Cluster com o Docker Swarm</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.1"><h4>3.1 Criando um Cluster com o Docker Swarm</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
 
 No primeiro curso deste módulo, foi necessário utilizar a cloud **AWS** já que seria criado um cluster que iria exigir mais de duas maquina virtuais. Caso fosse criada no software **VM Virtual Box** usaria muitos recursos da maquina física, podendo sobrecarregá-la. Na **AWS**, o primeiro passo foi criar uma **VPC (Amazon Virtual Private Cloud)**, que é um serviço que oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança. Foi realizado a configuração mais básica da **VPC**, dando o nome `dio-docker` e determinando o IP padrão da **AWS** (**172.31.0.0/24**).
 
 Na sequência foi criada uma sub-rede para esta rede com nome `sub-rede_dio-docker`, com a mesma zona utilizada no momemnto na **AWS** que foi `us-east-1a`, a faixa de IP foi a mesma da rede, pois foram utilizados todos os IPs, sem a criação de subdivisões. Com a sub-rede criada, o próximo passo foi a criação do gateway para que a sub-rede tivesse acesso a internet. Este gateway foi nomeado de `gateway_dio-docker` e construído. Em seguida, foi realizado a associação desse gateway a sub-rede. O último passo foi criar uma tabela de roteamento que ao ir para página de criação, estava listado a **VPC** criada. Então foi acessado a tabela de rotas dessa **VPC** pelo id da tabela de rotas. Nesta nova página, já existia uma rota criada, porém foi alterada, pois a mesma só estava configurada locamente e era necessário o acesso a internet. Uma nova rota foi adicionada indo de do IP `0.0.0.0/0` (Todos) para o gateway (ID do gateway criado).
 
-A próxima etapa foi a criação dos nós (servidores) no serviço **Amazon EC2**. Um maquina virtual **Linux Ubuntu** de nome `dio_docker-swarm` foi criada, juntamente com um novo par de chaves para acesso remoto para utilização neste curso, cujo nome foi `key_dio_docker`. Este par de chave foi do tipo **RSA** e o arquivo no formato **.ppk**, já que o acesso remoto seria realizado através do software **PuTTY** na maquina física **Windows**. Na quantidade de instâncias de maquina virtual que seria criada foi alterada para quatro, para que não fosse necessário subir uma em uma. No campo de rede, foi alterado a rede que seria utilizada por essas maquinas para a **VPC** criada, com sua respectiva sub-rede. Foi habilitado a atribuição automática a um IP público para estas maquinas, pois seria necessário para o acesso remoto. Também foi alterado o nome do grupo de segurança para `dio_docker-swarm` e sua descrição `Grupo de seguranca para o Docker Swarm`. Em relação a liberação das portas no Firewall foi mantida o padrão, que é a **SSH** na porta **22**, as demais foram liberadas durante a necessidade. Na última opção do item dados avançados, em dados do usuário, foi possível passar um script para instalação do **Docker** automaticamente em todos os nós. Este script podia ser escrito no campo ou enviado como um arquivo que automaticamente era escrito no campo. No caso, foi utilizado o arquivo [`install-docker-ubuntu.sh`](./install-docker-ubuntu.sh).
+A próxima etapa foi a criação dos nós (servidores) no serviço **Amazon EC2**. Um maquina virtual **Linux Ubuntu** de nome `dio_docker-swarm` foi criada, juntamente com um novo par de chaves para acesso remoto para utilização neste curso, cujo nome foi `key_dio_docker`. Este par de chave foi do tipo **RSA** e o arquivo no formato **.ppk**, já que o acesso remoto seria realizado através do software **PuTTY** na maquina física **Windows**. Na quantidade de instâncias de maquina virtual que seria criada foi alterada para quatro, para que não fosse necessário subir uma em uma. No campo de rede, foi alterado a rede que seria utilizada por essas maquinas para a **VPC** criada, com sua respectiva sub-rede. Foi habilitado a atribuição automática a um IP público para estas maquinas, pois seria necessário para o acesso remoto. Também foi alterado o nome do grupo de segurança para `dio_docker-swarm` e sua descrição `Grupo de seguranca para o Docker Swarm`. Em relação a liberação das portas no Firewall foi mantida o padrão, que é a **SSH** na porta **22**, as demais foram liberadas durante a necessidade. Na última opção do item dados avançados, em dados do usuário, foi possível passar um script para instalação do **Docker** automaticamente em todos os nós. Este script podia ser escrito no campo ou enviado como um arquivo que automaticamente era escrito no campo. No caso, foi utilizado o arquivo [install-docker-ubuntu.sh](./install-docker-ubuntu.sh).
 
 Com as quatro maquinas em execução, foi realizado o acesso remoto a uma delas através do software **PuTTY** pelo IP Público da maquina virtual da cloud e o arquivo de par de chaves **.ppk** criado. Como era uma maquina **Ubuntu**, o nome de usuário por padrão é `ubuntu`. Ao acessar, foi alterado para o usuário root com o comando `sudo su` e alterado o hostname com o comando `hostnamectl hostname aws1`. Em seguida, com o comando `docker swarm init` foi iniciado o cluster swarm, sendo a maquina **aws1** o nó master. Um token foi gerado para ser adicionado ao nós workers, ou seja, as outras três maquinas virtuais.
 
@@ -128,7 +126,7 @@ Para que a maquina master não execute containers de qualquer serviço e tenha a
     <figcaption>Imagem 07.</figcaption>
 </figure></div><br>
 
-Nesta etapa foram removidos os dois serviços existentes (`docker service rm`) e foi realizado a criação de um volume de nome `app` (`docker volume create app`). Este volume foi armazenado no diretório padrão de volumes do **Docker** `/var/lib/docker`. Dentro da pasta `app/_data` criada, foi elaborado um arquivo **HTML** ([`index.html`](./index.html)) que serviu aplicação web, conforme script abaixo.
+Nesta etapa foram removidos os dois serviços existentes (`docker service rm`) e foi realizado a criação de um volume de nome `app` (`docker volume create app`). Este volume foi armazenado no diretório padrão de volumes do **Docker** `/var/lib/docker`. Dentro da pasta `app/_data` criada, foi elaborado um arquivo **HTML** ([index.html](./index.html)) que serviu aplicação web, conforme script abaixo.
 
 ```
 <html>
@@ -182,15 +180,43 @@ Após isso, no diretório da aplicação criada anteriormente ( `/var/lib/docker
 
 Ainda na imagem 11 foi observado que as requisições são executadas quase sempre nos mesmos hosts e mesmo IP. No próximo curso será abordado o conceito de **Load Balancer** justamente para realizar o balanceamento das requisições de forma automática. A partir de agora, o assunto é a criação do cluster em ambiente local. Portanto, caso tenha interesse em continuar no ambiente de cloud para entender sobre o **Load Balancer** pule para o próximo curso.
 
-Para a construção do cluster localmente, foi necessário a instalação do software **Vagrant** na maquina física **Windows**, pois este é uma infraestrutura como código (IaC). Ou seja, com ele foi possível montar toda a estrutura de criação dos containers apenas arquivos de script. A instalação dele foi super fácil, padrão next-next do **Windows**. O **Vagrant** consegue se integrar com softwares de virtualização como **VM Virtual Box**, **Hyper-V** e **Vmware**.
+##### Ambiente Local
+Para a construção do cluster localmente, foi necessário a instalação do software **Vagrant** na maquina física **Windows**, pois este é uma infraestrutura como código (IaC). Ou seja, com ele foi possível montar toda a estrutura de criação das maquinas virtuais e do cluster apenas utilizando um arquivo de script. A instalação dele foi super fácil, padrão next-next do **Windows**. O **Vagrant** consegue se integrar com softwares de virtualização como **VM Virtual Box**, **Hyper-V** e **Vmware**.
 
+Dando continuidade, foi aberto o **Windows Power Shell** no **Terminal** da maquina física **Windows** e alterada para o diretório `03.1-vagrant` parte integrante deste bootcamp. Como todas as pastas referente aos repositórios que possuo no **GitHub** ficam armazenadas também na nuvem do **Google Drive**, para mudar de pasta foi utilizado o comando `cd "G:\Meu Drive\4_PROJ\boot\dio\docker\boot_006\03-docker_swarm\03.1-vagrant"`. É importante ressaltar que por enquanto tudo esta sendo feito direto na maquina física **Windows**, diferentemente de quando é operado na maquina virtual, onde os arquivos deste bootcamp são copiados e colados nos arquivos criados exatamente iguais na maquina virtual. Aqui, os arquivos criados são exatamente os que serão executados.
 
+Para iniciar o **Vagrant** utilizou-se o comando `vagrant init` com isso foi gerado um arquivo [Vagrantfile](./03.1-vagrant/Vagrantfile1) que foi aberto neste **VS Code** onde foi construído este arquivo de `README.md`. O arquivo gerado foi um arquivo padrão do **Vagrant** que já vem escrito, sendo 90% dele comentado. A primeira alteração realizada neste arquivo foi na linha `config.vm.box = "base"`, que foi modificada para `config.vm.box = "bento/ubuntu-22.04"`, determinando qual distribuição seria instalada. Para descobrir o box para a distribuição do **Ubuntu** necessária, foi realizada uma pesquisa no **Google** (`vagrant ubuntu 22.04`) e no site do **Vagrant Cloud** foi encontrado um usuário que criou um box do **Ubuntu 22.04**, sendo o nome do box `bento/ubuntu-22.04`.
 
+Na linha 40 do arquivo `Vagrantfile`, foi descomentado o comando `config.vm.network "public_network"` para permitir a criação de uma rede pública utilizando o método bridged, o que foi necessário para a realização do acesso remoto pelo **PuTTY** as maquinas criadas. Já na linha 73 foi descomentado o comando `config.vm.provision "shell", inline: <<-SHELL`, determinando que assim que as maquinas fossem provisionadas os comandos shell a seguir fossem executados. Contudo, ao invés de escrever os comandos neste arquivo, o comando `config.vm.provision "shell", inline: <<-SHELL` foi modificado para `config.vm.provision "shell", path: "instalar-docker.sh"`, indicando um caminho de arquivo criado especificamente para executar os comandos shell desejados.
 
+No mesmo diretório `03.1-vagrant` foi criado o arquivo shell mencionado ([instalar-docker.sh](./03.1-vagrant/instalar-docker.sh)), cujo script instruíu para instalação do software **Docker** em todas as maquinas virtuais. Com os comandos `vagrant up` e `vagrant ssh` foi criado uma maquina virtual no **VM Virtual Box** e realizado o acesso remoto direto do **Vagrant** e também pelu **PuTTY**, em seguida a maquina foi removida com o comando `vagrant destroy -f`.
 
+Para a criação do cluster foi criado um novo arquivo [Vagrantfile](./03.1-vagrant/Vagrantfile2) com o script fornecido pelo expert do bootcamp em seu **GitHub**. No `Vagrantfile` seriam construídas quatro maquinas virtuais, porém foi alterada para três maquinas. Cada maquina possuía 512 Mb de memória e apenas uma CPU com a mesma box utilizada anteriormente `bento/ubuntu-22.04`. Neste arquivo também foi definido uma rede pública para acesso remoto e que essas maquinas seriam provisionadas no software **VM Virtual Box**, além de indicar o mesmo arquivo shell ([instalar-docker.sh](./03.1-vagrant/instalar-docker.sh)) para instalação do **Docker** em todas as maquinas. 
 
+Com o comando `vagrant up` as maquinas foram criadas no **VM Virtual Box**. Porém, na primeira tentativa, houve um erro que no terminal do **Windows PowerShell**, o processo de instalação parava em `SSH auth method: private key` e provocava um `time out`. Para isso, foi acrescentado `vb.gui = true` no arquivo `Vagrantfile` que ao criar a primeira maquina virtual, ela era carregada e os logs eram exibidos indicando que o erro na verdade era `Kernel panic not syncing : System is deadlocked on memory"`. Isso ocorreu, pois a memória de 512 Mb foi insuficiente para que as maquinas fossem executadas, então foi realizado a alteração para 1024 Mb de memória. Assim, foi possível criar as três maquinas virtuais. As imagens 12 e 13 mostram as três maquinas criadas com o software **Vagrant**, tanto no terminal do **Windows PowerShell** utilizando o comando `vagrant status` como no software **VM Virtual Box** onde foram construídas.
 
-<a name="item3.2"><h4>3.2 Load Balancer</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+Os nomes dados para as maquinas foram (`node01`, `node02` e `node03`), dessa forma, para realizar o acesso remoto utilizou o comando `vagrant ssh node01`. Em seguida, o usuário foi alterado para o root com o comando `sudo su`, e então foi realizado a construção do cluster com o **Docker Swarm** (`docker swarm init --advertise-addr ip`), passando o parâmetro `--advertise-addr ip` para indicar o IP que o **Docker Swarm** deveria usar, sendo esse dentro da rede da maquina física, já que existia também o IP do **Vagrant** e do **Docker**. Dessa forma, o node01 se tornou o nó gerente e foi gerado o token para inclusão dos demais nós no cluster. 
+
+Em outro terminal do **Windows PowerShell**, foi alterado para o diretório do arquivo `Vagrantfile` com o comando `cd "G:\Meu Drive\4_PROJ\boot\dio\docker\boot_006\03-docker_swarm\03.1-vagrant"` e realizado o acesso remoto pelo comando `vagrant ssh node02` e `vagrant ssh node03` as outras duas maquinas workers, alterando o usuário para root (`sudo su`). Nelas foi executado o comando `docker swarm join --token SWMTKN-1-1gsvwxcycwguzoy5s7434lrac87adi76b7q6a3xe2rztaib8u5-cq54hakmuuai5psla8f9shlqe 192.168.5.112:2377` para incluí-las no cluster. Na imagem 14 abaixo, é demonstrado as três maquinas incluídas no cluster. 
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+Como foram dois arquivos `Vagrantfile` foram nomeados para `Vagrantfile1` e `Vagrantfile2`, mas durante a execução foram utilizados como `Vagrantfile` até a exclusão das maquinas. Em alguns casos de exclusão, foi necessário remover o diretório criado no **Windows** com o nome de uma das maquinas, pois quando criado novamente era ocasionado um conflito por já existir o diretório com mesmo nome da maquina que estava sendo criada. Este diretório fica em `C:\Users\username\VirtualBox VMs` e lá é armazenado as pastas de todas as maquinas construídas no **VM Virtual Box**.
+
+<a name="item3.2"><h4>3.2 Load Balancer</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Load%20Balancer%20PH%20DIO.pdf">Certificate</a>
 
 Neste curso foi dado continuidade ao cluster criado no curso passado no ambiente de cloud na **AWS**. O objetivo foi criar um **Load Balancer** para o cluster. Existem alguns tipos fornecidos na **AWS**, mas o utilizado foi o Classic. Nas configurações foi dado o nome `dio_docker-swarm` para o balanceamento criado, foi utilizado a rede criada no **VPC**, o protocolo utilizado foi o **HTTP** na porta **80** que foi redirecionado para o mesmo protocolo e porta na instância. Também foi adicionado a sub-rede, grupo de segurança criado e as instâncias de maquina virtual que utilizamos, no caso, foram as quatro maquinas do cluster. Foi informado que o protocolo não era seguro, sugerindo alterar para o **HTTPS**, mas foi mantido o **HTTP**. Em seguida, foi realizado as configurações de verificações de integridade conforme imagem 15 a seguir.
 
@@ -204,8 +230,32 @@ Com o **Load Balancer** criado, o Nome DNS foi gerado, sendo este utilizado para
 
 Na etapa seguinte foi realizado um teste de carga para verificar se o balanceamento estava sendo executado. Para isso utilizou-se o site **Loader.io** criando um novo host. O domínio foi o nome DNS criado pelo **Load Balancer**. Em seguida, foi copiado o token gerado que foi colada em um arquivo de mesmo nome com a extensão `.txt`. Este arquivo foi criado no mesmo diretório da aplicação `index.php` (`/var/lib/docker/volumes/app/_data`). Após isso, foi possível executar a verificação no site **Loader.io** para ele encontrar o arquivo com o token criado. Nas configurações de teste, foi criado um nome para o teste `teste-cluster-swarm` com um número de requisições de 350 em 1 minuto e no path foi colocado o arquivo de aplicação que foi testado (`index.php`) 
 
-<a name="item3.3"><h4>3.3 Definição de um Cluster Swarm Local com o Vagrant</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-07-28)%20Servidores%20de%20Arquivos%20com%20Linux%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.3"><h4>3.3 Definição de um Cluster Swarm Local com o Vagrant</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
+O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
 
+> Neste desafio de projeto iremos criar um Cluster Swarm local, utilizando máquinas virtuais, além, de aplicar nossos conhecimentos em Vagrant. Também vamos aprender uma forma de evitar as implementações manualmente, melhorando o desempenho dos desenvolvedores.
 
+Para resolução foram criados quatro arquivos no diretório `03.3-vagrant` elaborado para o desafio. O primeiro foi o arquivo [Vagrantfile](./03.3-vagrant/Vagrantfile) com a configuração de três maquinas virtuais de nomes `master`, `node01` e `node02` com 1024 Mb de memória, 1 CPU de processamento, mesma imagem utilizada no curso `bento/ubuntu-22.04`, além da definição do IP das três maquinas. Ainda neste arquivo, após a criação das maquinas, foi determinado a execução do arquivo [docker.sh](03.3-vagrant/docker.sh) para a instalação do **Docker** e **Docker Compose** em todos os nós. Em seguida, uma estrutura de condição definiu a execução do arquivo [master.sh](./03.3-vagrant/master.sh) apenas na maquina de nome `master`, enquanto as demais executaram o arquivo [worker.sh](03.3-vagrant/worker.sh). Todos esses três arquivos foram arquivos de script shell executados com o **Bash** nas respectivas maquinas. O arquivo `master.sh`, conforme comando abaixo, realizou a criação do cluster determinando a maquina com IP `10.10.10.100` como nó gerenciador que foi extamente a maquina de nome `master` e exportou o token para o arquivo vazio `worker.sh`, sendo este utilizado pelas maquinas workers para participarem do cluster.
 
+```
+sudo docker swarm init --advertise-addr=10.10.10.100
+sudo docker swarm join-token worker | grep docker > /vagrant/worker.sh
+```
+
+Durante a execução podem surgir mensagem do **VM Virtual Box** no **Windows** solicitando permissão para execução. As imagens 15 e 16 ilustram o desenvolvimento final do desafio de projeto com a criação das três maquinas com IPs fixos, o docker instalado em cada uma delas e o cluster desenvolvido já com os três nós incluídos. A imagem 18 mostra os nós participantes do cluster através de um acesso remoto na maquina master realizado no **Windows PowerShell** com o comando `vagrant ssh master`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
