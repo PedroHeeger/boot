@@ -67,7 +67,7 @@ This folder refers to Module 1 **Introdução ao Docker** from Bootcamp [**Forma
 O objetivo deste módulo do Bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
 
 ### Structure:
-A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
+A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img01.png" alt="img01"><br>

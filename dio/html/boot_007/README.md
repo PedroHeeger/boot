@@ -35,14 +35,14 @@
 ---
 
 ### Bootcamp Structure
-1. [Primeiros Passos com HTML](./01-introducao_docker/)   
+1. [Primeiros Passos com HTML](./01-primeiros_passos/)   
   1.1. Entendendo Comunicação Client x Server  
   1.2. Introdução ao HTML na Prática   
   1.3. Como Entregar seu Desafio de Projeto  
   1.4. Criar Uma Página Web Utilizando as Tags Aprendidas   
   1.5. Materiais Complementares - Primeiros Passos com HTML  
 
-2. [HTML I: Conceitos Básicos](./02-dockerfile_compose/)   
+2. [HTML I: Conceitos Básicos](./02-conceitos_basicos/)   
   2.1. Trabalhando com Formulários em HTML   
   2.2. Estruturando seu HTML + Formatações   
   2.3. Trabalhando com Mídias utilizando HTML   
@@ -50,7 +50,7 @@
   2.5. Criando seu Primeiro Site Completo com HTML
   2.6. Materiais Complementares - Conceitos Básicos
 
-3. [HTML II: Ampliando o Conhecimento](./03-docker_swarm/)   
+3. [HTML II: Ampliando o Conhecimento](./03-ampliando_conhecimento/)   
   3.1. Entendendo HTML Semântico   
   3.2. HTML: Recursos Especiais  
   3.3. Recriando o Wikipedia com Layout Moderno   
