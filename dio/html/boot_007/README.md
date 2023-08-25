@@ -10,7 +10,7 @@
 ---
 
 ### Theme:
-- ??
+- Web Devolopment
 
 ### Used Tools:
 - Operating System (OS): 
@@ -56,8 +56,6 @@
   3.3. Recriando o Wikipedia com Layout Moderno   
   3.4. Materiais Complementares - Ampliando Conhecimento  
   3.5. Avalie a Formação de HTML Web Developer   
-  3.6.   
-  3.7. Avalie a Formação CSS Web Developer
 
 ---
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.1-Formulários</title>
+</head>
+<body>
+    <hr>
+    Formulário 1: <br>
+    <form name="signup" method="Post" action="https://meusite.com.br/signup">
+        Nome: <input type="text" name="name"><br>
+        Idade: <input type="number" name="age"><br>
+        Senha: <input type="password" name="password"><br>
+        <button type="submit">Enviar</button>
+    </form><br>
+    <hr>
+    Formulário 2: <br>
+    <form action="">
+        <label for="">Text:</label><input type="text"><br>
+        <label for="">Number:</label><input type="number" min="5" max="10"><br>
+        <label for="">Button:</label><input type="button" value="Enviar"><button type="button">Enviar</button><br>
+        <label for="">Range:</label><input type="range" min="0" max="100" value="90"><br>
+        <label for="">Color:</label><input type="color"><br>
+        <label for="">Email:</label><input type="email"><br>
+        <label for="">Url:</label><input type="url"><br>
+        <label for="">Date:</label><input type="date"><br>
+        <label for="">Week:</label><input type="week"><br>
+        <label for="">Month:</label><input type="month"><br>
+        <label for="">Checkbox:</label><input type="checkbox" name="aceita"><input type="checkbox" name="aceita"><br>
+        <label for="">Radio:</label><input type="radio" name="aceita"><input type="radio" name="aceita"><br>
+        <label for="">Hidden:</label><input type="hidden"><br>
+        <label for="">File:</label><input type="file" multiple><br>
+        <label for="">Search:</label><input type="search"><br>
+    </form><br>
+    <hr>
+    Formulário 3: <br>
+    <form method="get">
+        <h3>Você selecionou: Pizza de Calabresa</h3>
+        <p>Quais Opcionais você deseja?</p>
+        <input type="checkbox" disabled checked name="opcional[]" value="queijo"> + queijo <br>
+        <input type="checkbox" name="opcional[]" value="calabresa"> + calabresa <br>
+        <input type="checkbox" name="opcional[]" value="cebola"> + cebola <br>
+        <input type="checkbox" name="opcional[]" value="azeitona"> + azeitona <br>
+        <p>Borda recheada?</p>
+        <input type="radio" name="borda" value="sim">Sim<br>
+        <input type="radio" name="borda" value="não">Não<br>
+        <p>Bebida</p>
+        <input type="radio" name="opcional[]" value="suco">Suco<br>
+        <input type="radio" name="opcional[]" value="refrigerante">Refrigerante<br>
+        <input type="radio" name="opcional[]" value="agua">Água<br>
+        <input type="radio" name="opcional[]" value="agua">Água<br>
+    </form>
+    <hr>
+    Formulário 4: <br>
+    <form method="get">
+        <label for="">Name:</label><input type="text" name="name"><br>
+        <label for="">Idade:</label><input type="number" name="age"><br>
+        <label for="">Password:</label><input type="password" name="password"><br>
+        
+        <button type="button" onclick="alert('Cliquei aqui')">Clicável</button><br>
+        <button type="reset">Limpar</button><br>
+        <button type="submit">Enviar</button><br>
+    </form>
+    <hr>
+    Formulário 5: <br>
+    <form method="get">
+        <label for="">Name:</label><input type="text" name="name"><br>
+        <label for="">Cargo:</label>
+        <select name="role" id="">
+                <option value="">Selecione o cargo</option>
+                <option value="gerente">Gerente</option>
+                <option value="diretor">Diretor</option>
+                <option selected value="presidente">Presidente</option>
+        </select><br>
+        <label for="">Assunto:</label><input type="text" name="subject"><br>
+        <label for="">Mensagem</label><textarea name="message" id="" cols="20" rows="3"></textarea><br>
+        <button type="submit">Enviar</button><br>
+    </form>
+</body>
+</html>
