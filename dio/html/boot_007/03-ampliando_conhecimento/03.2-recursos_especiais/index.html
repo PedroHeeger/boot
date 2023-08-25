@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03.2-Recursos Especiais</title>
+    <style>
+        kbd{
+            border: solid 1px black;
+        }
+        pre{
+            background-color: #f1f1f1;
+        }
+        pre > code{
+            color:red;
+        }
+        pre > p{
+            font-style: italic;
+            color: gray;
+            padding-left: 30px;
+        }
+        details > p > code{
+            background-color: #f1f1f1;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    Combo Box <br>
+    <select name="browsers" id="">
+        <option value="">Selecione um navegador</option>
+        <option value="chrome">Google Chrome</option>
+        <option value="firefox">Mozila Firefox</option>
+        <option value="edge">Microsoft Edge</option>
+        <option value="safari">Safari</option>
+        <option value="opera">Opera</option>
+    </select>
+    <hr>
+    Data List <br>
+    <input list="browsers" type="search" name="search">
+    <datalist id="browsers" id="">
+        <option>Google Chrome</option>
+        <option>Mozila Firefox</option>
+        <option>Microsoft Edge</option>
+        <option>Safari</option>
+        <option>Opera</option>
+    </datalist>
+    <hr>
+    Comandos <br>
+    <p>Para copiar esta informação, pressione <kbd>CTRL</kbd> + <kbd>C</kbd></p>
+    <p>Para trocar o fundo de um elemento, utilize o comando <code>background-color</code></p>
+    <p>Comando completo de alterar cor de fundo:</p>
+    <pre>
+        <p>// Neste momemnto você aplica desta forma</p>
+        <code>
+            code {
+                background-color: #f1f1f1;
+                color: red;
+            }
+        </code>
+    </pre>
+    <hr>
+    Details e Summary <br>
+    <details>
+        <summary>Como troco a cor de fundo de um elemento no HTML?</summary>
+        <p>Para executar esta ação, utilize o comando <code>background-color</code> no CSS.</p>
+    </details>
+    <hr>
+    Meter e Progress <br>
+    <meter max="100" min="0" value="50"></meter>
+    <progress id="progress" max="100" min="0"></progress>
+
+    <script>
+        var progress = document.getElementById('progress');
+        const interval = setInterval(() => {
+            progress.value += 10;
+            if(progress.value >= 100) {
+                alert('Carregamento realizado com sucesso')
+                clearInterval(interval);
+            }
+        }, 1000);
+    </script>
+    <hr>
+    Mark e JavaScript <br>
+    <input type="text" id="busca"><br>
+    <p id="descricao">Os nossos cursos e programa de formação são criados das empresas mais inovadoras do mundo, aplicando uma metodologia domine as tecnologias utilizadas no mercado e também mergulhe na atuais tecnologias que impactarão o futuro dos negócios digitais.</p>
+    <script>
+        var searchField = document.getElementById('busca');
+        var descriptionObject = document.getElementById('descricao');
+        var textToSearch = descriptionObject.innerHTML;
+
+        function realizaBusca(busca) {
+            const regex = new RegExp(`(${busca})(?!(.(?!<mark))*</mark>)+`, `ig`);
+            const ocurrences = textToSearch.match(regex);
+            descriptionObject.innerHTML = textToSearch.replace(regex, `<mark>${busca}</mark>`)
+        }
+
+        searchField.addEventListener('keyup', (e) => realizaBusca(e.target.value));
+    </script>
+    
+
+
+</body>
+</html>

@@ -42,13 +42,13 @@ This folder refers to Module 2 **HTML I: Conceitos Básicos** from Bootcamp [**F
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi aprender sobre o modelo de comunicação Cliente-Servidor (**Client-Server**)
+O objetivo deste módulo do Bootcamp foi aprender sobre a construção de formulários, formatações, a utilização de mídias e tabelas.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="./0-aux/img01.PNG" alt="img01"><br>
+    <img src="../0-aux/md2-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
@@ -57,7 +57,7 @@ O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos e um d
 
 <a name="item2.1"><h4>2.1 Trabalhando com Formulários em HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
 
-Neste curso foi criado os dois primeiros formulários, apresentando os diversos tipos da tag `input` existentes no **HTML**, alguns dos utilizados foram `text`, `number`, `range`, `color`, `email`, `url`, `date`, `week`, `month`, `checkbox`, `radio`, `hidden`, `file`, `search` e `button`. A diferença do `radio` para o `checkbox` é que quando utilizamos o atributo `name` com mesmo nome, no `radio` só é possível selecionar um box, enquanto no `checkbox` é possível marcar mais de uma caixa. O input do tipo `hidden` é utilizado quando queremos enviar informações adicionais no formulário, sendo que o usuário não consegue visualizá-la. No tipo `file` existem um atributo `multiple` que permite selecionar mais de um arquivo ao mesmo tempo. Além da tag `input` foi apresentada a tag `label` que cria um rótulo para o `input`. A imagem 02 a seguir, mostra como ficou a visualização do arquivo no navegador.
+Neste curso foi criado os dois primeiros formulários, apresentando os diversos tipos da tag `input` existentes no **HTML**, algumas das utilizadas foram `text`, `number`, `range`, `color`, `email`, `url`, `date`, `week`, `month`, `checkbox`, `radio`, `hidden`, `file`, `search` e `button`. A diferença do `radio` para o `checkbox` é que quando é utilizado o atributo `name` com mesmo nome, no `radio` só é possível selecionar um box, enquanto no `checkbox` é possível marcar mais de uma caixa. O input do tipo `hidden` é utilizado quando queremos enviar informações adicionais no formulário, sendo que o usuário não consegue visualizá-la. No tipo `file` existem um atributo `multiple` que permite selecionar mais de um arquivo ao mesmo tempo. Além da tag `input` foi apresentada a tag `label` que cria um rótulo para o `input`. A imagem 02 a seguir, mostra como ficou a visualização do arquivo ([index.html](./02.1-formularios/index.html)) no navegador.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img02.png" alt="img02"><br>

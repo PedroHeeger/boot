@@ -14,13 +14,7 @@
 
 ### Used Tools:
 - Operating System (OS): 
-  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Linux Distribution: 
-  - Ubuntu <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
-- Virtualization: 
-  - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
-  - Docker <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
 - Language:
   - HTML <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
 - Integrated Development Environment (IDE):
@@ -77,4 +71,4 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Todo o projeto foi desenvolvido em uma maquina virtual **Linux Ubuntu** para servidor, criada no software **VM Virtual Box**, foi nesta maquina que foi instalado o software **Docker** e executado os containers. Em relação ao desenvolvimento, cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
+Cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada um está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.

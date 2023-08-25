@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03.1-HTML Semântico</title>
+    <style>
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+        nav ul li a{
+            padding: 10px 15px;
+            color: blue;
+            text-decoration: none;
+            border-radius: 15px 0;
+        }
+        nav ul li a:hover{
+            color: white;
+            background: blue;
+        }
+        blockquote{
+            background: #f5f5f5;
+            padding: 15px;
+            margin-left: 0px;
+            border-left: red solid 5px;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    Tags HTML 5 - Estrutural <br>
+    <main>
+        <article>
+            <h1>Descoberta de vida em outro planeta</h1>
+            <p>Artigo publicado em <time pudate>21/01/2022 19:00</time></p>
+            <p>Segundo alunos e alunas da Dio.me, <q cite="http://dio.me">Este é o melhor curso de HTML que já fizeram!</q></p>
+            <blockquote cite="http://wikipedia.com">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius nobis, veritatis rerum alias incidunt, unde quae earum fugit quibusdam quidem commodi debitis repellat fugiat iusto error voluptatem, harum officia quis!</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore voluptatum eius assumenda perferendis numquam totam itaque aliquam voluptas accusantium perspiciatis officia, ullam sapiente! Obcaecati nobis, placeat quibusdam adipisci et reprehenderit?</p>
+            </blockquote>
+        </article>
+    </main>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="tel:+5515984938984">Telefone</a></li>
+            </ul>
+        </nav><br>
+        <figure>
+            <img src="carro.jpg" alt="" width="250">
+            <figcaption>Descrição do Veículo</figcaption>
+        </figure>
+        <picture>
+            <source srcset="carro2.jpeg" media="(min-width: 600px)" width="250">
+            <img src="carro.jpg" alt="" width="250">
+        </picture>
+    </header><br>
+    <footer>
+        <address>R: das Flores, numero tal</address>
+    </footer>
+    
+</body>
+</html>
