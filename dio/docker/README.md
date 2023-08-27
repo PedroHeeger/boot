@@ -9,4 +9,4 @@
 This folder refers to all the courses I took on the Digital Innovation One (DIO) platform regarding Docker software.
 
 ### Bootcamps:
-- <a href="./boot_006/">boot_006 (Formação Docker Fundamentals)   <img src="./boot_006/0-aux/logo_boot.png" alt="boot_06" width="auto" height="25"></a>
+- <a href="./boot_006/">boot_006 (Formação Docker Fundamentals)   <img src="./boot_006/0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
