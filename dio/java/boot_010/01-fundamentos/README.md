@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">java   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_010 (Formação Java Developer)   <img src="../0-aux/logo_boot.png" alt="boot_010" width="auto" height="25"></a>
 ### Module: 1. Fundamentos da Plataforma Java 
 
@@ -31,23 +31,13 @@ This folder refers to Module 1 **Fundamentos da Plataforma Java** from Bootcamp 
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Command Line Interpreter (CLI):
-  - Sh
   - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
   - ZShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zshell.png" alt="zshell" width="auto" height="25">
   - Oh My ZShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/oh_my_zshell.png" alt="oh_my_zshell" width="auto" height="25">
-- Server:
-  - Apache HTTP Server (httpd) <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
-  - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
 - Linux Tools:
-  - Apt e Apt-get (Geranciadores de Pacotes)
-  - Stress (Testador de Estresse)
   - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
-  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
-- Database Administration Tool:
-  - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
 - Others:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
-  - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
 
 ---
 
@@ -63,7 +53,7 @@ This folder refers to Module 1 **Fundamentos da Plataforma Java** from Bootcamp 
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
+O objetivo deste módulo do Bootcamp foi introduzir a linguagem de programação **Java**, sua sintaxe, principais conceitos e comandos básicos. Além da construção do ambiente de desenvolvimento para construção de projetos em **Java**.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
@@ -74,21 +64,18 @@ A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme 
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos, um desafio de código e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 
 <a name="item1.1"><h4>1.1 Introdução à Plataforma Java</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
 
-Este curso foi apenas teórico apresentando a linguagem Java e suas características, bem como sua história, como a linguagem surgiu e a evolução das versões do Java.
+Este curso foi apenas teórico apresentando a linguagem **Java** e suas características, bem como sua história, como a linguagem surgiu e a evolução das versões do **Java**.
 
 <a name="item1.2"><h4>1.2 Ambiente de Desenvolvimento Java</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Primeiros%20Passos%20com%20o%20Docker%20PH%20DIO.pdf">Certificate</a>
 
-Neste curso foi ensinado de como configurar o ambiente de desenvolvimento Java em uma maquina **Windows**. Para isso, foi instalado o **JDK (Java Development Kit)** que é o kit de desenvolvimento completo para a linguagem de programação **Java**, que contém todas as ferramentas necessárias para criar, compilar, depurar e executar programas **Java**. Isto inclui o compilador **Java** (`javac`), a maquina virtual **Java** (`java`), bibliotecas, ferramentasde depuração e outras utilidades. O **JDK** também inclui a **JRE (Java Runtime Environment)**, que é necessária para executar programas **Java**, mas não é usada para o desenvolvimento. 
+Neste curso foi ensinado de como configurar o ambiente de desenvolvimento Java em uma maquina **Windows**. Para isso, foi instalado o **JDK (Java Development Kit)** que é o kit de desenvolvimento completo para a linguagem de programação **Java**, que contém todas as ferramentas necessárias para criar, compilar, depurar e executar programas **Java**. Isto inclui o compilador **Java** (`javac`), a maquina virtual **JVM (Java Virtual Machine)** (`java`), bibliotecas, ferramentas de depuração e outras utilidades. O **JDK** também inclui a **JRE (Java Runtime Environment)**, que é necessária para executar programas **Java**, mas não é usada para o desenvolvimento. 
 
-Também foi ensinado como instalar e integrar com o Java, três IDEs diferentes (**Visual Studio Code (VS Code)**, **Eclipse** e **IntelliJ**). Porém, por decisão pessoal, foi preferido utilizar a maquina virtual **Linux Ubuntu** com ambiente gráfico, no qual nela está instalado o software **Docker**. Portanto foi criado um arquivo **Dockerfile** para construção de uma container que teria como imagem base a do **Java**, e configurações adicionais poderiam ser adicionadas a essa imagem a medida que houvesse a necessidade de instalação de outros softwares. Os arquivos foram construídos na IDE **VS Code** na maquina física **Windows** e copiados para arquivos dentro do container **Docker** na maquina virtual e assim executados.
-
-`docker build -t dio-java .`
-`docker run -dit --name dio-java -v /home/Pedro/study/dio/java:/app dio-java`
+Também foi ensinado como instalar e integrar com o Java, três IDEs diferentes (**Visual Studio Code (VS Code)**, **Eclipse** e **IntelliJ**). Porém, por decisão pessoal, foi preferido utilizar a maquina virtual **Linux Ubuntu** com ambiente gráfico, no qual nela estava instalado o software **Docker**. Portanto, foi criado um arquivo **Dockerfile** para construção de uma container que teria como imagem base a do **Java** (`openjdk:11`), e configurações adicionais poderiam ser realizadas a essa imagem a medida que houvesse a necessidade de instalação de outros softwares. Os arquivos foram construídos na IDE **VS Code** aberta dentro do container **Docker** na maquina virtual e assim executados. Os comandos **Docker** para construção da imagem e criação do container foram os seguintes: `docker build -t dio-java .` e `docker run -dit --name dio-java -v /home/Pedro/study/dio/java:/app dio-java`.
 
 <a name="item1.3"><h4>1.3 Aprendendo a Sintaxe Java</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Armazenamento%20de%20Dados%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
