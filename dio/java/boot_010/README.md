@@ -10,7 +10,7 @@
 ---
 
 ### Theme:
-- Development
+- Programming
 
 ### Used Tools:
 - Operating System (OS): 
@@ -98,9 +98,7 @@
 ### Objective:
 Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO**.
   
->Nesta Formação você irá aprender a criar, testar e implementar contêineres Docker com atividades práticas e reais. Você aprenderá Docker começando por entender o que é um contêiner e como é o seu funcionamento. Irá realizar atividades práticas em laboratórios virtuais para entender como os contêineres são criados e implementados em uma infraestrutura real. Depois de entender o que é um contêiner, você aprenderá como trabalhar com eles usando comandos básicos do CLI do Docker.
-
->A seguir, você aprenderá a criar suas próprias imagens personalizadas e como armazená-las na nuvem ou em uma infraestrutura local. A Formação também aborda a criação de um cluster de contêineres utilizando ferramentas específicas da AWS e também a criar um cluster de contêineres em uma infraestrutura local.
+>O que acha de aprender Java do zero e com os melhores experts da DIO? Bora! Nesta formação você aprenderá desde os fundamentos dessa linguagem de programação até o uso de abstrações poderosas como o Spring Framework. Para isso, inicialmente teremos uma imersão que trará toda a base do Java, além do paradigma de Programação Orientada a Objetos (POO), nos três primeiros módulos. Nos módulos seguintes, preparamos uma seleção com alguns dos nossos melhores conteúdos para que você domine o Java e estejam preparados para o desenvolvimento de projetos mais robustos usando o Spring Framework.
 
 ### Structure:
 - A estrutura do Bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. 
@@ -115,4 +113,6 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Todo o projeto foi realizado em uma maquina virtual **Linux Ubuntu** para servidor, criada no software **VM Virtual Box**, foi nesta maquina que foi instalado o software **Docker** e executado os containers. Em alguns casos, foram utilizados a maquina física **Windows** como apoio, o ambiente de cloud **AWS** e outras maquinas virtuais criadas no **VM Virtual Box**. Em relação as atividades, cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada uma está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
+Todo o projeto foi realizado em uma maquina virtual **Linux Ubuntu** com ambiente gráfico, criada no software **VM Virtual Box**, foi nesta maquina que foi instalado o software **Docker** e executado os containers. Em alguns casos, foram utilizados a maquina física **Windows** como apoio, o ambiente de cloud **AWS** e outras maquinas virtuais criadas no **VM Virtual Box**. 
+
+Em relação as atividades, cada desafio ou cursos tiveram seus objetivos específicos. Por tanto, a explicação sobre cada uma está contida na sua respectiva pasta, seguindo a estruturação determinada no Bootcamp.
