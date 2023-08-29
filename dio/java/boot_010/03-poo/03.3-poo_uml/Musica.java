@@ -11,8 +11,9 @@ public class Musica {
         this.artista=artista;
         this.duracao=duracao;
     }
-
+    
     // Método específico para retornar as informações da música
+    @Override
     public String toString() {
         return titulo + " - " + artista + " (" + duracao + " segundos)";
     }

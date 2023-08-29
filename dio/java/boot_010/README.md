@@ -58,7 +58,7 @@
   3.4. Criando um Banco Digital com Java e Orientação a Objetos   
   3.5. Materiais Complementares - Programação orientada a objetos em Java     
 
-4. [Estruturas de Dados e API de Streams em Java](./03-poo/)   
+4. [Estruturas de Dados e API de Streams em Java](./04-estruturas_dados/)   
   4.1. Estruturas de Dados em Java: Introdução   
   4.2. Estruturas de Dados em Java: Pilhas e Filas  
   4.3. Estruturas de Dados em Java: Listas   
@@ -68,12 +68,12 @@
   4.7. Abstraindo um Bootcamp Usando Orientação a Objetos em Java
   4.8. Materiais Complementares - Estruturas de Dados    
 
-5. [Gerenciamento de Dependências e Build em Projetos Java](./03-poo/)   
+5. [Gerenciamento de Dependências e Build em Projetos Java](./05-dependencias_build/)   
   5.1. Projetos Java com Gradle   
   5.2. Gerenciamento de Dependênciase Build em Java com Maven   
   5.3. Materiais Complementares - Gerenciamento de Dependências e Build 
 
-6. [Qualidade de Código e Boas Práticas com Java](./03-poo/)   
+6. [Qualidade de Código e Boas Práticas com Java](./06-qualidade_codigo/)   
   6.1. Debugging Java   
   6.2. Tratamento de Exceções em Java  
   6.3. Entrada e Saída de Arquivos (I/O) em Java   
@@ -83,7 +83,7 @@
   6.7. Desenvolvendo Testes Utilizando Mockito   
   6.8. Materiais Complementares - Qualidade de Código e Boas Práticas com Java 
 
-7. [Conhecendo o Spring Framework](./03-poo/)   
+7. [Conhecendo o Spring Framework](./07-spring/)   
   7.1. Principais Protocolos de Comunicação da Internet   
   7.2. Imersão no Spring Framework com Spring Boot  
   7.3. Criando uma API REST Documentada com Spring Web e Swagger   
