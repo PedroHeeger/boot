@@ -66,16 +66,34 @@ A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme 
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos e dois desafios de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do Bootcamp foi dividido em 6 cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item4.1"><h4>4.1 Estruturas de Dados em Java: Introdução</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
 
+O curso iniciou coma explição do conceito de memória e armazenamento, de como as variáveis e objetos, quando atribuídas, são armazenadas na memória do computador. Na primeira atividade do curso, foi mostrado a diferença de atribuição entre tipos primitivos e objetos. Na linguagem **Java** quando é utilizado o tipo primitivo, ou seja, usando apenas variáveis, o **Java** não copia a referência, copia exatamente o valor na memória de uma variável para outra, dessa forma, quando essa variável é alterada, a outra variável continua com o valor anterior a modificação. Já em um cenário de objetos, o **Java** consegue copiar a referência de um objeto para outro, logo, o segundo objeto tem seu valor alterado igualmente o primeiro objeto. Para melhor entedimento foi criado um projeto, armazenado na pasta [projatribuicao](./04.1-introducao/projatribuicao/), contendo os dois arquivos para execução da atividade. O primeiro arquivo foi a criação da classe principal [Main](04.1-introducao/projatribuicao/src/com/projatribuicao/Main.java), onde foi realizada a execução e o resultado pode ser visualizado na imagem 02 a seguir. Enquanto o outro arquivo foi para criação da classe [MeuObj](./04.1-introducao/projatribuicao/src/com/projatribuicao/MeuObj.java).
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
 
+A segunda atividade realizada foi um pequeno projeto, armazenado na pasta [projno](./04.1-introducao/projno/), para explicar o conceito de encadeamento de nó. Dois arquivos foram criados, um com a classe principal [Main](./04.1-introducao/projno/src/com/projno/Main.java) e outro com a classe [No](./04.1-introducao/projno/src/com/projno/No.java). O output do script da classe principal é exbido abaixo (imagem 03).
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
 
+Para finalizar este curso, foi feito a refatoração da classe [No](04.1-introducao/projno/src/com/projnogeneric/No.java) e [Main](04.1-introducao/projno/src/com/projnogeneric/Main.java) da atividade anterior. Mas com o objetivo de não subescrever os arquivos, foi criado um subpacote `projnogeneric` com os mesmos arquivos do subpacote `projno`, ambos no diretório `projno/src/com`. O objetivo foi adaptar as duas classes para utilziação de **Generics**, que é um recurso da linguagem de programação que permite criar classes, interfaces e métodos que podem operar com tipos de dados variados de forma segura e flexível. É uma maneira de parametrizar tipos, permitindo que definir classes ou métodos que possam ser usados com diferentes tipos de dados sem precisar duplicar o código. Para isso, foi utilizado a conveção `<T>` para determinar o tipo de dado.
 
 <a name="item4.2"><h4>4.2 Estruturas de Dados em Java: Pilhas e Filas</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Primeiros%20Passos%20com%20o%20Docker%20PH%20DIO.pdf">Certificate</a>
+
+Na primeira etapa desse curso, foram apresentadas as estruturas de dados pilha e filas, e como criá-las. Também foi abordado os conceitos de **LIFO** e **FIFO**. Para a estrutura de pilha foi construído um projeto para representação no diretório `projpilha`, onde foi feito a criação do pacote `com/projpilha`. Neste pacote, foi elaborado três arquivos em **Java** para construção das classes [Main](04.2-pilhas/projpilha/src/com/projpilha/Main.java), [No](04.2-pilhas/projpilha/src/com/projpilha/No.java) e [Pilha](./04.2-pilhas/projpilha/src/com/projpilha/Pilha.java). O objetivo foi construir esse tipo de estrutura de dados e manipulá-los com quatro métodos principais (`push`, `pop`, `top` e `isEmpty`). Toda a manipulação e execução foi realizada na classe principal `Main` e o resultado é ilustrado na imagem 04.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
 
 
 
