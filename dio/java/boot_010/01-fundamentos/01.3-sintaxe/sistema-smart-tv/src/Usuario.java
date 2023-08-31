@@ -1,24 +1,46 @@
+/**
+ * Classe que representa um usuário da smart TV.
+ */
 public class Usuario {
+
+    /**
+     * Ponto de entrada do programa. Permite a manipulação de uma smart TV.
+     *
+     * @param args Os argumentos da linha de comando (não são utilizados neste exemplo).
+     */
     public static void main(String[] args) throws Exception {
         SmartTv smartTv = new SmartTv();
 
+        // Imprimindo os status da TV
+        System.out.println("-----//-----//-----//-----//-----//-----//-----");
+        System.out.println("Imprimindo Status da TV:");
         System.out.println("TV Ligada? " + smartTv.ligada);
         System.out.println("Canal Atual? " + smartTv.canal);
         System.out.println("Volume Atual? " + smartTv.volume);
 
+        // Diminuindo e aumentando o volume da TV
         smartTv.diminuirVolume();
         smartTv.diminuirVolume();
         smartTv.diminuirVolume();
         smartTv.aumentarVolume();
-        System.out.println("Volume Atual: " + smartTv.volume);
 
+        // Alterando o canal da TV para o canal determinado
         smartTv.mudarCanal(13);
-        System.out.println("Canal Atual? " + smartTv.canal);
+        smartTv.aumentarCanal();
+        smartTv.aumentarCanal();
+        smartTv.diminuirCanal();
 
+        // Ligando a TV
         smartTv.ligar();
-        System.out.println("Novo Status -> TV Ligada? " + smartTv.ligada);
 
+        // Desligando a TV
         smartTv.desligar();
-        System.out.println("Novo Status -> TV Ligada? " + smartTv.ligada);
+
+        // Imprimindo os status da TV
+        System.out.println("-----//-----//-----//-----//-----//-----//-----");
+        System.out.println("Imprimindo Status da TV:");
+        System.out.println("TV Ligada? " + smartTv.ligada);
+        System.out.println("Canal Atual? " + smartTv.canal);
+        System.out.println("Volume Atual? " + smartTv.volume);
     }
 }

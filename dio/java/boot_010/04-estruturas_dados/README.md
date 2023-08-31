@@ -8,7 +8,7 @@
 
 ---
 
-This folder refers to Module 4 **Estruturas de Dados e API de Streams em Java** from Bootcamp [**Formação Java Developer**](../).
+This folder refers to Module 4 **Estruturas de Dados e API de Streams em Java** from bootcamp [**Formação Java Developer**](../).
 
 ### Theme:
 - Programming
@@ -39,7 +39,7 @@ This folder refers to Module 4 **Estruturas de Dados e API de Streams em Java** 
 
 ---
 
-### Bootcamp Module 1 Structure
+### Bootcamp Module 4 Structure
 4. <a name="item4">Estruturas de Dados e API de Streams em Java</a><br>
   4.1. <a href="#item4.1">Estruturas de Dados em Java: Introdução</a><br>
   4.2. <a href="#item4.2">Estruturas de Dados em Java: Pilhas e Filas</a><br>
@@ -53,10 +53,10 @@ This folder refers to Module 4 **Estruturas de Dados e API de Streams em Java** 
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi apresentar as estruturas de controle (condicionais, iterações e excepcionais) de fluxo da linguagem de programação **Java** e como utilizá-las.
+O objetivo deste módulo do bootcamp foi apresentar as estruturas de dados (pilhas, filas, listas, árvores, collections) da linguagem de programação **Java**, como construí-las implementando seus métodos.
 
 ### Structure:
-A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
+A estrutura das pastas obedeceu a estruturação do bootcamp e conforme foi necessário sub-pastas foram criadas para as atividades específicas deste módulo. Na imagem 01 é exibida a estruturação das pastas deste módulo.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img01.png" alt="img01"><br>
@@ -64,11 +64,13 @@ A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme 
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em 6 cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do Bootcamp foi dividido em seis cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item4.1"><h4>4.1 Estruturas de Dados em Java: Introdução</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
 
-O curso iniciou coma explição do conceito de memória e armazenamento, de como as variáveis e objetos, quando atribuídas, são armazenadas na memória do computador. Na primeira atividade do curso, foi mostrado a diferença de atribuição entre tipos primitivos e objetos. Na linguagem **Java** quando é utilizado o tipo primitivo, ou seja, usando apenas variáveis, o **Java** não copia a referência, copia exatamente o valor na memória de uma variável para outra, dessa forma, quando essa variável é alterada, a outra variável continua com o valor anterior a modificação. Já em um cenário de objetos, o **Java** consegue copiar a referência de um objeto para outro, logo, o segundo objeto tem seu valor alterado igualmente o primeiro objeto. Para melhor entedimento foi criado um projeto, armazenado na pasta [projatribuicao](./04.1-introducao/projatribuicao/), contendo os dois arquivos para execução da atividade. O primeiro arquivo foi a criação da classe principal [Main](04.1-introducao/projatribuicao/src/com/projatribuicao/Main.java), onde foi realizada a execução e o resultado pode ser visualizado na imagem 02 a seguir. Enquanto o outro arquivo foi para criação da classe [MeuObj](./04.1-introducao/projatribuicao/src/com/projatribuicao/MeuObj.java).
+O curso iniciou com a explição do conceito de memória e armazenamento, de como as variáveis e objetos, quando atribuídas, são armazenadas na memória do computador. Na primeira atividade do curso, foi mostrado a diferença de atribuição entre tipos primitivos e objetos. Na linguagem **Java**, as atribuições são por cópia de valor sempre, quando é utilizado o tipo primitivo e uma variável é atribuída a outra, a variável não copia a referência na memória, copia apenas o valor da outra variável. Dessa forma, quando essa variável é alterada, a outra variável não modifica seu valor, pois não possui a referência na memória da variável que modificou seu valor. Já em um cenário de objetos, é realizado a cópia da referência na memória de um objeto para outro, sem duplicar o objeto. Logo, o segundo objeto tem seu valor alterado igualmente o primeiro objeto. 
+
+Para melhor entedimento foi criado um projeto, armazenado na pasta [projatribuicao](./04.1-introducao/projatribuicao/), contendo os dois arquivos para execução da atividade. O primeiro arquivo foi a criação da classe principal [Main](04.1-introducao/projatribuicao/src/com/projatribuicao/Main.java), onde foi realizada a execução e o resultado pode ser visualizado na imagem 02 a seguir. Enquanto o outro arquivo foi para criação da classe [MeuObj](./04.1-introducao/projatribuicao/src/com/projatribuicao/MeuObj.java).
 
 <div align="Center"><figure>
     <img src="../0-aux/md4-img02.png" alt="img02"><br>

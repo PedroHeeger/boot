@@ -8,7 +8,7 @@
 
 ---
 
-This folder refers to Module 7 **Conhecendo o Spring Framework** from Bootcamp [**Formação Java Developer**](../).
+This folder refers to Module 7 **Conhecendo o Spring Framework** from bootcamp [**Formação Java Developer**](../).
 
 ### Theme:
 - Programming
@@ -41,7 +41,7 @@ This folder refers to Module 7 **Conhecendo o Spring Framework** from Bootcamp [
 
 ---
 
-### Bootcamp Module 1 Structure
+### Bootcamp Module 7 Structure
 7. <a name="item7">Conhecendo o Spring Framework</a><br>
   7.1. <a href="#item7.1">Principais Protocolos de Comunicação da Internet</a><br>
   7.2. <a href="#item7.2">Imersão no Spring Framework com Spring Boot</a><br>
@@ -55,10 +55,10 @@ This folder refers to Module 7 **Conhecendo o Spring Framework** from Bootcamp [
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi apresentar as estruturas de controle (condicionais, iterações e excepcionais) de fluxo da linguagem de programação **Java** e como utilizá-las.
+O objetivo deste módulo do bootcamp foi apresentar as estruturas de controle (condicionais, iterações e excepcionais) de fluxo da linguagem de programação **Java** e como utilizá-las.
 
 ### Structure:
-A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
+A estrutura das pastas obedeceu a estruturação do bootcamp e conforme foi necessário sub-pastas foram criadas para as atividades específicas deste módulo. Na imagem 01 é exibida a estruturação das pastas deste módulo.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img01.png" alt="img01"><br>
@@ -66,7 +66,7 @@ A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme 
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos e dois desafios de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em dois cursos e dois desafios de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item7.1"><h4>7.1 Principais Protocolos de Comunicação da Internet</h4></a>[Back to summary](#item7) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
 

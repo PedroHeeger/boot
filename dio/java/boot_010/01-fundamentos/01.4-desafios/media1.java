@@ -3,10 +3,12 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
+        // Classe existente utilizada para extrair dados de entrada fornecidos pelo usuário
         Scanner sc = new Scanner(System.in);
 
         double A, B, media;
-
+        
+        // Extraindo as entradas informada pelo o usuário 
         A = sc.nextDouble();
         B = sc.nextDouble();
 

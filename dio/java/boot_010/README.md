@@ -64,8 +64,8 @@
   4.3. Estruturas de Dados em Java: Listas   
   4.4. Estruturas de Dados em Java: Árvores   
   4.5. Estruturas de Dados em Java: Principais Implementações   
-  4.6. Trabalhando com Collections Java
-  4.7. Abstraindo um Bootcamp Usando Orientação a Objetos em Java
+  4.6. Trabalhando com Collections Java   
+  4.7. Abstraindo um Bootcamp Usando Orientação a Objetos em Java   
   4.8. Materiais Complementares - Estruturas de Dados    
 
 5. [Gerenciamento de Dependências e Build em Projetos Java](./05-dependencias_build/)   
@@ -89,7 +89,7 @@
   7.3. Criando uma API REST Documentada com Spring Web e Swagger   
   7.4. Adicionando Segurança a uma API REST com Spring Security   
   7.5. Explorando Padrões de Projetos na Prática com Java   
-  7.6. Conhecendo Spring Data JPA na prática com Java
+  7.6. Conhecendo Spring Data JPA na prática com Java   
   7.7. Materiais Complementares - Conhecendo o Spring Framework   
   7.8. Avalie a Formação Java Developer 
 
