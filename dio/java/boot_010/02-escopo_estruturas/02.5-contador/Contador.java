@@ -17,7 +17,7 @@ public class Contador {
 
         // Extraindo as informações de entrada do usuário
         System.out.println("-----//-----//-----//-----//-----//-----//-----");
-        System.out.println("Informando as entradas:");
+        System.out.println("Informando as entradas");
         System.out.print("Digite o primeiro parâmetro: ");
         int parametro1 = terminal.nextInt();
         System.out.print("Digite o segundo parâmetro: ");

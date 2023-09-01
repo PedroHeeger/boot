@@ -20,9 +20,9 @@ public class Musica {
     }
     
     /**
-     * Retorna uma representação em formato de String do objeto.
+     * Retorna uma representação em formato de String das informações da música.
      *
-     * @return Representação do objeto em formato de String.
+     * @return Representação das informações da música em formato de String.
      */
     @Override
     public String toString() {

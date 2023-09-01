@@ -40,15 +40,15 @@
   1.2. Ambiente de Desenvolvimento Java   
   1.3. Aprendendo a Sintaxe Java  
   1.4. Resolvendo desafios - Fundamentos da Linguagem de Programação Java   
-  1.5. Simulando Uma Conta Bancária Através do Terminal/Console
+  1.5. Simulando Uma Conta Bancária Através do Terminal/Console   
   1.6. Materiais Complementares - Fundamentos de Java  
 
 2. [Escopo e Estruturas de Controle em Java](./02-escopo_estruturas/)   
   2.1. Introdução e Estruturas Condicionais com Java   
   2.2. Estruturas de Repetição em Java   
   2.3. Java e Tratamento de Exceções   
-  2.4. Resolvendo desafios - Escopo e Estruturas de Controle em Java
-  2.5. Criando Um Pequeno Sistema para Validação de Processo Seletivo
+  2.4. Resolvendo desafios - Escopo e Estruturas de Controle em Java   
+  2.5. Criando Um Pequeno Sistema para Validação de Processo Seletivo   
   2.6. Materiais Complementares - Controle de Fluxo   
 
 3. [Programação Orientada a Objetos em Java](./03-poo/)   
