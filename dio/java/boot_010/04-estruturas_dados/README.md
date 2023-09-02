@@ -112,7 +112,7 @@ O terceiro pacote deste projeto ([com.filageneric](./04.2-pilhas_filas/projfila/
 
 <a name="item4.3"><h4>4.3 Estruturas de Dados em Java: Listas</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Armazenamento%20de%20Dados%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
-Neste curso foi apresentado a estrutura de dados de listas, como construí-las e manipulá-las. As listas são divididas em três tipos: listas encadeadas, listas duplamente encadeadas e listas circulares. Para cada tipo foi construído um pacote para desenvolvimento do projeto, sendo todos os pacotes armazenados no diretório [src](./04.3-listas/projlista/src/). Todos os pacotes desenvolvidos seguiram a mesma lógica da realização do curso anterior sobre pilhas e filas com a criação das três classes, sendo uma para o nó, outra para o tipo de lista e a última para execução dos métodos, todas já com a utilização do **Generics**. 
+Neste curso foi apresentado a estrutura de dados de listas, como construí-las e manipulá-las. As listas são divididas em três tipos: listas encadeadas, listas duplamente encadeadas e listas circulares. Para cada tipo foi construído um pacote para desenvolvimento do projeto, sendo todos os pacotes armazenados no diretório [src](./04.3-listas/projlista/src/) do projeto `projlista`. Todos os pacotes desenvolvidos seguiram a mesma lógica da realização do curso anterior sobre pilhas e filas com a criação das três classes, sendo uma para o nó, outra para o tipo de lista e a última para execução dos métodos, todas já com a utilização do **Generics**. 
 
 O primeiro pacote criado foi o [com.listencad](./04.3-listas/projlista/src/com/listaencad/), com as classes: [Main](./04.3-listas/projlista/src/com/listaencad/Main.java), [No](./04.3-listas/projlista/src/com/listaencad/No.java) e [ListaEncadeada](./04.3-listas/projlista/src/com/listaencad/ListaEncadeada.java), cujos métodos foram `add`, `get`, `remove`, `size` e `isEmpty`, além de dois métodos auxiliares e o método `toString` utilizado para impressão das informações. O resultado da utilização dos métodos da estrutura de lista encadeada é mostrado na imagem 06.
 
@@ -142,23 +142,58 @@ O terceiro pacote foi o [com.listacirc](./04.3-listas/projlista/src/com/listacir
 
 <a name="item4.4"><h4>4.4 Estruturas de Dados em Java: Árvores</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
+Neste curso, foi apresentado uma outra estrutura de dados do tipo árvore que é uma estrutura de dados bidimensional, não linear. Constituída de nós que representam um modelo hierárquico. Essas armazenam os dados com base em relações de dependências. Existem vários tipos de árvores como: Árvore Binária; Árvore AVL; Árvore Ordenada; Árvore Rubro-Negra; Árvore 2-3; Árvore 2-4; Árvore B; Árvore B+; Árvore Hiperbólica. A executada no projeto ([projarvore](./04.4-arvores/projarvore/)) foi a árvore do tipo binária. Neste projeto foram construídos dois pacotes: [com.arvore](./04.4-arvores/projarvore/src/com/arvore/) e [com.arvore.model](./04.4-arvores/projarvore/src/com/model). O primeiro pacote teve as três classes padrões do desenvolvimento: [Main](./04.4-arvores/projarvore/src/com/arvore/Main.java), [BinNo](./04.4-arvores/projarvore/src/com/arvore/BinNo.java) e [ArvoreBinaria](./04.4-arvores/projarvore/src/com/arvore/ArvoreBinaria.java), cujos métodos implantados foram `insert`, `showInOrdem`, `showPosOrdem`, `showPreOrdem` e `remove`, execeto método `remove`, todos os demais tiveram recursividade (um método público que chama o método privado de mesmo nome). No segundo pacote [com.model](./04.4-arvores/projarvore/src/com/model/), as classes criadas foram [Obj](./04.4-arvores/projarvore/src/com/model/Obj.java) e [ObjArvore](./04.4-arvores/projarvore/src/com/model/ObjArvore.java), sendo a classe `ObjArvore`, sendo filha da classe abstrata `Obj`, cujo o propósito foi utilizar métodos para manipulação dos objetos dessa árvore. A imagem 10 ilustra o desenvolvimento dessa estrutura de dados.
 
-
-
-
-
-
-
-
-
-
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
 
 <a name="item4.5"><h4>4.5 Estruturas de Dados em Java: Principais Implementações</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
+O curso 5 deste módulo começou com a implantação de uma pasta de projeto **Java** de nome [projeto](./04.5-implementacoes/projeto/), no `src` deste projeto foram desenvolvido os pacotes. Cada pacote foi referente a uma estrutura de dados vista anteriormente, porém o objetivo agora, diferente dos cursos anteriores que foi construir as estruturas, foi utilizá-las da própria linguagem **Java** e manipulá-las com seus métodos. O primeiro pacote elaborado foi o [com.equalshashCode](./04.5-implementacoes/projeto/src/com/equalshashCode/), onde foi criada duas classes, a classe principal [Main](./04.5-implementacoes/projeto/src/com/equalshashCode/Main.java) para execução dos métodos e a classe [Carro](./04.5-implementacoes/projeto/src/com/equalshashCode/Carro.java) para manipulação dos métodos `hashCode` e `equals` que já existem, mas podem ser criados, inclusive automaticamente pela extensão do **VS Code** para **Java**. Neste caso, foi implementado dois métodos de cada um desses dois, totalizando quatro métodos, sendo um, igual ao desenvolvido pelo expert do bootcamp e o outro criado automaticamente pela extensão.
 
+Após essa etapa, foi elaborado o pacote 2 [com.stack](./04.5-implementacoes/projeto/src/com/stack/), as mesmas duas classes foram utilizadas nesse pacote: [Main](./04.5-implementacoes/projeto/src/com/stack/Main.java) e [Carro](./04.5-implementacoes/projeto/src/com/stack/Carro.java). Nessa etapa, foi utilizada a estrutura de dados `Stack` (pilha) já existente em uma classe da linguagem para criar uma stack de carros e utiliizar alguns de seus métodos (`push`, `pop`, `peek` e `empty`). Para utilizar essa estrutura foi necessário importar a classe com o comando `import java.util.Stack`. Também foi necessário gerar o método `toString` na classe `Carro`, para exibir as informações na hora de imprimir. A imagem 11 demonstra a realização desta etapa.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
 
+A próxima estrutura foi a `Queue (LinkedList)`, a fila, desenvolvida no pacote [com.queue](04.5-implementacoes/projeto/src/com/queue/) com as classes: [Main](./04.5-implementacoes/projeto/src/com/queue/Main.java) e [Carro](./04.5-implementacoes/projeto/src/com/queue/Carro.java). Os métodos executados dessa classe foram: `add`, `offer`, `peek`, `poll`, `remove` e `isEmpty`. Foi necessário realizar os seguintes imports na classe `Main`: `import java.util.LinkedList;` e `import java.util.Queue;`. O resultado do output do arquivo é apresentado na imagem 12 abaixo.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+Na etapa seguinte, a estrutura de dados utilizada foi a `List (ArrayList)`, que são as listas. Foi construída no pacote [com.list](04.5-implementacoes/projeto/src/com/list/) com as classes: [Main](./04.5-implementacoes/projeto/src/com/list/Main.java) e [Carro](./04.5-implementacoes/projeto/src/com/list/Carro.java). Os métodos executados dessa classe foram: `add`, `contains`, `get`, `indexOf`, `remove` e `isEmpty`. Foi necessário realizar os seguintes imports na classe `Main`: `import java.util.ArrayList;` e `import java.util.List;`. O resultado do output do arquivo é apresentado na imagem 13 a seguir.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+Dando continuidade, a estrutura de dados manipulada foi a interface `Set` (conjunto), realizada no pacote [com.set](04.5-implementacoes/projeto/src/com/set/) com as classes: [Main](./04.5-implementacoes/projeto/src/com/set/Main.java) e [Carro](./04.5-implementacoes/projeto/src/com/set/Carro.java). Na classe `Main` deste pacote foi executado apenas o método `add`, pois foram criadas duas estruturas `Set`, o `HashSet` e o `TreeSet`. Uma das diferenças entre este dois tipos de `Set` é que o `HashSet` não mantém nenhuma ordem específica dos elementos, ou seja, os elementos não são ordenados. Já em um `TreeSet` mantém seus elementos em ordem natural ou em uma ordem específica por um comparador. Sendo assim, foi implementado na classe `Carro` dois métodos `CompareTo`, um para comparar as marcas dos carros por quantidade de caractere e outro para comparar as marcas por ordem alfabética. Foi necessário realizar os seguintes imports na classe `Main`: `import java.util.Set;`, `import java.util.HashSet;` e `import java.util.TreeSet;`. Na imagem 14 é possível verificar como os elementos são exibidos por cada tipo de `Set`, sendo que foi utilizado nesta impressão a comparação por ordem alfabética.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+Na última etapa, a estrutura de dados utilizada foi a `Map` (dicionário), que foi elaborada no pacote [com.map](04.5-implementacoes/projeto/src/com/map/) e só possuíu a classe [Main](./04.5-implementacoes/projeto/src/com/map/Main.java), tudo foi realizado dentro dela. Os métodos executados foram: `put`, `keySet`, `values`, `containsKey` e `add`. Também foi criado uma lista para adicionar cada objeto `Map` a essa lista. As importações abaixo foi necessária para execução do script. O resultado é exibido na imagem 15.
+
+```java
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+```
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
+</figure></div><br>
 
 <a name="item4.6"><h4>4.6 Trabalhando com Collections Java</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
