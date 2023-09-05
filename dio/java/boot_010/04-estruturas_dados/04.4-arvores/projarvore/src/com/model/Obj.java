@@ -61,7 +61,7 @@ public class Obj extends ObjArvore<Obj> {
     }
 
     /**
-     * Retorna uma representação em formato de string deste conteúdo do objeto.
+     * Retorna uma representação em formato de string do conteúdo do objeto.
      *
      * @return Uma representação em string do conteúdo do objeto.
      */
