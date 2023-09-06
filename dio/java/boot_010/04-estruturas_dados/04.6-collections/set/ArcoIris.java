@@ -15,7 +15,7 @@ public class ArcoIris{
     /**
      * Ponto de entrada do programa. Aciona o seu único método.
      *
-     * @param args Os argumentos da linha de comando.
+     * @param args Os argumentos da linha de comando (não são utilizados neste exemplo).
      */
     public static void main(String [] args){
         executarArcoIris();

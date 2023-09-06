@@ -1,4 +1,4 @@
-package com.arvore.model;
+package com.model;
 import java.util.Objects;
 
 /**

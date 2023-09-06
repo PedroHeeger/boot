@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * Classe para manipulação da estrutura de dados List.
+ */
 class ExemploList {
     public static void main(String[] args) {
         // Formas de criar uma lista:

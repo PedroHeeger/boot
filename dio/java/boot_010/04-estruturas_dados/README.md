@@ -197,13 +197,70 @@ import java.util.HashMap;
 
 <a name="item4.6"><h4>4.6 Trabalhando com Collections Java</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
+Neste curso foi trabalhado com quatro estruturas de dados (list, set, map e stream), sendo que para cada uma delas foi criado um diretório com os arquivos em **Java** realizados, que foram um arquivo de exemplo e dois desafios práticos. A pasta da lista foi a [list](04.6-collections/list/), contendo os seguintes arquivos: [ExemploList](04.6-collections/list/ExemploList.java), [Crime](./04.6-collections/list/Crime.java) e [Temperatura](04.6-collections/list/Temperatura.java). Os dois últimos foram os desafios executados com essa estrutura de dados. No desafio `Crime` foi para determinar com base em respostas de perguntas qual o grau de participação de uma pessoa em um crime. Já no desafio `Temperatura` , foi para avaliar a partir de seis valores de temperatura, um para cada um dos seis primeiros meses do ano, quais temperaturas e seus respectivos meses em que a temperatura foi maior que a média. A seguir, as imagens 16, 17, e 18 exibem o resultado da execução dos arquivos `ExemploList`, `Temperatura` e `Crime`.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
 
+A estrutura de dados set, armazenada no diretório [set](04.6-collections/set/), tiveram os seguintes arquivos: [ExemploSet](04.6-collections/set/ExemploSet.java), [ArcoIris](04.6-collections/set/ArcoIris.java) e [LinguagemFavorita](04.6-collections/set/LinguagemFavorita.java), sendo os dois últimos os desafios. No desafio `ArcoIris`, foi criado estruturas de dados derivada do `Set` como `HashSet`, `TreeSet` e `LinkedHashSet`, o qual foi utilizado alguns métodos dessas estruturas para manipulação dos dados. Já no desafio `LinguagemFavorita`, foi criado uma classe `LinguagemFavorita` com construtor, alguns métodos, incluindo o método `compareTo`, além do método principal. No método principal, com apenas a estrutura de dados `TreeSet` foi realizada diversas ordenações diferentes dos dados, porém isso funcionar, foi necessário elaborar três classes de comparação que implementavam o `Comparator`, cada uma desenvolvendo comparações com atributos diferentes da classe `LinguagemFavorita`, sendo que todas as classes foram executadas no mesmo arquivo. Os outputs do resultado dos três arquivos podem ser visualizados nas três imagens (19, 20, 21) abaixo.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img19.png" alt="img19"><br>
+    <figcaption>Imagem 19.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img21.png" alt="img21"><br>
+    <figcaption>Imagem 21.</figcaption>
+</figure></div><br>
+
+Para a estrutura de dados map, foi construído a pasta [map](04.6-collections/map/), onde foram elaborados os seguintes arquivos: [ExemploMap](04.6-collections/map/), [EstadosNE](04.6-collections/map/EstadosNE.java) e [Dados](./04.6-collections/map/Dados.java). No desafio `estadosNE`, foi criado um map com quatro estados e suas populações, em seguida, foi realizado algumas manipulações nesse map. Já no desafio `Dados`, foi criado um jogo onde são gerado cem valores randômicos, de 1 à 6, que foram adicionados a uma lista e posteriormente a um dicionário, contabilizando o número de ocorrências de um mesmo valor. As imagens 22, 23 e 24 ilustram o desenvolvimento dos três arquivos `ExemploMap`, `EstadosNE`, `Dados`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img22.png" alt="img22"><br>
+    <figcaption>Imagem 22.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img23.png" alt="img23"><br>
+    <figcaption>Imagem 23.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img24.png" alt="img24"><br>
+    <figcaption>Imagem 24.</figcaption>
+</figure></div><br>
+
+A última estrutura foi a stream armazenada no diretório [stream](04.6-collections/stream/). Primeiro foi exercitado as formas de ordenação com utilização dos arquivos [Ordenacao](./04.6-collections/stream/ordem/Ordenacao.java) e [Contato](./04.6-collections/stream/ordem/Contato.java), disponíveis na pasta [ordem](04.6-collections/stream/ordem/), sendo `Ordenacao` a classe com método principal, onde são acionados vários métodos para ordenar as estruturas de dados. Os três primeiros foram desenvolvidos com as estruturas de dados `HashMap`, `LinkedHashMap` e `TreeMap`, enquanto as duas últimas foi o objetivo central deste projeto. Ambas foram ordenadas de três formas diferentes, a primeira forma embutindo o método da classe **Comparator** dentro da criação da estrutura de dados. A segunda forma, foi com a utilização do conceito de **Classe Anônima**, enquanto a última foi com a utilização da **Função Lambda**. O resultado do output é mostrado na imagem 25 a seguir.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
+
+Por fim, no arquivo [ExemploStream](./04.6-collections/stream/ExemploStream.java) foi apresentado e exercitado a estrutura de dados stream e como manipulá-la. A imagem 26 a seguir mostra o resultado do output.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
+</figure></div><br>
 
 <a name="item4.7"><h4>4.7 Abstraindo um Bootcamp Usando Orientação a Objetos em Java</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 

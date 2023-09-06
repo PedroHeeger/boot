@@ -1,4 +1,4 @@
-package com.arvore.model;
+package com.model;
 
 /**
  * Classe abstrata base para objetos que podem ser armazenados em uma árvore.

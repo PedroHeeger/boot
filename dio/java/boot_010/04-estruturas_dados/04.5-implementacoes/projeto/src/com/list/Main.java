@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * Classe principal que cria uma list (lista) de carros e executa seus métodos.
  */
-
 public class Main {
 
     /**

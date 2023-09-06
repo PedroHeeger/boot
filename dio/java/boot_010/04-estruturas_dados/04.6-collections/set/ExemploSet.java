@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * Classe para manipulação da estrutura de dados Set.
+ */
 public class ExemploSet {
     public static void main(String[] args) {
         // Formas de criar um set:

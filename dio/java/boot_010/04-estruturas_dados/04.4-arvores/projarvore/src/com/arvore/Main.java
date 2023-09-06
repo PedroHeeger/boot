@@ -1,5 +1,5 @@
 package com.arvore;
-import com.arvore.model.Obj;
+import com.model.Obj;
 
 /**
  * Classe principal que mostra o funcionamento de uma estrutura 
