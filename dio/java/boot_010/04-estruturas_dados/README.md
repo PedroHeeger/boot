@@ -264,4 +264,55 @@ Por fim, no arquivo [ExemploStream](./04.6-collections/stream/ExemploStream.java
 
 <a name="item4.7"><h4>4.7 Abstraindo um Bootcamp Usando Orientação a Objetos em Java</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
 
+Este desafio de projeto foi desenvolvido no diretório referente ao número do curso deste módulo. Nele, foi construído um projeto **Java** com as extensões do **VS Code**, sendo criada a pasta do projeto[poo](./04.7-poo/poo/). Este projeto conteve as sub-pastas padrões que já são geradas ao criar o projeto. No diretório `src`, foi desenvolvido o pacote `br.com.dio.desafio` com o arquivo principal [Main](./04.7-poo/poo/src/br/com/dio/desafio/Main.java) e o sub-pacote `br.com.dio.desafio.dominio` com as seguintes classes de domínio do projeto: [Conteudo](04.7-poo/poo/src/br/com/dio/desafio/dominio/Conteudo.java), [Mentoria](04.7-poo/poo/src/br/com/dio/desafio/dominio/Mentoria.java), [Curso](04.7-poo/poo/src/br/com/dio/desafio/dominio/Curso.java), [Dev](04.7-poo/poo/src/br/com/dio/desafio/dominio/Dev.java) e [Bootcamp](04.7-poo/poo/src/br/com/dio/desafio/dominio/Bootcamp.java). O propósito deste projeto relacionar as classes de domínio com a utilização do paradigma orientação a objetos (POO) e os pilares que este paradigma oferece.
 
+Primeiro foi desenvolvida as classes `Curso` e `Mentoria` que extenderam da classe base abstrata `Conteudo` seus atributos e métodos. Logo, não foi necessário criar os métodos `getters` e `settters` de dois atributos, pois eles já eram implementados na classe base `Conteudo`. Então essas duas classes contiveram seus métodos `getters` e `settters` dos atributos específicos dessas classes, o método `toString` e um método obrigatório `CalcularXp` que foi foi implementado como abstract na classe `Conteudo`, logo as classes derivadas tinha que implementá-lo.
+
+As classes `Dev` e `Bootcamp` tiveram métodos `getters` e `settters` dos seus atributos, além dos métodos `hashCode` e `equals`. Na classe `Bootcamp` foi criadas constantes para data inicial e final de um bootcamp com uso da classe do **Java** `LocalDate` importada para o arquivo. Também tiveram duas estruturas de dados do tipo `Set` (`LinkedHashSet` e `HashSet`) para armazenar os conteúdos (cursos e mentorias) do bootcamp e os devs inscritos no bootcamp.
+
+A classe `Dev` também possuío dois `Set`, ambos do tipo `LinkedHashSet`, uma para receber os conteúdos que o dev estava inscritos ao se inscrever no bootcamp e outra para conter os conteúdos concluídos pelo dev. Três métodos específicos foram desenvolvidos e são apresentados logo abaixo. Esses métodos serviram para efetuar manipulações entre as classes de domínio.
+
+```java
+/**
+ * Adiciona todos os conteúdos de um bootcamp que o dev se inscreveu ao
+ * conjunto de conteúdos inscritos deste dev.
+ *
+ * @param bootcamp Bootcamp que o deve se inscreveu.
+ */
+public void inscreverBootcamp(Bootcamp bootcamp){
+    this.conteudosInscritos.addAll(bootcamp.getConteudos());
+    bootcamp.getDevsInscritos().add(this);
+}
+
+/**
+ * Extraí o primeiro conteúdo que o dev está inscrito adiciona para no conjunto
+ * de conteúdos concluídos e remove do conjunto de conteúdos inscritos.
+ */
+public void progredir() {
+    Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+    if(conteudo.isPresent()) {
+        this.conteudosConcluidos.add(conteudo.get());
+        this.conteudosInscritos.remove(conteudo.get());
+    }else {
+        System.err.println("Você não está matriculado em nenhum conteúdo!");
+    }
+}
+
+/**
+ * Calcula o total de XP que o dev obteve.
+ *
+ * @return Total de XP obtido pelo dev.
+ */
+public double calcularTotalXp() {
+    // Primeira forma sem expressão Lambda, segunda forma com a expressão Lambda
+    // return this.conteudosConcluidos.stream().mapToDouble(conteudo -> conteudo.calcularXp()).sum();
+    return this.conteudosConcluidos.stream().mapToDouble(Conteudo::calcularXp).sum();
+}
+```
+
+Por fim, toda execução do código foi realizada no método `main` da classe `Main`, onde os objetos das classes de domínio foram instanciados e seus métodos foram acionados. O resultado do projeto é ilustrado na imagem 27 a seguir.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img27.png" alt="img27"><br>
+    <figcaption>Imagem 27.</figcaption>
+</figure></div><br>

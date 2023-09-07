@@ -36,9 +36,9 @@ public class Carro {
     }
 
     /**
-     * Gera um codigo hash para o objeto com o atributo especifico.
+     * Gera um código hash para o objeto com os atributos específicos.
      *
-     * @return Codigo hash do objeto com o atributo especifico.
+     * @return Código hash do objeto com os atributos específicos.
      */
     @Override
     public int hashCode() {

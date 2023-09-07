@@ -32,6 +32,7 @@ public class Main {
         listCarros.add(carro2);
         listCarros.add(carro3);
         listCarros.add(carro4);
+        listCarros.add(carro5);
         System.out.println(listCarros);
 
         // Verifica se um carro contém na lista
