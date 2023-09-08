@@ -28,7 +28,7 @@ public class Dados {
         }
 
         // Adicionando os valores da lista a um dicionário e contabilizando o número de ocorrências
-        Map<Integer, Integer> lancamentos = new HashMap();
+        Map<Integer, Integer> lancamentos = new HashMap<>();
         for(Integer resultado : valores){
             if(lancamentos.containsKey(resultado)){
                 lancamentos.put(resultado, lancamentos.get(resultado) + 1);

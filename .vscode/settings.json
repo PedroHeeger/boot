@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "dio/java/boot_010/01-fundamentos/01.5-conta_bancaria",
+        "dio/java/boot_010/01-fundamentos/01.4-desafios",
+        "dio/java/boot_010/01-fundamentos/01.3-sintaxe",
+        "dio/java/boot_010/05-dependencias_build/tasks/task_type/app/src/main/java/task_type"
+    ]
+}

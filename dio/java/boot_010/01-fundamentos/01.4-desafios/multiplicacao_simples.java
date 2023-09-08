@@ -1,9 +1,10 @@
 // Abaixo segue um exemplo de código que você pode ou não utilizar
 import java.util.Scanner;
 
-public class Problem {
+public class Multiplicacao_Simples {
 	public static void main(String[] args) {
 		// Classe existente utilizada para extrair dados de entrada fornecidos pelo usuário
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		int A, B, PROD;
@@ -12,7 +13,7 @@ public class Problem {
 		A = sc.nextInt();
 		B = sc.nextInt();
 		
-		//TODO: Complete os espaços em branco com uma possível solução para o desafio 
+		// TO DO: Complete os espaços em branco com uma possível solução para o desafio 
 		PROD = A * B;    
 
 		System.out.println("PROD = " +  PROD );

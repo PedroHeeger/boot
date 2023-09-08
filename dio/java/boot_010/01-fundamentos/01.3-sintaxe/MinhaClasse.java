@@ -1,7 +1,7 @@
 /**
  * Classe que representa uma classe para testes de POO.
  */
-public class MinhaClasse {\
+public class MinhaClasse {
 
     /**
      * Ponto de entrada do programa.

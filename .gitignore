@@ -3,7 +3,7 @@ dio/dados_unimed_1
 
 
 
-dio/docker/boot_006/03-docker_swarm/03.1-docker_swarm/key_dio_docker.ppk
+
 
 dio/linux/boot_003/02-linux/*
 !dio/linux/boot_003/02-linux/README.md
@@ -14,3 +14,12 @@ dio/linux/boot_003/03-servidor_linux/*
 !dio/linux/boot_003/03-servidor_linux/README.md
 !dio/linux/boot_003/03-servidor_linux/03.04-dp_iac
 !dio/linux/boot_003/03-servidor_linux/03.05-dp_docker
+
+dio/docker/boot_006/03-docker_swarm/03.1-docker_swarm/key_dio_docker.ppk
+
+dio/java/boot_010/05-dependencias_build/projeto/.gradle
+dio/java/boot_010/05-dependencias_build/projeto/app/build
+dio/java/boot_010/05-dependencias_build/tasks/first_tasks/.gradle
+dio/java/boot_010/05-dependencias_build/tasks/tasks_dependencies/.gradle
+dio/java/boot_010/05-dependencias_build/tasks/task_type/.gradle
+dio/java/boot_010/05-dependencias_build/tasks/task_type/app/build
