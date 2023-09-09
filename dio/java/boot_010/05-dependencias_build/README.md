@@ -39,7 +39,7 @@ This folder refers to Module 5 **Gerenciamento de Dependências e Build em Proje
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi apresentar as estruturas de controle (condicionais, iterações e excepcionais) de fluxo da linguagem de programação **Java** e como utilizá-las.
+O objetivo deste módulo do bootcamp foi apresentar dois softwares (**Gradle** e **Apache Maven**) de automação de compilação e gerenciamento de dependências, elaborando e executando projetos **Java** com eles.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do bootcamp e conforme foi necessário sub-pastas foram criadas para as atividades específicas deste módulo. Na imagem 01 é exibida a estruturação das pastas deste módulo. 
@@ -86,26 +86,4 @@ Para o último arquivo [build.gradle](./05.1-gradle/tasks/task_type/app/build.gr
 
 <a name="item5.2"><h4>5.2 Gerenciamento de Dependênciase Build em Java com Maven</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Primeiros%20Passos%20com%20o%20Docker%20PH%20DIO.pdf">Certificate</a>
 
-
-
-`mvn archetype:generate -DgroupId=one.digitalinnovation -DartifactId=quick-start-maven -Darchetype=maven-archetype-quickstart -Dinteractive Mode=false`
-
-
-
-
-
-
-<div align="Center"><figure>
-    <img src="../0-aux/md2-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
-
-
-
-
-
-
-<div align="Center"><figure>
-    <img src="../0-aux/md2-img03.png" alt="img03"><br>
-    <figcaption>Imagem 03.</figcaption>
-</figure></div><br>
+Neste curso, foi apresentado outro software de automação de compilação e gerenciamento de dependências que foi o **Apache Maven**, porém o curso foi apenas teórico, explicando sobre a ferramenta. 

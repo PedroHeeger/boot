@@ -59,7 +59,7 @@ O objetivo deste módulo do bootcamp foi apresentar as estruturas de dados (pilh
 A estrutura das pastas obedeceu a estruturação do bootcamp e conforme foi necessário sub-pastas foram criadas para as atividades específicas deste módulo. Na imagem 01 é exibida a estruturação das pastas deste módulo.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md2-img01.png" alt="img01"><br>
+    <img src="../0-aux/md4-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
