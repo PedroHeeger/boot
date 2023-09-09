@@ -1,9 +1,9 @@
-# Formação Docker Fundamentals   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="45">
+# Bootcamp Cloud AWS   <img src="./0-aux/logo_boot.png" alt="boot_011" width="auto" height="45">
 
 ### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
-### Bootcamp: <a href="./">boot_006 (Formação Docker Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
+### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
+### Bootcamp: <a href="./">boot_011 (Bootcamp Cloud AWS)   <img src="./0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>
 
 #### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/virtualization/docker/(23-08-22)%20Cert%20Formacao%20Docker%20Fundamentals%20PH%20DIO.pdf">Certificate</a>
 
@@ -21,6 +21,9 @@
 - Virtualization: 
   - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
   - Docker <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
+- Cloud:
+  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - Amazon EC2   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_ec2" width="auto" height="25">
 - Integrated Development Environment (IDE):
   - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
@@ -33,34 +36,54 @@
 ---
 
 ### Bootcamp Structure
-1. [Introdução ao Docker](./01-introducao_docker/)   
-  1.1. Introdução e Laboratório Virtual  
-  1.2. Primeiros Passos com o Docker   
-  1.3. Armazenamento de Dados com Docker  
-  1.4. Processamento, Logs e Rede com Docker   
-  1.5. Materiais Complementares: Introdução ao Docker  
+1. Prepare-se Para a Jornada   
+  1.1. Conheça as Oportunidades da DIO   
+  1.2. Boas-vindas ao Bootcamp Cloud AWS   
+  1.3. Seja Protagonista Neste Bootcamp   
+  1.4. Introdução ao Desenvolvimento Moderno de Software   
+  1.5. Bootcamp Cloud AWS-Mentoria   
 
-2. [Docker File e Docker Compose](./02-dockerfile_compose/)   
-  2.1. Definição e Criação de um Docker File   
-  2.2. Docker Compose   
-  2.3. Criando um Container de uma Aplicação WEB   
-  2.4. Materiais Complementares: Docker File e Docker Compose   
+2. Conhecendo o Sistema Operacional Linux   
+  2.1. Introdução ao Sistema Operacional Linux   
+  2.2. Instalando o Linux   
+  2.3. Acesso Remoto a Máquinas Linux   
+  2.4. Manipulando Arquivos no Linux   
+  2.5. Gerenciando Usuários no Linux   
+  2.6. Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões   
+  2.7. Gerenciamento de Pacotes Linux   
+  2.8. Gerenciamento de Discos Linux   
+  2.9. Copiando Arquivos e Manipulando Processos   
+  2.10. Servidores de Arquivos com Linux   
+  2.11. Criando um Servidor Web com Linux   
+  2.12. Servidor de Banco de Dados com Linux   
+  2.13. Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)
 
-3. [Trabalhando com Cluster e Docker Swarm](./03-docker_swarm/)   
-  3.1. Criando um Cluster com o Docker Swarm   
-  3.2. Load Balancer  
-  3.3. Definição de um Cluster Swarm Local com o Vagrant   
-  3.4. Materiais Complementares: Cluster e Docker Swarm   
-  3.5. Avalie a Formação de Docker Fundamentals   
+3. [AWS Foundations](./03-aws_foundation/)   
+  3.1. Primeiros Passos com AWS   
+  3.2. AWS Official Content - Introdução à Amazon Web Services (AWS)   
+  3.3. Introdução ao Conceito de Cloud   
+  3.4. Infraestrutura Global AWS   
+  3.5. Computação em AWS   
+  3.6. Introdução Prática a Computação em Nuvem Usando AWS   
+  3.7. AWS Official Content - Introdução à Computação em Nuvem com AWS   
+  3.8. Redes em AWS   
+  3.9. Armazenamento e Banco de Dados AWS   
+  3.10. Imersão ao Ecossistema Cloud Data AWS   
+  3.11. AWS Official Content - Armazenamento e Banco de Dados na AWS   
+  3.12. Infraestrutura Como Código com Serverless Framework na AWS   
+
+4. [Preparatório para Certificação AWS Cloud Practitioner](./04-docker_swarm/)   
+  4.1. Introdução ao Exame de Certificação AWS Cloud Practitioner   
+  4.2. AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner   
+  4.3. Assuntos Complementares para o Exame AWS Cloud Practitioner   
+  4.4. Avalie este Bootcamp   
 
 ---
 
 ### Objective:
 Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO**.
   
->Nesta Formação você irá aprender a criar, testar e implementar contêineres Docker com atividades práticas e reais. Você aprenderá Docker começando por entender o que é um contêiner e como é o seu funcionamento. Irá realizar atividades práticas em laboratórios virtuais para entender como os contêineres são criados e implementados em uma infraestrutura real. Depois de entender o que é um contêiner, você aprenderá como trabalhar com eles usando comandos básicos do CLI do Docker.
-
->A seguir, você aprenderá a criar suas próprias imagens personalizadas e como armazená-las na nuvem ou em uma infraestrutura local. A Formação também aborda a criação de um cluster de contêineres utilizando ferramentas específicas da AWS e também a criar um cluster de contêineres em uma infraestrutura local.
+>Uma das maiores plataformas de serviços de computação em nuvem chegou na DIO. Este é o primeiro programa AWS - Amazon Web Services - em parceria com a DIO, composto por 73 horas de conteúdo que vai do básico até o preparatório para certificações. A trilha é composta por cursos exclusivos AWS e mentorias ao vivo com experts certificados pela plataforma. Uma grande oportunidade de conhecer as certificações AWS e ter destaque no currículo.
 
 ### Structure:
 - A estrutura do bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. 

@@ -9,4 +9,4 @@
 This folder refers to all the courses I took on the Digital Innovation One (DIO) platform regarding AWS platform.
 
 ### Bootcamps:
-- <a href="./boot_011/">boot_011 (Formação Docker Fundamentals)   <img src="./boot_011/0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>
+- <a href="./boot_011/">boot_011 (Bootcamp Cloud AWS)   <img src="./boot_011/0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>

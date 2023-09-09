@@ -8,7 +8,7 @@
 
 ---
 
-This folder refers to Module 2 **Docker File e Docker Compose** from Bootcamp [**Formação Docker Fundamentals**](../).
+This folder refers to Module 2 **Docker File e Docker Compose** from bootcamp [**Formação Docker Fundamentals**](../).
 
 ### Theme:
 - Virtualization
@@ -72,10 +72,10 @@ This folder refers to Module 2 **Docker File e Docker Compose** from Bootcamp [*
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi aprender a trabalhar com **Docker File** e **Docker Compose**. Além da realização de um desafio de projeto, no qual foi criado um container de servidor web.
+O objetivo deste módulo do bootcamp foi aprender a trabalhar com **Docker File** e **Docker Compose**. Além da realização de um desafio de projeto, no qual foi criado um container de servidor web.
 
 ### Structure:
-A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
+A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img01.png" alt="img01"><br>
@@ -83,7 +83,7 @@ A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme f
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item2.1"><h4>2.1 Definição e Criação de um Docker File</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Defini%C3%A7%C3%A3o%20e%20Cria%C3%A7%C3%A3o%20de%20um%20Docker%20File%20PH%20DIO.pdf">Certificate</a>
 

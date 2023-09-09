@@ -4,11 +4,11 @@
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_006 (Formação Docker Fundamentals)   <img src="../0-aux/logo_boot.png" alt="boot_006" width="auto" height="25"></a>
-### Module: 3. Introdução ao Docker 
+### Module: 3. Trabalhando com Cluster e Docker Swarm 
 
 ---
 
-This folder refers to Module 3 **Trabalhando com Cluster e Docker Swarm** from Bootcamp [**Formação Docker Fundamentals**](../).
+This folder refers to Module 3 **Trabalhando com Cluster e Docker Swarm** from bootcamp [**Formação Docker Fundamentals**](../).
 
 ### Theme:
 - Virtualization
@@ -65,10 +65,10 @@ This folder refers to Module 3 **Trabalhando com Cluster e Docker Swarm** from B
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi aprender sobre o assunto clusterização, como criar clusters com o **Docker Swarm** tanto no ambiente de cloud **AWS** como no ambiente local com utilização dos softwares **Vagrant** e **VM Virtual Box**, além de entender como realizar o balanceamento das cargas (**Load Balancer**).
+O objetivo deste módulo do bootcamp foi aprender sobre o assunto clusterização, como criar clusters com o **Docker Swarm** tanto no ambiente de cloud **AWS** como no ambiente local com utilização dos softwares **Vagrant** e **VM Virtual Box**, além de entender como realizar o balanceamento das cargas (**Load Balancer**).
 
 ### Structure:
-A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
+A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img01.png" alt="img01"><br>
@@ -76,7 +76,7 @@ A estrutura das pastas obedece a estruturação do Bootcamp, ou seja, conforme f
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item3.1"><h4>3.1 Criando um Cluster com o Docker Swarm</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
 
