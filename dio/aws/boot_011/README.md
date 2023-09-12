@@ -10,7 +10,7 @@
 ---
 
 ### Theme:
-- Virtualization
+- Cloud Computing
 
 ### Used Tools:
 - Operating System (OS): 
@@ -44,19 +44,19 @@
   1.5. Bootcamp Cloud AWS-Mentoria   
 
 2. Conhecendo o Sistema Operacional Linux   
-  2.1. Introdução ao Sistema Operacional Linux   
-  2.2. Instalando o Linux   
-  2.3. Acesso Remoto a Máquinas Linux   
-  2.4. Manipulando Arquivos no Linux   
-  2.5. Gerenciando Usuários no Linux   
-  2.6. Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões   
-  2.7. Gerenciamento de Pacotes Linux   
-  2.8. Gerenciamento de Discos Linux   
-  2.9. Copiando Arquivos e Manipulando Processos   
-  2.10. Servidores de Arquivos com Linux   
-  2.11. Criando um Servidor Web com Linux   
-  2.12. Servidor de Banco de Dados com Linux   
-  2.13. Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)
+  2.1. [Introdução ao Sistema Operacional Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.1)   
+  2.2. [Instalando o Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.2)   
+  2.3. [Acesso Remoto a Máquinas Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.3)   
+  2.4. [Manipulando Arquivos no Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.4)   
+  2.5. [Gerenciando Usuários no Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.5)   
+  2.6. [Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões](Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões)   
+  2.7. [Gerenciamento de Pacotes Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.6)   
+  2.8. [Gerenciamento de Discos Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.7)   
+  2.9. [Copiando Arquivos e Manipulando Processos](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.8)   
+  2.10. [Servidores de Arquivos com Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/03-servidor_linux#item3.1)   
+  2.11. [Criando um Servidor Web com Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/03-servidor_linux#item3.2)   
+  2.12. [Servidor de Banco de Dados com Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/03-servidor_linux#item3.3)   
+  2.13. [Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/03-servidor_linux#item3.4)
 
 3. [AWS Foundations](./03-aws_foundation/)   
   3.1. Primeiros Passos com AWS   
@@ -72,11 +72,18 @@
   3.11. AWS Official Content - Armazenamento e Banco de Dados na AWS   
   3.12. Infraestrutura Como Código com Serverless Framework na AWS   
 
-4. [Preparatório para Certificação AWS Cloud Practitioner](./04-docker_swarm/)   
-  4.1. Introdução ao Exame de Certificação AWS Cloud Practitioner   
-  4.2. AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner   
-  4.3. Assuntos Complementares para o Exame AWS Cloud Practitioner   
-  4.4. Avalie este Bootcamp   
+4. [Segurança, Monitoramento e Suporte na AWS](./04-seguranca/)   
+  4.1. Segurança na Nuvem com AWS   
+  4.2. Monitoramento e Análise na AWS   
+  4.3. Preços e Planos de Suporte na AWS   
+  4.4. AWS Office Content - Segurança, Monitoramento e Suporte na AWS   
+  4.5. Adicionando Segurança em APIs na AWS com Amazon Cognito
+
+5. [Preparatório para Certificação AWS Cloud Practitioner](.)   
+  5.1. Introdução ao Exame de Certificação AWS Cloud Practitioner   
+  5.2. AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner   
+  5.3. Assuntos Complementares para o Exame AWS Cloud Practitioner   
+  5.4. Avalie este Bootcamp   
 
 ---
 

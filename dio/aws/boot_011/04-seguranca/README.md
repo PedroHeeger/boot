@@ -1,14 +1,14 @@
-# Bootcamp Cloud AWS - Module 3   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="45">
+# Bootcamp Cloud AWS - Module 4   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="45">
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_011 (Bootcamp Cloud AWS)   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>
-### Module: 3. AWS Foundations 
+### Module: 4. Segurança, Monitoramento e Suporte na AWS 
 
 ---
 
-This folder refers to Module 3 **AWS Foundations** from bootcamp [**Bootcamp Cloud AWS**](../).
+This folder refers to Module 3 **Segurança, Monitoramento e Suporte na AWS** from bootcamp [**Bootcamp Cloud AWS**](../).
 
 ### Theme:
 - Cloud Computing
@@ -28,10 +28,9 @@ This folder refers to Module 3 **AWS Foundations** from bootcamp [**Bootcamp Clo
   - Amazon S3   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_s3" width="auto" height="25">
   - Amazon EC2   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_ec2" width="auto" height="25">
   - Amazon Lambda   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_lambda" width="auto" height="25">
-  - Amazon DynamoDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_dynamodb" width="auto" height="25">
-  - Amazon API Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_api_gateway" width="auto" height="25">
 - Language:
-  - Node.js <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
+  - PHP <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
+  - HTML <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
 - Integrated Development Environment (IDE):
   - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
@@ -42,6 +41,10 @@ This folder refers to Module 3 **AWS Foundations** from bootcamp [**Bootcamp Clo
   - Sh
   - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
   - Windows PowerShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
+- Server:
+  - Apache HTTP Server (httpd) <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
+  - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
+  - NFS Server <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nfs_server.jpeg" alt="nfs_server" width="auto" height="25">
 - Linux Tools:
   - Apt e Apt-get (Geranciadores de Pacotes)
   - Systemctl
@@ -52,13 +55,13 @@ This folder refers to Module 3 **AWS Foundations** from bootcamp [**Bootcamp Clo
 - Others:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
   - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
+  - Vagrant <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
   - Loader.io <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
-  - Postman <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
 
 ---
 
-### Bootcamp Module 3 Structure
-3. <a name="item3">AWS Foundations</a><br>
+### Bootcamp Module 4 Structure
+3. <a name="item3">Segurança, Monitoramento e Suporte na AWS</a><br>
   3.1. <a href="#item3.1">Primeiros Passos com AWS</a><br>
   3.2. <a href="#item3.2">AWS Official Content - Introdução à Amazon Web Services (AWS)</a><br>
   3.3. <a href="#item3.3">Introdução ao Conceito de Cloud</a><br>
@@ -174,71 +177,21 @@ Por último, foram introduzidos quatro serviços referente a containerização, 
 
 Explorar alguns dos serviços da AWS para o desenvolvimento de aplicações baseadas em nuvem. Abordaremos de forma introdutória os serviços e as suas categorias de aplicação, como configurá-los para a implantação de uma aplicação web baseada em NodeJS e o desenvolvimento e teste a aplicação em si.
 
-Este curso iniciou dando uma visão geral sobre a cloud AWS, também foi feito uma breve explicação sobre o serviço **Amazon Cognito**. Em seguida, foi criada uma tabela no serviço **Amazon DynamoDB** de nome `Product1`, definindo a primary key como `id` do tipo `String`. O `sort key` é como se fosse uma segunda chave primária, que é opcional. Essas duas chaves formam a `Partition Key`. As configurações da tabela foram mantidas como default e então executada.
 
-Com a tabela construída, foi criado um item a essa tabela, definindo seu `id` como `prod001` e adicionando um novo atributo `name`, também do tipo `String`, cujo valor foi `Batata`. O DynamoDB possui dois tipos de pesquisas, o **Scan** e o **Query**, o Query utiliza filtros, enquanto o Scan revista toda a tabela. Antes de realizar a consulta, foi adicionado mais um item de `id prod002` sem o atributo `name`, que no caso, fica vazio. Na imagem 07 a seguir é mostrado a consulta feita na tabela `Product1` do serviço DynamoDB, filtrando o elemento de `id` igual a `prod001`.
 
-<div align="Center"><figure>
-    <img src="../0-aux/md3-img07.png" alt="img07"><br>
-    <figcaption>Imagem 07.</figcaption>
-</figure></div><br>
-
-Na etapa seguinte foi elaborada uma função no serviço **AWS Lambda** com nome `dioLiveCoding`, cujo ambiente de tempo de execução foi o `Node.js 14.x` e arquitetura `x86_64`. Para utilizá-la foi preciso criar uma `role` para o serviço Lambda que é gerada automaticamente (`dioLiveCoding-role-rba28664`). Com a função criada, na pasta raíz do editor de código fonte, veio um arquivo padrão de nome `index.js` que foi substituido pelo arquivo fornecido pelo expert do curso de nome igual [index.js](index.js). Este código recebe uma requisição **HTTP** e verifica de qual tipo ela é para saber como proceder na tabela do DynamoDB. A depender da condição determinada na requisição, será executado uma função do **CRUD** (Create, Read, Update e Delete).
-
-Para o funcionamento, foi necessário configurar uma API no serviço **API Gateway** do tipo HTTP e com o seguinte nome `DIOLiveAPI`. As rotas foram configurados após a criação. Os stages foram mantidos como default e selecionado a opção `Auto-deploy`. A primeira rota a ser definida foi o método `Post`, onde foi passado exatamente o mesmo nome definido no arquivo de código, no caso foi `/items`. Para os métodos `Delete`, `Get` e `Put`, o nome foi o `/items/{id}`. O outro método `Get` foi no `/items`. Foi realizado a integração dos métodos com a função Lambda criada, observando que ambos os serviços estavam na mesma região. Assim, as rotas ficaram conforme ilustrada na imagem 08 abaixo.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md3-img08.png" alt="img08"><br>
-    <figcaption>Imagem 08.</figcaption>
-</figure></div><br>
-
-Dando continuidade, foi copiado a `Invoke URL` da API criada e na plataforma do **Postman** foi desenvolvida a requisição do tipo `Post` para essa URL adicionando ao final o `/items` e definindo o corpo da requisição do tipo `JSON`, o conteúdo abaixo. Este conteúdo será inserido no banco de dados, se já existir que é o caso, substituirá as informações.
-
-```json
-{
-    "id" : "prod001",
-    "name" : "Produto01",
-    "price" : 15055
-}
-```
-
-Infelizmente, não foi efetuado o envio da requisição. Isso porque, na role criada automaticamente ao criar a função Lambda, algumas permissões necessárias para manipulação no DynamoDB não foram adicionadas a política dessa role. Para consertar, foi adicionando uma nova política a esta role que foi a `AmazonDynamoDBFullAccess`. Assim, foi possível executar a requisição alterando as informações do elemento `prod001`. Este feito é apresentado na imagem 09 abaixo.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md3-img09.png" alt="img09"><br>
-    <figcaption>Imagem 09.</figcaption>
-</figure></div><br>
-
-Uma nova requisição foi realizada para inserir o produto 003 conforme **JSON** abaixo. Em seguida, uma requisição do tipo `Get` foi executada, retornando os elementos da tabela criada no DynamoDB. A imagem 10 mostra esse retorno com as informações.
-
-```json
-{
-    "id" : "prod003",
-    "name" : "Cebola",
-    "price" : 10
-}
-```
-
-<div align="Center"><figure>
-    <img src="../0-aux/md3-img10.png" alt="img10"><br>
-    <figcaption>Imagem 10.</figcaption>
-</figure></div><br>
-
-Para executar o método `Get` buscando um elemento específico, basta adicionar ao final da URL, o `id` (chave primária) do elemento, conforme imagem 11. O método `Put` é similar a este, apenas definindo no corpo um **JSON** com o atributo e seu novo valor, para modificar este atributo do elemento determinado na URL. Por fim, para finalizar o **CRUD**, o método `Delete` vai excluir o elemento cujo `id` é definido na URL. A imagem 12 mostra a tabela como ficou após execução das requisições no Postman.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md3-img11.png" alt="img11"><br>
-    <figcaption>Imagem 11.</figcaption>
-</figure></div><br>
-
-<div align="Center"><figure>
-    <img src="../0-aux/md3-img12.png" alt="img12"><br>
-    <figcaption>Imagem 12.</figcaption>
-</figure></div><br>
 
 <a name="item3.7"><h4>3.7 AWS Official Content - Introdução à Computação em Nuvem com AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
-Este curso foi mais um curso em parceria da **AWS** com a plataforma do bootcamp **DIO**, onde foi apresentado alguns serviços disponíveis na cloud da AWS como: **Amazon Elastic Compute Cloud (EC2)**, **AWS Elastic Beanstalk**, **Amazon EC2 Systems Manager**, **Amazon Elastic Container Registry**, **AWS Auto Scaling**, **Amazon Elastic Load Balancer** e **Amazon Elastic Container Service (ECS)**.
+Este curso foi mais um curso em parceria da **AWS** com a plataforma do bootcamp **DIO**, onde foi apresentado alguns serviços disponíveis na cloud da AWS como: **Amazon Elastic 
+
+Visualizar os recursos e categorias de serviços AWS;
+Criar uma API HTTP com endpoints de CRUD no AWS API Gateway;
+Implementar uma função serverless em NodeJS com AWS Lambda;
+Criar uma tabela no banco de dados com AWS DynamoDB;
+Configurar permissões de acessos aos serviços da AWS baseadas em Roles e Polices com AWS IAM;
+Configurar integração entre os serviços AWS;
+
+
 
 
 <a name="item3.8"><h4>3.8 Redes em AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
