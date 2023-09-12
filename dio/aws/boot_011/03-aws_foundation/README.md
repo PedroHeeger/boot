@@ -118,20 +118,99 @@ Com o usuário `PedroCosta`, que agora estava no grupo de administradores e tinh
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
+Na última etapa do curso, foi executado a criação das `roles` que é uma entidade da AWS com políticas de permissão que determinam quais ações podem ou não serem executadas na AWS. As roles são compostas de polices e as polices são compostas de permissões, dessa forma, uma role é um conjunto de polices. Existem alguns tipos de entidade que podem ser criadas, mas nessa primeira role foi selecionada a opção `AWS service` e o serviço escolhido que vai trabalhar com ela foi o `Lambda`. Em seguida, foi criada uma policy (`s3limitedActions`) para ser anexada a essa role. Essa policy permitiu as seguintes actions para o serviço `Amazon S3`: `ListBucket`, `GetObject`, `PutObject`, `CreateBucket`, `DeleteBucket` e `DeleteObject`. O ARN determinado para o bucket foi `arn:aws:s3:::*` e para o object `arn:aws:s3:::*/*`. O nome da role foi definido como `s3limitedActionsRole` e então criada. Esta policy foi atribuída ao grupo de usuários `Developers` que não possuia permissões referente ao serviço S3. Este grupo ficou as seguintes permissões exibidas na imagem 04.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
+
+Em seguida, ainda com o usuário `PedroCosta`, foi criado um serviço no Lambda (`testeLambda`), na região `us-east-1`, sendo anexada a role `s3limitedActionsRole` para permitir manipular ações no serviço S3 e o ambiente de execução definido como **Node.js**. Neste serviço Lambda, dentro do diretório raíz foi criado um arquivo `index.js` com um pequeno script **JavaScript** conforme abaixo, para listagem dos buckets existentes na cloud. Em seguida, foi executado um teste igual a o da imagem 05, porém não foi obtido sucesso. Isso ocorreu, porque as permissões definadas na política que foi anexada a role, eram insuficientes para listagem de bucket do S3, precisava definir mais permissões. Para sanar esse problema, foi atribuida a política `AmazonS3FullAcess` a role, porque assim todas as permissões seriam definidas.
+
+```javascript
+var AWS = require("aws-sdk")
+
+exports.handler = (event) => {
+    var s3 = new AWS.S3();
+    s3.listBuckets(function(err,data){
+        if(err)console.log(err);
+        else console.log(data)
+    });
+};
+```
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
+
+O resulado do script **JavaScript** na função Lambda criada é exibida na imagem 06, o qual é listado o único bucket existente. Qualquer um dos usuários, através da função Lambda anexado a role desenvolvida com a política contendo as permissões necessárias consegue executar o script e listar o bucket, mesmo que este usuário não tenha nenhuma permissão ao serviço S3. É a role que permite que o Lambda realiza esta ação.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
 <a name="item3.2"><h4>3.2 AWS Official Content - Introdução à Amazon Web Services (AWS)</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Load%20Balancer%20PH%20DIO.pdf">Certificate</a>
 
-
-
-
-
-
-
+Este curso foi um dos cursos disponíveis devido a parceria da **AWS** com a plataforma do bootcamp **DIO**. Nele é realizado uma introdução sobre a cloud **AWS**, explicando um pouco da sua estrutura e apresentando alguns dos seus diversos serviços disponíveis. Também é exemplificado como disponibilizar um site na internet através das ferramentas **Amazon EC2** e **Amazon S3**.
 
 <a name="item3.3"><h4>3.3 Introdução ao Conceito de Cloud</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
+No curso 3 deste módulo foi introduzido o conceito de computação em nuvem, que é a entrega de recursos de TI sob demanda por meio da Internet com definição de preço de pagamento conforme o uso, sendo este o benefício chave. Também foi apresentado o conceito de cloud, os modelos serviços existentes que são: Infraestrutura como serviço (IaaS), Plataforma como serviço (PaaS) e Software como serviço (SaaS). Já com relação aos modelos de implantação é referente a como os recursos de computação estão estruturados e distribuídos, em outras palavras, onde o serviço está implantado. Neste caso existem também três modelos: On-premise, Híbrido e Cloud.
+
+<a name="item3.4"><h4>3.4 Infraestrutura Global AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+Neste curso foi abordado sobre como é o funcionamento da infraestrutura de datacenters da cloud da AWS. Essa infraestrutura é composta por regiões, zonas de disponibilidades (**Availability Zones (AZ)**) e pontos de presença (**Endpoints**). As regiões são os locais onde são hospedados os data centers da AWS. As zonas de disponibilidades são um agrupamento de datacenters isolados dentro de uma região. Já os pontos de presença, também chamados de **Edge Locations** (Locais de Borda ou Redes de Borda), funcionam como pontos específicos pelo globo para distribuir conteúdo de forma rápida. Este último faz uso de serviços da AWS como o **Amazon CloudFront** que é um serviço de entrega de conteúdo que melhora a performance do serviço que está sendo executado (baixa latência, alta taxa de transferência) e provê conteúdo o mais próximo possível do usuário, e do serviço **Amazon Route 53**, que é um serviço de DNS que ajuda os clientes a redirecionar corretamente as requisições.
+
+Também foi apresentado três formas de interagir com os serviços da cloud AWS que pode ser através do próprio console da AWS no site, com utilização da interface de linha de comando da AWS (**AWS CLI**) ou através de kits de desenvolvimento de softwares para acesso as APIs da AWS com utilização de alguma linguagem de programação. Com relação ao provisionamento de infraestrutura existem dois serviços para esta tarefa, são eles: **AWS Elastic Beanstalk** e **Amazon CloudFormation**.
+
+<a name="item3.5"><h4>3.5 Computação em AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+
+
+<a name="item3.6"><h4>3.6 Introdução Prática a Computação em Nuvem Usando AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
 
 
 
 
 
+<a name="item3.7"><h4>3.7 AWS Official Content - Introdução à Computação em Nuvem com AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+Este curso foi mais um curso em parceria da **AWS** com a plataforma do bootcamp **DIO**, onde foi apresentado alguns serviços disponíveis na cloud da AWS como: **Amazon Elastic 
+
+
+
+
+
+<a name="item3.8"><h4>3.8 Redes em AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+
+
+
+
+
+<a name="item3.9"><h4>3.9 Armazenamento e Banco de Dados AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+
+
+
+
+
+<a name="item3.10"><h4>3.10 Imersão ao Ecossistema Cloud Data AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+
+
+
+
+
+<a name="item3.11"><h4>3.11 AWS Official Content - Armazenamento e Banco de Dados na AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+
+
+
+
+
+
+
+<a name="item3.12"><h4>3.12 Infraestrutura Como Código com Serverless Framework na AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
