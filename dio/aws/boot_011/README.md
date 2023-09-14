@@ -49,7 +49,7 @@
   2.3. [Acesso Remoto a Máquinas Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.3)   
   2.4. [Manipulando Arquivos no Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.4)   
   2.5. [Gerenciando Usuários no Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.5)   
-  2.6. [Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões](Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões)   
+  2.6. [Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.9)   
   2.7. [Gerenciamento de Pacotes Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.6)   
   2.8. [Gerenciamento de Discos Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.7)   
   2.9. [Copiando Arquivos e Manipulando Processos](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/02-linux#item2.8)   
@@ -73,16 +73,16 @@
   3.12. [Infraestrutura Como Código com Serverless Framework na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.12)   
 
 4. [Segurança, Monitoramento e Suporte na AWS](./04-seguranca/)   
-  4.1. Segurança na Nuvem com AWS   
-  4.2. Monitoramento e Análise na AWS   
-  4.3. Preços e Planos de Suporte na AWS   
-  4.4. AWS Office Content - Segurança, Monitoramento e Suporte na AWS   
-  4.5. Adicionando Segurança em APIs na AWS com Amazon Cognito
+  4.1. [Segurança na Nuvem com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.1)   
+  4.2. [Monitoramento e Análise na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.2)   
+  4.3. [Preços e Planos de Suporte na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.3)   
+  4.4. [AWS Office Content - Segurança, Monitoramento e Suporte na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.4)   
+  4.5. [Adicionando Segurança em APIs na AWS com Amazon Cognito](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.5)
 
 5. [Preparatório para Certificação AWS Cloud Practitioner](./05-certificacao_aws/)   
-  5.1. Introdução ao Exame de Certificação AWS Cloud Practitioner   
-  5.2. AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner   
-  5.3. Assuntos Complementares para o Exame AWS Cloud Practitioner   
+  5.1. [Introdução ao Exame de Certificação AWS Cloud Practitioner](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/05-certificacao_aws#item5.1)   
+  5.2. [AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/05-certificacao_aws#item5.2)   
+  5.3. [Assuntos Complementares para o Exame AWS Cloud Practitioner](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/05-certificacao_aws#item5.3)   
   5.4. Avalie este Bootcamp   
 
 ---

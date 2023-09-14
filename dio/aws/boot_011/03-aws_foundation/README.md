@@ -234,10 +234,7 @@ Neste curso foram apresentados os três tipos de armazenamento na cloud AWS: Arm
 
 <a name="item3.10"><h4>3.10 Imersão ao Ecossistema Cloud Data AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
-
-
-
-
+No décimo curso do módulo, foi revisado sobre alguns serviços da cloud AWS já apresentados nos cursos anteriores mas que são bastante utilizados. O primeiro deles é o **Amazon Elastic Compute Cloud (EC2)** que é uma parte central da plataforma de cloud computing da Amazon Web Services. O EC2 permite que os usuários aluguem computadores virtuais nos quais rodam suas próprias aplicações. O **Amzon Relational Database Services (RDS)** é um serviço de banco de dados SQL gerenciado. O Amazon RDS suporta uma variedade de mecanismos de banco de dados para armazenar e organizar dados e ajuda nas tarefas de gerenciamento de banco de dados, como migração, backup e recuperação. Por fim, o **Amazon Simple Storage Service (S3)** que é um serviço que fornece armazenamento de objetos por meio de uma interface de serviço da web.
 
 <a name="item3.11"><h4>3.11 AWS Official Content - Armazenamento e Banco de Dados na AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
@@ -249,3 +246,6 @@ Neste curso foram apresentados os três tipos de armazenamento na cloud AWS: Arm
 
 
 <a name="item3.12"><h4>3.12 Infraestrutura Como Código com Serverless Framework na AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+
+
+
