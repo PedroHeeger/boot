@@ -59,18 +59,18 @@
   2.13. [Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_03/03-servidor_linux#item3.4)
 
 3. [AWS Foundations](./03-aws_foundation/)   
-  3.1. Primeiros Passos com AWS   
-  3.2. AWS Official Content - Introdução à Amazon Web Services (AWS)   
-  3.3. Introdução ao Conceito de Cloud   
-  3.4. Infraestrutura Global AWS   
-  3.5. Computação em AWS   
-  3.6. Introdução Prática a Computação em Nuvem Usando AWS   
-  3.7. AWS Official Content - Introdução à Computação em Nuvem com AWS   
-  3.8. Redes em AWS   
-  3.9. Armazenamento e Banco de Dados AWS   
-  3.10. Imersão ao Ecossistema Cloud Data AWS   
-  3.11. AWS Official Content - Armazenamento e Banco de Dados na AWS   
-  3.12. Infraestrutura Como Código com Serverless Framework na AWS   
+  3.1. [Primeiros Passos com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.1)   
+  3.2. [AWS Official Content - Introdução à Amazon Web Services (AWS)](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.2)   
+  3.3. [Introdução ao Conceito de Cloud](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.3)   
+  3.4. [Infraestrutura Global AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.4)   
+  3.5. [Computação em AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.5)   
+  3.6. [Introdução Prática a Computação em Nuvem Usando AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.6)   
+  3.7. [AWS Official Content - Introdução à Computação em Nuvem com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.7)   
+  3.8. [Redes em AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.8)   
+  3.9. [Armazenamento e Banco de Dados AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.9)   
+  3.10. [Imersão ao Ecossistema Cloud Data AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.10)   
+  3.11. [AWS Official Content - Armazenamento e Banco de Dados na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.11)   
+  3.12. [Infraestrutura Como Código com Serverless Framework na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.12)   
 
 4. [Segurança, Monitoramento e Suporte na AWS](./04-seguranca/)   
   4.1. Segurança na Nuvem com AWS   
@@ -79,7 +79,7 @@
   4.4. AWS Office Content - Segurança, Monitoramento e Suporte na AWS   
   4.5. Adicionando Segurança em APIs na AWS com Amazon Cognito
 
-5. [Preparatório para Certificação AWS Cloud Practitioner](.)   
+5. [Preparatório para Certificação AWS Cloud Practitioner](./05-certificacao_aws/)   
   5.1. Introdução ao Exame de Certificação AWS Cloud Practitioner   
   5.2. AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner   
   5.3. Assuntos Complementares para o Exame AWS Cloud Practitioner   

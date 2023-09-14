@@ -1,14 +1,14 @@
-# Bootcamp Cloud AWS - Module 4   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="45">
+# Bootcamp Cloud AWS - Module 5   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="45">
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_011 (Bootcamp Cloud AWS)   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>
-### Module: 4. Segurança, Monitoramento e Suporte na AWS 
+### Module: 5. Preparatório para Certificação AWS Cloud Practitioner 
 
 ---
 
-This folder refers to Module 4 **Segurança, Monitoramento e Suporte na AWS** from bootcamp [**Bootcamp Cloud AWS**](../).
+This folder refers to Module 5 **Preparatório para Certificação AWS Cloud Practitioner** from bootcamp [**Bootcamp Cloud AWS**](../).
 
 ### Theme:
 - Cloud Computing
@@ -60,13 +60,12 @@ This folder refers to Module 4 **Segurança, Monitoramento e Suporte na AWS** fr
 
 ---
 
-### Bootcamp Module 4 Structure
-4. <a name="item4">Segurança, Monitoramento e Suporte na AWS</a><br>
-  4.1. <a href="#item4.1">Segurança na Nuvem com AWS</a><br>
-  4.2. <a href="#item4.2">Monitoramento e Análise na AWS</a><br>
-  4.3. <a href="#item4.3">Preços e Planos de Suporte na AWS</a><br>
-  4.4. <a href="#item4.4">AWS Office Content - Segurança, Monitoramento e Suporte na AWS</a><br>
-  4.5. <a href="#item4.5">Adicionando Segurança em APIs na AWS com Amazon Cognito</a><br>
+### Bootcamp Module 5 Structure
+5. <a name="item5">Preparatório para Certificação AWS Cloud Practitioner</a><br>
+  5.1. <a href="#item5.1">Introdução ao Exame de Certificação AWS Cloud Practitioner</a><br>
+  5.2. <a href="#item5.2">AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner</a><br>
+  5.3. <a href="#item5.3">Assuntos Complementares para o Exame AWS Cloud Practitioner</a><br>
+  5.4. Avalie este Bootcamp
 
 ---
 
@@ -77,39 +76,38 @@ O objetivo deste módulo do bootcamp foi aprender sobre o assunto clusterizaçã
 A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md1-img01.png" alt="img01"><br>
+    <img src="../0-aux/md5-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item4.1"><h4>4.1 Segurança na Nuvem com AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.1"><h4>5.1 Introdução ao Exame de Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
 
 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md3-img02.png" alt="img02"><br>
+    <img src="../0-aux/md5-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
 
-<a name="item4.2"><h4>4.2 Monitoramento e Análise na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Load%20Balancer%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.2"><h4>5.2 AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Load%20Balancer%20PH%20DIO.pdf">Certificate</a>
 
 
 
 
 
-<a name="item4.3"><h4>4.3 Preços e Planos de Suporte na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.3"><h4>5.3 Assuntos Complementares para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
 
 
 
 
 
-<a name="item4.4"><h4>4.4 AWS Office Content - Segurança, Monitoramento e Suporte na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.4"><h4>5.4 AWS Office Content - Segurança, Monitoramento e Suporte na AWS</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
 
 
 
-<a name="item4.5"><h4>4.5 Adicionando Segurança em APIs na AWS com Amazon Cognito</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>

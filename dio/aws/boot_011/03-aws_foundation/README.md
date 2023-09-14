@@ -19,9 +19,6 @@ This folder refers to Module 3 **AWS Foundations** from bootcamp [**Bootcamp Clo
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Linux Distribution: 
   - Ubuntu <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
-- Virtualization: 
-  - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
-  - Docker <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
 - Cloud:
   - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
   - Amazon IAM   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_iam" width="auto" height="25">
@@ -38,21 +35,10 @@ This folder refers to Module 3 **AWS Foundations** from bootcamp [**Bootcamp Clo
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
-- Command Line Interpreter (CLI):
-  - Sh
-  - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
-  - Windows PowerShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
-- Linux Tools:
-  - Apt e Apt-get (Geranciadores de Pacotes)
-  - Systemctl
-  - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
-  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
 - Database Administration Tool:
   - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
 - Others:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
-  - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
-  - Loader.io <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
   - Postman <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
 
 ---
@@ -172,8 +158,6 @@ Por último, foram introduzidos quatro serviços referente a containerização, 
 
 <a name="item3.6"><h4>3.6 Introdução Prática a Computação em Nuvem Usando AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
-Explorar alguns dos serviços da AWS para o desenvolvimento de aplicações baseadas em nuvem. Abordaremos de forma introdutória os serviços e as suas categorias de aplicação, como configurá-los para a implantação de uma aplicação web baseada em NodeJS e o desenvolvimento e teste a aplicação em si.
-
 Este curso iniciou dando uma visão geral sobre a cloud AWS, também foi feito uma breve explicação sobre o serviço **Amazon Cognito**. Em seguida, foi criada uma tabela no serviço **Amazon DynamoDB** de nome `Product1`, definindo a primary key como `id` do tipo `String`. O `sort key` é como se fosse uma segunda chave primária, que é opcional. Essas duas chaves formam a `Partition Key`. As configurações da tabela foram mantidas como default e então executada.
 
 Com a tabela construída, foi criado um item a essa tabela, definindo seu `id` como `prod001` e adicionando um novo atributo `name`, também do tipo `String`, cujo valor foi `Batata`. O DynamoDB possui dois tipos de pesquisas, o **Scan** e o **Query**, o Query utiliza filtros, enquanto o Scan revista toda a tabela. Antes de realizar a consulta, foi adicionado mais um item de `id prod002` sem o atributo `name`, que no caso, fica vazio. Na imagem 07 a seguir é mostrado a consulta feita na tabela `Product1` do serviço DynamoDB, filtrando o elemento de `id` igual a `prod001`.
@@ -240,20 +224,13 @@ Para executar o método `Get` buscando um elemento específico, basta adicionar 
 
 Este curso foi mais um curso em parceria da **AWS** com a plataforma do bootcamp **DIO**, onde foi apresentado alguns serviços disponíveis na cloud da AWS como: **Amazon Elastic Compute Cloud (EC2)**, **AWS Elastic Beanstalk**, **Amazon EC2 Systems Manager**, **Amazon Elastic Container Registry**, **AWS Auto Scaling**, **Amazon Elastic Load Balancer** e **Amazon Elastic Container Service (ECS)**.
 
-
 <a name="item3.8"><h4>3.8 Redes em AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
-
-
-
-
+No curso 8 deste módulo, foi realizado uma explicação teórica sobre o serviço **Amazon VPC** e como são construídas as redes e sub-redes na cloud AWS.
 
 <a name="item3.9"><h4>3.9 Armazenamento e Banco de Dados AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
-
-
-
-
+Neste curso foram apresentados os três tipos de armazenamento na cloud AWS: Armazenamento de Objetos (Object Storage), Armazenamento de Arquivos (File Storage) e Armazenamento de Blocos (Block Storage). Para cada tipo de armazenamento foi expresso alguns serviços. O **Amazon S3** é do tipo objetos, enquanto o **Amazon Elastic Block Store (EBS)** é do tipo blocos. Com relação ao armazenamento do tipo arquivos existe o **Amazon Elastic File System (EFS)**. Além disso, foram apresentados alguns serviços de banco de dados como: **Amazon Rlational Database Service**, **Amazon Aurora**, **Amazon DynamoDB**, **Amazon DocumentDB**, **Amazon Neptune**, **Amazon Quantum Ledger Database (QLDB)**, **Amazon DynamoDB Accelerator** e **Amazon Elasticache**. O **Amazon Redshift** é um serviço de Data Warehouse para análise de Big Data.
 
 <a name="item3.10"><h4>3.10 Imersão ao Ecossistema Cloud Data AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
