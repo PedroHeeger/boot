@@ -8,7 +8,7 @@
 
 ---
 
-This folder refers to Module 2 **HTML I: Conceitos Básicos** from Bootcamp [**Formação HTML Web Developer**](../).
+This folder refers to Module 2 **HTML I: Conceitos Básicos** from bootcamp [**Formação HTML Web Developer**](../).
 
 ### Theme:
 - Web Devolopment
@@ -42,10 +42,10 @@ This folder refers to Module 2 **HTML I: Conceitos Básicos** from Bootcamp [**F
 ---
 
 ### Objective:
-O objetivo deste módulo do Bootcamp foi aprender sobre a construção de formulários, formatações, a utilização de mídias e tabelas.
+O objetivo deste módulo do bootcamp foi aprender sobre a construção de formulários, formatações, a utilização de mídias e tabelas.
 
 ### Structure:
-A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
+A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img01.png" alt="img01"><br>
@@ -53,9 +53,9 @@ A estrutura das pastas obedeceu a estruturação do Bootcamp, ou seja, conforme 
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item2.1"><h4>2.1 Trabalhando com Formulários em HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.1"><h4>2.1 Trabalhando com Formulários em HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-24)%20Trabalhando%20com%20Formul%C3%A1rios%20em%20HTML%20PH%20DIO.pdf">Certificate</a>
 
 Neste curso foi criado os dois primeiros formulários, apresentando os diversos tipos da tag `input` existentes no **HTML**, algumas das utilizadas foram `text`, `number`, `range`, `color`, `email`, `url`, `date`, `week`, `month`, `checkbox`, `radio`, `hidden`, `file`, `search` e `button`. A diferença do `radio` para o `checkbox` é que quando é utilizado o atributo `name` com mesmo nome, no `radio` só é possível selecionar um box, enquanto no `checkbox` é possível marcar mais de uma caixa. O input do tipo `hidden` é utilizado quando queremos enviar informações adicionais no formulário, sendo que o usuário não consegue visualizá-la. No tipo `file` existem um atributo `multiple` que permite selecionar mais de um arquivo ao mesmo tempo. Além da tag `input` foi apresentada a tag `label` que cria um rótulo para o `input`. A imagem 02 a seguir, mostra como ficou a visualização do arquivo ([index.html](./02.1-formularios/index.html)) no navegador.
 
@@ -87,7 +87,7 @@ Na etapa 4, foi explicado sobre as tags `select` e `option` que cria uma caixa d
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
-<a name="item2.2"><h4>2.2 Estruturando seu HTML + Formatações</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.2"><h4>2.2 Estruturando seu HTML + Formatações</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-24)%20Estruturando%20seu%20HTML%20%2B%20Formata%C3%A7%C3%B5es%20PH%20DIO.pdf">Certificate</a>
 
 No curso 2 foi criando um novo arquivo [index.html](./02.2-formatacoes/index.html) onde foram exercitadas as tags de formatação de texto (`b`, `i`, `u`, `mark`, `sup`, `sub`, `blockquote`, `font`), as tag semânticas (`strong`, `em`) e as tags coringas (`div` e `span`) utilizadas para criar blocos de tags para ajudar na hora de construir o layout com o **CSS**. Na tag `font` foram utilizados os atributos `color` e `face` para definir cor e tipo da fonte. Em seguida, foi criando duas divs para utilização das tags `fieldset` para agrupar essas divs em um conjunto de campos e `legend` para dar uma legenda a esse conjunto de campo criado. A imagem 04 abaixo é demonstrado a utilização das tags renderizadas no navegador **Google Chrome**.
 
@@ -105,11 +105,11 @@ Na etapa seguinte foi apresentado duas tags antigas (`embed` e `iframe`) que sã
 
 No último assunto do curso, foi realizada uma pequena introdução teórica sobre cores. Porém este assunto ser tratado mais especificamente no bootcamp de CSS. 
 
-<a name="item2.3"><h4>2.3 Trabalhando com Mídias utilizando HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.3"><h4>2.3 Trabalhando com Mídias utilizando HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-24)%20Trabalhando%20com%20M%C3%ADdias%20utilizando%20HTML%20PH%20DIO.pdf">Certificate</a>
 
 Neste curso foi criado um novo arquivo [index.html](02.3-midias/index.html) para utilização de tags relacionadas a mídias como: `img`, `audio`, `video` e `track` (que é utilizada dentro da tag `video`). Alguns arquivos de mídias foram vinculados ao arquivo para sua utilização na página **HTML**. Na última etapa foi novamente visto a tag `iframe` que foi utilizada para inserir um vídeo do **Youtube** e o mapa na cidade determinada do **Google Maps**.
 
-<a name="item2.4"><h4>2.4 Criando Tabelas com HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.4"><h4>2.4 Criando Tabelas com HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-24)%20Criando%20Tabelas%20com%20HTML%20PH%20DIO.pdf">Certificate</a>
 
 O assunto desse curso foi a criação de tabelas. Em um novo arquivo [index.html](02.4-tabelas/index.html) foram criadas duas tabelas, a primeira utilizando as tags `table`, `tr`, `th` e `td`. Já a segunda foi uma cópia da primeira separando as tags por grupos com as tags `thead`, `tbody` e `tfoot`. Essas três tags, mesmo colocadas de forma desordenada, o navegador consegue entender a ordem e apresentar a tabela da forma correta. Por fim, foi realizado uma estilização na segunda tabela com comandos **CSS**. A imagem 06 mostra como ficou o arquivo **HTML**.
 
@@ -118,7 +118,7 @@ O assunto desse curso foi a criação de tabelas. Em um novo arquivo [index.html
     <figcaption>Imagem 06.</figcaption>
 </figure></div><br>
 
-<a name="item2.5"><h4>2.5 Criando seu Primeiro Site Completo com HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.5"><h4>2.5 Criando seu Primeiro Site Completo com HTML</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-25)%20Criando%20seu%20Primeiro%20Site%20Completo%20com%20HTML%20PH%20DIO.pdf">Certificate</a>
 
 Neste desafio de projeto foi solicitado a criação de um site em **HTML** contendo três páginas e utilizando as tags aprendidas nos cursos até aqui. O arquivo contendo as instruções do desafio é o [instrucoes_desafio](./02.5-site/instrucoes_desafio.docx). O site que foi criado foi referente a uma clínica médica. Um arquivo de **CSS** para auxílio na construção do site foi fornecido pelo expert do bootcamp ([base.css](./02.5-site/base.css)). Neste arquivo, algumas alterações com comandos **CSS** foram realizados para se adequar aos arquivos de **HTML** desenvolvidos. Como foram três páginas foram criado três arquivos **HTML** um para cada página, sendo que com a tag `a` foi realizado o direcionamento de uma página para outra. Os nomes dos arquivos criados foram: [index.html](02.5-site/index.html), [sobre.html](./02.5-site/sobre.html) e [atendimento.html](./02.5-site/atendimento.html). Além desses arquivos, foram utilizados arquivos de imagem formato **PNG** tirados da internet.
 

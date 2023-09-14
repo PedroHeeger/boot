@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_013 (Descubra a Nuvem AWS - Nexa Resources)   <img src="./0-aux/logo_boot.png" alt="boot_013" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/virtualization/docker/(23-08-22)%20Cert%20Formacao%20Docker%20Fundamentals%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-09-14)%20Descubra%20a%20Nuvem%20AWS%20-%20Nexa%20Resources%20PH%20DIO.pdf">Certificate</a>
 
 ---
 
@@ -60,13 +60,13 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 ### Development:
 O desenvolvimento deste bootcamp foi dividido em apenas um módulo contendo quatro cursos e duas mentorias. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Descubra a Nuvem</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Descubra a Nuvem</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)%20Descubra%20a%20Nuvem%20PH%20DIO.pdf">Certificate</a>
 
 O primeiro curso deste bootcamp foi teórico explicando os conceitos de **Cloud** e **Cloud Computing**. Cloud Computing é um modelo de computação que permite o acesso a recursos de computação como armazenamento, servidores, softwares, aplicativos, tudo isso pela internet sem a necessidade de ter isso de forma física no computador. Também foi explicado sobre os cinco benefícios da nuvem, são eles: Redução de custo (reduz os custos de manutenção de hardwares e softwares, pagando apenas aquilo que for utilizado); Acesso remoto (é possível acessar de qualquer lugar); Flexibildiade (a Cloud Computing permite que todos os recursos de computadores sejam escaláveis, ou seja, é possível aumentar ou diminuir a capacidade de armazenamento ou processamento de acordo com a necessidade); Eficiência (a Cloud Computing pode ajudar a melhorar a eficiência das empresas permitindo que ela se concentre em suas atividades principais e reduzam a carga administrativa de gerenciamento de infraestrutura TI); Bakcup e Recuperação de desastres (a Cloud Computing ajuda a proteger os dados permitindo a execução de backups de arquivos e sistemas de forma eficiente).
 
-<a name="item1.2"><h4>1.2 Conhecendo os Serviços da AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.2"><h4>1.2 Conhecendo os Serviços da AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)%20Conhecendo%20os%20Servi%C3%A7os%20da%20AWS%20PH%20DIO.pdf">Certificate</a>
 
 Neste curso, que também foi teórico, apresentou a cloud da **Amazon Web Services (AWS)**, explicando a infraestrutura, como ela funciona, alguns serviços existentes. Também foi ensinado sobre o funcionamento da rede na AWS e os princípios de regiões e zonas de disponibilidade, além de conceitos importantes de segurança.
 
-<a name="item1.6"><h4>1.6 Criando sua Conta na AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.6"><h4>1.6 Criando sua Conta na AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)%20Criando%20sua%20Conta%20na%20AWS%20PH%20DIO.pdf">Certificate</a>
 

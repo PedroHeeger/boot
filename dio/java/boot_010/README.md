@@ -36,41 +36,41 @@
 
 ### Bootcamp Structure
 1. [Fundamentos da Plataforma Java](./01-fundamentos/)   
-  1.1. Introdução à Plataforma Java  
-  1.2. Ambiente de Desenvolvimento Java   
-  1.3. Aprendendo a Sintaxe Java  
-  1.4. Resolvendo desafios - Fundamentos da Linguagem de Programação Java   
-  1.5. Simulando Uma Conta Bancária Através do Terminal/Console   
+  1.1. [Introdução à Plataforma Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/01-fundamentos#item1.1)   
+  1.2. [Ambiente de Desenvolvimento Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/01-fundamentos#item1.2)   
+  1.3. [Aprendendo a Sintaxe Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/01-fundamentos#item1.3)   
+  1.4. [Resolvendo desafios - Fundamentos da Linguagem de Programação Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/01-fundamentos#item1.4)   
+  1.5. [Simulando Uma Conta Bancária Através do Terminal/Console](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/01-fundamentos#item1.5)   
   1.6. Materiais Complementares - Fundamentos de Java  
 
 2. [Escopo e Estruturas de Controle em Java](./02-escopo_estruturas/)   
-  2.1. Introdução e Estruturas Condicionais com Java   
-  2.2. Estruturas de Repetição em Java   
-  2.3. Java e Tratamento de Exceções   
-  2.4. Resolvendo desafios - Escopo e Estruturas de Controle em Java   
-  2.5. Criando Um Pequeno Sistema para Validação de Processo Seletivo   
+  2.1. [Introdução e Estruturas Condicionais com Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/02-escopo_estruturas#item2.1)   
+  2.2. [Estruturas de Repetição em Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/02-escopo_estruturas#item2.2)   
+  2.3. [Java e Tratamento de Exceções](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/02-escopo_estruturas#item2.3)   
+  2.4. [Resolvendo desafios - Escopo e Estruturas de Controle em Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/02-escopo_estruturas#item2.4)   
+  2.5. [Criando Um Pequeno Sistema para Validação de Processo Seletivo](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/02-escopo_estruturas#item2.5)   
   2.6. Materiais Complementares - Controle de Fluxo   
 
 3. [Programação Orientada a Objetos em Java](./03-poo/)   
-  3.1. Fundamentos da Programação Orientada a Objetos com Java   
-  3.2. Pilares da Programação Orientada a Objetos em Java  
-  3.3. Orientação a Objetos e UML: Diagramação de Classes do iPhone   
-  3.4. Criando um Banco Digital com Java e Orientação a Objetos   
+  3.1. [Fundamentos da Programação Orientada a Objetos com Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/03-poo#item3.1)   
+  3.2. [Pilares da Programação Orientada a Objetos em Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/03-poo#item3.2)   
+  3.3. [Orientação a Objetos e UML: Diagramação de Classes do iPhone](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/03-poo#item3.3)   
+  3.4. [Criando um Banco Digital com Java e Orientação a Objetos](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/03-poo#item3.4)   
   3.5. Materiais Complementares - Programação orientada a objetos em Java     
 
 4. [Estruturas de Dados e API de Streams em Java](./04-estruturas_dados/)   
-  4.1. Estruturas de Dados em Java: Introdução   
-  4.2. Estruturas de Dados em Java: Pilhas e Filas  
-  4.3. Estruturas de Dados em Java: Listas   
-  4.4. Estruturas de Dados em Java: Árvores   
-  4.5. Estruturas de Dados em Java: Principais Implementações   
-  4.6. Trabalhando com Collections Java   
-  4.7. Abstraindo um Bootcamp Usando Orientação a Objetos em Java   
+  4.1. [Estruturas de Dados em Java: Introdução](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/04-estruturas_dados#item4.1)   
+  4.2. [Estruturas de Dados em Java: Pilhas e Filas](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/04-estruturas_dados#item4.2)   
+  4.3. [Estruturas de Dados em Java: Listas](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/04-estruturas_dados#item4.3)   
+  4.4. [Estruturas de Dados em Java: Árvores](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/04-estruturas_dados#item4.4)   
+  4.5. [Estruturas de Dados em Java: Principais Implementações](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/04-estruturas_dados#item4.5)   
+  4.6. [Trabalhando com Collections Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/04-estruturas_dados#item4.6)   
+  4.7. [Abstraindo um Bootcamp Usando Orientação a Objetos em Java](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/04-estruturas_dados#item4.7)   
   4.8. Materiais Complementares - Estruturas de Dados    
 
 5. [Gerenciamento de Dependências e Build em Projetos Java](./05-dependencias_build/)   
-  5.1. Projetos Java com Gradle   
-  5.2. Gerenciamento de Dependênciase Build em Java com Maven   
+  5.1. [Projetos Java com Gradle](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/05-dependencias_build#item5.1)   
+  5.2. [Gerenciamento de Dependênciase Build em Java com Maven](https://github.com/PedroHeeger/boot/tree/main/dio/java/boot_010/05-dependencias_build#item5.2)   
   5.3. Materiais Complementares - Gerenciamento de Dependências e Build 
 
 6. [Qualidade de Código e Boas Práticas com Java](./06-qualidade_codigo/)   

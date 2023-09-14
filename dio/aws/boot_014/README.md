@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_014 (Descubra a Nuvem AWS – LocalizaLabs)   <img src="./0-aux/logo_boot.png" alt="boot_014" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/virtualization/docker/(23-08-22)%20Cert%20Formacao%20Docker%20Fundamentals%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-09-14)%20Descubra%20a%20Nuvem%20AWS%20-%20LocalizaLabs%20PH%20DIO.pdf">Certificate</a>
 
 ---
 
@@ -34,7 +34,7 @@
   1.2. [Conhecendo os Serviços da AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item1.2)   
   1.3. Aula Inaugural Descubra a Nuvem AWS - Nexa   
   1.4. [AWS Official Content - Introdução à Amazon Web Services (AWS)](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.2)   
-  1.5. [Criando sua Conta na AWS]()   
+  1.5. [Criando sua Conta na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item1.6)   
   1.6. Talento Cloud PRO   
   1.7. Avalie este Bootcamp   
 
@@ -57,8 +57,4 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 - A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
 
 ### Development:
-O desenvolvimento deste bootcamp foi dividido em apenas um módulo contendo quatro cursos e uma mentoria. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
-
-<a name="item1.5"><h4>1.5 Criando sua Conta na AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
-
-
+O desenvolvimento deste bootcamp foi dividido em apenas um módulo contendo quatro cursos e uma mentoria. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades. Como o conteúdo deste bootcamp foram os mesmos de outros bootcamps, não houve nenhum curso adicional a ser realizado. Todos os cursos podem ser acessados pelos links do **Bootcamp Structure**.
