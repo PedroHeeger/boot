@@ -89,7 +89,7 @@ Para elaboração do projeto, um novo arquivo ([SmartTv.java](01.3-sintaxe/telev
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-<a name="item1.4"><h4>1.4 Resolvendo desafios - Fundamentos da Linguagem de Programação Java</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.4"><h4>1.4 Resolvendo desafios - Fundamentos da Linguagem de Programação Java</h4></a>[Back to summary](#item1)
 
 Neste desafio de código, foram realizados três exercícios cujas resoluções estão expressas nos seguintes arquivos: [multiplicacao_simples.java](01.4-desafios/multiplicacao_simples.java), [soma_simples.java](01.4-desafios/soma_simples.java) e [media1.java](01.4-desafios/media1.java). Como os próprios nomes sugerem, foram realizadas as operações matemáticas aritméticas de multiplicação, soma e média, a partir de dados de entrada fornecidos pelo usuário. Para capturar essas entradas foi utilizado a classe `Scanner` sendo importada com o comando `import java.util.Scanner;`. Esta classe possuí o método `.next` e outro métodos derivados deste para os tipos de dados específicos que extraem a informação digita pelo usuário e com isso são atribuídas a variáveis, e posteriormente, podem ser manipuladas, como foi o caso dos exercícios.
 
