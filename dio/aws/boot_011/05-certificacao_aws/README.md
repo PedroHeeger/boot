@@ -15,48 +15,17 @@ This folder refers to Module 5 **Preparatório para Certificação AWS Cloud Pra
 
 ### Used Tools:
 - Operating System (OS): 
-  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Linux Distribution: 
-  - Ubuntu <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
-- Virtualization: 
-  - VM VirtualBox <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
-  - Docker <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
 - Cloud:
   - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
-  - Amazon IAM   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_iam" width="auto" height="25">
-  - Amazon S3   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_s3" width="auto" height="25">
-  - Amazon EC2   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_ec2" width="auto" height="25">
-  - Amazon Lambda   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/aws_ec2.png" alt="amazon_lambda" width="auto" height="25">
-- Language:
-  - PHP <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
-  - HTML <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
 - Integrated Development Environment (IDE):
   - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
-- Command Line Interpreter (CLI):
-  - Sh
-  - Bash <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" width="auto" height="25">
-  - Windows PowerShell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
-- Server:
-  - Apache HTTP Server (httpd) <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_http_server" width="auto" height="25">
-  - MySQL Server <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
-  - NFS Server <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nfs_server.jpeg" alt="nfs_server" width="auto" height="25">
-- Linux Tools:
-  - Apt e Apt-get (Geranciadores de Pacotes)
-  - Systemctl
-  - Nano <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
-  - Curl <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
-- Database Administration Tool:
-  - DBeaver <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
 - Others:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
-  - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
-  - Vagrant <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg" alt="vagrant" width="auto" height="25">
-  - Loader.io <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/loader_io.png" alt="loader_io" width="auto" height="25">
 
 ---
 
@@ -70,44 +39,27 @@ This folder refers to Module 5 **Preparatório para Certificação AWS Cloud Pra
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre o assunto clusterização, como criar clusters com o **Docker Swarm** tanto no ambiente de cloud **AWS** como no ambiente local com utilização dos softwares **Vagrant** e **VM Virtual Box**, além de entender como realizar o balanceamento das cargas (**Load Balancer**).
+O objetivo deste módulo do bootcamp foi explicar sobre a certificação **AWS Cloud Practitioner (CLF-C01)**, bem como o funcionamento do exame, fornecendo diversos materiais para preparação, além de assuntos complementares.
 
 ### Structure:
-A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img01.png" alt="img01"><br>
-    <figcaption>Imagem 01.</figcaption>
-</figure></div><br>
+A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Neste módulo não foi necessária a criação de nenhum arquivo, pois todo assunto foi teórico e está descrito neste arquivo de README.md.
 
 ### Development:
-O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item5.1"><h4>5.1 Introdução ao Exame de Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
 
-
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
-
+Neste primeiro curso foi apresentado a certificação **AWS Cloud Practitioner (CLF-C01)**, explicando sobre o exame, quantas questões ele possui, qual o tempo de duração, a nota mínima para aprovação, além do conteúdo abordado e os tipos de questões existentes.
 
 <a name="item5.2"><h4>5.2 AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Load%20Balancer%20PH%20DIO.pdf">Certificate</a>
 
-
-
-
+Esta atividade foi mais uma em parceria da **AWS** com a plataforma do bootcamp **DIO** que forneceu os seguintes materiais da AWS para estudo: a vídeo aula `Benefits of the AWS Cloud`, que apresenta os beneficios da AWS Cloud, passando pelos seus principais conceitos, definindo o que é a AWS Cloud e a sua proposta de valor; o curso `AWS Cloud Practitioner Essentials`, que fornece uma compreensão geral sobre a nuvem Amazon Web Services (AWS), independentemente de funções técnicas específicas, ensinando os conceitos da nuvem AWS, serviços AWS, segurança, arquitetura, definição de preço e suporte; e o curso `AWS Technical Essentials`, que apresenta as soluções comuns e os produtos essenciais da AWS, abrangendo os conceitos fundamentais da AWS relacionados a computação, banco de dados, armazenamento, rede, monitoramento e segurança.
 
 <a name="item5.3"><h4>5.3 Assuntos Complementares para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
+Neste último curso do módulo foi abordado sobre assuntos complementares ao exame **AWS Cloud Practitioner**. O primeiro deles foi a apresentação das estratégias de migração para a cloud da AWS, conhecida como os 6Rs (Rehosting, Replattform, Repurchasing, Retire, Retain, Refactoring ou Re-architecting). Foi explicado sobre o serviço **AWS Cloud Adoption Framework (CAF)** que contribui para a migração dos recursos para a nuvem. Ele é baseado nas seis seguintes perspectivas: Negócios, Pessoas, Governança, Plataforma, Segurança e Operações.
 
+Também foi explicado sobre o serviço **AWS Well-Architected Framework** que ajuda a construir infraestruturas seguras, resilientes, eficientes e de alta performance para aplicações e workloads, cujo seus seis pilares são: Excelência operacional, Segurança, Confiabilidade, Eficiência de performance, 
+Sustentabilidade, Otimização de custos.
 
-
-
-
-<a name="item5.4"><h4>5.4 AWS Office Content - Segurança, Monitoramento e Suporte na AWS</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
-
-
-
-
+Por fim, foram apresentandos os serviços da família **AWS Snow**. O **AWS Snowcone** que serve para computação de borda. O **AWS Snowball** que acelera a mudança de dados offline ou o armazenamento remoto para a nuvem, sendo dividido em duas categorias: Otimizado para computação e Otimizado para armazenamento. O terceiro é o **AWS Snowmobile** que é destinado para migração de uma grande quantidade de dados.
