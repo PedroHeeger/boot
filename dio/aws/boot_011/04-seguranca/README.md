@@ -44,6 +44,12 @@ This folder refers to Module 4 **Segurança, Monitoramento e Suporte na AWS** fr
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
   - PuTTY <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
 
+Amazon Cognito
+Amazon DynamoDB
+Amazon API Gateway
+AWS Lambda
+
+
 ---
 
 ### Bootcamp Module 4 Structure

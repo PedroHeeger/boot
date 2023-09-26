@@ -243,8 +243,6 @@ Esta atividade foi mais uma em parceria da **AWS** com a plataforma do bootcamp 
 <a name="item3.12"><h4>3.12 Infraestrutura Como Código com Serverless Framework na AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
 
+Com a maquina criada, foi baixado o framework **Serverless** para **Node.js** com o comando `npm i -g serverless`. O projeto foi criado com o comando `serverless`, onde foi realizado as seguintes configurações. A opção escolhida foi a `AWS - Node.js - HTTP API`, já que a opção igual a do professor não aparecia, que era `AWS - Node.js - REST API`. Em seguida, foi criado a pasta do projeto com nome `dio-live-serverless-project` no diretório `~`. Não foi preciso fazer login e registrar no dashboard do serverless framework. 
 
-
-
-
-
+A pasta do projeto veio com três arquivos por padrão que foram: `README.md`, para documentação do projeto, `index.js`, o arquivo principal de execução do projeto e `serverless.yml`, o arquivo **YAML** de configuração da infraestrutura da cloud da AWS.
