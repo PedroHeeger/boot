@@ -10,14 +10,14 @@ provider:
   iam:
     role:
       statements:
-       - Effect: Allow
-         Action:
-          - dynamodb:PutItem
-          - dynamodb:UpdateItem
-          - dynamodb:GetItem
-          - dynamodb:scan
-        Resource:
-          - arn:aws:dynamodb:us-east-1:167880115321:table/ItemTableNew
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:GetItem
+            - dynamodb:scan
+          Resource:
+            - arn:aws:dynamodb:us-east-1:167880115321:table/ItemTableNew
 
 functions:
   hello:
@@ -30,26 +30,26 @@ functions:
     handler: src/insterItem.handler
     events: 
       - http:
-        path: /item
-        method: post
+          path: /item
+          method: post
   fechItems:
     handler: src/fechItems.handler
     events: 
       - http:
-        path: /items
-        method: get
+          path: /items
+          method: get
   fechItem:
     handler: src/fechItem.handler
     events: 
       - http:
-        path: /items/{id}
-        method: get
+          path: /items/{id}
+          method: get
   updateItem:
     handler: src/updateItem.handler
     events: 
       - http:
-        path: /item/{id}
-        method: put
+          path: /item/{id}
+          method: put
 
 resources:
   Resources:
@@ -61,6 +61,6 @@ resources:
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
-          KeySchema:
-            - AttributeName: id
-              KeyType: HASH
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH

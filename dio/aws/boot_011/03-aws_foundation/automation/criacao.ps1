@@ -44,3 +44,19 @@ if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance
     Write-Output "Listando o IP público de todas as instâncias EC2 criadas"
     aws ec2 describe-instances --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
 }
+
+# Espera por 90 segundos
+Start-Sleep -Seconds 90
+
+"-----//-----//-----//-----//-----//-----//-----"
+Write-Output "AWS ELASTIC COMPUTE CLOUD (EC2)"
+if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp").Count -gt 1) {
+    Write-Output "Listando o IP público de todas as instâncias EC2 criadas"
+    $ipEc2 = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+
+    pscp -i "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\remoteAccessEc2..ppk" -r "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\projectDioServerless" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com:/home/ubuntu
+
+} else {
+    Write-Output "Não foi fornecido IP público da instância de nome de tag $tagNameInstance"
+    aws ec2 describe-instances --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+}

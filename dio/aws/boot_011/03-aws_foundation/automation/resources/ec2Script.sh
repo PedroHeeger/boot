@@ -2,7 +2,7 @@
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Executando o script como usuario Ubuntu"
-sudo -u ubuntu -i /bin/bash <<EOF
+cd /home/ubuntu
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
@@ -16,38 +16,42 @@ sudo chsh -s /usr/bin/zsh ubuntu
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Definindo variaveis"
-HOME_UBUNTU="/home/ubuntu" 
-ZSH_CUSTOM="$HOME_UBUNTU/.oh-my-zsh/custom"
-ZDOTDIR="$HOME_UBUNTU"
-export HOME_UBUNTU="/home/ubuntu"
-export ZSH_CUSTOM="$HOME_UBUNTU/.oh-my-zsh/custom"
-export ZDOTDIR="$HOME_UBUNTU"
-echo "$HOME_UBUNTU"
+echo "Usuario atual: $(whoami)"
+export HOME="/home/ubuntu"
+export ZSH_CUSTOM="/home/ubuntu/.oh-my-zsh/custom"
+echo "$HOME"
 echo "$ZSH_CUSTOM"
-echo "$ZDOTDIR"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Baixando o srcipt de instalacao do Oh My ZShell"
+echo "$(pwd)"
 curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -o oh-my-zsh-install.sh
-echo "Executando o srcipt de instalação do Oh My ZShell"
-sh oh-my-zsh-install.sh --unattended --path=$HOME_UBUNTU
-echo "Removendo o srcipt de instalação do Oh My ZShell"
+echo "Executando o srcipt de instalacao do Oh My ZShell"
+sh oh-my-zsh-install.sh --unattended --path=$HOME
+echo "Removendo o srcipt de instalacao do Oh My ZShell"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Baixando e configurando a extensao Power Level 10k"
-sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME_UBUNTU/.oh-my-zsh/custom}/themes/powerlevel10k
-sudo echo "Adiciona os comandos ao arquivo ~/.zshrc"
-sudo echo "ZSH_THEME=powerlevel10k/powerlevel10k" | sudo tee -a ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
-sudo echo "typeset -g POWERLEVEL9K_INSTANT_PROMPT=off" | sudo tee -a ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
+sudo -E git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+echo "Adiciona o comando typeset do PowerLevel"
+sudo -E echo "typeset -g POWERLEVEL9K_INSTANT_PROMPT=off" | sudo -E tee -a ${ZDOTDIR:-$HOME}/.zshrc
+
+echo "Alterando o theme do Oh My ZShell para PowerLevel10k se existir o arquivo .zshrc"
+if [ -f "$rc_file" ]; then
+  # Faz a substituição no arquivo usando o sed
+  sed -i 's#ZSH_THEME=.*#ZSH_THEME="powerlevel10k/powerlevel10k"#' $HOME/.zshrc
+else
+  echo "O arquivo $rc_file não existe."
+fi
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Baixando e configurando a extensao ZSH Auto Suggestions"
-sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME_UBUNTU/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-sudo echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" | sudo tee -a ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
+sudo -E git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+sudo -E echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" | sudo -E tee -a ${ZDOTDIR:-$HOME}/.zshrc
 
 echo "Baixando e configurando a extensao ZSH Syntax Highlighting"
-sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-$HOME_UBUNTU/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-sudo echo "source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" | sudo tee -a ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
+sudo -E git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+sudo -E echo "source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" | sudo -E tee -a ${ZDOTDIR:-$HOME}/.zshrc
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Indicando que esse Shell deve ser iniciado"
@@ -75,64 +79,3 @@ sudo npm i -g serverless
 
 echo "Instalando as bibliotecas de JavaScript (Node.js)"
 sudo npm i uuid aws-sdk
-
-IP = aws ec2 describe-instances --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
-echo "$IP"
-EOF
-
-
-
-
-# Iniciando a configuração do PowerLevel 10k
-# p10k config
-
-
-# Instalando o framework severless
-# serverless
-
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Baixando e configurando a extensao Power Level 10k"
-# sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME_UBUNTU/.oh-my-zsh/custom}/themes/powerlevel10k
-# sudo echo "Adiciona os comandos ao arquivo ~/.zshrc"
-# sudo echo "ZSH_THEME=powerlevel10k/powerlevel10k" >> ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
-# sudo echo "typeset -g POWERLEVEL9K_INSTANT_PROMPT=off" >> ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
-
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Baixando e configurando a extensao ZSH Auto Suggestions"
-# sudo git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME_UBUNTU/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# sudo echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
-
-# echo "Baixando e configurando a extensao ZSH Syntax Highlighting"
-# sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-$HOME_UBUNTU/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# sudo echo "source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME_UBUNTU}/.zshrc
-
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Atualizando o NPM e o Nodejs"
-# npm install -g npm@latest
-# npm install -g n
-
-
-# Definindo o shell padrão para usuário ubuntu
-# chsh -s /usr/bin/zsh
-# sudo chsh -s /usr/bin/zsh ubuntu
-# chsh -s /usr/bin/zsh ubuntu
-
-# Iniciando um novo shell ZSh no usuário ubuntu
-# sudo -u ubuntu -i /bin/zsh
-
-# # Iniciando um novo shell ZSh no usuário ubuntu
-# sudo -u ubuntu -i /bin/zsh
-
-# # Definindo o shell padrão para usuário ubuntu
-# sudo chsh -s /usr/bin/zsh ubuntu
-
-
-# rm oh-my-zsh-install.sh
-
-# sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)  --unattended --path=/home/ubuntu"
-# echo "SEGUNDA TENTATIVA"
-# sudo sh -c "export CHSH='no'; $(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --path=$HOME_UBUNTU" || true
-# echo "TERCEIRA TENTATIVA"
-# sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
-# echo "QUARTA TENTATIVA"
-# sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended" || true

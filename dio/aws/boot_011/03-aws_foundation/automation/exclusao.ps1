@@ -5,25 +5,25 @@ Write-Output "Importando o arquivo com as variáveis"
 Write-Output "SERVIÇO: AWS EC2"
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "KEY PAIR"
-# if ((aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName']").Count -gt 1) {
-#     Write-Output "Removendo o par de chaves criado de nome $keyPairName e os arquivos pem e ppk"
-#     aws ec2 delete-key-pair --key-name $keyPairName
+if ((aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='$keyPairName']").Count -gt 1) {
+    Write-Output "Removendo o par de chaves criado de nome $keyPairName e os arquivos pem e ppk"
+    aws ec2 delete-key-pair --key-name $keyPairName
 
-#     if (Test-Path "$keyPairPath\$keyPairName.pem" -PathType Leaf) {
-#         Write-Host "Removendo o arquivo de par de chave $keyPairName.pem"
-#         Remove-Item "$keyPairPath\$keyPairName.pem"
-#     } else {
-#         Write-Host "Não existe o arquivo de par de chave $keyPairName.pem"
-#     }
-#     if (Test-Path "$keyPairPath\$keyPairName.ppk" -PathType Leaf) {
-#         Write-Host "Removendo o arquivo de par de chave $keyPairName.ppk"
-#         Remove-Item "$keyPairPath\$keyPairName.ppk"
-#     } else {
-#         Write-Host "Não existe o arquivo de par de chave $keyPairName.ppk"
-#     }
-# } else {
-#     Write-Output "Não existe o par de chaves de $keyPairName!"
-# }
+    if (Test-Path "$keyPairPath\$keyPairName.pem" -PathType Leaf) {
+        Write-Host "Removendo o arquivo de par de chave $keyPairName.pem"
+        Remove-Item "$keyPairPath\$keyPairName.pem"
+    } else {
+        Write-Host "Não existe o arquivo de par de chave $keyPairName.pem"
+    }
+    if (Test-Path "$keyPairPath\$keyPairName.ppk" -PathType Leaf) {
+        Write-Host "Removendo o arquivo de par de chave $keyPairName.ppk"
+        Remove-Item "$keyPairPath\$keyPairName.ppk"
+    } else {
+        Write-Host "Não existe o arquivo de par de chave $keyPairName.ppk"
+    }
+} else {
+    Write-Output "Não existe o par de chaves de $keyPairName!"
+}
 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "AWS ELASTIC COMPUTE CLOUD (EC2)"

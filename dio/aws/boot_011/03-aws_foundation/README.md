@@ -242,21 +242,63 @@ Esta atividade foi mais uma em parceria da **AWS** com a plataforma do bootcamp 
 
 <a name="item3.12"><h4>3.12 Infraestrutura Como Código com Serverless Framework na AWS</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
 
-Neste desafio, o ambiente para execução do projeto foi criado através do diretório [automation](./automation/) que contém três scripts de **PowerShell** (`criacao`, `exclusao`, `variaveis`) destinado a construção de uma maquina virtual **Linux Ubuntu** no serviço **EC2** da cloud da **AWS**. Este diretório ainda contém duas sub-pastas com nome [resources](./automation/resources/), com um único arquivo de script em **Bash** para execução assim que a maquina fosse criada, e `secrets`, que armazenava qualquer conteúdo sigiloso, neste caso, ele armazenou dois arquivos par de chaves criado nos formatos `.pem` e `.ppk` para acesso remoto via SSH nos softwares PowerShell e **PuTTY**. O script de criacao verificou se já existiam o par de chaves e a maquina virtual que desejava-se construir, caso não, ele realizava toda criação com as configurações determinadas e indicando que arquivo de script Bash deveria ser executado no Linux assim que a maquina tivesse pronta. Já o script de exclusão verificou se existiam o par de chaves e e maquina virtual, caso sim, executava a exclusão desses dois serviços. O script de variaveis serviu apenas para determinar nomes para as variaveis utilizadas nestes dois arquivos, portanto foi necessário importá-la neles. 
+Neste desafio, o ambiente para execução do projeto foi criado através do diretório [automation](./automation/) que contém três scripts de **PowerShell** ([criacao](./automation/criacao.ps1), [exclusao](./automation/exclusao.ps1), [variaveis](./automation/variaveis.ps1)) destinado a construção de uma maquina virtual **Linux Ubuntu** no serviço **EC2** da cloud da **AWS**. Este diretório ainda contém duas sub-pastas com nome [resources](./automation/resources/), com um único arquivo de script em **Bash** para execução assim que a maquina fosse criada, e `secrets`, que armazenava qualquer conteúdo sigiloso, neste caso, ele armazenou dois arquivos par de chaves criado nos formatos `.pem` e `.ppk` para acesso remoto via SSH nos softwares PowerShell e **PuTTY**. O script de criacao verificou se já existiam o par de chaves e a maquina virtual que desejava-se construir, caso não, ele realizava toda criação com as configurações determinadas e indicando que arquivo de script Bash deveria ser executado no Linux assim que a maquina tivesse pronta. Já o script de exclusão verificou se existiam o par de chaves e e maquina virtual, caso sim, executava a exclusão desses dois serviços. O script de variaveis serviu apenas para determinar nomes para as variaveis utilizadas nestes dois arquivos, portanto foi necessário importá-la neles. 
 
-O script em Bash ([ec2Script.sh](./automation/resources/ec2Script.sh)) realizou toda configuração da maquina com a instalação dos pacotes: **Wget**, **Curl**, **Yum**, **Unzip**, **Nano**, **NPM**, **Nodejs**, **Git**, **AWS CLI** e **ZShell**. Com Curl e ZShell instalados, foi baixado o framework do ZShell (**Oh My ZShell**) e as três seguintes extensões: **Power Level 10k**, **ZSH Autosuggestions** e **ZSH Syntax Highlighting**. O ZShell foi definido como Shell padrão do usuário `ubuntu` da maquina instanciada e foi feita a configuração do Oh My ZShell. Após isso, foi atualizado os pacotes do NPM e do Nodejs e, com o NPM foram baixados o framework **Serverless Framework** (`npm i -g serverless`) e as bibliotecas **UUID** e **AWS-SDK** (`npm i uuid aws-sdk`)
+O script em Bash ([ec2Script.sh](./automation/resources/ec2Script.sh)) realizou toda configuração da maquina com a instalação dos pacotes: **Wget**, **Curl**, **Yum**, **Unzip**, **Nano**, **NPM**, **Nodejs**, **Git**, **AWS CLI** e **ZShell**. Com Curl e ZShell instalados, foi baixado o framework do ZShell (**Oh My ZShell**) e os três seguintes plugins: **Power Level 10k**, **ZSH Autosuggestions** e **ZSH Syntax Highlighting**. O ZShell foi definido como Shell padrão do usuário `ubuntu` da maquina instanciada e foi feita a configuração do Oh My ZShell. Após isso, foi atualizado os pacotes do NPM e do Nodejs, e com o NPM foram baixados o framework **Serverless Framework** (`npm i -g serverless`) e as bibliotecas **UUID** e **AWS-SDK** (`npm i uuid aws-sdk`)
 
-O projeto foi criado com o comando `serverless`, onde foi realizado as seguintes configurações. A opção escolhida foi a `AWS - Node.js - HTTP API`, já que a opção igual a do professor não aparecia, que era `AWS - Node.js - REST API`. Em seguida, foi criado a pasta do projeto com nome [projectDioServerless](./projectDioServerless/) no diretório `/home/ubuntu` da maquina virtual instanciada. Não foi preciso fazer login e registrar no dashboard do serverless framework. A pasta do projeto veio com três arquivos por padrão que foram: `README.md`, para documentação do projeto, `index.js`, o arquivo principal de execução do projeto e `serverless.yml`, o arquivo **YAML** de configuração da infraestrutura da cloud da AWS, que interagiu com o o serviço **AWS CloudFormation** para construção da infraestrutura.
+Conforme o expert realizou, o projeto foi criado com o comando `serverless`, onde foi realizado as seguintes configurações. A opção escolhida foi a `AWS - Node.js - HTTP API`, já que a opção igual a do professor não aparecia, que era `AWS - Node.js - REST API`. Em seguida, foi criado a pasta do projeto com nome [projectDioServerless](./projectDioServerless/) no diretório `/home/ubuntu` da maquina virtual instanciada. Não foi preciso fazer login e registrar no dashboard do serverless framework. A pasta do projeto veio com três arquivos por padrão que foram: `README.md`, para documentação do projeto, `index.js`, o arquivo principal de execução do projeto e `serverless.yml`, o arquivo **YAML** de configuração da infraestrutura da cloud da AWS, que interagiu com o o serviço **AWS CloudFormation** para construção da infraestrutura.
 
-Foi realizado um acesso remoto agora pelo **Visual Studio Code (VS Code)** na pasta do projeto criada na maquina virtual para construção e execução dos arquivos deste projeto. O primeiro arquivo elaborado foi o arquivo [serverless.yml](./projectDioServerless/serverless.yml) com a configuração da estrutura que foi desenvolvida na cloud da AWS. Essa estrutura foi igual a realizada no curso de número seis desse módulo, foram utilizados os seguintes serviços da AWS: **AWS Lambda Function**, **AWS DynamoDB** e **AWS API Gateway**. O objetivo também foi o mesmo, através do site do **Postman**, requisições de diferentes métodos foram efetuadas para inserir e extrair dados em uma tabela construída no bando de dados do DynamoDB. Os demais arquivos foram armazenados no diretório [src](./projectDioServerless/src/), no qual cada um deles criou uma função Lambda na cloud AWS. Os nomes dos arquivos elaborados foram [handler.js](./projectDioServerless/src/handler.js), [insertItem.js](./projectDioServerless/src/insertItem.js) para inserir um item na tabela, [fechItems.js](./projectDioServerless/src/fechItems.js) para recuperar todos os items da tabela, [fechItem.js](./projectDioServerless/src/fechItem.js) para recuperar um item específico na tabela e [updateItem.js](./projectDioServerless/src/updateItem.js) para alterar um item específico na tabela.
+A minha execução foi diferente, com o script `criacao`, após construção da maquina virtual Linux Ubuntu, foi aguardado um tempo determinado até que a instância obtivesse um IP público disponível e então com o software **PSCP**, que é um cliente SCP, ou seja, cópia segura de arquivo de linha de comando, foi realizado a transferência da pasta [projectDioServerless](./projectDioServerless/) para o diretório `home/ubuntu` com todos os arquivos. Em seguida, foi realizado o acesso remoto a instância via **PuTTY** para verificar se todos os pacotes foram instalados corretamente conforme o script `ec2Script.sh`. Também foi configurado a **AWS CLI** para acessar cloud da AWS com o usuário administrador da conta `PedroheegerAdmin`. Utilizando o comando `aws configure` foi informado as seguintes credenciais: **AWS Access Key ID**, **AWS Secret Key**, a região que seria utilizada por esse usuário que no caso foi `us-east-1` e a última informação foi mantida vazia. Para conferir o usuário logado utilizou-se o comando `aws sts get-caller-identity`.
+
+Um outro acesso remoto foi realizado agora pelo **Visual Studio Code (VS Code)** direto na pasta do projeto que foi transferida da maquina física Windows para a instância Linux na cloud AWS. Para executar esse acesso foi utilizado a extensão do VS Code **Remote Access** e inserido o comando `ssh -i "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\remoteAccessEc2.pem" ubuntu@ec2-54-242-179-234.compute-1.amazonaws.com`, onde foi passado chave pública e uma string com o nome do usuário e endereço completo da instância. Com a conexão estabelecida foi aberto uma nova janela do VS Code dentro do diretório do projeto `/home/ubuntu/projectDioServerless` na maquina virtual da cloud. Todos os arquivos puderam ser acessado e alterados para atender a necessidade que ocorresse, porém eles já tinha sido construídos na maquina física Windows.
+
+O primeiro arquivo elaborado foi o arquivo [serverless.yml](./projectDioServerless/serverless.yml) com a configuração da estrutura que foi desenvolvida na cloud da AWS. Essa estrutura foi igual a realizada no curso de número seis desse módulo, foram utilizados os seguintes serviços da AWS: **AWS Lambda Function**, **AWS DynamoDB** e **AWS API Gateway**. O objetivo também foi o mesmo, através do site do **Postman**, requisições de diferentes métodos foram efetuadas para inserir e extrair dados em uma tabela construída no bando de dados do DynamoDB. Os demais arquivos foram armazenados no diretório [src](./projectDioServerless/src/), no qual cada um deles criou uma função Lambda na cloud AWS. Os nomes dos arquivos elaborados foram [handler.js](./projectDioServerless/src/handler.js), [insertItem.js](./projectDioServerless/src/insertItem.js) para inserir um item na tabela, [fechItems.js](./projectDioServerless/src/fechItems.js) para recuperar todos os items da tabela, [fechItem.js](./projectDioServerless/src/fechItem.js) para recuperar um item específico na tabela e [updateItem.js](./projectDioServerless/src/updateItem.js) para alterar um item específico na tabela.
+
+Com tudo pronto foi executado de dentro do diretório do projeto `/home/ubuntu/projectDioServerless` o comando `serverless deploy` para criar a infraestrutura e o resultado é exibido na image 14. Caso fosse realizado qualquer alteração nos arquivos, seria necessário executar o comando `aa`. Nas imagens 15, 16 e 17 é possível visualizar, respectivamente, o banco de dados de nome `ItemTableNew` no serviço DynamoDB, as cinco funções no serviço Lambda e a API de nome `dev-projectDioServerless`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+Toda a infraestrutura foi criada a partir do arquivo YAML `serverless.yml`, onde foi configurado as funções determinando quais eram os arquivos de código, o tipo de evento que no caso foi `http` e o método, o banco de dados que seria construído, e a definição de uma role para permitir que as seguintes ações fossem executadas no DynamoDB, são elas: `PutItem`, `UpdateItem`, `GetItem` e `scan`. Cada arquivo de código correspondia a uma função, sendo todos eles construídos em **Node.js**. Ao final da execução do comando `serverless deploy` foi fornecido os endpoints de cada função Lambda que foi utilizado no Postman. Na imagem 18 abaixo é mostrado fluxo de toda API para o método `Post`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
+
+A próxima etapa foi acessar o site do **Postman** para realizar as requisições. Nele, foi criado um workspace de nome `projectDioServerless` e elaborado as requisições com base nas funções Lambda criadas. A primeira requisição foi a `Insert Item` que usa o método `Post` para inserir o elemento na tabela do banco de dados.
 
 
 
 
-serverless deploy
-serverless deploy -f name_function
-/home/ubuntu/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 
-# Copie o arquivo da sua máquina local para a instância EC2
-scp -i "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\remoteAccessEc2.pem" "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\projectDioServerless" ec2-user@<IP_DA_INSTANCIA>:/caminho/remoto/
+
+
+
+pscp -i "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\remoteAccessEc2..ppk" "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\projectDioServerless" ubuntu@ec2-54-242-179-234.compute-1.amazonaws.com:/home/ubuntu
+
+pscp -i "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\remoteAccessEc2..ppk" -r "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\projectDioServerless" ubuntu@ec2-54-242-179-234.compute-1.amazonaws.com:/home/ubuntu
+
+
+aws ec2 describe-instances --instance-ids i-0b118ec9028cc3ed0 --query 'Reservations[0].Instances[0].PublicIpAddress' --output text | xargs -I {} ssh -i SuaChave.pem ec2-user@{} '[ -d /caminho/da/pasta ] && echo "A pasta existe" || echo "A pasta não existe"'
+
+
