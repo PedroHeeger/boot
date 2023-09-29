@@ -9,7 +9,6 @@ const fechItems = async (event) => {
     let items;
 
     try {
-
         const results = await dynamoDB.scan({
             TableName: "ItemTableNew"
         }).promise();
@@ -24,7 +23,7 @@ const fechItems = async (event) => {
         statusCode: 200,
         body: JSON.stringify(items),
     };
-}
+};
 
 module.exports = { 
     handler: fechItems,

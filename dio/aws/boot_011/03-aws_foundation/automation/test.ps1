@@ -1,7 +1,11 @@
 
+"C:\Users\pedro\.aws\config"
 
 
-pscp -i "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\remoteAccessEc2..ppk" "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\projectDioServerless" ubuntu@ec2-54-242-179-234.compute-1.amazonaws.com:/home/ubuntu
 
+$IP = 
 
-pscp -i "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\remoteAccessEc2..ppk" -r "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\projectDioServerless" ubuntu@ec2-54-242-179-234.compute-1.amazonaws.com:/home/ubuntu
+"C:\zProgramsTI\putty\putty.exe" -pw 
+
+Resource:
+- arn:aws:dynamodb:us-east-1:167880115321:table/ItemTable

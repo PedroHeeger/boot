@@ -11,7 +11,7 @@ const fechItem = async (event) => {
 
     try {
         const result = await dynamodb.get({
-            TableName: "ItemTableNew",
+            TableName: "ItemTable",
             Key: {id}
         }).promise();
 
@@ -25,7 +25,7 @@ const fechItem = async (event) => {
         statusCode: 200,
         body: JSON.stringify(item),
     };
-}
+};
 
 module.exports = {
     handler: fechItem,

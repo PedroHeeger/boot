@@ -1,23 +1,23 @@
 "use strict";
 
-const AWS = require("aws-sdk")
+const AWS = require("aws-sdk");
 
 const updateItem = async (event) => {
 
     const {itemStatus} = JSON.parse(event.body);
     const {id} = event.pathParameters
 
-    const dynamoDB = new AWS.dynamoDB.DocumentClient();
+    const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
     await dynamoDB.update({
-        TableName: "ItemTableName",
+        TableName: "ItemTable",
         Key: {id},
         UpdateExpression: 'set itemStatus = :itemStatus',
         ExpressionAttributeValues: {
             ':itemStatus': itemStatus
         },
         ReturnValues: "ALL_NEW"
-    }).promise()
+    }).promise();
 
     return {
         statusCode: 200,
@@ -25,8 +25,8 @@ const updateItem = async (event) => {
             {msg: 'Item updated'}
         ),
     };
-}
+};
 
 module.exports = {
     handler:updateItem
-}
+};

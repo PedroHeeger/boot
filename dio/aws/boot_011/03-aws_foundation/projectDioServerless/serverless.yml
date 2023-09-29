@@ -1,6 +1,6 @@
-service: dio-live-serverless-project
+service: projectDioServerless
 
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 provider:
   name: aws
@@ -16,8 +16,9 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:GetItem
             - dynamodb:scan
-          Resource:
-            - arn:aws:dynamodb:us-east-1:167880115321:table/ItemTableNew
+            - Fn::Sub:
+                - "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/ItemTable"
+                - {}
 
 functions:
   hello:
@@ -56,7 +57,7 @@ resources:
     ItemTableNew:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ItemTableNew
+        TableName: ItemTable
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id

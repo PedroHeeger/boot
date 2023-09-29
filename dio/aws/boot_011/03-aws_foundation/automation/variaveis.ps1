@@ -1,8 +1,9 @@
 # Defina suas variáveis
 # PATHS
-$projectPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation"
-$resourcesPath = "$projectPath\resources"
-$secretsPath = "$projectPath\secrets"
+$buildEnvPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation"
+$resourcesPath = "$buildEnvPath\resources"
+$secretsPath = "$buildEnvPath\secrets"
+$projectPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\projectDioServerless"
 
 # FILES PATHS
 $keyPairPath = "$secretsPath"
