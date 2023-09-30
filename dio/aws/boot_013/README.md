@@ -61,6 +61,8 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 - A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
 
 ### Development:
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+
 O desenvolvimento deste bootcamp foi dividido em apenas um módulo contendo quatro cursos e duas mentorias. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item1.1"><h4>1.1 Descubra a Nuvem</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)%20Descubra%20a%20Nuvem%20PH%20DIO.pdf">Certificate</a>

@@ -60,4 +60,4 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 - A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
 
 ### Development:
-O desenvolvimento deste bootcamp foi dividido em apenas um módulo contendo quatro cursos e uma mentoria. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades. Como o conteúdo deste bootcamp foram os mesmos de outros bootcamps, não houve nenhum curso adicional a ser realizado. Todos os cursos podem ser acessados pelos links do **Bootcamp Structure**.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
