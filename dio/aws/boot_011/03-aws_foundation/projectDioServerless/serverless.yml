@@ -16,10 +16,9 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:GetItem
             - dynamodb:scan
-            - Fn::Sub:
-                - "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/ItemTable"
-                - {}
-
+          Resource:
+            - Fn::Sub: "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/ItemTable"
+            
 functions:
   hello:
     handler: src/handler.hello

@@ -45,18 +45,44 @@ if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance
     aws ec2 describe-instances --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
 }
 
-Write-Output "No PuTTYgen, gere a chave privada .ppk a partir da chave pública .pem fornecida"
-Write-Output "Aguardando 90 segundos"
+# Write-Output "No PuTTYgen, gere a chave privada .ppk a partir da chave pública .pem fornecida"
+Write-Output "Aguardando 90 segundos para garantir que todos os programas já foram instalados pelo script Bash $userDataFile!"
 Start-Sleep -Seconds 90
 
 "-----//-----//-----//-----//-----//-----//-----"
-Write-Output "AWS ELASTIC COMPUTE CLOUD (EC2)"
+Write-Output "SCP / PSCP (FILE TRANSFER)"
 if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp").Count -gt 1) {
-    Write-Output "Listando o IP público de todas as instâncias EC2 criadas"
+    Write-Output "Extraindo o IP público da instância de nome de tag $tagNameInstance"
     $ipEc2 = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+    echo "$ipEc2"
+    $ipEc2 = $ipEc2.Replace(".", "-")
+    echo $ipEc2
 
-    pscp -i "$keyPairPath\$keyPairName.ppk" -r "$projectPath" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com:/home/ubuntu
+    Write-Output "Transferindo os arquivos para a instância de nome de tag $tagNameInstance"
+    scp -i "$keyPairPath\$keyPairName.pem" -o StrictHostKeyChecking=no -r "$projectPath" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com:/home/ubuntu/
+    scp -i "$keyPairPath\$keyPairName.pem" -o StrictHostKeyChecking=no -r "$awsCliPath" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com:/home/ubuntu/
+    # pscp -batch -i "$keyPairPath\$keyPairName.ppk" -r "$projectPath" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com:/home/ubuntu/
+    # pscp -batch -i "$keyPairPath\$keyPairName.ppk" -r "$awsCliPath" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com:/home/ubuntu/
+} else {
+    Write-Output "Não foi fornecido IP público da instância de nome de tag $tagNameInstance"
+    aws ec2 describe-instances --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+}
 
+Write-Output "Aguardando 45 segundos para garantir que todos os arquivos foram enviados!"
+Start-Sleep -Seconds 45
+
+"-----//-----//-----//-----//-----//-----//-----"
+Write-Output "SSH / PUTTY (REMOTE ACCESS)"
+if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp").Count -gt 1) {
+    Write-Output "Extraindo o IP público da instância de nome de tag $tagNameInstance"
+    $ipEc2 = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
+    echo "$ipEc2"
+    $ipEc2 = $ipEc2.Replace(".", "-")
+    echo $ipEc2
+
+    Write-Output "Alterando para diretório do projeto e implantando a infraestrutura com o arquivo serverless"
+    ssh -i "$keyPairPath\$keyPairName.pem" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com "cd projectDioServerless && serverless deploy"
+    # plink -i "$keyPairPath\$keyPairName.ppk" -ssh ubuntu@ec2-$ipEc2.compute-1.amazonaws.com "cd projectDioServerless && serverless deploy"
 } else {
     Write-Output "Não foi fornecido IP público da instância de nome de tag $tagNameInstance"
     aws ec2 describe-instances --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
