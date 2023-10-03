@@ -185,85 +185,11 @@ Write-Output "Importando o arquivo com as variáveis"
 
 
 
-# "-----//-----//-----//-----//-----//-----//-----"
-# Write-Output "SERVIÇO: AWS API GATEWAY"
-# "-----//-----//-----//-----//-----//-----//-----"
-# Write-Output "API GATEWAY"
-# if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name").Count -gt 1) {
-#     "-----//-----//-----//-----//-----//-----//-----"
-#     Write-Output "API RESOURCE"
-#     Write-Output "Extraindo o ID da API $apiGatewayName para criação de um recurso para ela"
-#     $apiId = aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].id" --output text
-#     echo "$apiId"
-    
-#     if ((aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id").Count -gt 1) {
-#         "-----//-----//-----//-----//-----//-----//-----"
-#         Write-Output "API RESOURCE METHOD"
-#         Write-Output "Extraindo o ID do recurso $resourceApiName para criação de um método para ela"
-#         $resourceId = aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id" --output text
-#         echo "$resourceId"
-
-#         if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST).Count -gt 1) {
-#             Write-Output "Já existe um método POST do recurso $resourceApiName da API $apiGatewayName!"
-#             aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "httpMethod" --output text
-
-#             "-----//-----//-----//-----//-----//-----//-----"
-#             Write-Output "API RESOURCE METHOD INTEGRATION"
-#             if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.type=='$methodIntegrationType'") -eq 'true') {
-#                 Write-Output "Já existe uma integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName!"
-#                 aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
-#             } else {
-#                 Write-Output "Exibindo a integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName!"
-#                 aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
-
-#                 Write-Output "Configurando a integração do método POST com o serviço Lambda"
-#                 $arnLambda = aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctionName'].FunctionArn" --output text
-#                 echo "arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${arnLambda}/invocations"
-#                 aws apigateway put-integration --rest-api-id $apiId --resource-id $resourceId --http-method POST --type $methodIntegrationType --integration-http-method POST --uri "arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${arnLambda}/invocations"
-
-#                 Write-Output "Exibindo a integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName!"
-#                 aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
-#             }
-
-#         } else {
-#             Write-Output "Listando todos os métodos do recurso $resourceApiName da API $apiGatewayName"
-#             aws apigateway get-resource --rest-api-id $apiId --resource-id $resourceId --query 'resourceMethods' --output text
-
-#             Write-Output "Criando o método POST para o recurso $resourceApiName da API $apiGatewayName"
-#             aws apigateway put-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --authorization-type "NONE"
-
-#             Write-Output "Listando apenas o método POST do recurso $resourceApiName da API $apiGatewayName"
-#             aws apigateway get-resource --rest-api-id $apiId --resource-id $resourceId --query "resourceMethods=='POST'" --output text
-
-#             "-----//-----//-----//-----//-----//-----//-----"
-#             Write-Output "API RESOURCE METHOD INTEGRATION"
-#             if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.type=='$methodIntegrationType'") -eq 'true') {
-#                 Write-Output "Já existe uma integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName!"
-#                 aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
-#             } else {
-#                 Write-Output "Exibindo a integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName!"
-#                 aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
-
-#                 Write-Output "Configurando a integração do método POST com o serviço Lambda"
-#                 $arnLambda = aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctionName'].FunctionArn" --output text
-#                 echo "arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${arnLambda}/invocations"
-#                 aws apigateway put-integration --rest-api-id $apiId --resource-id $resourceId --http-method POST --type $methodIntegrationType --integration-http-method POST --uri "arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${arnLambda}/invocations"
-
-#                 Write-Output "Exibindo a integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName!"
-#                 aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
-#             }
-#         } 
-#     } else {   
-#         Write-Output "Não existe o recurso $resourceApiName na API Gateway $apiGatewayName"
-#     }
-# } else {
-#     Write-Output "Não existe a API Gateway $apiGatewayName!"
-# }
-
-
-
 "-----//-----//-----//-----//-----//-----//-----"
-Write-Output "API RESOURCE METHOD INTEGRATION"
+Write-Output "SERVIÇO: AWS API GATEWAY"
+"-----//-----//-----//-----//-----//-----//-----"
+Write-Output "API RESOURCE METHOD"
+# Write-Output "API GATEWAY"
 if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name").Count -gt 1) {
     # "-----//-----//-----//-----//-----//-----//-----"
     # Write-Output "API RESOURCE"
@@ -277,16 +203,79 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
         $resourceId = aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id" --output text
 
         if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST).Count -gt 1) {
+            Write-Output "Já existe um método POST do recurso $resourceApiName da API $apiGatewayName!"
+            aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "httpMethod" --output text
+        } else {
+            Write-Output "Listando todos os métodos do recurso $resourceApiName da API $apiGatewayName"
+            aws apigateway get-resource --rest-api-id $apiId --resource-id $resourceId --query 'resourceMethods' --output text
+
+            Write-Output "Criando o método POST para o recurso $resourceApiName da API $apiGatewayName"
+            aws apigateway put-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --authorization-type "NONE"
+
+            Write-Output "Listando apenas o método POST do recurso $resourceApiName da API $apiGatewayName"
+            aws apigateway get-resource --rest-api-id $apiId --resource-id $resourceId --query "resourceMethods=='POST'" --output text
+        } 
+    } else {   
+        Write-Output "Não existe o recurso $resourceApiName na API Gateway $apiGatewayName"
+    }
+} else {
+    Write-Output "Não existe a API Gateway $apiGatewayName!"
+}
+
+
+
+
+"-----//-----//-----//-----//-----//-----//-----"
+Write-Output "SERVIÇO: AWS LAMBDA"
+"-----//-----//-----//-----//-----//-----//-----"
+Write-Output "RESOURCE-BASED POLICY"
+if ((aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctionName'].FunctionName").Count -gt 1) {
+    if ((aws lambda get-policy --function-name $lambdaFunctionName).Count -gt 1) {
+        Write-Output "Já existe uma política baseada em recursos da função lambda $lambdaFunctionName"
+        aws lambda get-policy --function-name $lambdaFunctionName
+    } else {
+        Write-Output "Listando todas as políticas baseadas em recursos da função lambda $lambdaFunctionName"
+        aws lambda get-policy --function-name $lambdaFunctionName
+
+        Write-Output "Criando a política baseada em recursos da função lambda $lambdaFunctionName para liberar a API Gateway"
+        aws lambda add-permission --function-name $lambdaFunctionName --action lambda:InvokeFunction --principal apigateway.amazonaws.com --statement-id apigateway-test-1 --source-arn arn:aws:execute-api:$region:$awsAccountId:$apiId/*/POST/$resourceId
+
+        Write-Output "Listando todas as políticas baseadas em recursos da função lambda $lambdaFunctionName"
+        aws lambda get-policy --function-name $lambdaFunctionName
+    }
+} else {
+    Write-Output "Não existe a função Lambda $lambdaFunctionName!"
+}
+
+
+
+"-----//-----//-----//-----//-----//-----//-----"
+Write-Output "API RESOURCE METHOD INTEGRATION"
+# Write-Output "API GATEWAY"
+if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name").Count -gt 1) {
+
+    # "-----//-----//-----//-----//-----//-----//-----"
+    # Write-Output "API RESOURCE"
+    # Write-Output "Extraindo o ID da API $apiGatewayName para criação de um recurso para ela"
+    $apiId = aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].id" --output text 
+    if ((aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id").Count -gt 1) {
+
+        # "-----//-----//-----//-----//-----//-----//-----"
+        # Write-Output "API RESOURCE METHOD"
+        # Write-Output "Extraindo o ID do recurso $resourceApiName para criação de um método para ela"
+        $resourceId = aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id" --output text
+        if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST).Count -gt 1) {
+
             "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "API RESOURCE METHOD INTEGRATION (REQUEST)"
             if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.type=='$methodIntegrationType'") -eq 'true') {
                 Write-Output "Já existe uma integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName!"
-                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
+                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration" --no-cli-pager
             } else {
                 Write-Output "Exibindo a integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName"
                 aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
 
-                Write-Output "Configurando a integração do método POST com o serviço Lambda"
+                Write-Output "Configurando a integração do método POST do recurso $resourceApiName com o serviço Lambda"
                 $arnLambda = aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctionName'].FunctionArn" --output text
                 aws apigateway put-integration --rest-api-id $apiId --resource-id $resourceId --http-method POST --type $methodIntegrationType --integration-http-method POST --uri "arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${arnLambda}/invocations"
 
@@ -297,19 +286,41 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
             "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "API RESOURCE METHOD INTEGRATION (RESPONSE)"
             if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses").Count -gt 1) {
-                Write-Output "Já existe uma integração Response para o método POST do recurso $resourceApiName!"
-                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses"
+                Write-Output "Já existe uma configuração de resposta para o método POST do recurso $resourceApiName!"
+                aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
             } else {
-                Write-Output "Exibindo a integração Response para o método POST do recurso $resourceApiName"
-                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses"
+                Write-Output "Exibindo a configuração de resposta para o método POST do recurso $resourceApiName"
+                aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
 
-                Write-Output "Configurando a integração do método POST com o serviço Lambda"
-                $arnLambda = aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctionName'].FunctionArn" --output text
-                aws apigateway put-integration-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200 --selection-pattern "" --response-models '{"application/json": "Empty"}'
+                Write-Output "Configurando a resposta do método POST do $resourceApiName"
+                aws apigateway put-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200 --response-models '{"application/json": "Empty"}'
 
-                Write-Output "Exibindo a integração Response para o método POST do recurso $resourceApiName"
-                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses"
+                Write-Output "Exibindo a configuração de resposta para o método POST do recurso $resourceApiName"
+                aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
             }
+            
+            "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "API DEPLOYMENT"
+            if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses").Count -gt 1) {
+                if ((aws apigateway get-deployments --rest-api-id $apiId --query "items").Count -gt 1) {
+                    Write-Output "Já existe o deployment $stageName para a API $apiGatewayName!"
+                    aws apigateway get-deployments --rest-api-id $apiId --query "items"
+                } else {
+                    Write-Output "Listando todos os deployments da API $apiGatewayName"
+                    aws apigateway get-stage --rest-api-id $apiId --stage-name development --query "stageName" --output text
+    
+                    Write-Output "Criando o deployment $stageName para a API $apiGatewayName"
+                    aws apigateway create-deployment --rest-api-id $apiId --stage-name $stageName
+    
+                    Write-Output "Listando todos os deployments da API $apiGatewayName"
+                    aws apigateway get-stage --rest-api-id $apiId --stage-name development --query "stageName" --output text
+
+                    Write-Output "Exibindo a Invoke URL do deployment $stageName para o método POST do recurso $resourceApiName da API $apiGatewayName"
+                    echo "https://$apiId.execute-api.$region.amazonaws.com/$stageName/$resourceApiName"
+                }
+            } else {
+                Write-Output "Não existe ou não há configuração de integração do método POST do recurso $resourceApiName na API $apiGatewayName"
+            } 
         } else {
             Write-Output "Não existe o método POST do recurso $resourceApiName na API $apiGatewayName"
         } 
@@ -335,6 +346,38 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+# aws apigateway get-stage --rest-api-id 4qle4njnb1 --stage-name development
+
+
+# aws apigateway get-method --rest-api-id 4qle4njnb1 --resource-id 87gy93 --http-method POST --query "methodIntegration.integrationResponses"
+
+# aws apigateway get-method --rest-api-id 4qle4njnb1 --resource-id 87gy93 --http-method POST
+
+
+# aws apigateway create-deployment --rest-api-id 4qle4njnb1 --stage-name $stageName
+
+# aws apigateway get-deployments --rest-api-id 4qle4njnb1 --query "items"
+
+
+
+
+# aws apigateway get-method --rest-api-id 4qle4njnb1 --resource-id 87gy93 --http-method POST --status-code 200 
+
+
+# aws apigateway put-integration-response --rest-api-id 4qle4njnb1 --resource-id 87gy93 --http-method POST --status-code 200 --selection-pattern "" --response-models '{"application/json": "Empty"}'
+
+# aws apigateway put-method-response --rest-api-id 4qle4njnb1 --resource-id 87gy93 --http-method POST --status-code 200 --response-models '{"application/json": "Empty"}'
 
 
 

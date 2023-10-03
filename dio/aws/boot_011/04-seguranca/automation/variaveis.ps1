@@ -26,6 +26,8 @@ $roleName = "dioPutItemsRole"
 $policyName = "dioPutItemsPolicy"
 $userName = "PedroheegerAdmin"
 $methodIntegrationType = "AWS_PROXY"
+$stageName = "development"
+
 
 
 
