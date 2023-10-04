@@ -4,16 +4,18 @@ $buildEnvPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\04-seguranca\automati
 $resourcesPath = "$buildEnvPath\resources"
 # $secretsPath = "$buildEnvPath\secrets"
 $projectPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\04-seguranca\projectDioCognito"
-$zipFilePath = "$resourcesPath\projectDioCognito.zip"
+# $zipFilePath = "$resourcesPath\projectDioCognito.zip"
 # $awsCliPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\.aws"
 
 
 # FILES PATHS
-$keyPairPath = "$secretsPath"
-$userDataPath = "$resourcesPath"
+# $filePath = "$resourcesPath\putItemFunction.js"
+$zipFilePath = "$resourcesPath\projectDioCognito.zip"
+# $keyPairPath = "$secretsPath"
+# $userDataPath = "$resourcesPath"
 
 # FILES
-$userDataFile = "ec2Script.sh"
+# $userDataFile = "ec2Script.sh"
 
 # DATA
 $awsAccountId = "005354053245"
@@ -27,6 +29,9 @@ $policyName = "dioPutItemsPolicy"
 $userName = "PedroheegerAdmin"
 $methodIntegrationType = "AWS_PROXY"
 $stageName = "development"
+$userPoolName = "dioLiveUserPool1"
+$appClientName = "dioLiveAppClient1"
+$domainUserPool = "diolivenewboot011"
 
 
 
