@@ -31,7 +31,7 @@
 
 ---
 
-### Bootcamp Structure
+<a name="item0"><h3>Bootcamp Structure</h3</a>
 1. Primeiros Passos Rumo à Certificação AWS Cloud Practitioner   
   1.1. Boas-vindas a Formação Rumo à Certificação AWS Cloud Practitioner   
   1.2. Introdução ao Exame de Certificação AWS Cloud Practitioner   
@@ -43,21 +43,21 @@
   2.1. [Computação em AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.5)   
   2.2. [Redes em AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.8)   
   2.3. [Armazenamento e Banco de Dados AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.9)   
-  2.4. Desafio de Projeto AWS - Redução de Custos   
+  2.4. <a href="#item2.4">Desafio de Projeto AWS - Redução de Custos</a>   
   2.5. Materiais Complementares - Primeiros Passos Rumo à Certificação AWS Cloud Practitioner   
 
 3. Segurança, Monitoramento e Suporte na AWS   
   3.1. [Segurança na Nuvem com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.1)   
   3.2. [Monitoramento e Análise na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.2)   
   3.3. [Preços e Planos de Suporte na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.3)   
-  3.4. Desafio de Projeto AWS - A Importância da Segurança   
+  3.4. <a href="#item3.4">Desafio de Projeto AWS - A Importância da Segurança</a>   
 
 4. [AWS Cloud Practitioner: Como se Preparar para o Exame](./04-seguranca/)   
   4.1. [Assuntos Complementares para o Exame AWS Cloud Practitioner](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/05-certificacao_aws#item5.3)   
-  4.2. Dicas de Estudo para o Exame AWS Cloud Practitioner   
+  4.2. <a href="#item4.2">Dicas de Estudo para o Exame AWS Cloud Practitioner</a>   
 
 5. [Simulados Preparatórios para a AWS Cloud Practitioner Certification](./05-certificacao_aws/)   
-  5.1. Simulados Preparatórios para a Certificação AWS Cloud Practitioner   
+  5.1. <a href="#item5.1">Simulados Preparatórios para a Certificação AWS Cloud Practitioner</a>   
   5.2. Avalie a Formação AWS Cloud Practitioner Certification   
 
 ---
@@ -82,4 +82,39 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 ### Development:
 Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
 
-Fazer
+Além das atividades já realizadas em outros bootcamps, este bootcamp possuiu quatro atividades restantes, sendo elas, dois desafios de projetos e dois cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+
+<a name="item2.4"><h4>2.4 Desafio de Projeto AWS - Redução de Custos</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Adicionando...na%20AWS%20com%20Amazon%20Cognito%20PH%20DIO.pdf">Certificate</a>
+
+Este desafio foi teórico, onde a partir de um modelo fornecido pelo expert, foi desenvolvido um projeto para implementação de três serviços da cloud **AWS** que fornecesse redução de custos para um cenário hipotético de uma empresa farmacêutica. O arquivo do projeto é o [relatorioImplementacao](./relatorioImplementacao.md), no qual os três serviços escolhidos para atender esse objetivo foram: **Amazon Elastic Compute Cloud (EC2)**, **Amazon Relational Database Service (RDS)** e **Amazon Simple Storage Service (S3)**.
+
+<a name="item3.4"><h4>3.4 Desafio de Projeto AWS - A Importância da Segurança</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Adicionando...na%20AWS%20com%20Amazon%20Cognito%20PH%20DIO.pdf">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="item4.2"><h4>4.2 Dicas de Estudo para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Adicionando...na%20AWS%20com%20Amazon%20Cognito%20PH%20DIO.pdf">Certificate</a>
+
+
+
+
+
+
+
+
+
+<a name="item5.1"><h4>5.1 Simulados Preparatórios para a Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Adicionando...na%20AWS%20com%20Amazon%20Cognito%20PH%20DIO.pdf">Certificate</a>
+
+
+
+
+
+
