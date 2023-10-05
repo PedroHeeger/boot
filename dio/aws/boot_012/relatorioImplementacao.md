@@ -1,8 +1,8 @@
 # RELATÓRIO DE IMPLEMENTAÇÃO DE SERVIÇOS AWS
 
-Data: 05/10/2023
-Empresa: Abstergo Industries 
-Responsável: Pedro Heeger Costa
+Data: 05/10/2023   
+Empresa: Abstergo Industries   
+Responsável: Pedro Heeger Costa   
 
 ## Introdução
 Este relatório apresenta o processo de implementação de ferramentas na empresa Abstergo Industries, realizado por Pedro Heeger Costa. O objetivo do projeto foi elencar 3 serviços AWS, com a finalidade de realizar diminuição de custos imediatos.

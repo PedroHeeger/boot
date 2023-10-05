@@ -31,7 +31,7 @@
 
 ---
 
-<a name="item0"><h3>Bootcamp Structure</h3</a>
+<a name="item0"><h3>Bootcamp Structure</h3></a>
 1. Primeiros Passos Rumo à Certificação AWS Cloud Practitioner   
   1.1. Boas-vindas a Formação Rumo à Certificação AWS Cloud Practitioner   
   1.2. Introdução ao Exame de Certificação AWS Cloud Practitioner   
@@ -103,13 +103,7 @@ Este desafio foi teórico, onde a partir de um modelo fornecido pelo expert, foi
 
 <a name="item4.2"><h4>4.2 Dicas de Estudo para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Adicionando...na%20AWS%20com%20Amazon%20Cognito%20PH%20DIO.pdf">Certificate</a>
 
-
-
-
-
-
-
-
+Neste curso que foi teórico, foi explicado sobre o exame AWS Cloud Practitioner, como ele funciona e como é feito todo processo para marcação do exame. Alguns conteúdos extras da própria **AWS** foram fornecidos para praticar para o exame.
 
 <a name="item5.1"><h4>5.1 Simulados Preparatórios para a Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Adicionando...na%20AWS%20com%20Amazon%20Cognito%20PH%20DIO.pdf">Certificate</a>
 
