@@ -52,11 +52,11 @@
   3.3. [Preços e Planos de Suporte na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.3)   
   3.4. <a href="#item3.4">Desafio de Projeto AWS - A Importância da Segurança</a>   
 
-4. [AWS Cloud Practitioner: Como se Preparar para o Exame](./04-seguranca/)   
+4. AWS Cloud Practitioner: Como se Preparar para o Exame 
   4.1. [Assuntos Complementares para o Exame AWS Cloud Practitioner](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/05-certificacao_aws#item5.3)   
   4.2. <a href="#item4.2">Dicas de Estudo para o Exame AWS Cloud Practitioner</a>   
 
-5. [Simulados Preparatórios para a AWS Cloud Practitioner Certification](./05-certificacao_aws/)   
+5. Simulados Preparatórios para a AWS Cloud Practitioner Certification   
   5.1. <a href="#item5.1">Simulados Preparatórios para a Certificação AWS Cloud Practitioner</a>   
   5.2. Avalie a Formação AWS Cloud Practitioner Certification   
 
