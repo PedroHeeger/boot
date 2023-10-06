@@ -5,7 +5,9 @@ Write-Output "Importando o arquivo com as variáveis"
 Write-Output "SERVIÇO: AWS Identity and Access Management (IAM)"
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "POLICY - ROLE"
+Write-Output "Verificando se existe a role $roleName..."
 if ((aws iam list-roles --query "Roles[?RoleName=='$roleName'].RoleName").Count -gt 1) {
+    Write-Output "Verificando se policy $policyName está atribuída a role $roleName..."
     if ((aws iam list-attached-role-policies --role-name $roleName --query "AttachedPolicies[?PolicyName=='$policyName'].PolicyName").Count -gt 1) {
         Write-Output "Listando todas as policies vinculada a role $roleName"
         aws iam list-attached-role-policies --role-name $roleName --query 'AttachedPolicies[].PolicyName' --output text
@@ -26,6 +28,7 @@ if ((aws iam list-roles --query "Roles[?RoleName=='$roleName'].RoleName").Count 
 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "POLICY"
+Write-Output "Verificando se existe a policy $policyName..."
 if ((aws iam list-policies --query "Policies[?PolicyName=='$policyName'].PolicyName").Count -gt 1) {
     Write-Output "Listando todas as policies criadas"
     aws iam list-policies --query "Policies[?contains(Arn, ':$awsAccountId')].PolicyName" --output text
@@ -48,6 +51,7 @@ if ((aws iam list-policies --query "Policies[?PolicyName=='$policyName'].PolicyN
 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "ROLE"
+Write-Output "Verificando se existe a role $roleName..."
 if ((aws iam list-roles --query "Roles[?RoleName=='$roleName'].RoleName").Count -gt 1) {
     Write-Output "Listando todas as roles criadas"
     aws iam list-roles --query 'Roles[].RoleName' --output text
@@ -67,10 +71,13 @@ if ((aws iam list-roles --query "Roles[?RoleName=='$roleName'].RoleName").Count 
 Write-Output "SERVIÇO: AWS LAMBDA"
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "RESOURCE-BASED POLICY"
+Write-Output "Verificando se existe a função lambda $lambdaFunctionName..."
 if ((aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctionName'].FunctionName").Count -gt 1) {
+    Write-Output "Verificando se existe uma política baseada em recursos (Ignorando erro)..."
     if ((aws lambda get-policy --function-name $lambdaFunctionName 2>&1) -match "ResourceNotFoundException"){
         Write-Output "Não existe uma política baseada em recursos da função lambda $lambdaFunctionName!"
     } else {
+        Write-Output "Verificando se existe uma política baseada em recursos..."
         if ((aws lambda get-policy --function-name $lambdaFunctionName).Count -gt 1) {
             Write-Output "Listando todas as políticas baseadas em recursos da função lambda $lambdaFunctionName"
             aws lambda get-policy --function-name $lambdaFunctionName --query "Policy" --output json | ConvertFrom-Json | jq -r '.Statement[].Sid' 
@@ -92,6 +99,7 @@ if ((aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctio
 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "FUNCTION"
+Write-Output "Verificando se existe a função lambda $lambdaFunctionName..."
 if ((aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctionName'].FunctionName").Count -gt 1) {
     Write-Output "Listando todas as funções lambdas criadas"
     aws lambda list-functions --query "Functions[].FunctionName" --output text
@@ -110,31 +118,36 @@ if ((aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctio
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "SERVIÇO: AWS API GATEWAY"
 "-----//-----//-----//-----//-----//-----//-----"
-Write-Output "DEPLOYMENT AND INTEGRATION METHOD"
+Write-Output "API GATEWAY"
+Write-Output "Verificando se existe a API Gateway $apiGatewayName..."
 if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name").Count -gt 1) {
 
-    # "-----//-----//-----//-----//-----//-----//-----"
-    # Write-Output "API RESOURCE"
+    "-----//-----//-----//-----//-----//-----//-----"
+    Write-Output "RESOURCE"
+    Write-Output "Verificando se existe o recurso $resourceApiName..."
     # Write-Output "Extraindo o ID da API $apiGatewayName para criação de um recurso para ela"
     $apiId = aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].id" --output text 
     if ((aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id").Count -gt 1) {
 
-        # "-----//-----//-----//-----//-----//-----//-----"
-        # Write-Output "API RESOURCE METHOD POST"
+        "-----//-----//-----//-----//-----//-----//-----"
+        Write-Output "METHOD POST"
+        Write-Output "Verificando se existe o método POST para o recurso..."
         # Write-Output "Extraindo o ID do recurso $resourceApiName para criação de um método para ela"
         $resourceId = aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id" --output text
         if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST).Count -gt 1) {
             
             "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "DEPLOYMENT"
+            Write-Output "Verificando se existe o estágio de deployment $stageName (Ignorando erro)..."
             if ((aws apigateway get-stage --rest-api-id $apiId --stage-name $stageName --query "stageName=='$stageName'" 2>&1) -match "NotFoundException"){
                 Write-Output "Não existe o deployment $stageName na API Gateway $apiGatewayName!"
             } else {
+                Write-Output "Verificando se existe o estágio de deployment $stageName..."
                 if ((aws apigateway get-stage --rest-api-id $apiId --stage-name $stageName --query "stageName=='$stageName'") -eq 'true') {
                     Write-Output "Listando todos os deployments da API $apiGatewayName"
                     aws apigateway get-stage --rest-api-id $apiId --stage-name $stageName --query "stageName" --output text
             
-                    Write-Output "Removendo o deployment $stageName da API Gateway $apiGatewayName"
+                    Write-Output "Removendo o estágio de deployment $stageName da API Gateway $apiGatewayName"
                     $deploymentId = aws apigateway get-stage --rest-api-id $apiId --stage-name $stageName --query "deploymentId" --output text
                     aws apigateway delete-stage --rest-api-id $apiId --stage-name $stageName
                     # aws apigateway delete-deployment --rest-api-id $apiId --deployment-id $deploymentId
@@ -147,44 +160,47 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
             }
 
             "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "INTEGRATION METHOD INTEGRATION (RESPONSE)"
+            Write-Output "INTEGRATION RESPONSE"
+            Write-Output "Verificando se existe a integração de resposta para o método POST do recurso $resourceApiName (Ignorando erro)..."
             if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses" 2>&1) -match "NotFoundException"){
-                Write-Output "Não existe uma configuração de resposta para o método POST do recurso $resourceApiName!"
+                Write-Output "Não existe uma integração de resposta para o método POST do recurso $resourceApiName!"
             } else {
+                Write-Output "Verificando se existe a integração de resposta para o método POST do recurso $resourceApiName..."
                 if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses").Count -gt 1) {
-                    Write-Output "Exibindo a configuração de resposta para o método POST do recurso $resourceApiName"
+                    Write-Output "Exibindo a integração de resposta para o método POST do recurso $resourceApiName"
                     aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
 
-                    Write-Output "Removendo a configuração de resposta do método POST"
+                    Write-Output "Removendo a integração de resposta do método POST do recurso $resourceApiName"
                     aws apigateway delete-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
 
-                    # Write-Output "Exibindo a configuração de resposta para o método POST do recurso $resourceApiName"
+                    # Write-Output "Exibindo a integração de resposta para o método POST do recurso $resourceApiName"
                     # aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
                 } else {
-                    Write-Output "Não existe uma configuração de resposta para o método POST do recurso $resourceApiName!"
+                    Write-Output "Não existe uma integração de resposta para o método POST do recurso $resourceApiName!"
                 }
             }
 
             "-----//-----//-----//-----//-----//-----//-----"
-            Write-Output "INTEGRATION METHOD (REQUEST)"
+            Write-Output "INTEGRATION REQUEST"
+            Write-Output "Verificando se existe a integração de solicitação para o método POST do recurso $resourceApiName..."
             if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.type=='$methodIntegrationType'") -eq 'true') {
-                Write-Output "Exibindo a integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName"
-                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
+                Write-Output "Exibindo a integração de solicitação do tipo $methodIntegrationType para o método POST do recurso $resourceApiName"
+                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration" --no-cli-pager
 
-                Write-Output "Removendo a integração do método POST do recurso $resourceApiName com o serviço Lambda"
+                Write-Output "Removendo a integração de solicitação do método POST do recurso $resourceApiName com o serviço Lambda"
                 aws apigateway delete-integration --rest-api-id $apiId --resource-id $resourceId --http-method POST --no-cli-pager
 
-                Write-Output "Exibindo a integração do tipo $methodIntegrationType para o método POST do recurso $resourceApiName"
-                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration"
+                Write-Output "Exibindo a integração de solicitação do tipo $methodIntegrationType para o método POST do recurso $resourceApiName"
+                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration" --no-cli-pager
             } else {
-                Write-Output "Não existe uma configuração de integração para o método POST do recurso $resourceApiName!"
+                Write-Output "Não existe a integração de solicitação para o método POST do recurso $resourceApiName!"
             }
 
         } else {
-            Write-Output "Não existe o método POST do recurso $resourceApiName na API $apiGatewayName"
+            Write-Output "Não existe a integração de solicitação para o método POST do recurso $resourceApiName!"
         } 
     } else {   
-        Write-Output "Não existe o recurso $resourceApiName na API Gateway $apiGatewayName"
+        Write-Output "Não existe o recurso $resourceApiName na API Gateway $apiGatewayName!"
     }
 } else {
     Write-Output "Não existe a API Gateway $apiGatewayName!"
@@ -193,6 +209,7 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "API GATEWAY"
+Write-Output "Verificando se existe a API Gateway $apiGatewayName..."
 if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name").Count -gt 1) {
     Write-Output "Listando todas as APIs Gateway criadas"
     aws apigateway get-rest-apis --query "items[].name" --output text
@@ -216,9 +233,11 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
 Write-Output "SERVIÇO: AMAZON DYNAMODB"
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "AMAZON DYNAMODB"
+Write-Output "Verificando se existe a tabela $tableName (Ignorando erro)..."
 if ((aws dynamodb describe-table --table-name $tableName --region $region 2>&1) -match "ResourceNotFoundException"){
     Write-Output "Não existe a tabela $tableName!"
 } else {
+    Write-Output "Verificando se existe a tabela $tableName..."
     if ((aws dynamodb describe-table --table-name $tableName --region $region).Count -gt 1) {
         Write-Output "Listando todas as tabelas criadas"
         aws dynamodb list-tables --region $region --query "TableNames" --output text
@@ -239,10 +258,12 @@ if ((aws dynamodb describe-table --table-name $tableName --region $region 2>&1) 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "SERVIÇO: AMAZON COGNITO"
 "-----//-----//-----//-----//-----//-----//-----"
-Write-Output "DOMAIN AND APP CLIENT"
+Write-Output "USER-POOL"
+Write-Output "Verificando se existe a User-Pool $userPoolName..."
 if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Name").Count -gt 1) {
     "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "APP CLIENT DOMAIN"
+    Write-Output "DOMAIN"
+    Write-Output "Verificando se existe o domínio $domainUserPool para User-Pool..."
     $userPoolId = aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Id" --output text
     if ((aws cognito-idp describe-user-pool --user-pool-id $userPoolId --query "UserPool.Domain=='$domainUserPool'") -eq "true") {
         Write-Output "Listando todos os domínios da User Pool $userPoolName"
@@ -259,7 +280,8 @@ if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name==
 
 
     "-----//-----//-----//-----//-----//-----//-----"
-    Write-Output "APP CLIENT"
+    Write-Output "CLIENT"
+    Write-Output "Verificando se existe o Client $appClientName..."
     $userPoolId = aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Id" --output text
     if ((aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].ClientName").Count -gt 1) {
         Write-Output "Listando todos os Clients da User Pool $userPoolName"
@@ -280,11 +302,13 @@ if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name==
 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "USER-POOL"
+Write-Output "Verificando se existe a User-Pool $userPoolName..."
 if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Name").Count -gt 1) {
     Write-Output "Listando pelo menos 20 User Pools"
     aws cognito-idp list-user-pools --max-results 10 --query "UserPools[].Name" --output text
 
     $userPoolId = aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Id" --output text
+    Write-Output "Verificando se a proteção de exclusão da User-Pool $userPoolName está ativa..."
     if ((aws cognito-idp describe-user-pool --user-pool-id $userPoolId --query "UserPool.DeletionProtection=='ACTIVE'") -eq "true") {
         Write-Output "Desativando a proteção de exclusão da User Pool $userPoolName"
         # aws cognito-idp update-user-pool --user-pool-id $userPoolId --admin-create-user-config AllowAdminCreateUserOnly=false

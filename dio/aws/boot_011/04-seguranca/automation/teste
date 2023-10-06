@@ -1,14 +1,8 @@
 
-
+{"body": "{\"id\": \"015\", \"price\": 600}"}
 
 
 aws iam delete-policy-version --policy-arn arn:aws:iam::005354053245:policy/dioPutItemsPolicy --version-id v1
-
-
-
-
-
-
 
 
 
@@ -22,21 +16,11 @@ https://diolivenewboot011.auth.us-east-1.amazoncognito.com/signup?client_id=7cce
 
 
 
-Statement ID
-a5e4f654-565d-4e03-8f9a-d823a89da26a
-Principal
-apigateway.amazonaws.com
-Effect
-Allow
-Action
-lambda:InvokeFunction
-Conditions
-{
- "ArnLike": {
-  "AWS:SourceArn": "arn:aws:execute-api:us-east-1:005354053245:u8z75l8uga/*/POST/items"
- }
-}
 
 
 
 aws lambda remove-permission --function-name dioPutItemsFunction --statement-id a5e4f654-565d-4e03-8f9a-d823a89da26a
+
+
+
+aws lambda add-permission --function-name dioPutItemsFunction --action lambda:InvokeFunction --principal apigateway.amazonaws.com --statement-id apigateway-test-2 --source-arn arn:aws:execute-api:us-east-1:005354053245:lxsms8cl9g/*/POST/items

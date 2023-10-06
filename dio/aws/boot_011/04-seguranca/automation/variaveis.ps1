@@ -4,18 +4,15 @@ $buildEnvPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\04-seguranca\automati
 $resourcesPath = "$buildEnvPath\resources"
 # $secretsPath = "$buildEnvPath\secrets"
 $projectPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\04-seguranca\projectDioCognito"
-# $zipFilePath = "$resourcesPath\projectDioCognito.zip"
-# $awsCliPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\03-aws_foundation\automation\secrets\.aws"
 
 
 # FILES PATHS
-# $filePath = "$resourcesPath\putItemFunction.js"
-$zipFilePath = "$resourcesPath\projectDioCognito.zip"
-# $keyPairPath = "$secretsPath"
-# $userDataPath = "$resourcesPath"
+$filePath = "$projectPath\index.js"
+$zipFilePath = "$resourcesPath\index.zip"
+
 
 # FILES
-# $userDataFile = "ec2Script.sh"
+
 
 # DATA
 $awsAccountId = "005354053245"
