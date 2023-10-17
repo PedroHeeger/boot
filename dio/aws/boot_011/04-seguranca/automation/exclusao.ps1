@@ -104,6 +104,14 @@ if ((aws lambda list-functions --query "Functions[?FunctionName=='$lambdaFunctio
     Write-Output "Listando todas as funções lambdas criadas"
     aws lambda list-functions --query "Functions[].FunctionName" --output text
 
+    Write-Output "Verificando se existe o arquivo zip da função lambda $lambdaFunctionName..."
+    if (-Not (Test-Path $zipFilePath)) {
+        Write-Output "Não existe nenhum arquivo zip do projeto!"
+    } else {
+        Write-Output "Removendo o arquivo zip do projeto"
+        Remove-Item "$zipFilePath"
+    }
+
     Write-Output "Removendo a função lambda $lambdaFunctionName"
     aws lambda delete-function --function-name $lambdaFunctionName --region $region
 
@@ -168,10 +176,12 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
                 Write-Output "Verificando se existe a integração de resposta para o método POST do recurso $resourceApiName..."
                 if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "methodIntegration.integrationResponses").Count -gt 1) {
                     Write-Output "Exibindo a integração de resposta para o método POST do recurso $resourceApiName"
-                    aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
+                    # aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
+                    aws apigateway get-integration-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
 
                     Write-Output "Removendo a integração de resposta do método POST do recurso $resourceApiName"
-                    aws apigateway delete-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
+                    # aws apigateway delete-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
+                    aws apigateway delete-integration-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
 
                     # Write-Output "Exibindo a integração de resposta para o método POST do recurso $resourceApiName"
                     # aws apigateway get-method-response --rest-api-id $apiId --resource-id $resourceId --http-method POST --status-code 200
@@ -196,6 +206,41 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
                 Write-Output "Não existe a integração de solicitação para o método POST do recurso $resourceApiName!"
             }
 
+            "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "METHOD REQUEST POST - AUTHORIZATION"
+            # Write-Output "Extraindo o ID do recurso $resourceApiName para criação de um método para ela"
+            $resourceId = aws apigateway get-resources --rest-api-id $apiId --query "items[?pathPart=='$resourceApiName'].id" --output text
+            $idAuthorizer = aws apigateway get-authorizers --rest-api-id $apiId --query "items[?name=='$authorizerName'].id" --output text
+            Write-Output "Verificando se existe a configuração de autorização para o método de solicitação do POST do recurso $resourceApiName..."
+            if ((aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "authorizerId=='$idAuthorizer'") -eq 'true') {
+                Write-Output "Exibindo a configuração de autorização para o método de solicitação do POST do recurso $resourceApiName"
+                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "authorizerId" --output text
+    
+                Write-Output "Removendo a autorização para o método de solicitação do POST do recurso $resourceApiName"
+                aws apigateway update-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --patch-operations op=replace,path=/authorizationType,value=NONE --no-cli-pager
+    
+                Write-Output "Exibindo a configuração de autorização para o método de solicitação do POST do recurso $resourceApiName"
+                aws apigateway get-method --rest-api-id $apiId --resource-id $resourceId --http-method POST --query "authorizerId" --output text
+            } else {
+
+            }
+
+            "-----//-----//-----//-----//-----//-----//-----"
+            Write-Output "AUTHORIZER"
+            Write-Output "Verificando se existe a Authorizer $authorizerName..."
+            if ((aws apigateway get-authorizers --rest-api-id $apiId --query "items").Count -gt 1) {
+                Write-Output "Listando todas as Authorizers da API $apiGatewayName"
+                aws apigateway get-authorizers --rest-api-id $apiId --query "items[].name" --output text
+    
+                Write-Output "Removendo a Authorizer $authorizerName da API $apiGatewayName"
+                $idAuthorizer = aws apigateway get-authorizers --rest-api-id $apiId --query "items[?name=='$authorizerName'].id" --output text
+                aws apigateway delete-authorizer --rest-api-id $apiId --authorizer-id $idAuthorizer
+
+                Write-Output "Listando todas as Authorizers da API $apiGatewayName"
+                aws apigateway get-authorizers --rest-api-id $apiId --query "items[].name" --output text
+            } else {
+                Write-Output "Não existe a Authorizer da API $apiGatewayName!"
+            }
         } else {
             Write-Output "Não existe a integração de solicitação para o método POST do recurso $resourceApiName!"
         } 

@@ -2,17 +2,13 @@
 # PATHS
 $buildEnvPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\04-seguranca\automation"
 $resourcesPath = "$buildEnvPath\resources"
-# $secretsPath = "$buildEnvPath\secrets"
 $projectPath = "G:\Meu Drive\4_PROJ\boot\dio\aws\boot_011\04-seguranca\projectDioCognito"
-
 
 # FILES PATHS
 $filePath = "$projectPath\index.js"
 $zipFilePath = "$resourcesPath\index.zip"
 
-
 # FILES
-
 
 # DATA
 $awsAccountId = "005354053245"
@@ -29,11 +25,4 @@ $stageName = "development"
 $userPoolName = "dioLiveUserPool1"
 $appClientName = "dioLiveAppClient1"
 $domainUserPool = "diolivenewboot011"
-
-
-
-
-$keyPairName = "remoteAccessEc2"
-$tagNameInstance = "dioServerless1"
-$imageId = "ami-053b0d53c279acc90"
-$availabilityZone = "us-east-1a"
+$authorizerName = "dioCognitoAuthorizer"

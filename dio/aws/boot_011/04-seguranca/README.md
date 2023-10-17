@@ -35,32 +35,16 @@ This folder refers to Module 4 **Segurança, Monitoramento e Suporte na AWS** fr
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
   - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
-  - Nano   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
-  - Vi   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vi.png" alt="vi" width="auto" height="25">
-  - VI iMproved (Vim)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg" alt="vim" width="auto" height="25">
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Command Line Interpreter (CLI):
-  - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
-  - Oh My Zshell (Oh My ZSh)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/oh_my_zshell.png" alt="oh_my_zshell" width="auto" height="25">
   - Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
-  - ZShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/zshell.png" alt="zshell" width="auto" height="25">
-- Tools:
-  - Advanced Package Tool (Apt)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt.png" alt="apt" width="auto" height="25">
-  - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
-  - Curl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
-  - Node Package Manager (npm)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm" width="auto" height="25">
-  - Unzip   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/unzip.png" alt="unzip" width="auto" height="25">
-  - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
 - Network:
-  - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
-  - PuTTY   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty" width="auto" height="25">
-  - PuTTYgen   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/puttygen.png" alt="puttygen" width="auto" height="25">
-  - PuTTY PSCP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg" alt="putty_pscp" width="auto" height="25">
-  - WinSCP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/winscp.png" alt="winscp" width="auto" height="25">
+  - JSON Web Token (JWT)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/jwt.png" alt="jwt" width="auto" height="25">
+  - Proton Mail   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/proton_mail.png" alt="proton_mail" width="auto" height="25"> 
 - Application Programming Interface:
   - Postman   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/postman.svg" alt="postman" width="auto" height="25">
 
@@ -110,21 +94,80 @@ Esta atividade foi mais uma em parceria da **AWS** com a plataforma do bootcamp 
 
 Neste desafio de projeto foi realizado o mesmo projeto dos itens 3.6 e 3.12 do módulo anterior com a adição do serviço **Amazon Cognito** e executando de uma forma diferente. No item 3.6 foi utilizado o console para execução do projeto. No item 3.12 foi realizado uma automação com scripts **Power Shell**, executando comandos **AWS Command Line Interface (CLI)**, apenas para construção do ambiente onde foi instalado o framework **Serverless Framework** na linguagem **JavaScript** com uso do **Node.js**, cuja finalidade era construir toda infraestrutura do projeto na cloud **AWS**. Agora, neste desafio, o projeto foi todo construído de forma automatizada com scripts **Power Shell**, executando comandos **AWS CLI**, sem a utilização de um software ou framework de infraestrutura como código (IAC).
 
-Assim como no desafio do item 3.12, uma pasta de nome [automation](./automation/) foi criada contendo três scripts de **PowerShell** ([criacao](./automation/criacao.ps1), [exclusao](./automation/exclusao.ps1), [variaveis](./automation/variaveis.ps1)) destinados a construção e exclusão de todos os serviços que englobam o projeto. Este diretório ainda contém duas sub-pastas de nome [resources](./automation/resources/), para armazenar todos os recursos relacionados ao projeto, um deles foi arquivo de código **Node.js** que foi zipado e armazenado nesta sub-pasta para ser enviado para o serviço **AWS Lambda**.
+Assim como no desafio do item 3.12, uma pasta de nome [automation](./automation/) foi criada contendo três scripts de **PowerShell** ([criacao](./automation/criacao.ps1), [exclusao](./automation/exclusao.ps1), [variaveis](./automation/variaveis.ps1)) destinados a construção e exclusão de todos os serviços que englobaram o projeto. Este diretório ainda contém uma sub-pasta de nome [resources](./automation/resources/), para armazenar todos os recursos relacionados ao projeto, um deles foi arquivo de código **Node.js** que foi zipado e armazenado nesta sub-pasta para ser enviado para o serviço **AWS Lambda**.
 
-O script de criação iniciou com o desenvolvimento de uma API no serviço **Amazon API Gateway**, com um recurso. Em seguida, uma tabela foi elaborada no **AWS DynamoDB** e foram criadas uma policy e uma role, sendo anexada a essa role, a policy criada. Após isso, foi desenvolvido uma função Lambda, enviando o arquivo de código **Node.js** zipado para este serviço. O script desse arquivo pode ser visualizado em [index.js](./projectDioCognito/index.js). De volta ao **API Gateway** foi criado o método `POST` para o recurso desenvolvido. Na função Lambda construída foi adicionado uma política baseada em recursos, permitindo que o API Gateway pudesse executar essa função, cujo o objetivo era fazer inserções no banco de dados do **DynamoDB** a partir de requisições enviadas. Novamente no API Gateway, no método POST desenvolvido foi configurado os métodos `request` e `response` e também desenvolvido um estágio de `deployment`. A próxima etapa foi a construção de um `User-Pool` no **Amazon Cognito**, desenvolvendo também um `App Client` e um `Domain`
-
-O script de exclusão fazia a remoção de todos os serviços configurados no projeto. Tanto no script de criação como no de exclusão, verificações sempre eram feitas para determinar se a configuração ou serviço específico já existia ou não, se já existisse, seriam listadas no script de criação e removidas no de exclusão. No momemnto exato de criar ou configurar algum serviços ou definição ou removê-los, eram listados o antes e depois da criação ou remoção, com objetivo de evidenciar a efetivação dessas ações durante a execução dos scripts. O script de variáveis serviu apenas para determinar nomes para as variáveis utilizadas nestes dois arquivos, portanto foi necessário importá-lo neles.
-
-
-
-
-
-
-
-
+O script de criação iniciou com o desenvolvimento de uma API no serviço **Amazon API Gateway**, com um recurso. Em seguida, uma tabela foi elaborada no **AWS DynamoDB** e foram criadas uma policy e uma role, sendo esta policy anexada a role. Após isso, foi desenvolvido uma função Lambda, enviando o arquivo de código **Node.js** que foi zipado e armazenado em outra pasta, para o envio do arquivo para este serviço. O script desse arquivo pode ser visualizado em [index.js](./projectDioCognito/index.js). De volta ao **API Gateway** foi criado o método `POST` para o recurso desenvolvido. Na função Lambda construída foi adicionado uma política baseada em recursos, permitindo que o API Gateway pudesse executar essa função, cujo o objetivo era fazer inserções no banco de dados do **DynamoDB** a partir de requisições enviadas. Novamente no API Gateway, no método POST desenvolvido foi configurado os métodos `request` e `response` e também desenvolvido um estágio de `deployment`. A próxima etapa foi a construção de um `User-Pool` no **Amazon Cognito**, elaborando também um `App Client` e um `Domain`. A imagem 02 a seguir ilustra o desenvolvimento do projeto.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md3-img02.png" alt="img02"><br>
+    <img src="../0-aux/md4-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
+
+As próximas imagens (03, 04, 05, 06 e 07) evidenciam a criação dos seguintes serviços respectivamente: DynamoDB, Lambda, API Gateway, IAM e Cognito.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+Na imagem 08 é exibida a requisição de POST sendo feita através do site do **Postman** para inserção de um dado no banco criado no DynamoDB, sem autenticação de usuário. O output mostra que o item foi inserido no banco com sucesso.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
+
+Na etapa seguinte, foi criado uma nova requisição no **Postman** (`dioLogin`), onde foi configurado o campo de `Authorization` para ser feito o login pelo Cognito e gerado um token para autenticação do usuário. O tipo de autorização foi o `OAuth 2.0`, no campo `Grant type` foi definido como `Implicit`, no campo `Auth URL` foi passado a URL do domínio com `/login` no final, em `Client Id` foi informado o Id do client e em `Scope` foi definido `email openid`. Também foi alterada a opção `Client Authentication` para `Send client credentials in body`. O professor alterou também a opção `Callback URL` para `https://example.com`, porém essa opção estava bloqueda não sendo possível alterá-la. 
+
+Infelizmente, ao tentar gerar o novo token de acesso no Postman, ocorreu um erro, onde foi notado que o link que ele tentava acessar estava errado. Portanto, para solucionar esse problema, foi observado que com link do Client era possível acessar a página de login. Este link tem um padrão, onde todos os parâmetros configurados no Postman são inseridos diretamente na URL, conforme o modelo `https://diolivenewboot011.auth.us-east-1.amazoncognito.com/login?client_id=SEU_CLIENT_ID&response_type=code&scope=email+openid&redirect_uri=SEU_REDIRECT_URI`. Então, tudo foi definido nessa URL e inserido no campo `Auth URL`, os demais parâmetros não eram mais necessários, pois já estavam configurados na URL, inclusive o parâmetro `Callback URL` que era bloqueado no Postman e foi ela que estava ocasionando o problema. Outro problema foi ocasionado, após realização do cadastro do usuário e verificação do email, sendo este também causado pela opção `Callback URL` que não estava idêntica ao do Client do Cognito.
+
+A solução correta encontrada foi trocar o `Callback URL` do Cognito para a mesma do Postman que era `https://oauth.pstmn.io/v1/browser-callback`. Assim, todos os parâmetros puderam ser definidos igual a do professor, com o `Auth URL` sendo apenas `https://diolivenewboot011.auth.us-east-1.amazoncognito.com/login`. Com isso, além de fazer o cadastro do usuário, a verificação de email, também foi possível continuar e gerar o token. Para fazer o cadastro do usuário no Cognito, foi criado uma conta no email **Proton Email**, que foi utilizada para este fim. Nas imagens (09, 10 e 11) mostram a configuração utilizada no Postman, a realização do cadastro, a verificação do email e confirmação.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+Com o token gerado, a última etapa foi criar um Authorizer para a API Gateway, que foi do tipo `Cognito User Pool`, sendo necessário alterar a forma de autorização do método de solicitação (request) do POST, definindo o Authorizer criado e executando um novo deployment da API Gateway para atualizá-la. De volta ao Postman, na requisição `dioPostItem` foi conferido se a URL era do endpoint do recurso `items` da API Gateway. No corpo da requisição foi alterado os valores de `id` e `price` para inserir outro elemento no banco de dados do DynamoDB, porém agora como foi configurado uma autorização, só os usuários cadastrados no Cognito conseguiriam realizar a requisição. Para isso foi necessário copiar o `Id Token` gerado no token da requisição `dioLogin` no Postman e utilizá-la como autorização na requisição `dioPostItem`, alterando o tipo para `Bearer Token` e colando o token copiado. A imagem 12 a seguir ilustra a última etapa deste projeto. Já a imagem 13 mostra as duas inserções realizadas no banco do DynamoDB, uma sem autenticação e outra com autenticação com uso do Cognito.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+O script de exclusão fazia a remoção de todos os serviços configurados no projeto. Tanto no script de criação como no de exclusão, verificações sempre eram feitas para determinar se a configuração ou serviço específico já existia ou não, se já existisse, seriam listadas no script de criação e removidas no de exclusão. No momemnto exato de criar ou configurar algum serviço ou definição ou removê-los, eram listados o antes e depois da criação ou remoção, com objetivo de evidenciar a efetivação dessas ações durante a execução dos scripts. O script de variáveis serviu apenas para determinar nomes para as variáveis utilizadas nestes dois arquivos, portanto foi necessário importá-lo neles.
