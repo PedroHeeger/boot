@@ -38,7 +38,7 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
         Write-Output "Extraindo o ID do recursos raíz (/) da API Gateway $apiGatewayName"
         $apiId = aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].id" --output text 
         $parentId = aws apigateway get-resources --rest-api-id $apiId --query "items[?path=='/'].id" --output text
-        echo "$parentId"      
+        Write-Output "$parentId"      
 
         Write-Output "Criando o recurso $resourceApiName da API Gateway $apiGatewayName"
         aws apigateway create-resource --rest-api-id $resourceId --parent-id $parentId --path-part $resourceApiName
@@ -389,7 +389,7 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
                     aws apigateway get-stage --rest-api-id $apiId --stage-name development --query "stageName" --output text
 
                     Write-Output "Exibindo a Invoke URL do deployment $stageName para o método POST do recurso $resourceApiName da API $apiGatewayName"
-                    echo "https://$apiId.execute-api.$region.amazonaws.com/$stageName/$resourceApiName"
+                    Write-Output "https://$apiId.execute-api.$region.amazonaws.com/$stageName/$resourceApiName"
                 }
             } else {
                 Write-Output "Não existe ou não há configuração de integração do método POST do recurso $resourceApiName na API $apiGatewayName"
@@ -472,7 +472,7 @@ if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name==
         aws cognito-idp describe-user-pool --user-pool-id $userPoolId --query "UserPool.Domain" --output text
 
         Write-Output "Exibindo o link do domínio $domainUserPool da User Pool $userPoolName"
-        echo "https://$domainUserPool.auth.$region.amazoncognito.com"
+        Write-Output "https://$domainUserPool.auth.$region.amazoncognito.com"
     } else {
         Write-Output "Listando todos os domínios da User Pool $userPoolName"
         aws cognito-idp describe-user-pool --user-pool-id $userPoolId --query "UserPool.Domain" --output text
@@ -484,7 +484,7 @@ if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name==
         aws cognito-idp describe-user-pool --user-pool-id $userPoolId --query "UserPool.Domain" --output text
 
         Write-Output "Exibindo o link do domínio $domainUserPool da User Pool $userPoolName"
-        echo "https://$domainUserPool.auth.$region.amazoncognito.com"
+        Write-Output "https://$domainUserPool.auth.$region.amazoncognito.com"
     }
 } else {
     Write-Output "Não existe a User Pool $userPoolName!"
