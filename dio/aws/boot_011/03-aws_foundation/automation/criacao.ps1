@@ -66,8 +66,8 @@ if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance
     aws ec2 describe-instances --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
 }
 
-Write-Output "Aguardando 120 segundos para garantir que todos os arquivos foram enviados!"
-Start-Sleep -Seconds 120
+Write-Output "Aguardando 200 segundos para garantir que todos os arquivos foram enviados!"
+Start-Sleep -Seconds 200
 
 "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "SSH / PUTTY (REMOTE ACCESS)"
@@ -81,6 +81,9 @@ if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance
     ssh -i "$keyPairPath\$keyPairName.pem" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com "sudo mv /home/ubuntu/node_modules /home/ubuntu/projectDioServerless"
     ssh -i "$keyPairPath\$keyPairName.pem" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com "sudo mv /home/ubuntu/package.json /home/ubuntu/projectDioServerless"
     ssh -i "$keyPairPath\$keyPairName.pem" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com "sudo mv /home/ubuntu/package-lock.json /home/ubuntu/projectDioServerless"
+
+    Write-Output "Aguardando 30 segundos para garantir que as pastas foram enviadas para o diretório do projeto!"
+    Start-Sleep -Seconds 30
 
     Write-Output "Alterando para diretório do projeto e implantando a infraestrutura com o arquivo serverless"
     ssh -i "$keyPairPath\$keyPairName.pem" "ubuntu@ec2-$ipEc2.compute-1.amazonaws.com" "cd projectDioServerless && serverless deploy"
