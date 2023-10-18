@@ -31,15 +31,14 @@ if ((aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance
 
     Write-Output "Extraindo o IP público da instância de nome de tag $tagNameInstance"
     $ipEc2 = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
-    echo "$ipEc2"
+    Write-Output "$ipEc2"
     $ipEc2 = $ipEc2.Replace(".", "-")
-    echo $ipEc2
+    Write-Output $ipEc2
 
     Write-Output "Verificando se existe o diretório do projeto, se existir, alterando para ele e removendo a implantação da infraestrutura com o arquivo serverless"
     # ssh -i "$keyPairPath\$keyPairName.pem" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com "cd home/ubuntu/projectDioServerless && serverless remove"
     # ssh -i "$keyPairPath\$keyPairName.pem" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com '[ -d "/home/ubuntu/projectDioServerless" ] && cd "/home/ubuntu/projectDioServerless" && serverless remove'
     ssh -i "$keyPairPath\$keyPairName.pem" ubuntu@ec2-$ipEc2.compute-1.amazonaws.com 'if [ -d "/home/ubuntu/projectDioServerless" ]; then cd "/home/ubuntu/projectDioServerless" && serverless remove; else echo "Pasta do projeto não encontrada."; fi'
-
 
     Write-Output "Removendo a instância criada de nome de tag $tagNameInstance"
     $instanceId1 = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].InstanceId" --output text

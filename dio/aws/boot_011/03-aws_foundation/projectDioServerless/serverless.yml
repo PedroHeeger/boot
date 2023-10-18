@@ -27,19 +27,19 @@ functions:
           path: /
           method: get
   insertItem:
-    handler: src/insterItem.handler
+    handler: src/insertItem.handler
     events: 
       - http:
           path: /item
           method: post
-  fechItems:
-    handler: src/fechItems.handler
+  fetchItems:
+    handler: src/fetchItems.handler
     events: 
       - http:
           path: /items
           method: get
-  fechItem:
-    handler: src/fechItem.handler
+  fetchItem:
+    handler: src/fetchItem.handler
     events: 
       - http:
           path: /items/{id}
@@ -48,12 +48,12 @@ functions:
     handler: src/updateItem.handler
     events: 
       - http:
-          path: /item/{id}
+          path: /items/{id}
           method: put
 
 resources:
   Resources:
-    ItemTableNew:
+    ItemTable:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: ItemTable

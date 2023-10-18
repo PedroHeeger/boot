@@ -2,7 +2,7 @@
 
 const AWS = require("aws-sdk");
 
-const fechItem = async (event) => {
+const fetchItem = async (event) => {
 
     const dynamodb = new AWS.DynamoDB.DocumentClient();
     const {id} = event.pathParameters
@@ -17,7 +17,7 @@ const fechItem = async (event) => {
 
         item = result.Item;
 
-    } catch (erro) {
+    } catch (error) {
         console.log(error)
     }
 
@@ -28,5 +28,5 @@ const fechItem = async (event) => {
 };
 
 module.exports = {
-    handler: fechItem,
+    handler: fetchItem,
 };

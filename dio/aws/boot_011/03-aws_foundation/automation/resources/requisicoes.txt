@@ -1,0 +1,24 @@
+GET - listItems
+https://n1xd6v8tp7.execute-api.us-east-1.amazonaws.com/dev/items
+
+
+POST - insertItem
+https://n1xd6v8tp7.execute-api.us-east-1.amazonaws.com/dev/item
+Body:
+{
+    "item":"newItem002"
+}
+
+{"body": "{\"item\":\"newItem001\"}"}
+
+
+GET - getItem
+https://n1xd6v8tp7.execute-api.us-east-1.amazonaws.com/dev/items/c15e8072-6b4e-4717-a4ff-fee234d496cb
+
+
+PUT - updateItem
+https://n1xd6v8tp7.execute-api.us-east-1.amazonaws.com/dev/items/c15e8072-6b4e-4717-a4ff-fee234d496cb
+Body:
+{
+    "itemStatus":true
+}

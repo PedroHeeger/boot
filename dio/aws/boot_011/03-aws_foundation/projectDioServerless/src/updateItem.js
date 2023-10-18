@@ -7,9 +7,9 @@ const updateItem = async (event) => {
     const {itemStatus} = JSON.parse(event.body);
     const {id} = event.pathParameters
 
-    const dynamoDB = new AWS.DynamoDB.DocumentClient();
+    const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-    await dynamoDB.update({
+    await dynamodb.update({
         TableName: "ItemTable",
         Key: {id},
         UpdateExpression: 'set itemStatus = :itemStatus',
@@ -22,7 +22,7 @@ const updateItem = async (event) => {
     return {
         statusCode: 200,
         body: JSON.stringify(
-            {msg: 'Item updated'}
+            { msg: 'Item updated'}
         ),
     };
 };
