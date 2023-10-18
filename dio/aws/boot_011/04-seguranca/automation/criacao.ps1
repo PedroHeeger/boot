@@ -112,7 +112,6 @@ if ((aws iam list-policies --query "Policies[?PolicyName=='$policyName'].PolicyN
           }
         ]
       }'
-    # echo $jsonString
 
     aws iam create-policy --policy-name $policyName --policy-document $jsonString --no-cli-pager
 
@@ -378,6 +377,9 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
                 if ((aws apigateway get-deployments --rest-api-id $apiId --query "items").Count -gt 1) {
                     Write-Output "Já existe o estágio de deployment $stageName para a API $apiGatewayName!"
                     aws apigateway get-deployments --rest-api-id $apiId --query "items"
+
+                    Write-Output "Exibindo a Invoke URL do deployment $stageName para o método POST do recurso $resourceApiName da API $apiGatewayName"
+                    Write-Output "https://$apiId.execute-api.$region.amazonaws.com/$stageName/$resourceApiName"
                 } else {
                     Write-Output "Listando todos os deployments da API $apiGatewayName"
                     aws apigateway get-deployments --rest-api-id $apiId --query "items"
@@ -385,7 +387,7 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
                     Write-Output "Criando o estágio de deployment $stageName para a API $apiGatewayName"
                     aws apigateway create-deployment --rest-api-id $apiId --stage-name $stageName
     
-                    Write-Output "Listando todos os estágios do deployment $stageName da API $apiGatewayName"
+                    Write-Output "Listando o estágio do deployment $stageName da API $apiGatewayName"
                     aws apigateway get-stage --rest-api-id $apiId --stage-name development --query "stageName" --output text
 
                     Write-Output "Exibindo a Invoke URL do deployment $stageName para o método POST do recurso $resourceApiName da API $apiGatewayName"
@@ -425,11 +427,6 @@ if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name==
 
     Write-Output "Listando a User Pool $userPoolName"
     aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Name" --output text
-
-    # Write-Output "Alterando configurações da App Client $appClientName da User Pool $userPoolName"
-    # $userPoolId = aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Id" --output text
-    # $clientId = aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].ClientId" --output text
-    # aws cognito-idp update-user-pool-client --user-pool-id $userPoolId --client-id $clientId --callback-urls "https://example.com" --allowed-o-auth-flows "code" "implicit" --allowed-o-auth-scopes "openid" "email"
 }
 
 
@@ -446,20 +443,20 @@ if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name==
         aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].ClientName" --output text
 
         Write-Output "Listando o Id do Client $appClientName da User Pool $userPoolName"
-        aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].AppClientId" --output text
+        aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].ClientId" --output text
     } else {
         Write-Output "Listando todos os Clients da User Pool $userPoolName"
         aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[].ClientName" --output text
 
         Write-Output "Criando o Client $appClientName da User Pool $userPoolName"
         # aws cognito-idp create-user-pool-client --user-pool-id $userPoolId --client-name $appClientName --allowed-o-auth-flows "code" "implicit" --allowed-o-auth-scopes "openid" "email" --callback-urls "https://example.com" --supported-identity-providers 'COGNITO' --no-cli-pager
-        aws cognito-idp create-user-pool-client --user-pool-id $userPoolId --client-name $appClientName --allowed-o-auth-flows "code" "implicit" --allowed-o-auth-scopes "openid" "email" --callback-urls "https://oauth.pstmn.io/v1/browser-callback" --supported-identity-providers 'COGNITO' --no-cli-pager
+        aws cognito-idp create-user-pool-client --user-pool-id $userPoolId --client-name $appClientName --allowed-o-auth-flows "code" "implicit" --allowed-o-auth-scopes "openid" "email" --callback-urls "https://example.com" "https://oauth.pstmn.io/v1/browser-callback" --supported-identity-providers 'COGNITO' --no-cli-pager
 
         Write-Output "Listando apenas o Client $appClientName da User Pool $userPoolName"
         aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].ClientName" --output text
 
         Write-Output "Listando o Id do Client $appClientName da User Pool $userPoolName"
-        aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].AppClientId" --output text
+        aws cognito-idp list-user-pool-clients --user-pool-id $userPoolId --query "UserPoolClients[?ClientName=='$appClientName'].ClientId" --output text
     }
 
 
@@ -477,7 +474,7 @@ if ((aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name==
         Write-Output "Listando todos os domínios da User Pool $userPoolName"
         aws cognito-idp describe-user-pool --user-pool-id $userPoolId --query "UserPool.Domain" --output text
 
-        Write-Output "Criando o domínio $domainUserPool da API Client $appClientName da User Pool $userPoolName"
+        Write-Output "Criando o domínio $domainUserPool da App Client $appClientName da User Pool $userPoolName"
         aws cognito-idp create-user-pool-domain --domain "$domainUserPool" --user-pool-id $userPoolId
 
         Write-Output "Listando todos os domínios da User Pool $userPoolName"
@@ -517,7 +514,8 @@ if ((aws apigateway get-rest-apis --query "items[?name=='$apiGatewayName'].name"
             aws apigateway get-authorizers --rest-api-id $apiId --query "items[].name" --output text
 
             Write-Output "Criando a Authorizer $authorizerName da API $apiGatewayName"
-            $arnUserPool = aws cognito-idp describe-user-pool --user-pool-id us-east-1_TcCgJC5fR --query "UserPool.Arn" --output text
+            $userPoolId = aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='$userPoolName'].Id" --output text
+            $arnUserPool = aws cognito-idp describe-user-pool --user-pool-id $userPoolId --query "UserPool.Arn" --output text
             aws apigateway create-authorizer --rest-api-id $apiId --name $authorizerName --type COGNITO_USER_POOLS --identity-source "method.request.header.Authorization" --provider-arns $arnUserPool
 
             Write-Output "Listando apenas a Authorizer $authorizerName da API $apiGatewayName"

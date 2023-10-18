@@ -171,3 +171,10 @@ Com o token gerado, a última etapa foi criar um Authorizer para a API Gateway, 
 </figure></div><br>
 
 O script de exclusão fazia a remoção de todos os serviços configurados no projeto. Tanto no script de criação como no de exclusão, verificações sempre eram feitas para determinar se a configuração ou serviço específico já existia ou não, se já existisse, seriam listadas no script de criação e removidas no de exclusão. No momemnto exato de criar ou configurar algum serviço ou definição ou removê-los, eram listados o antes e depois da criação ou remoção, com objetivo de evidenciar a efetivação dessas ações durante a execução dos scripts. O script de variáveis serviu apenas para determinar nomes para as variáveis utilizadas nestes dois arquivos, portanto foi necessário importá-lo neles.
+
+
+
+
+aws cognito-idp list-user-pools --max-results 10 --query "UserPools[?Name=='dioLiveUserPool1'].Id" --output text
+
+aws cognito-idp list-user-pool-clients --user-pool-id us-east-1_THb1E0EQF --query "UserPoolClients[?ClientName=='dioLiveAppClient1'].ClientId" --output text
