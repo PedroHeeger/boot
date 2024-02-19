@@ -1,0 +1,103 @@
+# DB: PERSISTENT VOLUME (GCP)
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadate:
+#   name: mysql-dados
+# spec:
+#   accesModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 10Gi
+#     storageClassName: standard-rwo
+
+# DB: PERSISTENT VOLUME
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-dados
+  labels:
+    type: mysql-dados
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath: 
+    path: /meubanco/
+
+---
+
+# DB: PERSISTENT VOLUME CLAIM
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-dados
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+
+# DB: DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadate:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadate:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: pedroheeger/boot015_projeto-database:1.0
+        args:
+        - "--ignore-db-dir=lost+found"
+        imagePullPolicy: Always
+        name: mysql
+        ports:
+        - containerPort: 3306
+          name: mysql
+
+        volumeMounts:
+        - name: mysql-dados
+          mountPath: /var/lib/mysql/
+      volumes:
+      - name: mysql-dados
+        persistentVolumeClaim:
+          claimName: mysql-dados
+
+---
+
+# BACK-END: DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadate:
+  name: php
+  labels:
+    app: php
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: php
+  template:
+    metadate:
+      labels:
+        app: php
+    spec:
+      containers:
+      - name: php
+        image: pedroheeger/boot015_projeto-backend:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

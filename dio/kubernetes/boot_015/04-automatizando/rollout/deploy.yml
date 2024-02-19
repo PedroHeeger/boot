@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd
+  labels:
+    app: httpd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers: 
+      - name: httpd
+        image: httpd:2
+        # image: httpd:latest
+        # image: httpd:errado
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
