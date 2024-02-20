@@ -56,7 +56,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item3.1"><h4>3.1 Entendendo HTML Semântico</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-25)%20Entendendo%20HTML%20Sem%C3%A2ntico%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.1"><h4>3.1 Entendendo HTML Semântico</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-25)_Entendendo_HTML_Semantico_PH_DIO.pdf">Certificate</a>
 
 Neste curso foi introduzido assuntos importantes como **HTML semântico** e **Acessbilidade**, foi explicado o que são **DOM**, **Ávore de Acessibilidade**, **ARIA** e a importância da acessibilidade em uma internet mais democrática. Também foi introduzido o assunto de **Web Scraping** que utilizam os **Crawler**. O **Crawler**, às vezes também chamado de "robô" ou "indexador", é um termo genérico para qualquer programa usado para descobrir e examinar sites automaticamente seguindo links entre páginas da Web. Um **Crawler** muito famoso é o **GoogleBot** que faz a indexação das páginas web dentro do **Google**.
 
@@ -71,7 +71,7 @@ No mesmo arquivo mostrou também a utilização das tags `figure`, `figcaption` 
 </picture>
 ```
 
-<a name="item3.2"><h4>3.2 HTML: Recursos Especiais</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-25)%20HTML%3B%20Recursos%20Especiais%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.2"><h4>3.2 HTML: Recursos Especiais</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-25)_HTML_Recursos_Especiais_PH_DIO.pdf">Certificate</a>
 
 O curso 2 foi iniciado com a construção de um novo arquivo [index.html](03.2-recursos_especiais/index.html) onde foram apresentados alguns recursos especiais. O primeiro deles foi a tag `datalist`, muito parecida com a tag `select`, sendo a diferença que na tag `select` é possível apenas selecionar as opções, já no `datalist`, além de selecionar, é possível digitar a opção e sugestões são exibidas a partir das palavras digitadas.
 
@@ -101,7 +101,7 @@ Em seguida, foi mostrado uma funcionalidade da tag `mark` junto com um trecho de
 
 Nas duas etapas seguintes foi introduzido a tag `canvas`, muito utilizado em um cenário de games, é uma tag onde é possível manipular gráficos dentro dela. Para isso foi criado um novo arquivo **HTML** de nome [canvas.html](./03.2-recursos_especiais/canvas.html). Dentro de uma tag `canvas`, os gráficos são construídos com comandos **JavaScript**. Neste arquivo foi utilizado um exemplo do site [w3schools](https://www.w3schools.com/html/html5_canvas.asp). Outros exemplos foram mostrados no site [codepen](https://codepen.io/).
 
-<a name="item3.3"><h4>3.3 Recriando o Wikipedia com Layout Moderno</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-25)%20Recriando%20o%20Wikipedia...%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.3"><h4>3.3 Recriando o Wikipedia com Layout Moderno</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-25)_Recriando...Wikipedia...PH_DIO.pdf">Certificate</a>
 
 Neste desafio, o objetivo foi recriar o site do **Wikipedia** com a elaboração de três arquivos **HTML** que foram as páginas do site ([24horas.html](./03.3-recriando_wikipedia/24horas.html), [gameofthrones.html](./03.3-recriando_wikipedia/gameofthrones.html) e [sintonia.html](./03.3-recriando_wikipedia/sintonia.html)). O tema desenvolvido foi sobre séries de tv, onde cada página representou uma série. Ao lado direito das páginas foi construído um menu para navegar entre as páginas, ou seja, alterar de uma série para outra. Já do lado esquerdo, um outro menu elaborado para funcionar como âncora, ou seja, navegando em qutro tópicos do conteúdo das páginas. No meio, foi desenvolvido o conteúdo dividido em quatro tópicos, sendo no final inserido uma imagem sobre a série. 
 

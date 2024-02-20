@@ -54,11 +54,11 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em três cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Entendendo Comunicação Client x Server</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-23)%20Entendendo%20Comunica%C3%A7%C3%A3o%20Client%20x%20Server%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Entendendo Comunicação Client x Server</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-23)_Entendendo_Comunicacao_Client...Server_PH_DIO.pdf">Certificate</a>
 
 Neste primeiro curso foram abordados apenas assuntos teóricos sobre a história dos computadores e da internet até os dias atuais, o funcionamento do modelo cliente-servidor e as partes envolvidas nesse modelo, além de uma breve explicação sobre linguagens de programação e de que lado essas linguagens atuam no modelo explicado.
 
-<a name="item1.2"><h4>1.2 Introdução ao HTML na Prática</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-23)%20Introdu%C3%A7%C3%A3o%20ao%20HTML%20na%20Pr%C3%A1tica%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.2"><h4>1.2 Introdução ao HTML na Prática</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-23)_Introducao...HTML_PH_DIO.pdf">Certificate</a>
 
 Para este curso e os demais foram utilizados o software **Visual Studio Code (VS Code)** para construção dos arquivos **HTML** e o navegador **Google Chrome** para visualização dos arquivos. No **VS Code** utilizou a extensão **Live Server** e  a **Emmet** (este último já vem embutido no **VS Code**). No navegador utilizou a ferramenta do desenvolvedor para inspecionar o código.
 
@@ -69,7 +69,7 @@ No desenvolvimento do curso foram criados dois arquivo **HTML** bem básico apen
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-<a name="item1.4"><h4>1.4 Criar Uma Página Web Utilizando as Tags Aprendidas</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-23)%20Criar%20uma%20P%C3%A1gina%20Web...%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.4"><h4>1.4 Criar Uma Página Web Utilizando as Tags Aprendidas</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/html/(23-08-23)_Criar...Pagina_Web...PH_DIO.pdf">Certificate</a>
 
 Neste desafio de projeto foi elaborado um novo arquivo **HTML** ([index.html](./01.3-dp_pagina_web/index.html)) para construção de uma página web. Basicamente, o arquivo desenvolvido foi igual ao do expert do bootcamp, porém nos parágrafos de texto adicionei o texto `Lorem Ipsum` que cria um texto aleatório automático só para compor o parágrafo, pois o objetivo no momento foi focar no assunto **HTML** e não no conteúdo que o arquivo continha. O arquivo desenvolvido foi estilo de uma matéria em um blog. A imagem 03 retrata como ficou o desenvolvimento do projeto.
 

@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">html   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_007 (Formação HTML Web Developer)   <img src="./0-aux/logo_boot.png" alt="boot_007" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/programming/html/(23-08-25)%20Cert%20Formacao%20HTML%20Web%20Developer%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/programming/html/(23-08-25)_Cert_Formacao_HTML_Web_Developer_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -72,4 +72,4 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
