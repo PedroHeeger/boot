@@ -1,0 +1,113 @@
+# DB: PERSISTENT VOLUME (GCP)
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadate:
+#   name: mysql-dados
+# spec:
+#   accesModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 10Gi
+#     storageClassName: standard-rwo
+
+# DB: PERSISTENT VOLUME
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-dados
+  labels:
+    type: mysql-dados
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath: 
+    path: /meubanco/
+
+---
+
+# DB: PERSISTENT VOLUME CLAIM
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-dados
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+
+# DB: DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadate:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadate:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3306
+          name: mysql
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: ROOT_PASSWORD
+                
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: MYSQL_DATABASE
+
+        volumeMounts:
+        - name: mysql-dados
+          mountPath: /var/lib/mysql/
+      volumes:
+      - name: mysql-dados
+        persistentVolumeClaim:
+          claimName: mysql-dados
+
+---
+
+# BACK-END: DEPLOYMENT
+apiVersion: apps/v1
+kind: Deployment
+metadate:
+  name: app
+  labels:
+    app: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadate:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: pedroheeger/boot015_dp-app:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

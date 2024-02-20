@@ -59,11 +59,13 @@ This folder refers to Module 4 **Automatizando Deployments com Kubernetes** from
   - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
   - Curl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
   - Wget   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wget.webp" alt="wget" width="auto" height="25">
+- Development:
+  - GitLab   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="gitlab" width="auto" height="25">
 
 ---
 
 ### Bootcamp Module 4 Structure
-4. <a name="item2">Automatizando Deployments com Kubernetes</a><br>
+4. <a name="item4">Automatizando Deployments com Kubernetes</a><br>
   4.1. <a href="#item4.1">Deployment e Roolback em Clusters Kubernetes</a><br>
   4.2. <a href="#item4.2">CI-CD Utilizando Kubernetes</a><br>
   4.3. <a href="#item4.3">Criando um Pipeline de Deploy com GitLab e Kubernetes</a><br>
@@ -72,7 +74,7 @@ This folder refers to Module 4 **Automatizando Deployments com Kubernetes** from
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
+O objetivo deste módulo do bootcamp foi mostrar como realizar o processo de roolback entre as implantações realizadas e como criar e utilizar o objeto *Secret*. Também foi explicado os conceitos de *Continuous Integration (CI)* e *Continuous Delivery (CD)* que são práticas de desenvolvimento de software bastante utilizadas para acelerar o processo de deploy de um software com alta qualidade.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
@@ -85,7 +87,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item4.1"><h4>4.1 Deployment e Roolback em Clusters Kubernetes</h4></a>[Back to summary](#item4) | <a href="">Certificate</a>
+<a name="item4.1"><h4>4.1 Deployment e Roolback em Clusters Kubernetes</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-19)_Deployment...Roolback_PH_DIO.pdf">Certificate</a>
 
 No primeiro curso do último módulo, foi explicado sobre o roolback que é quando um deployment implantado em uma versão mais nova precisa voltar para versão anterior. Para que isso ocorresse, ao implantar o deployment ou qualquer outro objeto **Kubernetes** era necessário registrar o comando de implantação. A pasta [rollout](./rollout/) foi construída na instância do EC2 e dentro dela o arquivo [deploy.yml](./rollout/deploy.yml) foi elaborado para exemplificar esta situação. Este arquivo criou um deployment com 3 réplicas, cujo nome dele, da label, do seletor, da label do template e do container foi `httpd`. A imagem utilizada foi a `httpd:2` e a porta onde seria executada o servidor web **Apache HTTP (Httpd)** era a `80`. No diretório do arquivo, com o comando `kubectl apply -f deploy.yml --record` foi utilizado o parâmetro `--record` que registrava os comandos em um histórico.
 A visualização desse histórico foi realizada com execução do comando `kubectl rollout history deployment httpd`, conforme imagem 02.
@@ -153,11 +155,63 @@ Com o secret implatando, um arquivo de deployment de banco de dados **MySQL Serv
     <figcaption>Imagem 10.</figcaption>
 </figure></div><br>
 
-<a name="item4.2"><h4>4.2 CI-CD Utilizando Kubernetes</h4></a>[Back to summary](#item4) | <a href=" ">Certificate</a>
+<a name="item4.2"><h4>4.2 CI-CD Utilizando Kubernetes</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-20)_CI-CD...Kubernetes_PH_DIO.pdf">Certificate</a>
 
+A implantação (Deploy) envolve mover o software de um ambiente controlado para outro. Um ambiente é um subconjunto de infraestrutura de TI usado para uma finalidade específica. Com o objetivo de aprimorar e agilizar os processos de deploy, existem práticas de desenvolvimento de software muito utilizadas na metodologia *DevOps*. O *DevOps* é uma metodologia de desenvolvimento de software mais atual que envolve a colaboração entre os desenvolvedores de software e as equipes de operações de infraestrutura, garantindo que as mudanças de software possam ser implantadas de forma segura e eficiente em ambientes de produção. 
 
+O *DevOps* utiliza práticas de desenvolvimento de software como *Continuous Integration (CI)* e *Continuous Delivery (CD)*. A integração contínua é uma prática de desenvolvimento de software em que os desenvolvedores, com frequência, juntam suas alterações de código em um repositório central. Depois disso, criações e testes são executados. Os principais objetivos da integração contínua são encontrar e investigar erros mais rapidamente, melhorar a qualidade do software e reduzir o tempo necessário para validar e lançar novas atualizações de software. Já a entrega contínua é uma prática de desenvolvimento de software em que alterações de código são criadas, testadas e preparadas automaticamente para liberação para produção. Ela expande com base na integração contínua, pela implantação de todas as alterações de código em um ambiente de teste e/ou ambiente de produção, após o estágio de criação. Quando a integração contínua for implementada adequadamente, os desenvolvedores sempre terão um artefato de criação pronto para ser implantado, e que passou por um processo de teste padronizado.
 
+Nesse curso foi apresentada a plataforma **GitLab** que é um gerenciador de repositório de software baseado em **Git**, com suporte a Wiki, gerenciamento de tarefas e CI/CD. **GitLab** é similar ao **GitHub**, mas o **GitLab** permite que os desenvolvedores armazenem o código em seus próprios servidores, ao invés de servidores de terceiros. Como ainda não tinha cadastro nessa plataforma, foi necessário criar um. Também foi preciso criar um *Personal Access Tokens (PAT)* para ser utilizado ao credenciar o **Git** de uma maquina nesta conta do **GitLab**. Para fazer isso foi escolhida a opção `Search or go to...`, que é a lupa, e então uma caixa foi aberta e foi clicada na opção `profile`. Assim a barra lateral alterou para o `User Settings` e então apareceu a opção `Access Tokens` que foi escolhida. Dentro do PAT, foi clicada na opção `Add new Token`, um nome foi definido para esse token e as permissões que ele teria, que no caso foram todas, a data foi mantida em branco, logo foi definido um prazo de 1 ano para expiração. O segredo do token foi copiado e armazenado, era com ele que seria feito o login do **Git** da maquina utilizada no **GitLab**.
 
+Após o cadastro e a criação do token, foi desenvolvido um projeto cujo nome foi `boot015_app-cicd`, o nível de visibilidade foi público e já ele já foi iniciado com um arquivo de README. A instância do EC2, onde o cluster do **MiniKube** era executada já vinha com o software **Git** instalado. Então com o comando `git config --global user.email "seu email"` e `git config --global user.name "Pedro Heeger"` foi definido o nome e email do usuário que estaria executando os comandos Git nesta maquina. Em seguida, o diretório [cicd](./cicd/) foi criado na pasta do usuário na instância. Dentro deste diretório, a sub-pasta [app](./cicd/app/) foi construída e dentro dela, o arquivo [index.html](./cicd/app/index.html) foi elaborado apenas colocando no título e no body a frase `App 1.0` para representar a aplicação na versão 1.0.
 
+Para indicar que a pasta criada seria um repositório, dentro dela foi preciso executar o comando `git init --initial-branch=main`. Em seguida com o comando `git remote add origin https://gitlab.com/pedroheeger1/boot015_app-cicd.git` foi vinculado o repositório local (a pasta) com o repositório remoto no **GitLab**. Eram os mesmos comandos utilizados com o **GitHub**. Para fazer o primeiro push foi executado o comando `git add .` para adicionar os arquivos, no caso o arquivo `index.html` à área de stagging, depois o comando `git commit -m "Commit inicial"` para commitar essa alteração e então enviá-la com o comando `git push --set-upstream origin main`. A imagem 11 mostra o arquivo já no repositório do **GitLab**.
 
-<a name="item4.3"><h4>4.3 Criando um Pipeline de Deploy com GitLab e Kubernetes</h4></a>[Back to summary](#item4) | <a href=" ">Certificate</a>
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+Dentro do diretório `app` foi elaborado o arquivo [dockerfile](./cicd/app/dockerfile) para construção da imagem **Docker** da aplicação. Este arquivo utilizou como imagem base a do servidor web **Apache HTTP (Httpd)** (`httpd:latest`), definiu como diretório de trabalho a pasta padrão do Httpd (`/usr/local/apache2/htdocs/`), copiou o arquivo `index.html` para dentro dela e definiu a exposição da aplicação na porta `80`. Até essa parte, era basicamente o que vinha sendo feito nos cursos anteriores.
+
+Voltando para o diretório `cicd`, foi criado o arquivo CI do **GitLab**, cujo nome era [.gitlab-ci.yml](./cicd/.gitlab-ci.yml), sendo ele um arquivo **YAML**. Antes de explicar sobre o arquivo, no **GitLab**, na opção `Settings`, `CI/CD`, em `Variables` foram cadastradas as variáveis de ambiente `DOCKERHUB_USER` e `DOCKERHUB_PASSWORD` para conexão do **GitLab** a minha conta do **Docker Hub**. Na variável `DOCKERHUB_PASSWORD` foi cadastrado o secret access key ao invés da senha, pois no **Docker Hub** já possuía a access key de nome `Access_PH_GitHub` destinada para o **GitHub** que foi aproveitada para o **GitLab**. A flag `Protect variable` foi mantida marcada, o `Type` foi `Variable (default)` e `Environments` foi `All (default)`.
+
+Com relação ao arquivo, dois stages foram desenvolvidos. O primeiro stage foi o build que realizou o build e o push da imagem `pedroheeger/boot015_app-cicd:1.0`. Mas para conseguir fazer o build da imagem, esse stage precisou da imagem `docker:20.10.16`, que é uma imagem do **Docker**, e o `service` desse stage utilizou a imagem `docker:20.10.16-dind` que é o daemon do **Docker**. Em `variables` foi preciso especificar onde seria gerado os certificados do **Docker**, então utilizou-se `DOCKER_TLS_CERTDIR: "/certs"`. Antes de executar o script que faria o build e o push, era necessário logar na conta do **Docker Hub** e isso foi realizado em `before_script` com o comando `docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD`, justamente passando as variáveis criadas no **GitLab**. Assim, era evitado compartilhar dados sensíveis no arquivo.
+
+Um novo envio para o repositório remoto no **GitLab** foi realizado com os comandos `git add`, `git commit` e `git push`. Dessa forma, o pipeline de CI era iniciado pelo **GitLab** e pôde ser visualizado na opção `Build` em `Pipelines`, conforme mostrado na imagem 12 abaixo.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+Para o segundo stage era necessário o arquivo de deployment, cujo nome foi [deployment.yml](./cicd/deployment.yml). Neste arquivo foi construído um deployment, no qual o nome dele, da sua label, do seletor, da label do template e do container foi `app`. A imagem utilizada foi a enviada para o repositório no **Docker Hub**, `pedroheeger/boot015_app-cicd:1.0` e a porta onde a aplicação rodaria no container foi definida como `80`. Um service do tipo node port também foi desenvolvido, sendo seu nome igual a `app-service`. Um seletor foi definido apontando para o nome do pod do deployment (`app`) e na configuração de porta, a porta `80` foi definida para o service e para o alvo nos containers dos pods e a node port foi determinada em `30005`.
+
+No segundo stage foram passados alguns comandos na opção `script` para serem executados. O primeiro deles era o `kubectl config use-context minikube` para configurar o **Kubectl** da instância do EC2 com o cluster criado no **MiniKube**. Depois foi executado o comando `kubectl apply -f deployment.yml` para implantar o deployment e seu service. Ao enviar todos os arquivos para o repositório remoto, o pipeline de CI era iniciado primeiro, logo em seguida o de CD era executado implantando o projeto no cluster. Na imagem 13 abaixo foi acessada a aplicação no navegador da maquina física.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+Após isso, foi realizado uma alteração no arquivo `index.html` modificando ele para versão 2.0 e enviando novamente para **GitLab**. Todo o processo de build da imagem e deploy da aplicação era realizado pelos pipelines. A imagem 14 exibe a aplicação containerizada na versão 2.0.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+<a name="item4.3"><h4>4.3 Criando um Pipeline de Deploy com GitLab e Kubernetes</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-20)...Pipeline...Git_Lab...Kubernetes_PH_DIO.pdf">Certificate</a>
+
+Esse segundo desafio de projeto foi igual ao desafio de projeto do módulo três, cuja pasta foi a [k8s-database-exemplo](../03-expondo_conectando/k8s-database-exemplo/), porém algumas alterações foram realizadas. Ao invés de ser dividido em `back-end`, `front-end` e `database`, foi fragmentado em [app](./dp/app/), que englobava o front e back-end, e [mysql](./dp/mysql/) que era praticamente igual ao `database`. 
+
+No `app` as únicas alterações foram a substituição do arquivo `index.php` por [incluir.php](./dp/app/incluir.php) que era basicamente o mesmo só mudava o insert no banco de dados, pois a tabela tinha a coluna de `email` agora, e a coluna de `mensagens` mudou para `comentario`. A outra alteração foi no arquivo [dockerfile](./dp/app/dockerfile), pois agora todos os arquivos eram copiados para a pasta `/var/www/html`. Um ponto importante era verificar se a url do arquivo [js.js](./dp/app/js.js) apontava para o IP da instância do EC2, agora na porta `80` ao invés `30005` e acrescentando ao path o arquivo `/incluir.php` para realizar a inserção na tabela de banco de dados.
+
+Já em `mysql`, ???
+
+Essas duas pastas (`app` e `mysql`) foram armazenadas no diretório [dp](./dp/) e nele foram criados os arquivos de manifesto **YAML** tanto do **GitLab** como do **Kubernetes**. Os arquivos do **Kubernetes** foram aproveitados do desafio anterior, sendo eles [deployment.yml](./dp/deployment.yml) e [service.yml](./dp/service.yml). No deployment, as alterações foram na imagem do deployment de banco de dados, modificando para `mysql:latest`, tirando o `args` do container do banco de dados e inserindo as variáveis de ambiente por meio de secrets. Também foi alterado os nomes do deployment da aplicação de `php` para `app` e a imagem do container para `pedroheeger/boot015_dp-app:1.0` que foi a imagem construída pelo pipeline de CI. 
+
+No arquivo de service foi exatamente ao desenvolvido no desafio de projeto do módulo 3. O professor, tanto aqui como no módulo 3, utilizou um service do tipo load balancer, pois a execução dele era no **Google Kubernetes Engine (GKE)**. Como no meu caso, a execução era em um cluster do **MiniKube** na instância do EC2, foi utilizado o tipo node port para consegui expor a aplicação ao nó do cluster e acessá-la externamente. Um terceiro arquivo teve que ser criado que foi o [secrects.yml](./dp/secrets.yml) sendo exatamente igual ao desenvolvido no curso 1 deste módulo. Era ele quem iria fornecer os valores das variáveis de banco de dados.
+
+Já o arquivo de pipeline, cujo nome foi [gitlab-ci.yml] foi bastante parecido com do curso 2 deste módulo. Apenas alterando a imagem **Docker** que seria buildada e enviada para o repositório do **Docker Hub** para `pedroheeger/boot015_dp-app:1.0` no stage de build. Enquanto no stage de deploy ao invés de executar só `kubectl apply -f` de um arquivo de manifesto, agora foram três, na seguinte ordem: `secrets`, `deployment` e `service`, registrando no histórico cada comando com o parâmetro `--record`.
+

@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">kubernetes   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_015 (Formação Kubernetes Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_015" width="auto" height="25"></a>
 
-#### <a href="">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/distributed_computing/kubernetes/(24-02-20)_Formacao_Kubernetes_Fundamentals_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -33,27 +33,27 @@
 ---
 
 ### Bootcamp Structure
-1. [Introdução ao Kubernetes](./01-introducao_docker/)   
-  1.1. Kubernetes Overview  
-  1.2. Ambiente de Desenvolvimento Kubernetes   
-  1.3. Cluster Kubernetes em Nuvem 
+1. [Introdução ao Kubernetes](./01-introducao_kubernetes/)   
+  1.1. [Kubernetes Overview](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/01-introducao_kubernetes#item1.1)   
+  1.2. [Ambiente de Desenvolvimento Kubernetes](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/01-introducao_kubernetes#item1.2)   
+  1.3. [Cluster Kubernetes em Nuvem](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/01-introducao_kubernetes#item1.3)   
   1.4. Materiais Complementares: Introdução ao Kubernetes   
 
-2. [Primeiros Passos com o Kubernetes](./02-dockerfile_compose/)   
-  2.1. Conceitos Básicos Sobre Pods em Kubernetes   
-  2.2. Criando Imagens Personalizadas com o Docker   
+2. [Primeiros Passos com o Kubernetes](./02-primeiros_passos/)   
+  2.1. [Conceitos Básicos Sobre Pods em Kubernetes](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/02-primeiros_passos#item2.1)   
+  2.2. [Criando Imagens Personalizadas com o Docker](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/02-primeiros_passos#item2.2)   
   2.3. Materiais Complementares: Primeiros Passos com o Kubernetes      
 
-3. [Expondo e Conectando Aplicações Kubernetes](./03-docker_swarm/)   
-  3.1. Serviços de Acesso para Kubernetes Pods   
-  3.2. Persistência de Dados em Clusters Kubernetes  
-  3.3. Criando um Deploy de uma Aplicação   
+3. [Expondo e Conectando Aplicações Kubernetes](./03-expondo_conectando/)   
+  3.1. [Serviços de Acesso para Kubernetes Pods](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/03-expondo_conectando#item3.1)   
+  3.2. [Persistência de Dados em Clusters Kubernetes](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/03-expondo_conectando#item3.2)   
+  3.3. [Criando um Deploy de uma Aplicação](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/03-expondo_conectando#item3.3)   
   3.4. Materiais Complementares: Conceitos Avançados: Expondo e Conectando Aplicações    
 
-4. [Automatizando Deployments com Kubernetes](./03-docker_swarm/)   
-  4.1. Deployment e Roolback em Clusters Kubernetes   
-  4.2. CI-CD Utilizando Kubernetes  
-  4.3. Criando um Pipeline de Deploy com GitLab e Kubernetes   
+4. [Automatizando Deployments com Kubernetes](./04-automatizando/)   
+  4.1. [Deployment e Roolback em Clusters Kubernetes](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/04-automatizando#item4.1)   
+  4.2. [CI-CD Utilizando Kubernetes](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/04-automatizando#item4.2)   
+  4.3. [Criando um Pipeline de Deploy com GitLab e Kubernetes](https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015/04-automatizando#item4.3)   
   4.4. Materiais Complementares: Arquitetura e Deploy de Microsserviços    
 
 ---

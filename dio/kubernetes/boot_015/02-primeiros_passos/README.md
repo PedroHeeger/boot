@@ -68,7 +68,7 @@ This folder refers to Module 2 **Primeiros Passos com o Kubernetes** from bootca
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
+O objetivo deste módulo do bootcamp foi aprofundar um pouco mais no **Kubernetes**, explicando sobre os objetos *Pod* e *Deployment* e realizando implantações desses objetos, inclusive com a construção de uma imagem **Docker**.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
@@ -81,7 +81,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em dois cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item2.1"><h4>2.1 Conceitos Básicos Sobre Pods em Kubernetes</h4></a>[Back to summary](#item2) | <a href="">Certificate</a>
+<a name="item2.1"><h4>2.1 Conceitos Básicos Sobre Pods em Kubernetes</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-17)_Conceitos...Pods...Kubernetes_PH_DIO.pdf">Certificate</a>
 
 Nesse curso foi aproveitado a instância criada no curso 2 do módulo 1 que possuía o software **MiniKube**, para criar um cluster e executar os arquivos **YAML** desenvolvidos. O **YAML** é uma linguagem de serialização de dados muito usada na escrita de arquivos de configuração. O **YAML**, cujas extensões são .yml ou .yaml, usa um recuo no estilo **Python** para indicar o aninhamento. É necessário utilizar espaços em branco porque os caracteres de tabulação não são permitidos. Não há símbolos de formato comuns, como chaves, colchetes, tags de fechamento ou aspas.
 
@@ -146,7 +146,7 @@ Para remover um Deployment, pôde ser removido pelo arquivo com o comando `kubec
 
 Para visualizar isso, foi acessado o IP público da instância concatenado com `:` e a porta `80` pelo navegador da web da maquina física **Windows**, conforme ilustrado na imagem 01. Como o **MiniKube** era executado dentro da instância do EC2, foi necessário garantir que a porta `80` no security group estava liberada.
 
-<a name="item2.2"><h4>2.2 Criando Imagens Personalizadas com o Docker</h4></a>[Back to summary](#item2) | <a href=" ">Certificate</a>
+<a name="item2.2"><h4>2.2 Criando Imagens Personalizadas com o Docker</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-17)_Criando_Imagens...Docker_PH_DIO.pdf">Certificate</a>
 
 Este curso continuo utilizando a instância do EC2 criada na aula 2 do módulo 1. Duas instalações que eram feita na instância com arquivo user data em **Bash** foram utilizadas dentro dela, que foram os softwares **Docker** e **AWS CLI**. Com o **AWS CLI** foi configurado na instância através do comando `aws configure` o usuário do IAM worker da minha conta da **AWS** (`PedroHeegerWorker`), sendo passadas as credenciais `AWS Access Key Id` e `AWS Secret Access Key`. Para confirmar qual o usuário que a **AWS CLI** da instância estava utilizando foi executado o comando `aws sts get-caller-identity`, conforme mostrado na imagem 11 abaixo. Em seguida, foi executado o comando `docker login` para vincular o **Docker** da instância do EC2 com minha conta no **Docker Hub**, sendo passado o email e o `Secret Acces Key`. Tanto a chave de acesso do **Docker Hub** como da conta **AWS** já estavam configuradas previamente. Na imagem 12 é ilustrado
 

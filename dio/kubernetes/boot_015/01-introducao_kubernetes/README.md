@@ -75,7 +75,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Kubernetes Overview</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+<a name="item1.1"><h4>1.1 Kubernetes Overview</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-15)_Kubernetes_Overview_PH_DIO.pdf">Certificate</a>
 
 Este curso foi iniciado com uma explicação sobre o software **Kubernetes** e um pouco da sua arquitetura. O **Kubernetes** (**K8s**) é uma ferramenta open source de orquestração de containers originalmente desenvolvida pelo Google. Ele é utilizado para automatizar a implantação, o dimensionamento e o gerenciamento de aplicativos em container. O **Kubernetes** ajuda a organizar e administrar aplicações em containers em ambientes onde existem dezenas e até milhares de containers. As aplicações podem estar em diferentes ambientes de implementação: Infraestrutura local; Máquinas virtuais; Cloud Pública; Cloud Híbrida. O **Kubernetes** é uma ferramenta de orquestração de containers que é utilizada para os seguintes cenários: Migração de aplicações monolíticas para microsserviços; Disponibilidade da aplicação (diminuição do downtime); Escalabilidade e alta performance; Recuperação de desastre (Backup/Restore).
 
@@ -83,7 +83,7 @@ Com relação a arquitetura do **Kubernetes** tudo começa com um cluster. O clu
 
 O *Pod* é a menor unidade do **Kubernetes**. Ele é uma abstração sobre o container (Uma unidade lógica sobre o container, onde pode ser aplicado alguns serviços). Normalmente é executado uma aplicação por Pod, porém é possível ter mais de uma aplicação por Pod, mas não é recomendado. Um Pod do **Kubernetes** é um conjunto de um ou mais contêineres, sendo a menor unidade de uma aplicação **Kubernetes**. Os pods são compostos por um container nos casos de uso mais comuns ou por vários containers fortemente acoplados em cenários mais avançados. Os containers são agrupados nesses pods para que os recursos sejam compartilhados de modo mais inteligente. Um Pod é um grupo de um ou mais contêineres de aplicativos (como Docker) que inclui armazenamento compartilhado (volumes), endereço IP e informações sobre como executá-los.
 
-<a name="item1.2"><h4>1.2 Ambiente de Desenvolvimento Kubernetes</h4></a>[Back to summary](#item1) | <a href=" ">Certificate</a>
+<a name="item1.2"><h4>1.2 Ambiente de Desenvolvimento Kubernetes</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-15)_Ambiente...Kubernetes_PH_DIO.pdf">Certificate</a>
 
 No curso dois desse módulo foi configurado um ambiente de desenvolvimento **Kubernetes** para execução da parte prática no próximo curso. Este ambiente utilizou o software **Minikube** que é um utilitário que pode ser usado para executar o **Kubernetes** (**k8s**) na maquina local. Ele cria um cluster de nó único contido em uma maquina virtual (VM). Esse cluster permitiu que fosse executado e estudado o **Kubernetes** sem exigir a instalação completa do **Kubernetes**. Como pré-requisito para instalação do **Minikube** foi necessário: Software de virtualização previamente instalado (**Virtualbox**); 2 CPUs ou mais; 2GB de memória RAM; 20GB de espaço em disco; Conexão com a internet. Além deste software, também foi instalado o **Kubectl** que é a ferramenta de linha de comando do **Kubernetes** que permitia executar comandos em clusters do **Kubernetes**. É possível utilizar o **Kubectl** para implantar aplicativos, inspecionar e gerenciar recursos de cluster e visualizar logs.
 
@@ -114,7 +114,7 @@ Para interagir com esse cluster **Kubernetes** foi necessário ter o software de
 </figure></div><br>
 
 
-<a name="item1.3"><h4>1.3 Cluster Kubernetes em Nuvem</h4></a>[Back to summary](#item1) | <a href=" ">Certificate</a>
+<a name="item1.3"><h4>1.3 Cluster Kubernetes em Nuvem</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-16)_Cluster_Kubernetes..._PH_DIO.pdf">Certificate</a>
 
 No curso anterior foi mostrado como criar um cluster com o software **MiniKube** em ambiente local, mas optei por realizar isso em uma instância do EC2 na **AWS**. Agora, no curso 3, foi explicado como criar clusters **Kubernetes** na nuvem com os serviços específicos para isso, como o **Amazon Elastic Kubernetes Service (EKS)** da **AWS** e o **Google Kubernetes Engine (GKE)** da **Google**. Optei por realizar apenas a execução na cloud da **AWS**, pois era a nuvem que estava estudando no momento.
 

@@ -63,7 +63,7 @@ This folder refers to Module 3 **Expondo e Conectando Aplicações Kubernetes** 
 ---
 
 ### Bootcamp Module 3 Structure
-3. <a name="item2">Expondo e Conectando Aplicações Kubernetes</a><br>
+3. <a name="item3">Expondo e Conectando Aplicações Kubernetes</a><br>
   3.1. <a href="#item3.1">Serviços de Acesso para Kubernetes Pods</a><br>
   3.2. <a href="#item3.2">Persistência de Dados em Clusters Kubernetes</a><br>
   3.3. <a href="#item3.3">Criando um Deploy de uma Aplicação</a><br>
@@ -72,7 +72,7 @@ This folder refers to Module 3 **Expondo e Conectando Aplicações Kubernetes** 
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre os conceitos de virtualização, container, microsserviços, além dos comandos básicos para se trabalhar com o software **Docker**.
+O objetivo deste módulo do bootcamp foi explicar sobre os objetos *Service*, *PV* e *PVC* do **Kubernetes**, mostrando como expor uma aplicação no cluster e como realizar a persistência dos dados utilizando o conceito de volume. Um exemplo prático completo de uma aplicação com back-end, front-end e database foi desenvolvido.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibida a estruturação das pastas. 
@@ -85,7 +85,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item3.1"><h4>3.1 Serviços de Acesso para Kubernetes Pods</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
+<a name="item3.1"><h4>3.1 Serviços de Acesso para Kubernetes Pods</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-19)_Servicos...Kubernetes_Pod_PH_DIO.pdf">Certificate</a>
 
 Neste curso, ainda na instância do EC2 utilizando o cluster criado no **MiniKube**, foi clonado um repositório do professor do curso com o comando `git clone https://github.com/denilsonbonatti/k8s-pod-exemplo1-dio.git` no diretório do usuário, sendo criado então a pasta [k8s-pod-exemplo1-dio](./k8s-pod-exemplo1-dio/). Essa pasta continha quatro arquivos, o arquivo [index.php](./k8s-pod-exemplo1-dio/index.php) que era o arquivo de código **PHP** utilizado pelo `dockerfile`. Este arquivo na verdade, era um arquivo **HTML** com códigos em **PHP** que extraía o hostname, o IP do servidor e a data atual, e exibia essas informações. Já o arquivo [dockerfile](./k8s-pod-exemplo1-dio/dockerfile) era o responsável por construir a imagem da aplicação que utilizava como imagem base `php:7.4-apache` e copiava o arquivo `index.php` para o diretório padrão `/var/www/html/`, que era também o diretório de trabalho. Algumas extensões do **PHP** e bibliotecas também foram instaladas e a aplicação seria exposta na porta `80`.
 
@@ -161,7 +161,7 @@ Já a pasta `front-end` possuía três arquivos, sendo um **HTML**, outro **CSS*
 
 O professor fez o build das duas imagens e subiu para o **Docker Hub**, ao invés de fazer isso também, preferi utilizar a imagem do repositório do professor do curso que era uma fonte confiável. 
 
-<a name="item3.2"><h4>3.2 Persistência de Dados em Clusters Kubernetes</h4></a>[Back to summary](#item3) | <a href=" ">Certificate</a>
+<a name="item3.2"><h4>3.2 Persistência de Dados em Clusters Kubernetes</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-19)_Persistencia...Dados...Kubernetes_Pod_PH_DIO.pdf">Certificate</a>
 
 Neste curso, o assunto foi sobre persistência de dados, sendo explicado como criar volumes. Para isso foi criada a pasta [volumes](./volumes/) lá no diretório do usuário da instância EC2. Com o arquivo de manifesto **YAML** [mysql-local.yml](./volumes/mysql-local.yml) foi construído um Deployment de banco de dados com apenas uma réplica. O nome do deployment, do seletor, do label do template e do container foi `mysql`. A imagem utilizada pelo container foi `mysql:5.6` que era do banco de dados **MySQL Server** e a porta foi a padrão do **MySQL**, a `3306`. As variáveis de ambiente `MYSQL_ROOT_PASSWORD` e `MYSQL_DATABASE` foram definidas para possibilitar o acesso ao banco. Um ponto de montagem de volume para o container do banco de dados do pod foi definido, no qual o nome do volume foi `local` e o caminho da pasta foi `/var/lib/mysql`, ou seja, os dados dessa pasta seriam compartilhados com o volume especificado. Também foi necessário criar esse volume cujo nome era `local` e o caminho no host era `/meubanco/`. Lembrando que o host neste caso era o nó do cluster. A construção do volume no cluster da aplicação não é uma forma adequada em ambiente de produção, pois está sendo misturado dados com a aplicação, o cluster deve ser utilizado somente para gerencia da aplicação e as informações devem estar externas ao cluster.
 
@@ -218,7 +218,7 @@ Com esse novo deployment, foi iniciado uma sessão interativa no shell do contai
     <figcaption>Imagem 14.</figcaption>
 </figure></div><br>
 
-<a name="item3.3"><h4>3.3 Criando Imagens Personalizadas com o Docker</h4></a>[Back to summary](#item3) | <a href=" ">Certificate</a>
+<a name="item3.3"><h4>3.3 Criando um Deploy de uma Aplicação</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/kubernetes/(24-02-20)_Criando...Deploy...Aplicacao_PH_DIO.pdf">Certificate</a>
 
 Este foi o primeiro desafio de projeto deste bootcamp que iniciou com o clone do repositório do **GitHub** do professor do curso com o comando `git clone https://github.com/denilsonbonatti/k8s-projeto1-app-base`, dando origem a pasta `k8s-projeto1-app-base`. O projeto deste repositório foi o mesmo realizado no curso 1 deste módulo, cujo nome era [k8s-database-exemplo](./k8s-database-exemplo/). A diferença era que a pasta [database](./k8s-database-exemplo/database/) com seus respectivos arquivos, os arquivos `dockerfile` e **YAML** da pasta `database` e [backend](./k8s-database-exemplo/backend/) não existiam e tinha que ser criados. Como já havia feito anteriormente, decidi não realizar o clone deste repositório e utilizar o repositório do curso 1. 
 
