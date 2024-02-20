@@ -95,7 +95,7 @@ A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme f
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item3.1"><h4>3.1 Criando um Cluster com o Docker Swarm</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Criando%20um%20Cluster%20com%20o%20Docker%20Swarm%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.1"><h4>3.1 Criando um Cluster com o Docker Swarm</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-22)_Criando...Cluster...Docker_Swarm_PH_DIO.pdf">Certificate</a>
 
 No primeiro curso deste módulo, foi necessário utilizar a cloud **AWS** já que seria criado um cluster que iria exigir mais de duas maquina virtuais. Caso fosse criada no software **VM Virtual Box** usaria muitos recursos da maquina física, podendo sobrecarregá-la. Na **AWS**, o primeiro passo foi criar uma **VPC (Amazon Virtual Private Cloud)**, que é um serviço que oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança. Foi realizado a configuração mais básica da **VPC**, dando o nome `dio-docker` e determinando o IP padrão da **AWS** (**172.31.0.0/24**).
 
@@ -233,7 +233,7 @@ Em outro terminal do **Windows PowerShell**, foi alterado para o diretório do a
 
 Como foram dois arquivos `Vagrantfile` foram nomeados para `Vagrantfile1` e `Vagrantfile2`, mas durante a execução foram utilizados como `Vagrantfile` até a exclusão das maquinas. Em alguns casos de exclusão, foi necessário remover o diretório criado no **Windows** com o nome de uma das maquinas, pois quando criado novamente era ocasionado um conflito por já existir o diretório com mesmo nome da maquina que estava sendo criada. Este diretório fica em `C:\Users\username\VirtualBox VMs` e lá é armazenado as pastas de todas as maquinas construídas no **VM Virtual Box**.
 
-<a name="item3.2"><h4>3.2 Load Balancer</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Load%20Balancer%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.2"><h4>3.2 Load Balancer</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-21)_Load_Balancer_PH_DIO.pdf">Certificate</a>
 
 Neste curso foi dado continuidade ao cluster criado no curso passado no ambiente de cloud na **AWS**. O objetivo foi criar um **Load Balancer** para o cluster. Existem alguns tipos fornecidos na **AWS**, mas o utilizado foi o Classic. Nas configurações foi dado o nome `dio_docker-swarm` para o balanceamento criado, foi utilizado a rede criada no **VPC**, o protocolo utilizado foi o **HTTP** na porta **80** que foi redirecionado para o mesmo protocolo e porta na instância. Também foi adicionado a sub-rede, grupo de segurança criado e as instâncias de maquina virtual que utilizamos, no caso, foram as quatro maquinas do cluster. Foi informado que o protocolo não era seguro, sugerindo alterar para o **HTTPS**, mas foi mantido o **HTTP**. Em seguida, foi realizado as configurações de verificações de integridade conforme imagem 15 a seguir.
 
@@ -247,7 +247,7 @@ Com o **Load Balancer** criado, o Nome DNS foi gerado, sendo este utilizado para
 
 Na etapa seguinte foi realizado um teste de carga para verificar se o balanceamento estava sendo executado. Para isso utilizou-se o site **Loader.io** criando um novo host. O domínio foi o nome DNS criado pelo **Load Balancer**. Em seguida, foi copiado o token gerado que foi colada em um arquivo de mesmo nome com a extensão `.txt`. Este arquivo foi criado no mesmo diretório da aplicação `index.php` (`/var/lib/docker/volumes/app/_data`). Após isso, foi possível executar a verificação no site **Loader.io** para ele encontrar o arquivo com o token criado. Nas configurações de teste, foi criado um nome para o teste `teste-cluster-swarm` com um número de requisições de 350 em 1 minuto e no path foi colocado o arquivo de aplicação que foi testado (`index.php`) 
 
-<a name="item3.3"><h4>3.3 Definição de um Cluster Swarm Local com o Vagrant</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-22)%20Defini%C3%A7%C3%A3o%20de%20um%20Cluster%20Swarm%20Local%20com%20o%20Vagrant%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.3"><h4>3.3 Definição de um Cluster Swarm Local com o Vagrant</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-22)_Definicao...Cluster_Swarm_Local...Vagrant_PH_DIO.pdf">Certificate</a>
 
 O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
 

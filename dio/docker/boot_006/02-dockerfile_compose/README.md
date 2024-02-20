@@ -94,7 +94,7 @@ A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme f
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em dois cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item2.1"><h4>2.1 Definição e Criação de um Docker File</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Defini%C3%A7%C3%A3o%20e%20Cria%C3%A7%C3%A3o%20de%20um%20Docker%20File%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.1"><h4>2.1 Definição e Criação de um Docker File</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-19)_Definicao...Criacao...Docker_File_PH_DIO.pdf">Certificate</a>
 
 ##### Primeiro Docker File
 Neste curso foi realizado a criação de um container a partir de uma imagem **Linux Ubuntu** (`docker run --name ubuntu-python -dti ubuntu`), onde foram instalados o **Python** e o editor de texto **Nano** para construir uma aplicação **Python**, cujo nome do arquivo foi `app.py` armazenado no diretório `/opt`. A função desta aplicação foi receber um nome que o usuário digitasse e imprimir esse nome na tela, o script segue abaixo.
@@ -231,7 +231,7 @@ Ainda na maquina virtual **Linux Ubuntu** para servidor, foi verificado as image
 
 Assim a imagem foi removida e baixada novamente na maquina padrão (**Linux Ubuntu** para servidor), mas agora, a partir do servidor construído no container registry da outra maquina virtual (**Linux Ubuntu** com ambiente gráfico). Com o container interrompido, a maquina padrão não conseguiu acessar a imagem.
 
-<a name="item2.2"><h4>2.2 Docker Compose</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Docker%20Compose%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.2"><h4>2.2 Docker Compose</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-21)_Docker_Compose_PH_DIO.pdf">Certificate</a>
 
 Neste curso, foi necessário instalar o **Docker Compose** com o comando `apt-get install docker-compose -y`. Docker Compose é um software desenvolvido para ajudar a definir e compartilhar aplicativos com vários containers. Com o Compose, é possível criar um arquivo YAML para definir os serviços e com um único comando, pode rodar todos os containers ou pará-los.
 
@@ -333,7 +333,7 @@ Na pasta `Documentos` dentro de `Arquivos` foi adicionado um arquivo de imagem a
     <figcaption>Imagem 11.</figcaption>
 </figure></div><br>
 
-<a name="item2.3"><h4>2.3 Criando um Container de uma Aplicação WEB</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-21)%20Criando%20um%20Container%20de%20uma%20Aplica%C3%A7%C3%A3o%20WEB%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.3"><h4>2.3 Criando um Container de uma Aplicação WEB</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-21)_Criando...Container...Aplicacao_WEB_PH_DIO.pdf">Certificate</a>
 
 O objetivo desse desafio determinado pela plataforma do bootcamp é descrito abaixo:
 

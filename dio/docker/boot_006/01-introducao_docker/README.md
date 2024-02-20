@@ -84,7 +84,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Introdução e Laboratório Virtual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-17)%20Introdu%C3%A7%C3%A3o%20e%20Laborat%C3%B3rio%20Virtual%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Introdução e Laboratório Virtual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-17)_Introducao...Laboratorio_Virtual_PH_DIO.pdf">Certificate</a>
 
 Curso introdutório sobre virtualização, abordando conceitos como **modelo cliente-servidor**, **cloud computing**, **maquina virtual**, **microsserviços** e **containers**. Também foi explicado o que é o software **Docker** e que com ele, é possível desmembrar aplicações monolíticas em microsserviços operando em containers. Em relação a instalação do **Docker**, existem duas maneiras principais de instalá-lo. A primeira delas foi executada em uma maquina virtual **Linux Ubuntu** com ambiente gráfico criada no software **VM Virtual Box**. Esta consiste em executar os seguintes comandos **Linux**: `sudo apt-get update` (Para atualizar os repositórios do sistema), `sudo apt-get install ca-certificados curl gnupg` (Para baixar três softwares importantes para instalação do **Docker**), `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg` (Com o **Curl** e **gnupg** foi baixada a chave GPG e executada), com o comando abaixo foi adicionado ao repositório do **Linux** o link para baixar o **Docker** juntamente com a chave GPG.
 
@@ -101,7 +101,7 @@ Uma outra forma de instalação foi realizada na maquina virtual **Linux Ubuntu*
 
 Também foi necessário liberar o usuário **Linux** criado para executar os comandos **Docker** sem permissão de super usuário (sudo). Para isso, foi executado `sudo usermod -aG docker ${USER}` que adiciona o usuário corrente ao grupo Docker no Linux. Caso este grupo não tenha sido criado automaticamente, o comando `sudo groupadd docker` cria o grupo referido. Após a adição do usuário ao grupo, foi necessário rodar o comando `newgrp docker` para que fosse atualizado e o sistema entendesse que o usuário adicionado ao grupo tinha permissão de execução. Caso queira mais informações de como instalar, consulte a [página oficial](https://docs.docker.com/engine/) do Docker.
 
-<a name="item1.2"><h4>1.2 Primeiros Passos com o Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Primeiros%20Passos%20com%20o%20Docker%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.2"><h4>1.2 Primeiros Passos com o Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-18)_Primeiros_Passos...Docker_PH_DIO.pdf">Certificate</a>
 
 No segundo curso, foram apresentados alguns comandos básicos de docker, tanto da versão simplificada (velha sintaxe) como também da versão completa (nova sintaxe), alguns desses utilizados foram: `docker pull` (Para baixar images do **Docker Registry**), `docker run` ou `docker container run` (Para criar um container), `docker ps` e `docker ps -a` ou `docker container ls` e `docker container ls -a` (Para listar os containers ativos e todos os containers existentes), `docker images` ou `docker image ls` (Para listar imagens), `docker run -it` ou `docker container run -it` (Para criar e acessar o container), `docker exec` ou `docker container exec` (Para executar comandos no container docker sem acessá-los), `docker exec -it` ou `docker container exec -it` (Para executar o comando que acessa o container com um shell determinado), `docker --help` ou `docker container --help` (Para exibir as informações de ajuda), `docker rm` ou `docker container -rm` (Para remover containers), `docker stop` ou `docker container stop` (Para interromper containers), `docker rmi` ou `docker image rm` (Para remover imagens), `docker cp` (Para copiar um arquivo do sistema de arquivos local para o container), entre outros.
 
@@ -145,7 +145,7 @@ As três imagens a seguir (02, 03 e 04) ilustram os acessos ao banco de dados **
 </figure></div><br>
 
 
-<a name="item1.3"><h4>1.3 Armazenamento de Dados com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-18)%20Armazenamento%20de%20Dados%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.3"><h4>1.3 Armazenamento de Dados com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-18)_Armazenamento...Dados...Docker_PH_DIO.pdf">Certificate</a>
 
 No terceiro curso do módulo 1, foram interrompidos e excluídos todos os containers existentes. O foco deste curso foi a realização da montagem de armazenamento entre a maquina virtual e o container. Portanto, foi criado um container **MySQL** configurando o volume de armazenamento com o comando abaixo. Após executado, todos os arquivos da pasta `/var/lib/mysql` do container foram compartilhados para o diretório `/home/pedro19/docker/mysql` da maquina virtual. Assim como todos arquivos da maquina virtual seriam compartilhados para o container.
 
@@ -234,7 +234,7 @@ Abaixo a imagem 06 ilustra o acesso ao servidor web do container **PHP-Apache** 
     <figcaption>Imagem 06.</figcaption>
 </figure></div><br>
 
-<a name="item1.4"><h4>1.4 Processamento, Logs e Rede com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/virtualization/docker/(23-08-19)%20Processamento%2C%20Logs%20e%20Rede%20com%20Docker%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.4"><h4>1.4 Processamento, Logs e Rede com Docker</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/distributed_computing/docker/(23-08-19)_Processamento...Logs...Rede...Docker_PH_DIO.pdf">Certificate</a>
 
 No último curso deste módulo, foi objetivado as questões de processamento de um container, os logs e rede. Em relação ao processamento comandos como `docker update` e `docker stats` foram apresentados, sendo o primeiro para alterar configurações de um container e o segundo para exibir os status do container referente aos processamentos. Foi criado um container Debian especificando limite de memória e porcentagem de uso da cpu com o comando `docker run --name Debian-B -dti -m 128M --cpus 0.2 debian`.
 
