@@ -44,7 +44,7 @@ if ($resposta.ToLower() -eq 'y') {
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
     
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo os Ids do grupo de segurança e sub-redes padrões"
+        Write-Output "Extraindo o Id dos elementos de rede"
         $sgId = aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='$sgName'].GroupId" --output text
         $subnetId = aws ec2 describe-subnets --query "Subnets[?AvailabilityZone=='$aZ'].SubnetId" --output text
 

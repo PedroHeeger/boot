@@ -145,6 +145,10 @@ echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Instalando o pacote"
 sudo ./aws/install
 
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Removendo o arquivo zip"
+rm awscliv2.zip
+
 
 
 
@@ -235,40 +239,40 @@ sudo systemctl restart docker
 
 
 
-# echo "***********************************************"
-# echo "KUBECTL INSTALLATION"
+echo "***********************************************"
+echo "KUBECTL INSTALLATION"
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Instalando os pacotes de dependência"
-# sudo apt-get install -y apt-transport-https ca-certificates curl
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando os pacotes de dependência"
+sudo apt-get install -y apt-transport-https ca-certificates curl
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Criando um diretório para armazenar chaves de repositórios"
-# sudo install -m 0755 -d /etc/apt/keyrings
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Criando um diretório para armazenar chaves de repositórios"
+sudo install -m 0755 -d /etc/apt/keyrings
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Baixando a chave de assinatura pública para os repositórios de pacotes Kubernetes"
-# curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Baixando a chave de assinatura pública para os repositórios de pacotes Kubernetes"
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Adicionando o repositório do pacote à lista de fontes de pacotes do sistema"
-# echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Adicionando o repositório do pacote à lista de fontes de pacotes do sistema"
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Atualizando os pacotes"
-# sudo apt-get update -y
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Atualizando os pacotes"
+sudo apt-get update -y
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Instalando o pacote"
-# sudo apt-get install -y kubectl
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando o pacote"
+sudo apt-get install -y kubectl
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Exibindo a versão"
-# kubectl version --client
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Exibindo a versão"
+kubectl version --client
 
-# echo "-----//-----//-----//-----//-----//-----//-----"
-# echo "Alterando o proprietario e grupo da pasta .kube para o usuario ubuntu"
-# sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Alterando o proprietario e grupo da pasta .kube para o usuario ubuntu"
+sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
 
 
 
@@ -292,6 +296,24 @@ sudo dpkg -i minikube_latest_amd64.deb
 
 
 echo "***********************************************"
+echo "APACHE HTTP (HTTPD) INSTALLATION"
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Instalando o pacote"
+sudo apt-get install -y apache2
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Reiniciando o serviço"
+sudo systemctl restart apache2
+
+echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Habilitando o serviço para que seja executado automaticamente"
+sudo systemctl enable apache2
+
+
+
+
+echo "***********************************************"
 echo "ORACLE VM VIRTUAL BOX INSTALLATION"
 
 echo "-----//-----//-----//-----//-----//-----//-----"
@@ -299,8 +321,12 @@ echo "Atualizando os pacotes"
 sudo apt-get update -y
 
 echo "-----//-----//-----//-----//-----//-----//-----"
+echo "Autorizando os termos"
+echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
+
+echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Instalando o pacote"
-sudo apt install -y virtualbox virtualbox-ext-pack
+sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms
 
 echo "-----//-----//-----//-----//-----//-----//-----"
 echo "Adicionando o usuário ao grupo"

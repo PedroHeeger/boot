@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app-html
-        image: pedroheeger/boot_015-app-html:1.1
+        image: pedroheeger/boot_015-app-html:1.0
         ports:
         - containerPort: 80
