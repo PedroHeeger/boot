@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_005 (Formação Linux Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_005" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-03)%20Cert%20Formacao%20Linux%20Fundamentals%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-03)_Cert_Formacao_Linux_Fundamentals_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -80,9 +80,9 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 - A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
 
-<a name="item5.1"><h4>5.1. Conhecendo o Linux Desktop</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-08-03)%20Conhecendo%20o%20Linux%20Desktop%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.1"><h4>5.1. Conhecendo o Linux Desktop</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/os/linux/(23-08-03)_Conhecendo...Linux_Desktop_PH_DIO.pdf">Certificate</a>
 
 Nesta curso foi criado uma nova maquina virtual no software **VM Virtual Box** com base uma imagem de **Linux Ubuntu** para desktop, ao invés de servidor. Ou seja, essa maquina possuíu interface gráfica. A imagem base para essa maquina foi fornecido pela plataforma do curso. Para a criação, dentro do **VM Virtual Box**, foi selecionada a opção **Importar Appliance**. Na janela aberta foi selecionada a imagem base e mantida as configurações padrões.
 

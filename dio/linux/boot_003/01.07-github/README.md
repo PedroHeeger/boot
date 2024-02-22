@@ -6,7 +6,7 @@
 ### Bootcamp: <a href="../">boot_03 (Linux do Zero)   <img src="../0-aux/logo_boot.png" alt="boot_03" width="auto" height="25"></a>
 ### Course: 1.7. Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/programming/versioning/git_github/(22-11-08)%20Criando%20seu%20Primeiro%20Reposit%C3%B3rio%20no%20GitHub...%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/versioning/git_github/(22-11-08)_Criando...Primeiro_Repositorio_GitHub...PH_DIO.pdf">Certificate</a>
 ---
 
 This folder is for the **Criando seu Primeiro Repositório no GitHub para Compartilhar Seu Progresso** Project Challenge that is part of Module 1 **Prepara-se Para a Jornada** of Bootcamp **Linux do Zero**.

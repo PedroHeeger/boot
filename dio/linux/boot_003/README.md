@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_003 (Linux do Zero)   <img src="./0-aux/logo_boot.png" alt="boot_003" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-03)%20Cert%20Linux%20do%20Zero%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-03)_Cert_Linux...Zero_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -34,8 +34,8 @@
 1. Prepare-se Para a Jornada   
   1.1. Conheça as Oportunidades da DIO   
   1.2. Seja Protagonista Neste Bootcamp   
-  1.3. Introdução ao Desenvolvimento Moderno de Software   
-  1.4. Trabalhando em Equipes Ágeis   
+  1.3. [Introdução ao Desenvolvimento Moderno de Software]()   
+  1.4. [Trabalhando em Equipes Ágeis]()   
   1.5. [Introdução à Programação e Pensamento Computacional](./01.05-logica_programacao/)   
   1.6. Como Entregar seu Desafio de Projeto   
   1.7. [Criando seu Primeiro Repositório no GitHub para Compartilhar seu Progresso](./01.07-github)   
@@ -86,4 +86,4 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.

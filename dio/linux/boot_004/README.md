@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_04 (Linux Experience)   <img src="./0-aux/logo_boot.png" alt="boot_004" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-02)%20Cert%20Linux%20Experience%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/linux/(23-08-02)_Cert_Linux_Experience_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -34,7 +34,7 @@
 1. Prepare-se Para a Jornada   
   1.1. Conheça as Oportunidades da DIO   
   1.2. Seja Protagonista Neste Bootcamp   
-  1.3. Introdução ao Desenvolvimento Moderno de Software   
+  1.3. [Introdução ao Desenvolvimento Moderno de Software]()   
   1.4. [Introdução à Programação e Pensamento Computacional](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/01.05-logica_programacao)   
   1.5. [Introdução ao Git e ao GitHub]()  
   1.6. [Criando seu Primeiro Repositório no GitHub para Compartilhar seu Progresso](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/01.07-github)   
@@ -73,4 +73,4 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 - A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
