@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">java   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_010 (Formação Java Developer)   <img src="./0-aux/logo_boot.png" alt="boot_010" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/os/virtualization/docker/(23-08-22)%20Cert%20Formacao%20Docker%20Fundamentals%20PH%20DIO.pdf">Certificate</a>
+#### <a href="_">Certificate</a>
 
 ---
 
@@ -109,4 +109,4 @@ Segue abaixo o objetivo deste Bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
