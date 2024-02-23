@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../../">kubernetes   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">devops   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_017 (Formação DevOps Fundamentals)   <img src="../0-aux/logo_boot.png" alt="boot_017" width="auto" height="25"></a>
 ### Module: 3. Aplicando DevOps na Prática 
 
@@ -32,6 +32,8 @@ This folder refers to Module 3 **Aplicando DevOps na Prática** from bootcamp [*
   - Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
 - Tools:
   - Windows Terminal   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_terminal.png" alt="windows_terminal" width="auto" height="25">
+- Development:
+  - GitLab   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="gitlab" width="auto" height="25">
 
 ---
 
@@ -58,7 +60,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do Bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item3.1"><h4>3.1 DevOps e Processos de Desenvolvimento de Software</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(24-02-19)_Entendendo...DevOps_PH_DIO.pdf">Certificate</a>
+<a name="item3.1"><h4>3.1 DevOps e Processos de Desenvolvimento de Software</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(24-02-22)_DevOps...Desenvolvimento...Software_PH_DIO.pdf">Certificate</a>
 
 Atualmente existem diversas metodologias de desenvolvimento de software e que foram criadas para ajudar a melhorar o fluxo de desenvolvimento: Modelo Cascata (Wartefall); Scrum; Kanban; Test-Driven-Development (TDD); DevOps. O *Modelo Cascata (Waterfall)* é um dos modelos de desenvolvimento de software mais antigos e também o mais utilizados. Esta metodologia consiste em uma sequência de fases, onde cada fase é completada antes de iniciar a próxima. As fases incluem análise de requisitos, design, implementação, testes e manutenção. Embora este modelo seja fácil de entender e implementar, ele pode ser inflexível em relação a mudanças no meio do processo.
 
@@ -90,7 +92,7 @@ O CI/CD é uma das partes mais importantes no DevOps porque ajuda as equipes de 
 
 Em resumo CI/CD é fundamental no DevOps porque ajuda as equipes de desenvolvimento a entregar software de alta qualidade de maneira rápida e eficiente, permitindo que elas se concentrem em criar novas funcionalidades e melhorar a experiência do usuário, em vez de se preocupar com problemas de infraestrutura ou bugs em produção.
 
-<a name="item3.3"><h4>3.3 Criando seu Primeiro Projeto de DevOps com GitLab</h4></a>[Back to summary](#item3) | <a href="_">Certificate</a>
+<a name="item3.3"><h4>3.3 Criando seu Primeiro Projeto de DevOps com GitLab</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(24-02-23)_DP_Criando...Projeto...DevOps...GitLab_PH_DIO.pdf">Certificate</a>
 
 Antes de iniciar o primeiro desafio de projeto deste bootcamp, alguns conceitos importantes. *Serviço de hospedagem de código (code repository)* é o serviço de hospedagem de repositórios Git que permite que as equipes de desenvolvimento colaborem nos projetos de software. Alguns exemplos são: **GitLab**; **GitHub**; **Azure Repos**. O controle de código fonte é a prática de gerenciamento e monitoramento de alterações no código. Os sistemas *SCM (Source Control Management – Gerenciamento de controle)* disponibilizam histórico de execuções de desenvolvimento de código. Isto é muito importante porque ajuda a resolver conflito de versões durante o merge de contribuições de várias origens.
 

@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">devops   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_017 (Formação DevOps Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_017" width="auto" height="25"></a>
 
-#### <a href="">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu//development/devops/(24-04-23)_Cert_Formacao_DevOps_Fundamentals_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -36,23 +36,23 @@
   1.1. Onboarding - Devops  
 
 2. [Os Seus Primeiros Passos em DevOps](./02-primeiros_passos/)   
-  2.1. [Entendendo O Que é DevOps]()   
-  2.2. [Introdução ao DevSecOps]()   
-  2.3. Qual é a diferença entre SRE e DevOps      
+  2.1. [Entendendo O Que é DevOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/02-primeiros_passos#item2.1)   
+  2.2. [Introdução ao DevSecOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/02-primeiros_passos#item2.2)   
+  2.3. Qual é a diferença entre SRE e DevOps   
 
 3. [Aplicando DevOps na Prática](./03-aplicando_devops/)   
-  3.1. DevOps e Processos de Desenvolvimento de Software   
-  3.2. Introdução ao DevOps com CI/CD  
-  3.3. Criando seu Primeiro Projeto de DevOps com GitLab   
-  3.4. Migrando de Carreira - Desenvolvedor(a) para DevOps    
+  3.1. [DevOps e Processos de Desenvolvimento de Software](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/03-aplicando_devops#item3.1)   
+  3.2. [Introdução ao DevOps com CI/CD](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/03-aplicando_devops#item3.2)   
+  3.3. [Criando seu Primeiro Projeto de DevOps com GitLab](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/03-aplicando_devops#item3.3)   
+  3.4. Migrando de Carreira - Desenvolvedor(a) para DevOps   
 
 4. [Fundamentos de Cloud Computing e Azure DevOps](./04-fundamentos_cloud/)   
-  4.1. Cloud Computing e o DevOps   
-  4.2. Infraestrutura como Código no DevOps  
-  4.3. Conhecendo a Plataforma Azure Cloud e Azure DevOps   
-  4.4. Entendendo na Prática a Cultura DevOps com Azure DevOps    
+  4.1. [Cloud Computing e o DevOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/04-fundamentos_cloud#item4.1)   
+  4.2. [Infraestrutura como Código no DevOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/04-fundamentos_cloud#item4.2)   
+  4.3. [Conhecendo a Plataforma Azure Cloud e Azure DevOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/04-fundamentos_cloud#item4.3)   
+  4.4. [Entendendo na Prática a Cultura DevOps com Azure DevOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/04-fundamentos_cloud#item4.4)   
 
-5. [Mercado e Carreira DevOps](./05-mercado_carreira/)   
+5. Mercado e Carreira DevOps   
   5.1. Como se Tornar um Profissional de DevOps   
   5.2. Mercado e Carreira DevOps no Brasil e no Mundo  
   5.3. Materiais Complementares: Formação DevOps Fundamentals   

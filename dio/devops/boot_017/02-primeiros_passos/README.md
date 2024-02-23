@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../../">kubernetes   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">devops   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_017 (Formação DevOps Fundamentals)   <img src="../0-aux/logo_boot.png" alt="boot_017" width="auto" height="25"></a>
 ### Module: 2. Os Seus Primeiros Passos em DevOps 
 
@@ -27,9 +27,6 @@ This folder refers to Module 2 **Os Seus Primeiros Passos em DevOps** from bootc
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
-- Command Line Interpreter (CLI):
-  - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
-  - Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
 
 ---
 
@@ -80,18 +77,6 @@ A necessidade do DevSecOps surge a partir do fato de que a segurança da informa
 
 Nos últimos anos, DevOps e DevSecOps transformaram as abordagens de desenvolvimento de software de muitas empresas. Ambos os serviços de DevOps e DevSecOps parecem termos semelhantes. Mas suas distinções podem afetar a eficácia do negócio e a indústria de TI em uma escala maior. DevOps é uma abordagem de desenvolvimento de software que tem como objetivo integrar as equipes de desenvolvimento (Dev) e operações (Ops) para criar um processo mais ágil e colaborativo. O foco principal do DevOps é acelerar o processo de entrega de software, reduzir o tempo de resposta a problemas e aumentar a eficiência operacional. Já o DevSecOps, como o próprio nome sugere, adiciona a segurança da informação (Sec) à equação. Isso significa que o objetivo principal do DevSecOps é garantir que a segurança da informação seja incorporada em todas as etapas do ciclo de vida do desenvolvimento de software, desde o design até a entrega do produto final. O DevSecOps busca integrar as equipes de desenvolvimento, operações e segurança para criar um processo mais seguro e confiável.
 
-<a name="item2.3"><h4>2.3 Cluster Kubernetes em Nuvem</h4></a>[Back to summary](#item2) | <a href="_">Certificate</a>
+<a name="item2.3"><h4>2.3 Qual é a diferença entre SRE e DevOps</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(24-02-20)_Ment_Qual...diferenca...SRE...DevOps_PH_DIO.pdf">Certificate</a>
 
-O Site Reliability Engineer (SRE) ou Engenheiro de Confiablidade de Site, é mais voltado para a parte de engenharia. É uma disciplina que envolve a parte de engenharia de software para poder criar e escalar o sistema. O foco do SRE é garantir a confiabilidade e o desempenho do sistema, ou seja, aquela metodologia que tinha sido focada na entrega vai continuar, mas a parte de engenharia, de automação por trás disso, ela vai acontecer muito mais forte. Já o DevOps não, o DevOps é uma abordagem mais cultural, por mais que muitas pessoas sejam contra pelo DevOps ser uma metodologia de trabalho que pode ser utilizada na área de TI, na engenharia de software. Existem pessoas que são contra a utilizar o DevOps como um papel (um funcionário DevOps). Como ele tem uma abordagem mais cultural, a organização como todo tem que está envolvida com essa mudança, como a metodologia Agile, Scrum.
-
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img03.png" alt="img03"><br>
-    <figcaption>Imagem 03.</figcaption>
-</figure></div><br>
-
+O Site Reliability Engineer (SRE) ou Engenheiro de Confiablidade de Site, é uma abordagem mais específica, focada na confiabilidade e disponibilidade de sistemas. É uma disciplina que envolve a parte de engenharia de software para poder criar e escalar o sistema. O foco do SRE é garantir a confiabilidade e o desempenho do sistema, ou seja, aquela metodologia que tinha sido focada na entrega vai continuar, mas a parte de engenharia, de automação por trás disso, ela vai acontecer muito mais forte. Já o DevOps não, o DevOps é uma abordagem mais cultural, por mais que muitas pessoas sejam contra pelo DevOps ser uma metodologia de trabalho que pode ser utilizada na área de TI, na engenharia de software. Existem pessoas que são contra a utilizar o DevOps como um papel (um funcionário DevOps). Como ele tem uma abordagem mais cultural, a organização como todo tem que está envolvida com essa mudança, como a metodologia Agile, Scrum. Em resumo, enquanto DevOps é amplo, SRE concentra-se na confiabilidade do serviço.
