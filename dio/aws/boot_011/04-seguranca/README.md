@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_011 (Bootcamp Cloud AWS)   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>
 ### Module: 4. Segurança, Monitoramento e Suporte na AWS 
 
@@ -20,7 +20,7 @@ This folder refers to Module 4 **Segurança, Monitoramento e Suporte na AWS** fr
 - Linux Distribution: 
   - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
 - Cloud:
-  - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Amazon API Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_api_gateway.svg" alt="aws_api_gateway" width="auto" height="25">
   - Amazon Cognito   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cognito.svg" alt="aws_cognito" width="auto" height="25">
@@ -74,23 +74,23 @@ A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme f
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item4.1"><h4>4.1 Segurança na Nuvem com AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)%20Seguran%C3%A7a%20na%20Nuvem%20com%20AWS%20PH%20DIO.pdf">Certificate</a>
+<a name="item4.1"><h4>4.1 Segurança na Nuvem com AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)_Seguranca...Nuvem...AWS_PH_DIO.pdf">Certificate</a>
 
 Nesse curso foi explicado sobre a segurança na cloud AWS, sobre o modelo de responsabilidade compartilhada, onde tanto a AWS tem suas responsabilidades com os clientes têm as suas. Foram apresentados vários serviços que a AWS implementa para diversas finalidades, alguns deles foram: **AWS Key Management Service (KMS)**, **AWS Identity and Access Management (IAM)**, **AWS Artifact**, **AWS Web Application Firewall (WAF)**, **AWS Shield**, entre outros. Com relação ao serviços **AWS Identity and Access Management (IAM)** foi abordado sobre os conceitos de `resources`, `users`, `groups`, `policies`, `permissions` e `roles`. Também foi apresentado o serviço **AWS Organization** que permite a integração de diferentes contas da AWS, e abordado sobre o tema conformidade, onde cada serviço deve atender as regulamentações específicas como a **General Data Protection Regulation (GDPR)**, a **Lei Geral de Proteção de Dados Pessoais (LGPD)**, e outras.
 
-<a name="item4.2"><h4>4.2 Monitoramento e Análise na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)%20Monitoramento...AWS%20PH%20DIO.pdf">Certificate</a>
+<a name="item4.2"><h4>4.2 Monitoramento e Análise na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)_Monitoramento...AWS_PH_DIO.pdf">Certificate</a>
 
 No segundo curso foi explanado sobre o tema de monitoramento e análise na cloud AWS e para isso existem alguns serviços que contribuem nesse quesito. O primeiro deles é o **Amazon CloudWatch** que é um serviço que coleta e visualiza logs, métricas e dados de eventos em tempo real. Já o **AWS CloudTrail** guarda transações de chamadas de API. Enquanto o **AWS Trusted Advisor** é uma espécie de "consultor automatizado", ele inspeciona o ambiente AWS em tempo real e faz recomendações com base em boas práticas recomendadas pela AWS. Com ele é possível configurar alertas de e-mail.
 
-<a name="item4.3"><h4>4.3 Preços e Planos de Suporte na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)%20Pre%C3%A7os%20e%20Planos...AWS%20PH%20DIO.pdf">Certificate</a>
+<a name="item4.3"><h4>4.3 Preços e Planos de Suporte na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)_Precos...Planos...AWS_PH_DIO.pdf">Certificate</a>
 
 Os assuntos desse curso foram referentes a preços e planos de suporte da AWS. Foram apresentados os seguintes planos de suporte e suas características: Basic, Developer, Business, Enterprise On-Ramp, Entreprise. Também foi mostrados os modelos de preço para o serviço **Amazon EC2** e suas características, que são: Sob demanda, Savings Plans, Instâncias reservadas, Instâncias spot, Host dedicados. Foi explicado como funciona o faturamento consolidade e os serviços **AWS Budgets** que serve para criar orçamentos para planejar uso dos serviços, e o **AWS Cost Explorer** que permite visualizar, interpretar e gerenciar custos ao longo do tempo. Por fim, foi exibido o **AWS Marketplace** que é o catálogo digital com ofertas de soluções de fornecedores independentes de software, sendo dividido nas seguintes categorias: Aplicativos empresariais, Dados e análises, DevOps, Software de infraestrutura, Internet das Coisas (IoT), Machine Learning, Migração, Segurança.
 
-<a name="item4.4"><h4>4.4 AWS Office Content - Segurança, Monitoramento e Suporte na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)%20AWS%20Official%20Content-Seguran%C3%A7a%20PH%20DIO.pdf">Certificate</a>
+<a name="item4.4"><h4>4.4 AWS Office Content - Segurança, Monitoramento e Suporte na AWS</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)_AWS_Official_Content-Seguranca_PH_DIO.pdf">Certificate</a>
 
 Esta atividade foi mais uma em parceria da **AWS** com a plataforma do bootcamp **DIO** que forneceu os seguintes materiais da AWS para estudo: a vídeo aula `Introduction to AWS Identity and Access Management (IAM)`, onde foi feito a apresentação do **AWS Identity and Access Management (IAM)**, destacando como o IAM pode ser usado para autenticação e autorização nos serviços da AWS, e discutindo políticas e funções do IAM, bem como possíveis casos de uso para o serviço; a vídeo aula `Authentication and Authorization with AWS Identity and Access Management` sobre autenticação e autorização com o **AWS Identity and Access Management (IAM)**, onde é discutido como esse serviço pode ajudar a gerenciar permissões para os serviços da AWS; a vídeo aula `Pricing Models for AWS` sobre o Modelo de Preços da AWS, apresentando os diferentes modelos e como seus preços funcionam (Instâncias sob demanda, Instâncias Reservadas e Instâncias Spot); e a vídeo aula `AWS Foundations: Securing Your AWS Cloud` que apresenta vários serviços da AWS que podem ser usados para melhorar a postura de segurança, abrangendo os diferentes princípios de design de segurança que ajudam a planejar a abordagem de segurança na nuvem AWS.
 
-<a name="item4.5"><h4>4.5 Adicionando Segurança em APIs na AWS com Amazon Cognito</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Adicionando...na%20AWS%20com%20Amazon%20Cognito%20PH%20DIO.pdf">Certificate</a>
+<a name="item4.5"><h4>4.5 Adicionando Segurança em APIs na AWS com Amazon Cognito</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)_Adicionando...AWS...Amazon_Cognito_PH_DIO.pdf">Certificate</a>
 
 Neste desafio de projeto foi realizado o mesmo projeto dos itens 3.6 e 3.12 do módulo anterior com a adição do serviço **Amazon Cognito** e executando de uma forma diferente. No item 3.6 foi utilizado o console para execução do projeto. No item 3.12 foi realizado uma automação com scripts **Power Shell**, executando comandos **AWS Command Line Interface (CLI)**, apenas para construção do ambiente onde foi instalado o framework **Serverless Framework** na linguagem **JavaScript** com uso do **Node.js**, cuja finalidade era construir toda infraestrutura do projeto na cloud **AWS**. Agora, neste desafio, o projeto foi todo construído de forma automatizada com scripts **Power Shell**, executando comandos **AWS CLI**, sem a utilização de um software ou framework de infraestrutura como código (IAC).
 

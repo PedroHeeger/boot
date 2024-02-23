@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_011 (Bootcamp Cloud AWS)   <img src="../0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>
 ### Module: 5. Preparatório para Certificação AWS Cloud Practitioner 
 
@@ -17,7 +17,7 @@ This folder refers to Module 5 **Preparatório para Certificação AWS Cloud Pra
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Cloud:
-  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -50,15 +50,15 @@ A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme f
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item5.1"><h4>5.1 Introdução ao Exame de Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)%20...Exame%20de%20Certifica%C3%A7%C3%A3o%20AWS%20CFL-C01%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.1"><h4>5.1 Introdução ao Exame de Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)...Exame...Certificacao_AWS_CFL-C01_PH_DIO.pdf">Certificate</a>
 
 Neste primeiro curso foi apresentado a certificação **AWS Cloud Practitioner (CLF-C01)**, explicando sobre o exame, quantas questões ele possui, qual o tempo de duração, a nota mínima para aprovação, além do conteúdo abordado e os tipos de questões existentes.
 
-<a name="item5.2"><h4>5.2 AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)%20AWS%20Official%20Content...Certifica%C3%A7%C3%A3o%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.2"><h4>5.2 AWS Official Content - Preparatório para Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)_AWS_Official_Content...Certificacao_PH_DIO.pdf">Certificate</a>
 
 Esta atividade foi mais uma em parceria da **AWS** com a plataforma do bootcamp **DIO** que forneceu os seguintes materiais da AWS para estudo: a vídeo aula `Benefits of the AWS Cloud`, que apresenta os beneficios da AWS Cloud, passando pelos seus principais conceitos, definindo o que é a AWS Cloud e a sua proposta de valor; o curso `AWS Cloud Practitioner Essentials`, que fornece uma compreensão geral sobre a nuvem Amazon Web Services (AWS), independentemente de funções técnicas específicas, ensinando os conceitos da nuvem AWS, serviços AWS, segurança, arquitetura, definição de preço e suporte; e o curso `AWS Technical Essentials`, que apresenta as soluções comuns e os produtos essenciais da AWS, abrangendo os conceitos fundamentais da AWS relacionados a computação, banco de dados, armazenamento, rede, monitoramento e segurança.
 
-<a name="item5.3"><h4>5.3 Assuntos Complementares para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)%20Assuntos...AWS%20Cloud%20Practitioner%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.3"><h4>5.3 Assuntos Complementares para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item5) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-15)_Assuntos...AWS_Cloud_Practitioner_PH_DIO.pdf">Certificate</a>
 
 Neste último curso do módulo foi abordado sobre assuntos complementares ao exame **AWS Cloud Practitioner**. O primeiro deles foi a apresentação das estratégias de migração para a cloud da AWS, conhecida como os 6Rs (Rehosting, Replattform, Repurchasing, Retire, Retain, Refactoring ou Re-architecting). Foi explicado sobre o serviço **AWS Cloud Adoption Framework (CAF)** que contribui para a migração dos recursos para a nuvem. Ele é baseado nas seis seguintes perspectivas: Negócios, Pessoas, Governança, Plataforma, Segurança e Operações.
 

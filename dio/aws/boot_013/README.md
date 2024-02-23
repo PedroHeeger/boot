@@ -2,10 +2,10 @@
 
 ### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_013 (Descubra a Nuvem AWS - Nexa Resources)   <img src="./0-aux/logo_boot.png" alt="boot_013" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-09-14)%20Descubra%20a%20Nuvem%20AWS%20-%20Nexa%20Resources%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-09-14)_Cert_Descubra...Nuvem_AWS-Nexa_Resources_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -16,7 +16,7 @@
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Cloud:
-  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -61,18 +61,18 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 - A sub-pasta **0-img** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
 
 O desenvolvimento deste bootcamp foi dividido em apenas um módulo contendo quatro cursos e duas mentorias. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Descubra a Nuvem</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)%20Descubra%20a%20Nuvem%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Descubra a Nuvem</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)_Descubra...Nuvem_PH_DIO.pdf">Certificate</a>
 
 O primeiro curso deste bootcamp foi teórico explicando os conceitos de **Cloud** e **Cloud Computing**. Cloud Computing é um modelo de computação que permite o acesso a recursos de computação como armazenamento, servidores, softwares, aplicativos, tudo isso pela internet sem a necessidade de ter isso de forma física no computador. Também foi explicado sobre os cinco benefícios da nuvem, são eles: Redução de custo (reduz os custos de manutenção de hardwares e softwares, pagando apenas aquilo que for utilizado); Acesso remoto (é possível acessar de qualquer lugar); Flexibildiade (a Cloud Computing permite que todos os recursos de computadores sejam escaláveis, ou seja, é possível aumentar ou diminuir a capacidade de armazenamento ou processamento de acordo com a necessidade); Eficiência (a Cloud Computing pode ajudar a melhorar a eficiência das empresas permitindo que ela se concentre em suas atividades principais e reduzam a carga administrativa de gerenciamento de infraestrutura TI); Bakcup e Recuperação de desastres (a Cloud Computing ajuda a proteger os dados permitindo a execução de backups de arquivos e sistemas de forma eficiente).
 
-<a name="item1.2"><h4>1.2 Conhecendo os Serviços da AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)%20Conhecendo%20os%20Servi%C3%A7os%20da%20AWS%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.2"><h4>1.2 Conhecendo os Serviços da AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)_Conhecendo...Servicos...AWS_PH_DIO.pdf">Certificate</a>
 
 Neste curso, que também foi teórico, apresentou a cloud da **Amazon Web Services (AWS)**, explicando a infraestrutura, como ela funciona, alguns serviços existentes. Também foi ensinado sobre o funcionamento da rede na AWS e os princípios de regiões e zonas de disponibilidade, além de conceitos importantes de segurança.
 
-<a name="item1.6"><h4>1.6 Criando sua Conta na AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)%20Criando%20sua%20Conta%20na%20AWS%20PH%20DIO.pdf">Certificate</a>
+<a name="item1.6"><h4>1.6 Criando sua Conta na AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-14)_Criando...Conta...AWS_PH_DIO.pdf">Certificate</a>
 
 No último curso foi ensinado como criar uma conta na cloud da AWS, explicado os conceitos de modelo de responsabilidade compartilhada, os níveis de gratuidade e o conceito de menor privilégio, que é o fornecimento das mínimas permissões para um usuário executar uma ação. Segundo a AWS é considerada uma melhor prática de segurança a não utilização da conta raíz (`root`), pois ela concede acesso a todos os serviços e recursos. O ideal é conceder aos usuários a quantidade mínima necessária de privilégios, o que é conhecido como o `menor privilégio`. Para isso, foi criado um usuário administrador para o proprietário da conta na cloud **AWS**, evitando ao máximo utilizar a conta `root`. Neste usuário administrador foi criado a autenticação múlti fator (**MFA**), ao cadastrar a conta no aplicativo autenticador, ainda na configuração do MFA teve que fornecer dois códigos de autenticação sequenciais disponíveis no aplicativo.

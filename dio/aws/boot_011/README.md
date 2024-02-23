@@ -2,10 +2,10 @@
 
 ### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_011 (Bootcamp Cloud AWS)   <img src="./0-aux/logo_boot.png" alt="boot_011" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-10-05)%20Bootcamp%20Cloud%20AWS%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-10-05)_Cert_Bootcamp_Cloud_AWS_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -16,7 +16,7 @@
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Cloud:
-  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -36,7 +36,7 @@
   1.1. Conheça as Oportunidades da DIO   
   1.2. Boas-vindas ao Bootcamp Cloud AWS   
   1.3. Seja Protagonista Neste Bootcamp   
-  1.4. Introdução ao Desenvolvimento Moderno de Software   
+  1.4. [Introdução ao Desenvolvimento Moderno de Software]()   
   1.5. Bootcamp Cloud AWS-Mentoria   
 
 2. Conhecendo o Sistema Operacional Linux   
@@ -101,4 +101,4 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 </figure></div><br>
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outro se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.

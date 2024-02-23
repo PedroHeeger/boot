@@ -2,10 +2,10 @@
 
 ### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_012 (Formação AWS Cloud Practitioner Certification)   <img src="./0-aux/logo_boot.png" alt="boot_012" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-10-06)%20Forma%C3%A7%C3%A3o%20AWS%20Cloud%20Practitioner%20Certification%20PH%20DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-10-06)_Cert_Formacao_AWS_Cloud_Practitioner_Certification_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -16,7 +16,7 @@
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Cloud:
-  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="aws" width="auto" height="25">
+  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -32,9 +32,10 @@
 ---
 
 <a name="item0"><h3>Bootcamp Structure</h3></a>
+
 1. Primeiros Passos Rumo à Certificação AWS Cloud Practitioner   
   1.1. Boas-vindas a Formação Rumo à Certificação AWS Cloud Practitioner   
-  1.2. Introdução ao Exame de Certificação AWS Cloud Practitioner   
+  1.2. [Introdução ao Exame de Certificação AWS Cloud Practitioner](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/05-certificacao_aws#item5.1)   
   1.3. [Introdução ao Conceito de Cloud](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.3)   
   1.4. [Infraestrutura Global AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.4)   
   1.5. Materiais Complementares - Primeiros Passos Rumo à Certificação AWS Cloud Practitioner   
@@ -44,7 +45,7 @@
   2.2. [Redes em AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.8)   
   2.3. [Armazenamento e Banco de Dados AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.9)   
   2.4. <a href="#item2.4">Desafio de Projeto AWS - Redução de Custos</a>   
-  2.5. Materiais Complementares - Primeiros Passos Rumo à Certificação AWS Cloud Practitioner   
+  2.5. Materiais Complementares - Serviços e Ferramentas AWS   
 
 3. Segurança, Monitoramento e Suporte na AWS   
   3.1. [Segurança na Nuvem com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.1)   
@@ -86,18 +87,18 @@ Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a e
 
 Além das atividades já realizadas em outros bootcamps, este bootcamp possuiu quatro atividades restantes, sendo elas, dois desafios de projetos e dois cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item2.4"><h4>2.4 Desafio de Projeto AWS - Redução de Custos</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20DP%20AWS-Redu%C3%A7%C3%A3o%20de%20Custos%20PH%20DIO.pdf">Certificate</a>
+<a name="item2.4"><h4>2.4 Desafio de Projeto AWS - Redução de Custos</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)_DP_AWS-Reducao_Custos_PH_DIO.pdf">Certificate</a>
 
 Este desafio foi teórico, onde a partir de um modelo fornecido pelo expert, foi desenvolvido um relatório de projeto para implementação de três serviços da cloud **AWS** que fornecesse redução de custos para um cenário hipotético de uma empresa farmacêutica. O arquivo do projeto é o [relatorioReducaoCustos](./relatorioReducaoCustos.md), no qual os três serviços escolhidos para atender esse objetivo foram: **Amazon Elastic Compute Cloud (EC2)**, **Amazon Relational Database Service (RDS)** e **Amazon Simple Storage Service (S3)**.
 
-<a name="item3.4"><h4>3.4 Desafio de Projeto AWS - A Importância da Segurança</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-06)%20DP-A%20Import%C3%A2ncia%20da%20Segura%C3%A7a%20PH%20DIO.pdf">Certificate</a>
+<a name="item3.4"><h4>3.4 Desafio de Projeto AWS - A Importância da Segurança</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-06)_DP...Importancia...Seguraca_PH_DIO.pdf">Certificate</a>
 
 Este desafio foi similar ao anterior, porém desenvolvendo um relatório de projeto para implementação de três serviços da cloud **AWS** que fornecesse segurança para um cenário hipotético de uma empresa farmacêutica. O arquivo do projeto é o [relatorioSeguranca](./relatorioSeguranca.md), no qual os três serviços escolhidos para atender esse objetivo foram: **AWS Identity and Access Management (IAM)**, **Amazon Virtual Private Cloud (VPC)** e **AWS Key Management Service (KMS)**.
 
-<a name="item4.2"><h4>4.2 Dicas de Estudo para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)%20Dicas...AWS%20Cloud%20Practitioner%20PH%20DIO.pdf">Certificate</a>
+<a name="item4.2"><h4>4.2 Dicas de Estudo para o Exame AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-05)_Dicas...AWS...Cloud_Practitioner_PH_DIO.pdf">Certificate</a>
 
 Neste curso que foi teórico, foi explicado sobre o exame AWS Cloud Practitioner, como ele funciona e como é feito todo processo para marcação do exame. Alguns conteúdos extras da própria **AWS** foram fornecidos para praticar para o exame.
 
-<a name="item5.1"><h4>5.1 Simulados Preparatórios para a Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-06)%20Simulados...Certifica%C3%A7%C3%A3o%20AWS%20Cloud%20Practitioner%20PH%20DIO.pdf">Certificate</a>
+<a name="item5.1"><h4>5.1 Simulados Preparatórios para a Certificação AWS Cloud Practitioner</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-10-06)_Simulados...Certificacao_AWS_Cloud_Practitioner_PH_DIO.pdf">Certificate</a>
 
 Neste último curso foram aplicados cinco simulados para o exame AWS Cloud Practitioner, com objetivo de realizar uma preparação para o exame.
