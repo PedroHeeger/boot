@@ -15,8 +15,6 @@
 ### Used Tools:
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Virtualization: 
-  - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -38,7 +36,7 @@
 2. [Os Seus Primeiros Passos em DevOps](./02-primeiros_passos/)   
   2.1. [Entendendo O Que é DevOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/02-primeiros_passos#item2.1)   
   2.2. [Introdução ao DevSecOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/02-primeiros_passos#item2.2)   
-  2.3. Qual é a diferença entre SRE e DevOps   
+  2.3. [Qual é a diferença entre SRE e DevOps](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/02-primeiros_passos#item2.3)   
 
 3. [Aplicando DevOps na Prática](./03-aplicando_devops/)   
   3.1. [DevOps e Processos de Desenvolvimento de Software](https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017/03-aplicando_devops#item3.1)   
