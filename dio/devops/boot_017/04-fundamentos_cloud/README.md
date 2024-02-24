@@ -78,6 +78,7 @@ O **Terraform** é uma ferramenta para construir, modificar e versionar infraest
 
 Neste curso foi utilizado o arquivo [terraform.tf](./terraform/terraform.tf) dentro da sub-pasta [terraform](./terraform/) para criar um resource group na cloud da **Azure**. A localização desse grupo de recursos foi na região `westeurope`, sendo o nomeado de `rg-terraform-99`. Acontece que para trabalhar com o **Azure** foi necessário criar uma conta na cloud, pois ainda não possuía. Após a criação de conta, teve que ser baixado o CLI da **Azure** que é **AS** e então configurar com um usuário.
 
+###### O resto desta aula, a aula 4.3 e o desafio de projeto 4.4 ficou pendente para ser realizado quando fosse estudar a cloud Azure, pois no momento estou focado na AWS. Acredito que no final de março essa parte será realizada.
 
 az login
 az account list -> lista as subscrinções
@@ -100,11 +101,9 @@ terraform plan
 <a name="item4.3"><h4>4.3 Conhecendo a Plataforma Azure Cloud e Azure DevOps</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(24-02-23)...Plataforma_Azure_Cloud...Azure_DevOps_PH_DIO.pdf">Certificate</a>
 
 
-
-
-
+###### O resto desta aula, a aula 4.3 e o desafio de projeto 4.4 ficou pendente para ser realizado quando fosse estudar a cloud Azure, pois no momento estou focado na AWS. Acredito que no final de março essa parte será realizada.
 
 
 <a name="item4.4"><h4>4.4 Entendendo na Prática a Cultura DevOps com Azure DevOps</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/development/devops/(24-02-23)_DP_Entendendo...Cultura_DevOps...Azure_DevOps_PH_DIO.pdf">Certificate</a>
 
-
+###### O resto desta aula, a aula 4.3 e o desafio de projeto 4.4 ficou pendente para ser realizado quando fosse estudar a cloud Azure, pois no momento estou focado na AWS. Acredito que no final de março essa parte será realizada.
