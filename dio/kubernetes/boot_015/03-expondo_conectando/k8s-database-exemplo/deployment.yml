@@ -47,14 +47,14 @@ spec:
 # DB: DEPLOYMENT
 apiVersion: apps/v1
 kind: Deployment
-metadate:
+metadata:
   name: mysql
 spec:
   selector:
     matchLabels:
       app: mysql
   template:
-    metadate:
+    metadata:
       labels:
         app: mysql
     spec:
@@ -81,7 +81,7 @@ spec:
 # BACK-END: DEPLOYMENT
 apiVersion: apps/v1
 kind: Deployment
-metadate:
+metadata:
   name: php
   labels:
     app: php
@@ -91,7 +91,7 @@ spec:
     matchLabels:
       app: php
   template:
-    metadate:
+    metadata:
       labels:
         app: php
     spec:

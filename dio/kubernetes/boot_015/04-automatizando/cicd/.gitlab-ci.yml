@@ -16,13 +16,35 @@ build_images:
     - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
   
   script:
-    - dcoker build -t pedroheeger/boot015_app-cicd:1.0 app/.
+    - docker build -t pedroheeger/boot015_app-cicd:1.0 app/.
     - docker push pedroheeger/boot015_app-cicd:1.0
 
 deploy:
   stage: deploy
 
   script:
+    # - apk add --no-cache curl
+    - apt-get install -y ca-certificates curl gnupg
+    - install -m 0755 -d /etc/apt/keyrings
+    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    - chmod a+r /etc/apt/keyrings/docker.gpg
+    - echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$UBUNTU_CODENAME")" stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+    - echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$UBUNTU_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+    - apt-get update -y
+    - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    - usermod -aG docker ${username}
+    - newgrp docker
+    - systemctl restart docker
+
+    - curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    - chmod +x kubectl
+    - mv kubectl /usr/local/bin/
+
+    - curl -LO "https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb"
+    - dpkg -i minikube_latest_amd64.deb
+    - minikube start
+
     - kubectl config use-context minikube
     - kubectl apply -f deployment.yml
-    - kubectl set image deployment/your-deployment-name your-container-name=pedroheeger/boot015_app-cicd:1.0
+    - minikube service app-service --url
+    # - kubectl set image deployment/your-deployment-name your-container-name=pedroheeger/boot015_app-cicd:1.0

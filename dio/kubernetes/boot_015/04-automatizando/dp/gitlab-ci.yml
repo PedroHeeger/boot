@@ -16,7 +16,7 @@ build_images:
     - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
   
   script:
-    - dcoker build -t pedroheeger/boot015_dp-app:1.0 app/.
+    - docker build -t pedroheeger/boot015_dp-app:1.0 app/.
     - docker push pedroheeger/boot015_dp-app:1.0
 
 deploy:

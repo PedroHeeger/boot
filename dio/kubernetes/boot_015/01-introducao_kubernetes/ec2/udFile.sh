@@ -313,21 +313,21 @@ sudo systemctl enable apache2
 
 
 
-echo "***********************************************"
-echo "ORACLE VM VIRTUAL BOX INSTALLATION"
+# echo "***********************************************"
+# echo "ORACLE VM VIRTUAL BOX INSTALLATION"
 
-echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Atualizando os pacotes"
-sudo apt-get update -y
+# echo "-----//-----//-----//-----//-----//-----//-----"
+# echo "Atualizando os pacotes"
+# sudo apt-get update -y
 
-echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Autorizando os termos"
-echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
+# echo "-----//-----//-----//-----//-----//-----//-----"
+# echo "Autorizando os termos"
+# echo virtualbox-ext-pack virtualbox-ext-pack/license select true | sudo debconf-set-selections
 
-echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Instalando o pacote"
-sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms
+# echo "-----//-----//-----//-----//-----//-----//-----"
+# echo "Instalando o pacote"
+# sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms
 
-echo "-----//-----//-----//-----//-----//-----//-----"
-echo "Adicionando o usuário ao grupo"
-sudo usermod -aG vboxusers $USER
+# echo "-----//-----//-----//-----//-----//-----//-----"
+# echo "Adicionando o usuário ao grupo"
+# sudo usermod -aG vboxusers $USER
