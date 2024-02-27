@@ -1,60 +1,72 @@
-# DB: PERSISTENT VOLUME (GCP)
+# DB: PERSISTENT VOLUME CLAIM (GCP)
 # apiVersion: v1
 # kind: PersistentVolumeClaim
-# metadate:
+# metadata:
 #   name: mysql-dados
 # spec:
-#   accesModes:
+#   accessModes:
 #     - ReadWriteOnce
 #   resources:
 #     requests:
 #       storage: 10Gi
-#     storageClassName: standard-rwo
+#   storageClassName: standard-rwo
 
-# DB: PERSISTENT VOLUME
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: mysql-dados
-  labels:
-    type: mysql-dados
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 100Mi
-  accessModes:
-    - ReadWriteOnce
-  hostPath: 
-    path: /meubanco/
-
----
-
-# DB: PERSISTENT VOLUME CLAIM
+# DB: PERSISTENT VOLUME CLAIM (AWS)
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-dados
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 1Gi
+  storageClassName: gp2
+  volumeName: mysql-dados
+
+# # DB: PERSISTENT VOLUME
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: mysql-dados
+#   labels:
+#     type: mysql-dados
+# spec:
+#   storageClassName: manual
+#   capacity:
+#     storage: 100Mi
+#   accessModes:
+#     - ReadWriteOnce
+#   hostPath: 
+#     path: /meubanco/
+
+# # DB: PERSISTENT VOLUME CLAIM
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: mysql-dados
+# spec:
+#   storageClassName: manual
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 100Mi
 
 ---
 
 # DB: DEPLOYMENT
 apiVersion: apps/v1
 kind: Deployment
-metadate:
+metadata:
   name: mysql
 spec:
   selector:
     matchLabels:
       app: mysql
   template:
-    metadate:
+    metadata:
       labels:
         app: mysql
     spec:
@@ -91,7 +103,7 @@ spec:
 # BACK-END: DEPLOYMENT
 apiVersion: apps/v1
 kind: Deployment
-metadate:
+metadata:
   name: app
   labels:
     app: app
@@ -101,7 +113,7 @@ spec:
     matchLabels:
       app: app
   template:
-    metadate:
+    metadata:
       labels:
         app: app
     spec:

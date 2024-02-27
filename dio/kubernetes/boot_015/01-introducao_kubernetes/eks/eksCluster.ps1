@@ -6,7 +6,7 @@ Write-Output "CLUSTER CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$clusterName = "clusterEKSTest1"
+$clusterName = "clusterEKSBoot015"
 $eksRoleName = "eksClusterRole"
 $sgName = "default"
 $aZ1 = "us-east-1a"
@@ -24,7 +24,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o cluster de nome $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", 0
+    $excludedStatus = "ACTIVE", "CREATING"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe o cluster de nome $clusterName"
@@ -65,7 +65,7 @@ Write-Output "CLUSTER EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$clusterName = "clusterEKSTest1"
+$clusterName = "clusterEKSBoot015"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -79,7 +79,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o cluster de nome $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", 0
+    $excludedStatus = "ACTIVE", "CREATING"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os clusters criados"

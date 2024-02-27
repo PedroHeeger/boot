@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deploy_aws
+
+build_images:
+  stage: build
+  image: docker:20.10.16
+
+  services:
+    - docker:20.10.16-dind
+
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+
+  before_script:
+    - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+  
+  script:
+    - docker build -t pedroheeger/boot015_dp-app:1.0 app/.
+    - docker push pedroheeger/boot015_dp-app:1.0
+
+deploy:
+  stage: deploy_aws
+
+  script:
+    # Instalando o AWS CLI
+    - apt-get update -qy
+    - apt-get install -y awscli
+
+    # Instalando o Kubectl
+    - curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    - chmod +x kubectl
+    - mv kubectl /usr/local/bin/
+
+    # Configurando as credenciais e o kubectl
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set default.region us-east-1
+    - aws eks update-kubeconfig --name clusterEKSBoot015
+    # - aws eks update-kubeconfig --name clusterEKSBoot015 --role-arn arn:aws:iam::001727357081:role/eksClusterRole
+
+    # Aplicando os recursos no cluster Kubernetes
+    - kubectl apply -f ./secrets.yml
+    - kubectl apply -f ./deployment.yml
+    - kubectl apply -f ./service.yml
+    # - kubectl set image deployment/app app=pedroheeger/boot015_dp-app:1.0

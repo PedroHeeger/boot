@@ -6,7 +6,7 @@ Write-Output "NODE GROUP CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$clusterName = "clusterEKSTest1"
+$clusterName = "clusterEKSBoot015"
 $nodeGroupName = "nodeGroupTest1"
 $eksNodeGroupRoleName = "eksEC2Role"
 $amiType = "AL2_x86_64"
@@ -30,7 +30,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0
+    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Já existe o node group de nome $nodeGroupName no cluster $clusterName"
@@ -70,7 +70,7 @@ Write-Output "NODE GROUP EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$clusterName = "clusterEKSTest1"
+$clusterName = "clusterEKSBoot015"
 $nodeGroupName = "nodeGroupTest1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -85,7 +85,7 @@ if ($resposta.ToLower() -eq 'y') {
 
     Write-Output "-----//-----//-----//-----//-----//-----//-----"
     Write-Output "Verificando se existe o node group de nome $nodeGroupName no cluster $clusterName"
-    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED", 0
+    $excludedStatus = "ACTIVE", "CREATING", "UPDATING", "DELETE_FAILED"
     if ($condition -in $excludedStatus) {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando todos os node groups do cluster $clusterName"

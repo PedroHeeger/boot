@@ -23,28 +23,7 @@ deploy:
   stage: deploy
 
   script:
-    # - apk add --no-cache curl
-    - apt-get install -y ca-certificates curl gnupg
-    - install -m 0755 -d /etc/apt/keyrings
-    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    - chmod a+r /etc/apt/keyrings/docker.gpg
-    - echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$UBUNTU_CODENAME")" stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-    - echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$UBUNTU_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-    - apt-get update -y
-    - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-    - usermod -aG docker ${username}
-    - newgrp docker
-    - systemctl restart docker
-
-    - curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-    - chmod +x kubectl
-    - mv kubectl /usr/local/bin/
-
-    - curl -LO "https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb"
-    - dpkg -i minikube_latest_amd64.deb
-    - minikube start
-
-    - kubectl config use-context minikube
-    - kubectl apply -f deployment.yml
-    - minikube service app-service --url
-    # - kubectl set image deployment/your-deployment-name your-container-name=pedroheeger/boot015_app-cicd:1.0
+    - echo "$KEYPAIR_CONTENT" > key.pem
+    - chmod 600 key.pem
+    - ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@54.227.152.137 "kubectl apply -f /home/ubuntu/cicd/deployment.yml"
+    - ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@54.227.152.137 "if lsof -i :8080 > /dev/null 2>&1; then echo "A porta 8080 já está em uso!"; else nohup kubectl port-forward --address 0.0.0.0 service/app-service 8080:80 > /dev/null 2>&1 & disown; fi"
