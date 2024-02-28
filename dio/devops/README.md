@@ -10,4 +10,4 @@ This folder refers to all the courses I took on the Digital Innovation One (DIO)
 
 ### Bootcamps:
 - <a href="./boot_017/">boot_017 (Formação DevOps Fundamentals)   <img src="./boot_017/0-aux/logo_boot.png" alt="boot_017" width="auto" height="25"></a>
-- <a href="./boot_020/">boot_020 (Jornada DevOps com AWS - Impulso)   <img src="./boot_020/0-aux/logo_boot.png" alt="boot_020" width="auto" height="25"></a>
+- <a href="./boot_020/">boot_020 (Jornada DevOps com AWS - Impulso)   <img src="./boot_020/0-aux/logo_boot.webp" alt="boot_020" width="auto" height="25"></a>
