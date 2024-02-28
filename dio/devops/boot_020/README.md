@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">devops   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_020 (Jornada DevOps com AWS - Impulso)   <img src="./0-aux/logo_boot.webp" alt="boot_020" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu//development/devops/(24-04-23)_Cert_Formacao_DevOps_Fundamentals_PH_DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/development/devops/(24-02-28)_Cert_Jornada_DevOps...AWS-Impulso_PH_DIO.pdf">Certificate</a>
 
 ---
 
