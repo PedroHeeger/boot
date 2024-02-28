@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">kubernetes   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="kubernetes" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_015 (Formação Kubernetes Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_015" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/distributed_computing/kubernetes/(24-02-20)_Formacao_Kubernetes_Fundamentals_PH_DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu//development/devops/(24-04-23)_Cert_Formacao_DevOps_Fundamentals_PH_DIO.pdf">Certificate</a>
 
 ---
 
