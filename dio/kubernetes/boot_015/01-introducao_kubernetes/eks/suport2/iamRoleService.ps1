@@ -79,7 +79,7 @@ if ($resposta.ToLower() -eq 'y') {
         if ($null -ne $attachedPolicies -and $attachedPolicies -ne "") {
           Write-Output "-----//-----//-----//-----//-----//-----//-----"
           Write-Output "Iterando na lista de policies"
-          foreach ($policyArn in $attachedPolicies.Split("`n")) {
+          foreach ($policyArn in $attachedPolicies.Split()) {
               if ($policyArn -ne "") {
                 Write-Output "-----//-----//-----//-----//-----//-----//-----"
                 Write-Output "Extraindo o nome da policy vinculada a role"
