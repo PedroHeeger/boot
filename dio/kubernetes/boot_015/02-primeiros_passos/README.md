@@ -20,8 +20,8 @@ This folder refers to Module 2 **Primeiros Passos com o Kubernetes** from bootca
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Linux Distribution:
   - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
-- Virtualization: 
-  - Oracle VM VirtualBox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
+- Cloud:
+  - Amazon Web Services (AWS)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Amazon Elastic Compute Cloud (EC2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2.svg" alt="aws_ec2" width="auto" height="25">
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
@@ -211,6 +211,3 @@ Com o comando `kubectl port-forward pod/app-html-deployment-75d4bb54b-4z6nd 8080
 </figure></div><br>
 
 Para remover um port-forward, se ele estivesse em primeiro plano, utilizava o atalho `Ctrl + C`, caso estivesse em segundo plano, com o comando `sudo lsof -i :8080` verificava qual era o PID do processo que que utilizava a porta `8080` e então executava o comando `sudo kill -9 167552`.
-
-
-<!-- Para que a aplicação fosse de fato acessada externamente pelo navegador da maquina física, era necessário alterar esse tipo de porta para `nodePort`, fixando uma porta nos nós do cluster onde a aplicação rodaria. Também e principalmente, era preciso realizar um port-foward entre uma porta da instância do EC2 (host) e a porta fixada do nó do cluster para direcionar o tráfego do cluster para instância EC2 e assim acessá-la externamente pelo navegador da maquina física. Entretanto, esses assuntos foram abordados no terceiro módulo do bootcamp. -->
