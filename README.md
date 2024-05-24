@@ -10,3 +10,4 @@ To understand the organization of my repositories see item 3 of my main reposito
 
 ### Platform:
 - <a href="./dio">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>
+- <a href="./edn">edn   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/edn.png" alt="edn" width="auto" height="25"></a>
