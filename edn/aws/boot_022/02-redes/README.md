@@ -39,11 +39,11 @@ This folder refers to Module 2 **Redes** from bootcamp [**Bootcamp AWS re/Start-
 
 ---
 
-### Bootcamp Module 3 Structure
+### Bootcamp Module 2 Structure
 
-1. <a name="item1">Redes</a><br>
-  1.1. <a href="#item1.1">Redes na Nuvem AWS</a><br>
-  1.2. <a href="#item1.2">267-[NF]-Lab - Criar a sua VPC e iniciar um servidor Web</a><br>
+2. <a name="item2">Redes</a><br>
+  2.1. <a href="#item2.1">Redes na Nuvem AWS</a><br>
+  2.2. <a href="#item2.2">267-[NF]-Lab - Criar a sua VPC e iniciar um servidor Web</a><br>
 
 ---
 

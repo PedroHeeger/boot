@@ -18,17 +18,15 @@ This folder refers to Module 1 **Introdução ao Cloud Foundations** from bootca
   - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
 - Linux Distribution: 
-  - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
+  - Amazon Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/amazon_linux.png" alt="amazon_linux" width="auto" height="25">
+- Virtualization: 
+  - Vocareum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/vocareum.png" alt="vocareum" width="auto" height="25">
 - Cloud:
   - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
-  - Amazon API Gateway   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_api_gateway.svg" alt="aws_api_gateway" width="auto" height="25">
-  - Amazon DynamoDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_dynamodb.svg" alt="aws_dynamodb" width="auto" height="25">
   - Amazon Elastic Compute Cloud (EC2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2.svg" alt="aws_ec2" width="auto" height="25">
   - Amazon Simple Storage Service (S3)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_s3.svg" alt="aws_s3" width="auto" height="25">
-  - AWS CloudFormation   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cloudformation.svg" alt="aws_cloudformation" width="auto" height="25">
   - AWS Identity and Access Management (IAM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_iam.svg" alt="aws_iam" width="auto" height="25">
-  - AWS Lambda   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_lambda.svg" alt="aws_lambda" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
@@ -283,35 +281,33 @@ A tarefa 2 consistiu no monitoramento da instância, verificando o status dela e
     <figcaption>Imagem 06.</figcaption>
 </figure></div><br>
 
-Na tarefa 3, o objetivo foi atualizar o grupo de segurança criando uma nova regra de entrada para liberar o acesso a qualquer faixa de IP `0.0.0.0/0` a porta `80` do protocolo `TCP` que é a porta que o protocolo `HTTP` utiliza para se comunicar. Dessa forma, foi possível visualizar pelo navegador de internet da maquina física **Windows**, a página criada pelo servidor web **Apache HTTP (Httpd)**, conforme ilustrado na imagem 06 abaixo. A imagem 07 mostra a regra de entrada criada no grupo de segurança vinculado a essa instância.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img06.png" alt="img06"><br>
-    <figcaption>Imagem 06.</figcaption>
-</figure></div><br>
+Na tarefa 3, o objetivo foi atualizar o grupo de segurança criando uma nova regra de entrada para liberar o acesso a qualquer faixa de IP `0.0.0.0/0` a porta `80` do protocolo `TCP` que é a porta que o protocolo `HTTP` utiliza para se comunicar. Dessa forma, foi possível visualizar pelo navegador de internet da maquina física **Windows**, a página criada pelo servidor web **Apache HTTP (Httpd)**, conforme ilustrado na imagem 07 abaixo. A imagem 08 mostra a regra de entrada criada no grupo de segurança vinculado a essa instância.
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img07.png" alt="img07"><br>
     <figcaption>Imagem 07.</figcaption>
 </figure></div><br>
 
-Na tarefa 4 foi realizado o redimensionamento da instância tanto do tipo da instância, alterando de `t3.micro` para `t3.small`, quanto do volume do **Amazon EBS**, modificando para `10 Gb` do mesmo tipo, o `gp2`. Contudo, para realizar essas alterações foi preciso interromper a instância antes e então, fazer as modificações. Após isso, a instância foi iniciada já com as modificações. As imagens 08 e 09 mostram as alterações realizadas do tipo da instância e do volume de armazenamento.
-
 <div align="Center"><figure>
     <img src="../0-aux/md1-img08.png" alt="img08"><br>
     <figcaption>Imagem 08.</figcaption>
 </figure></div><br>
 
-Na tarefa 5, o objetivo foi apenas verificar o limite do número de instâncias que pode ser iniciada na região atual `us-east-2` (Oregon), conforme apresentado na imagem 09.
+Na tarefa 4 foi realizado o redimensionamento da instância tanto do tipo da instância, alterando de `t3.micro` para `t3.small`, quanto do volume do **Amazon EBS**, modificando para `10 Gb` do mesmo tipo, o `gp2`. Contudo, para realizar essas alterações foi preciso interromper a instância antes e então, fazer as modificações. Após isso, a instância foi iniciada já com as modificações. A imagem 09 mostram as alterações realizadas do tipo da instância e do volume de armazenamento.
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img09.png" alt="img09"><br>
     <figcaption>Imagem 09.</figcaption>
 </figure></div><br>
 
-Por fim, a tarefa 6 foi realizar o encerramento da instância, no qual foi necessário primeiro remover a proteção contra encerramento definada nas configurações, para depois seguir com o encerramento da instância. A imagem 10 mostra a instância em estado de encerramento.
+Na tarefa 5, o objetivo foi apenas verificar o limite do número de instâncias que pode ser iniciada na região atual `us-east-2` (Oregon). Por fim, a tarefa 6 foi realizar o encerramento da instância, no qual foi necessário primeiro remover a proteção contra encerramento definada nas configurações, para depois seguir com o encerramento da instância. A imagem 10 mostra a instância em estado de encerramento. Enquanto a imagem 11 exibe a tentativa de encerramento quando havia a proteção contra encerramento. Note que um erro foi mostrado.
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img10.png" alt="img10"><br>
     <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
 </figure></div><br>

@@ -33,26 +33,38 @@
 
 ### Bootcamp Structure
 1. Introdução ao Cloud Foundations   
-  1.1. 1-[CF]-Lab - Sandbox Environment   
-  1.2. Boas-vindas ao AWS re/Start   
-  1.3. O que é computação em nuvem?   
-  1.4. [5-[CF]-KC - O que é computação em nuvem?]()   
-  1.5. Vantagens da computação em nuvem   
+  1.1. [1-[CF]-Lab - Sandbox Environment]()   
+  1.2. [Boas-vindas ao AWS re/Start]()   
+  1.3. [O que é computação em nuvem?]()   
+  1.4. 5-[CF]-KC - O que é computação em nuvem?   
+  1.5. [Vantagens da computação em nuvem]()   
+  1.6. 208-[CF]-KC - Vantagens da computação em nuvem   
+  1.7. [O que é a AWS?]()   
+  1.8. 6-[CF]-KC - O que é a Amazon Web Services?   
+  1.9. [Definição de preços da AWS]()   
+  1.10. 7-[CF]-KC - Fundamentos da definição de preço da AWS   
+  1.11. [Visão geral da infraestrutura da AWS]()   
+  1.12. 8-[CF] -KC — Visão geral da infraestrutura da AWS   
+  1.13. [Serviços e categorias da AWS]()   
+  1.14. 209-[CF]- KC - Serviços e categorias da AWS   
+  1.15. [Modelo de responsabilidade compartilhada da AWS]()   
+  1.16. 9- [CF] -KC - Modelo de responsabilidade compartilhada   
+  1.17. [S3 da Amazon]()   
+  1.18. [Demonstração do S3 da AWS]()   
+  1.19. 10- [CF] -KC — Introdução ao Amazon S3   
+  1.20. [Elastic Compute da AWS]()   
+  1.21. [Demonstração do EC2 da AWS]()   
+  1.22. [11-[CF]-Lab - Introdução ao Amazon EC2]()   
+  1.23. 12- [CF] -KC — Introdução ao Amazon EC2   
+  1.24. [Boas-vindas à família do AWS re/Start! -2]()   
 
-2. Conhecendo o Sistema Operacional Linux   
-  2.1. [Introdução ao Sistema Operacional Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.1)   
-  2.2. [Instalando o Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.2)   
-  2.3. [Acesso Remoto a Máquinas Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.3)   
-  2.4. [Manipulando Arquivos no Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.4)   
-  2.5. [Gerenciando Usuários no Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.5)   
-  2.6. [Infraestrutura como Código: Script de Criação de Estrutura de Usuários, Diretórios e Permissões](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.9)   
-  2.7. [Gerenciamento de Pacotes Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.6)   
-  2.8. [Gerenciamento de Discos Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.7)   
-  2.9. [Copiando Arquivos e Manipulando Processos](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.8)   
-  2.10. [Servidores de Arquivos com Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/03-servidor_linux#item3.1)   
-  2.11. [Criando um Servidor Web com Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/03-servidor_linux#item3.2)   
-  2.12. [Servidor de Banco de Dados com Linux](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/03-servidor_linux#item3.3)   
-  2.13. [Infraestrutura como Código - Script de Provisionamento de um Servidor Web (Apache)](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/03-servidor_linux#item3.4)
+
+
+
+
+2. Redes   
+  2.1. [Redes na Nuvem AWS](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.1)   
+  2.2. [267-[NF]-Lab - Criar a sua VPC e iniciar um servidor Web](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.2)   
 
 3. [AWS Foundations](./03-aws_foundation/)   
   3.1. [Primeiros Passos com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.1)   
