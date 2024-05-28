@@ -239,9 +239,12 @@ Na categoria de máquinas virtuais, a **AWS** oferece dois serviços principais.
 <a name="item1.21"><h4>1.21 Demonstração do EC2 da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
 
+
+
+
 <a name="item1.22"><h4>1.22 11-[CF]-Lab - Introdução ao Amazon EC2</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
-Este laboratório apresentou uma visão geral básica de como executar, redimensionar, gerenciar e monitorar uma instância do **Amazon EC2**. No sandbox **Vocareum**, a primeira tarefa foi criar uma instância do serviço **Amazon Elastic Compute Cloud (EC2)** na cloud da **AWS**, tendo essa instância proteção contra encerramento e o script **Bash** abaixo em user data para instalação e configuração de um servidor web **Apache HTTP (Httpd)**. A proteção contra encerramento impede que a instância seja encerrada acidentalmente. Essa instância possuiu a imagem de maquina (AMI) `ami-06efb824bfe850db6` (mazon Linux 2 Kernel 5.10 AMI 2.0.20240521.0 x86_64 HVM gp2) e o tipo dela foi `t3.micro`. A rede virtual vinculada a essa maquina foi a `Lab VPC`, construída automaticamente ao iniciar o laboratório pelo **AWS CloudFormation**. O armazenamento escolhido foi o padrão do **Amazon Elastic Block Storage (EBS)** que é `8 Gb` do tipo `gp2`. Também foi adicionada uma tag cuja chave foi `Name` e valor `Web Server`. Um grupo de segurança foi criado sendo o nome `Web Server security group` e a descrição `Security group for my web server`. Como neste laboratório não houve acesso remoto a instância, não foi necessário criar uma par de chaves, portanto foi procedido sem um par de chaves.
+Este laboratório apresentou uma visão geral básica de como executar, redimensionar, gerenciar e monitorar uma instância do **Amazon EC2**. No sandbox **Vocareum**, a primeira tarefa foi criar uma instância do serviço **Amazon Elastic Compute Cloud (EC2)** na cloud da **AWS**, tendo essa instância proteção contra encerramento e o script **Bash** abaixo em user data para instalação e configuração de um servidor web **Apache HTTP (Httpd)**. A proteção contra encerramento impedia que a instância seja encerrada acidentalmente. Essa instância possuiu a imagem de maquina (AMI) `ami-06efb824bfe850db6` (Amazon Linux 2 Kernel 5.10 AMI 2.0.20240521.0 x86_64 HVM gp2) e o tipo dela foi `t3.micro`. A rede virtual vinculada a essa maquina foi a `Lab VPC`, construída automaticamente ao iniciar o laboratório pelo **AWS CloudFormation**. O armazenamento escolhido foi o padrão do **Amazon Elastic Block Storage (EBS)** que é `8 Gb` do tipo `gp2`. Também foi adicionada uma tag cuja chave foi `Name` e valor `Web Server`. Um grupo de segurança foi criado sendo o nome `Web Server security group` e a descrição `Security group for my web server`. Como neste laboratório não houve acesso remoto a instância, não foi necessário criar uma par de chaves, portanto foi procedido sem um par de chaves.
 
 ```bash
 #!/bin/bash
@@ -251,7 +254,7 @@ systemctl start httpd
 echo '<html><h1>Hello From Your Web Server!</h1></html>' > /var/www/html/index.html
 ```
 
-As duas imagens a seguir mostra a configuração da instância e a instância ativa.
+As duas imagens a seguir mostra algumas configurações da instância e a instância ativa.
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img02.png" alt="img02"><br>
@@ -263,7 +266,7 @@ As duas imagens a seguir mostra a configuração da instância e a instância at
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
-A tarefa 2 consistiu no monitoramento da instância, verificando o status dela e as métricas do **Amazon CloudWatch**, conforme exibido na imagem 04 e 05 a seguir. Também foi utilizado o recurso `Get Instance Screenshot` que pode ser utilizado para identificar algum problema com a instância quando não é possível realizar acessá-la remotamente.
+A tarefa 2 consistiu no monitoramento da instância, verificando o status dela e as métricas do **Amazon CloudWatch**, conforme exibido na imagem 04 e 05 a seguir. Também foi utilizado o recurso `Get Instance Screenshot` que pode ser utilizado para identificar algum problema com a instância quando não é possível realizar acessá-la remotamente, apresentado na imagem 06.
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img04.png" alt="img04"><br>
@@ -276,8 +279,8 @@ A tarefa 2 consistiu no monitoramento da instância, verificando o status dela e
 </figure></div><br>
 
 <div align="Center"><figure>
-    <img src="../0-aux/md1-img05.png" alt="img05"><br>
-    <figcaption>Imagem 05.</figcaption>
+    <img src="../0-aux/md1-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
 </figure></div><br>
 
 Na tarefa 3, o objetivo foi atualizar o grupo de segurança criando uma nova regra de entrada para liberar o acesso a qualquer faixa de IP `0.0.0.0/0` a porta `80` do protocolo `TCP` que é a porta que o protocolo `HTTP` utiliza para se comunicar. Dessa forma, foi possível visualizar pelo navegador de internet da maquina física **Windows**, a página criada pelo servidor web **Apache HTTP (Httpd)**, conforme ilustrado na imagem 06 abaixo. A imagem 07 mostra a regra de entrada criada no grupo de segurança vinculado a essa instância.
