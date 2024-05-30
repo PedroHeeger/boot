@@ -32,7 +32,7 @@
 ---
 
 ### Bootcamp Structure
-1. Introdução ao Cloud Foundations   
+1. [Introdução ao Cloud Foundations](./01-cloud_foundations/)   
   1.1. [1-[CF]-Lab - Sandbox Environment]()   
   1.2. [Boas-vindas ao AWS re/Start]()   
   1.3. [O que é computação em nuvem?]()   
@@ -58,16 +58,12 @@
   1.23. 12- [CF] -KC — Introdução ao Amazon EC2   
   1.24. [Boas-vindas à família do AWS re/Start! -2]()   
 
-
-
-
-
-2. Redes   
+2. [Redes](./02-redes/)   
   2.1. [Redes na Nuvem AWS](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.1)   
   2.2. [267-[NF]-Lab - Criar a sua VPC e iniciar um servidor Web](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.2)   
 
-3. [AWS Foundations](./03-aws_foundation/)   
-  3.1. [Primeiros Passos com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.1)   
+3. [Introdução à segurança](./03-aws_foundation/)   
+  3.1. [Introdução à segurança](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.1)   
   3.2. [AWS Official Content - Introdução à Amazon Web Services (AWS)](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.2)   
   3.3. [Introdução ao Conceito de Cloud](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.3)   
   3.4. [Infraestrutura Global AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.4)   
