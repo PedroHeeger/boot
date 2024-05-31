@@ -4,21 +4,18 @@
 ### Platform: <a href="../../../">edn   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/edn.png" alt="edn" width="auto" height="25"></a> 
 ### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_022 (Bootcamp AWS re/Start-Cloud Computing)   <img src="../0-aux/logo_boot.png" alt="boot_022" width="auto" height="25"></a>
-### Module: 3. Redes 
+### Module: 3. Introdução à segurança 
 
 ---
 
-This folder refers to Module 3 **Redes** from bootcamp [**Bootcamp AWS re/Start-Cloud Computing**](../).
+This folder refers to Module 3 **Introdução à segurança** from bootcamp [**Bootcamp AWS re/Start-Cloud Computing**](../).
 
 ### Theme:
 - Cloud Computing
 
 ### Used Tools:
 - Operating System (OS): 
-  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Linux Distribution: 
-  - Amazon Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/amazon_linux.png" alt="amazon_linux" width="auto" height="25">
 - Virtualization: 
   - Vocareum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/vocareum.png" alt="vocareum" width="auto" height="25">
 - Cloud:
@@ -44,13 +41,26 @@ This folder refers to Module 3 **Redes** from bootcamp [**Bootcamp AWS re/Start-
 
 ### Bootcamp Module 3 Structure
 
-3. <a name="item2">Introdução à segurança</a><br>
+3. <a name="item3">Introdução à segurança</a><br>
   3.1. <a href="#item3.1">Introdução à segurança</a><br>
   3.2. 282-[SF]-KC - Introdução à segurança<br>
   3.3. <a href="#item3.3">Security groups da AWS</a><br>
   3.4. <a href="#item3.4">AWS IAM</a><br>
-  3.5. <a href="#item3.5">279-[SF]-Lab - Introdução ao gerenciamento de identidade e acesso (IAM)</a><br>
-  3.6. 288-[SF]-KC - Prevenção: Gerenciamento de identidades<br>
+  3.5. <a href="#item3.5">Demonstração do AWS IAM</a><br>
+  3.6. <a href="#item3.6">279-[SF]-Lab - Introdução ao gerenciamento de identidade e acesso (IAM)</a><br>
+  3.7. 288-[SF]-KC - Prevenção: Gerenciamento de identidades<br>
+  3.8. <a href="#item3.8">AWS Cloudtrail</a><br>
+  3.9. 291-[SF]-KC - AWS CloudTrail<br>
+  3.10. <a href="#item3.10">AWS Config</a><br>
+  3.11. 292-[SF]-KC - AWS Config<br>
+  3.12. <a href="#item3.12">AWS Trusted Advisor</a><br>
+  3.13. 295-[SF]-KC - Trusted Advisor<br>
+  3.14. <a href="#item3.14">Práticas recomendadas de segurança</a><br>
+  3.15. 296-[SF]-KC - Práticas recomendadas de segurança para a criação de conta<br>
+  3.16. <a href="#item3.16">Conformidade de segurança da AWS</a><br>
+  3.17. <a href="#item3.17">Recursos de segurança da AWS</a><br>
+  3.18. 297-[SF]-KC - Programa de conformidade de segurança da AWS<br>
+  3.19. 298-[SF]-KC - Recursos de segurança da AWS<br>
 
 ---
 
@@ -145,23 +155,72 @@ Por outro lado, as políticas baseadas em recursos são documentos de política 
 
 
 
+
+
+
 <a name="item3.6"><h4>3.6 279-[SF]-Lab - Introdução ao gerenciamento de identidade e acesso (IAM)</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
 
-
-
-
-
-
-
-
-
-
+Neste laboratório foi utilizado o serviço **AWS Identity Access Management** para verificar os usuários e grupos já construídos pelo lab, para criar uma política de senha para os usuários, para inserir os usuários aos seus respectivos grupos e posteriormente verificar o acesso de cada usuário aos serviços permitidos e não permitidos. Na primeira tarefa, a política de senha para a conta da **AWS** foi editada, aplicando-se ao usuário raiz da conta, que era um usuário federado, e todos os usuários do IAM desta mesma conta. Essa política de senha possuía um comprimento mínimo para a senha de 10 caracteres, a caixa de expiração da senha requer redefinição do administrador foi desmarcada e todas as outras marcadas, a expiração da senha foi mantida o padrão de 90 dias, e em evitar o reuso de senha foi mantida a opção padrão de 5 senhas. Na imagem 02 abaixo é mostrada a política de senha criada.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
+Na tarefa 2, o objetivo foi investigar detalhadamente os usuários e grupos do IAM criados pelo laboratório, analisando as políticas atreladas a esses usuários e grupos. Os usuários criados foram: `user-1`, `user-2` e `user-3`. Todos esses não tinham nenhuma política anexada e não faziam parte de nenhum grupo. Os grupos construídos foram: `EC2-Admin`, `EC2-Support` e `S3-Support`, que possuíam as respectivas políticas, `EC2-Admin-Policy`, `AmazonEC2ReadOnlyAccess` e `AmazonS3ReadOnlyAccess`. A primeira política era uma política customer inline (incorporada ao cliente), que é uma política atribuída a apenas um usuário ou grupo e é normalmente usada para aplicar permissões em situações pontuais. Esta permitia execução dos recursos do **Amazon Elastic Compute Cloud (Amazon EC)**. Já as outras duas eram políticas gerenciadas que permitiam apenas leitura dos recursos dos serviços **Amazon EC2** e **Amazon Simple Storage Service (Amazon S3)**. Nesta tarefa, essas políticas foram analisadas para verificar suas permissões e estrutura do JSON. As imagens 03 e 04 a seguir mostram a lista de usuários e grupos, respectivamente.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
+
+Na terceira tarefa, os usuários foram adicionados aos seus respectivos grupos de usuários. Então o `user-1` foi adicionado ao grupo `S3-Support`, o `user-2` ao grupo `EC2-Support` e o `user-3` ao grupo `EC2-Admin`. A imagem 05 evidencia os grupos cada um com um usuário.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
+
+Por fim, nesta última tarefa, foi acessado a conta de cada usuário do IAM através do link de login ou informando o ID do usuário raiz da conta. Em seguida, o nome do usuário do IAM e a senha de acesso desse usuário deveria ser informada. A senha de acesso de cada usuário foi fornecida pela plataforma do bootcamp, pois neste laboratório os usuários ja haviam sido criados. Esse procedimento foi feito em uma janela anônima do navegador, pois a janela normal já estava logada no usuário raiz da conta da **AWS** pela sandbox **Vocareum**. O primeiro acesso foi realizado com o usuário `user-1`, que possuía acesso de leitura ao serviço S3 e não possuía acesso ao serviço EC2, conforme apresentado nas imagens 06 e 07.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+Acessando com o `user-2`, o mesmo procedimento foi executado, porém este possuía acesso de leitura ao serviço EC2 e não possuía acesso ao serviço S3. As imagens 08 e 09 ilustram essa etapa. Neste caso, apesar de visualizar a instância do EC2, não foi possível interrompe-la, pois a permissão era de apenas leitura.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
+
+Já com o `user-3`, este possuía permissão de execução do EC2 e não possuía acesso ao S3, conforme evidenciado nas imagens 10 e 11. Aqui foi possível interromper a instâncias, pois havia permissão de execução.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
 
 <a name="item3.8"><h4>3.8 AWS Cloudtrail</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
 
@@ -227,18 +286,29 @@ Uma última prática é ativar um relatório de faturamento, como o **AWS Cost a
 
 <a name="item3.16"><h4>3.16 Conformidade de segurança da AWS</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
 
+De acordo com o modelo de responsabilidade compartilhada para segurança, tanto a **AWS** quanto seus clientes dividem o controle sobre o ambiente de TI. Isso implica que ambas as partes têm a responsabilidade conjunta de gerenciar esse ambiente. No âmbito desse modelo, a **AWS** é responsável por fornecer serviços dentro de um ambiente altamente seguro e controlado, além de disponibilizar diversos recursos de segurança para os clientes. Por sua vez, os clientes são responsáveis por configurar seus ambientes de TI de maneira segura e adequada às suas necessidades.
 
+A **AWS** comunica informações sobre seu ambiente de segurança e controle aos clientes de várias maneiras. A **AWS** obtém atestados independentes de terceiros e certificações do setor; publica informações sobre suas práticas de segurança e controle em whitepapers e no conteúdo do site; e fornece certificados, relatórios e outras documentações diretamente aos clientes da **AWS** sob acordos de confidencialidade (NDAs), conforme necessário. A **AWS** contrata órgãos de certificação externos e auditores independentes para fornecer aos clientes informações sobre as políticas, os processos e os controles estabelecidos e operados pela **AWS**.
 
+As certificações e atestados de conformidade da **AWS** são avaliados por auditores externos independentes, resultando em certificações, relatórios de auditoria ou atestados de conformidade. No que diz respeito às leis, regulamentações e privacidade, os clientes da **AWS** são responsáveis por garantir a conformidade com as leis e regulamentos de conformidade aplicáveis. A **AWS** oferece funcionalidades para auxiliar na conformidade do cliente, incluindo recursos de segurança, ferramentas de suporte e contratos legais, como o Acordo de Processamento de Dados da **AWS** e o Adendo de Associado Comercial. Os alinhamentos e frameworks de conformidade da **AWS** abrangem requisitos de segurança ou conformidade publicados para funções ou setores específicos. A **AWS** oferece funcionalidades como recursos de segurança e disponibiliza manuais de conformidade, documentos de mapeamento e whitepapers para apoiar esses programas.
 
+A **AWS** fornece informações sobre seu programa de conformidade e gestão de riscos para que os clientes possam integrar os controles da **AWS** em sua própria estrutura de governança. Essas informações auxiliam os clientes a documentar um framework completo de controle e governança, incluindo a **AWS** como um componente essencial. O programa de conformidade e riscos da **AWS** é composto por três elementos principais: Gerenciamento de riscos empresariais, Ambiente de controle e automação, e Segurança da informação.
 
+A **AWS** desenvolve um plano estratégico de negócios que inclui a identificação de riscos e a implementação de controles para mitigar ou gerenciar esses riscos. Esse plano estratégico é reavaliado pelo menos semestralmente. Os clientes da **AWS** são responsáveis por gerenciar esse processo em suas próprias áreas, identificando riscos e implementando medidas adequadas para mitigá-los. O ambiente de controle da **AWS** também passa por várias avaliações de risco internas e externas. A equipe de conformidade e segurança da **AWS** estabelece um framework e políticas de segurança da informação com base em padrões governamentais como COBIT (Control Objectives for Information and related Technology), AICPA (American Institute of Certified Public Accountants) e NIST (National Institute of Standards and Technology).
 
+A **AWS** mantém uma política de segurança robusta, oferece treinamento de segurança para seus funcionários e realiza análises de segurança de aplicativos. Essas análises avaliam a confidencialidade, integridade e disponibilidade dos dados, além de verificar a conformidade com a política de segurança da informação (SI). A segurança da **AWS** realiza verificações regulares de vulnerabilidades em todos os endereços IP públicos de endpoints de serviço, mas não nas interfaces de instância do Amazon EC2 dos clientes. Quando vulnerabilidades são identificadas, as partes apropriadas são notificadas para corrigi-las. Avaliações externas de ameaças e vulnerabilidades também são realizadas regularmente por empresas de segurança independentes, e os resultados são categorizados e apresentados à liderança da **AWS**. Essas verificações visam validar a integridade e viabilidade da infraestrutura da **AWS**, não substituindo as verificações de vulnerabilidades que os clientes devem realizar para atender aos seus próprios requisitos de conformidade. Os clientes podem solicitar permissão para realizar verificações de segurança em sua infraestrutura de nuvem, desde que essas verificações sejam limitadas às suas próprias instâncias e não violem a política de uso aceitável da **AWS**.
 
+A **AWS** gerencia um ambiente de controle abrangente que inclui políticas, processos e atividades de controle, utilizando diversos aspectos do ambiente de controle geral da Amazon. Esse ambiente de controle é fundamental para a entrega segura dos serviços da **AWS**, abrangendo as pessoas, os processos e a tecnologia necessários para garantir a eficácia operacional do framework de controle da **AWS**. A **AWS** integra controles específicos da nuvem, identificados pelos principais órgãos do setor de computação em nuvem, ao seu framework de controle. Além disso, a **AWS** monitora continuamente esses grupos do setor para incorporar práticas líderes e ajudar os clientes a gerenciar seus próprios ambientes de controle. 
+A **AWS** possui um programa formal de segurança da informação destinado a proteger a confidencialidade, integridade e disponibilidade dos sistemas e dados dos clientes. A **AWS** tem publicado um documento técnico de segurança que explica como ela auxilia os clientes na proteção de seus dados.
 
+Os clientes da **AWS** devem manter uma governança adequada em todo o ambiente de controle de TI, independentemente da forma como a TI é implementada. Isso envolve entender os objetivos e requisitos de conformidade exigidos, provenientes de fontes relevantes, e estabelecer um ambiente de controle que atenda a esses objetivos e requisitos. Além disso, é essencial compreender a validação necessária com base na tolerância ao risco da organização e verificar a eficácia operacional do ambiente de controle. A implantação na nuvem **AWS** oferece às empresas diversas opções para aplicar diferentes tipos de controles e métodos de verificação. Uma abordagem rigorosa de governança e conformidade por parte do cliente pode incluir os seguintes passos:
+- Analisar as informações da **AWS** juntamente com outras informações para obter uma compreensão abrangente de todo o ambiente de TI.
+- Documentar todos os requisitos de conformidade identificados durante a análise.
+- Projetar e implementar objetivos de controle destinados a cumprir os requisitos de conformidade empresarial.
+- Identificar e documentar os controles de terceiros relevantes para o ambiente.
+- Verificar se todos os objetivos de controle foram atendidos e se os controles principais foram projetados e estão funcionando efetivamente.
 
-
-
-
-
+Essas práticas ajudam a garantir que a governança e a conformidade sejam mantidas de forma consistente e eficiente em todo o ambiente de TI da organização. 
 
 <a name="item3.17"><h4>3.17 Recursos de segurança da AWS</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
 
