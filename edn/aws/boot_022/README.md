@@ -33,48 +33,55 @@
 
 ### Bootcamp Structure
 1. [Introdução ao Cloud Foundations](./01-cloud_foundations/)   
-  1.1. [1-[CF]-Lab - Sandbox Environment]()   
-  1.2. [Boas-vindas ao AWS re/Start]()   
-  1.3. [O que é computação em nuvem?]()   
+  1.1. [1-[CF]-Lab - Sandbox Environment](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.1)   
+  1.2. [Boas-vindas ao AWS re/Start](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.2)   
+  1.3. [O que é computação em nuvem?](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.3)   
   1.4. 5-[CF]-KC - O que é computação em nuvem?   
-  1.5. [Vantagens da computação em nuvem]()   
+  1.5. [Vantagens da computação em nuvem](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.5)   
   1.6. 208-[CF]-KC - Vantagens da computação em nuvem   
-  1.7. [O que é a AWS?]()   
+  1.7. [O que é a AWS?](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.7)   
   1.8. 6-[CF]-KC - O que é a Amazon Web Services?   
-  1.9. [Definição de preços da AWS]()   
+  1.9. [Definição de preços da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.9)   
   1.10. 7-[CF]-KC - Fundamentos da definição de preço da AWS   
-  1.11. [Visão geral da infraestrutura da AWS]()   
+  1.11. [Visão geral da infraestrutura da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.11)   
   1.12. 8-[CF] -KC — Visão geral da infraestrutura da AWS   
-  1.13. [Serviços e categorias da AWS]()   
+  1.13. [Serviços e categorias da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.13)   
   1.14. 209-[CF]- KC - Serviços e categorias da AWS   
-  1.15. [Modelo de responsabilidade compartilhada da AWS]()   
+  1.15. [Modelo de responsabilidade compartilhada da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.15)   
   1.16. 9- [CF] -KC - Modelo de responsabilidade compartilhada   
-  1.17. [S3 da Amazon]()   
-  1.18. [Demonstração do S3 da AWS]()   
+  1.17. [S3 da Amazon](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.17)   
+  1.18. [Demonstração do S3 da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.18)   
   1.19. 10- [CF] -KC — Introdução ao Amazon S3   
-  1.20. [Elastic Compute da AWS]()   
-  1.21. [Demonstração do EC2 da AWS]()   
-  1.22. [11-[CF]-Lab - Introdução ao Amazon EC2]()   
+  1.20. [Elastic Compute da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.20)   
+  1.21. [Demonstração do EC2 da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.21)   
+  1.22. [11-[CF]-Lab - Introdução ao Amazon EC2](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/01-cloud_foundations#item1.22)   
   1.23. 12- [CF] -KC — Introdução ao Amazon EC2   
   1.24. [Boas-vindas à família do AWS re/Start! -2]()   
 
 2. [Redes](./02-redes/)   
-  2.1. [Redes na Nuvem AWS](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.1)   
-  2.2. [267-[NF]-Lab - Criar a sua VPC e iniciar um servidor Web](https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003/02-linux#item2.2)   
+  2.1. [Redes na Nuvem AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/02-redes#item2.1)   
+  2.2. [267-[NF]-Lab - Criar a sua VPC e iniciar um servidor Web](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/02-redes#item2.2)   
 
 3. [Introdução à segurança](./03-aws_foundation/)   
-  3.1. [Introdução à segurança](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.1)   
-  3.2. [AWS Official Content - Introdução à Amazon Web Services (AWS)](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.2)   
-  3.3. [Introdução ao Conceito de Cloud](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.3)   
-  3.4. [Infraestrutura Global AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.4)   
-  3.5. [Computação em AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.5)   
-  3.6. [Introdução Prática a Computação em Nuvem Usando AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.6)   
-  3.7. [AWS Official Content - Introdução à Computação em Nuvem com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.7)   
-  3.8. [Redes em AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.8)   
-  3.9. [Armazenamento e Banco de Dados AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.9)   
-  3.10. [Imersão ao Ecossistema Cloud Data AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.10)   
-  3.11. [AWS Official Content - Armazenamento e Banco de Dados na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.11)   
-  3.12. [Infraestrutura Como Código com Serverless Framework na AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.12)   
+  3.1. [Introdução à segurança](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.1)   
+  3.2. 282-[SF]-KC - Introdução à segurança   
+  3.3. [Security groups da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.3)   
+  3.4. [AWS IAM](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.4)   
+  3.5. [Demonstração do AWS IAM](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.5)   
+  3.6. [279-[SF]-Lab - Introdução ao gerenciamento de identidade e acesso (IAM)](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.6)   
+  3.7. 288-[SF]-KC - Prevenção: Gerenciamento de identidades   
+  3.8. [AWS Cloudtrail](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.8)   
+  3.9. 291-[SF]-KC - AWS CloudTrail   
+  3.10. [AWS Config](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.10)   
+  3.11. 292-[SF]-KC - AWS Config   
+  3.12. [AWS Trusted Advisor](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.12)   
+  3.13. 295-[SF]-KC - Trusted Advisor   
+  3.14. [Práticas recomendadas de segurança](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.14)   
+  3.15. 296-[SF]-KC - Práticas recomendadas de segurança para a criação de conta   
+  3.16. [Conformidade de segurança da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.16) 
+  3.17. [Recursos de segurança da AWS](https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022/03-seguranca#item3.17) 
+  3.18. 297-[SF]-KC - Programa de conformidade de segurança da AWS   
+  3.19. 298-[SF]-KC - Recursos de segurança da AWS   
 
 4. [Segurança, Monitoramento e Suporte na AWS](./04-seguranca/)   
   4.1. [Segurança na Nuvem com AWS](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/04-seguranca#item4.1)   

@@ -65,7 +65,7 @@ This folder refers to Module 3 **Introdução à segurança** from bootcamp [**B
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre como funciona as redes na cloud da **AWS**, apresentando o serviço voltado para isso que é o **Amazon Virtual Private Cloud**. Também foi ensinado como construir uma VPC com sub-redes pública e privada, gateway de internet e NAT gateway, tabela de rotas, grupo de segurança e provisionar uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** nesta VPC, acessando ela posteriormente.
+O objetivo deste módulo do bootcamp foi introduzir os assuntos de conformidade e segurança na **AWS**, apresentandos serviços como **AWS Identity Access Management (AWS IAM)**, **AWS CloudTrail**, **AWS Config** e **AWS Trusted Advisor**. Também foi ensinado como gerenciar usuários, grupos e políticas através do **AWS IAM**. 
 
 ### Structure:
 A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
@@ -76,7 +76,7 @@ A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme f
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do bootcamp foi dividido em um curso e um laboratório. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em dez cursos, um laboratório e oito questionários. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item3.1"><h4>3.1 Introdução à segurança</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
 
