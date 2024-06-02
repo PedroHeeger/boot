@@ -1,0 +1,52 @@
+{
+    "ednProductCatalog": [
+      {
+        "PutRequest": {
+          "Item": {
+            "Id": {"S": "101"},
+            "Title": {"S": "Book 1"},
+            "ISBN": {"S": "111-1111111111"},
+            "Authors": {"SS": ["Author 1", "Author 2"]},
+            "Price": {"N": "20"},
+            "Category": {"S": "Fiction"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "Id": {"S": "102"},
+            "Title": {"S": "Book 2"},
+            "ISBN": {"S": "222-2222222222"},
+            "Authors": {"SS": ["Author 3"]},
+            "Price": {"N": "30"},
+            "Category": {"S": "Non-Fiction"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "Id": {"S": "103"},
+            "Title": {"S": "Book 3"},
+            "ISBN": {"S": "333-3333333333"},
+            "Authors": {"SS": ["Author 4"]},
+            "Price": {"N": "25"},
+            "Category": {"S": "Fiction"}
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "Id": {"S": "104"},
+            "Title": {"S": "Book 4"},
+            "ISBN": {"S": "444-4444444444"},
+            "Authors": {"SS": ["Author 5"]},
+            "Price": {"N": "15"},
+            "Category": {"S": "Non-Fiction"}
+          }
+        }
+      }
+    ]
+}
