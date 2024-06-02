@@ -24,7 +24,9 @@ This folder refers to Module 4 **Bases** from bootcamp [**Bootcamp AWS re/Start-
 - Cloud:
   - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
+  - Amazon DynamoDB   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_dynamodb.svg" alt="aws_dynamodb" width="auto" height="25">
   - Amazon Elastic Compute Cloud (EC2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2.svg" alt="aws_ec2" width="auto" height="25">
+  - Amazon Relational Database Service (RDS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_rds.svg" alt="aws_rds" width="auto" height="25">
   - Amazon Virtual Private Cloud (VPC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_vpc.svg" alt="aws_vpc" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -36,10 +38,16 @@ This folder refers to Module 4 **Bases** from bootcamp [**Bootcamp AWS re/Start-
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Command Line Interpreter (CLI):
+  - AWS Command Line Interface (CLI)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cli.svg" alt="aws_cli" width="auto" height="25">
+  - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
+  - Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
+- Server and Databases:
+  - MySQL Server   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
 
 ---
 
-### Bootcamp Module 2 Structure
+### Bootcamp Module 4 Structure
 
 4. <a name="item2">Redes</a><br>
   4.1. <a href="#item4.1">Amazon RDS</a><br>
@@ -53,7 +61,7 @@ This folder refers to Module 4 **Bases** from bootcamp [**Bootcamp AWS re/Start-
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre como funciona as redes na cloud da **AWS**, apresentando o serviço voltado para isso que é o **Amazon Virtual Private Cloud (Amazon VPC)**. Também foi ensinado como construir uma VPC com sub-redes pública e privada, gateway de internet e NAT gateway, tabela de rotas, grupo de segurança e provisionar uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** nesta VPC, acessando ela posteriormente.
+O objetivo deste módulo do bootcamp foi apresentar os dois principais serviços de banco de dados gerenciados da **AWS**. O **Amazon Relational Database Service (Amazon RDS)** é um serviço de banco de dados gerenciado que configura e opera um banco de dados relacional na nuvem. Enquanto o **Amazon DynamoDB** é um serviço de banco de dados NoSQL totalmente gerenciado. Também tiveram apresentações práticas de como criar um banco de dados nesses serviços e utilizá-los.
 
 ### Structure:
 A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
@@ -132,10 +140,44 @@ Ao tentar acessar o banco de dados na instância do RDS através de um software 
 
 <a name="item4.3"><h4>4.3 160-[DF]-Lab - Crie seu servidor de banco de dados e interaja com seu banco de dados usando um aplicativo</h4></a>[Back to summary](#item4) | <a href="">Certificate</a>
 
+O laboratório deste módulo 4 teve como objetivo a construção de um servidor de banco de dados no **Amazon Relational Database Service (Amazon RDS)** e a interação com este banco através de um aplicativo. Toda infraestrutura de rede, bem como, uma instância do **Amazon EC2** onde a aplicação rodava, foram criadas automaticamente ao criar o laboratório. Para o laboratório foi necessário: criar a instância RDS de banco de dados e o grupo de segurança que essa instância utilizaria, agrupar as sub-redes privadas já existentes para serem utilizadas pela a instância RDS, acessar e conectar a aplicação a instância de banco de dados e interagir com este banco de dados construído.
 
+A primeira tarefa foi provisionar o grupo de segurança que seria utilizado pela instância do **Amazon RDS**. O nome desse grupo de segurança foi definido como `DB Security Group`, a descrição foi `Permit access from Web Security Group` e ele foi vinculado a VPC já existente `Lab VPC`. Dentro deste grupo foi elaborado uma regra de entrada permitindo o tráfego da instância EC2 com a instância RDS. O tipo de regra foi `MySQL/Aurora`, que usa o protocolo `TCP` na porta `3306`, que é a porta padrão do **MySQL**, e em origem foi selecionado o grupo de segurança da instância EC2, `Web Security Group`. A imagem 05 a seguir mostra o grupo de segurança criado com sua respectiva regra.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
 
+Na tarefa 2, foi criado um grupo de sub-redes já existentes para informar a instância RDS quais sub-redes ela poderia utilizar. Cada grupo de sub-redes de banco de dados requer sub-redes em pelo menos duas Zonas de Disponibilidade (AZs). Portanto, foram agrupadas as sub-redes privadas (`Private subnet 1`, cujo CIDR era `10.0.1.0/24` e `Private subnet e`, cujo CIDR era `10.0.3.0/24`) da VPC do laboratório. Este grupo de sub-redes foi nomeado de `DB Subnet Group`, sua descrição foi `DB Subnet Group` e ele foi vinculado a VPC `Lab VPC`, que era a VPC do laboratório. A imagem 06 ilustra o agrupramento dessas sub-redes privadas.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
+Na terceira tarefa foi provisionada a instância de banco de dados multi-AZ do **Amazon RDS** para o **MySQL**. As implantações multi-AZ do **Amazon RDS** proporcionam disponibilidade e durabilidade melhores para instâncias de banco de dados, o que as torna a solução ideal para cargas de trabalho de banco de dados de produção. Quando uma instância de banco de dados multi-AZ é provisionada, o **Amazon RDS** cria automaticamente uma instância de banco de dados primário e replica sincronicamente os dados para uma instância de espera em uma Zona de Disponibilidade (AZ) diferente.
+
+O tipo de criação escolhida foi a padrão (`Standard create`), enquanto o tipo de mecanismo foi **MySQL** e a versão foi a mais recente. Em modelos, foi selecionado `Dev/Test`. Em disponibilidade e durabilidade foi selecionado instância de banco de dados multi-AZ (`Multi-AZ DB instance`), pois seria criado em duas AZs diferentes. O identificador do banco de dados foi `lab-db`, o nome do usuário principal foi `main` e foi selecionada a opção `Self managed` em gerenciamento de credenciais, para criar uma senha para este usuário, que foi `lab-password`.
+
+Nas configurações da instância, foi definida a classe com capacidade de intermitência, que incluía classes t (`Burstable classes (includes t classes)`), e foi selecionada a classe de instância `db.t3.medium`. Em armazenamento foi configurado o tipo como finalidade geral (SSD) (`General Purpose SSD (gp3)`) e mantido o armazenamento alocado como `200 GiB`. Em conectividade, a VPC do laboratório, `Lab VPC`, foi selecionada e o grupo de sub-redes elaborado foi selecionado. Já em grupo de segurança foi escolhido o grupo construído, o `DB Security Group`. Em monitoramento, foi habilitado o monitoramento avançado. Nas configurações adicionais, foi definido o nome do banco de dados como `lab` e em backup foi desmarcada opção de habilitar backups automatizados. As demais configurações foi mantida o padrão que já vinham. A imagem 07 evidencia o provisionamento dessa instância de banco de dados.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+A última tarefa foi conectar a aplicação que era executada na instância do **Amazon EC2** com o banco de dados **MySQL** configurado na instância do **Amazon RDS** e interagir. Para isso, primeiro foi necessário acessar a instância, no navegador da maquina física **Windows**, através do seu IP ou DNS público. Como o grupo de segurança da instância EC2 foi desenvolvido pelo próprio laboratório, uma regra liberando a porta `80` (`HTTP`) ou `443` (`HTTPS`) para qualquer faixa de IP já deveria ter sido criada para que o a aplicação web, executada nesta instância, pudesse ser acessada pelo navegador. Na página inicial da aplicação web, foi selecionada a opção `RDS` que direcionou para uma outra página, com campos de um formulário para preencher. Um dos campos era o endpoint da instância do RDS, que pode ser copiada ao acessar a instância RDS (`lab-db.c98yg6isyeh0.us-west-2.rds.amazonaws.com`). O nome do banco de dados foi `lab`, o nome do usuário principal foi `main` e a senha `lab-password`. Com o formulário pronto, foi clicado em enviar para mandar as informações para aplicação web que executaria a conexão com o banco de dados da instância RDS. Uma mensagem de aviso foi exibida explicando que o aplicativo estava executando um comando para copiar informações para o banco de dados. Após alguns segundos, a aplicação web exibiu o `Address Book` que utilizava o banco de dados RDS para armazenar as informações criadas nele. A imagem 08 mostra a aplicação antes da conexão com o banco de dados. Já a imagem 09 exibe a aplicação conectada ao banco e com alguns dados preenchidos.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
 
 <a name="item4.4"><h4>4.4 Amazon DynamoDB</h4></a>[Back to summary](#item4) | <a href="">Certificate</a>
 
@@ -165,16 +207,16 @@ Para entender como o **Amazon DynamoDB** distribui dados, é essencial analisar 
 
 <a name="item4.5"><h4>4.5 Demonstração do Dynamo DB</h4></a>[Back to summary](#item4) | <a href="">Certificate</a>
 
-Nesta demonstração foi construída uma tabela vazia no **Amazon DynamoDB**, cujo nome foi `ednProductName` e a partition key foi `Id` cujo tipo foi `S` de string. Isso foi executado através do arquivo de script em **PowerShell** [dynamodb.ps1](./resource/dynamodb.ps1) que possuía um script para criação e outro para exclusão, precedidos por uma estrutura de condição que aguardava uma entrada do usuário para executar o código. A imagem 11 exibe a tabela criada.
+Nesta demonstração foi construída uma tabela vazia no **Amazon DynamoDB**, cujo nome foi `ednProductName` e a partition key foi `Id` cujo tipo foi `S` de string. Isso foi executado através do arquivo de script em **PowerShell** [dynamodb.ps1](./resource/dynamodb.ps1) que possuía um script para criação e outro para exclusão, precedidos por uma estrutura de condição que aguardava uma entrada do usuário para executar o código. A imagem 10 exibe a tabela criada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
+
+Após isso, foi utilizado um arquivo **JSON** ([productCatalog.json](./resource/productCatalog.json)) para inserir os dados dessa tabela através do comando **AWS CLI** executado no **PowerShell** da maquina física **Windows**: `aws dynamodb batch-write-item --request-items file://"G:/Meu Drive/4_PROJ/boot/edn/aws/boot_022/04-bases/resource/productCatalog.json"`. Esse arquivo **JSON** foi um arquivo aleatório criado pelo **ChatGPT** só para simular a inserção de dados na tabela. O professor do curso usou um outro arquivo. A imagem 11 evidencia os dados inseridos na tabela do **Amazon DynamoDB**.
 
 <div align="Center"><figure>
     <img src="../0-aux/md4-img11.png" alt="img11"><br>
     <figcaption>Imagem 11.</figcaption>
-</figure></div><br>
-
-Após isso, foi utilizado um arquivo **JSON** ([productCatalog.json](./resource/productCatalog.json)) para inserir os dados dessa tabela através do comando **AWS CLI** executado no **PowerShell** da maquina física **Windows**: `aws dynamodb batch-write-item --request-items file://"G:/Meu Drive/4_PROJ/boot/edn/aws/boot_022/04-bases/resource/productCatalog.json"`. Esse arquivo **JSON** foi um arquivo aleatório criado pelo **ChatGPT** só para simular a inserção de dados na tabela. O professor do curso usou um outro arquivo. A imagem 12 evidencia os dados inseridos na tabela do **Amazon DynamoDB**.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md4-img12.png" alt="img12"><br>
-    <figcaption>Imagem 12.</figcaption>
 </figure></div><br>
