@@ -167,6 +167,119 @@ Para compreender as distinções entre as soluções de disponibilidade em ambie
 
 
 
+<a name="item5.7"><h4>5.7 AWS Identity and Access Management</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+<a name="item5.8"><h4>5.8 AWS Command Line Interface</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+<a name="item5.9"><h4>5.9 AWS Systems Manager</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+<a name="item5.10"><h4>5.10 169- [JAWS] -Laboratório: Usar o AWS Systems Manager</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.11"><h4>5.11 Ferramentas de administração e desenvolvimento</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.12"><h4>5.12 Hospedar um site estático no S3 da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.13"><h4>5.13 170-[JAWS]-Visão geral da atividade do café: crie um site no S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.14"><h4>5.14 Visão geral da computação (servidores)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.15"><h4>5.15 Computação na AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.16"><h4>5.16 Gerenciar instâncias da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.17"><h4>5.17 Visão geral do laboratório: Instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.18"><h4>5.18 171- [JAWS] -Lab - Criando instâncias do Amazon EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.19"><h4>5.19 Demonstração do AWS IAM-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+<a name="item5.20"><h4>5.20 172- [JAWS] -Laboratório: [Desafio] Exercício de instância do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+<a name="item5.22"><h4>5.22 AWS Elastic Beanstalk</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.23"><h4>5.23 173- [JAWS] -Atividade: Solucionar problemas para criar uma instância</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.24"><h4>5.24 Visão geral de escalabilidade e resolução de nomes</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.25"><h4>5.25 Elastic Load Balancing</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.26"><h4>5.26 Listeners do Elastic Load Balancer</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.27"><h4>5.27 Auto Scaling do Amazon EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.28"><h4>5.28 Visão geral do laboratório: Auto Scaling do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.29"><h4>5.29 174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+<a name="item5.30"><h4>5.30 175-[JAWS]-Laboratório: Usar o Auto Scaling na AWS (Linux)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.31"><h4>5.31 Desafio de previsão de Auto Scaling</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.32"><h4>5.32 Amazon Route 53</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.33"><h4>5.33 Demonstração do Amazon Route 53-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.34"><h4>5.34 Amazon CloudFront</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.35"><h4>5.35 176-[JAWS]-Atividade: Roteamento de failover do Route 53</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+<a name="item5.37"><h4>5.37 AWS Lambda</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.38"><h4>5.38 178- [JAWS] -Atividade: Trabalhar com o AWS Lambda</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.39"><h4>5.39 APIs e REST da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+<a name="item5.40"><h4>5.40 Amazon API Gateway</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.41"><h4>5.41 Contêineres na AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+<a name="item5.43"><h4>5.43 Funções do AWS Step</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.44"><h4>5.44 Visão geral dos bancos de dados</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.45"><h4>5.45 Amazon Redshift</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.46"><h4>5.46 Amazon Aurora</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.47"><h4>5.47 Migração de banco de dados da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.48"><h4>5.48 179- [JAWS] -Atividade: Migrar para o Amazon RDS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+<a name="item5.50"><h4>5.50 Visão geral das redes da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.51"><h4>5.51 Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.52"><h4>5.52 Opções de conectividade da Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.53"><h4>5.53 Segurança e solução de problemas da rede</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.54"><h4>5.54 Visão geral do laboratório: Configurar uma Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.55"><h4>5.55 180- [JAWS] -Laboratório: Configurar uma Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.56"><h4>5.56 181- [JAWS] -Atividade: Solucionar problemas de uma VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+<a name="item5.58"><h4>5.58 Visão geral do Cloud Storage</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.59"><h4>5.59 Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+<a name="item5.60"><h4>5.60 Demonstração do Amazon EBS-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.61"><h4>5.61 182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.62"><h4>5.62 O armazenamento de instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.63"><h4>5.63 Elastic File System</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.64"><h4>5.64 Demonstração do Elastic File System-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.65"><h4>5.65 Amazon Glacier</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.66"><h4>5.66 Demonstração do S3 Glacier-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.67"><h4>5.67 Amazon S3 e a CLI da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.68"><h4>5.68 183- [JAWS] -Laboratório: Gerenciar o armazenamento</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.69"><h4>5.69 Amazon Storage Gateway</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+<a name="item5.70"><h4>5.70 184- [JAWS] -Laboratório: [Desafio] Exercício de S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+<a name="item5.71"><h4>5.71 185- [JAWS] -Atividade: Trabalhar com o Amazon S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+<a name="item5.73"><h4>5.73 Esperamos que seu Jumpstart na AWS esteja indo bem!</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div align="Center"><figure>
     <img src="../0-aux/md5-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
