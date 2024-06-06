@@ -245,7 +245,7 @@ O recurso *Insights* integrados do *AWS Systems Manager* agrega e exibe dados op
 
 <a name="item5.10"><h4>5.10 169- [JAWS] -Laboratório: Usar o AWS Systems Manager</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-
+Neste laboratório, quatro tarefas foram realizadas, onde em cada uma foi explorado um dos seguintes recursos do **AWS System Manager (AWS SSM)**: *Inventory*, *Run Command*, *Parameter Store* e *Session Manager*. Na primeira tarefa
 
 
 
@@ -259,15 +259,28 @@ O recurso *Insights* integrados do *AWS Systems Manager* agrega e exibe dados op
 
 <a name="item5.11"><h4>5.11 Ferramentas de administração e desenvolvimento</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+O **AWS Tools for PowerShell** permite criar scripts para operações nos recursos da **AWS** por meio da linha de comando do **PowerShell**. Com essas ferramentas, é possível realizar muitas das mesmas ações disponíveis no **AWS SDK for .NET**. Através da linha de comando do **PowerShell**, é possível realizar tarefas rápidas como criar e configurar grupos de segurança, iniciar instâncias, criar e excluir buckets do **Amazon S3**, e executar tarefas do IAM, como atribuir uma função a um usuário. O **AWS Tools for PowerShell** fornece um conjunto de cmdlets, comandos usados no ambiente do **Microsoft Windows PowerShell** para executar ações, e oferece suporte ao mesmo conjunto de serviços e regiões compatíveis com os SDKs da **AWS**. Neste curso foi apresentado alguns comandos básicos para interagir com alguns dos principais serviços da **AWS**.
 
+O conceito de infraestrutura como código (IaC) é essencial para a computação em nuvem e distingue a nuvem dos ambientes de TI tradicionais. Os SDKs e APIs da **AWS** oferecem ferramentas para gerenciar recursos na **AWS** com uma abordagem IaC. A **AWS** fornece SDKs específicos para várias linguagens de programação (**Python**, **Java**, **JavaScript**, **Golang**, **Ruby**, **.NET**, **PHP**, **Node.js**, **C++**), contendo APIs para essas linguagens. Isso permite que desenvolvedores integrem a conectividade e funcionalidade dos diversos serviços da **AWS** em seus códigos sem precisar escrever funções do zero. Os **AWS SDKs** vêm com ampla documentação, incluindo guias de início, guias do desenvolvedor, referências de API e fóruns da comunidade ou blogs de desenvolvedores.
 
+O **AWS CloudFormation** é uma ferramenta útil que permite criar, atualizar ou excluir implantações completas de infraestrutura da **AWS** de maneira previsível e repetida. Com o **AWS CloudFormation**, toda a infraestrutura pode ser modelada em um único arquivo de texto escrito em **JSON** ou **YAML**. Esse modelo define todos os recursos da **AWS** necessários para uma pilha, que é um conjunto de recursos gerenciado como uma unidade única. Recursos na pilha podem incluir instâncias do EC2, **Amazon RDS**, VPCs, entre outros serviços da **AWS**. O **AWS CloudFormation** permite visualizar como as alterações propostas afetarão os recursos existentes antes de aplicá-las, garantindo que apenas mudanças aprovadas sejam executadas.
 
+Outro recurso do **AWS CloudFormation** é a detecção de desvios. Ao executar uma operação de detecção de desvio em uma pilha, é possível determinar se a configuração real da pilha se desviou da configuração esperada definida no modelo. Um recurso é considerado desviado se algum de seus valores de propriedade reais for diferente dos esperados ou se a propriedade ou recurso tiver sido excluído. Uma pilha é considerada desviada se um ou mais de seus recursos tiverem se desviado. Se o recurso na pilha for compatível com a detecção de desvios, a operação fornecerá informações detalhadas sobre o status do desvio desse recurso. O **AWS CloudFormation** também suporta extensões personalizadas para modelos de pilha que podem ser criadas utilizando o **AWS Lambda**. É possível desenvolver provisionamento personalizado em uma função do Lambda e configurar uma pilha do **AWS CloudFormation** para acionar essa função ao ser criada. Por exemplo, pode-se escrever uma lógica de provisionamento personalizada para tarefas como buscar os IDs mais recentes da imagem de máquina da Amazon (AMI) para utilização nas pilhas.
 
-
-
-
+O **AWS OpsWorks** é um serviço de gerenciamento de configuração que oferece instâncias gerenciadas do **Chef** e do **Puppet**. Essas plataformas de automação permitem usar código para automatizar as configurações de servidores. Com o **AWS OpsWorks**, **Chef** e **Puppet** podem ser utilizados para automatizar a configuração, implantação e gerenciamento de servidores nas instâncias do EC2 ou em ambientes locais. O **AWS OpsWorks** inclui três opções: *AWS OpsWorks for Chef Automate*, *AWS OpsWorks for Puppet Enterprise* e *AWS OpsWorks Stacks*.
 
 <a name="item5.12"><h4>5.12 Hospedar um site estático no S3 da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.13"><h4>5.13 170-[JAWS]-Visão geral da atividade do café: crie um site no S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.14"><h4>5.14 Visão geral da computação (servidores)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.15"><h4>5.15 Computação na AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
