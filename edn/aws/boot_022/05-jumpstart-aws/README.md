@@ -54,7 +54,7 @@ O objetivo deste módulo do bootcamp foi aprender sobre como funciona as redes n
 A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md2-img01.png" alt="img01"><br>
+    <img src="../0-aux/md5-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
@@ -245,17 +245,88 @@ O recurso *Insights* integrados do *AWS Systems Manager* agrega e exibe dados op
 
 <a name="item5.10"><h4>5.10 169- [JAWS] -Laboratório: Usar o AWS Systems Manager</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-Neste laboratório, quatro tarefas foram realizadas, onde em cada uma foi explorado um dos seguintes recursos do **AWS System Manager (AWS SSM)**: *Inventory*, *Run Command*, *Parameter Store* e *Session Manager*. Na primeira tarefa
+Neste laboratório, quatro tarefas foram realizadas, onde em cada uma foi explorado um dos seguintes recursos do **AWS System Manager (AWS SSM)**: *Inventory*, *Run Command*, *Parameter Store* e *Session Manager*. Na primeira tarefa foi utilizado o recurso *Fleet Manager* do **AWS System Manager (AWS SSM)** para visualizar as informações de uma frota de instâncias, que no caso só era uma instância do EC2. O recurso *Fleet Manager* do **AWS Systems Manager (AWS SSM)** é uma ferramenta integrada de gerenciamento de servidores que permite aos administradores monitorar e gerenciar a frota de instâncias **Amazon EC2** e servidores on-premises. Ele consegue coletar informações do sistema operacional e de aplicações, além de metadados de instâncias do EC2, possibilitando entender rapidamente quais instâncias estão executando o software e as configurações exigidas pela política de software e quais instâncias precisam ser atualizadas. 
 
+No *Fleet Manager*, as instâncias são listadas como um nó da frota, sendo possível gerenciar toda a frota de instâncias ou apenas as instâncias selecionadas. Ao  selecionar a única instância existente, diversas informações são exibidas divididas em dois campos: ferramentas, que inclui alguns recursos do **AWS SSM** que pode ser utilizado na instância, e propriedades, que são as propriedades da instância, onde inclui o recurso *Inventory*. Para criar um inventário pelo *Fleet Manager*, foi selecionada a opção `Settings` e em seguida `Set up inventory`. O inventário também poderia ser construído direto no recurso *Inventory*. O invetário possuío o nome `Inventory-Association`, na opção destino foram selecionadas as opções selecionar instâncias manualmente (`Manually selecting instances`) e a única instância gerenciada foi selecionada, as demais opções foram mantidas como padrão. Após isso, foi selecionada a opção configurar inventário e uma mensagem informando que o invetário tinha sido construído com sucesso foi exibida. Com isso, o *inventory* faria a partir de agora o inventário regularmente dessa instância para as propriedades selecionadas. Para visualizar o invetário, foi selecionado o nó da frota de instâncias que direcionou para uma visão geral do nó. Ao selecionar a guia inventário, todas as aplicações na instância foram listadas, conforme evidenciado na imagem 02 a seguir. Também era possível visualizar as informações de inventário direto pelo recurso *Inventory*.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
 
+A tarefa 2 utilizou o recurso *Run Command* do **AWS SSM** para instalar uma aplicação personalizada através de um script na instância do **Amazon EC2**. Esse script instalaria um servidor **Apache HTTP (Httpd)**, o **PHP**, o **AWS SDK** e o aplicativo web (`Widget Manufacturing Dashboard`). Ao selecionar o *Run Command* foi exibida uma lista de documentos pré-configurados para execução de comandos comuns. Contudo foi realizado um filtro na busca, onde foi definida a opção `Owner` como `Owned by me`, ou seja, de minha propriedade. Então o documento que era exibido foi selecionado e a opção da versão do documento foi mantido como 1 (padrão). Esse documento foi criado automaticamente ao iniciar o laboratório pelo **AWS CloudFormation**, juntamente com outros serviços e recursos necessários para este laboratório. Um documento do recurso *Run Command* do **AWS SSM** é chamado de SSM Document. Esses documentos são usados para definir as ações que o **AWS Systems Manager (AWS SSM)** deve executar em uma ou mais instâncias gerenciadas. Essas ações são, normalmente, comandos **Bash** executados direto na instância do **Amazon EC2**.  A seguir é mostrado o documento do SSM, em **JSON**. Observe que foram instalados os softwares mencionados anteriormente e também foi configurado a aplicação web. Além dos comandos do *Run Command*, alguns metadados são definidos no arquivo SSM Document.
 
+```json
+{
+  "schemaVersion": "2.2",
+  "description": "Install Dashboard App",
+  "mainSteps": [
+    {
+      "inputs": {
+        "runCommand": [
+          " #!/bin/sh",
+          " # Install Apache Web Server and PHP",
+          " yum install -y httpd",
+          " amazon-linux-extras install -y php7.2",
+          " # Turn on web server",
+          " systemctl enable httpd.service",
+          " systemctl start  httpd.service",
+          " # Download and install the AWS SDK for PHP",
+          " wget https://github.com/aws/aws-sdk-php/releases/download/3.62.3/aws.zip",
+          " unzip aws -d /var/www/html",
+          " # Download Application files",
+          " #wget https://aws-tc-largeobjects.s3.amazonaws.com/CUR-TF-100-RESTRT-1/169-lab-%5BJAWS%5D-systems-manager/scripts/widget-app.zip",
+          " wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-RSJAWS-1-23732/169-lab-JAWS-systems-manager/s3/widget-app.zip",
+          " unzip widget-app.zip -d /var/www/html/"
+        ]
+      },
+      "name": "InstallDashboardApp",
+      "action": "aws:runShellScript"
+    }
+  ]
+}
+```
 
+Ainda, na configuração do *Run Command*, para selecionar o destino, foi escolhida a opção de selecionar as instâncias manualmente (`Choose instances manually`) e foi escolhida a instância gerenciada. Essa instância gerenciada possuía o agente do Systems Manager instalado. Dessa forma, o agente inscreveu a instância no serviço, o que permitiu que ela fosse selecionada para a opção *Run Command*. Já nas opções de saída, foi desmarcado habilitar um bucket do S3 (`Enable an S3 bucket`). A seção de comando da **AWS CLI** foi expandida e nela era exibida o comando da **AWS CLI** que executava o recurso *Run Command*. O comando que ela executava é exibido abaixo, onde o SSM Document, mostrado anteriormente, é indicado pelo seu nome. Este comando poderia ser copiado para ser utilizado no futuro em um script em vez de usar no console de gerenciamento da **AWS**, desde que houvesse o documento do SSM de nome especificado. Ao selecionar executar, o comando foi executado com êxito. Cada comando executado no *Run Command* fica armazenado como histórico e é possível abrir cada comando individualmente para verificar as informações, conforme mostrado na imagem 03. Contudo, caso o status geral não mudasse para êxito, era necessário clicar no ícone de atualização para que o status do comando fosse atualizado.
+```
+aws ssm send-command --document-name "c121184a2913379l6867098t1w851725497037-InstallDashboardApp-0Uw4GGYPAvmP" --document-version "1" --targets '[{"Key":"InstanceIds","Values":["i-05af0e3febb6d6437"]}]' --parameters '{}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-west-2
+```
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
 
+No sandbox **Vocareum** foi copiado o IP público do servidor (instância do **Amazon EC2**) para utilizar em uma nova aba do navegador web da maquina física **Windows** para acessar a aplicação `Widget Manufacturing Dashboard`. Esse IP era visualizado na opção `Detalhes` do **Vocareum**, mas o IP era o mesmo do visualizado na instância do serviço **Amazon EC2**. A imagem 04 exibe a aplicação sendo acessada pelo navegador web.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
 
+Na terceira tarefa, foi utilizado o recurso *Parameter Store* para armazenar um parâmetro que foi utilizado para ativar um recurso na aplicação. Voltando para aba aberta no console da **AWS** pelo **Vocareum**, foi selecionado o recurso citado para criar o parâmetro. Nas configurações foi definido em nome `/dashboard/show-beta-features`, em descrição `Display beta features`, em nível e em tipo as opções padrões foram mantidas, e em valor foi definido como `True`. Após criar o parâmetro, uma mensagem informa que o mesmo foi criado com sucesso. Para verificar foi preciso voltar na aba do navegador da maquina física, onde a aplicação estava aberta e atualizar a página. Observe que agora três grafos foram exibidos ao invés de dois como anteriormente, conforme mostrado na imagem 05. O código da aplicação estava conferindo o armazenamento de parâmetros para determinar se o grafo adicional (que ainda está em beta) deveria ser exibido, como a condição `show-beta-features` foi definida como `True`, o terceiro grafo foi exibido. É comum configurar as aplicações para exibir “recursos ocultos” que estão instalados, mas ainda não ativados. Opcionalmente, o parâmetro foi excluído e, depois, a página da aplicação foi atualizada. Note, na imagem 06, que o terceiro grafo desapareceu novamente.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
+Na última tarefa, o recurso utilizado foi o *Session Manager* para acessar a instância do EC2 sem precisar se conectar à instância usando SSH. O *Session Manager* é uma das formas seguras de acessar a instância. No console de gerenciamento da **AWS** aberto pelo **Vocareum**, foi selecionado este recurso e escolhida a opção de inciar sessão, selecionando a instância gerenciada que seria acessada. Uma nova sessão foi aberta no navegador da maquina física **Windows**. Então o comando `ls /var/www/html` foi executado para listar os arquivos da aplicação web. Ainda na janela da sessão foram executados os dois comandos abaixo. O primeiro obtinha a zona de disponibilidade (AZ) através de uma solicitação GET ao serviço de metadados da instância, cuja URL específica utilizava o IP link-local `169.254.169.254` para retornar a AZ na qual a instância estava executando. Já o segundo removia o último caractere da string armazenada na variável `AZ` para obter a região e definir essa região na variável de ambiente que era utilizada pelo **AWS CLI**. Em seguida, o comando `aws ec2 describe-instances` foi executado para listar os detalhes das intâncias do EC2 criadas, conforme mostrado na imagem 07.
+
+```
+AZ=`curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone`
+export AWS_DEFAULT_REGION=${AZ::-1}
+```
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
 
 <a name="item5.11"><h4>5.11 Ferramentas de administração e desenvolvimento</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -271,18 +342,108 @@ O **AWS OpsWorks** é um serviço de gerenciamento de configuração que oferece
 
 <a name="item5.12"><h4>5.12 Hospedar um site estático no S3 da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+O **Amazon Simple Storage Service (Amazon S3)** oferece armazenamento de objetos com diversas aplicações práticas. Uma delas é a hospedagem de sites estáticos. Utilizando o **Amazon S3** para essa finalidade, é possível evitar a necessidade de configurar uma infraestrutura de tempo de execução complexa ou custosa. Em um site estático, as páginas da web são construídas utilizando linguagens simples como **HTML**, **CSS** ou **JavaScript**. Por contraste, um site dinâmico depende do processamento realizado no servidor, incluindo scripts do lado do servidor como **PHP**, **JSP** ou **ASP.NET**.
 
+Para hospedar um site estático no **Amazon S3**, siga estas etapas simples: Primeiramente, crie um bucket no **Amazon S3** para armazenar o conteúdo do site. Em seguida, configure o bucket do S3 para habilitar a hospedagem de sites e conceder permissões públicas de leitura para o conteúdo. Por fim, carregue o conteúdo do site para o bucket usando o Console de Gerenciamento da **AWS** ou a **AWS Command Line Interface (AWS CLI)**. Para acessar o site, utilize a URL do endpoint que o **Amazon S3** atribui a ele. A URL do endpoint inclui o nome do bucket e o nome da região que o contém. Dependendo da região em que o bucket foi criado, o formato da URL do endpoint pode variar no separador antes do nome da região: um ponto (.) para algumas regiões, como UE (Frankfurt), e um traço (-) para outras regiões, como Oeste dos EUA (Oregon). Ao carregar conteúdo para hospedagem de um site estático no **Amazon S3**, organize-o em uma estrutura de pastas que reflita a hierarquia do site. Além disso, ao habilitar um bucket para hospedagem de sites, é necessário especificar um documento de índice. Esse documento serve como a página padrão que o **Amazon S3** retorna quando uma solicitação é feita para o diretório raiz do site ou para suas subpastas. Certifique-se de incluir esse documento de índice no nível apropriado da hierarquia de pastas do conteúdo web que está sendo carregado para o **Amazon S3**.
 
-
-
-
-
-
-
-
+Em vez de acessar um site estático através do seu endereço URL direto no **Amazon S3**, é possível usar o **Amazon Route 53** para associar um nome de domínio personalizado ao endpoint do **Amazon S3**. Por exemplo, um usuário pode vincular o nome de domínio mompopcafe.com ou um subdomínio como www.mompopcafe.com. Neste cenário, tanto o domínio principal (mompopcafe.com) quanto o subdomínio (www.mompopcafe.com) são utilizados para acessar o site. Para implementar essa configuração, são criados dois buckets no **Amazon S3**: um para o nome de domínio principal e outro para o subdomínio. O bucket do domínio principal armazena o conteúdo do site, enquanto o bucket do subdomínio pode redirecionar as solicitações para o bucket principal, se necessário. Os nomes dos buckets devem corresponder exatamente aos nomes dos domínios correspondentes. Além disso, são configurados registros de alias no **Amazon Route 53** para mapear os nomes de domínio e subdomínio aos endpoints dos buckets do S3 correspondentes.
 
 <a name="item5.13"><h4>5.13 170-[JAWS]-Visão geral da atividade do café: crie um site no S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+Neste laboratório, o objetivo foi criar um site estático simples de uma cafeteria e padaria em um bucket no serviço **Amazon Simple Storage Service (Amazon S3)**, fazendo upload dos arquivos do site para o bucket. Também foi criado um novo usuário do IAM que tinha acesso total ao S3 e um arquivo de lote para atualizar o site estático quando algum dos arquivos do site fosse alterados localmente. O laboratório foi dividido em etapas, cada etapa correspondia a uma tarefa a ser realizada, totalizando nove tarefas, sendo a última opcional. Algumas dessas etapas foram realizadas pelo **AWS CLI** instalado em uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** que foi acessada utilizando o recurso *Session Manager* do **AWS System Manager (AWS SSM)**.
+
+A primeira tarefa consistiu em conectar-se a instância EC2 utilizando o recurso *Session Manager* do **AWS System Manager (AWS SSM)**. Esta instância era uma **Amazon Linux** que foi provisionada automaticamente ao iniciar o laboratório. A instância foi selecionada e o valor da propriedade `InstanceSessionUrl` foi copiada e colada no navegador da maquina física **Windows** para estabelecer a conexão com a instância utilizando o SSM. Um prompt foi exbido no navegador. Este era um terminal SSH onde era possível executar comandos dentro da instância, que possuía um shell aberto com o usuário `ssm-user`. Com o comando `sudo su -l ec2-user` foi iniciada uma noova sessão do shell com o login completo para `ec2-user`, carregando o ambiente e arquivos de configuração do usuário `ec2-user`. Em seguida, com o comando `pwd` foi exibido o nome de usuário desta sessão e o diretório corrente, conforme mostrado na imagem 11.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+Na tarefa 2, não foi necessário instalar a **AWS CLI**, pois a mesma já vem instalada em instâncias do **Amazon Linux**. Portanto, foi preciso apenas configurar o usuário da conta **AWS** que utilizaria a CLI, que neste caso foi . Então o ID e secret da chave de acesso foi informado. Também foi solicitado a definição de uma região padrão que a **AWS CLI** utilizaria, que foi `us-west-2` (Oregon), e o formato de saída dos dados, que foi definido como `json`. Essas duas configurações finais são opcionais, caso não sejam definidas, a **AWS CLI** define o padrão que é `us-east-1` (Virgínia do Norte) e `json`. A imagem 12 abaixo exibe o usuário fulano configurado na **AWS CLI** da instância do **Amazon EC2**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+A terceira tarefa foi a criação de um bucket no **Amazon S3** utilizando a **AWS CLI** configurada. No shell da instância EC2 conectada pelo navegador através do *Session Manager** foi executado o comando `aws s3api create-bucket --bucket <pheeger5988> --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2`. Com o comando `aws s3 ls`, todos os buckets criados em qualquer região da **AWS** foram listados. Na imagem 13 é exibido apenas o nome do bucket criado que seria utilizado para construção do site estático.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+Na tarefa 4 foi criado um usuário do IAM no **AWS IAM** que teria acesso total ao **Amazon S3**. Com o comando `aws iam create-user --user-name awsS3user` executado na **AWS CLI** na instância EC2 aberta no navegador da maquina física **Windows**, o usuário `awsS3user` foi criado. Em seguida, com o comando `aws iam create-login-profile --user-name awsS3user --password Training123!`, um perfil de login foi elaborado para esse usuário, define uma senha para acesso a plataforma da **AWS**. Após isso, foi realizado o acesso a plataforma da **AWS** com esse usuário pelo **AWS Console Management**. Contudo isso foi realizado dentro do sandbox **Vocareum**. Como ao abrir a página da **AWS** pelo **Vocareum** já vem logado em um usuário federado, a opção `Sair` foi selecionada para sair da conta desse usuário e acessar com o usuário do IAM criado. Entretanto, foi necessário copiar o ID da conta da raíz da **AWS** desse usuário federado, pois o usuário do IAM construído foi desse usuário federado. Ao acessar o console de gerenciamento da **AWS**, foi escolhida a opção de fazer login com o usuário do IAM, portanto foi necessário colar o ID da conta copiado, eliminando qualquer caractere de traço, mantendo só os números. Em seguida, foi solicitada o nome do usuário do IAM, que era `awsS3user`, e a senha, que era `Training123!`. Então o login foi concluído e foi possível acessar o console da **AWS** com este usuário.
+
+Dando continuidade, o serviço **Amazon S3** foi aberto, porém este usuário não possuía permissões vinculadas ao S3, logo ocorreu um erro como mostrado na imagem 14. De volta a aba do navegador conectado na instância do **Amazon EC2**, foi executado o comando `aws iam list-policies --query "Policies[?contains(PolicyName,'S3')]"` com **AWS CLI** para encontrar todas as políticas que continham em seu nome a palavra `S3`. Uma lista foi exibida e foi necessário procurar a política que permitia acesso total ao S3. Após encontrá-la, foi executado o comando `aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/<policyYouFound> --user-name awsS3user`, informando a parte final do seu ARN, que era o seu próprio nome. Assim, o usuário do IAM criado possuiria acesso total ao **Amazon S3**. Então, para verificar essa condição, a aba do navegador aberta no **AWS Console Management** no serviço do S3 foi atualizado e conforme evidenciado na imagem 15, o erro não apareceu e o bucket construído anteriormente foi listado, pois agora o usuário possuía as permissões necessárias.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
+</figure></div><br>
+
+Na quinta tarefa, com o usuário do IAM acessando pelo console de gerenciamento da **AWS** o serviço S3, o bucket foi selecionado para alterar as suas próprias permissões, desmarcando a opção `Bloquear todo acesso ao público`. Também foi alterado as propriedades do objeto para habilitar as ACLs. A imagem 16 mostra essas configurações realizadas.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+Na tarefa 6, na aba do navegador conectada a instância do EC2 via *Session Manager*, os arquivos necessários para construção do site estático foram extraídos com os seguintes comandos: `cd ~/sysops-activity-files`, `tar xvzf static-website-v2.tar.gz` e `cd static-website`. Esses arquivos já estavam presentes na instância do EC2 que foi provisionada automaticamente ao iniciar o laboratório. Na imagem 17, utilizando o comando `ls` de dentro da pasta `static-website` que foi extraída, os arquivos que formariam o site foram listados.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+Na sétima tarefa, o objetivo foi fazer o upload desses arquivos da pasta `static-website` para o bucket construído na **AWS**. Entretanto, antes de enviar os arquivos, foi preciso executar o comando `aws s3 website s3://pheeger5988/ --index-document index.html` para garantir que o arquivo `index.html` fosse conhecido como o documento de índice, ou seja, página raiz do site. Para executar o upload dos arquivos foi executado o comando `aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://pheeger5988/ --recursive --acl public-read`. Observe que o comando upload inclui um parâmetro de lista de controle de acesso (ACL). Esse parâmetro especificava que os arquivos carregados tivessem acesso público de leitura. Ele também inclui o parâmetro `--recursive`, que indicava que era necessário fazer upload de todos os arquivos no diretório atual na máquina. Para confirmar que o upload dos arquivos foi realizado corretamente, foi utilizado o comando `aws s3 ls pheeger5988`, que listava todos os arquivos no bucket construído. A imagem 18 evidencia os arquivos no bucket.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
+Pelo console de gerenciamento da **AWS**, ao selecionar o bucket e as propriedades é possível visualizar que a hospedagem de site estático está habilitada, conforme imagem 19. Para abrir o site estático criado, foi copiado a URL do endpoint do bucket e colado em uma outra aba do navegador da maquina física. A imagem 20 exibe o site estático sendo acesso pelo navegador da maquina física **Windows**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img19.png" alt="img19"><br>
+    <figcaption>Imagem 19.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
+</figure></div><br>
+
+Na tarefa 8 foi criado um arquivo em lote para tornar a atualização do site repetível. Na aba aberta na instância do EC2, foi executado no shell o comando `history` para extrair o histórico de comandos recentes. Em seguida, foi procurado o comando que foi executado a copia dos arquivos e copiada essa linha. Com o comando `cd ~` foi alterado o diretório corrente para a pasta do usuário e lá foi criado um arquivo vazio com o comando `touch update-website.sh`. Com o comando `vi update-website.sh` foi aberto o arquivo no editor de código **VI**. Para entrar no modo de edição do **VI** foi utilizado a tecla `i`. Em seguida, foi inserida essas duas linhas `#!/bin/bash` e `aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://pheeger5988/ --recursive --acl public-read`, sendo a primeira padrão de um arquivo **Bash** e a segunda a linha que copiava os arquivos para o bucket. Para gravar as alterações e sair do arquivo, foi pressionado a tecla `Esc`, e inserido o comando `:wq` e pressionado a tecla `Enter`. Com o comando `chmod +x update-website.sh`, esse arquivo foi transformado em um arquivo de lote executável. 
+
+Agora foi necessário apenas fazer uma alteração nos arquivos do site, localmente. Isso foi realizado abrindo com o editor **VI** o arquivo **HTML** `vi sysops-activity-files/static-website/index.html`. Algumas alterações foram realizadas nesse arquivo. As duas linhas onde tinham `bgcolor="aquamarine"` foram modificadas para `bgcolor="gainsboro"`. A linha onde tinha `bgcolor="orange"` foi modificada para `bgcolor="cornsilk"`. Após confirmar as alterações e fechar o arquivo, o arquivo em lote foi executado com o comando `./update-website.sh`, realizando as substituições de todos os arquivos existentes no bucket por novos arquivos. Para conferir as alterações, foi só atualizar a página do site que estava aberta em uma das abas do navegador da maquina física. Note na imagem 21 que algumas cores foram alteradas.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img21.png" alt="img21"><br>
+    <figcaption>Imagem 21.</figcaption>
+</figure></div><br>
+
+Por fim, o desafio opcional foi basicamente a mesma tarefa anterior, apenas realizou uma otimização do arquivo de script em lote . A diferença é que no arquivo de lote, o comando inserido foi `aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://pheeger5988/ --recursive --acl public-read`. Este comando copiava todos os arquivos para o bucket, inclusive os arquivos que não tinham sido alterados, sobescrevendo os existentes no bucket. Neste desafio, a ideia foi alterar esse comando para o comando `aws s3 sync /home/ec2-user/sysops-activity-files/static-website/<s3://<my-bucket>/ --acl public-read`, que ao invés de copiar tudo, comparava os arquivos e atualizava apenas os arquivos que foram modificados.
+
 <a name="item5.14"><h4>5.14 Visão geral da computação (servidores)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.15"><h4>5.15 Computação na AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.16"><h4>5.16 Gerenciar instâncias da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.17"><h4>5.17 Visão geral do laboratório: Instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
