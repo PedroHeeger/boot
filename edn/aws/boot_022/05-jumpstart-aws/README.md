@@ -163,17 +163,11 @@ Neste curso foi exemplicado um cenário hipotético de transição de um data ce
 
 O servidor **Microsoft Active Directoryou Lightweight Directory Access Protocol (LDAP)**, que era um outro serviço da camada superior, funcionava como uma lista telefônica que permitia que qualquer pessoa localizasse organizações, indivíduos e outros recursos (como arquivos e dispositivos em uma rede), seja na Internet pública ou em uma intranet corporativa. Já o quadro denominado SAN, que inclui discos externos conectados, referia-se ao armazenamento localizado fora do data center corporativo. Uma rede de área de armazenamento (SAN) é uma rede especializada de alta velocidade que fornece acesso ao armazenamento em nível de bloco. As SANs são frequentemente usadas para melhorar a disponibilidade dos aplicativos (por exemplo, por meio de múltiplos caminhos de dados) e para aumentar o desempenho dos aplicativos (por exemplo, descarregando funções de armazenamento, segregando redes, etc.).
 
+Transferindo essa arquitetura para a cloud da **AWS**, os servidores, como os servidores web locais e os de aplicativos, poderiam ser substituídos por instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)** que executam o mesmo software. Como as instâncias do EC2 podem executar uma variedade de sistemas operacionais **Microsoft Windows Server**, **RedHat**, **SuSE**, **Ubuntu** ou **Amazon Linux**, muitos aplicativos de servidor podem ser executados em instâncias do EC2. O servidor LDAP poderia ser substituído pelo **AWS Directory Service**, que comporta a autenticação LDAP. O **AWS Directory Service** permite que seja configurado e executado facilmente o **Microsoft Active Directory** na nuvem ou conectado os recursos da **AWS** ao **Microsoft Active Directory** local existente. Os balanceadores de carga baseados em software poderiam ser substituídos pelos balanceadores de cargo do **Amazon Elastic Load Balancing (Amazon ELB)**. O ELB é uma solução de balanceamento de carga totalmente gerenciada que é dimensionada automaticamente conforme a necessidade. Ele pode realizar verificações de integridade em recursos anexados e redistribuir a carga de recursos não íntegros, conforme necessário.
 
+O **Amazon Elastic Block Store (Amazon EBS)** é um serviço de armazenamento que poderia ser utilizado com o **Amazon Elastic Compute Cloud (Amazon EC2)**. As soluções SAN podem ser substituídas por volumes do **Amazon Elastic Block Store (Amazon EBS)**. Esses volumes podem ser anexados aos servidores de aplicativos para armazenar dados a longo prazo e compartilhá-los entre instâncias. O **Amazon Elastic File System (Amazon EFS)** poderia ser usado para substituir o servidor de arquivos NAS. O **Amazon EFS** é um serviço de armazenamento de arquivos projetado para instâncias do **Amazon EC2**. Ele oferece uma interface simples para criar e configurar sistemas de arquivos. Além disso, o **Amazon EFS** ajusta automaticamente o armazenamento conforme necessário, aumentando ou diminuindo conforme seja adicionado ou removido arquivos, garantindo que seja utilizada apenas a quantidade necessária de armazenamento. Outra opção seria implementar uma solução NAS em uma instância do EC2. Existem várias soluções NAS disponíveis no **AWS Marketplace**. 
 
-
-
-
-
-
-
-
-
-
+O **Amazon Simple Storage Service (Amazon S3)** fornece armazenamento de objetos por meio de uma interface de serviço da Web. Os objetos podem ter até 5 GB e podem ser versionados. Por fim, os servidores de bancos de dados poderiam ser substituídos pelo **Amazon Relational Database Service (Amazon RDS)**. Esse serviço permite que seja executado o **Amazon Aurora**, **PostgreSQL**, **MySQL**, **MariaDB**, **Oracle** e **Microsoft SQL Server** em uma plataforma gerenciada pela **AWS**. Por fim, é possível fazer backup automático das instâncias do RDS para o Amazon Simple Storage Service (AmazonS3). O uso do Amazon S3 elimina a necessidade de hardware de backup de banco de dados local.
 
 <a name="item5.7"><h4>5.7 AWS Identity and Access Management</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
