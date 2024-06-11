@@ -457,15 +457,136 @@ Por fim, o desafio opcional foi basicamente a mesma tarefa anterior, apenas real
 
 
 
+
 <a name="item5.15"><h4>5.15 Computação na AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.16"><h4>5.16 Gerenciar instâncias da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
 <a name="item5.17"><h4>5.17 Visão geral do laboratório: Instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+Este curso forneceu uma visão geral do laboratório que seria realizado no item <a href="#item5.2">5.20 172- [JAWS] -Laboratório: [Desafio] Exercício de instância do EC2</a><br>. Como isso seria explicado no próprio laboratório, esse curso foi pulado.
+
 <a name="item5.18"><h4>5.18 171- [JAWS] -Lab - Criando instâncias do Amazon EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+Neste laboratório, o objetivo foi criar uma instância que funcionasse como um servidor web. Contudo, essa instância seria criada pelo **AWS CLI** configurado em uma outra instância criada pelo **AWS Console Management**, que seria utilizada como host bastion e conectada via **SSH** pelo *EC2 Instance Connect*. Um host bastion é um servidor de segurança intermediário utilizado para gerenciar o acesso a uma rede privada, proporcionando um ponto de controle seguro para os administradores se conectarem a outros servidores na rede. Ele atua como uma espécie de "porta de entrada" que protege contra acessos não autorizados, oferecendo uma camada adicional de segurança.
+
+A primeira tarefa foi o provisionamento da instância host bastion pelo console de gerenciamento da **AWS**. Uma tag de nome foi definida para essa instância cujo valor foi `host bastion`. A Amazon Machine Image (AMI) utilizada foi a `ami-0b20a6f09484773af` (Amazon Linux 2023 AMI 2023.4.20240611.0 x86_64 HVM kernel-6.1). O tipo de instância escolhido foi `t3.micro`. Como a conexão com essa instância seria via EC2 Instance Connect, não foi necessário configurar um par de chaves. Nas configurações de rede, a VPC utilizada foi a que já vinha criada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório, `Lab VPC`. A sub-rede pública dessa VPC já estava definida e foi mantida. Também foi mantido a opção de habilitar IP público para a instância, pois era preciso um IP público para acessá-la. Já no grupo de segurança, foi criado um security group de nome `Bastion security group` e a descrição desse grupo foi `Permit SSH connections`. A regra de entrada permitindo conexão no protocolo `TCP` na porta `22` para todos os IPs (`0.0.0.0/0`) foi mantida, pois era preciso dela para realizar conexão **SSH**. O armazenamento foi definido como o padrão de inicialização de uma instância, que é um volume do **Amazon Elastic Block Storage (EBS)** com `8 GiB` do tipo `gp3`. Por fim, em detalhes avançados o perfil de instância `Bastion-Role` que continha uma role com políticas de permissões, todos esses construídos pelo CloudFormation ao iniciar o laboratório, foi selecionado. As permissões concedia a essa instância `host bastion` fazer solicitações ao serviço do **Amazon EC2**. A imagem 21 mostra a instância provisionada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img21.png" alt="img21"><br>
+    <figcaption>Imagem 21.</figcaption>
+</figure></div><br>
+
+Na tarefa 2, para realizar o acesso a instância `host bastion`, ela foi selecionada e na opção `Connect`, em `EC2 Instance Connect` foi escolhida a opção `Connect`, mantendo o username como `ec2-user`, que é o usuário padrão do **Amazon Linux**. Assim, um terminal shell era aberto no navegador da maquina física **Windows** conectado a instância do EC2. Essa conexão poderia ser realizada através de um cliente SSH como o **OpenSSH** ou o **PuTTY**. A imagem 22 comprova o acesso remoto realizado com sucesso.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img22.png" alt="img22"><br>
+    <figcaption>Imagem 22.</figcaption>
+</figure></div><br>
+
+A terceira tarefa consistiu em utilizar o **AWS CLI** nessa instância `host bastion` para recuperar algumas configurações dessa instância e utilizá-las em outro comando para criar uma nova instância que seria o servidor web com a aplicação. De dentro do acesso remoto realizado na instância `host bastion` foi executado o script abaixo. Esse comando definia uma variável `AZ` que era extraída dos metadados da instância, através do IP `169.254.169.254`, a zona de disponibilidade da instância. Essa variável era exportada para uma variável de ambiente na seção do terminal. A segunda parte do script recuperava a AMI da instância através de um comando do recurso **Parameter Store** do **AWS Session Manager** e armazenava em uma variável que era impressa posteriormente.
+
+```
+#Set the Region
+AZ=`curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone`
+export AWS_DEFAULT_REGION=${AZ::-1}
+#Retrieve latest Linux AMI
+AMI=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 --query 'Parameters[0].[Value]' --output text)
+echo $AMI
+```
+Para recuperar o Id da subnet utilizada foi executado o comando `SUBNET=$(aws ec2 describe-subnets --filters 'Name=tag:Name,Values=Public Subnet' --query Subnets[].SubnetId --output text)` e em seguida o `echo $SUBNET`. Com os comandos `SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=WebSecurityGroup --query SecurityGroups[].GroupId --output text)` e `echo $SG` foi extraído o Id do grupo de segurança. Já o comando <!-- `wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-RSJAWS-1-23732/171-lab-JAWS-create-ec2/s3/UserData.txt` --> baixava na instância do `host bastion` o arquivo de dados do usuário que seria utilizado. Para conferi-lo foi utilizado o comando `cat UserData.txt`. Com todas as informações necessárias foi provisionada a instância do servidor web pelo **AWS CLI** executado na instância do `host bastion` com o comando abaixo.
+
+```
+INSTANCE=$(aws ec2 run-instances --image-id $AMI --subnet-id $SUBNET --security-group-ids $SG --user-data file:///home/ec2-user/UserData.txt --instance-type t3.micro --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Web Server}]' --query 'Instances[*].InstanceId' --output text )
+echo $INSTANCE
+```
+
+Com o comando `aws ec2 describe-instances --instance-ids $INSTANCE` era possível visualizar todas as informações dessa nova instância construída. Já com o comando `aws ec2 describe-instances --instance-ids $INSTANCE --query 'Reservations[].Instances[].State.Name' --output text` foi possível verificar o status do servidor web. Na imagem 23 é evidenciada pela **AWS CLI** o provisionamento da instância.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img23.png" alt="img23"><br>
+    <figcaption>Imagem 23.</figcaption>
+</figure></div><br>
+
+Agora foi preciso capturar o DNS ou IP público dessa instância e isso foi realizado com o comando `aws ec2 describe-instances --instance-ids $INSTANCE --query Reservations[].Instances[].PublicDnsName --output text` que extraíu o DNS. Este DNS foi utilizado em outra aba do navegador da maquina física para acessar a aplicação, conforme mostrado na imagem 24. Como a instância servidor web possuía em seu grupo de segurança uma regra que permitia acesso ao protocolo `HTTP` na porta `80` para qualquer IP (`0.0.0.0/0`) foi possível acessar a aplicação.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img24.png" alt="img24"><br>
+    <figcaption>Imagem 24.</figcaption>
+</figure></div><br>
+
+No primeiro desafio opcional, o objetivo foi se conectar a uma instância cuja tag de nome possuía o valor `Misconfigured Web Server`, identificando qual o problema que não possibilitava a conexão. O problema era que o grupo de segurança vinculado a essa instância não tinha uma regra de entrada permitindo conexões **SSH**, portanto uma regra foi adicionada liberando a porta `22` do protocolo `TCP` para todas as faixas de IP (`0.0.0.0/0`). A imagem 25 mostra a conexão feita com sucesso a essa instância do EC2.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
+
+No segundo desafio opcional, o objetivo foi recuperar o IP ou DNS público da instância anterior e acessá-la pelo navegador da web, identificando o porque não era possível acessar a aplicação. O problema nesse caso era porque os arquivos da aplicação não foram baixados e o servidor web **Apache HTTP (Httpd)** não tinha sido configurado. Portanto, foi necessário baixar o script de user data com este comando <!-- `wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-RSJAWS-1-23732/171-lab-JAWS-create-ec2/s3/UserData.txt` --> e executá-lo adicionando o sudo aos comandos para garantir permissão, conforme mostrado abaixo. A imagem 26 ilustra a aplicação sendo acessada com sucesso.
+
+<!-- ```bash
+#!/bin/bash
+# Install Apache Web Server
+sudo yum install -y httpd
+
+# Turn on web server
+sudo systemctl enable httpd.service
+sudo systemctl start  httpd.service
+
+# Download App files
+wget https://aws-tc-largeobjects.s3.amazonaws.com/CUR-TF-100-RESTRT-1/171-lab-%5BJAWS%5D-create-ec2/dashboard-app.zip
+sudo unzip dashboard-app.zip -d /var/www/html/
+``` -->
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
+</figure></div><br>
+
 <a name="item5.19"><h4>5.19 Demonstração do AWS IAM-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
 
+
+
+
+
+
+
+
 <a name="item5.20"><h4>5.20 172- [JAWS] -Laboratório: [Desafio] Exercício de instância do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <a name="item5.22"><h4>5.22 AWS Elastic Beanstalk</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.23"><h4>5.23 173- [JAWS] -Atividade: Solucionar problemas para criar uma instância</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
