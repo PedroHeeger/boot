@@ -446,32 +446,70 @@ Por fim, o desafio opcional foi basicamente a mesma tarefa anterior, apenas real
 
 <a name="item5.14"><h4>5.14 Visão geral da computação (servidores)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-
-
-
-
-
-
-
-
-
-
-
+NSA
 
 <a name="item5.15"><h4>5.15 Computação na AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+As instâncias EC2 operam como máquinas virtuais em computadores host situados nas zonas de disponibilidade da **AWS**. Cada uma dessas máquinas virtuais roda um sistema operacional (SO), como **Amazon Linux** ou **Microsoft Windows**. É possível instalar e rodar aplicativos no sistema operacional de cada máquina virtual, ou até mesmo executar aplicativos empresariais que utilizam várias máquinas virtuais. As máquinas virtuais funcionam sobre uma camada de hipervisor, que é gerenciada pela **AWS**. O hipervisor atua como a camada de plataforma operacional que oferece às instâncias EC2 acesso ao hardware físico necessário para a sua operação, incluindo processadores, memória e armazenamento. Cada instância EC2 recebe um número específico de CPUs virtuais para processamento e uma quantidade determinada de memória ou RAM.
 
+Algumas instâncias do EC2 utilizam armazenamento de instância, também conhecido como armazenamento temporário. Este tipo de armazenamento está fisicamente ligado ao servidor host e oferece espaço de armazenamento temporário em nível de bloco para a instância. Os dados armazenados neste tipo de armazenamento só permanecem enquanto a instância estiver ativa. Se a instância for reiniciada, os dados persistem, mas se for interrompida ou encerrada, os dados serão perdidos permanentemente. Muitas instâncias do EC2 preferem usar o **Amazon Elastic Block Store (Amazon EBS)** para o disco de inicialização e outras necessidades de armazenamento. O **Amazon EBS** fornece volumes de armazenamento em bloco persistentes, garantindo que os dados permaneçam mesmo quando a instância do EC2 é interrompida. As instâncias otimizadas para o **Amazon EBS** são projetadas para reduzir a contenção de entrada/saída (E/S) entre o **Amazon EBS** e outros tipos de tráfego da instância, proporcionando um desempenho mais consistente. A contenção de E/S ocorre quando várias máquinas virtuais competem por recursos de armazenamento, devido à largura de banda limitada.
 
+As instâncias do EC2 podem se conectar a outros recursos de rede, como outras instâncias EC2, armazenamento de objetos no **Amazon Simple Storage Service (Amazon S3)** e a Internet. O nível de acesso à rede pode ser configurado para atender a diferentes necessidades, equilibrando acessibilidade e segurança. Vários tipos de instâncias oferecem diferentes níveis de desempenho de rede.
 
+Os tipos de instâncias referem-se à variedade de opções disponíveis para executar cargas de trabalho específicas no EC2. Existem diversos tipos de instâncias, desde aquelas de uso geral até as projetadas para oferecer recursos adicionais de CPU, memória RAM ou desempenho de rede. Cada tipo de instância se enquadra em uma categoria e família específica, com variações para diferentes necessidades. Para escolher a instância mais adequada e econômica, é essencial conhecer os requisitos da carga de trabalho que será executada. Por exemplo, a instância t3.nano pertence à categoria de Uso Geral e à família de instâncias T3. O tipo t3.nano oferece 2 vCPUs, 0,5 GB de memória e até 5 Gbps de desempenho de rede, com o sistema operacional inicializado no armazenamento **Amazon EBS**. Em contraste, a instância x1.32xlarge é otimizada para memória, ideal para bancos de dados de alto desempenho e aplicativos empresariais que exigem muita memória. Ela oferece 128 vCPUs, 3.904 GB de memória, 14.000 Mbps de largura de banda dedicada do **Amazon EBS**, desempenho de rede de 25 gigabits e 3.840 GB de armazenamento SSD.
 
+No processo de provisionamento de instâncias EC2, o ponto de partida é uma Imagem de Máquina da Amazon (AMI), que serve como o modelo utilizado pelo **Amazon EC2** para iniciar uma instância. A **AWS** disponibiliza várias AMIs, enquanto outras são oferecidas por terceiros através do **AWS Marketplace**. Também é possível criar uma AMI personalizada a partir de uma instância EC2 já existente. Para iniciar uma instância, é necessário especificar diversos detalhes além da escolha da AMI. Isso inclui o posicionamento da instância e o endereçamento de rede, conforme necessário para proteger e acessar a instância adequadamente. Todas as instâncias são implementadas em uma rede, seja no EC2-Classic ou em uma Virtual Private Cloud (VPC). É possível escolher entre atribuir um endereço IP público ou um endereço Domain Name System (DNS) à instância. O sistema operacional (SO) da instância pode ser inicializado a partir de um armazenamento temporário ou de um volume do Amazon EBS. Volumes de armazenamento em bloco adicionais também podem ser anexados à instância. É necessário configurar um novo security group ou utilizar um existente. O security group define quais portas de rede são permitidas para o tráfego. Além disso, geralmente é especificado um par de chaves para a instância, utilizado para conexões Secure Shell (SSH) ou para acesso via Remote Desktop Protocol (RDP). Durante a execução de uma instância, também é possível fornecer dados do usuário. Esses dados permitem a automação de instalações e configurações na máquina virtual ao ser iniciada, oferecendo uma forma poderosa e simples de gerenciar a configuração inicial da instância.
 
+Uma Imagem de Máquina da Amazon (AMI) contém todas as informações necessárias para iniciar uma instância EC2. Ao iniciar uma instância, uma AMI de origem deve ser especificada. É possível executar múltiplas instâncias a partir de uma única AMI, permitindo a criação de várias instâncias com a mesma configuração. Para diferentes configurações, diferentes AMIs podem ser utilizadas. Uma nova AMI pode ser criada a partir de uma instância a qualquer momento. Por exemplo, ao executar três instâncias a partir da mesma AMI, cada uma pode ser modificada de maneiras distintas, como alterar configurações ou instalar software adicional. Depois, cada instância modificada pode ser capturada como uma nova AMI, resultando em três AMIs distintas. As modificações realizadas em cada instância são salvas como novos modelos para futuras instâncias.
 
+Uma AMI inclui um modelo para o volume raiz da instância, contendo um sistema operacional e, possivelmente, um servidor de aplicativos e outros softwares. Além disso, a AMI inclui permissões de execução, que determinam quais contas **AWS** podem usar a AMI para iniciar instâncias, e permitem disponibilizar a AMI publicamente. A AMI também especifica mapeamentos de dispositivos de blocos, indicando volumes de armazenamento adicionais a serem anexados à instância no momento da execução. Pode-se escolher uma AMI fornecida pela **AWS**, criada por outros usuários da comunidade, disponível no **AWS Marketplace**, ou uma AMI própria.
 
+Ao iniciar uma instância do EC2, ela é lançada dentro de um ambiente de rede VPC (Virtual Private Cloud). Geralmente, isso envolve o uso do **Amazon Virtual Private Cloud (Amazon VPC)** para criar uma VPC, que é uma rede virtual configurada em uma área logicamente isolada dentro da **AWS**. Após criar a VPC, é possível executar recursos da **AWS**, como instâncias EC2, dentro dessa rede virtual. A VPC funciona de maneira semelhante a uma rede tradicional operada em um datacenter próprio. Uma conexão entre duas ou mais VPCs é conhecida como conexão de emparelhamento. Dentro da VPC, são definidas uma ou mais sub-redes, que são segmentos de rede lógicos. Cada sub-rede está associada a uma única zona de disponibilidade, facilitando a organização e a distribuição de recursos dentro da VPC.
 
+Outro aspecto crucial da configuração de rede é o gateway da Internet. Este componente, dimensionado horizontalmente, redundante e altamente disponível na VPC, facilita a comunicação entre as instâncias dentro da VPC e a internet. Adicionalmente, existe o gateway privado virtual, que é um componente opcional projetado para conexões VPN. Localizado no lado da Amazon da conexão VPN, este gateway é criado e anexado à VPC para estabelecer a conexão VPN desejada. No lado do cliente da conexão VPN, está presente o gateway do cliente, que pode ser um dispositivo físico ou um aplicativo de software.
 
+Um security group define conjuntos de regras de firewall para as instâncias, determinando quais tipos de tráfego podem entrar e sair. Os security groups operam no nível da instância, não na subnet. Isso significa que cada instância em uma sub-rede da VPC pode ser associada a diferentes security groups. Caso não seja especificado um grupo específico durante a execução, a instância será automaticamente associada ao security group padrão da VPC.
 
+Existem três tipos principais de endereços IP relacionados às instâncias do EC2. O endereço IP privado é sempre atribuído a cada instância quando ela é iniciada, vindo de um pool de endereços IP privados disponíveis na sub-rede. Esses endereços permitem a comunicação entre as instâncias do EC2 dentro da VPC. O endereço IP público é opcional e pode ser atribuído a uma instância do EC2, gerado dinamicamente a partir de um conjunto de endereços IP públicos disponíveis da **AWS**. Clientes podem usar esse endereço para conectar-se à instância pela Internet. Se uma instância for interrompida e iniciada novamente, um novo endereço IP público é gerado. No entanto, se a instância for reinicializada, ela mantém o mesmo endereço IP público. Por fim, o endereço IP elástico é um endereço IP público, também alocado a partir de um grupo de endereços IP públicos da **AWS**, e pode ser provisionado e atribuído opcionalmente a uma instância do EC2. O endereço IP elástico é estático, permitindo sua reatribuição a outra instância a qualquer momento
+
+Cada instância do EC2 deve ter pelo menos um security group associado. Os security groups funcionam como firewalls com estado que cercam uma ou mais instâncias do EC2, oferecendo controle sobre o tráfego de rede. Um firewall com estado monitora o estado completo das conexões de rede ativas, permitindo controle sobre o tráfego de protocolos como Internet Control Message Protocol (ICMP), do Transmission Control Protocol (TCP) e do User Datagram Protocol (UDP) que podem acessar a instância. Os security groups são aplicados diretamente às instâncias específicas, não ao ponto de entrada da rede. Além de restringir as portas pelas quais o tráfego pode fluir, é possível também controlar de quais endereços IP o tráfego pode se originar. Se o intervalo de endereços IP de origem for configurado como 0.0.0.0/0, qualquer origem poderá acessar essa porta específica. No entanto, é possível especificar um endereço IP específico, um intervalo CIDR (Classless Inter-Domain Routing) ou permitir apenas fontes na Nuvem **AWS** que possuam um security group específico atribuído. É possível atribuir vários security groups a uma única instância ou aplicar um único security group a várias instâncias. Dessa forma, os security groups são muito flexíveis.
+
+Os security groups são projetados para operar na **Amazon VPC** ou no EC2-Classic, sendo impossível usar um security group do EC2-Classic com uma instância em execução em uma VPC. Os security groups do EC2-Classic podem ter regras que se aplicam apenas ao tráfego de entrada, enquanto os security groups da VPC podem controlar tanto o tráfego de entrada quanto o de saída. Por padrão, ao criar um novo security group em uma VPC, todo o tráfego de saída é permitido. Além disso, é possível adicionar ou modificar associações de security groups enquanto uma instância está em execução dentro de uma VPC.
+
+Pode ser vantajoso conceder direitos de acesso específicos para serviços da conta da **AWS** a aplicativos em execução em uma instância do EC2. Alternativamente, pode ser desejável conceder acesso específico a usuários conectados a uma instância do EC2. Para isso, é possível atribuir um perfil de instância à instância. Um perfil de instância serve como um contêiner para uma função do **AWS Identity and Access Management (AWS IAM)**, que por sua vez pode ter uma ou mais políticas do IAM associadas. Essas políticas concedem acesso temporário aos recursos da conta conforme necessário. A utilização de perfis de instância permite conceder acesso a recursos específicos da conta sem a necessidade de armazenar credenciais de chave de acesso e chave de acesso secreta diretamente nas instâncias do EC2. Evitar o armazenamento de credenciais permanentes nas instâncias do EC2 é crucial para a segurança, uma vez que tais credenciais podem ser comprometidas se não forem gerenciadas adequadamente.
+
+Os usuários da conta da **AWS** podem utilizar um perfil de instância para conceder permissões a instâncias do EC2, permitindo que elas acessem os buckets do S3 onde os dados do aplicativo são armazenados. Para isso, é necessário definir uma função do IAM que habilite o serviço do EC2 a usar essa função. A função do IAM deve ter uma política anexada que conceda o nível adequado de acesso ao **Amazon S3**. Posteriormente, essa função do IAM é atribuída à instância quando ela é iniciada ou em um momento posterior. O perfil de instância que contém a função do IAM é criado como um contêiner e então associado à instância. Esse exemplo demonstra uma abordagem arquitetônica muito útil, na qual dados críticos são armazenados no **Amazon S3** em vez de localmente na instância, aumentando a disponibilidade global dos dados e proporcionando maior flexibilidade para acesso e utilização.
+
+Uma outra funcionalidade útil ao iniciar uma instância a partir de uma AMI é o parâmetro de dados do usuário. Os dados do usuário são uma ferramenta poderosa que facilita a implantação automatizada e repetível de instâncias do EC2. Com os dados do usuário, é possível fornecer um script para uma instância do **Linux** ou **Windows**. Durante a inicialização da instância, esse script é executado como uma sequência de comandos. Nos sistemas **Linux**, os scripts são escritos em shell, enquanto em sistemas **Windows**, podem ser scripts em lote ou PowerShell. Ao utilizar os dados do usuário, é viável automatizar a configuração de uma nova instância sem a necessidade de interação manual.
+
+Os scripts de dados do usuário podem delegar tarefas adicionais. Por exemplo, um script pode baixar e executar um script mais extenso armazenado em um bucket do **Amazon S3**. Também é possível baixar e instalar sistemas de gerenciamento de configuração como **Chef** ou **Puppet**, e então iniciar a execução de uma receita ou módulo de inicialização. Além disso, é possível incorporar comandos da **AWS Command Line Interface (AWS CLI)** nos scripts, presumindo que tenha incluído instruções para instalar a **AWS CLI** previamente no script. Essas etapas seriam dispensáveis se a instância já possuir a **AWS CLI** pré-instalada, como é o caso das instâncias do **Amazon Linux**.
+
+Os scripts de dados do usuário são executados pelo serviço cloud-init em instâncias do **Linux** e pelo serviço EC2Launch em instâncias do **Windows**. Por padrão, esses scripts e diretivas cloud-init são executados apenas durante o primeiro ciclo de inicialização de uma instância. No entanto, é possível configurá-los para serem executados sempre que a instância for reiniciada a partir de um estado interrompido.
+
+No **Linux**, os dados do usuário podem ser configurados de duas maneiras distintas. Na primeira abordagem, o script inicia com a invocação de um interpretador bash incorporado do **Linux**. É possível usar qualquer interpretador que suporte a sintaxe Unix `#!` (sha-bang) e esteja instalado na AMI base do **Linux**. Interpretadores de linguagens de software populares, como **Perl** e **Ruby**, geralmente estão pré-instaladas em imagens recentes de AMI do **Linux**. Na segunda abordagem, a diretiva cloud-config é especificada na primeira linha. O exemplo #cloud-config segue o formato compatível com o serviço cloud-init do sistema operacional **Linux**. O cloud-config permite a instalação de software durante a inicialização inicial da instância, garantindo que o software esteja pronto para uso imediatamente após a inicialização. Essa abordagem pode prolongar o tempo inicial de inicialização do sistema.
+
+Para passar dados do usuário para uma instância do **Windows**, existem duas abordagens distintas: utilizando um conjunto de comandos em lote (Batch) do **Windows** ou um script do **PowerShell**. No método que utiliza um arquivo em batch, são feitas chamadas simples para o utilitário **winrm**, configurando a instância para habilitar a administração remota através do serviço Gerenciamento Remoto do Windows. Por outro lado, o script do **PowerShell** utiliza comandos nativos do **PowerShell** para configurar a instância do **Microsoft Windows** como um servidor Web executando os **Serviços de Informações da Internet (IIS)**. Independentemente da abordagem escolhida, esses scripts podem realizar instalações e configurações sem a necessidade de login direto na instância.
+
+Os metadados de uma instância em execução podem ser acessados internamente durante a execução da instância. Esses metadados são úteis para configurar e gerenciar a instância. Eles estão disponíveis no endereço IP `169.254.169.254`. Ao usar **Curl** para acessar `http://169.254.169.254/latest/meta-data/` a partir de uma instância conectada, é possível obter uma lista dos metadados disponíveis, que incluem informações como: ami-id, ami-launch-index, ami-manifest-path, block-device-mapping/, events/, hostname, iam/, instance-action, instance-id, instance-type, local-hostname, local-ipv4, mac, metrics/, network/, placement/, profile, public-hostname, public-ipv4, public-keys/, reservation-id, security-groups e services/.
+
+Um exemplo de aplicação dos metadados da instância do EC2 está em um script de dados do usuário. Nele, é possível referenciar propriedades da instância do EC2, como IDs de instância, que não são conhecidas até o momento da inicialização. Ao definir variáveis no script de dados do usuário, é possível consultar o serviço de metadados da instância. Para acessar os dados do usuário de uma instância em execução, utiliza-se o seguinte URL `http://169.254.169.254/latest/user-data` ou através do comando do **AWS CLI** `aws ec2 describe-instance-attribute --instance-id i-1234567890abcdef0--attribute userData --output text --query "UserData.Value" | base64 –decode`, decodificando o conteúdo.
+
+O **Amazon EC2** recomenda o uso de criptografia de chave pública para proteger informações de login. Nesse método, uma chave pública é usada para criptografar dados, como senhas, e o destinatário usa uma chave privada correspondente para descriptografar os dados. Essas chaves formam um par de chaves. Para acessar uma instância, é necessário um par de chaves registrado nas configurações do Secure Shell (SSH) do sistema operacional ao qual está conectando. Geralmente, o nome desse par de chaves é especificado ao iniciar a instância pela primeira vez. É possível criar um novo par de chaves durante o processo de inicialização da instância ou usar um par de chaves existente. A **AWS** configura automaticamente a instância para aceitar o par de chaves especificado. Depois que a instância é inicializada, a chave privada correspondente é usada para se conectar a ela.
+
+As configurações padrão de SSH em instâncias do **Linux** não solicitam senha. A autenticação somente por senha é desabilitada por padrão no **Linux**. Em vez disso, espera-se que os usuários utilizem um par de chaves para fazer login, embora seja possível configurar este processo em AMIs personalizadas. Em instâncias do **Windows**, geralmente um par de chaves é usado para descriptografar a senha de administrador, após o qual o login é realizado através do **Remote Desktop Protocol (RDP)**.
+
+A senha de usuário Administrador padrão para instâncias do **Microsoft Windows** e o ec2-user (ou outra senha de usuário padrão) em instâncias do **Linux** são pontos de partida. É responsabilidade definir a própria segurança no nível da instância e decidir como concederá e revogará permissões para acesso à instância à medida que pessoas ingressarem e saírem da organização. Para instâncias do **Microsoft Windows**, o **AWS Directory Service** é usado para conceder e revogar acesso a máquinas com base em usuários e grupos existentes do **Windows**. Para instâncias do **Linux**, várias opções de segurança estão disponíveis. Muitos administradores de sistemas optam por usar o **Kerberos**, um protocolo de autenticação de rede que usa criptografia de chave secreta para fornecer autenticação entre clientes e servidores. O **Kerberos** pode ser parte de uma solução de Autenticação única (SSO). Outros administradores de sistemas **Linux** preferem utilizar ferramentas como o ssh-keygen para gerar seus próprios pares de chaves públicas/privadas para usuários que precisam acessar instâncias do EC2. Quando essa opção é escolhida, os detalhes da chave pública são configurados no arquivo `.ssh/authorized_keys` do usuário e a chave privada é distribuída ao usuário.
+
+É responsabilidade do cliente da **AWS** desenvolver uma estratégia para gerenciar adições e remoções de permissões em uma infraestrutura de instâncias em execução. Uma abordagem é criar AMIs que incluam todos os usuários atuais da empresa, porém essa prática pode ser rígida e desafiadora de gerenciar, especialmente em certas AMIs. Ferramentas de gerenciamento de configuração, como **Chef**, **Puppet** e **Ansible**, podem simplificar significativamente o processo de conceder e revogar acesso em um grande número de máquinas, muitas vezes reduzindo-o a apenas alguns comandos.
 
 <a name="item5.16"><h4>5.16 Gerenciar instâncias da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
 
 
 
@@ -495,7 +533,7 @@ A primeira tarefa foi o provisionamento da instância host bastion pelo console 
     <figcaption>Imagem 21.</figcaption>
 </figure></div><br>
 
-Na tarefa 2, para realizar o acesso a instância `host bastion`, ela foi selecionada e na opção `Connect`, em `EC2 Instance Connect` foi escolhida a opção `Connect`, mantendo o username como `ec2-user`, que é o usuário padrão do **Amazon Linux**. Assim, um terminal shell era aberto no navegador da maquina física **Windows** conectado a instância do EC2. Essa conexão poderia ser realizada através de um cliente SSH como o **OpenSSH** ou o **PuTTY**. A imagem 22 comprova o acesso remoto realizado com sucesso.
+Na tarefa 2, para realizar o acesso a instância `host bastion`, ela foi selecionada e na opção `Connect`, em `EC2 Instance Connect` foi escolhida a opção `Connect`, mantendo o username como `ec2-user`, que é o usuário padrão do **Amazon Linux**. Assim, um terminal shell era aberto no navegador da maquina física **Windows** conectado a instância do EC2. Essa conexão poderia ser realizada através de um cliente SSH como o **OpenSSH** ou o **PuTTY**, se um arquivo par de chaves fosse criado para autenticação do usuário. A imagem 22 comprova o acesso remoto realizado com sucesso.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img22.png" alt="img22"><br>
@@ -563,33 +601,106 @@ sudo unzip dashboard-app.zip -d /var/www/html/
 
 <a name="item5.19"><h4>5.19 Demonstração do AWS IAM-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta demonstração foi explicado como criar um usuário do IAM, criar um grupo de usuários, adicionar uma política de permissão ao grupo e inseri o usuário do IAM criado neste grupo para que ele herdasse as permissões. O professor realizou isso totalmente pelo **AWS Console Management**, porém fiz diferente. Como as demonstrações não utilizam o sandbox do **Vocareum**, foi preciso utilizar minha própria conta da **AWS**. Portanto, foi utilizado o **PowerShell** no **Windows Terminal** da maquina física **Windows**, que já possuía instalada a **AWS CLI** e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`). Assim, foi criado o usuário e o grupo através de arquivos de scripts **PowerShell**. Após isso, o console de gerenciamento da **AWS** foi acessado, logando com esse novo usuário. Como este usuário já tinha permissões de acesso total ao serviço do **Amazon S3**, o bucket foi criado.
 
+O usuário do IAM desenvolvido foi o `iamUserEdn` através do arquivo [iamUser.ps1](./resource/iamUser.ps1). O professor selecionou a opção de exigir que a senha do usuário fosse resetada ao iniciar, mas preferir não realizar isso. Um tag de chava `Role` e valor `Demo Account` foi definida. Como o usuário precisaria de acesso pelo console de gerenciamento da **AWS**, no próprio script criação do usuário foi também construído um perfil de login para ele, definido a senha de acesso. A imagem 27 mostra esse usuário do IAM criado.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img27.png" alt="img27"><br>
+    <figcaption>Imagem 27.</figcaption>
+</figure></div><br>
 
+O grupo de usuário foi construído com o arquivo [iamGroup.ps1](./resource/iamGroup.ps1) e teve o nome de `iamGroupEdn`. O usuário `iamUserEdn` foi adicionado ao grupo com o arquivo [iamUserGroup.ps1](./resource/iamUserGroup.ps1). Já com o arquivo [iamGroupPolicy.ps1](./resource/iamGroupPolicy.ps1), a política `AmazonS3FullAcces`, que concedia acesso total ao serviço **Amazon S3** foi adicionada. A imagem 28 exibe o usuário e a política adicionadas ao grupo desenvolvido.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img28.png" alt="img28"><br>
+    <figcaption>Imagem 28.</figcaption>
+</figure></div><br>
 
+Agora, o **AWS Console Management** foi acesso com o novo usuário que criou um bucket por lá mesmo, de nome `iamuserednbucket`, só para verificar que este usuário tinha permissão de acesso total ao serviço **Amazon S3**. A imagem 29 evidencia essa etapa.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img29.png" alt="img29"><br>
+    <figcaption>Imagem 29.</figcaption>
+</figure></div><br>
 
-
+Após isso, o bucket foi deletado por esse usuário e o logout foi realizado. Com os mesmos arquivos de scripts que realizaram as criações, foram realizadas as exclusões, pois estes possuía sempre dois scripts, um para criar e outro para excluir, sempre precedidos por uma estrutura de condição que aguardava uma resposta do usuário.
 
 <a name="item5.20"><h4>5.20 172- [JAWS] -Laboratório: [Desafio] Exercício de instância do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Neste laboratório de desafio, realizado dentro do sandbox **Vocareum**, o objetivo foi configurar a VPC de nome `Lab VPC`, criando uma sub-rede pública, um gateway de internet e configurando corretamente a tabela de rotas. Também foi provisionado uma instância do **Amazon EC2** nesta VPC, tornando ela um servidor web.
 
+A primeira etapa foi construir a VPC `Lab VPC` com apenas duas sub-redes, uma pública e outra privada, ambas em uma única zona de disponibilidade que foi `us-west-2a` (Oregon).
+A VPC possuía o IPv4 CIDR como `10.0.0.0/16` e não tinha nenhum bloco CIDR IPv6. O CIDR das sub-redes foram mantidas o padrão com base no CIDR da VPC. O tenancy escolhido foi o padrão. Um internet gateway e um NAT gateway também foram criados nessa VPC, sendo um para sub-rede pública e outro para a privada, definidos nas duas rotas da tabela de rotas. A imagem 30 mostra como ficou a VPC.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img30.png" alt="img30"><br>
+    <figcaption>Imagem 30.</figcaption>
+</figure></div><br>
 
+Com a VPC pronta, foi instanciada uma maquina **Amazon Linux** no serviço **Amazon EC2**, cuja AMI foi `ami-0b20a6f09484773af` (Amazon Linux 2023 AMI 2023.4.20240611.0 x86_64 HVM kernel-6.1) e o tipo de instância foi `t3.micro`. A tag de nome teve seu valor como `Web Server` para identificar a instância. Nas configurações de rede, foram escolhidas a VPC configurada, bem como, a sub-rede pública dela. Foi habilitado a opção de alocar um IP elástico para a instância, ou seja, um IP público estático. O grupo de segurança foi utilizado o padrão desta VPC, definindo a regra de entrada liberando a porta `22` do protocolo `TCP` para conexões `SSH` para qualquer faixa de IP (`0.0.0.0/0`), e uma regra na porta `80` do protocolo `TCP` para permitir o acesso a aplicação web. O armazenamento foi mantido o padrão de inicialização, que foi um volume no **Amazon EBS** com `8 GiB` do tipo `gp2`. O par de chaves não foi solicitado criar, pois a conexão remota seria feito direto pelo console de gerenciamento da **AWS** na opção `EC2 Instance Connect`, mas caso preferisse poderia criar um par de chaves para ser utilizado por um software como o **OpenSSH** ou o **PuTTY** para autenticar ao acessar remotamente a instância. A última definição antes de executar a instância foi passar o arquivo user data para instalar o servidor web **Apache HTTP (Httpd)** e iniciá-lo, e conceder permissão de gravação ao diretório raiz do documento do servidor web (`/var/www/html`). O arquivo de script em **Bash** abaixo foi passado como user data. A imagem 31 exibe a instância em operação.
 
+```bash
+#!/bin/bash
+yum install -y httpd
 
+systemctl enable httpd.service
+systemctl start  httpd.service
 
+chmod +666 /var/www/html
+```
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img31.png" alt="img31"><br>
+    <figcaption>Imagem 31.</figcaption>
+</figure></div><br>
 
+A etapa seguinte foi realizar o acesso remoto pelo `EC2 Instance Connect` do próprio console de gerenciamento da **AWS** para acessar a instância sem precisar de par de chaves, pois a própria **AWS** autenticava o usuário `ec2-user`. Um terminal shell conectado na instância criada foi aberto em outra aba do navegador da maquina física **Windows**. Então, o diretório corrente foi alterado com o comando `cd /var/www/html` e o arquivo `index.html` foi alterado com o código abaixo. Após isso, foi copiado o IP ou DNS público da instância e utilizado em outra aba do navegador para acessar a aplicação, conforme mostrado na imagem 32.
 
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Pedro Heeger's re/Start Project Work</h1>
+    <p>EC2 Instance Challenge Lab</p>
+  </body>
+</html>
+```
 
-
-
-
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img32.png" alt="img32"><br>
+    <figcaption>Imagem 32.</figcaption>
+</figure></div><br>
 
 <a name="item5.22"><h4>5.22 AWS Elastic Beanstalk</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.23"><h4>5.23 173- [JAWS] -Atividade: Solucionar problemas para criar uma instância</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.24"><h4>5.24 Visão geral de escalabilidade e resolução de nomes</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.25"><h4>5.25 Elastic Load Balancing</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.26"><h4>5.26 Listeners do Elastic Load Balancer</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
