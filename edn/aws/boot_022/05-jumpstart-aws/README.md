@@ -674,38 +674,111 @@ A etapa seguinte foi realizar o acesso remoto pelo `EC2 Instance Connect` do pr�
 
 <a name="item5.22"><h4>5.22 AWS Elastic Beanstalk</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+O **Amazon Elastic Beanstalk** é um serviço de computação que simplifica a implementação e a escalabilidade de aplicativos e serviços web. Esse serviço suporta aplicativos desenvolvidos em várias linguagens, como **Java**, **.NET**, **PHP**, **Node.js**, **Python**, **Ruby**, **Go** e **Docker**, e pode ser executado em servidores conhecidos como **Apache**, **NGINX**, **Passenger** e **Microsoft Internet Information Services (Microsoft IIS)**. Ao enviar o código para o Elastic Beanstalk, ele automaticamente gerencia a implantação, incluindo o provisionamento de capacidade, balanceamento de carga, escalabilidade automática e monitoramento da integridade dos aplicativos. Apesar dessa automação, é possível manter total controle sobre os recursos da **AWS** que suportam o aplicativo e acessar esses recursos conforme necessário. 
 
+Sendo uma plataforma como serviço (PaaS), o Elastic Beanstalk facilita a rápida implantação, escalabilidade e gerenciamento de aplicativos. O controle permanece nas mãos do usuário. Toda a plataforma já está configurada, bastando fazer o upload do código. É possível escolher o tipo de instância e o banco de dados, configurar e ajustar o Amazon EC2 Auto Scaling, atualizar o aplicativo, acessar arquivos de log do servidor e habilitar o HTTP seguro (HTTPS) no balanceador de carga.
 
+O Elastic Beanstalk é compatível com diversas plataformas, incluindo Packer Builder, contêiner único, múltiplos contêineres ou **Docker** pré-configurado, **Go**, **JavaSE**, **Java** com **Tomcat**, **.NET** no **Microsoft Windows Server** com **Microsoft IIS**, **Node.js**, **PHP**, **Python** e **Ruby**. É possível desenvolver o aplicativo conforme suas necessidades e implantá-lo no Elastic Beanstalk. O serviço é gratuito, os custos incidem apenas sobre os serviços subjacentes utilizados.
 
+O Elastic Beanstalk oferece todos os recursos necessários para hospedar o aplicativo sem complicações. Basta desenvolver o código e carregá-lo utilizando o console de gerenciamento da **AWS**, um repositório **Git**, ou uma IDE como **Apache Eclipse** ou **Microsoft Visual Studio**. O Elastic Beanstalk cuida automaticamente da implantação, dimensionamento, balanceamento de carga e monitoramento da saúde do aplicativo.
 
-
-
-
-
-
-
+Utilizando o Elastic Beanstalk, é possível concentrar-se na codificação em vez de lidar com a gestão e configuração de servidores, bancos de dados, balanceadores de carga, firewalls e redes. O Elastic Beanstalk automatiza o provisionamento e operação da infraestrutura, gerenciando a pilha de aplicativos (plataforma) para manter a plataforma subjacente atualizada com os patches e atualizações mais recentes. Esta abordagem permite que o aplicativo gerencie eficazmente picos de carga de trabalho ou tráfego enquanto minimiza custos, escalando automaticamente para cima ou para baixo conforme as necessidades usando configurações ajustáveis do **Amazon EC2 Auto Scaling**. Por exemplo, métricas de utilização da CPU podem ser utilizadas para acionar ações de Auto Scaling. Para atualizar o aplicativo após a implantação, basta carregar o novo código.
 
 <a name="item5.23"><h4>5.23 173- [JAWS] -Atividade: Solucionar problemas para criar uma instância</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta laboratório atividade, realizado no sandbox **Vocareum**, o objetivo foi criar uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** através do **AWS Command Line Interface (AWS CLI)** configurado em uma outra instância EC2 que foi conectada via EC2 Instance Connect. A nova instância provisionada funcionaria como servidor web de uma cafeteria hipotética. Para sua construção, na outra instância, que já vinha provisionada automaticamente ao iniciar o laboratório, existiam dois arquivos de scripts, sendo um com comandos **AWS CLI** e o outro com o user data que essa nova instância utilizaria. O arquivo user data instalaria um servidor web **Apache HTTP (Httpd)**, um banco de dados relacional **MariaDB** (um fork do banco de dados relacional **MySQL**) e **PHP** em execução. Juntos, esses pacotes de software instalados em uma única máquina geralmente são chamados de pilha LAMP (**Linux**, servidor web Apache, **MySQL** e **PHP**). Usar uma pilha LAMP é uma forma comum de criar um site com um back-end de banco de dados em uma única máquina.
 
+Contudo, ao criar a instância de servidor web, os arquivos de scripts apresentaram erros, cuja intenção era essa mesma, para que análises dos arquivos fossem realizadas com intuito de identificar e solucionar os problemas.
 
+O primeiro passo foi se conectar a instância do EC2 que já existia utilizando a opção `EC2 Instance Connect` do próprio console de gerenciamento da **AWS**. Com essa opção, a própria **AWS** faz a autenticação do usuário, que no caso era `ec2-user`, pois era uma maquina **Amazon Linux**. Dessa forma, não era preciso fornecer chave privada para autenticação do usuário. Como padrão, um terminal shell conectado a instância foi aberto em uma outra aba do navegador da maquina física **Windows**. A imagem 33 mostra o acesso remoto realizado na instância do EC2.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img33.png" alt="img33"><br>
+    <figcaption>Imagem 33.</figcaption>
+</figure></div><br>
 
+Na sequência, foi necessário configurar a **AWS CLI**, que já vem instalada em instâncias **Amazon Linux**, com as informações fornecidas na opção detalhes do sandbox **Vocareum**. A região definida na configuração da **AWS CLI** foi a mesma que vinha no laboratório, `us-west-2` (Oregon), e o formato de saída dos dados era o padrão (`json`). O **AWS CLI** dessa maquina estava sendo configurado no usuário do IAM `awsstudent`, usuário este que era automaticamente criado ao iniciar o laboratório.
 
+Na etapa seguinte, o objetivo foi analisar os arquivos de scripts. Para isso, o diretório corrente foi alterado com o comando `cd ~/sysops-activity-files/starters` e com comando `cp create-lamp-instance-v2.sh create-lamp-instance.backup` uma cópia do arquivo que provisionava a nova instância na **AWS** foi feita como backup. Ao tentar executar esse arquivo, ele apresentava alguns erros e não era executado. O arquivo foi aberto com o **VI** através do comando `vi create-lamp-instance-v2.sh` e foi utilizado o comando do **VI** `:set number` para exibir os números da linha para melhor visualização do arquivo.
 
+O primeiro erro era que não identificava AMI. Basicamente, todas as informações configurações como Id dos recursos que a instância utilizaria foram extraídos de comandos **AWS CLI** que esse arquivo executava procurando na outra instância, para utilizar os mesmos recursos. Entretanto, a AMI não foi identificada, por causa da região. Se observar no arquivo, na linha 160, o parâmetro `--region` do comando `aws ec2 run-instances` tem o valor de `us-east-1` quando na verdade deveria ser a variável `region`, pois o valor dela é `us-west-2` que é a região utilizada no laboratório. Provalvemente a AMI que é extraída, não existe na região `us-east-1`. A imagem 34 exibe o arquivo de script executado com sucesso, provisionando a instância. Durante sua execução foi questionado se desejava excluir recursos já existentes, como ele tinha sido rodado antes e tinha dado erro, o grupo de segurança foi criado, pois o erro não afetava o security group. Então, era só confirmar a exclusão que o novo grupo exatamente igual seria construído.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img34.png" alt="img34"><br>
+    <figcaption>Imagem 34.</figcaption>
+</figure></div><br>
 
+O segundo erro não teve haver com esse arquivo de script e nem com o arquivo de user data, cujo nome era `create-lamp-instance-userdata-v2.txt`. Logo, ao solucionar o problema anterior e executar o arquivo, o servidor web foi provisionado normalmente. Contudo, ao tentar acessar o IP ou DNS público da instância para verificar a aplicação rodando, o segundo erro surgia. De cara, foi possível identificar que o erro era no grupo de segurança que não tinha um regra de entrada permitindo acesso a porta `80` do protocolo `TCP` para todas as faixas de IP (`0.0.0.0/0`). No grupo de segurança tinha uma regra liberando a porta `8080`, mas o servidor web **Apache HTTP (Httpd)** opera na porta `80`. A liberação pública de uma porta do grupo de segurança não é recomendada e deve-se ter muito cuidado ao realizar isso, como aqui foi para fins didáticos não houve problema. Uma outra forma de solucionar, foi necessário acessar remotamente a instância da mesma forma de acesso realizado na instância anterior. Dentro dela, foi necessário instalar o software **Nmap**, que é uma ferramenta de verificação de portas, com o comando `sudo yum install -y nmap`. Com o **Nmap** foi executado o comando `nmap -Pn 54.245.214.190`, informando o IP público dessa instância. A saída desse comando mostrou quais portas estavam acessíveis.
 
+Após correção dos erros, em uma aba do navegador da maquina física **Windows** a aplicação web foi acessada pelo IP público da instância adicionando no path o `/cafe`, conforme imagem 35. Ao selecionar a aba menu do site, uma nova página era carregada, e nela foi possível selecionar sobremesas para pedir e confirmá-los em enviar pedido, evidenciado na imagem 36. Assim, a página de confirmação do pedido foi exibida, com detalhes dos pedidos escolhidos. Outros pedidos foram realizados para interagir com a aplicação. No fim, a página de histórico de pedidos foi selecionada para conferir o histórico dos pedidos, conforme imagem 37.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img35.png" alt="img35"><br>
+    <figcaption>Imagem 35.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img36.png" alt="img36"><br>
+    <figcaption>Imagem 36.</figcaption>
+</figure></div><br>
 
-
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img37.png" alt="img37"><br>
+    <figcaption>Imagem 37.</figcaption>
+</figure></div><br>
 
 <a name="item5.24"><h4>5.24 Visão geral de escalabilidade e resolução de nomes</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
 <a name="item5.25"><h4>5.25 Elastic Load Balancing</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
 <a name="item5.26"><h4>5.26 Listeners do Elastic Load Balancer</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
 <a name="item5.27"><h4>5.27 Auto Scaling do Amazon EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
 <a name="item5.28"><h4>5.28 Visão geral do laboratório: Auto Scaling do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.29"><h4>5.29 174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
