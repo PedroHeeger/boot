@@ -504,19 +504,28 @@ A senha de usuário Administrador padrão para instâncias do **Microsoft Window
 
 <a name="item5.16"><h4>5.16 Gerenciar instâncias da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+As instâncias podem passar por diferentes estados. Uma instância entra no estado "Pendente" quando é iniciada ou lançada pela primeira vez. Após o sistema operacional da instância ser inicializado, ela passa por verificações de status do sistema e da própria instância. Em seguida, a instância entra no estado "Em Execução". A partir desse estado, uma instância pode ser interrompida. No entanto, as instâncias que usam armazenamento de instâncias, não um volume persistente do **Amazon Elastic Block Store (Amazon EBS)** para seu volume raiz, só podem ser encerradas, não interrompidas. Instâncias com um volume raiz EBS podem ser interrompidas ou encerradas. Durante o processo de encerramento, a instância é primeiro interrompida e depois encerrada. Uma instância também pode ser reiniciada, seja do estado interrompido ou do estado em execução.
 
+Assim que uma instância entra no estado "Em Execução", começa o processo de faturamento por essa instância. Instâncias **Linux** que são executadas sob demanda, reservadas ou no modelo spot são cobradas em incrementos de 1 segundo. Outros tipos de instância são cobrados por hora completa. Uma instância pode ser reiniciada sem afetar o ciclo de faturamento. No entanto, se uma instância for interrompida e reiniciada, um novo ciclo de faturamento por hora começará imediatamente após o reinício.
 
+Se uma instância com um endereço IP público atribuído for interrompida e iniciada novamente, receberá um novo endereço IP público ao reiniciar. Por outro lado, ao reinicializar apenas a instância, o endereço IP público atual será mantido. Endereços IP elásticos permanecem associados à instância mesmo após uma interrupção, mas são desassociados quando a instância é encerrada.
 
+Certos tipos de instância suportam o recurso de hibernação, como as séries M, R e C que executam o Amazon Linux 1 e 2. Quando uma instância é colocada em hibernação, o sistema operacional convidado preserva os dados na memória, salvando-os no disco. Todos os volumes do EBS permanecem conectados à instância. Ao reiniciar, a instância é restaurada ao estado anterior, recarregando o conteúdo da RAM e retomando os processos anteriores. Similar à interrupção e reinício de uma instância, o endereço IPv4 público original é liberado e um novo é atribuído durante a reinicialização. Da mesma forma, se a instância estiver em hibernação, ela manterá qualquer endereço IP elástico associado. Não há cobrança pelo uso de uma instância em hibernação quando está no estado interrompido. No entanto, o armazenamento em todos os volumes do EBS, incluindo o armazenamento do conteúdo da memória persistente no disco, será cobrado. Volumes de armazenamento de instância não podem ser interrompidos ou colocados em hibernação.
 
+Para habilitar a hibernação, é necessário configurá-la durante a inicialização usando o Console de Gerenciamento da **AWS** ou a **AWS Command Line Interface (AWS CLI)**. Não é possível habilitar a hibernação em uma instância existente que esteja em execução ou parada. O volume raiz da instância deve ser um volume do EBS. Esse volume precisa ter capacidade suficiente para armazenar os dados da RAM e atender ao uso esperado do sistema operacional ou dos aplicativos. Quando a hibernação é ativada, um espaço no volume raiz é reservado na inicialização para armazenar os dados da RAM. Além disso, o volume raiz do EBS deve ser criptografado para garantir a segurança dos dados confidenciais na memória. Durante a transferência dos dados da RAM para o volume raiz do EBS, eles são sempre criptografados. A criptografia do volume raiz é aplicada durante a execução da instância. Para garantir que o volume raiz seja criptografado com o **Amazon EBS**, a AMI usada para iniciar a instância deve ser criptografada. O recurso de hibernação está disponível apenas para instâncias sob demanda, instâncias spot e instâncias reservadas.
 
+É uma prática recomendada considerar instâncias do EC2 como recursos temporários, prontos para serem criados, desativados e recriados conforme necessário. Muitas situações na nuvem demandam a criação de um novo servidor a partir do zero, incluindo:
+- Escalonamento automático: Soluções que precisam implantar novas instâncias sem intervenção humana.
+- Economia de custos: Decisões de não manter uma instância atualmente, mas ainda precisar da capacidade de recriá-la rapidamente. Casos de uso de processamento em lote frequentemente se enquadram aqui.
+- Downgrade: Redução do tipo de instância para economia de custos, como migrar de hardware dedicado para compartilhado ou reduzir o tamanho da instância.
+- Reparo de instâncias comprometidas: Substituição de instâncias quando o hardware subjacente falha, garantindo uma nova infraestrutura saudável.
+- Atualização: Necessidade de executar novas instâncias para atualizar o sistema operacional ou tipo de imagem da arquitetura.
 
+À medida que as necessidades mudarem, pode-se descobrir que a instância está: sobrecarregada se o tipo de instância for muito pequeno (a carga de trabalho na instância fica sem memória, CPU ou espaço em disco); subutilizada se o tipo de instância for muito grande (a carga de trabalho na instância não utiliza toda a memória, CPU ou espaço em disco alocado). Se uma dessas situações ocorrer, o tamanho da instância pode ser modificado. Por exemplo, se uma instância t2.micro for inadequada para a carga de trabalho, pode-se alterá-la para uma instância m3.medium seguindo estes passos: interromper a instância, modificar o tipo e iniciar a instância. Ao atualizar o tipo de instância, o novo tipo deve ser compatível com a mesma arquitetura. Por exemplo, uma instância com arquitetura de 64 bits só pode ser atualizada para um tipo de instância que também tenha arquitetura de 64 bits. Se o dispositivo raiz for um volume do EBS, é possível simplesmente alterar o tamanho da instância após interrompê-la temporariamente. Se o dispositivo raiz da instância for um volume de armazenamento de instâncias, será necessário migrar o aplicativo para uma nova instância que tenha o tipo de instância desejado.
 
+A **AWS** oferece AMIs gerenciadas que abrangem várias versões e configurações do **Microsoft Windows Server**. Para garantir que os clientes recebam as atualizações de segurança mais recentes automaticamente, a **AWS** mantém as AMIs do **Microsoft Windows** disponíveis por até 3 meses. Após esse período, as AMIs do **Windows** com mais de três meses são tornadas privadas. Uma vez privadas, elas não são mais visíveis no console, mas ainda é possível recuperar o ID da AMI usando a **AWS CLI** ou um SDK da **AWS**. Por outro lado, as AMIs do **Amazon Linux** têm uma disponibilidade prolongada. Ao iniciar uma instância, as AMIs mais recentes do **Amazon Linux** e do *Amazon Linux 2* estão disponíveis na seção "Início rápido" do console de gerenciamento da **AWS**. Também é possível verificar a AMI mais recente do **Amazon Linux** utilizando a **AWS CLI**.
 
-
-
-
-
-
+Embora muitas instâncias possam operar por períodos curtos, algumas são mantidas por semanas ou até meses em ambientes como desenvolvimento, teste ou servidores de banco de dados, onde a estabilidade contínua é crucial. É recomendável manter essas instâncias atualizadas regularmente para garantir que tenham as últimas atualizações de segurança. No modelo de responsabilidade compartilhada, cabe ao usuário manter suas instâncias atualizadas. As atualizações automáticas do **Microsoft Windows** podem ser ativadas através do **Windows Update**, mas também é possível optar por desativá-las e aplicar as atualizações manualmente para verificar qualquer impacto nos aplicativos em execução no servidor. Para instâncias do **Amazon Linux**, a **AWS** gerencia um repositório **YUM** próprio, permitindo que o **YUM** instale todas as atualizações mais recentes disponíveis para os aplicativos instalados no servidor. Além disso, o **YUM** pode ser utilizado para atualizar pacotes individualmente, se necessário. Serviços como **AWS Systems Manager** e **AWS OpsWorks** simplificam o processo de atualização das instâncias do EC2, enquanto existem também ferramentas de gerenciamento de configuração de terceiros disponíveis para essa finalidade.
 
 <a name="item5.17"><h4>5.17 Visão geral do laboratório: Instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -729,15 +738,9 @@ Após correção dos erros, em uma aba do navegador da maquina física **Windows
 
 <a name="item5.24"><h4>5.24 Visão geral de escalabilidade e resolução de nomes</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-
-
-
-
-
-
+NSA
 
 <a name="item5.25"><h4>5.25 Elastic Load Balancing</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
 
 Os sites modernos de alto tráfego precisam responder a centenas de milhares, ou até milhões, de solicitações simultâneas de usuários ou clientes. Eles devem entregar texto, imagens, vídeos ou dados de aplicativos de maneira rápida e confiável. Para escalar economicamente e atender a esses grandes volumes, é comum adicionar mais servidores, conforme as práticas recomendadas de computação moderna. Um balanceador de carga atua como um diretor de tráfego, posicionando-se na frente dos servidores e distribuindo as solicitações dos clientes. Ele direciona as solicitações entre os servidores capazes de atendê-las, maximizando a velocidade e a utilização da capacidade. Isso garante que nenhum servidor fique sobrecarregado, o que poderia comprometer o desempenho. Se um servidor falhar, o balanceador de carga redireciona o tráfego para os servidores restantes que estão online. Esses servidores podem incluir instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)**, contêineres e endereços IP. Quando um novo servidor é adicionado ao grupo, o balanceador de carga automaticamente começa a enviar solicitações para ele. Os balanceadores de carga do ELB podem ser configurados na área de serviço do **Amazon EC2** no console de gerenciamento da **AWS**. Alternativamente, o serviço pode ser acionado via **AWS Command Line Interface (AWS CLI)** ou kits de desenvolvimento de software (SDKs). Existem três tipos de balanceadores de carga do ELB, todos oferecendo alta disponibilidade, dimensionamento automático e segurança robusta, essenciais para tornar os aplicativos tolerantes a falhas.
 
@@ -808,24 +811,149 @@ Pode-se utilizar a escalabilidade preditiva, a escalabilidade dinâmica, ou uma 
 
 <a name="item5.28"><h4>5.28 Visão geral do laboratório: Auto Scaling do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-
-
-
-
-
-
-
-
-
+NSA
 
 <a name="item5.29"><h4>5.29 174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Neste laboratório desenvolvido no sandbox **Vocareum**, foi utilizado a **AWS CLI** já instalada na instância do **Amazon EC2**, cuja tag de nome era `Command Host`, para construir toda a arquitetura do laboratório. A instância `Command Host` era provisionada automaticamente pelo **AWS CloudFormation**, junto com outros recursos como os da **Amazon VPC**, quando o laboratório iniciava. Com **AWS CLI** dentro dessa instância, foi provisionada uma nova instância, cuja tag de nome era `Web Server`, que serviria de modelo de servidor web para instâncias da arquitetura. Uma imagem de maquina Amazon (AMI) foi construída a partir da instância `Web Server` que serviu de base para as duas instâncias da arquitetura construídas por um grupo de auto scaling. Um *Application Load Balancer (ALB)* foi desenvolvido para direcionar o tráfego para esse auto scaling group. Por fim, políticas de escalabilidade foram definidas nesse grupo de auto scaling. Com a aplicação que era executada nas instâncias foi realizado um teste de estresse para utilizar total porcentagem de CPU das instâncias e verificar a política de escalabilidade agindo para aumentar o número de servidores no grupo de auto scaling.
+
+A primeira tarefa foi provisionar a instância `Web Server` e criar uma AMI com base neste servidor web modelo, sendo todas as opereções executadas pelo **AWS CLI** instalado na instância `Command Host`. A primeira etapa desta tarefa foi conectar-se a instância `Command Host` pela opção `EC2 Instance Connect`. Assim, não era preciso par de chaves configurado para autenticar o usuário `ec2-user` na instância. Um terminal shell conectado na instância foi aberto em uma outra aba do navegador da maquina física. Na segunda etapa foi necessário configurar o **AWS CLI** instalado nesse instância com o comando `aws configure` e definir as configurações. Com o comando `curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region` foi acessado os metadados da própria instância para descobrir qual região ela estava usando e se era a região definida no console de gerenciamento da **AWS**, `us-west-2` (Oregon). Nas configurações da CLI da instância, o ID e Secret Access Key foram mantidos os que já estavam configurados, logo foi pressionado `Enter` para confirmar. A região foi a do laboratório `us-west-2` e o fomarto de saída dos dados foi `json`. Após isso, o diretório corrente foi alterado para a pasta do usuário com o comando `cd /home/ec2-user/`. Os arquivos de scripts que seriam utilizados para criar a segunda instância e a arquitetura estavam nesta pasta, conforme mostrado na imagem 38.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img38.png" alt="img38"><br>
+    <figcaption>Imagem 38.</figcaption>
+</figure></div><br>
+
+Para inspecionar o arquivo de user data foi executado o comando `more UserData.txt`. Esse arquivo executava várias tarefas de inicialização, incluindo a atualização de todos os softwares instalados na caixa e a instalação de um aplicativo web PHP pequeno que seria utilizado para simular uma alta carga de CPU nas instâncias da arquitetura. Na opção `Details` nas instruções do sandbox **Vocareum**, foi copiado os valores de algumas configurações que foram utilizadas no comando abaixo para provisionar a instância modelo de servidor web.
+
+```bash
+aws ec2 run-instances --key-name KEYNAME --instance-type t3.micro --image-id AMIID --user-data file:///home/ec2-user/UserData.txt --security-group-ids HTTPACCESS --subnet-id SUBNETID --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]' --output text --query 'Instances[*].InstanceId'
+```
+
+Ao executar o comando, a instância foi provisionada e no output do comando foi fornecido o Id dessa nova instância. Esse valor foi copiado, pois seria utilizado nos próximos comandos. Com o comando `aws ec2 wait instance-running --instance-ids NEW-INSTANCE-ID` e o Id da instância foi monitorado o status dela até que ficasse em execução. Ainda utilizando Id da instância no comando `aws ec2 describe-instances --instance-id NEW-INSTANCE-ID --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'` foi obtido o DNS público para acessar a aplicação desse servidor web modelo. A aplicação foi acessada em outra aba do navegador da maquina física **Windows** com o link `http://PUBLIC-DNS-ADDRESS/index.php`, informando o IP da instância. A imagem 39 exibe a página da aplicação sendo acessada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img39.png" alt="img39"><br>
+    <figcaption>Imagem 39.</figcaption>
+</figure></div><br>
+
+Se tudo estivesse certo, significava que o servidor web modelo estava funcionando e uma AMI da instância poderia ser criada. Com o comando `aws ec2 create-image --name WebServerAMI --instance-id NEW-INSTANCE-ID` e passando o ID da instância `Web Server`, imagem de maquina Amazon foi criada. Por padrão, este comando reiniciava a instância atual antes de criar a AMI para garantir a integridade da imagem no sistema de arquivos.
+
+A segunda tarefa contemplou na criação de um ambiente de auto scaling, provisionando um balanceador de carga no **Amazon ELB** e um grupo de escalabilidade no **Amazon EC2 Auto Scaling**. Esta tarefa foi realizada direto pelo **AWS Console Management**, pois eram serviços novos até o momento deste bootcamp. A primeira etapa foi criar o load balancer no **Amazon ELB**, que foi do tipo *Application Load Balancer (ALB)* já que era para uma aplicação web. Contudo, ao criar um ALB pelo console, seria preciso criar um target group (grupo de destino). Então para adiantar, criei primeiro o target group indo direto no recurso. Em target group, o tipo de destino foi definido como `instances` e o nome do grupo foi `webserver-app`. Na verificação de integridade, o tipo fo definido como `/index.php`, que era a página raiz do site. A imagem 40 exibe o grupo de destino provisionado.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img40.png" alt="img40"><br>
+    <figcaption>Imagem 40.</figcaption>
+</figure></div><br>
+
+De volta ao ALB, o load balancer criado teve o nome `WebServerELB` e nas configurações de rede foi selecionada a VPC do laboratório e suas duas sub-redes públicas. O grupo de segurança escolhido foi um já existente, cujo nome era `HTTPAccess`. Este já possuía uma regra de entrada liberando a porta `80` no protocolo `TCP` para todos os IPs (`0.0.0.0/0`). Lembrando que a VPC e toda configuração de rede foi construída pelo **AWS CloudFormation** ao iniciar o laboratório. Em listeners e roteamento, a ação padrão foi encaminhar e foi escolhido o target group criado, cujo nome era `webserver-app`. Após isso, o load balancer estava criado e era só esperar ele ficar em execução, conforme evidenciado na imagem 41. O DNS do load balancer foi copiado e aberto em outra aba do navegador. Por enquanto ele não funcionaria, pois o tráfego ainda não estava chegando nas instâncias de servidor web.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
+</figure></div><br>
+
+Na etapa 2 da segunda tarefa foi construído um modelo de execução (*launch template*). Um modelo de execução é o que um grupo do Auto Scaling usa para iniciar instâncias do EC2. O nome do modelo de execução foi `web-app-launch-template` e a descrição foi definida como `A web server for the load test app`. Em seguida, foi selecionada a opção para fornecer ajuda para configurar um modelo para ser utilizado pelo **Amazon EC2 Auto Scaling**. Em imagem de maquina Amazon, se a AMI construída não já tivesse selecionada, ela tinha que ser selecionada. O tipo de instância foi `t3.micro` e não foi criado ou definido par de chaves. Nas configurações de rede, o grupo de segurança `HTTPAccess` foi escolhido. Não foi necessário para arquivo de user data configurando o servidor web, pois isso já tinha sido feito na instância modelo de nome `WebServer` e como a imagem utilizada era dela, tudo já estava instalado. A imagem 42 mostra o launch template criado com sucesso.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img42.png" alt="img42"><br>
+    <figcaption>Imagem 42.</figcaption>
+</figure></div><br>
+
+A etapa 3 consistiu na criação do auto scaling group a partir desse modelo de execução elaborado. Portanto, foi selecionado o modelo `web-app-launch-template` e o nome do deste grupo foi definido como `Web App Auto Scaling Group`. Nas configurações de rede foi selecionada a VPC do laboratório e as duas sub-redes privadas, pois as instâncias do grupo de auto scaling estaria na sub-rede privada. Em configurações avançadas, em balanceador de carga, foi anexado a este grupo o load balancer criado e o grupo de destino (target group) construído ` webserver-app | HTTP` foi vinculado. As verificações de integridade adicionais do **Amazon ELB** foram ativadas. Nas configurações da política de escalabilidade, foi definido o tamanho do grupo, informando a capacidade desejada em 2, a capacidade mínima em 2 e a capacidade máxima em 4. A política de escalabilidade escolhida foi de rastreamento de deestino, cujo tipo de métrica foi definido com `média de utilização de CPU` e o valor de destino em `50`. Essa alteração informava ao Auto Scaling para manter uma utilização média da CPU em todas as instâncias em 50%. O Auto Scaling adicionaria ou removeria automaticamente a capacidade conforme necessário para manter a métrica no valor de destino especificado ou próxima dele. Uma tag de nome foi criada, cujo valor foi `WebApp`, que seria utilizada pelas instâncias desse grupo de auto scaling. A imagem 43 evidencia o auto scaling group desenvolvido com duas instâncias, pois a quantidade desejada foram duas.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img43.png" alt="img43"><br>
+    <figcaption>Imagem 43.</figcaption>
+</figure></div><br>
+
+A tarefa três teve como objetivo verificar se essas duas instâncias desse grupo de auto scaling estavam no target group (grupo de destino) do load balancer. Observe na imagem 44, que as instâncias estavam no target group e a verificação de integridade estava marcando como íntegro. Assim, a aplicação web já poderia ser acessada pelo DNS do load balancer, pois ele já estava direcionando o tráfego para essas instâncias que eram servidores web.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img44.png" alt="img44"><br>
+    <figcaption>Imagem 44.</figcaption>
+</figure></div><br>
+
+A última tarefa foi estressar as instâncias clicando na opção `Iniciar stress` dentro da aplicação que era aberta no navegador da maquina física **Windows** através do DNS do load balancer. Essa ação chamará a aplicação stress em segundo plano, fazendo com que a utilização da CPU na instância que atendeu a essa solicitação aumente para 100%. Após realizar isso, era só monitorar os gráficos do auto scaling group, quando a quantidade de CPU utilizada deste grupo, no caso a média entre as duas instâncias, passasse de 50%, o **Amazon CloudWatch** acionaria o **Amazon EC2 Auto Scaling** para provisionar uma nova instância para este grupo com o objetivo de atender a carga. A imagem 45 exibe o **Amazon CloudWatch** acionando o auto scaling e a imagem 46 evidencia a criação de uma nova instância.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img45.png" alt="img45"><br>
+    <figcaption>Imagem 45.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img46.png" alt="img46"><br>
+    <figcaption>Imagem 46.</figcaption>
+</figure></div><br>
 
 <a name="item5.30"><h4>5.30 175-[JAWS]-Laboratório: Usar o Auto Scaling na AWS (Linux)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
 <a name="item5.31"><h4>5.31 Desafio de previsão de Auto Scaling</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
 <a name="item5.32"><h4>5.32 Amazon Route 53</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+O Elastic Load Balancing e o Auto Scaling do EC2 permitem a criação de arquiteturas altamente flexíveis, escaláveis e resilientes. No entanto, como proceder quando há necessidade de distribuir o tráfego entre regiões da **Amazon Web Services (AWS)**? Há várias razões para se desejar essa distribuição, como recuperação de desastres em caso de falhas generalizadas e redução da latência ao fornecer serviços mais próximos dos usuários. O **Amazon Route 53** é um serviço de Domain Name System (DNS) na nuvem, altamente disponível e escalável, que atende a essa necessidade. Projetado para oferecer uma forma confiável e econômica de direcionar usuários finais a aplicativos na Internet, o **Amazon Route 53** converte URLs (por exemplo, www.example.com) em endereços IP numéricos (como 192.0.2.1), permitindo que os computadores se conectem entre si.
+
+O **Amazon Route 53** direciona solicitações de usuários para a infraestrutura que está em execução na **AWS**, como instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)**, balanceadores de carga do ELB ou buckets do **Amazon Simple Storage Service (Amazon S3)**. Além disso, também é possível rotear usuários para infraestruturas localizadas fora da **AWS**. O **Amazon Route 53** permite a configuração de verificações de integridade do DNS, possibilitando o roteamento do tráfego para pontos de extremidade íntegros ou o monitoramento independente da integridade do aplicativo e dos seus pontos de extremidade.
+
+O **Amazon Route 53** facilita o gerenciamento global do tráfego através de diversos tipos de roteamento, incluindo roteamento baseado em latência, geoproximidade ou geolocalização e weighted round robin. Esses métodos de roteamento podem ser combinados com failover de DNS para criar arquiteturas de baixa latência e alta tolerância a falhas. Além disso, o **Amazon Route 53** oferece serviços de registro de nomes de domínio, permitindo a compra e gestão de domínios, como example.com, com configuração automática das definições de DNS para esses domínios.
+
+Um load balancer do ELB distribui cargas de trabalho entre vários recursos de computação, como servidores virtuais, aumentando a disponibilidade e a tolerância a falhas dos aplicativos. Ao criar um balanceador de carga do ELB, ele recebe um nome DNS padrão, mas é possível associar um nome DNS personalizado, gerenciado pelo Route 53. Por exemplo, é possível registrar um nome de domínio, como example.com, para um site ou aplicativo da web, e rotear o tráfego da Internet para os recursos na conta da **AWS**. Um registro CNAME pode redirecionar consultas DNS para qualquer outro registro DNS, como apex.example.com para acme.example.com ou acme.example.org. Um registro de alias, por outro lado, só pode redirecionar consultas para recursos específicos da **AWS**, como buckets do S3, distribuições do **Amazon CloudFront** ou outro registro na zona hospedada do Route 53 onde o alias foi criado.
+
+O Amazon Route 53 oferece suporte a sete diferentes políticas de roteamento:
+- Política de roteamento simples: Usada para um único recurso que realiza uma função específica para um domínio, como um servidor web que fornece conteúdo para o site example.com.
+- Política de roteamento ponderado: Direciona o tráfego para vários recursos nas proporções especificadas.
+- Política de roteamento de latência: Ideal para quando há recursos em várias regiões da **AWS** e deseja-se direcionar o tráfego para a região com a menor latência.
+- Política de roteamento de failover: Configura o failover ativo/passivo.
+- Política de roteamento de geolocalização: Direciona o tráfego com base na localização dos usuários.
+- Política de roteamento de geoproximidade: Roteia o tráfego com base na localização dos recursos e pode opcionalmente desviar o tráfego de uma localização para outra.
+- Roteamento de resposta com valores múltiplos: Permite que o Route 53 responda a consultas DNS com até oito registros íntegros selecionados aleatoriamente.
+
+Imagine uma situação onde a arquitetura de implantação precisa ser distribuída entre várias regiões globais para garantir tempos de resposta mais rápidos aos usuários. A região geograficamente mais próxima do usuário geralmente proporciona o menor tempo de resposta, mas isso não é uma regra fixa. Para otimizar o desempenho, o Route 53 pode ser configurado para usar roteamento baseado em latência (Latency-based Routing (LBR)). Esse tipo de roteamento permite usar o DNS para direcionar as solicitações dos usuários para a região da **AWS** que oferecerá a resposta mais rápida. Por exemplo, se houver balanceadores de carga nas regiões Oeste dos EUA (Oregon) e Ásia-Pacífico (Sydney), será possível criar registros de recursos de latência no **Amazon Route 53** para cada balanceador de carga. Quando um usuário em Barcelona, Espanha, digitar o nome do domínio em um navegador, a solicitação DNS será encaminhada para um servidor de nomes do Route 53. O Route 53 analisará os dados de latência entre as diferentes regiões e direcionará a solicitação conforme necessário. Na maioria das vezes, isso significa que a solicitação será roteada para a localização geográfica mais próxima, como Austrália para um usuário na Nova Zelândia ou Oregon para um usuário no Canadá.
+
+Uma implantação azul/verde é uma estratégia que minimiza o risco de indisponibilidade do site ou aplicativo ao operar dois ambientes de produção simultâneos. Um desses ambientes é chamado de azul, e o outro, de verde. Em um cenário com dois ambientes paralelos, cada um possui seu próprio balanceador de carga do ELB e configuração do **Amazon EC2 Auto Scaling**. Utilizando o recurso de roteamento ponderado do Route 53, é possível redirecionar gradualmente os usuários do ambiente atual (azul) para o novo ambiente (verde). Esse procedimento facilita a migração de usuários para um ambiente atualizado ou totalmente novo. Ferramentas como **Amazon CloudWatch** e *Amazon CloudWatch Logs* são essenciais para monitorar o ambiente verde. Se surgirem problemas no novo ambiente, o roteamento ponderado do Route 53 permite retornar os usuários ao ambiente azul. Assim que o ambiente verde estiver estável e funcionando corretamente, o ambiente azul pode ser desativado gradualmente. Devido à possível latência dos registros DNS, a desativação completa do ambiente azul pode levar de um dia a uma semana.
+
+É sempre recomendável testar implantações de escalabilidade usando testes de carga para simular o tráfego. Como profissional de SysOps, é essencial ter certeza de que a escalabilidade no projeto de implantação funciona conforme o esperado. Identificar problemas antes da entrada em produção é crucial. Diversas ferramentas de código aberto podem ser utilizadas para simular testes de carga, incluindo as seguintes: **TheGrinder**, **Apache Jmeter** e **Bees with Machine Guns** (um script de teste de carga específico para o **Amazon EC2**).
+
 <a name="item5.33"><h4>5.33 Demonstração do Amazon Route 53-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
 <a name="item5.34"><h4>5.34 Amazon CloudFront</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+O **Amazon CloudFront** é um serviço web que acelera a distribuição de conteúdo estático e dinâmico, como arquivos .html, .css, .js e imagens, para os usuários. Ele faz isso utilizando uma rede global de datacenters conhecidos como pontos de presença. Utilizando o CloudFront, o conteúdo é entregue a partir de vários locais ao redor do mundo, resultando em menor latência para os usuários. Esse uso de uma CDN permite interações mais rápidas com o aplicativo, economizando dinheiro e melhorando o desempenho dos aplicativos.
+
+O Amazon CloudFront oferece diversos benefícios, tais como:
+- Infraestrutura Global Expansiva: Baseado na crescente infraestrutura global da **AWS**, com uma rede de pontos de presença que assegura alta disponibilidade, escalabilidade e desempenho dos aplicativos.
+- Segurança: Projetado para ser seguro, proporcionando proteção tanto de rede quanto de nível de aplicativo.
+- Programabilidade: Permite a execução de código em locais da **AWS** ao redor do mundo, respondendo aos usuários com a menor latência possível.
+- Otimização: Otimizado para baixa latência e alta velocidade de transferência de dados.
+- Custo-Efetividade: Cobra apenas pela transferência de dados e solicitações utilizadas para entrega de conteúdo aos clientes, sem necessidade de pagamentos antecipados, taxas fixas de plataforma, compromissos de longo prazo, taxas adicionais para conteúdo dinâmico ou serviços profissionais para começar a usar. Ao utilizar origens da **AWS**, como o **Amazon S3** ou o Elastic Load Balancing, apenas os custos de armazenamento são pagos, e não pelos dados transferidos entre esses serviços e o CloudFront.
+- Integração com Outros Serviços **AWS**: Funciona em conjunto com outros serviços da **AWS** para distribuir conteúdo aos usuários finais com baixa latência, altas velocidades de transferência de dados e sem compromissos mínimos exigidos.
+
+Ao estimar o custo do **Amazon CloudFront**, é importante considerar a distribuição de tráfego, o número de solicitações e a transferência de dados para fora. Os custos de transferência de dados e solicitações variam entre diferentes regiões geográficas, e os preços são determinados pelo ponto de presença de onde o conteúdo é entregue. Fatores como o número e o tipo de solicitações (HTTP ou HTTPS), a região geográfica das solicitações e a quantidade de dados transferidos para fora dos pontos de presença do CloudFront também influenciam os custos.
+
 <a name="item5.35"><h4>5.35 176-[JAWS]-Atividade: Roteamento de failover do Route 53</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 <a name="item5.37"><h4>5.37 AWS Lambda</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
