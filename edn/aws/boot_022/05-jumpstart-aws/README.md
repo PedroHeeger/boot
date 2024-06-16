@@ -815,31 +815,129 @@ NSA
 
 <a name="item5.29"><h4>5.29 174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-Neste laboratório desenvolvido no sandbox **Vocareum**, foi utilizado a **AWS CLI** já instalada na instância do **Amazon EC2**, cuja tag de nome era `Command Host`, para construir toda a arquitetura do laboratório. A instância `Command Host` era provisionada automaticamente pelo **AWS CloudFormation**, junto com outros recursos como os da **Amazon VPC**, quando o laboratório iniciava. Com **AWS CLI** dentro dessa instância, foi provisionada uma nova instância, cuja tag de nome era `Web Server`, que serviria de modelo de servidor web para instâncias da arquitetura. Uma imagem de maquina Amazon (AMI) foi construída a partir da instância `Web Server` que serviu de base para as duas instâncias da arquitetura construídas por um grupo de auto scaling. Um *Application Load Balancer (ALB)* foi desenvolvido para direcionar o tráfego para esse auto scaling group. Por fim, políticas de escalabilidade foram definidas nesse grupo de auto scaling. Com a aplicação que era executada nas instâncias foi realizado um teste de estresse para utilizar total porcentagem de CPU das instâncias e verificar a política de escalabilidade agindo para aumentar o número de servidores no grupo de auto scaling.
+Neste laboratório desenvolvido no sandbox **Vocareum**, o objetivo foi construir uma arquitetura para uma aplicação web utilizando os serviços **Amazon Elastic Load Balancer (Amazon ELB)**, para balancear a carga, e o serviço **Amazon EC2 Auto Scaling**, para escalar a aplicação quando necessário. O servidores web criados pelo grupo de auto scaling utilizariam a AMI criada a partir de uma outra instância provisionada anteriormente para servir de modelo de servidor web. O recursos de rede construídos no **Amazon VPC** foram provisionadados pelo **AWS CloudFormation** ao iniciar o laboratório. A aplicação web consistiu em um teste de estresse, que ao clicar para iniciar o estresse, a porcentagem de utilização de CPU da maquina, onde o tráfego era direcionado naquela requisição pelo load balancer, aumentava bastante para simular uma alta carga de trabalho e verificar a política de escalabilidade atuando no grupo de auto scaling. Todo esse laboratório foi realizado pelo **AWS Console Management**.
 
-A primeira tarefa foi provisionar a instância `Web Server` e criar uma AMI com base neste servidor web modelo, sendo todas as opereções executadas pelo **AWS CLI** instalado na instância `Command Host`. A primeira etapa desta tarefa foi conectar-se a instância `Command Host` pela opção `EC2 Instance Connect`. Assim, não era preciso par de chaves configurado para autenticar o usuário `ec2-user` na instância. Um terminal shell conectado na instância foi aberto em uma outra aba do navegador da maquina física. Na segunda etapa foi necessário configurar o **AWS CLI** instalado nesse instância com o comando `aws configure` e definir as configurações. Com o comando `curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region` foi acessado os metadados da própria instância para descobrir qual região ela estava usando e se era a região definida no console de gerenciamento da **AWS**, `us-west-2` (Oregon). Nas configurações da CLI da instância, o ID e Secret Access Key foram mantidos os que já estavam configurados, logo foi pressionado `Enter` para confirmar. A região foi a do laboratório `us-west-2` e o fomarto de saída dos dados foi `json`. Após isso, o diretório corrente foi alterado para a pasta do usuário com o comando `cd /home/ec2-user/`. Os arquivos de scripts que seriam utilizados para criar a segunda instância e a arquitetura estavam nesta pasta, conforme mostrado na imagem 38.
+A primeira tarefa foi construir uma imagem de maquina Amazon (AMI) da instância `Web Server 1` que já vinha provisionada automaticamente pelo laboratório. Essa instância já possuía a aplicação web configurada. Para criar a AMI bastava selecionar a instância e configurar a criação de imagem dela. O nome da imagem foi definida como `Web Server AMI` e a descrição foi definida como `Lab AMI for Web Server`. A opção `No reboot` foi mantida padrão, desabilitada, ou seja, a instância iria reiniciar antes de criar a AMI. O volume da instância foi mantido o padrão. A imagem 38 abaixo mostra a AMI construída.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img38.png" alt="img38"><br>
     <figcaption>Imagem 38.</figcaption>
 </figure></div><br>
 
-Para inspecionar o arquivo de user data foi executado o comando `more UserData.txt`. Esse arquivo executava várias tarefas de inicialização, incluindo a atualização de todos os softwares instalados na caixa e a instalação de um aplicativo web PHP pequeno que seria utilizado para simular uma alta carga de CPU nas instâncias da arquitetura. Na opção `Details` nas instruções do sandbox **Vocareum**, foi copiado os valores de algumas configurações que foram utilizadas no comando abaixo para provisionar a instância modelo de servidor web.
-
-```bash
-aws ec2 run-instances --key-name KEYNAME --instance-type t3.micro --image-id AMIID --user-data file:///home/ec2-user/UserData.txt --security-group-ids HTTPACCESS --subnet-id SUBNETID --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]' --output text --query 'Instances[*].InstanceId'
-```
-
-Ao executar o comando, a instância foi provisionada e no output do comando foi fornecido o Id dessa nova instância. Esse valor foi copiado, pois seria utilizado nos próximos comandos. Com o comando `aws ec2 wait instance-running --instance-ids NEW-INSTANCE-ID` e o Id da instância foi monitorado o status dela até que ficasse em execução. Ainda utilizando Id da instância no comando `aws ec2 describe-instances --instance-id NEW-INSTANCE-ID --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'` foi obtido o DNS público para acessar a aplicação desse servidor web modelo. A aplicação foi acessada em outra aba do navegador da maquina física **Windows** com o link `http://PUBLIC-DNS-ADDRESS/index.php`, informando o IP da instância. A imagem 39 exibe a página da aplicação sendo acessada.
+Na tarefa 2 foi provisionado um balanceador de carga no **Amazon ELB** do tipo *Application Load Balancer (ALB)* já que era para uma aplicação web. Contudo, ao criar um ALB, seria preciso criar um target group (grupo de destino). Então para adiantar, foi criado primeiro o target group indo direto no recurso. Em target group, o tipo de destino foi definido como `instances` e o nome do grupo foi `lab-target-group`. O protocolo e porta foram mantidos os padrões `HTTP` e `80`, já que era uma aplicação web. O tipo de endereço de IP foi mantido o `IPv4` e a versão do protocolo foi mantida `HTTP1`. A VPC do laboratório `Lab VPC` foi selecionada. Na verificação de integridade, o protocolo de health check foi mantido como `HTTP` e o caminho (`Health check path`) foi definido como `/`, que era a página raiz do site. A imagem 39 exibe o grupo de destino provisionado.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img39.png" alt="img39"><br>
     <figcaption>Imagem 39.</figcaption>
 </figure></div><br>
 
-Se tudo estivesse certo, significava que o servidor web modelo estava funcionando e uma AMI da instância poderia ser criada. Com o comando `aws ec2 create-image --name WebServerAMI --instance-id NEW-INSTANCE-ID` e passando o ID da instância `Web Server`, imagem de maquina Amazon foi criada. Por padrão, este comando reiniciava a instância atual antes de criar a AMI para garantir a integridade da imagem no sistema de arquivos.
+De volta a configuração do ALB, o load balancer criado teve o nome `LabELB` e nas configurações de rede foi selecionada a VPC do laboratório e suas duas sub-redes públicas, cada uma em uma AZ. O grupo de segurança escolhido foi um já existente, cujo nome era `Web Security Group`. Este já possuía uma regra de entrada liberando a porta `80` no protocolo `TCP` para todos os IPs (`0.0.0.0/0`). Lembrando que a VPC e toda configuração de rede foi construída pelo **AWS CloudFormation** ao iniciar o laboratório. Em listeners e roteamento, um listener foi criado para rotear o tráfego do protocolo `HTTP` e porta `80` para o target group criado, cujo nome era `lab-target-group`. Após isso, o load balancer estava criado e era só esperar ele ficar em execução, conforme evidenciado na imagem 40. O DNS do load balancer foi copiado e aberto em outra aba do navegador. Por enquanto ele não funcionaria, pois o tráfego ainda não estava chegando nas instâncias de servidor web já que elas ainda não tinham sido construídas.
 
-A segunda tarefa contemplou na criação de um ambiente de auto scaling, provisionando um balanceador de carga no **Amazon ELB** e um grupo de escalabilidade no **Amazon EC2 Auto Scaling**. Esta tarefa foi realizada direto pelo **AWS Console Management**, pois eram serviços novos até o momento deste bootcamp. A primeira etapa foi criar o load balancer no **Amazon ELB**, que foi do tipo *Application Load Balancer (ALB)* já que era para uma aplicação web. Contudo, ao criar um ALB pelo console, seria preciso criar um target group (grupo de destino). Então para adiantar, criei primeiro o target group indo direto no recurso. Em target group, o tipo de destino foi definido como `instances` e o nome do grupo foi `webserver-app`. Na verificação de integridade, o tipo fo definido como `/index.php`, que era a página raiz do site. A imagem 40 exibe o grupo de destino provisionado.
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img40.png" alt="img40"><br>
+    <figcaption>Imagem 40.</figcaption>
+</figure></div><br>
+
+Na terceira tarefa, o objetivo foi criar um modelo de execução (*launch template*). Um modelo de execução é o que um grupo do Auto Scaling usa para iniciar instâncias do EC2. O nome do modelo de execução foi `lab-app-launch-template` e a descrição foi definida como `A web server for the load test app`. Em seguida, foi selecionada a opção para fornecer ajuda para configurar um modelo para ser utilizado pelo **Amazon EC2 Auto Scaling**. Em imagem de maquina Amazon, se a AMI construída (`WebServerAMI`) não já tivesse selecionada, ela tinha que ser selecionada. O tipo de instância foi `t3.micro` e não foi criado ou definido par de chaves. Nas configurações de rede, o grupo de segurança `HTTPAccess` foi escolhido. Não foi necessário passar o arquivo de user data configurando o servidor web, pois isso já tinha sido feito na instância modelo de nome `Web Server 1` e como a imagem utilizada era dela, tudo já estava instalado. A imagem 41 mostra o launch template criado com sucesso.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
+</figure></div><br>
+
+A tarefa 4 consistiu na criação do auto scaling group a partir desse modelo de execução elaborado. Portanto, foi selecionado o modelo `lab-app-launch-template` e o nome do deste grupo foi definido como `Lab Auto Scaling Group`. Nas configurações de rede foi selecionada a VPC do laboratório e as duas sub-redes privadas, pois as instâncias do grupo de auto scaling estariam na sub-rede privada. Em configurações avançadas, em balanceador de carga, foi anexado a este grupo o load balancer criado e o grupo de destino (target group) construído `lab-target-group | HTTP` foi vinculado. As verificações de integridade adicionais do **Amazon ELB** foram ativadas, mantendo intervalo da verificação em `300` segundos. Nas configurações da política de escalabilidade, foi definido o tamanho do grupo, informando a capacidade desejada em `2`, a capacidade mínima em `2` e a capacidade máxima em `4`. A política de escalabilidade escolhida foi de rastreamento de deestino, cujo tipo de métrica foi definido com `média de utilização de CPU` e o valor de destino em `50`. Essa alteração informava ao Auto Scaling para manter uma utilização média da CPU em todas as instâncias em 50%. O Auto Scaling adicionaria ou removeria automaticamente a capacidade conforme necessário para manter a métrica no valor de destino especificado ou próxima dele. Uma tag de nome foi criada, cujo valor foi `Lab Instance`, que seria utilizada pelas instâncias desse grupo de auto scaling. A imagem 42 evidencia o auto scaling group desenvolvido com duas instâncias, pois a quantidade desejada foram duas.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img42.png" alt="img42"><br>
+    <figcaption>Imagem 42.</figcaption>
+</figure></div><br>
+
+Na quinta tarefa, o objetivo foi verificar se essas duas instâncias desse grupo de auto scaling estavam no target group (grupo de destino) do load balancer. Observe na imagem 43, que as instâncias estavam no target group e a verificação de integridade (health check) estava marcando como íntegro. Assim, a aplicação web já poderia ser acessada pelo DNS do load balancer, pois ele já estava direcionando o tráfego para essas instâncias do auto scaling group que eram os servidores web. A imagem 44 exibe a aplicação web sendo acessada pelo DNS do load balancer em uma aba do navegador da máquina física **Windows**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img43.png" alt="img43"><br>
+    <figcaption>Imagem 43.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img44.png" alt="img44"><br>
+    <figcaption>Imagem 44.</figcaption>
+</figure></div><br>
+
+A tarefa 6 constituiu-se da realização do teste de carga nos servidores web para verificar a atuação da política de escalabilidade do grupo de auto scaling. A política de escalabilidade criou automaticamente dois alarmes no **Amazon CloudWatch**, conforme mostrado na imagem 45. Esses alarmes mantinham automaticamente a carga média da CPU próxima a 50%, permanecendo também dentro da limitação do auto scaling group de ter duas a quatro instâncias. Um dos alarmes teve o nome de `AlarmHigh` e estava no estado OK. O estado OK indica que o alarme não foi iniciado. É o alarme para utilização de CPU > 50, que adicionaria instâncias quando a utilização da CPU média estivesse alta. 
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img45.png" alt="img45"><br>
+    <figcaption>Imagem 45.</figcaption>
+</figure></div><br>
+
+A aplicação web aberta em uma aba do navegador da web da maquina física, possuía um teste de carga que ao ser acionado gerava cargas elevadas para aplicação, consumindo bastante a utilização de CPU. A página do navegador foi atualizada automaticamente para que todas as instâncias no grupo do Auto Scaling gerassem as cargas. Observando no **Amazon CloudWatch**, o alarme `AlarmLow` modificou para OK, enquanto o alarme `AlarmHigh` alterou para em alarme, o que significava que a utilização de CPU média entre as instâncias do auto scaling group ultrapassou os 50% estabelecido na política de escalabilidade. Assim, o CloudWatch acionou o **Amazon EC2 Auto Scaling** que prontamente iniciou o processo de provisionamento da terceira instância do grupo com intuito de conter as cargas. A imagem 46 exibe os alarmes do **Amazon CloudWatch**, enquanto a imagem 47 evidencia a criação automática da terceira instância. É bem provável que o tempo de provisionamento da nova instância seja maior do que o tempo em que o alarme do CloudWatch analisa a métrica novamente. Se isso ocorrer, ele vai constatar que a utilização média de CPU continua maior que 50% e pode ser que provisione uma quarta instância.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img46.png" alt="img46"><br>
+    <figcaption>Imagem 46.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img47.png" alt="img47"><br>
+    <figcaption>Imagem 47.</figcaption>
+</figure></div><br>
+
+A última tarefa foi apenas encerrar a instância `Web Server 1` que serviu para criação da AMI utilizadas pelas instâncias do auto scaling group. Já a tarefa opcional consistiu em criar a AMI dessa instância `Web Server 1` por comandos **AWS CLI** executados de uma outra instância, ao invés de realizar essa etapa pelo console de gerenciamento da **AWS**. No laboratório seguinte, que era exatamente igual a esse, apenas essa parte da construção da AMI era feita pelo **AWS CLI**, optei por construir toda a arquitetura pelo **AWS CLI** com um único arquivo de script. Para consultá-lo, clique em <a href="#item5.30">5.30 175-[JAWS]-Laboratório: Usar o Auto Scaling na AWS (Linux)</a><br>.
+
+<a name="item5.30"><h4>5.30 175-[JAWS]-Laboratório: Usar o Auto Scaling na AWS (Linux)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+Esta laboratório foi exatamente igual ao anterior (<a href="#item5.29">5.29 174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</a><br>), apenas a parte da construção da AMI era feita pela **AWS CLI** executado de uma outra instância. Contudo, para diferenciar um pouco, optei por construir toda a arquitetura pelo **AWS CLI** com um único arquivo de script.
+
+Para executar a **AWS CLI**, foi realizado um acesso remoto, pela opção `EC2 Instance Connect` no console de gerenciamento da **AWS**, à instância `Command Host` que foi provisionada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Com essa forma de acesso remoto, não era preciso configurar um par de chaves para autenticar o usuário `ec2-user` na instância. Após isso, um terminal shell conectado na instância foi aberto em uma outra aba do navegador da maquina física. Foi necessário configurar o **AWS CLI** instalado nesse instância com o comando `aws configure` e definir as configurações. Com o comando `curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region` foi acessado os metadados da própria instância (`Command Host`) para descobrir qual região ela estava usando e se era a região definida no console de gerenciamento da **AWS**, `us-west-2` (Oregon). Nas configurações da CLI da instância, o ID e Secret Access Key foram mantidos os que já estavam configurados, logo foi pressionado `Enter` para confirmar. A região foi a do laboratório `us-west-2` e o fomarto de saída dos dados foi `json`. Na sequência, o diretório corrente foi alterado para a pasta do usuário com o comando `cd /home/ec2-user/`. Os arquivos de scripts que seriam utilizados para criar a segunda instância, que seria modelo de servidor web para arquitetura, foram listados na imagem 48. No laboratório anterior, estava instância já veio provisionada e configurada como servidor web.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img48.png" alt="img48"><br>
+    <figcaption>Imagem 48.</figcaption>
+</figure></div><br>
+
+Para inspecionar o arquivo de user data foi executado o comando `more UserData.txt`. Esse arquivo executava várias tarefas de inicialização, incluindo a atualização de todos os softwares instalados na caixa e a instalação de um aplicativo web PHP pequeno que seria utilizado para simular uma alta carga de CPU nas instâncias da arquitetura. Basicamente o arquivo de user data transformava essa instância em um servidor web, construindo a aplicação web que ela executaria. Uma parte dessa aplicação web era um teste de carga que seria utilizado mais a frente para estressar as instâncias fazendo com que elas consumissem bastante CPU e assim, a política de escalabilidade aplicada atuasse.
+
+Na opção `Details` nas instruções do sandbox **Vocareum**, foi copiado os valores de algumas configurações que foram utilizadas no comando abaixo para provisionar a instância modelo de servidor web. 
+
+```bash
+aws ec2 run-instances --key-name KEYNAME --instance-type t3.micro --image-id AMIID --user-data file:///home/ec2-user/UserData.txt --security-group-ids HTTPACCESS --subnet-id SUBNETID --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]' --output text --query 'Instances[*].InstanceId'
+```
+
+Ao executar o comando, a instância de modelo de servidor web foi provisionada e no output do comando foi fornecido o Id dessa nova instância. Esse valor foi copiado, pois seria utilizado nos próximos comandos. Com o comando `aws ec2 wait instance-running --instance-ids NEW-INSTANCE-ID` e o Id da instância, foi monitorado o status dela até que ficasse em execução. Ainda utilizando Id da instância no comando `aws ec2 describe-instances --instance-id NEW-INSTANCE-ID --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'` foi obtido o DNS público para acessar a aplicação desse servidor web modelo. A aplicação foi acessada em outra aba do navegador da maquina física **Windows** com o link `http://PUBLIC-DNS-ADDRESS/index.php`, informando o IP da instância. A imagem 49 exibe a página da aplicação sendo acessada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img49.png" alt="img49"><br>
+    <figcaption>Imagem 49.</figcaption>
+</figure></div><br>
+
+Se tudo estivesse certo, significava que o servidor web modelo estava funcionando e uma AMI da instância poderia ser criada. Com o comando `aws ec2 create-image --name WebServerAMI --instance-id NEW-INSTANCE-ID` e passando o ID da instância `Web Server`, imagem de maquina Amazon foi criada. Por padrão, este comando reiniciava a instância atual antes de criar a AMI para garantir a integridade da imagem no sistema de arquivos. A imagem 50 exibe a AMI construída.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img50.png" alt="img50"><br>
+    <figcaption>Imagem 50.</figcaption>
+</figure></div><br>
+
+A partir daí, o laboratório indicava para realizar pelo **AWS Console Management**, mas como essa parte foi realizada exatamente igual no laboratório passado, optei por continuar com **AWS CLI** e executar a construção da arquitetura toda com ele. Isso foi realizado criando um arquivo de script do zero, indicando todos os recursos que teriam que ser provisionados. Os recursos foram os mesmos do laboratório anterior: um *Application Load Balancer (ALB)*, um target group, um listener, um launch template, um auto scaling group e duas políticas de escalabilidade com alarmes do **Amazon CloudWatch**. Aqui não entrarei muito em detalhes, pois isso foi realizado no laboratório anterior. As únicas diferenças entre os laboratórios, foram os nomes ou tag de nomes, cujos valores foram diferentes.
+- target group (grupo de destino): `webserver-app`.
+- *Application Load Balancer (ALB)*: `WebServerELB`.
+- Launch template (modelo de execução): `web-app-launch-template`.
+- Auto scaling group (grupo de escalabilidade): `Web App Auto Scaling Group`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A segunda tarefa contemplou na criação de um ambiente de auto scaling, provisionando um balanceador de carga no **Amazon ELB** e um grupo de escalabilidade no **Amazon EC2 Auto Scaling**. Esta tarefa foi realizada direto pelo **AWS Console Management**, pois eram serviços novos até o momento deste bootcamp. A primeira etapa foi criar o load balancer no **Amazon ELB**, que foi do tipo *Application Load Balancer (ALB)* já que era para uma aplicação web. Contudo, ao criar um ALB pelo console, seria preciso criar um target group (grupo de destino). Então para adiantar, criei primeiro o target group indo direto no recurso. Em target group, o tipo de destino foi definido como `instances` e o nome do grupo foi . Na verificação de integridade, o tipo foi definido como `/index.php`, que era a página raiz do site. A imagem 40 exibe o grupo de destino provisionado.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img40.png" alt="img40"><br>
@@ -886,24 +984,27 @@ A última tarefa foi estressar as instâncias clicando na opção `Iniciar stres
     <figcaption>Imagem 46.</figcaption>
 </figure></div><br>
 
-<a name="item5.30"><h4>5.30 175-[JAWS]-Laboratório: Usar o Auto Scaling na AWS (Linux)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
-
-
-
-
-
 
 
 
 
 <a name="item5.31"><h4>5.31 Desafio de previsão de Auto Scaling</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Decidiu-se implementar uma política de escalonamento automático do **Amazon EC2** para escalonamento em etapas para um grupo específico. Os parâmetros configurados são os seguintes: Capacidade máxima: 20; Capacidade desejada: 10; Capacidade mínima: 5. No entanto, não há certeza sobre como o número de instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)** será ajustado com base nas políticas atuais que controlam esses comportamentos. Para testar esses comportamentos, é importante prever o número esperado de instâncias a qualquer momento, levando em conta as políticas e os alarmes correspondentes.
 
+Imagine ter decidido criar uma política de escalonamento automático do **Amazon EC2** para escalonamento gradual. Os alarmes configurados para controlar o comportamento de aumento e redução da quantidade de instâncias são fundamentais. Os alarmes do CloudWatch são ajustados para reduzir o tamanho do grupo em uma instância quando a carga média da CPU se mantiver entre 20% e 40% por mais de 2 minutos. Se a carga média da CPU for inferior a 20% por mais de 2 minutos, serão removidas duas instâncias. Por outro lado, se a utilização da CPU se situar entre 60% e 80% por mais de 2 minutos, uma instância será adicionada. Se exceder 80% por mais de 2 minutos, serão adicionadas duas instâncias. Observe agora o que ocorrerá em diferentes cenários.
 
+A utilização média da CPU tem sido consistente entre 63% e 70% por mais de 2 minutos. O período de aquecimento da instância foi configurado para 5 minutos. Nesta situação, a política adiciona uma instância ao grupo do Auto Scaling, mas essa nova instância não será contada como parte da contagem total até que seu período de aquecimento (por exemplo, 5 minutos) seja concluído. A pressão na CPU continua aumentando e permanece no intervalo de 60% a 80%. A condição 1 ocorreu há dois minutos. Portanto, outro alarme para aumentar a quantidade de instâncias em uma unidade é disparado, mas nenhuma instância adicional é acrescida porque o período de aquecimento da instância ainda não terminou. A condição 1 foi atendida há menos de 5 minutos, mas agora a utilização da CPU está em 85%. Neste caso, a política para adicionar duas instâncias é acionada. Como uma instância já está em processo de aquecimento, apenas uma instância adicional é iniciada. Mais tempo se passou e a primeira das duas instâncias adicionadas agora está totalmente aquecida e processando parte da carga, enquanto a segunda ainda está em processo de aquecimento. No entanto, a pressão de utilização da CPU está diminuindo. A utilização média caiu para menos de 60%, embora ainda esteja acima de 40%. Portanto, nenhum alarme é acionado e nenhuma ação adicional é tomada.
 
+Agora, com 12 instâncias no grupo e possivelmente uma demanda reduzida na implantação do aplicativo associado a esse grupo, a utilização da CPU caiu abaixo do limite de 40%. Em resposta, após permanecer abaixo desse limite por 2 minutos, um dos alarmes para redução de instâncias é acionado, o que ativa a política para remover uma instância. Posteriormente, a utilização da CPU continua diminuindo e agora está em torno de 17%. Como resultado, duas instâncias são removidas pelo Auto Scaling. Agora, o grupo está operando com apenas nove instâncias.
 
+Sobrecarga é uma situação na qual a memória virtual de um computador é excessivamente utilizada, levando-o a não conseguir mais atender às demandas dos aplicativos em execução. Ao configurar o autoscaling, é crucial evitar a sobrecarga. Isso pode ocorrer se as instâncias forem adicionadas ou removidas em sequência muito rapidamente. Uma estratégia eficaz para evitar a sobrecarga é configurar alarmes que respondam apenas a mudanças de estado que são sustentadas ao longo do tempo. Estabeleça gatilhos para alterações de estado que persistem por um período adequado antes de acionar ações automáticas.
 
+O período de cooldown do **Amazon EC2 Auto Scaling** é uma configuração ajustável que assegura que novas instâncias não sejam iniciadas ou encerradas antes que a ação de escalabilidade anterior entre em vigor. Ao escalar manualmente o grupo do Auto Scaling do **Amazon EC2**, por padrão, o período de cooldown não é observado. No entanto, é possível substituir esse padrão para seguir o período de cooldown estabelecido. Importante notar que, se uma instância se tornar não íntegra, o **Amazon EC2 Auto Scaling** não aguardará o fim do período de cooldown para substituir essa instância. O **Amazon EC2 Auto Scaling** suporta períodos de cooldown padrão e períodos de cooldown específicos para cada tipo de escalabilidade. Os períodos de cooldown são aplicáveis quando se utiliza políticas simples de escalabilidade, mas não se aplicam a políticas de monitoramento de objetivo, políticas de escalabilidade com etapas ou escalabilidade programada.
+
+Além disso, nas políticas de escalabilidade com etapas, é possível definir o tempo em segundos necessário para que uma instância recém-iniciada complete o seu aquecimento. Durante esse período de aquecimento especificado, a instância não será incluída nas métricas agregadas do grupo do Auto Scaling pela **AWS**. Ao aumentar a capacidade, as instâncias em aquecimento também não são consideradas parte da capacidade atual do grupo. Portanto, múltiplas violações de alarme que ocorrem dentro do mesmo período de ajuste com etapas resultam em apenas uma ação de escalabilidade. Esse mecanismo assegura que o **Amazon EC2 Auto Scaling** não adiciona mais instâncias do que o necessário. Por exemplo, se o aquecimento leva 5 minutos.
+
+Em certas situações, pode ser necessário intervir antes que uma ação do **Amazon EC2 Auto Scaling** adicione ou remova instâncias do seu grupo do **Amazon EC2 Auto Scaling**. Os ganchos de ciclo de vida do grupo do **Amazon EC2 Auto Scaling** oferecem essa flexibilidade. Por exemplo, durante um evento de aumento de capacidade, o **Amazon EC2 Auto Scaling** poderia iniciar uma instância, enviar uma notificação predefinida para uma pessoa ou aplicativo, e então não realizar mais nenhuma ação. Nesse cenário, cabe ao destinatário da notificação realizar uma ação na instância, como instalar software, e em seguida adicioná-la ao grupo do **Amazon EC2 Auto Scaling**. Alternativamente, durante um evento de redução de capacidade, um gancho de ciclo de vida do **Amazon EC2 Auto Scaling** poderia ser utilizado para remover uma instância do grupo do Auto Scaling e, em seguida, enviar uma notificação. Ao receber a notificação, o usuário ou ação programada poderia realizar alguma ação na instância, como recuperar logs, antes de finalizar sua execução.
 
 <a name="item5.32"><h4>5.32 Amazon Route 53</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
