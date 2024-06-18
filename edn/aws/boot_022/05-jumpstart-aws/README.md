@@ -4,11 +4,11 @@
 ### Platform: <a href="../../../">edn   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/edn.png" alt="edn" width="auto" height="25"></a> 
 ### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_022 (Bootcamp AWS re/Start-Cloud Computing)   <img src="../0-aux/logo_boot.png" alt="boot_022" width="auto" height="25"></a>
-### Module: 5. Redes 
+### Module: 5. Jumpstart na AWS 
 
 ---
 
-This folder refers to Module 5 **Redes** from bootcamp [**Bootcamp AWS re/Start-Cloud Computing**](../).
+This folder refers to Module 5 **Jumpstart na AWS** from bootcamp [**Bootcamp AWS re/Start-Cloud Computing**](../).
 
 ### Theme:
 - Cloud Computing
@@ -24,18 +24,39 @@ This folder refers to Module 5 **Redes** from bootcamp [**Bootcamp AWS re/Start-
 - Cloud:
   - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
+  - Amazon EC2 Auto Scaling   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2_auto_scaling.svg" alt="aws_ec2_auto_scaling" width="auto" height="25">
+  - Amazon EC2 Systems Manager   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2_systems_manager.svg" alt="aws_ec2_systems_manager" width="auto" height="25">
   - Amazon Elastic Compute Cloud (EC2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2.svg" alt="aws_ec2" width="auto" height="25">
+  - Amazon Rekognition   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_rekognition.png" alt="aws_rekognition" width="auto" height="25">
+  - Amazon Relational Database Service (RDS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_rds.svg" alt="aws_rds" width="auto" height="25">
+  - Amazon Route 53   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_route_53.svg" alt="aws_route_53" width="auto" height="25">
+  - Amazon Simple Notification Service (SNS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sns.svg" alt="aws_sns" width="auto" height="25">
   - Amazon Virtual Private Cloud (VPC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_vpc.svg" alt="aws_vpc" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
+  - PHP   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="php" width="auto" height="25">
+  - Python   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Command Line Interpreter (CLI):
+  - AWS Command Line Interface (CLI)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cli.svg" alt="aws_cli" width="auto" height="25">
+  - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
+  - MySQL Shell <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/mysql_shell.png" alt="mysql_shell" width="auto" height="25">
+  - Prompt de Comando (cmd)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cmd_prompt.png" alt="cmd" width="auto" height="25">
+  - Systemctl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/systemctl.png" alt="systemctl" width="auto" height="25">
+  - Windows PowerShell   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_power_shell.png" alt="windows_power_shell" width="auto" height="25">
+- Server and Databases:
+  - Apache HTTP Server (httpd)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apache_http_server.png" alt="apache_httpd" width="auto" height="25">
+  - MySQL Server   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="mysql_server" width="auto" height="25">
+- Database Administration Tool:
+  - DBeaver   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dbeaver.png" alt="dbeaver" width="auto" height="25">
+  - SQLPro Studio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sqlpro_studio.png" alt="sqlpro_studio" width="auto" height="25">
 
 ---
 
@@ -44,11 +65,82 @@ This folder refers to Module 5 **Redes** from bootcamp [**Bootcamp AWS re/Start-
 5. <a name="item5">Jumpstart na AWS</a><br>
   5.1. <a href="#item5.1">AWS Cloud Adoption Framework</a><br>
   5.2. <a href="#item5.2">AWS Well Architected Framework</a><br>
+  5.3. 167-[JAWS]-KC - Well-Architected Framework<br>
+  5.4. <a href="#item5.4">Design do Well-Architected</a><br>
+  5.5. <a href="#item5.5">Confiabilidade e alta disponibilidade</a><br>
+  5.6. <a href="#item5.6">Transição de um data center para a nuvem</a><br>
+  5.7. <a href="#item5.7">AWS Identity and Access Management</a><br>
+  5.8. <a href="#item5.8">AWS Command Line Interface</a><br>
+  5.9. <a href="#item5.9">AWS Systems Manager</a><br>
+  5.10. <a href="#item5.10">169- [JAWS] -Laboratório: Usar o AWS Systems Manager</a><br>
+  5.11. <a href="#item5.11">Ferramentas de administração e desenvolvimento</a><br>
+  5.12. <a href="#item5.12">Hospedar um site estático no S3 da AWS</a><br>
+  5.13. <a href="#item5.13">170-[JAWS]-Visão geral da atividade do café: crie um site no S3</a><br>
+  5.14. <a href="#item5.14">Visão geral da computação (servidores)</a><br>
+  5.15. <a href="#item5.15">Computação na AWS</a><br>
+  5.16. <a href="#item5.16">Gerenciar instâncias da AWS</a><br>
+  5.17. <a href="#item5.17">Visão geral do laboratório: Instâncias do EC2</a><br>
+  5.18. <a href="#item5.18">171- [JAWS] -Lab - Criando instâncias do Amazon EC2</a><br>
+  5.19. <a href="#item5.19">Demonstração do AWS IAM-2</a><br>
+  5.20. <a href="#item5.20">172- [JAWS] -Laboratório: [Desafio] Exercício de instância do EC2</a><br>
+  5.21. 212- [JAWS] -KC - Computação (servidores)<br>
+  5.22. <a href="#item5.22">AWS Elastic Beanstalk</a><br>
+  5.23. <a href="#item5.23">173- [JAWS] -Atividade: Solucionar problemas para criar uma instância</a><br>
+  5.24. <a href="#item5.24">Visão geral de escalabilidade e resolução de nomes</a><br>
+  5.25. <a href="#item5.25">Elastic Load Balancing</a><br>
+  5.26. <a href="#item5.26">Listeners do Elastic Load Balancer</a><br>
+  5.27. <a href="#item5.27">Auto Scaling do Amazon EC2</a><br>
+  5.28. <a href="#item5.28">Visão geral do laboratório: Auto Scaling do EC2</a><br>
+  5.29. <a href="#item5.29">174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</a><br>
+  5.30. <a href="#item5.30">175-[JAWS]-Laboratório: Usar o Auto Scaling na AWS (Linux)</a><br>
+  5.31. <a href="#item5.31">Desafio de previsão de Auto Scaling</a><br>
+  5.32. <a href="#item5.32">Amazon Route 53</a><br>
+  5.33. <a href="#item5.33">Demonstração do Amazon Route 53-2</a><br>
+  5.34. <a href="#item5.34">Amazon CloudFront</a><br>
+  5.35. <a href="#item5.35">176-[JAWS]-Atividade: Roteamento de failover do Route 53</a><br>
+  5.36. 213- [JAWS] -KC - Computação (dimensionamento e resolução de nomes)<br>
+  5.37. <a href="#item5.37">AWS Lambda</a><br>
+  5.38. <a href="#item5.38">178- [JAWS] -Atividade: Trabalhar com o AWS Lambda</a><br>
+  5.39. <a href="#item5.39">APIs e REST da Amazon</a><br>
+  5.40. <a href="#item5.40">Amazon API Gateway</a><br>
+  5.41. <a href="#item5.41">Contêineres na AWS</a><br>
+  5.42. 214- [JAWS] -KC - Computação (contêineres)<br>
+  5.43. <a href="#item5.43">Funções do AWS Step</a><br>
+  5.44. <a href="#item5.44">Visão geral dos bancos de dados</a><br>
+  5.45. <a href="#item5.45">Amazon Redshift</a><br>
+  5.46. <a href="#item5.46">Amazon Aurora</a><br>
+  5.47. <a href="#item5.47">Migração de banco de dados da Amazon</a><br>
+  5.48. <a href="#item5.48">179- [JAWS] -Atividade: Migrar para o Amazon RDS</a><br>
+  5.49. 215- [JAWS] -KC - Computação (bancos de dados)<br>
+  5.50. <a href="#item5.50">Visão geral das redes da AWS</a><br>
+  5.51. <a href="#item5.51">Amazon VPC</a><br>
+  5.52. <a href="#item5.52">Opções de conectividade da Amazon VPC</a><br>
+  5.53. <a href="#item5.53">Segurança e solução de problemas da rede</a><br>
+  5.54. <a href="#item5.54">Visão geral do laboratório: Configurar uma Amazon VPC</a><br>
+  5.55. <a href="#item5.55">180- [JAWS] -Laboratório: Configurar uma Amazon VPC</a><br>
+  5.56. <a href="#item5.56">181- [JAWS] -Atividade: Solucionar problemas de uma VPC</a><br>
+  5.57. 216- [JAWS] -KC - Rede<br>
+  5.58. <a href="#item5.58">Visão geral do Cloud Storage</a><br>
+  5.59. <a href="#item5.59">Amazon EBS</a><br>
+  5.60. <a href="#item5.60">Demonstração do Amazon EBS-2</a><br>
+  5.61. <a href="#item5.61">182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</a><br>
+  5.62. <a href="#item5.62">O armazenamento de instâncias do EC2</a><br>
+  5.63. <a href="#item5.63">Elastic File System</a><br>
+  5.64. <a href="#item5.64">Demonstração do Elastic File System-2</a><br>
+  5.65. <a href="#item5.65">Amazon Glacier</a><br>
+  5.66. <a href="#item5.66">Demonstração do S3 Glacier-2</a><br>
+  5.67. <a href="#item5.67">Amazon S3 e a CLI da AWS</a><br>
+  5.68. <a href="#item5.68">183- [JAWS] -Laboratório: Gerenciar o armazenamento</a><br>
+  5.69. <a href="#item5.69">Amazon Storage Gateway</a><br>
+  5.70. <a href="#item5.70">184- [JAWS] -Laboratório: [Desafio] Exercício de S3</a><br>
+  5.71. <a href="#item5.71">185- [JAWS] -Atividade: Trabalhar com o Amazon S3</a><br>
+  5.72. 217- [JAWS] -KC - Armazenamento e arquivamento<br>
+  5.73. <a href="#item5.73">Esperamos que seu Jumpstart na AWS esteja indo bem!</a><br>
 
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre como funciona as redes na cloud da **AWS**, apresentando o serviço voltado para isso que é o **Amazon Virtual Private Cloud (Amazon VPC)**. Também foi ensinado como construir uma VPC com sub-redes pública e privada, gateway de internet e NAT gateway, tabela de rotas, grupo de segurança e provisionar uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** nesta VPC, acessando ela posteriormente.
+O objetivo deste módulo do bootcamp foi explicar diversos serviços da **AWS** necessários para realização do exame de certificação **AWS Certified Cloud Practitioner (CLF-C01)**.
 
 ### Structure:
 A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
@@ -889,7 +981,7 @@ A última tarefa foi apenas encerrar a instância `Web Server 1` que serviu para
 
 Esta laboratório foi exatamente igual ao anterior (<a href="#item5.29">5.29 174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</a><br>), apenas a parte da construção da AMI era feita pela **AWS CLI** executado de uma outra instância. Contudo, para diferenciar um pouco, optei por construir toda a arquitetura pelo **AWS CLI** com um único arquivo de script.
 
-Para executar a **AWS CLI**, foi realizado um acesso remoto, pela opção `EC2 Instance Connect` no console de gerenciamento da **AWS**, à instância `Command Host` que foi provisionada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Com essa forma de acesso remoto, não era preciso configurar um par de chaves para autenticar o usuário `ec2-user` na instância. Após isso, um terminal shell conectado na instância foi aberto em uma outra aba do navegador da maquina física. Foi necessário configurar o **AWS CLI** instalado nesse instância com o comando `aws configure` e definir as configurações. Com o comando `curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region` foi acessado os metadados da própria instância (`Command Host`) para descobrir qual região ela estava usando e se era a região definida no console de gerenciamento da **AWS**, `us-west-2` (Oregon). Nas configurações da CLI da instância, o ID e Secret Access Key foram mantidos os que já estavam configurados, logo foi pressionado `Enter` para confirmar. A região foi a do laboratório `us-west-2` e o fomarto de saída dos dados foi `json`. Na sequência, o diretório corrente foi alterado para a pasta do usuário com o comando `cd /home/ec2-user/`. Os arquivos de scripts que seriam utilizados para criar a segunda instância, que seria modelo de servidor web para arquitetura, foram listados na imagem 48. No laboratório anterior, estava instância já veio provisionada e configurada como servidor web.
+Para executar a **AWS CLI**, foi realizado um acesso remoto, pela opção `EC2 Instance Connect` no console de gerenciamento da **AWS**, à instância `Command Host` que foi provisionada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Com essa forma de acesso remoto, não era preciso configurar um par de chaves para autenticar o usuário `ec2-user` na instância. Após isso, um terminal shell conectado na instância foi aberto em uma outra aba do navegador da maquina física. Foi necessário configurar o **AWS CLI** instalado nesse instância com o comando `aws configure` e definir as configurações. Com o comando `curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region` foi acessado os metadados da própria instância (`Command Host`) para descobrir qual região ela estava usando e se era a região definida no console de gerenciamento da **AWS**, `us-west-2` (Oregon). Nas configurações da CLI da instância, o ID e Secret Access Key foram mantidos os que já estavam configurados, logo foi pressionado `Enter` para confirmar. A região foi a do laboratório `us-west-2` e o fomarto de saída dos dados foi `json`. Na sequência, o diretório corrente foi alterado para a pasta do usuário com o comando `cd /home/ec2-user/`. Os arquivos de scripts que seriam utilizados para criar a segunda instância, que seria modelo de servidor web para arquitetura, foram listados na imagem 48. No laboratório anterior, esta instância já veio provisionada e configurada como servidor web.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img48.png" alt="img48"><br>
@@ -901,92 +993,70 @@ Para inspecionar o arquivo de user data foi executado o comando `more UserData.t
 Na opção `Details` nas instruções do sandbox **Vocareum**, foi copiado os valores de algumas configurações que foram utilizadas no comando abaixo para provisionar a instância modelo de servidor web. 
 
 ```bash
-aws ec2 run-instances --key-name KEYNAME --instance-type t3.micro --image-id AMIID --user-data file:///home/ec2-user/UserData.txt --security-group-ids HTTPACCESS --subnet-id SUBNETID --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]' --output text --query 'Instances[*].InstanceId'
+aws ec2 run-instances --key-name vockey --instance-type t3.micro --image-id ami-0acb9a8339ab465bd --user-data file:///home/ec2-user/UserData.txt --security-group-ids sg-0618e0e65c7083c81 --subnet-id subnet-099491d980ba25731 --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]' --output text --query 'Instances[*].InstanceId'
 ```
 
-Ao executar o comando, a instância de modelo de servidor web foi provisionada e no output do comando foi fornecido o Id dessa nova instância. Esse valor foi copiado, pois seria utilizado nos próximos comandos. Com o comando `aws ec2 wait instance-running --instance-ids NEW-INSTANCE-ID` e o Id da instância, foi monitorado o status dela até que ficasse em execução. Ainda utilizando Id da instância no comando `aws ec2 describe-instances --instance-id NEW-INSTANCE-ID --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'` foi obtido o DNS público para acessar a aplicação desse servidor web modelo. A aplicação foi acessada em outra aba do navegador da maquina física **Windows** com o link `http://PUBLIC-DNS-ADDRESS/index.php`, informando o IP da instância. A imagem 49 exibe a página da aplicação sendo acessada.
+Ao executar o comando, a instância de modelo de servidor web foi provisionada e no output do comando foi fornecido o Id dessa nova instância. Esse valor foi copiado, pois seria utilizado nos próximos comandos. Com o comando `aws ec2 wait instance-running --instance-ids i-0b55e2e216628088f` e o Id da instância, foi monitorado o status dela até que ficasse em execução. Ainda utilizando Id da instância no comando `aws ec2 describe-instances --instance-id i-0b55e2e216628088f --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'` foi obtido o DNS público para acessar a aplicação desse servidor web modelo. A aplicação foi acessada em outra aba do navegador da maquina física **Windows** com o link `http://PUBLIC-DNS-ADDRESS/index.php`, informando o IP da instância. A imagem 49 exibe a página da aplicação sendo acessada.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img49.png" alt="img49"><br>
     <figcaption>Imagem 49.</figcaption>
 </figure></div><br>
 
-Se tudo estivesse certo, significava que o servidor web modelo estava funcionando e uma AMI da instância poderia ser criada. Com o comando `aws ec2 create-image --name WebServerAMI --instance-id NEW-INSTANCE-ID` e passando o ID da instância `Web Server`, imagem de maquina Amazon foi criada. Por padrão, este comando reiniciava a instância atual antes de criar a AMI para garantir a integridade da imagem no sistema de arquivos. A imagem 50 exibe a AMI construída.
+Se tudo estivesse certo, significava que o servidor web modelo estava funcionando e uma AMI da instância poderia ser criada. Com o comando `aws ec2 create-image --name WebServerAMI --instance-id i-0b55e2e216628088f` e passando o ID da instância `WebServer`, imagem de maquina Amazon foi criada. Por padrão, este comando reiniciava a instância atual antes de criar a AMI para garantir a integridade da imagem no sistema de arquivos. A imagem 50 exibe a AMI construída.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img50.png" alt="img50"><br>
     <figcaption>Imagem 50.</figcaption>
 </figure></div><br>
 
-A partir daí, o laboratório indicava para realizar pelo **AWS Console Management**, mas como essa parte foi realizada exatamente igual no laboratório passado, optei por continuar com **AWS CLI** e executar a construção da arquitetura toda com ele. Isso foi realizado criando um arquivo de script do zero, indicando todos os recursos que teriam que ser provisionados. Os recursos foram os mesmos do laboratório anterior: um *Application Load Balancer (ALB)*, um target group, um listener, um launch template, um auto scaling group e duas políticas de escalabilidade com alarmes do **Amazon CloudWatch**. Aqui não entrarei muito em detalhes, pois isso foi realizado no laboratório anterior. As únicas diferenças entre os laboratórios, foram os nomes ou tag de nomes, cujos valores foram diferentes.
-- target group (grupo de destino): `webserver-app`.
+A partir daí, o laboratório indicava para realizar pelo **AWS Console Management**, mas como essa parte foi realizada exatamente igual no laboratório passado, optei por continuar com **AWS CLI** e executar a construção da arquitetura toda com ele. Isso foi realizado criando arquivos de script, indicando todos os recursos que teriam que ser provisionados. Os recursos foram os mesmos do laboratório anterior: um *Application Load Balancer (ALB)*, um target group, um listener, um launch template, um auto scaling group e duas políticas de escalabilidade com alarmes do **Amazon CloudWatch**. Aqui não entrarei muito em detalhes, pois isso foi realizado no laboratório anterior. As únicas diferenças entre os laboratórios, foram os nomes ou tag de nomes, cujos valores foram diferentes, conforme mostrados abaixo.
+- Target group (grupo de destino): `webserver-app`.
+- Health check path do target group: `/index.php`.
 - *Application Load Balancer (ALB)*: `WebServerELB`.
+- Security Group: `HTTPAccess`.
 - Launch template (modelo de execução): `web-app-launch-template`.
 - Auto scaling group (grupo de escalabilidade): `Web App Auto Scaling Group`.
+- Tag de nome: `WebApp`
+- VPC: `Lab VPC`.
 
+Todos os arquivos de scripts utilizados estão armazenados na pasta [resource/asg](./resource/asg/). Esses arquivos foram construídos em **Bash** já que seriam utilizados na instância **Amazon Linux**. Para utilizá-los, eles foram copiados e colados durante o acesso remoto à instância `Web Server`, sendo armazenados no diretório do usuário `/home/ec2-user`. A ordem de execução foi a seguinte: [elbTg.sh](./resource/asg/elbTg.sh) para criar o target group (grupo de destino) do load balancer; [elbAlb.sh](./resource/asg/elbAlb.sh) para construir o load balancer do tipo *Application Load Balancer*; [elbListener.sh](./resource/asg/elbListener.sh) para criar o listener desse load balancer, que direcionaria o tráfego para o grupo de destino; [asLaunchTemp1.sh](./resource/asg/asLaunchTemp1.sh) para construir o modelo de execução do grupo de auto scaling; [asGroup1.sh](./resource/asg/asGroup1.sh) para provisionar o grupo de auto scaling; [asttScalingPolicy.sh](./resource/asg/asttScalingPolicy.sh) para criar uma política de rastreamento de meta para o grupo do auto scaling. 
 
+Infelizmente, a ideia de executar tudo pelo **AWS CLI** não deu certo, pois o usuário configurado na **AWS CLI** era role do IAM, e determinados recursos quando criados na **AWS CLI** precisavam de algumas permissões que role não tinha. Como não era possível criar um usuário do IAM com permissões ou adicionar permissões na role, a execução com **AWS CLI** foi abortada, sendo executado novamente pelo console como no laboratório anterior. 
 
-
-
-
-
-
-
-
-
-
-
-
-A segunda tarefa contemplou na criação de um ambiente de auto scaling, provisionando um balanceador de carga no **Amazon ELB** e um grupo de escalabilidade no **Amazon EC2 Auto Scaling**. Esta tarefa foi realizada direto pelo **AWS Console Management**, pois eram serviços novos até o momento deste bootcamp. A primeira etapa foi criar o load balancer no **Amazon ELB**, que foi do tipo *Application Load Balancer (ALB)* já que era para uma aplicação web. Contudo, ao criar um ALB pelo console, seria preciso criar um target group (grupo de destino). Então para adiantar, criei primeiro o target group indo direto no recurso. Em target group, o tipo de destino foi definido como `instances` e o nome do grupo foi . Na verificação de integridade, o tipo foi definido como `/index.php`, que era a página raiz do site. A imagem 40 exibe o grupo de destino provisionado.
+A imagem 51 mostra o load balancer ALB provisionado já com o listener indicando o target group construído. A imagem 52 exibe o launch template elaborado. Já a imagem 53 evidencia o grupo de auto scaling construído já com as duas instâncias e a política de rastreamento de destino.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img40.png" alt="img40"><br>
-    <figcaption>Imagem 40.</figcaption>
-</figure></div><br>
-
-De volta ao ALB, o load balancer criado teve o nome `WebServerELB` e nas configurações de rede foi selecionada a VPC do laboratório e suas duas sub-redes públicas. O grupo de segurança escolhido foi um já existente, cujo nome era `HTTPAccess`. Este já possuía uma regra de entrada liberando a porta `80` no protocolo `TCP` para todos os IPs (`0.0.0.0/0`). Lembrando que a VPC e toda configuração de rede foi construída pelo **AWS CloudFormation** ao iniciar o laboratório. Em listeners e roteamento, a ação padrão foi encaminhar e foi escolhido o target group criado, cujo nome era `webserver-app`. Após isso, o load balancer estava criado e era só esperar ele ficar em execução, conforme evidenciado na imagem 41. O DNS do load balancer foi copiado e aberto em outra aba do navegador. Por enquanto ele não funcionaria, pois o tráfego ainda não estava chegando nas instâncias de servidor web.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img41.png" alt="img41"><br>
-    <figcaption>Imagem 41.</figcaption>
-</figure></div><br>
-
-Na etapa 2 da segunda tarefa foi construído um modelo de execução (*launch template*). Um modelo de execução é o que um grupo do Auto Scaling usa para iniciar instâncias do EC2. O nome do modelo de execução foi `web-app-launch-template` e a descrição foi definida como `A web server for the load test app`. Em seguida, foi selecionada a opção para fornecer ajuda para configurar um modelo para ser utilizado pelo **Amazon EC2 Auto Scaling**. Em imagem de maquina Amazon, se a AMI construída não já tivesse selecionada, ela tinha que ser selecionada. O tipo de instância foi `t3.micro` e não foi criado ou definido par de chaves. Nas configurações de rede, o grupo de segurança `HTTPAccess` foi escolhido. Não foi necessário para arquivo de user data configurando o servidor web, pois isso já tinha sido feito na instância modelo de nome `WebServer` e como a imagem utilizada era dela, tudo já estava instalado. A imagem 42 mostra o launch template criado com sucesso.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img42.png" alt="img42"><br>
-    <figcaption>Imagem 42.</figcaption>
-</figure></div><br>
-
-A etapa 3 consistiu na criação do auto scaling group a partir desse modelo de execução elaborado. Portanto, foi selecionado o modelo `web-app-launch-template` e o nome do deste grupo foi definido como `Web App Auto Scaling Group`. Nas configurações de rede foi selecionada a VPC do laboratório e as duas sub-redes privadas, pois as instâncias do grupo de auto scaling estaria na sub-rede privada. Em configurações avançadas, em balanceador de carga, foi anexado a este grupo o load balancer criado e o grupo de destino (target group) construído ` webserver-app | HTTP` foi vinculado. As verificações de integridade adicionais do **Amazon ELB** foram ativadas. Nas configurações da política de escalabilidade, foi definido o tamanho do grupo, informando a capacidade desejada em 2, a capacidade mínima em 2 e a capacidade máxima em 4. A política de escalabilidade escolhida foi de rastreamento de deestino, cujo tipo de métrica foi definido com `média de utilização de CPU` e o valor de destino em `50`. Essa alteração informava ao Auto Scaling para manter uma utilização média da CPU em todas as instâncias em 50%. O Auto Scaling adicionaria ou removeria automaticamente a capacidade conforme necessário para manter a métrica no valor de destino especificado ou próxima dele. Uma tag de nome foi criada, cujo valor foi `WebApp`, que seria utilizada pelas instâncias desse grupo de auto scaling. A imagem 43 evidencia o auto scaling group desenvolvido com duas instâncias, pois a quantidade desejada foram duas.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img43.png" alt="img43"><br>
-    <figcaption>Imagem 43.</figcaption>
-</figure></div><br>
-
-A tarefa três teve como objetivo verificar se essas duas instâncias desse grupo de auto scaling estavam no target group (grupo de destino) do load balancer. Observe na imagem 44, que as instâncias estavam no target group e a verificação de integridade estava marcando como íntegro. Assim, a aplicação web já poderia ser acessada pelo DNS do load balancer, pois ele já estava direcionando o tráfego para essas instâncias que eram servidores web.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img44.png" alt="img44"><br>
-    <figcaption>Imagem 44.</figcaption>
-</figure></div><br>
-
-A última tarefa foi estressar as instâncias clicando na opção `Iniciar stress` dentro da aplicação que era aberta no navegador da maquina física **Windows** através do DNS do load balancer. Essa ação chamará a aplicação stress em segundo plano, fazendo com que a utilização da CPU na instância que atendeu a essa solicitação aumente para 100%. Após realizar isso, era só monitorar os gráficos do auto scaling group, quando a quantidade de CPU utilizada deste grupo, no caso a média entre as duas instâncias, passasse de 50%, o **Amazon CloudWatch** acionaria o **Amazon EC2 Auto Scaling** para provisionar uma nova instância para este grupo com o objetivo de atender a carga. A imagem 45 exibe o **Amazon CloudWatch** acionando o auto scaling e a imagem 46 evidencia a criação de uma nova instância.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img45.png" alt="img45"><br>
-    <figcaption>Imagem 45.</figcaption>
+    <img src="../0-aux/md5-img51.png" alt="img51"><br>
+    <figcaption>Imagem 51.</figcaption>
 </figure></div><br>
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img46.png" alt="img46"><br>
-    <figcaption>Imagem 46.</figcaption>
+    <img src="../0-aux/md5-img52.png" alt="img52"><br>
+    <figcaption>Imagem 52.</figcaption>
 </figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img53.png" alt="img53"><br>
+    <figcaption>Imagem 53.</figcaption>
+</figure></div><br>
 
+Após conseguir acessar a aplicação pelo DNS do load balancer no navegador da maquina física **Windows**, conforme imagem 54, foi realizado o teste de estresse na aplicação dos servidores web. Esse teste de estresse era parte da aplicação que quando acionado chamava a aplicação stress em segundo plano, fazendo com que a utilização da CPU na instância que atendeu a essa solicitação aumentasse para 100%. Depois de realizar isso, era só monitorar os gráficos do auto scaling group, quando a quantidade de CPU utilizada deste grupo, no caso a média entre as duas instâncias, passasse de 50%, um dos alarmes criados do **Amazon CloudWatch** acionaria o **Amazon EC2 Auto Scaling** para provisionar uma nova instância para este grupo com o objetivo de atender a demanda de carga. A imagem 55 exibe o alarme do **Amazon CloudWatch** acionando o auto scaling e a imagem 56 evidencia a criação de uma nova instância.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img54.png" alt="img54"><br>
+    <figcaption>Imagem 54.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img55.png" alt="img55"><br>
+    <figcaption>Imagem 55.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img56.png" alt="img56"><br>
+    <figcaption>Imagem 56.</figcaption>
+</figure></div><br>
 
 <a name="item5.31"><h4>5.31 Desafio de previsão de Auto Scaling</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -1034,9 +1104,17 @@ Uma implantação azul/verde é uma estratégia que minimiza o risco de indispon
 <a name="item5.33"><h4>5.33 Demonstração do Amazon Route 53-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
+diferentes tipos de roteamento:
+- roteamento simples
+- roteamento failover
+- roteamento de geolocalização
 
 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img57.png" alt="img57"><br>
+    <figcaption>Imagem 57.</figcaption>
+</figure></div><br>
 
 
 
@@ -1057,8 +1135,96 @@ Ao estimar o custo do **Amazon CloudFront**, é importante considerar a distribu
 
 <a name="item5.35"><h4>5.35 176-[JAWS]-Atividade: Roteamento de failover do Route 53</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Neste laboratório atividade, desenvolvido no sandbox **Vocareum**, o objetivo foi configurar um roteamento de failover para uma aplicação web no **Amazon Route 53**. O ambiente que já era construído automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório, era composto por duas instâncias do **Amazon EC2** que funcionavam como servidor web, cada uma em uma zona de disponibilidade diferente, sendo ambas na mesma VPC da região `us-west-2` (Oregon). Cada uma das instâncias possuía a pilha LAMP completa instalada e o site de uma cafeteria implantado e em execução. Para testar o failover, a instância principal iria ser interrompida forçadamente e a instância secundária assumiria o tráfego da aplicação. Também foi configurado no **Amazon Route 53** uma verificação de integridade (health check) para quando as instâncias não fossem íntegras, um email fosse enviado e o failover fosse acionado.
+
+A primeira tarefa deste laboratório consistiu em verificar se os sites dos servidores web, no caso as instâncias do EC2, estavam em execução. No sandbox **Vocareu** em detalhes, era fornecido os IPs públicos das instâncias, que também podiam ser visualizados pelo console de gerenciamento da **AWS**, e o IP público com o path para acessar a página raiz do site. Acessando o IP público das instâncias em uma aba do navegador da maquina física **Windows** era possível verificar que essa instância era um servidor web, porém para visualizar a aplicação web em execução nas duas instâncias foi preciso adicionar o path `/cafe` a URL, conforme imagens 67 e 68. Perceba que na parte superior do site foi exibido o número de IP e o ID da instância que estava servidor com a aplicação web, e a zona de disponibilidade que essa instância estava.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img67.png" alt="img67"><br>
+    <figcaption>Imagem 67.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img68.png" alt="img68"><br>
+    <figcaption>Imagem 68.</figcaption>
+</figure></div><br>
+
+Na tarefa 2 foi configurado a verificação de integridade (health check) no **Amazon Route 53**, pois ela era necessária para configurar o failover. Nas configurações de health check, o nome foi definido como `Primary-Website-Health`, o `Endpoint` foi escolhido para ser monitorado, indicando que ele seria o endereço de IP (`IP Address`) e inserindo o endereço de IPv4 da instância primária. No `path` (caminho) foi definido como `cafe`. Nas configurações avançadas, o intervalo de solicitações foi selecionado como rápido (10 segundos), `Fast (10 seconds)`, e o limite de falha como `2`. Essas opções faziam com que a health check respondesse mais rapidamente. As demais opções foram mantidas padrão, inclusive o hostname que ficou em branco. Na opção de ser notificado se uma verificação de integridade falhar, foi criado um alarme e as notificações foram determinadas que fossem enviadas para um novo tópico do **Amazon Simple Notification Service (Amazon SNS)**. Esse novo tópico teve o nome de `Primary-Website-Health` e meu endereço de email foi indicado. A imagem 69 evidencia a configuração do health check.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img69.png" alt="img69"><br>
+    <figcaption>Imagem 69.</figcaption>
+</figure></div><br>
+
+A terceira tarefa teve como objetivo configurar os registros (record) do **Amazon Route 53** para uma zona hospedada (hosted zone). Uma zona hospedada é um conjunto de registros DNS para um domínio específico. Esses registros mapeiam nomes de domínio para endereços IP e outros recursos, permitindo que os usuários encontrem seus serviços na internet. No caso do laboratório, uma hosted zone já era criada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Essa zona hospedada possuía um domínio raiz já criado no seguinte padrão `XXXXXX_XXXXXXXXXX.vocareum.training`, onde as letras X eram dígitos exclusivos da conta da **AWS**, ou seja, era o número da conta acessada durante o laboratório. Além do domínio raiz que era necessário para criar uma hosted zone, dois registros também eram criados quando esse domínio era registrado no **Amazon Route 53**. O registro NS, ou o registro de servidor de nomes, listava os quatro servidores de nomes que eram os servidores de nomes autoritativos da zona hospedada na coluna Valor/rotear tráfego para. Não era necessário adicionar, alterar nem excluir servidores de nomes desse registro. O SOA, ou início do registro de autoridade, identificava as informações do sistema de nome de domínio (DNS) sobre o domínio na coluna Valor/rotear tráfego para. Ele também foi criado quando o domínio foi registrado no Route 53.
+
+Um novo record foi elaborado, cujo nome dele foi `www`, o tipo foi `A` que é para IPv4, e o endereço de IP público da instância primária foi indicado. O TTL foi definido em `15` segundos, a política de roteamento foi `failover` e o tipo de registro de failover foi `Primary`. No ID da verificação de integridade foi selecionado integridade do site principal e no ID do registro foi definido como `FailoverPrimary`. Um segundo registro foi criado, cujo nome também foi `www`, o tipo foi `A`, mas o endereço de IP público foi da instância secundária. O TTL também foi de `15` segundos, a política de roteamento foi `failover`, sendo o tipo de registro de failover agora como `Secondary`. O ID da verificação de integridade foi mantido em branco e o ID do registro foi definido como `FailoverSecondary`. A imagem 70 a seguir mostra os dois novos registros construídos, totalizando quatro registros nessa zona de hospedagem.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img70.png" alt="img70"><br>
+    <figcaption>Imagem 70.</figcaption>
+</figure></div><br>
+
+Na tarefa de número 4 foi o momento de verificar o DNS do **Amazon Route 53**. Um dos dois record criados foi selecionado e o nome do registro A foi copiado e utilizado em uma outra aba do navegador da maquina física **Windows** adicionando no caminho o `/cafe`. Os dois registros possuíam o mesmo nome de record, então daria no mesmo copiar de qualquer um dos dois. Assim, o site principal da cafeteria deveria ser acessado, o site principal neste momento correspondia a instância primária. A URL deverá ser algo parecido com isso `http://www.XXXXXX_XXXXXXXXXX.vocareum.training/cafe/`, onde os Xs são o número da conta da **AWS** acessada durante o laboratório. A imagem 71 exibe o site sendo acessado pelo navegador, onde mostra que a instância que está servido esse site é a primária como deveria ser, que estava localizada na AZ `us-west-2a`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img71.png" alt="img71"><br>
+    <figcaption>Imagem 71.</figcaption>
+</figure></div><br>
+
+Na última tarefa, o objetivo foi testar o failover. Para isso foi necessário simular uma falha no servidor principal e isso foi realizado interrompendo a instância pelo console. Observando o monitoramento do health check do **Amazon Route 53** do site principal, conforme imagem 72, note que a verificação de integridade para instância primária falha, pois ela foi interrompida. Após um tempo, o stauts de integridade diz que ela está não íntegra, foi neste momento que o failover foi acionado, alterando o tráfego para instância secundária e com o **Amazon SNS** um email foi enviado para conta determinada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img72.png" alt="img72"><br>
+    <figcaption>Imagem 72.</figcaption>
+</figure></div><br>
+
+Ao voltar para aplicação web no navegador da maquina física, perceba que a zona de disponibilidade agora era outra, logo, a instância também era outra. A imagem 73 evidencia esse fato. Já na imagem 74 é mostrado a mensagem que é enviada para o email cadastrado. Contudo, antes de receber essa mensagem, uma outra foi enviada pedindo a confirmação do email para receber as mensagens futuras de alerta.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img73.png" alt="img73"><br>
+    <figcaption>Imagem 73.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img74.png" alt="img74"><br>
+    <figcaption>Imagem 74.</figcaption>
+</figure></div><br>
+
 <a name="item5.37"><h4>5.37 AWS Lambda</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+A **Amazon Web Services (AWS)** disponibiliza diversos serviços de computação. A primeira opção é o **Amazon Elastic Compute Cloud (Amazon EC2)**, que oferece máquinas virtuais. Outra alternativa é uma solução de contêiner, como o **Amazon Elastic Container Service (Amazon ECS)**. Entretanto, existe também uma terceira abordagem de computação que não requer a provisão nem o gerenciamento de servidores. Essa terceira abordagem é geralmente conhecida como computação sem servidor (serverless). A computação sem servidor possibilita a criação e execução de aplicativos e serviços sem a necessidade de se preocupar com servidores. Os aplicativos sem servidor não exigem a provisão, o dimensionamento ou o gerenciamento de nenhum servidor.
+
+A AWS oferece computação sem servidor através do serviço **AWS Lambda**. Funções do Lambda podem ser criadas para praticamente qualquer tipo de aplicativo ou serviço de back-end. Tudo o que é necessário para executar e dimensionar o aplicativo com alta disponibilidade é gerenciado pela **AWS**. O Lambda proporciona serviços computacionais sem servidor totalmente gerenciados, executando o código apenas quando necessário e escalando automaticamente para milhares de solicitações por segundo. Com o Lambda, é possível executar código para praticamente qualquer tipo de aplicativo ou serviço de back-end, tudo isso com o mínimo de administração. Basta fazer upload do código, e o Lambda cuidará de todos os aspectos necessários para executá-lo e escalá-lo com alta disponibilidade. O código pode ser configurado para ser acionado automaticamente por meio de outros serviços da **AWS** ou chamado diretamente por qualquer aplicativo web ou móvel. O tempo de execução de uma função do Lambda é limitado a no máximo 15 minutos. Com o **AWS Lambda**, não há novas linguagens, ferramentas ou frameworks para aprender. Qualquer biblioteca de terceiros pode ser usada, incluindo as nativas. O **AWS Lambda** suporta **Java**, **Node.js**, **C#**, **Python** e **Ruby**. O pagamento é realizado pelo tempo de computação consumido. Não há cobrança quando o código não está em execução.
+
+Um exemplo de uso do Lambda é em um aplicativo de reconhecimento de imagem. Primeiro, os usuários capturam uma imagem de sua propriedade usando um aplicativo móvel. Depois, o aplicativo móvel faz o upload da nova imagem para o **Amazon S3**. A adição dessa imagem ao **Amazon S3** aciona uma função do Lambda e chama o **Amazon Rekognition**. O **Amazon Rekognition** pode identificar objetos, pessoas, textos, cenas e atividades, além de fornecer análise e reconhecimento facial. O Lambda recupera a imagem do **Amazon S3** e retorna rótulos para a propriedade e suas comodidades. Outros usos do Lambda incluem: backups automatizados, processamento de objetos carregados no **Amazon S3**, análise de log orientada por eventos, transformações orientadas por eventos, Internet das Coisas (IoT) e operação de sites sem servidor.
+
+No processo de desenvolvimento e implantação de uma função do **AWS Lambda** com dependências, comece definindo uma classe de manipulador do Lambda em seu código. O manipulador permite especificar onde o **AWS Lambda** deve iniciar a execução do código. Em seguida, crie a função do **AWS Lambda**, que pode ser vista como o código que será executado, incluindo o código em si, informações de configuração e requisitos de recursos. Configure o acesso a recursos utilizando o **AWS Identity and Access Management (AWS IAM)** e funções do IAM. Security groups e listas de controle de acesso à rede (ACLs de rede) podem ser usados para fornecer às funções acesso aos recursos. Faça o upload do código, teste a função, verifique os resultados e analise os logs. Monitore as funções do Lambda e as métricas de relatórios por meio do **Amazon CloudWatch**. Exemplos de itens que podem ser monitorados incluem o número de solicitações, a latência e o número de solicitações que resultam em erros.
+
+Considere um exemplo de situação em que é necessário reduzir o uso do serviço **Amazon Elastic Compute Cloud (Amazon EC2)**. A decisão é interromper instâncias em um horário predefinido. Pode ser desejável interromper as instâncias do EC2 durante a noite (quando há menor necessidade de capacidade) e reiniciá-las pela manhã (antes do início do dia de trabalho). Nessa situação, é possível configurar o **AWS Lambda** e o *Amazon CloudWatch Events* para realizar essas ações automaticamente. Um evento do *Amazon CloudWatch Events* pode ser programado para executar uma função do Lambda que interrompe as instâncias do EC2 às 22h00 do Horário Coordenado Universal (UTC), por exemplo. A função do Lambda é acionada e executada com a função do IAM que concede permissões para interromper as instâncias do EC2. O Lambda pode lidar com até 1.000 invocações de função simultâneas em uma única região. As instâncias do EC2 entram no estado interrompido. Mais tarde, às 5h00 UTC (por exemplo), um evento do CloudWatch Events é agendado para executar uma função do Lambda que inicia as instâncias do EC2. A função do Lambda é acionada e executada com a função do IAM que concede permissão para iniciar as instâncias do EC2. As instâncias do EC2 entram no estado de execução.
+
+É possível configurar a função do Lambda para incluir código adicional e conteúdo em forma de camadas. Uma camada é um arquivo zip que contém bibliotecas, um tempo de execução personalizado ou outras dependências. Com camadas, as bibliotecas podem ser utilizadas na função sem a necessidade de incluí-las no pacote de implantação. As camadas ajudam a manter o pacote de implantação pequeno, facilitando o desenvolvimento. Possíveis erros ao instalar e empacotar as dependências podem ser evitados utilizando o código da função. Para funções em **Node.js**, **Python** e **Ruby**, o código da função pode ser desenvolvido diretamente no console do Lambda, desde que o pacote de implantação permaneça abaixo de 3 MB. Uma função pode utilizar até cinco camadas simultaneamente. O tamanho total descompactado da função e de todas as camadas não pode ultrapassar o limite de 250 MB do pacote de implantação descompactado. Para adicionar camadas a uma função, os desenvolvedores utilizam o comando update-function-configuration.
+
+O **AWS Lambda** impõe restrições à quantidade de recursos de computação e armazenamento que podem ser utilizados para executar e armazenar funções. Por exemplo, atualmente, a alocação máxima de memória para uma única função do Lambda é de 3 GB. O Lambda também possui limites de simultaneidade e tamanho de pacote, que é de 250 MB no momento. Ao solucionar problemas de implantação do Lambda, é importante ter esses limites em mente.
+
 <a name="item5.38"><h4>5.38 178- [JAWS] -Atividade: Trabalhar com o AWS Lambda</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.39"><h4>5.39 APIs e REST da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
