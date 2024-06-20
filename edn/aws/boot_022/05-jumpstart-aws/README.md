@@ -1309,18 +1309,30 @@ Alguns outros desafios incluem problemas de empacotamento do contêiner quando h
 
 Com o **AWS Step Functions**, é possível coordenar diversos serviços da **AWS** em fluxos de trabalho sem servidor para criar e atualizar aplicativos de maneira ágil. Por exemplo, é viável projetar e executar fluxos de trabalho que integrem serviços como o **AWS Lambda** e o **Amazon ECS** em aplicativos com múltiplos recursos. Os fluxos de trabalho são compostos por uma série de etapas, onde a saída de uma etapa serve como entrada para a seguinte. O Step Functions transforma o fluxo de trabalho em um diagrama de máquina de estado fácil de entender, explicar e modificar. A máquina de estado é uma série de etapas e transições entre cada uma no **AWS Step Functions**. Cada etapa do tempo de execução pode ser monitorada conforme ocorre, permitindo identificar e corrigir problemas rapidamente. O Step Functions aciona e monitora cada etapa automaticamente, realizando novas tentativas em caso de erros, para que o aplicativo seja executado na ordem e conforme o esperado.
 
+Com relação à produtividade, mais tempo pode ser dedicado a inovar a lógica de negócios que torna o aplicativo exclusivo. Os aplicativos podem se tornar mais fáceis de operar e manter. Na questão da agilidade, o Step Functions registra um histórico toda vez que é executado, permitindo revisar todos os eventos em sequência em um único local. É possível dimensionar de um tempo de execução para milhares de tempos de execução simultâneos, especialmente quando usado com outros recursos sem servidor da **AWS**. Alguns exemplos de recursos incluem o **AWS Lambda**, o **Amazon Simple Storage Service (Amazon S3)** e o **Amazon DynamoDB**. Com o Step Functions, o pagamento é feito apenas pelo uso efetivo. Quanto à resiliência, o Step Functions suporta o tratamento automático de erros para oferecer saídas normais. Ele opera em escala, sem necessidade de configurar ou gerenciar recursos subjacentes.
 
+O **AWS Step Functions** opera através de fluxos de trabalho configurados que são definidos pelo usuário. Ele coordena tarefas específicas expressando o fluxo de trabalho como uma máquina de estado. Estados específicos tomam decisões com base nos dados de entrada, executam ações e transmitem os dados de saída para outros estados. O console do Step Functions fornece uma representação gráfica dessa máquina de estado para ajudar a visualizar a lógica do aplicativo. Os estados podem desempenhar funções diversas. Por exemplo, podem realizar algum trabalho (executar uma tarefa) ou escolher qual ramificação no fluxo de trabalho deve prosseguir. As tarefas são configuradas para invocar código hospedado em uma função, contêiner ou instância. O código pode então ser executado quantas vezes forem necessárias por um período de um ano. À medida que os fluxos de trabalho evoluem, as tarefas ou a ordem das etapas podem ser alteradas, ou novas tarefas podem ser adicionadas ou excluídas, sem necessidade de modificar nenhum código.
 
+No ciclo de vida do Step Functions, esses elementos são chamados de estados e transições de estado. Em um exemplo hipotético, uma máquina de estado simples é definida com comandos simples em **JavaScript Object Notation (JSON)**. Ao iniciar uma máquina de estado, a entrada é fornecida em formato JSON. Cada estado modifica ou complementa a saída JSON, que se torna a entrada do próximo estado. O console do Step Functions oferece uma visualização que pode ser usada para obter informações quase em tempo real durante a execução da máquina de estado.
 
+O console do Step Functions pode ser utilizado para acessar diferentes tipos de informações. A maioria dos recursos da console pode ser acessada por meio da interface de programação de aplicativo (API) do **AWS Step Functions**, exceto o grafo. No canto superior esquerdo, é possível alternar entre as guias Graph (Grafo) e Code (Código) JSON. O grafo é codificado por cores para mostrar estados concluídos com êxito, o progresso do estado atual, estados com falha ou estados que não foram passados durante o tempo de execução. No painel superior direito, estão disponíveis detalhes sobre o tempo de execução, incluindo informações gerais, a entrada de execução (pares de chave-valor JSON) e a saída final. O botão de alternância Step Details (Detalhes da etapa) na parte inferior permite inspecionar estados específicos. É possível ver a entrada e a saída por estado, o que é útil para depuração. A parte inferior exibe um histórico passo a passo completo do tempo de execução, com carimbos de data/hora. Essa visualização pode ser acessada pela API do **AWS Step Functions** e pela console.
 
-
-
-
-
-
-
+O **AWS Step Functions** auxilia a maioria dos processos de negócios que exigem uma série de etapas. Ele também é útil para criar fluxos de trabalho completos para gerenciar tarefas com interdependências. Alguns casos de uso são os seguintes:
+- Processamento de dados: consolida dados de vários bancos de dados em relatórios unificados;
+- DevOps e automação de TI: cria ferramentas para integração e implantação contínuas;
+- Comércio eletrônico: automatiza o atendimento de pedidos e o monitoramento de inventário;
+- Aplicativos web: gerencia processos de registro de usuários e autenticação de logon.
 
 <a name="item5.44"><h4>5.44 Visão geral dos bancos de dados</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
 <a name="item5.45"><h4>5.45 Amazon Redshift</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.46"><h4>5.46 Amazon Aurora</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.47"><h4>5.47 Migração de banco de dados da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
