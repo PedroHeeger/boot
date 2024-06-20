@@ -1307,6 +1307,11 @@ Alguns outros desafios incluem problemas de empacotamento do contêiner quando h
 
 <a name="item5.43"><h4>5.43 Funções do AWS Step</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Com o **AWS Step Functions**, é possível coordenar diversos serviços da **AWS** em fluxos de trabalho sem servidor para criar e atualizar aplicativos de maneira ágil. Por exemplo, é viável projetar e executar fluxos de trabalho que integrem serviços como o **AWS Lambda** e o **Amazon ECS** em aplicativos com múltiplos recursos. Os fluxos de trabalho são compostos por uma série de etapas, onde a saída de uma etapa serve como entrada para a seguinte. O Step Functions transforma o fluxo de trabalho em um diagrama de máquina de estado fácil de entender, explicar e modificar. A máquina de estado é uma série de etapas e transições entre cada uma no **AWS Step Functions**. Cada etapa do tempo de execução pode ser monitorada conforme ocorre, permitindo identificar e corrigir problemas rapidamente. O Step Functions aciona e monitora cada etapa automaticamente, realizando novas tentativas em caso de erros, para que o aplicativo seja executado na ordem e conforme o esperado.
+
+
+
+
 
 
 
