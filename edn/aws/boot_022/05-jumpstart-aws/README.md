@@ -1327,23 +1327,160 @@ O **AWS Step Functions** auxilia a maioria dos processos de negócios que exigem
 
 
 
+Ao gerenciar um banco de dados relacional próprio, várias responsabilidades administrativas precisam ser assumidas, como a manutenção do servidor, o consumo de energia, a instalação de software e a aplicação de atualizações. Essas responsabilidades também incluem a realização de backups do banco de dados, a garantia de alta disponibilidade, o planejamento para escalabilidade, a segurança dos dados e a aplicação de patches no sistema operacional (SO). Todas essas atividades consomem recursos que poderiam ser alocados a outras tarefas e exigem conhecimento em diversas áreas. Algumas das vantagens dos bancos de dados oferecidos pela **AWS** são listadas abaixo:
+- Com propósito específico: Os 15 tipos de mecanismos de banco de dados incluem bancos de dados relacionais, de chave-valor, de documentos, em memória, gráficos, de séries temporais e de livros contábeis.
+- Performance em grande escala: Os serviços de banco de dados relacional são projetados para oferecer alto desempenho.
+- Totalmente gerenciados: O monitoramento quase contínuo dos clusters mantém as cargas de trabalho funcionando de forma eficiente, com armazenamento de recuperação automática e dimensionamento automático.
+- Desenvolvidos para cargas de trabalho críticas para negócios: Eles são projetados para garantir alta disponibilidade, confiabilidade e segurança.
 
+Selecionar o serviço de banco de dados adequado exige uma compreensão clara dos recursos oferecidos pelo serviço e das necessidades específicas do aplicativo. Por exemplo, alguns mecanismos de banco de dados utilizam o modelo relacional e são ideais para aplicativos transacionais. Outros mecanismos seguem o modelo NoSQL e são voltados para aplicativos em escala da Internet. Além disso, certos mecanismos são especialmente eficazes para cargas de trabalho em tempo real que requerem armazenamento de dados em memória, como para caching. Portanto, é crucial alinhar os requisitos da carga de trabalho do aplicativo com os recursos do serviço de banco de dados. As principais características da carga de trabalho a serem consideradas incluem a forma dos dados, seu tamanho, os requisitos computacionais, bem como os padrões de acesso e necessidades de desempenho. Esses fatores são fundamentais para encontrar o banco de dados mais adequado para as necessidades.
 
+A **AWS** disponibiliza diversos serviços de banco de dados totalmente gerenciados para atender às necessidades de diferentes tipos de aplicativos. Na categoria SQL, o **Amazon Relational Database Service (Amazon RDS)** oferece soluções gerenciadas para bancos de dados relacionais. Já o **Amazon Redshift** fornece soluções gerenciadas para armazenamento de dados. O **Amazon RDS** permite a escolha entre seis mecanismos de banco de dados populares, como **MySQL** e **Oracle Database**, sendo ideal para aplicativos transacionais. O **Amazon Redshift**, por sua vez, é projetado para cargas de trabalho de análise de dados, oferecendo uma solução de data warehousing rápida, escalável e econômica.
 
+A AWS também oferece serviços NoSQL, como **Amazon DynamoDB**, **Amazon Neptune** e **Amazon ElastiCache**, para atender a diferentes necessidades de aplicativos. O **Amazon DynamoDB** é ideal para cargas de trabalho transacionais, suportando modelos de armazenamento de chave-valor e documentos. O **Amazon Neptune** é um serviço de banco de dados gráfico, adequado para aplicativos que lidam com conjuntos de dados altamente conectados. Seus principais recursos incluem backup quase contínuo para o **Amazon Simple Storage Service (Amazon S3)** e recuperação point-in-time com replicação entre Zonas de Disponibilidade. Por outro lado, o **Amazon ElastiCache** é destinado a aplicativos que exigem armazenamento em cache na memória, oferecendo suporte aos mecanismos de código aberto **Redis** e **Memcached**. Entre seus principais recursos estão a facilidade de configurar e executar nós de cache por meio do Console de Gerenciamento da **AWS** e a compatibilidade com **Memcached** e **Redis**.
 
+Um banco de dados SQL segue o modelo relacional, onde os dados são organizados em linhas e colunas. As linhas armazenam informações completas sobre cada registro, enquanto as colunas representam os atributos que dividem os pontos de dados. O esquema de um banco de dados SQL é rígido: as colunas precisam ser definidas antes da inserção dos dados. Modificações no esquema são possíveis, mas geralmente requerem a interrupção e a alteração completa do banco de dados. A linguagem SQL é usada para consultar dados, permitindo consultas complexas. A escalabilidade dos bancos de dados SQL é alcançada verticalmente, aumentando a capacidade do hardware.
 
+Os bancos de dados NoSQL não seguem o modelo relacional e utilizam diversos modelos de armazenamento, como pares de chave-valor, documentos e gráficos. Inicialmente, o termo NoSQL se referia a bancos de dados que não utilizavam SQL ou eram não relacionais. Atualmente, o termo significa "não apenas SQL", já que alguns servidores NoSQL também podem suportar consultas baseadas em SQL. Os esquemas NoSQL são flexíveis, permitindo a adição rápida de informações, sem a necessidade de que cada linha contenha dados para todas as colunas. As consultas em bancos de dados NoSQL se concentram em coleções de documentos. A escalabilidade dos bancos de dados NoSQL é horizontal, alcançada através da adição de mais servidores.
+
+As soluções da AWS geralmente se dividem em duas categorias: "não gerenciadas" ou "gerenciadas". Os serviços não gerenciados são provisionados em partes separadas, conforme especificações determinadas. Eles exigem a gestão de como o serviço responde a alterações de carga, erros e situações de indisponibilidade de recursos. Por exemplo, ao executar um servidor Web em uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)**, é importante notar que o **Amazon EC2** é uma solução não gerenciada. Isso significa que o servidor Web não será dimensionado automaticamente para lidar com o aumento de tráfego ou substituir instâncias com problemas por instâncias saudáveis. Para lidar com essas situações, é necessário configurar uma solução de escalabilidade, como o **AWS Auto Scaling**. No entanto, um serviço não gerenciado oferece certos benefícios, incluindo um controle mais preciso sobre como a solução responde a mudanças de carga, erros e indisponibilidade de recursos.
+
+Já os serviços gerenciados exigem alguma configuração inicial, como a criação de um bucket no S3 e a definição de suas permissões. No entanto, esses serviços geralmente necessitam de menos configuração em comparação com os não gerenciados. Por exemplo, ao hospedar um site estático em uma solução de armazenamento em nuvem, como o **Amazon S3**, não é necessário um servidor Web. Sendo o **Amazon S3** uma solução gerenciada, ele lida automaticamente com os recursos necessários, incluindo escalabilidade, tolerância a falhas e disponibilidade.
+
+Com o **Amazon RDS**, a administração da otimização de aplicativos é simplificada. A **AWS** cuida da instalação e aplicação de patches do sistema operacional (SO), do software de banco de dados, dos backups automáticos e da garantia de alta disponibilidade. Além disso, a **AWS** cobre aspectos como escalabilidade de recursos, gerenciamento de energia e servidores, e execução de manutenção. Ao transferir essas operações para o serviço gerenciado do **Amazon RDS**, há uma redução significativa da carga operacional e dos custos associados ao banco de dados relacional.
+
+Um serviço não gerenciado local ocorre quando o banco de dados está fisicamente presente no local. Nesse cenário, o administrador do banco de dados assume todas as responsabilidades, desde a otimização de aplicativos e consultas até a configuração do hardware. Essas responsabilidades também incluem a manutenção do hardware, configuração da rede, gestão de energia e controle do sistema de climatização. Ao migrar para um banco de dados executado em uma instância do EC2, a gestão do hardware subjacente e das operações do data center não é mais necessária. No entanto, permanece a responsabilidade de aplicar patches no sistema operacional e gerenciar todas as operações de software e backup. Optando por configurar o banco de dados no **Amazon RDS** ou **Amazon Aurora**, as responsabilidades administrativas são reduzidas significativamente. A migração para a nuvem permite escalonamento automático do banco de dados, alta disponibilidade, gestão de backups e aplicação de patches automatizados. Isso permite concentrar esforços na otimização do aplicativo, que é o foco principal.
+
+A principal vantagem é que a **AWS** oferece uma ampla gama de bancos de dados projetados especificamente para atender a diferentes casos de uso de aplicativos. Esses serviços de banco de dados totalmente gerenciados incluem opções para bancos de dados relacionais, ideais para aplicativos transacionais; bancos de dados não relacionais, adequados para escalabilidade na Internet; e um data warehouse para análise de dados. Além disso, oferecem armazenamento de dados na memória para caching e cargas de trabalho em tempo real, além de um banco de dados gráfico para aplicativos que lidam com dados altamente interconectados. Abaixo é listado os principais casos de usos para os serviços de banco de dados presentes na **AWS**:
+- **Amazon RDS** ou **Amazon Aurora**: Utilizados em aplicativos transacionais como ERP, CRM e comércio eletrônico, para registrar transações e armazenar dados estruturados. O **Amazon Aurora** se destaca pelo seu desempenho elevado, baixo custo e suporte a código aberto.
+- **Amazon ElastiCache**: Ideal para aplicativos em tempo real que demandam baixa latência, como tabelas de classificação de jogos, sistemas de bate-papo, streaming e Internet das Coisas (IoT).
+- **Amazon Neptune**: Indicado para aplicativos que necessitam navegar por dados altamente conectados, como feeds de notícias sociais, sistemas de recomendação e detecção de fraudes.
+- **Amazon DynamoDB**: Utilizado em aplicativos de escala Internet, como hospitalidade, serviços de encontros e compartilhamento de caronas, que precisam fornecer conteúdo e armazenar dados estruturados e não estruturados.
 
 <a name="item5.45"><h4>5.45 Amazon Redshift</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+O **Amazon Redshift** é um serviço de data warehouse totalmente gerenciado na nuvem, escalável para petabytes de dados. Um petabyte é de 10 elevado a 15 bytes de informação, ou seja, é aproximadamente igual a 1.000 terabytes (TB), onde 1 TB é aproximadamente igual a 1.000 gigabytes (GB). Já um data warehouse serve como um repositório central de informações estruturadas, utilizado para análise e tomada de decisões estratégicas. Ele impulsiona relatórios, painéis e ferramentas analíticas, permitindo consultas rápidas e simultâneas para centenas ou milhares de usuários. Um data warehouse pode conter múltiplos bancos de dados, onde os dados são organizados em tabelas e colunas. Cada coluna pode ser definida com um tipo de dado específico, como números inteiros, campos de data ou sequências. As tabelas podem ser agrupadas em esquemas, que podem ser comparados a pastas organizacionais para facilitar a gestão dos dados.
+
+Um data warehouse oferece uma série de benefícios significativos, como: suporte à tomada de decisões eficazes, consolidação de dados de diversas fontes, análise de dados históricos, garantia de qualidade, consistência e precisão dos dados, além da separação do processamento analítico dos bancos de dados transacionais para melhorar o desempenho de ambos os sistemas. Sua arquitetura é estruturada em camadas: o cliente de front-end na camada superior apresenta resultados através de ferramentas de relatórios, análise e mineração de dados; a camada intermediária abriga o mecanismo de análise responsável pelo acesso e análise dos dados; e na camada inferior, o servidor de banco de dados onde os dados são carregados e armazenados.
+
+Normalmente, empresas utilizam uma combinação de banco de dados, data lake e data warehouse para armazenar e analisar dados. Os dados são armazenados inicialmente em um banco de dados ou data lake, preparados para análise, selecionados e movidos para um data warehouse para execução de relatórios. Um data lake funciona como um repositório centralizado que permite armazenar todos os tipos de dados, estruturados e não estruturados, em qualquer escala. Os dados podem ser armazenados sem a necessidade de estruturação prévia e suportam uma variedade de análises, desde painéis e visualizações até processamento de big data, análise em tempo real e aprendizado de máquina, facilitando a tomada de decisões estratégicas.
+
+Análises são cruciais para empresas modernas, porém a construção de um data warehouse pode ser complexa e dispendiosa. A implementação da maioria dos data warehouses pode levar meses e envolver altos custos com software, hardware e configuração inicial. O **Amazon Redshift** é uma solução de data warehouse totalmente gerenciada, rápida, poderosa, econômica e simples de configurar, usar e expandir. Ele permite a execução de consultas analíticas complexas em petabytes de dados estruturados, utilizando otimização avançada de consultas, armazenamento colunar em discos locais de alto desempenho e processamento de consultas massivamente paralelo. A maioria dos resultados pode ser obtida em apenas alguns segundos.
+
+Este serviço de data warehouse automatiza a maioria das tarefas administrativas comuns para gerenciar, monitorar e escalar o cluster do **Amazon Redshift**. Essa automação permite focar nos dados e nas operações do negócio. A escalabilidade é uma característica fundamental do **Amazon Redshift**, permitindo expansão do cluster conforme necessário com apenas alguns cliques no console. A segurança é uma prioridade máxima na **AWS**, e o **Amazon Redshift** oferece integração e criptografia robusta tanto para dados em repouso quanto em trânsito. Além disso, o **Amazon Redshift** é compatível com ferramentas padrão, suportando linguagem SQL para consultas estruturadas e oferecendo conectores de alto desempenho para **Java Database Connectivity (JDBC)** e **Open Database Connectivity (ODBC)**. Esses conectores possibilitam o uso de clientes SQL e ferramentas de business intelligence (BI) que preferir.
+
+Processamento paralelo é uma técnica computacional na qual dois ou mais microprocessadores trabalham simultaneamente para desmembrar programas e executar tarefas de forma concorrente. Cada microprocessador, também conhecido como unidade central de processamento (CPU), atua como o cérebro do computador, processando instruções de maneira coordenada para aumentar a eficiência e o desempenho computacional.
+
+No funcionamento do **Amazon Redshift**, o nó líder coordena a comunicação com programas cliente e todos os nós de computação. Ele analisa e elabora planos de execução para realizar operações no banco de dados, especialmente para consultas complexas. O nó líder compila o código dos elementos individuais do plano de execução e distribui o código para os nós de computação individuais. Os nós de computação executam o código compilado e enviam resultados intermediários de volta ao nó líder para agregação final. Assim como outros serviços da **AWS**, o **Amazon Redshift** opera sob o modelo de pagamento conforme o uso. É possível iniciar com custos a partir de 25 centavos por hora. Em termos de escala, o **Amazon Redshift** oferece armazenamento e processamento por aproximadamente USD 1.000 dólares por terabyte ao ano. O *Amazon Redshift Spectrum* é um recurso adicional que permite realizar consultas diretamente em exabytes de dados armazenados no **Amazon Simple Storage Service (Amazon S3)**.
+
+Alguns dos principais casos de uso do **Amazon Redshift** são os seguintes:
+- Data warehouse corporativo (EDW): Muitos clientes migram seus data warehouses empresariais tradicionais para o **Amazon Redshift** visando maior agilidade. Eles podem iniciar em qualquer escala desejada e explorar seus dados sem grandes custos iniciais ou compromissos. Isso elimina a dependência de processos complexos com departamentos de TI para aquisição e preparação de software.
+- Big data: Clientes com grandes volumes de dados enfrentam desafios financeiros e técnicos significativos ao operar sistemas próprios. Com o **Amazon Redshift**, eles podem manter um data warehouse operacional a um custo comparativamente baixo, concentrando-se mais nos dados e menos na administração do banco de dados. A facilidade de implantação e manutenção também é um benefício crucial.
+- Software como serviço (SaaS): Empresas de SaaS são atraídas pela escalabilidade e facilidade de gestão oferecidas pelo **Amazon Redshift**. Algumas usam a plataforma para integrar recursos analíticos em seus aplicativos, enquanto outras implantam clusters dedicados por cliente para simplificar gestão de contratos de nível de serviço (SLAs) e faturamento. O **Amazon Redshift** possibilita uma redução significativa nos custos de hardware e software.
+
+Big Data refere-se aos desafios de gerenciamento de dados que surgem devido ao crescimento exponencial em volume, velocidade e variedade dos dados, desafiando os limites dos bancos de dados tradicionais. Embora existam várias definições para Big Data, a maioria incorpora o conceito dos "três Vs":
+- Volume: Quantidades massivas de dados, variando de terabytes a petabytes.
+- Variedade: Diversidade de dados provenientes de múltiplas fontes e em diversos formatos, como logs da web, interações em redes sociais, transações de comércio eletrônico, transações bancárias, entre outros.
+- Velocidade: Exigência crescente de processamento rápido, desde a captura dos dados até a entrega de insights práticos aos usuários. Isso inclui desde análises diárias até operações em tempo real.
+
+Portanto, Big Data envolve a coleta, armazenamento, processamento e análise ágil desses dados para suportar decisões informadas e estratégicas em organizações de diversos setores.
+
 <a name="item5.46"><h4>5.46 Amazon Aurora</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+O **Amazon Aurora** é um mecanismo de banco de dados relacional totalmente gerenciado, altamente disponível, eficiente e econômico, compatível com **MySQL** e **PostgreSQL**. Ele oferece a performance e disponibilidade de bancos de dados comerciais avançados, aliadas à simplicidade e economia dos bancos de dados de código aberto. Algumas das características do Aurora incluem:
+- Amazon Aurora é um banco de dados relacional criado para a nuvem.
+- É até cinco vezes mais rápido que bancos de dados MySQL padrão. O Aurora pode fornecer até cinco vezes a taxa de transferência do **MySQL** padrão e até três vezes a taxa de transferência do **PostgreSQL** padrão em execução no mesmo hardware.
+- É um serviço distribuído e tolerante a falhas.
+- É tambem um sistema de armazenamento autorrecuperável que se dimensiona automaticamente conforme necessário.
+- Os mecanismos de banco de dados são personalizados para aproveitar o armazenamento rápido e distribuído.
+- É composto por clusters.
+- Ele automatiza e padroniza o clustering e a replicação de bancos de dados, facilitando a configuração e administração do banco de dados.
+
+O **Amazon Aurora** é simples de configurar e utiliza consultas de linguagem SQL. Compatível com **MySQL** v5.6, ele utiliza o mecanismo de armazenamento InnoDB. Este serviço opera no modelo de pagamento conforme o uso, garantindo que os custos sejam apenas pelos serviços e recursos utilizados. Totalmente gerenciado, o Aurora integra-se com ferramentas como **AWS Database Migration Service (AWS DMS)** e **AWS Schema Conversion Tool (AWS SCT)**, facilitando a migração de conjuntos de dados. O Aurora é tolerante a falhas e oferece armazenamento autorrecuperável, com replicação de seis cópias dos dados em três Zonas de Disponibilidade, e backups contínuos no **Amazon S3**. A escolha pelo **Amazon Aurora**, em comparação com o SQL no **Amazon RDS**, pode ser justificada por sua alta disponibilidade e design resiliente.
+
+Ao criar uma instância do **Amazon Aurora**, é criado um cluster de banco de dados (DB). Um cluster de banco de dados do Aurora é composto por uma ou mais instâncias de banco de dados e um volume de cluster que gerencia os dados dessas instâncias. Existem dois tipos de clusters de banco de dados do **Amazon Aurora**: a instância primária e a réplica do Aurora. A instância primária realiza operações de leitura e gravação, realizando todas as modificações de dados no volume do cluster. Cada cluster de banco de dados do Aurora possui uma instância primária. Uma réplica do Aurora realiza operações apenas de leitura. Cada cluster de banco de dados do Aurora pode ter até 15 réplicas do Aurora, além da instância primária. Múltiplas réplicas distribuem a carga de trabalho de leitura e, se estiverem localizadas em Zonas de Disponibilidade separadas, podem aumentar a disponibilidade do banco de dados. O volume de cluster do Aurora é um volume de armazenamento de banco de dados virtual que abrange várias Zonas de Disponibilidade. Cada Zona de Disponibilidade possui uma cópia dos dados do cluster. Os volumes de armazenamento do Aurora usados para criar grupos de proteção são de 10 GB.
+
+Ao contrário de outros bancos de dados, após uma falha, o **Amazon Aurora** não precisa reproduzir o Redo Log a partir do último ponto de verificação do banco de dados. Isso reduz o tempo de reinicialização após uma falha de banco de dados para menos de 60 segundos na maioria dos casos.
+
+Os principais casos de uso do **Amazon Aurora** são listados a seguir:
+- Aplicativos corporativos: Em comparação com bancos de dados comerciais, o Aurora pode reduzir os custos de banco de dados em até 90% ou mais, enquanto melhora a confiabilidade e a disponibilidade.
+- Aplicativos de software como serviço (SaaS): O Aurora fornece recursos em uma oferta de banco de dados gerenciado, permitindo que empresas SaaS se concentrem na criação de aplicativos de alta qualidade sem preocupações com o banco de dados subjacente.
+- Jogos na web e em dispositivos móveis: Jogos para web e dispositivos móveis, que operam em grande escala, necessitam de um banco de dados com alta taxa de transferência e grande escalabilidade de armazenamento. O Aurora oferece o espaço necessário para crescimento futuro.
+
 <a name="item5.47"><h4>5.47 Migração de banco de dados da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+O AWS Database Migration Service ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro. Você pode usar o AWS DMS para migrar os dados de e para os bancos de dados comerciais e de código aberto mais usados. Exemplos incluem bancos de dados como Oracle, PostgreSQL, MySQL e Amazon Aurora. O serviço oferece suporte a migrações homogêneas (como, por exemplo, de Oracle para Oracle) e migrações heterogêneas entre plataformas de banco de dados diferentes (como de Oracle para MySQL ou de MySQL para o Amazon Aurora).
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.48"><h4>5.48 179- [JAWS] -Atividade: Migrar para o Amazon RDS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
 <a name="item5.50"><h4>5.50 Visão geral das redes da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
 <a name="item5.51"><h4>5.51 Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.52"><h4>5.52 Opções de conectividade da Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
 <a name="item5.53"><h4>5.53 Segurança e solução de problemas da rede</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
 <a name="item5.54"><h4>5.54 Visão geral do laboratório: Configurar uma Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
 <a name="item5.55"><h4>5.55 180- [JAWS] -Laboratório: Configurar uma Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.56"><h4>5.56 181- [JAWS] -Atividade: Solucionar problemas de uma VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
