@@ -76,21 +76,21 @@ This folder refers to Module 5 **Jumpstart na AWS** from bootcamp [**Bootcamp AW
   5.11. <a href="#item5.11">Ferramentas de administração e desenvolvimento</a><br>
   5.12. <a href="#item5.12">Hospedar um site estático no S3 da AWS</a><br>
   5.13. <a href="#item5.13">170-[JAWS]-Visão geral da atividade do café: crie um site no S3</a><br>
-  5.14. <a href="#item5.14">Visão geral da computação (servidores)</a><br>
+  5.14. Visão geral da computação (servidores)<br>
   5.15. <a href="#item5.15">Computação na AWS</a><br>
   5.16. <a href="#item5.16">Gerenciar instâncias da AWS</a><br>
-  5.17. <a href="#item5.17">Visão geral do laboratório: Instâncias do EC2</a><br>
+  5.17. Visão geral do laboratório: Instâncias do EC2<br>
   5.18. <a href="#item5.18">171- [JAWS] -Lab - Criando instâncias do Amazon EC2</a><br>
   5.19. <a href="#item5.19">Demonstração do AWS IAM-2</a><br>
   5.20. <a href="#item5.20">172- [JAWS] -Laboratório: [Desafio] Exercício de instância do EC2</a><br>
   5.21. 212- [JAWS] -KC - Computação (servidores)<br>
   5.22. <a href="#item5.22">AWS Elastic Beanstalk</a><br>
   5.23. <a href="#item5.23">173- [JAWS] -Atividade: Solucionar problemas para criar uma instância</a><br>
-  5.24. <a href="#item5.24">Visão geral de escalabilidade e resolução de nomes</a><br>
+  5.24. Visão geral de escalabilidade e resolução de nomes<br>
   5.25. <a href="#item5.25">Elastic Load Balancing</a><br>
   5.26. <a href="#item5.26">Listeners do Elastic Load Balancer</a><br>
   5.27. <a href="#item5.27">Auto Scaling do Amazon EC2</a><br>
-  5.28. <a href="#item5.28">Visão geral do laboratório: Auto Scaling do EC2</a><br>
+  5.28. Visão geral do laboratório: Auto Scaling do EC2<br>
   5.29. <a href="#item5.29">174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</a><br>
   5.30. <a href="#item5.30">175-[JAWS]-Laboratório: Usar o Auto Scaling na AWS (Linux)</a><br>
   5.31. <a href="#item5.31">Desafio de previsão de Auto Scaling</a><br>
@@ -112,11 +112,11 @@ This folder refers to Module 5 **Jumpstart na AWS** from bootcamp [**Bootcamp AW
   5.47. <a href="#item5.47">Migração de banco de dados da Amazon</a><br>
   5.48. <a href="#item5.48">179- [JAWS] -Atividade: Migrar para o Amazon RDS</a><br>
   5.49. 215- [JAWS] -KC - Computação (bancos de dados)<br>
-  5.50. <a href="#item5.50">Visão geral das redes da AWS</a><br>
+  5.50. Visão geral das redes da AWS<br>
   5.51. <a href="#item5.51">Amazon VPC</a><br>
   5.52. <a href="#item5.52">Opções de conectividade da Amazon VPC</a><br>
   5.53. <a href="#item5.53">Segurança e solução de problemas da rede</a><br>
-  5.54. <a href="#item5.54">Visão geral do laboratório: Configurar uma Amazon VPC</a><br>
+  5.54. Visão geral do laboratório: Configurar uma Amazon VPC<br>
   5.55. <a href="#item5.55">180- [JAWS] -Laboratório: Configurar uma Amazon VPC</a><br>
   5.56. <a href="#item5.56">181- [JAWS] -Atividade: Solucionar problemas de uma VPC</a><br>
   5.57. 216- [JAWS] -KC - Rede<br>
@@ -536,10 +536,6 @@ Agora foi necessário apenas fazer uma alteração nos arquivos do site, localme
 
 Por fim, o desafio opcional foi basicamente a mesma tarefa anterior, apenas realizou uma otimização do arquivo de script em lote . A diferença é que no arquivo de lote, o comando inserido foi `aws s3 cp /home/ec2-user/sysops-activity-files/static-website/ s3://pheeger5988/ --recursive --acl public-read`. Este comando copiava todos os arquivos para o bucket, inclusive os arquivos que não tinham sido alterados, sobescrevendo os existentes no bucket. Neste desafio, a ideia foi alterar esse comando para o comando `aws s3 sync /home/ec2-user/sysops-activity-files/static-website/<s3://<my-bucket>/ --acl public-read`, que ao invés de copiar tudo, comparava os arquivos e atualizava apenas os arquivos que foram modificados.
 
-<a name="item5.14"><h4>5.14 Visão geral da computação (servidores)</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
-NSA
-
 <a name="item5.15"><h4>5.15 Computação na AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 As instâncias EC2 operam como máquinas virtuais em computadores host situados nas zonas de disponibilidade da **AWS**. Cada uma dessas máquinas virtuais roda um sistema operacional (SO), como **Amazon Linux** ou **Microsoft Windows**. É possível instalar e rodar aplicativos no sistema operacional de cada máquina virtual, ou até mesmo executar aplicativos empresariais que utilizam várias máquinas virtuais. As máquinas virtuais funcionam sobre uma camada de hipervisor, que é gerenciada pela **AWS**. O hipervisor atua como a camada de plataforma operacional que oferece às instâncias EC2 acesso ao hardware físico necessário para a sua operação, incluindo processadores, memória e armazenamento. Cada instância EC2 recebe um número específico de CPUs virtuais para processamento e uma quantidade determinada de memória ou RAM.
@@ -618,10 +614,6 @@ Para habilitar a hibernação, é necessário configurá-la durante a inicializa
 A **AWS** oferece AMIs gerenciadas que abrangem várias versões e configurações do **Microsoft Windows Server**. Para garantir que os clientes recebam as atualizações de segurança mais recentes automaticamente, a **AWS** mantém as AMIs do **Microsoft Windows** disponíveis por até 3 meses. Após esse período, as AMIs do **Windows** com mais de três meses são tornadas privadas. Uma vez privadas, elas não são mais visíveis no console, mas ainda é possível recuperar o ID da AMI usando a **AWS CLI** ou um SDK da **AWS**. Por outro lado, as AMIs do **Amazon Linux** têm uma disponibilidade prolongada. Ao iniciar uma instância, as AMIs mais recentes do **Amazon Linux** e do *Amazon Linux 2* estão disponíveis na seção "Início rápido" do console de gerenciamento da **AWS**. Também é possível verificar a AMI mais recente do **Amazon Linux** utilizando a **AWS CLI**.
 
 Embora muitas instâncias possam operar por períodos curtos, algumas são mantidas por semanas ou até meses em ambientes como desenvolvimento, teste ou servidores de banco de dados, onde a estabilidade contínua é crucial. É recomendável manter essas instâncias atualizadas regularmente para garantir que tenham as últimas atualizações de segurança. No modelo de responsabilidade compartilhada, cabe ao usuário manter suas instâncias atualizadas. As atualizações automáticas do **Microsoft Windows** podem ser ativadas através do **Windows Update**, mas também é possível optar por desativá-las e aplicar as atualizações manualmente para verificar qualquer impacto nos aplicativos em execução no servidor. Para instâncias do **Amazon Linux**, a **AWS** gerencia um repositório **YUM** próprio, permitindo que o **YUM** instale todas as atualizações mais recentes disponíveis para os aplicativos instalados no servidor. Além disso, o **YUM** pode ser utilizado para atualizar pacotes individualmente, se necessário. Serviços como **AWS Systems Manager** e **AWS OpsWorks** simplificam o processo de atualização das instâncias do EC2, enquanto existem também ferramentas de gerenciamento de configuração de terceiros disponíveis para essa finalidade.
-
-<a name="item5.17"><h4>5.17 Visão geral do laboratório: Instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
-Este curso forneceu uma visão geral do laboratório que seria realizado no item <a href="#item5.2">5.20 172- [JAWS] -Laboratório: [Desafio] Exercício de instância do EC2</a><br>. Como isso seria explicado no próprio laboratório, esse curso foi pulado.
 
 <a name="item5.18"><h4>5.18 171- [JAWS] -Lab - Criando instâncias do Amazon EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -828,10 +820,6 @@ Após correção dos erros, em uma aba do navegador da maquina física **Windows
     <figcaption>Imagem 37.</figcaption>
 </figure></div><br>
 
-<a name="item5.24"><h4>5.24 Visão geral de escalabilidade e resolução de nomes</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
-NSA
-
 <a name="item5.25"><h4>5.25 Elastic Load Balancing</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 Os sites modernos de alto tráfego precisam responder a centenas de milhares, ou até milhões, de solicitações simultâneas de usuários ou clientes. Eles devem entregar texto, imagens, vídeos ou dados de aplicativos de maneira rápida e confiável. Para escalar economicamente e atender a esses grandes volumes, é comum adicionar mais servidores, conforme as práticas recomendadas de computação moderna. Um balanceador de carga atua como um diretor de tráfego, posicionando-se na frente dos servidores e distribuindo as solicitações dos clientes. Ele direciona as solicitações entre os servidores capazes de atendê-las, maximizando a velocidade e a utilização da capacidade. Isso garante que nenhum servidor fique sobrecarregado, o que poderia comprometer o desempenho. Se um servidor falhar, o balanceador de carga redireciona o tráfego para os servidores restantes que estão online. Esses servidores podem incluir instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)**, contêineres e endereços IP. Quando um novo servidor é adicionado ao grupo, o balanceador de carga automaticamente começa a enviar solicitações para ele. Os balanceadores de carga do ELB podem ser configurados na área de serviço do **Amazon EC2** no console de gerenciamento da **AWS**. Alternativamente, o serviço pode ser acionado via **AWS Command Line Interface (AWS CLI)** ou kits de desenvolvimento de software (SDKs). Existem três tipos de balanceadores de carga do ELB, todos oferecendo alta disponibilidade, dimensionamento automático e segurança robusta, essenciais para tornar os aplicativos tolerantes a falhas.
@@ -900,10 +888,6 @@ O dimensionamento automático pode ser configurado de forma dinâmica. Por exemp
 A **AWS** também oferece a escalabilidade preditiva, que utiliza modelos de aprendizado de máquina para prever o tráfego esperado e o uso do **Amazon EC2**, considerando padrões diários e semanais. Essas previsões são baseadas em dados reais de uso do **Amazon EC2** e pontos de dados específicos das próprias observações do usuário. O modelo precisa de pelo menos um dia de dados históricos para iniciar as previsões. A cada 24 horas, o modelo é reavaliado para criar previsões para as próximas 48 horas. A escalabilidade preditiva prevê o tráfego futuro com base em tendências diárias e semanais, incluindo picos regulares, e provisiona o número correto de instâncias do EC2 antes das mudanças previstas. Essa abordagem elimina a necessidade de ajustes manuais nos parâmetros do Auto Scaling, simplificando a configuração e o uso do Auto Scaling.
 
 Pode-se utilizar a escalabilidade preditiva, a escalabilidade dinâmica, ou uma combinação de ambas. A escalabilidade preditiva antecipa a carga e define a capacidade mínima, enquanto a escalabilidade dinâmica ajusta uma métrica específica do CloudWatch para um valor desejado por meio do rastreamento de destino. Ambos os modelos operam bem em conjunto, aproveitando a capacidade mínima já definida pelo dimensionamento preditivo. O dimensionamento preditivo é ideal para sites e aplicativos que enfrentam picos de tráfego regulares e periódicos, mas não é adequado para cenários onde os picos de carga são irregulares ou imprevisíveis.
-
-<a name="item5.28"><h4>5.28 Visão geral do laboratório: Auto Scaling do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
-NSA
 
 <a name="item5.29"><h4>5.29 174- [JAWS] -Laboratório: Dimensionar e balancear a carga da arquitetura</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -1325,8 +1309,6 @@ O **AWS Step Functions** auxilia a maioria dos processos de negócios que exigem
 
 <a name="item5.44"><h4>5.44 Visão geral dos bancos de dados</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-
-
 Ao gerenciar um banco de dados relacional próprio, várias responsabilidades administrativas precisam ser assumidas, como a manutenção do servidor, o consumo de energia, a instalação de software e a aplicação de atualizações. Essas responsabilidades também incluem a realização de backups do banco de dados, a garantia de alta disponibilidade, o planejamento para escalabilidade, a segurança dos dados e a aplicação de patches no sistema operacional (SO). Todas essas atividades consomem recursos que poderiam ser alocados a outras tarefas e exigem conhecimento em diversas áreas. Algumas das vantagens dos bancos de dados oferecidos pela **AWS** são listadas abaixo:
 - Com propósito específico: Os 15 tipos de mecanismos de banco de dados incluem bancos de dados relacionais, de chave-valor, de documentos, em memória, gráficos, de séries temporais e de livros contábeis.
 - Performance em grande escala: Os serviços de banco de dados relacional são projetados para oferecer alto desempenho.
@@ -1409,26 +1391,33 @@ Os principais casos de uso do **Amazon Aurora** são listados a seguir:
 
 <a name="item5.47"><h4>5.47 Migração de banco de dados da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+O **AWS Database Migration Service (AWS DMS)** facilita a migração de bancos de dados para a **AWS** de forma rápida e segura. Esse serviço permite transferir dados entre os bancos de dados comerciais e de código aberto mais utilizados, como **Oracle**, **PostgreSQL**, **MySQL** e **Amazon Aurora**. O **AWS DMS** suporta tanto migrações homogêneas (por exemplo, de **Oracle** para **Oracle**) quanto migrações heterogêneas entre diferentes plataformas de banco de dados (como de **Oracle** para **MySQL** ou de **MySQL** para **Amazon Aurora**). Além disso, é possível migrar bancos de dados locais para bancos de dados em execução em instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)**. Durante a migração com o **AWS DMS**, o banco de dados de origem permanece totalmente operacional, minimizando o tempo de inatividade dos aplicativos dependentes.
 
+O **AWS DMS** oferece a capacidade de replicar dados quase em tempo real e é utilizado com alta disponibilidade. Caso necessário, o **AWS DMS** facilita a consolidação de bancos de dados em um data warehouse de escala de petabytes utilizando outros serviços da Amazon, como o **Amazon Redshift** e o **Amazon S3**. O **AWS DMS** é capaz de migrar entre bancos de dados SQL e NoSQL. Por exemplo, ele permite migrações de: SQL para SQL, NoSQL para SQL, SQL para NoSQL e NoSQL para NoSQL. Um exemplo é migrar do **Amazon S3** como uma fonte NoSQL para o **Amazon Relational Database Service (Amazon RDS)** como um destino SQL. As migrações podem ser tanto homogêneas quanto heterogêneas.
 
-O AWS Database Migration Service ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro. Você pode usar o AWS DMS para migrar os dados de e para os bancos de dados comerciais e de código aberto mais usados. Exemplos incluem bancos de dados como Oracle, PostgreSQL, MySQL e Amazon Aurora. O serviço oferece suporte a migrações homogêneas (como, por exemplo, de Oracle para Oracle) e migrações heterogêneas entre plataformas de banco de dados diferentes (como de Oracle para MySQL ou de MySQL para o Amazon Aurora).
+Nas migrações homogêneas de banco de dados, onde a estrutura do esquema, os tipos de dados e o código do banco de dados são compatíveis entre as origens e os destinos, o processo consiste em uma única etapa. O banco de dados de origem pode estar localizado em um campus corporativo, localmente fora da **AWS**, executado em uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** ou ser um banco de dados do RDS. O destino pode ser um banco de dados no **Amazon EC2** ou **Amazon RDS**. Em migrações heterogêneas, os mecanismos de banco de dados de origem e destino são diferentes. Exemplos incluem migrações de **Oracle** para **Amazon Aurora** ou de **Microsoft SQL Server** para **MySQL**. Nesses casos, a estrutura do esquema, os tipos de dados e o código do banco de dados podem ser muito diferentes, exigindo uma transformação de esquema e código antes da migração de dados. Neste caso, duas etapas são necessárias para realizar a migração. A primeira etapa utiliza a **AWS Schema Conversion Tool (AWS SCT)** para converter o esquema e o código do banco de dados de origem, tornando-os compatíveis com o banco de dados de destino. A segunda etapa envolve o uso do **AWS Database Migration Service (AWS DMS)** para migrar os dados do banco de dados de origem para o banco de dados de destino.
 
+Ao utilizar o **AWS DMS**, as seguintes ações são executadas: criar um servidor de replicação (instância); definir pontos de extremidade de origem e destino com informações de conexão sobre os datastores; e criar uma ou mais tarefas de migração para transferir os dados entre os datastores de origem e destino. Uma tarefa de migração pode incluir três fases principais: carga total de dados existentes, aplicação de alterações em cache e replicação contínua.
 
+A maioria das migrações de banco de dados envolve duas etapas: converter o esquema usando a **AWS Schema Conversion Tool (AWS SCT)** e migrar os dados usando o **AWS DMS**. A **AWS SCT** simplifica migrações de bancos de dados heterogêneos, convertendo automaticamente o esquema do banco de dados de origem e a maioria dos objetos de código do banco de dados, como exibições, procedimentos armazenados e funções, para um formato compatível com o banco de dados de destino. Objetos que não puderem ser convertidos automaticamente, como algumas funções escalares específicas do banco de dados, serão claramente marcados para conversão manual, facilitando a conclusão da migração.
 
+O **AWS DMS** é projetado tanto para migrações únicas de dados para bancos de dados no **Amazon RDS** e **Amazon EC2** quanto para replicação de dados quase contínua. A replicação de banco de dados quase contínua permite replicar dados de acordo com uma programação específica, como um trabalho noturno, ou quase em tempo real. Essa replicação pode ser feita do data center para bancos de dados na **AWS** ou na direção inversa, replicando de um banco de dados na **AWS** para um banco de dados no data center. A replicação quase que contínua de dados, disponível tanto para bancos de dados homogêneos quanto heterogêneos, permite que a origem e o destino sejam qualquer combinação dos bancos de dados suportados, desde que uma extremidade da migração esteja na Nuvem **AWS**. Os bancos de dados de origem e destino podem estar localizados fora da **AWS**, instalados em uma instância do EC2 ou no **Amazon RDS** dentro da Nuvem **AWS**. A replicação contínua de dados pode ser útil para recuperação de desastres e distribuição de bancos de dados geográficos.
 
+O **AWS DMS** também oferece a funcionalidade de consolidação de dados para bancos de dados homogêneos e heterogêneos. Os bancos de dados de origem podem estar localizados fora da **AWS**, instalados em uma instância do EC2 ou no **Amazon RDS** dentro da Nuvem **AWS**. Os bancos de dados de destino podem ser instalados em uma instância do EC2 ou no **Amazon RDS**. Nas consolidações de banco de dados, várias fontes são combinadas em um único banco de dados.
 
+A arquitetura do **AWS DMS** é composta por quatro componentes principais: Instância de replicação, Tarefa, Origem e Destino. A Instância de replicação é uma instância do EC2 que executa as tarefas necessárias para o processo de migração. Para iniciar o uso do **AWS DMS**, é necessário configurar uma instância de replicação para executar as tarefas de migração. Uma instância de replicação do AWS DMS proporciona alta disponibilidade e suporta failover através de uma implantação multi-AZ. Nesse tipo de implantação, o AWS DMS automaticamente provisiona e mantém uma réplica em espera síncrona da instância de replicação em uma zona de disponibilidade alternativa. Isso garante que, em caso de falha na zona de disponibilidade principal, a instância de replicação possa continuar operando de forma confiável na zona de disponibilidade secundária, minimizando interrupções no processo de migração ou replicação de dados. A instância de replicação principal é replicada de forma síncrona entre as zonas de disponibilidade para uma réplica em espera. Essa abordagem fornece redundância de dados, reduz congelamentos de E/S e minimiza picos de latência. A Tarefa é o processo que realiza o trabalho de migração de dados. A Origem é o ponto de extremidade do banco de dados de origem, que pode estar localizado no local, no **Amazon RDS** ou no **Amazon EC2**. O Destino é o ponto de extremidade do banco de dados de destino, que também pode estar localizado no local, no **Amazon RDS** ou no **Amazon EC2**.
 
-
-
-
-
-
-
+A instância de replicação do **AWS DMS** é executada em uma Virtual Private Cloud (VPC) e é responsável pela replicação dos dados entre os bancos de dados. Ela é projetada para alta disponibilidade usando implantação Multi-AZ, onde a instância primária é replicada de forma síncrona para uma réplica em espera em diferentes zonas de disponibilidade, garantindo redundância dos dados. Além disso, a instância de replicação pode ser configurada com armazenamento criptografado para garantir segurança adicional. O **AWS DMS** utiliza uma chave mestra no **AWS Key Management Service (AWS KMS)** ou uma chave mestra do cliente (CMK) para essa criptografia. Uma tarefa no **AWS DMS** se refere ao processo de replicação específico. Ela pode ser configurada para migrar apenas dados existentes, migrar dados existentes e replicar mudanças contínuas, ou replicar apenas alterações de dados. Para utilizar o **AWS DMS**, o processo envolve primeiro criar uma instância de replicação, em seguida, especificar endpoints de origem e destino com informações de conexão aos armazenamentos de dados, e finalmente criar uma ou mais tarefas na instância de replicação para mover dados entre os armazenamentos de origem e destino.
 
 <a name="item5.48"><h4>5.48 179- [JAWS] -Atividade: Migrar para o Amazon RDS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
-<a name="item5.50"><h4>5.50 Visão geral das redes da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
 
 
 
@@ -1440,18 +1429,60 @@ O AWS Database Migration Service ajuda você a migrar bancos de dados para a AWS
 
 <a name="item5.51"><h4>5.51 Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Uma rede baseada em nuvem, em sua essência, é um espaço de endereço IP privado onde recursos de computação podem ser implantados. Na **Amazon Web Services (AWS)**, a Virtual Private Cloud (VPC) proporciona esse espaço de rede privado. Com uma VPC, é possível definir uma rede virtual em uma área logicamente isolada dentro da Nuvem **AWS**. Dentro dessa rede virtual, é viável implantar recursos de computação da **AWS**, como instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)** ou do **Amazon Relational Database Service (Amazon RDS)**. Também é possível determinar como e se o espaço de rede privada se conecta a endpoints na topologia de rede.
 
+Uma VPC pode abranger várias zonas de disponibilidade, e seus principais componentes incluem:
+- Sub-redes (Subnets): Segmentos de rede lógicos dentro da VPC, permitindo subdivisões da rede em partes menores dentro de uma única zona de disponibilidade. Uma sub-rede é pública se conectada a um gateway da Internet ou privada se não estiver. É necessária para a implantação de uma instância em uma VPC.
+- Grupo de segurança (Security Group): Conjunto de regras de firewall que protegem instâncias, permitindo ou bloqueando o tráfego de entrada e saída (com estado). Se um grupo específico não for especificado durante a execução, a instância será automaticamente atribuída ao grupo de segurança padrão da VPC. Um grupo de segurança está associado a uma instância.
+- Interface de rede elástica (Interface de rede primária): Interface de rede virtual (NIC) que conecta uma instância à rede. Cada instância em uma VPC possui uma interface de rede padrão, a interface de rede primária, que não pode ser desanexada da instância.
+- Roteador: Componente que roteia o tráfego dentro da VPC.
+- Gateway da Internet: Componente da VPC que permite a comunicação entre instâncias na VPC e a Internet.
+- Gateway privado virtual: Componente no lado da **AWS** de uma conexão de rede privada virtual (VPN). Uma conexão VPN fornece um túnel seguro e criptografado entre dois endpoints de rede.
+- Gateway do cliente: Dispositivo físico ou aplicativo de software definido no lado do cliente de uma conexão VPN.
 
+Uma VPC é uma parte isolada da Nuvem **AWS**, provisionada para a implantação de serviços de infraestrutura da **AWS**. Trata-se de uma rede virtual que suporta várias sub-redes, roteamento e mecanismos de segurança avançados. Ao criar uma VPC, define-se o intervalo de endereços IP, as sub-redes e as tabelas de rotas. Opcionalmente, é possível utilizar gateways de rede ou soluções VPN de hardware para conectar a VPC com segurança a redes corporativas locais.
 
+Ao criar uma VPC, é necessário especificar o intervalo permitido de endereços IP. Esse intervalo representa endereços IPv4 e é expresso como um bloco Classless Inter-Domain Routing (CIDR), conhecido como o bloco CIDR principal da VPC. Após a criação da VPC, é possível adicionar até quatro blocos CIDR secundários. As VPCs podem ser definidas com blocos CIDR de /16 a /28, o que significa que uma VPC pode conter de 16 a 65.536 endereços IP. Como prática recomendada, restrinja o intervalo aos endereços especificados no documento de padrões Request for Comment (RFC) 1918, que define os intervalos de endereços que as redes privadas podem usar, evitando colisões de IP entre recursos na rede privada e recursos públicos disponíveis na Internet. Também é recomendável não usar um intervalo que se sobreponha aos endereços de outras VPCs para evitar problemas de conexão entre essas VPCs por meio de uma conexão VPN de hardware. Opcionalmente, um bloco CIDR IPv6 pode ser atribuído à VPC. Esse bloco CIDR usa um comprimento de prefixo fixo de /56 e é fornecido pela **AWS**, que atribui o bloco à VPC a partir do pool de endereços IPv6 da **AWS**.
 
+O formato CIDR (Classless Inter-Domain Routing) é utilizado para especificar intervalos de endereço IP ao criar uma VPC ou uma sub-rede. Ele define um bloco de endereços IP no formato x.x.x.x/n, onde:
+- x.x.x.x representa um endereço IP. Um endereço IP IPv4 é um número de 32 bits, representado por quatro números separados por pontos. Cada "x" é um número de 8 bits (um byte) que pode variar de 0 a 255. O endereço IP é dividido em um prefixo de rede e um identificador de host, que identificam a rede e o host dentro da rede, respectivamente.
+- /n especifica o comprimento em bits da parte do prefixo de rede do endereço IP (começando do bit mais à esquerda). Para um endereço IP IPv4, o valor de n pode variar de 0 a 32. Em uma VPC, o valor de n é restrito a 16-28. Em geral, quanto maior o valor de n, menor é o tamanho do intervalo, resultando em um número menor de endereços IP utilizáveis.
 
+Os primeiros quatro endereços IP e o último endereço IP de cada bloco CIDR de sub-rede não estão disponíveis para uso. Eles são endereços IP reservados pela **AWS**. Por exemplo, em uma sub-rede com o bloco CIDR 10.0.0.0/24, o endereço IP 10.0.0.0 é o endereço de rede; o endereço 10.0.0.1 é reservado pela **AWS** para o endereço do roteador da VPC; o endereço 10.0.0.2 é o endereço IP do servidor DNS (Domain Name Server), que é sempre a base do intervalo de rede VPC mais dois. Além disso, a VPC reserva a base de cada intervalo de sub-rede mais dois: o endereço IP 10.0.0.3, reservado para uso futuro, e o endereço 10.0.0.255, que é o endereço de transmissão de rede. A **AWS** não oferece suporte à transmissão em uma VPC, portanto, esse endereço é reservado. Em VPCs com múltiplos blocos CIDR, o endereço IP do servidor DNS está no CIDR primário.
 
+As VPCs podem abranger várias Zonas de Disponibilidade dentro de uma região da **AWS**. Elas possuem um roteador implícito que gerencia todo o tráfego na VPC. Além disso, as VPCs incluem uma tabela de rotas padrão que especifica as rotas permitidas para fora da VPC. Por padrão, essa tabela define uma rota que permite que todo o tráfego do intervalo de endereços IP CIDR seja roteado localmente. Por exemplo, se a VPC tiver um intervalo de endereços de 10.0.0.0/16, sua tabela de rotas padrão terá uma regra para rotear todo o tráfego destinado a esse intervalo por meio da rota local.
 
+As sub-redes são utilizadas para segmentar ainda mais o intervalo de endereços da VPC e fornecer agrupamentos lógicos aos recursos. Por exemplo, é possível criar sub-redes distintas para diferentes tipos de recursos, como instâncias e instâncias de banco de dados do **Amazon Elastic Compute Cloud (Amazon EC2)** ou recursos com visibilidade diferente (pública ou privada). Outro exemplo é usar sub-redes para dividir recursos por equipe ou departamento. Cada VPC pode ter até 200 sub-redes. Para IPv4, o tamanho mínimo de uma sub-rede é /28 (ou 16 endereços IP). Para IPv6, o tamanho da sub-rede é fixado em /64, e apenas um bloco CIDR IPv6 pode ser alocado para uma sub-rede.
 
+As sub-redes podem existir em uma (e apenas uma) Zona de Disponibilidade. O tráfego de e para cada sub-rede flui por meio do roteador implícito da VPC. Em uma sub-rede, o intervalo de endereços do bloco CIDR deve ser um subconjunto do intervalo de endereços da VPC. Por exemplo, o bloco CIDR para a sub-rede na Zona de Disponibilidade A suporta endereços IP 10.0.10.0 — 10.0.10.255. O bloco CIDR na Zona de Disponibilidade B suporta endereços IP 10.0.20.0 — 10.0.20.255. Ambos os intervalos são subconjuntos do intervalo de endereços da VPC, que suporta endereços IP 10.0.0.0 — 10.0.255.255. Os blocos CIDR de sub-rede dentro de uma VPC não devem se sobrepor. É importante usar apenas /16 ou menor dos intervalos privados listados. Por exemplo, podem ser utilizados os seguintes intervalos: 10.0.0.0 — 10.0.255.255 (10.0.0.0/16 — 65534 hosts utilizáveis); 10.1.0.0 — 10.1.255.255 (10.1.0.0/16 — 65534 hosts utilizáveis); 172.16.0.0 — 172.16.255.255 (172.16.0.0/16 — 65534 hosts utilizáveis); 172.17.0.0 — 172.17.255.255 (172.17.0.0/16 — 65534 hosts utilizáveis); 192.168.0.0 — 192.168.127.255 (192.168.0.0/17 — 32766 hosts utilizáveis); 192.168.128.0 — 192.168.255.255 (192.168.128.0/17 — 32766 hosts utilizáveis).
 
+Após criar uma sub-rede, é possível definir se as novas instâncias do EC2 iniciadas nela receberão automaticamente um endereço IP público. Esse recurso é valioso para sub-redes públicas destinadas a hospedar instâncias do EC2 acessíveis pela Internet. Para que uma instância seja acessível publicamente, ela deve possuir um endereço IP público atribuído. Ao ativar essa configuração na sub-rede, automatiza-se a atribuição de um endereço IPv4 ou IPv6 às instâncias que estão em execução nela. É importante notar que o endereço IP atribuído não é elástico e será liberado quando a instância for parada ou encerrada. Em contraste, um endereço IP elástico é um endereço IPv4 estático que pode ser associado e desassociado de instâncias conforme necessário, permanecendo acessível pela Internet.
 
+Cada VPC inclui um roteador implícito responsável por encaminhar o tráfego entre os recursos dentro de cada sub-rede e para fora delas. Esse roteador utiliza tabelas de rotas para determinar os destinos IP válidos de uma sub-rede e como alcançá-los. Uma tabela de rotas é um mecanismo que define as regras para rotear o tráfego originado de uma sub-rede específica dentro de uma VPC. Ela consiste em um conjunto de rotas que indicam para onde o tráfego deve ser encaminhado. Cada rota na tabela especifica um destino e um caminho a seguir: "Qualquer tráfego destinado a este destino deve ser encaminhado por meio deste caminho". O destino pode ser identificado por um ID de instância específico, um ID de interface de rede elástica, um gateway de Internet ou um gateway privado virtual. Quando uma VPC é criada, uma tabela de rotas padrão também é criada automaticamente. Essa tabela padrão inclui uma regra que roteia o tráfego local para qualquer endereço dentro do intervalo de endereços IP da VPC. É possível adicionar rotas adicionais a esta tabela padrão conforme necessário. Ao criar uma sub-rede, ela é automaticamente associada à tabela de rotas padrão da VPC. No entanto, se preferir utilizar uma tabela de rotas personalizada, é possível criá-la e associá-la explicitamente à sub-rede correspondente.
+
+Cada VPC pode ser equipada com um gateway da Internet associado a ela. Esse gateway é um serviço que facilita o roteamento do tráfego da VPC para a Internet. Quando um gateway da Internet está conectado a uma VPC, as tabelas de rotas das sub-redes públicas podem utilizá-lo para encaminhar o tráfego com destino à Internet.
+
+Uma interface de rede elástica, também conhecida como NIC (Network Interface Card), é uma interface virtual de rede conectada a uma instância do EC2. Essa interface proporciona o ponto de conexão necessário para a comunicação da instância com a rede. Cada interface de rede possui um endereço IP primário e pode ter endereços IP secundários adicionais. Além disso, cada interface possui seu próprio endereço de controle de acesso de mídia (MAC) e está associada a grupos de segurança específicos. Toda instância dentro de uma VPC é equipada com uma NIC padrão, chamada de interface de rede primária, que recebe um endereço IPv4 privado dentro do intervalo de endereços IPv4 da VPC. Não é possível desanexar a interface de rede primária de uma instância. É possível criar e anexar NICs adicionais a uma instância, e o número máximo de NICs que podem ser anexadas varia conforme o tipo de instância. Uma NIC adicional pode ser movida de uma instância para outra, mantendo seus atributos intactos. Quando uma NIC é transferida de uma instância para outra, o tráfego de rede é redirecionado para a nova instância.
+
+Os cenários de uso para múltiplas NICs em uma instância incluem:
+- Implementação de dispositivos de rede e segurança na VPC: Certos dispositivos como balanceadores de carga, servidores NAT (Network Address Translation) e servidores proxy são mais eficazes quando configurados com várias NICs. É possível criar e anexar NICs secundárias a instâncias na VPC que executam esses tipos de aplicativos. Em seguida, configura-se as interfaces adicionais com seus próprios endereços IP públicos e privados, bem como grupos de segurança específicos.
+- Estabelecimento de uma interface de rede exclusiva para gerenciamento: Para garantir que a largura de banda da interface voltada para clientes não seja afetada por atividades administrativas como uploads de software ou downloads de logs, uma NIC separada é utilizada exclusivamente para tarefas de gerenciamento.
+
+Quando uma conta é criada na **AWS**, uma VPC padrão é automaticamente configurada com um bloco CIDR de 172.31.0.0/16. Essa VPC oferece até 65.536 endereços IPv4 privados, variando de 172.31.0.0 a 172.31.255.255. A VPC padrão permite o uso imediato dos recursos de rede na **AWS**. Além disso, são criados automaticamente os seguintes componentes dentro dessa VPC:
+- Um gateway de internet para permitir a comunicação com a internet.
+- Uma tabela de rotas padrão com regras para rotear tráfego para endereços IP dentro do intervalo da VPC através de uma rota local. Também encaminha todo o outro tráfego para o gateway de internet.
+- Uma sub-rede pública em cada zona de disponibilidade, cada uma com tamanho /20, fornecendo até 4.096 endereços IP. A opção de atribuição automática de IPs públicos está ativada para essas sub-redes. Qualquer instância lançada na VPC padrão recebe automaticamente um endereço IP público. Essas sub-redes são consideradas públicas porque estão associadas à tabela de rotas padrão, que encaminha o tráfego através do gateway de internet.
+
+Quando uma VPC é criada, a **AWS** atribui automaticamente um servidor DNS (anteriormente conhecido como resolvedor do **Amazon Route 53**) para resolver nomes de host DNS dentro dela. Esse servidor DNS resolve nomes de domínio internos diretamente e realiza pesquisas recursivas em servidores de nomes públicos para todos os outros nomes de domínio. Se desejar utilizar um servidor DNS diferente para uma VPC, há duas opções disponíveis:
+- Utilizar seu próprio servidor DNS, o que requer a configuração de um conjunto especial de opções do Dynamic Host Configuration Protocol (DHCP).
+- Utilizar uma zona hospedada privada do **Amazon Route 53**. Uma zona hospedada é um contêiner que contém informações sobre como o **Amazon Route 53** roteia o tráfego para domínios dentro de uma VPC. Enquanto uma zona hospedada pública permite que o **Amazon Route 53** roteie tráfego da Internet para recursos dentro da VPC, uma zona hospedada privada roteia tráfego dentro de uma ou mais VPCs sem expor recursos à Internet.
+
+Um caso comum de uso para criar um DNS de zona hospedada privada é conhecido como DNS com split-view (omissão de rotas). Neste cenário, um DNS de zona hospedada privada é emparelhado com um DNS de zona hospedada pública. Com essa configuração, um nome de host DNS pode ter resoluções diferentes dependendo se a consulta vem de dentro ou de fora da VPC. Quando a pesquisa é feita de dentro da VPC, o nome de host DNS resolve para um endereço IP específico. No entanto, quando a pesquisa é feita fora da VPC, o mesmo nome de host DNS resolve para um endereço IP diferente. Um exemplo prático de uso do DNS com split-view é quando é necessário manter versões internas e externas do mesmo site. Dessa forma, o DNS com split-view permite acessar a versão interna do site usando o mesmo nome de domínio utilizado para o site público.
 
 <a name="item5.52"><h4>5.52 Opções de conectividade da Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
 
 
 
@@ -1473,23 +1504,102 @@ O AWS Database Migration Service ajuda você a migrar bancos de dados para a AWS
 
 
 
-<a name="item5.54"><h4>5.54 Visão geral do laboratório: Configurar uma Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
-
-
-
-
-
 
 <a name="item5.55"><h4>5.55 180- [JAWS] -Laboratório: Configurar uma Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.56"><h4>5.56 181- [JAWS] -Atividade: Solucionar problemas de uma VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.58"><h4>5.58 Visão geral do Cloud Storage</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+O armazenamento em nuvem é um modelo de computação na nuvem que guarda dados na Internet através de um provedor de serviços em nuvem, o qual administra e opera o armazenamento de dados como um serviço. O armazenamento em nuvem é obtido de um provedor terceirizado de nuvem, que detém e gerencia a capacidade de armazenamento de dados, entregando-os pela Internet em um modelo de pagamento conforme o uso. Esses provedores de armazenamento em nuvem cuidam da capacidade, segurança e durabilidade para garantir que os dados sejam acessíveis aos aplicativos em todo o mundo.
+
+O armazenamento na nuvem desempenha um papel crucial na computação em nuvem, sendo fundamental para o armazenamento e uso de informações por aplicativos. Serviços como análise de big data, data warehouses, Internet das Coisas (IoT), bancos de dados, e aplicativos de backup e arquivamento dependem de diferentes arquiteturas de armazenamento de dados. A **AWS** disponibiliza uma ampla gama de serviços de armazenamento na nuvem para atender a essas diversas necessidades de forma abrangente. Os principais serviços de armazenamento na nuvem da **AWS** estão agrupados em quatro categorias distintas:
+- Armazenamento em bloco: O **Amazon Elastic Block Store (Amazon EBS)** oferece recursos de armazenamento em bloco altamente disponíveis e de baixa latência, ideal para cargas de trabalho que demandam armazenamento persistente acessível a partir de instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)**.
+- Armazenamento de objetos: Esta categoria inclui dois serviços principais. O **Amazon Simple Storage Service (Amazon S3)** foi desenvolvido para armazenar objetos de maneira segura, durável e escalável, garantindo acesso pela Internet. O **Amazon Simple Storage Service Glacier (Amazon S3 Glacier)** oferece um armazenamento de objetos de baixo custo e altamente durável para backup e arquivamento de longo prazo de diversos tipos de dados.
+- Armazenamento de arquivos: Nesta categoria, dois serviços são destacados. O **Amazon Elastic File System (Amazon EFS)** proporciona um sistema de arquivos simples, escalável e elástico para cargas de trabalho baseadas em **Linux**. O **Amazon FSx for Windows File Server (Amazon FSx)** oferece um sistema de arquivos nativo do **Microsoft Windows** totalmente gerenciado, ideal para suportar aplicativos **Windows** executados na **AWS**.
+- Armazenamento na nuvem híbrida: O **AWS Storage Gateway** estabelece uma conexão resiliente e eficiente entre seu ambiente local e os serviços de armazenamento na nuvem da **AWS**, proporcionando uma solução integrada para ambientes de armazenamento híbrido.
+
+Com relação aos casos de uso desses principais serviços:
+- **Amazon EBS**: Utilizado como armazenamento em bloco persistente para instâncias do **Amazon EC2**, adequado para bancos de dados e aplicativos que exigem armazenamento durável e de baixa latência.
+- **Amazon S3**: Plataforma escalável e durável que facilita o acesso a dados de qualquer lugar da Internet. Ideal para armazenamento de conteúdo gerado pelo usuário, arquivamento ativo, computação sem servidor, armazenamento de big data e backup e recuperação.
+- **Amazon S3 Glacier**: Serviço de armazenamento na nuvem de custo extremamente baixo e altamente durável para arquivamento de dados e backup de longo prazo.
+- **Amazon EFS**: Sistema de arquivos NFS simples e escalável para cargas de trabalho do **Linux** que utilizam serviços na nuvem **AWS** e recursos locais.
+- **Amazon FSx**: Fornece sistemas de arquivos otimizados para várias cargas de trabalho, como armazenamento para aplicativos **Windows**, aprendizado de máquina, automação de projeto eletrônico e computação de alto desempenho.
+- **AWS Storage Gateway**: Expande ambientes locais com armazenamento na nuvem **AWS**, adequado para recuperação de desastres (DR), estratificação de dados ou migração.
+
 <a name="item5.59"><h4>5.59 Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
+
+
+
+
+
+
+
+
+
 <a name="item5.60"><h4>5.60 Demonstração do Amazon EBS-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.61"><h4>5.61 182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.62"><h4>5.62 O armazenamento de instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.63"><h4>5.63 Elastic File System</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.64"><h4>5.64 Demonstração do Elastic File System-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
