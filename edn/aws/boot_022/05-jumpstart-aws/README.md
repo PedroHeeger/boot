@@ -694,16 +694,16 @@ sudo unzip dashboard-app.zip -d /var/www/html/
 
 <a name="item5.19"><h4>5.19 Demonstração do AWS IAM-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-Nesta demonstração foi explicado como criar um usuário do IAM, criar um grupo de usuários, adicionar uma política de permissão ao grupo e inseri o usuário do IAM criado neste grupo para que ele herdasse as permissões. O professor realizou isso totalmente pelo **AWS Console Management**, porém fiz diferente. Como as demonstrações não utilizam o sandbox do **Vocareum**, foi preciso utilizar minha própria conta da **AWS**. Portanto, foi utilizado o **PowerShell** no **Windows Terminal** da maquina física **Windows**, que já possuía instalada a **AWS CLI** e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`). Assim, foi criado o usuário e o grupo através de arquivos de scripts **PowerShell**. Após isso, o console de gerenciamento da **AWS** foi acessado, logando com esse novo usuário. Como este usuário já tinha permissões de acesso total ao serviço do **Amazon S3**, o bucket foi criado.
+Nesta demonstração foi explicado como criar um usuário do IAM, criar um grupo de usuários, adicionar uma política de permissão ao grupo e inserir o usuário do IAM criado neste grupo para que ele herdasse as permissões. O professor realizou isso totalmente pelo **AWS Console Management**, porém fiz diferente. Como as demonstrações não utilizavam o sandbox do **Vocareum**, foi preciso utilizar minha própria conta da **AWS**. Portanto, foi utilizado o **PowerShell** no **Windows Terminal** da maquina física **Windows**, que já possuía instalada a **AWS CLI** e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`). Assim, foi criado o usuário e o grupo através de arquivos de scripts **PowerShell**. Após isso, o console de gerenciamento da **AWS** foi acessado, logando com esse novo usuário. Como este usuário já tinha permissões de acesso total ao serviço do **Amazon S3**, o bucket foi criado.
 
-O usuário do IAM desenvolvido foi o `iamUserEdn` através do arquivo [iamUser.ps1](./resource/iamUser.ps1). O professor selecionou a opção de exigir que a senha do usuário fosse resetada ao iniciar, mas preferir não realizar isso. Um tag de chava `Role` e valor `Demo Account` foi definida. Como o usuário precisaria de acesso pelo console de gerenciamento da **AWS**, no próprio script criação do usuário foi também construído um perfil de login para ele, definido a senha de acesso. A imagem 27 mostra esse usuário do IAM criado.
+O usuário do IAM desenvolvido foi o `iamUserEdn` através do arquivo [iamUser.ps1](./resource/5.19-iam/iamUser.ps1). O professor selecionou a opção de exigir que a senha do usuário fosse resetada ao iniciar, mas preferir não realizar isso. Um tag de chava `Role` e valor `Demo Account` foi definida. Como o usuário precisaria de acesso pelo console de gerenciamento da **AWS**, no próprio script criação do usuário foi também construído um perfil de login para ele, definido a senha de acesso. A imagem 27 mostra esse usuário do IAM criado.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img27.png" alt="img27"><br>
     <figcaption>Imagem 27.</figcaption>
 </figure></div><br>
 
-O grupo de usuário foi construído com o arquivo [iamGroup.ps1](./resource/iamGroup.ps1) e teve o nome de `iamGroupEdn`. O usuário `iamUserEdn` foi adicionado ao grupo com o arquivo [iamUserGroup.ps1](./resource/iamUserGroup.ps1). Já com o arquivo [iamGroupPolicy.ps1](./resource/iamGroupPolicy.ps1), a política `AmazonS3FullAcces`, que concedia acesso total ao serviço **Amazon S3** foi adicionada. A imagem 28 exibe o usuário e a política adicionadas ao grupo desenvolvido.
+O grupo de usuário foi construído com o arquivo [iamGroup.ps1](./resource/5.19-iam/iamGroup.ps1) e teve o nome de `iamGroupEdn`. O usuário `iamUserEdn` foi adicionado ao grupo com o arquivo [iamUserGroup.ps1](./resource/5.19-iam/iamUserGroup.ps1). Já com o arquivo [iamGroupPolicy.ps1](./resource/5.19-iam/iamGroupPolicy.ps1), a política `AmazonS3FullAcces`, que concedia acesso total ao serviço **Amazon S3** foi adicionada. A imagem 28 exibe o usuário e a política adicionadas ao grupo desenvolvido.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img28.png" alt="img28"><br>
@@ -1087,11 +1087,61 @@ Uma implantação azul/verde é uma estratégia que minimiza o risco de indispon
 
 <a name="item5.33"><h4>5.33 Demonstração do Amazon Route 53-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta demonstração foi provisionado duas instâncias do **Amazon EC2** que seriam os servidores web de uma aplicação de estudo da **AWS** que simulava uma cafeteria. O objetivo foi criar registros em uma zona hospedada (*hosted zone*) no **Amazon Route 53** para testar três diferentes tipos de roteamento: Simple routing (roteamento simples), Failover (Roteamento Failover) e Geolocation (Roteamento de geolocalização). Como as demonstrações não utilizavam o sandbox do **Vocareum**, foi preciso utilizar minha própria conta da **AWS**. Portanto, foi utilizado o **PowerShell** no **Windows Terminal** da maquina física **Windows**, que já possuía instalada a **AWS CLI** e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`). Assim, arquivos de scripts **PowerShell** com comandos **AWS CLI** foram executados para provisionar os serviços e recursos. Cada arquivo possuía dois scripts, um para a construção e outro para remoção, ambos precedidos de uma estrutura de condição que aguardava uma entrada do usuário para decidir se executava ou não o código.
 
-diferentes tipos de roteamento:
-- roteamento simples
-- roteamento failover
-- roteamento de geolocalização
+Primeiro foi utilizado o arquivo [ec2DoulbeInstance.ps1](./resource/5.33-route53/ec2DoubleInstance.ps1) para provisionar duas instâncias do **Amazon EC2** idênticas, apenas se diferenciando na tag de nome e na zona de disponibilidade onde cada uma estava. A tag de nome uma possuía o valor `cafeserver1` e a outra `cafeserver2`. Enquanto a AZ da sub-rede da instância 1 era `us-east-1a` e da instância 2 era `us-east-1b`, ambas na mesma VPC da mesma região. O grupo de segurança foi utilizado o padrão da VPC padrão da região. Logo, foi necessário criar uma regra de entrada liberando acesso na porta `80` e `443` do protocolo `TCP` para todos os IPs (`0.0.0.0/0`), sendo isso realizado com o arquivo [vpcSgRule.ps1](./resource/5.33-route53/vpcSgRule.ps1). A imagem de maquina utilizada foi `a` (Amazon Linux) e o tipo de instância foi `t2.micro`. O armazenamento selecionado foi o padrão de inicialização de uma EC2, que era um volume do **Amazon Elastic Block Store (Amazon EBS)**, cujo nome do device é `/dev/xvda` com `8` GiB do tipo `gp2`. O par de chaves de nome `keyPairUniversal` que é o par de chaves universal que utilizo nos meu projetos foi escolhido. Por fim, um arquivo de user data, criado pela própria **AWS**, foi utilizado para instalar os softwares necessários para aplicação (**Apache HTTP (Httpd)**, **MariaDB**, **PHP**), baixar os arquivos da aplicação, configurar o servidor web, o banco de dados e a aplicação. A imagem 57 mostra a aplicação web, executada em uma das instâncias, sendo acessada pelo navegador da maquina física **Windows** através do IP público da instância acrescido do path `/cafe`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img57.png" alt="img57"><br>
+    <figcaption>Imagem 57.</figcaption>
+</figure></div><br>
+
+Com os servidores web prontos, a etapa seguinte foi criar os registros em uma zona hospedada e testá-los. Cada registro (record) construído tinha uma das três políticas de roteamento que iriam ser usadas. Após o teste, o registro era removido para criação de um novo com outra política de roteamento. A hosted zone não precisou ser provisionada, pois foi utilizada uma zona hospedada já criada em minha conta da **AWS**. Essa hosted zone já era configurada com domínio que foi criado no **Registro.BR**, cujo nome deste era `pedroheeger.dev.br`. Então os servidores DNS deste hosted zone, que são os quatro valores definidos no registro NS (Name Server), já estavam definidos na configuração de DNS deste domínio no **Registro.BR**. Essa configuração quando realizada leva um tempo para propagar que pode levar até 48 horas, por isso, isto já fica configurado na minha conta da **AWS**. Então qualquer projeto que queira expor através de um domínio criado, utilizo este domínio (`pedroheeger.dev.br`) e esta zona de hospedagem. 
+
+Além do record NS que contém os servidores DNS autoritativos, o record SOA (Start of Authority) também já vem criado ao construir uma zona de hospedagem. Ele é um tipo fundamental de registro DNS, pois contém informações essenciais sobre a zona DNS, incluindo detalhes sobre o servidor de DNS primário, a pessoa responsável pela zona, e diversos parâmetros de tempo que controlam a propagação de dados entre servidores de DNS. Um terceiro record, que não era criado ao provisionar a hosted zone, também já existia nessa zona. Este era um registro CNAME (Canonical Name) que é um tipo de registro DNS que mapeia um nome de domínio (o alias) para outro nome de domínio (o nome canônico). Este tipo de registro é usado para criar um alias para um domínio existente, permitindo que vários nomes de domínio apontem para o mesmo destino, facilitando a gestão de mudanças no endereço do servidor ou serviços associados a esses domínios. Neste caso, ele tinha sido utilizado com o **AWS Certificate Manager (AWS ACM)** para validar a propriedade de um domínio quando um certificado SSL/TLS fosse solicitado. Esse certificado também já havia sido criado no **AWS ACM**.
+
+Após essa introdução sobre a hosted zone, foi construído o primeiro record, cujo subdomínio foi `www`. O tipo de registro foi `A`, ou seja, para rotear tráfego para um endereço de IPv4 e para recursos da **AWS**. Nos valores foi passado o IP público das duas instâncias. O TTL (Time-to-Live), que indica por quanto tempo um resolvedor DNS ou um cache de DNS deve armazenar as informações desse registro antes de descartá-las e solicitar uma nova cópia atualizada dos servidores de DNS autoritativos, foi de `15` segundos. Por fim, a política selecionada foi `Simple routing` (Rotamento simples). Após isso, era possível acessar a aplicação pelo domínio criado, no caso o `pedroheeger.dev.br`, acrescentando o path `/cafe` para ir para página raiz do site. A imagem 58 evidencia o acesso a aplicação por este domínio através do navegador da maquina física **Windows**. Observe que ao atualizar a página várias vezes, a instância que recebe o tráfego era alterada, consequentemente a zona de disponibilidade também era outra.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img58.png" alt="img58"><br>
+    <figcaption>Imagem 58.</figcaption>
+</figure></div><br>
+
+Para testar uma outra política de roteamento, agora a Failover, foi necessário excluir o record criado anteriormente e construir dois novos registros. Na política Failover, uma instância é estabelecida como primária, no caso foi a instância de tag `cafeserver1`, e a outra instância é a secundária. O tráfego de dados era direcionado apenas para a instância primária, a instância secundária só receberia o tráfego caso a primária caísse. Isso é chamado de Failover, que é a capacidade de um sistema, geralmente em redes ou servidores, de transferir automaticamente suas operações para um sistema secundário ou de reserva em caso de falha, garantindo assim a continuidade dos serviços sem interrupções significativas.
+
+Antes criar os dois novos registros foi preciso definir um health check (verificação de integridade) no **Amazon Route 53**, para que ele verificasse a saúde das instâncias. Assim ele conseguiria monitorar quando uma instância não fosse íntegra e acionar o Failover. O nome do health check foi definido como `londres-website-status` e foi selecionado que o monitoramento seria em `Endpoint` (ponto de extremidade). Nas especificações de endpoint foi selecionado `IP address`, cujo protocolo foi `HTTP`, a porta `80`, que era onde rodava a aplicação web, o IP público da instância primária foi inserido, o host name foi mantindo em branco, e o path foi `/cafe`. Em configurações avançadas só foi alterado o intervalo de requisição para `Fast (10 seconds)` e o limite de falha (`Failure threshold`) para `2`. Também foi configurado para receber uma notificação quando a verificação de integridade apresentar falha, criando um alarme e um novo tópico no **Amazon Simple Notification Server (Amazon SNS)**, cujo nome do tópico foi `websitedown` e o endereço de email que receberia a mensagem era o meu. Ao realizar isso, um email foi enviado solicitando que confirmasse a assinatura para receber as mensagens futuras. O health check levava um tempo para calcular e determinar um status, pois ele precisava verificar se a instância respondia as solicitações. A imagem 59 exibe o health check provisionado mostrando que a instância primária está íntegra.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img59.png" alt="img59"><br>
+    <figcaption>Imagem 59.</figcaption>
+</figure></div><br>
+
+De volta a hosted zone, agora foi criado o primeiro registro, cujo subdomínio foi `www` e o tipo continuo sendo `A` que era para endereços de IPv4. O nome de um record é a união do subdomínio com o domínio, logo resultando em `www.pedroheeger.dev.br`. O IP público apenas da primeira instância foi passado (`cafeserver1`). O TTL foi mantido com `15` segundos e a política de roteamento escolhida foi `Failover`. Ao selecionar failover, era preciso escolher um health check pelo seu ID e o escolhido foi o criado anteriormente (`londres-website-status`). Também foi definido o tipo de registro Failover como `Primary` (primário), já que era o IP público da instância primária, e o ID de registro (Record ID) foi definido como `wwww.Primary`, utilizado para identificar cada registro com política de Failover. O segundo record construído era basicamente igual a esse, alterando apenas o value para o IP público da segunda instância (`cafeserver2`), o health check era mantido em branco, pois não foi criado uma verificação de integridade para instância secundária, o tipo de registro de Failover foi `Secondary`, já que era a segunda instância, e o ID de registro foi definido como `www.Secondary`. A imagem 60 mostra os dois novos registros elaborados juntos com os três já existentes.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img60.png" alt="img60"><br>
+    <figcaption>Imagem 60.</figcaption>
+</figure></div><br>
+
+Ao acessar a aplicação nesse momento pelo domínio construído no **Registro.BR**, a instância que recebia o tráfego era a primária (`cafeserver1`). Para testar o Failover foi preciso interromper essa instância e isso foi realizado manualmente pelo **AWS Console Management**. Assim, o health check verificou que a instância primária não estava mas íntegra, conforme exibido na imagem 61, e como ele era o gatilho para acionar o record da política de roteamento Failover, o tráfego foi redirecionado agora para segunda instância. Como um tópico no **Amazon SNS** foi configurado, um email avisando que a instância primária não era íntegra foi enviado, conforme evidencaido na imagem 62.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img61.png" alt="img61"><br>
+    <figcaption>Imagem 61.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img62.png" alt="img62"><br>
+    <figcaption>Imagem 62.</figcaption>
+</figure></div><br>
+
+Nesta última etapa foi configurada e testada a política de roteamento de geolocalização (Geolocation). O roteamento de localização geográfica permite que seja escolhido os recursos que atendem o tráfego em função da localização geográfica dos utilizadores, ou seja, a localização no que as consultas DNS se originam. Esta configuração foi um pouco mais complexa, pois foi preciso além de remover os dois registros criados anteriormente, excluir também as duas instâncias, pois agora elas precisavam ser provisionadas em regiões diferentes.
+
+
+
+
+?????????????????????????????
+
 
 
 
@@ -1121,7 +1171,7 @@ Ao estimar o custo do **Amazon CloudFront**, é importante considerar a distribu
 
 Neste laboratório atividade, desenvolvido no sandbox **Vocareum**, o objetivo foi configurar um roteamento de failover para uma aplicação web no **Amazon Route 53**. O ambiente que já era construído automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório, era composto por duas instâncias do **Amazon EC2** que funcionavam como servidor web, cada uma em uma zona de disponibilidade diferente, sendo ambas na mesma VPC da região `us-west-2` (Oregon). Cada uma das instâncias possuía a pilha LAMP completa instalada e o site de uma cafeteria implantado e em execução. Para testar o failover, a instância principal iria ser interrompida forçadamente e a instância secundária assumiria o tráfego da aplicação. Também foi configurado no **Amazon Route 53** uma verificação de integridade (health check) para quando as instâncias não fossem íntegras, um email fosse enviado e o failover fosse acionado.
 
-A primeira tarefa deste laboratório consistiu em verificar se os sites dos servidores web, no caso as instâncias do EC2, estavam em execução. No sandbox **Vocareu** em detalhes, era fornecido os IPs públicos das instâncias, que também podiam ser visualizados pelo console de gerenciamento da **AWS**, e o IP público com o path para acessar a página raiz do site. Acessando o IP público das instâncias em uma aba do navegador da maquina física **Windows** era possível verificar que essa instância era um servidor web, porém para visualizar a aplicação web em execução nas duas instâncias foi preciso adicionar o path `/cafe` a URL, conforme imagens 67 e 68. Perceba que na parte superior do site foi exibido o número de IP e o ID da instância que estava servidor com a aplicação web, e a zona de disponibilidade que essa instância estava.
+A primeira tarefa deste laboratório consistiu em verificar se os sites dos servidores web, no caso as instâncias do EC2, estavam em execução. No sandbox **Vocareu** em detalhes, era fornecido os IPs públicos das instâncias, que também podiam ser visualizados pelo console de gerenciamento da **AWS**, e o IP público com o path para acessar a página raiz do site. Acessando o IP público das instâncias em uma aba do navegador da maquina física **Windows** era possível verificar que essas instâncias eram um servidores web, porém para visualizar a aplicação web em execução nas duas instâncias foi preciso adicionar o path `/cafe` a URL, conforme imagens 67 e 68. Perceba que na parte superior do site foi exibido o número de IP e o ID da instância que estava executando a aplicação web, assim como a zona de disponibilidade em que ela estava situada.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img67.png" alt="img67"><br>
@@ -1193,21 +1243,123 @@ O **AWS Lambda** impõe restrições à quantidade de recursos de computação e
 
 <a name="item5.38"><h4>5.38 178- [JAWS] -Atividade: Trabalhar com o AWS Lambda</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Este laboratório, realizado no sandbox **Vocareum**, teve como objetivo a implantação e configuração de uma solução de computação sem servidor com a utilização do serviço **AWS Lambda**. A função do Lambda criada geraria um relatório de análise de vendas, extraindo dados de um banco de dados e enviando os resultados diariamente. Também foi utilizado o *Parameter Store*, um recurso do **AWS Systems Manager (AWS SSM)**, para armazenar as informações de conexão com o banco de dados, que era executado em uma instância do **Linux** no **Amazon Elastic Compute Cloud (Amazon EC2)**. Esta instância, que foi provisionada automaticamente ao iniciar o laboratório pelo **AWS CloudFormation**, também era onde a aplicação web rodava através de um conjunto de softwares: **Apache HTTP (Httpd)**, **MySQL** e **PHP** (LAMP). As funções Lambda foram elaboradas em código **Python**, sendo fornecidas pela plataforma do bootcamp. O foco era se concentrar nas tarefas de SysOps de implantação, configuração e teste dos componentes da solução sem servidor.
 
+Cada função que fosse construída exigiria permissões para acessar determinados recursos da nuvem **AWS**. Portanto, a primeira tarefa foi verificar as roles do IAM e as permissões que elas concediam as duas funções que seria criadas posteriormente: `salesAnalysisReport` e `salesAnalysisReportDataExtractor`. Para a função `salesAnalysisReport` existia a role `salesAnalysisReportRole` cujas políticas de permissões (Permissions Policies) eram: `AmazonSNSFullAccess`, que concedia acesso total aos recursos do **Amazon SNS**; `AmazonSSMReadOnlyAccess`, que concedia acesso somente leitura aos recursos do **AWS Systems Manager (AWS SSM)**, pois era necessário já que as informações do banco de dados estavam no *Parameter Store*; `AWSLambdaBasicRunRole`, que concedia permissões de gravação para o *Amazon CloudWatch Logs* (exigidas por cada função do Lambda); `AWSLambdaRole`, que oferecia a uma função do Lambda a capacidade de invocar outra função do Lambda. A imagem 74 exibe essas políticas vinculada a role mencionada.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img75.png" alt="img75"><br>
+    <figcaption>Imagem 75.</figcaption>
+</figure></div><br>
 
+Já a função `salesAnalysisReportDataExtractor` teria vinculada a ela a role `salesAnalysisReportDERole`, onde esta possuía as seguintes políticas de permissões: `AWSLambdaBasicRunRole`, que concedia permissões de gravação para o CloudWatch Logs; `AWSLambdaVPCAccessRunRole`, que concedia permissões para gerenciar interfaces de rede elástica para conectar uma função a uma nuvem privada virtual (VPC). A imagem 76 exibe esta role com suas respectivas políticas de permissão. Ambas as roles possuía `lambda.amazonaws.com` como entidade confiável em sua política de confiança (Trust Policy). Este tipo de política define quais entidades têm permissão para assumir uma determinada função IAM, que neste caso a entidade era o **AWS Lambda**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img76.png" alt="img76"><br>
+    <figcaption>Imagem 76.</figcaption>
+</figure></div><br>
 
+Na segunda tarefa, o objetivo foi criar uma camada (Layer) do Lambda chamada `pymysqlLibrary` e fazer o upload da biblioteca do cliente nela para que possa ser usada por qualquer função que a exija. As camadas do Lambda oferecem um mecanismo flexível para reutilizar o código entre funções, de modo que o código não precise ser incluído no pacote de implantação de cada função. Portanto, foi preciso baixar os arquivos `pymysql-v3.zip` e `salesAnalysisReportDataExtractor-v3.zip` da página principal do sandbox para maquina local para depois enviar esses arquivos para o Lambda. O arquivo `salesAnalysisReportDataExtractor-v3.zip` era uma implementação em **Python** de uma função do Lambda que usava a biblioteca do cliente de código aberto **PyMySQL** para acessar o banco de dados **MySQL** da cafeteria, que era a aplicação web. Essa biblioteca foi embalada no `pymysql-v3.zip` que, depois, foi carregada na camada do Lambda. Além do nome `pymysqlLibrary`, a camada construída possuíu as seguintes configurações: a descrição foi definida como `PyMySQL library modules`, o upload do arquivo `pymysql-v3.zip` foi efetuado e em Runtimes compatíveis foi escolhido `Python 3.9`. Após isso, a layer estava criada na versão `1`. Uma observação importante é que o recurso de camadas do Lambda requer que o arquivo .zip que contém o código ou a biblioteca esteja em conformidade com uma estrutura de pastas específica. Neste caso, o arquivo `pymysqlLibrary.zip` usado neste laboratório foi compactado usando a seguinte estrutura de pastas: pymysql-v3.zip -> python -> pymysql;  PyMySQL-1.0.2.dist-info. A imagem 77 evidencia a layer do Lambda construída.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img77.png" alt="img77"><br>
+    <figcaption>Imagem 77.</figcaption>
+</figure></div><br>
 
+Ainda na tarefa 2, o próximo passo foi criar a função extratora de dados. Então foi construída uma função do zero cujo nome foi `salesAnalysisReportDataExtractor` e o tempo de execução foi `Python 3.9`. Na opção de alterar a role de execução padrão foi configurado em role de execução para usar uma role existente que foi `salesAnalysisReportDERole`. Em seguida, a layer personalizada do Lambda construída anteriormente (`pymysqlLibrary`) na versão `1` foi adicionada a esta função. Na sequência foi realizado a importação do código da função extratora de dados. Ao selecionar a função `salesAnalysisReportDataExtractor`, no painel de configuração de runtime foi selecionado editar e em manipulador (handler) foi inserido `salesAnalysisReportDataExtractor.lambda_handler`. Já no painel de origem do código (code source) foi selecionado fazer upload, selecionado arquivo .zip e escolhido o arquivo baixado anteriormente `salesAnalysisReportDataExtractor-v3.zip`. Após isso, o código foi importato e pôde ser visualizado no editor de código da função. Se o código não for visualizado, atualize o console para que seja exibido. Ao revisar o código em **Python**, observe que a função esperava receber as informações de conexão de banco de dados (dbURL, dbName, dbUser e dbPassword) no parâmetro de entrada de evento.
 
+A última etapa desta tarefa foi definir as configurações de rede para esta função, pois esta função requeria acesso à rede ao banco de dados da cafeteria que era executado em uma instância LAMP do EC2. Portanto, foi necessário especificar as informações da VPC, da sub-rede e do grupo de segurança da instância na configuração da função. Em VPC foi selecionada a VPC da cafeteria, que era a deste laboratório. A sub-rede pública 1 (`Cafe Public Subnet 1`) dessa VPC também foi selecionada. Caso seja recomendado escolher duas sub-redes, pode ser ignorado o aviso, pois esta situação é para alta disponibilidade que não era o foco agora. No grupo de segurança foi escolhido o `CafeSecurityGroup` que já possuía as regras de entrada definidas para este laboratório. A imagem 78 evidencia toda a construção dessa função.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img78.png" alt="img78"><br>
+    <figcaption>Imagem 78.</figcaption>
+</figure></div><br>
 
+Na tarefa seguinte, a terceira, foi executado o teste desta função. Para invocá-la, era necessário fornecer valores para os parâmetros de conexão de banco de dados da cafeteria. Lembre-se de que eles eram arquivados no armazenamento de parâmetros. Portanto foi necessário ir em *Parameter Store* no serviço **AWS System Manager (AWS SSM)** e copiar os valores de cada um dos parâmetros existentes. De volta ao serviço do Lambda, ao selecionar testar para testar a função foi configurado o painel de eventos de teste. Em ação de evento de teste foi criado um novo evento cujo nome foi `SARDETestEvent`, o modelo foi `hello-world` e no painel do JSON do evento foi substituído o JSON existente pelo abaixo. Cada valor das chaves desse documento foi o mesmo valor dos parâmetros armazenados em *Parameter Store*. Em seguida foi só salvar esse evento de teste e executá-lo. A imagem 79 mostra o resultado do teste que apresentou falha.
 
+```json
+{
+  "dbUrl": "ec2-34-220-52-107.us-west-2.compute.amazonaws.com",
+  "dbName": "cafe_db",
+  "dbUser": "root",
+  "dbPassword": "Re:Start!9"
+}
+```
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img79.png" alt="img79"><br>
+    <figcaption>Imagem 79.</figcaption>
+</figure></div><br>
 
+A próxima etapa dessa tarefa foi solucionar este problema. Para isso em resultado da execução foi selecionado detalhes para obter mais informações. Observe que o objeto de erro exibiu uma mensagem semelhante a mensagem abaixo, após a execução da função. Essa mensagem indicava que o tempo da função expirou após três segundos. A seção resultado de saída do log incluía linhas que começam com as seguintes palavras-chave: START (Início) indicava que a função iniciou a execução; END (Término) indicava que a execução da função terminou; REPORT (Relatório) fornecia um resumo da estatística de desempenho e utilização de recursos associado à execução da função.
 
+```json
+{
+"errorMessage": "2019-02-14T04:14:15.282Z ff0c3e8f-1985-44a3-8022-519f883c8412 Task timed out after 3.00 seconds"
+}
+```
 
+O problema era que não existia uma regra liberando a porta que o **MySQL** utilizava. Portanto, foi necessário criar uma regra de entrada liberando a porta `3306` do protocolo `TCP` no grupo de segurança vinculado a função. Após solucionar o problema, foi realizado novamente o teste do mesmo evento de teste que já tinha sido criado (`SARDETestEvent`). Observe na imagem 80 que o código de status deu 200, o que significava que a execução da função foi bem-sucedida. O campo corpo, que continha os dados do relatório extraídos pela função, estava vazio. Isso ocorreu porque não havia ainda dados de pedidos no banco de dados. Era preciso cadastrar pedidos através da aplicação web.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img80.png" alt="img80"><br>
+    <figcaption>Imagem 80.</figcaption>
+</figure></div><br>
+
+A última etapa dessa tarefa consistiu em acessar novamente a aplicação web pelo navegador da maquina física **Windows** e realizar pedidos na aba de `Menu`. Lembrando que a URL para acessar a aplicação precisa acrescentar o path `/cafe` ao IP ou DNS público da instância. Após realizar os pedidos foi executado um novo teste da função Lambda que além de mostrar o status 200, no corpo vieram as informações dos pedidos realizados. A imagem 81 evidencia a execução do teste desta função `salesAnalysisReportDataExtractor`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img81.png" alt="img81"><br>
+    <figcaption>Imagem 81.</figcaption>
+</figure></div><br>
+
+Na tarefa 4, o objetivo foi configurar notificações criando um tópico do **Amazon Simple Notification Service (Amazon SNS)**. Este tópico iria conter as informações do relatório de análise de vendas e um email de destino para que esse relatório fosse enviado. O tipo do tópico construído foi o padrão, o nome foi `salesAnalysisReportTopic` e o nome de exibição foi `SARTopic`. Em seguida, foi preciso assinar este tópico criando uma assinatura cujo protocolo foi `E-mail` e o endpoint foi meu endereço de email. Após criar a assinatura, ela ficava como pendente até que fosse realizado a confirmação de assinatura com um email que era enviado para o endereço registrado, no caso meu email. Ao confirmar a assinatura, uma outra aba do navegador era aberta confirmando a assinatura. A imagem 83 exibe o tópico criado no SNS com a assinatura cadastrada já confirmada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img82.png" alt="img82"><br>
+    <figcaption>Imagem 82.</figcaption>
+</figure></div><br>
+
+A última tarefa foi criar a segunda função, cujo nome era `salesAnalysisReport`, para automatizar todo o processo: extrair os valores dos parâmetros do *Parameter Store*, utilizá-los para criar um evento de teste para a função `salesAnalysisReportDataExtractor`, invocar esta função, extrair o corpo do resultado desta função, que é o relatório de análise de vendes, formatá-lo e publicá-lo no tópico do SNS para que seja entregue aos assinantes, no caso, para o email cadastrado. Esta execução foi toda realizada pelo **AWS CLI** instalado em uma outra instância de tag de nome `CLI Host`. Portanto, primeiramente foi preciso realizar um acesso remoto a instância através do recurso `EC2 Instance Connect` e configurar a CLI da **AWS** com o comando `aws configure`. Os valores do access key (chave de acesso) e secret acess key (segredo da chave de acesso) foram fornecidos na página principal do sandbox **Vocareum** na opção de detalhes. A região definida na configuração da CLI foi a mesma utilizada no laboratório, `us-west-2` (Oregon). Já o formato de saída dos dados foi definido como `json`.
+
+Com a CLI configurada, foi necessário confirmar se o arquivo para esta nova função já estava baixado na instância `CLI Host`, sendo feito através dos comandos `cd activity-files` e `ls`. Também foi preciso recuperar o ARN da role `salesAnalysisReportRole`, pois esta era vinculada a função `salesAnalysisReport`. Em seguida com o comando **AWS CLI** abaixo foi criada a nova função. A região foi substituída pela região utilizada no laboratório, `us-west-2` (Oregon), e a role pelo ARN da role recuperado anteriormente. A imagem 83 evidencia essa função criada.
+
+```
+aws lambda create-function --function-name salesAnalysisReport --runtime python3.9 --zip-file fileb://salesAnalysisReport-v2.zip --handler salesAnalysisReport.lambda_handler --region us-west-2 --role arn:aws:iam::744188927919:role/salesAnalysisReportRole<salesAnalysisReportRoleARN>
+```
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img83.png" alt="img83"><br>
+    <figcaption>Imagem 83.</figcaption>
+</figure></div><br>
+
+A próxima etapa foi verificar o código da função e criar o evento de teste desta função pelo console de gerenciamento da **AWS**. Contudo, este código utilizava uma variável de nome `topicARN` que era o ARN de um tópico criado no **Amazon SNS**. Então essa variável precisou ser definida no painel de variáveis. A chave dessa variável foi estabelecida como `topicARN` e o valor foi a ARN do tópico construído anteriormente, cujo nome era `salesAnalysisReportTopic`. Após isso, foi criado um evento de teste para esta função, cujo nome foi `SARTestEvent`, o modelo foi `hello-world` e  como a função não exigia parâmetros de entrada, as linhas do JSON foram mantidas em branco. Em seguida, o teste foi executado e o resultado bem-sucedido, conforme imagem 84. No corpo de resultado foi exibida a mensagem `Sale Analysis Report sent`, ou seja, o relatório foi enviado. Caso receba um erro de tempo limite, selecione o botão testar novamente. Às vezes, quando uma função é executada pela primeira vez, ela demora um pouco mais para ser inicializada e o valor de tempo limite padrão do Lambda (três segundos) é excedido. Normalmente, executar a função novamente faz com que o erro desapareça. Como alternativa, é possível aumentar o valor de tempo limite em configuração, configuração geral, editar, ajustar o tempo limite conforme necessário e salvar. 
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img84.png" alt="img84"><br>
+    <figcaption>Imagem 84.</figcaption>
+</figure></div><br>
+
+A imagem 85 evidencia o envio do email com o relátorio de análise de vendas realizado pelo tópico do **Amazon SNS**. É possível fazer mais pedidos no site da aplicação web e depois executar a função novamente para enviar o relatório atualizado.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img85.png" alt="img85"><br>
+    <figcaption>Imagem 85.</figcaption>
+</figure></div><br>
+
+Na última etapa desta tarefa, o objetivo foi adicionar um gatilho à esta função Lambda para que o relatório fosse enviado em um intervalo de dias determinado em um horário específico. Ao acessar o serviço **Amazon CloudWatch** e selecionar a opção rule em envents foi direcionado para outro serviço o **Amazon EventBridge**. Neste, na opção barramento, uma regra de nome `salesAnalysisReportDailyTrigger` foi elaborada com a seguinte descrição `Initiates report generation on a daily basis`. O tipo da regra foi definido como `Expressão de programação` (Programação) e foi especificada a programação desejada usando uma *expressão Cron*. A sintaxe geral de uma *expressão Cron* requer seis campos separados por espaços, da seguinte forma: `cron(Minutes Hours Day-of-month Month Day-of-week Year)`. Além disso, todos os horários em uma *expressão Cron* se baseiam no fuso horário UTC. Portanto foi definida a expressão cron: `cron(45 00 ? * MON-SAT *)`, como eram 00:45 no horário UTC, foi programado que o trigger fosse acionado de segunda a sábado todo dia às 00:45. Também foi definido um serviço da **AWS** que fosse acionado, que neste caso foi a função lambda `salesAnalysisReport`. A imagem 86 exibe essa regra configurada no EventBridge.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img86.png" alt="img86"><br>
+    <figcaption>Imagem 86.</figcaption>
+</figure></div><br>
+
+Enquanto o gatilho não era acionado, foi realizado pedidos na aplicação web para que o relatório viesse atualizado. Após chegar no horário UTC 00:10, o novo email foi enviado para o destino, que era meu email, com o relatório de análise de vendas atualizado, conforme imagem 87.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img87.png" alt="img87"><br>
+    <figcaption>Imagem 87.</figcaption>
+</figure></div><br>
 
 <a name="item5.39"><h4>5.39 APIs e REST da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
