@@ -1563,21 +1563,91 @@ A instância de replicação do **AWS DMS** é executada em uma Virtual Private 
 
 <a name="item5.48"><h4>5.48 179- [JAWS] -Atividade: Migrar para o Amazon RDS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta laboratório, desenvolvido no sandbox **Vocareum**, foi realizado a migração de um banco de dados que rodava na mesma instância do **Amazon EC2**, onde era executada a aplicação web de uma cafeteria, para uma instância do **Amazon RDS** cujo mecanismo de execução era o **MariaDB**. Para executar esse processo foi necessário configurar previamente o ambiente que o RDS seria provisionado, construíndo duas sub-redes privadas em diferentes zonas de disponibilidade e criando um grupo de segurança e um grupo de sub-redes, com as duas sub-redes privadas construídas, para essa instância RDS. Por fim, após a migração, foi realizado o monitoramento dessa instância analisando as métricas do **Amazon CloudWatch**. Os provisionamentos dos serviços da **AWS** foram executados através de comandos **AWS CLI** em uma instância de tag de nome `CLI Host` criada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Já o processo de migração do banco de dados foi realizado na própria instância onde era executado o banco de dados inicialmente, cuja a tag de nome era `CafeInstance` e que também tinha sido provisionada pelo **AWS CloudFormation** ao iniciar o laboratório, através do software **MySQLDump**
 
+A primeira tarefa deste laboratório foi acessar aplicação web que rodava na instância através do navegador da maquina física **Windows** para interagir com a aplicação, realizando pedidos na aba `Menu` do site da cafeteria. Um único pedido foi realizado com uma unidade de cada item que tinha no cardápio. Para acessar a aplicação pelo navegador foi utilizado o IP ou DNS público da instância acrescido do path do site, que era `/cafe`. Para confirmar que o pedido foi realizado, foi acessado a aba `Order History`, onde estava registrado o único pedido, conforme mostrado na imagem 88.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img88.png" alt="img88"><br>
+    <figcaption>Imagem 88.</figcaption>
+</figure></div><br>
 
+Na tarefa de número 2, o objetivo foi criar a instância do **Amazon RDS** pelo **AWS CLI**. Dessa forma, primeiro foi necessário se conectar a instância `CLI Host`, pois era nela que os comandos da **AWS CLI** seriam executados. Essa conexão foi realizada através do recurso `EC2 Instance Connect` no próprio console de gerenciamento da **AWS**. O usuário utilizado na conexão foi o padrão desse tipo de instância que era o **Amazon Linux**, cujo usuário era `ec2-user`. Com o recurso `EC2 Instance Connect` a autenticação do usuário é realizada pela própria **AWS**, sem a necessidade de criação de par de chaves. Esse tipo de instância, por padrão, já vem com a **AWS CLI** instalada, só era necessário configurar o usuário da conta da **AWS** que iria utilizá-la. Com o comando `aws configure`, as quatro informações de configuração foram passadas, sendo a chave de acesso (key acess) e a chave de acesso secreta (secret key acess) informadas no campo detalhes na página principal do sandbox **Vocareum**. A **AWS CLI** foi configurada no caso com o usuário do IAM de nome `awsstudent`, que era criado automaticamente pelo CloudFormation ao iniciar o laboratório e já possuía as políticas de permissões necessárias para interagir com os serviços do laboratório. A região definida foi a padrão do laboratório, `us-west-2` (Oregon) e o formato de saída dos dados foi `json`.
 
+Com a **AWS CLI** configurada já era possível executar os comandos para provisionamento dos serviços na **AWS**. Primeiro seriam construídos os serviços de rede para depois provisionar a instância do RDS. Assim sendo, com o comando `aws ec2 create-security-group --group-name CafeDatabaseSG --description "Security group for Cafe database" --vpc-id vpc-0c542b1e9a81354b3` foi criado o security group de nome `CafeDataBaseSG` que era utilizado para proteger a instância do RDS. O ID da VPC foi substituído pelo ID da VPC do laboratório. Com ID deste grupo de segurança e o comando `aws ec2 authorize-security-group-ingress --group-id sg-0ca9018dcff5730f1 --protocol tcp --port 3306 --source-group sg-096ebcd4874d607ae` foi definida uma regra de entrada nele, permitindo acesso na porta `3306` do protocolo `TCP`, onde o **MariaDB** operava, apenas de um outro security group, que era o grupo de segurança da instância da aplicação web, cujo nome era `CafeSecurityGroup`. Para confirmar que a regra de entrada foi criada de forma correta, foi executado o comando `aws ec2 describe-security-groups --query "SecurityGroups[*].[GroupName,GroupId,IpPermissions]" --filters "Name=group-name,Values='CafeDatabaseSG'"` que mostrou a respectiva regra neste grupo, conforme evidenciado pela imagem 89.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img89.png" alt="img89"><br>
+    <figcaption>Imagem 89.</figcaption>
+</figure></div><br>
 
+Ainda nesta tarefa, a próxima etapa foi provisionar das duas sub-redes privadas, cujos nomes eram `sub-rede privada 1 CafeDB` e `sub-rede privada 2 CafeDB`. A sub-rede privada 1 ficou localizada na mesma zona de disponibilidade da instância da aplicação web, `us-west-2a`. Já a sub-rede privada 2 poderia ser executada em qualquer zona de disponibilidade que não fosse da anterior. O objetivo disso era mostrar a alta disponibilidade, trabalhando com o RDS em mais de uma AZ. Ambas as sub-redes privadas foram criadas na mesma VPC da sub-rede pública, onde estava a instância da aplicação web. Portanto, foi preciso se atentar para não sobrepor os blocos CIDR entre as sub-redes e a VPC. O bloco CIDR da VPC era `10.200.0.0/20` e da sub-rede pública era `10.200.0.0/24`, logo foi definido o bloco CIDR das sub-redes privadas como `10.200.2.0/23` e `10.200.10.0/23`. Com os comandos `aws ec2 create-subnet --vpc-id vpc-0c542b1e9a81354b3 --cidr-block 10.200.2.0/23 --availability-zone us-west-2a` e `aws ec2 create-subnet --vpc-id vpc-0c542b1e9a81354b3 --cidr-block 10.200.10.0/23 --availability-zone us-west-2b` foram provisionadas as duas sub-redes privadas. A imagem 90 mostra essa construção.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img90.png" alt="img90"><br>
+    <figcaption>Imagem 90.</figcaption>
+</figure></div><br>
 
+Com os IDs dessas duas sub-redes privadas foi construído o grupo de sub-redes no **Amazon RDS** com o comando `aws rds create-db-subnet-group --db-subnet-group-name "CafeDB Subnet Group" --db-subnet-group-description "DB subnet group for Cafe" --subnet-ids subnet-0073df12cbe553962 subnet-0f152862cb23b693e --tags "Key=Name,Value= CafeDatabaseSubnetGroup"`, conforme mostrado na imagem 91.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img91.png" alt="img91"><br>
+    <figcaption>Imagem 91.</figcaption>
+</figure></div><br>
 
+Finalizando essa tarefa, foi construído de fato a instância de banco de dados no **Amazon RDS**, cuja opção de mecanismo foi **MariaDB** na versão `10.5.13` (alterado para `10.11.8`), o identificador da instância foi `CafeDBInstance`, a classe da instância foi `db.t3.micro`, o armazenamento alocado foi de `20` GB, a zona de disponibilidade foi `a`, o grupo de sub-rede foi `CafeDB Subnet Group` e o security group foi `CafeDatabaseSG`. A acessibilidade pública foi definida como não, o nome do usuário master foi `root` e a senha foi `Re:Start!9`. O comando abaixo executou esse provisionamento.
 
+```
+aws rds create-db-instance --db-instance-identifier CafeDBInstance --engine mariadb --engine-version 10.11.8 --db-instance-class db.t3.micro --allocated-storage 20 --availability-zone us-west-2a --db-subnet-group-name "CafeDB Subnet Group" --vpc-security-group-ids sg-0ca9018dcff5730f1 --no-publicly-accessible --master-username root --master-user-password 'Re:Start!9'
+```
 
+Após isso, levou um tempo até que a instância fosse provisionada e ficasse disponível. Com o comando `aws rds describe-db-instances --db-instance-identifier CafeDBInstance --query "DBInstances[*].[Endpoint.Address,AvailabilityZone,PreferredBackupWindow,BackupRetentionPeriod,DBInstanceStatus]"` era possível ir verificando o status da instância. Com relação aos backups, eles ocorrem diariamente durante a janela de backup preferencial e são retidos pela duração especificada pelo período de retenção de backup. Observe o valor 1 para o período de retenção de backup, que indica que, por padrão, os backups diários são retidos por apenas um dia. Além disso, a janela de backup preferencial é definida como um intervalo de trinta minutos por padrão. É possível modificar essas configurações para corresponder à política de backup desejada. O atributo de status mostrará inicialmente o valor criando e depois mudará para modificando. Assim que a instância ficou disponível, como mostrado na imagem 92, foi copiado o endpoint dela para ser utilizado adiante.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img92.png" alt="img92"><br>
+    <figcaption>Imagem 92.</figcaption>
+</figure></div><br>
 
+A terceira tarefa foi de fato a realização da migração do banco de dados da instância da aplicação no **Amazon EC2** para instância provisionada do **Amazon RDS**. Para isso foi preciso abrir uma conexão com a instância da aplicação web com o recurso `EC2 Instance Connect` e utilizar o software **MySQLDump** para fazer o backup do banco de dados no momento atual. Lembrando que essa instância da aplicação web conseguia se comunicar com a instância do RDS, através dos seus respectivos grupos de segurança, onde o security group do RDS liberava acesso na porta `3306` para o grupo de segurança da instância da aplicação web. Após conectar a instância, no terminal que foi aberto, o comando `mysqldump --user=root --password='Re:Start!9' --databases cafe_db --add-drop-database > cafedb-backup.sql` foi executado. Esse comando gerou declarações SQL em um arquivo chamado `cafedb-backup.sql`, que podia ser executadas para reproduzir o esquema e os dados do banco de dados `cafe_db original`, que era o banco de dados que rodava na aplicação. Para visualizar esse arquivo ele foi aberto em um editor de texto ou visualizado com o comando `less cafedb-backup.sql` no terminal. Observe os vários comandos SQL para criar o banco de dados, criar tabelas e índices e preencher o banco de dados com os dados originais. 
 
+Fechando a visualização desse arquivo com o comando `q` e voltando para o terminal, foi executado `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com < cafedb-backup.sql`, onde foi passado o endereço de endpoit da instância RDS que executaria o banco de dados. Esse comando criava uma conexão **MySQL** com a instância do **Amazon RDS** e executava as declarações SQL do arquivo cafedb-backup.sql. Como o **MariaDB** é um fork do **MySQL** é possível utilizar comandos do **MySQL** para acessar um banco de dados do **MariaDB**. Para visualizar o banco de dados do **Amazon RDS** pela instância do **Amazon EC2** foi utilizado o comando `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com cafe_db`. Uma conexão era realizada, permitindo interagir com o banco de dados do RDS pela instância do EC2. A imagem 93 exibe a execução do comando `select * from order`, que listava todas linhas da tabela `product`. Essa tabela armazenava todos os pedidos realizados na aplicação web, neste caso, apenas uma linha foi exibida, pois só havia sido feito um único pedido no início deste laboratório. Para sair do **MySQL** foi utilizado o comando `exit`. A conexão com essa instância ainda foi mantida aberta para uso futuro.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img93.png" alt="img93"><br>
+    <figcaption>Imagem 93.</figcaption>
+</figure></div><br>
+
+Até este momento, o banco de dados da aplicação web já tinha sido migrado para instância do **Amazon RDS**, contudo a aplicação web ainda apontava para o banco de dados na instância do **Amazon EC2**. Ou seja, se um novo pedido fosse realizado, não iria ser inserido no banco do RDS e sim no banco do EC2. Portanto, era preciso alterar na aplicação web, o host do banco de dados para apontar para o endereço de endpoint do RDS. Esta tarefa foi facilitada, pois a aplicação web quando construída durante a criação da pilha do **AWS CloudFormation** que utilizou o armazenamento de parâmetros no **AWS System Manager (AWS SSM)**. No *Parameter Store* foi criado um parâmetro de nome `/cafe/dbUrl` que continha como valor a URL do banco de dados (`ec2-35-86-130-112.us-west-2.compute.amazonaws.com`). Dessa forma, foi só editar esse parâmetro trocando o valor para o endereço de endpoint do RDS. Assim, o parâmetro `dbUrl` agora fazia referência à instância de banco de dados do RDS em vez do banco de dados local. Para testar isso, a aplicação web foi novamente aberta no navegador da maquina física **Windows** e um novo pedido foi realizado na aba `Menu`. A imagem 94 exibe a aba `Order History` com agora dois pedidos. Já a imagem 95 mostra a execução novamente do comando `select * from order` no terminal da instância da aplicação, antes conectando ao banco de dados com o comando `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com cafe_db`. Observe que em ambos, agora tem dois pedidos.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img94.png" alt="img94"><br>
+    <figcaption>Imagem 94.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img95.png" alt="img95"><br>
+    <figcaption>Imagem 95.</figcaption>
+</figure></div><br>
+
+A última tarefa deste laboratório foi monitorar a instância do **Amazon RDS** através das métricas que o mesmo enviava para o **Amazon CloudWatch**. Pelo console de gerenciamento da **AWS** foi acessado o serviço RDS e selecionada a instância provisionada. Na guia monitoramento, várias métricas foram exibidas através de gráficos. A lista de métricas exibidas incluía o seguinte: 
+- CPUUtilization: a porcentagem de utilização da CPU; 
+- DatabaseConnections: o número de conexões de banco de dados em uso; 
+- FreeStorageSpace: a quantidade de espaço de armazenamento disponível;
+- FreeableMemory: a quantidade de memória (RAM) disponível na instância do Amazon RDS; 
+- WriteIOPS: o número médio de operações de E/S de gravação no disco por segundo; 
+- ReadIOPS: número médio de operações de E/S de leitura no disco por segundo.
+
+A métrica analisada neste laboratório foi a `DatabaseConnections` que possuía registra uma conexão de banco de dados em uso, que foi a conexão realizada pela instância da aplicação web para conferir a tabela `order`. Essa conexão não tinha sido encerrada, portanto era mostrado uma conexão, conforme imagem 96. De volta ao terminal da instância da aplicação foi executado o comando `exit` para fechar e encerrar a conexão **MySQL**. Observe agora na imagem 97 que o número de conexões caiu para zero, pois não havia nenhuma conexão neste momento. Caso não seja alterado de imediato, aguarde um momento e atualiza o grafo.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img96.png" alt="img96"><br>
+    <figcaption>Imagem 96.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img97.png" alt="img97"><br>
+    <figcaption>Imagem 97.</figcaption>
+</figure></div><br>
 
 <a name="item5.51"><h4>5.51 Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
