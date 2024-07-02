@@ -1789,42 +1789,168 @@ A seguir é listado alguns problemas de rede que podem ser ocasionados e formas 
 
 <a name="item5.55"><h4>5.55 180- [JAWS] -Laboratório: Configurar uma Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Este laboratório, desenvolvido no sandbox **Vocareum**, teve como objetivo o provisionamento de uma VPC com todos seus recursos necessários para que em seguida fosse criadas instâncias no **Amazon EC2** dentro dessa VPC, em cada sub-rede. A VPC possuíu duas sub-redes, uma pública e uma privada, cada uma com sua rota na tabela de rotas, um Gateway de Internet e um NAT Gateway. Ao fim, foi realizado acesso remoto na instância da sub-rede pública e utilizando ela como bastion host, foi realizado um outro acesso remoto para conectar-se na instância da sub-rede privada.
 
+A primeira tarefa foi criar de fato a VPC no **Amazon VPC**, cuja tag de nome dela foi `Lab VPC`. A região utilizada para provisionamento desta VPC era a região do laboratório, `us-west-2` (Oregon). Ao criar a VPC foi escolhido em recursos a serem criados somente VPC. Aqui era possível criar alguns recursos da VPC ao provisioná-la, mas isso seria realizado de forma separada. O bloco CIDR IPv4 foi definido manualmente como `10.0.0.0/16`, enquanto o bloco CIDR IPv6 não foi utilizado. O tenancy foi mantido como padrão (`default`) e as tags sugeridas para esta VPC foram mantidas. A imagem 98 exibe a VPC criada com sucesso.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img98.png" alt="img98"><br>
+    <figcaption>Imagem 98.</figcaption>
+</figure></div><br>
 
+Com a VPC construída, ela foi editada para alterar as configurações de DNS, selecionando habilitar nomes de host DNS (`Enable DNS hostnames`). As instâncias do EC2 iniciadas na VPC agora receberiam automaticamente um nome de host do sistema de nomes de domínio (DNS) IPv4 público.
 
+Na tarefa 2, foi provisionada as duas sub-redes. A primeira foi a sub-rede pública, ou seja, que teria acesso por meio da Internet. Já a segunda foi a sub-rede privada, que não conseguiria ser acessada diretamente pela internet, mas seria possível realizar conexões de saída para a internet. Neste caso, o tráfego de saída para a internet era permitido, assim como as respostas desse tráfego, mas qualquer tentativa de conexão de entrada iniciada da internet não era possível. As duas sub-redes eram vinculadas a VPC construída anteriormente. A sub-rede pública foi nomeada de `Public Subnet`, localizava-se na zona de disponibilidade `us-west-2a` e possuíu no bloco CIDR IPv4 `10.0.0.0/24`. Também foi habilitado a atribuição de endereço de IPv4 público automaticamente (`Enable auto-assign public IPv4 address`).
 
+Já a sub-rede privada teve como nome `Private Subnet`, localizou-se na AZ `us-west-2b` e possuíu o bloco CIDR IPv4 igual a `10.0.2.0/23`. O bloco CIDR `10.0.2.0/23` incluía todos os endereços IP que começam com 10.0.2.x e 10.0.3.x. Essa faixa é duas vezes maior que a sub-rede pública porque a maioria dos recursos devem ser mantidos em sub-redes privadas, a menos que precisem especificamente estar acessíveis pela internet. A imagem 99 exibe as duas sub-redes provisionadas.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img99.png" alt="img99"><br>
+    <figcaption>Imagem 99.</figcaption>
+</figure></div><br>
 
+Na terceira tarefa foi construído um *Internet Gateway* para estabelecer conectividade externa. Esse gateway possuíu a seguinte tag de nome `Lab IGW` e foi associado a VPC. A imagem 100 ilustra isso.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img100.png" alt="img100"><br>
+    <figcaption>Imagem 100.</figcaption>
+</figure></div><br>
 
+Na tarefa seguinte foi criado uma tabela de rotas desta VPC, onde uma rota também construída direcionava o tráfego da sub-rede pública para o *Internet Gateway*, permitindo então a comunicação com a internet. Ao criar uma tabela de rota, uma rota já vinha definida por padrão, que mostrava que todo o tráfego destinado a 10.0.0/16 (que é o intervalo de Lab VPC) era roteado localmente, ou seja, essa opção permitia que todas as sub-redes na VPC se comunicassem entre sí. A tabela de rota criada teve o nome `Public Route Table` e foi vinculado a VPC `Lab VPC`. Em seguida foi adicionada uma rota a ela, cujo destino (`destination`) era `0.0.0.0/0`, ou seja, qualquer endereço de IP que não tenha sido estabelecido em nenhuma outra rota, e o alvo (`target`) era o *Internet Gateway* provisionado anteriormente. Pode ser um pouco confuso isso, mas para facilitar entenda que o destino (`destination`) não é o local físico para onde o tráfego vai, mas sim o critério usado para determinar qual rota será aplicada ao tráfego. É o intervalo de endereços IP que utilizam essa rota para direcionar o tráfego para o alvo (`target`). Após isso, foi preciso associar a sub-rede pública a essa tabela de rotas. Assim, a sub-rede pública se tornou realmente púlica, pois era possível ser acessada através da internet. A imagem 101 evidencia a construção desta tabela de rota.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img101.png" alt="img101"><br>
+    <figcaption>Imagem 101.</figcaption>
+</figure></div><br>
 
+A quinta tarefa teve como objetivo construir um servidor bastion na sub-rede pública provisionando ele no **Amazon EC2**. Um servidor bastion (também conhecido como “jump box”) é uma instância do EC2 em uma sub-rede pública configurada com segurança para fornecer acesso a recursos em uma sub-rede privada. Os operadores de sistemas podem se conectar ao servidor bastion, depois acessar os recursos da sub-rede privada. Esse acesso só é possível pois tanto a sub-rede pública como a privada estão na mesma VPC e possuí uma tabela de rotas com uma rota que comunica toda a VPC internamente.
 
+A instância provisionada possuía as seguintes configurações: valor da tag de nome igual a `Bastion Server`, a Amazon Machine Image (AMI) escolhida foi `ami-0604d81f2fd264c7b` (Amazon Linux 2023 AMI 2023.5.20240701.0 x86_64 HVM kernel-6.1), o tipo de instância foi `t3.micro`, nenhum par de chaves foi criado ou vinculado a essa instância. Nas configurações de rede, foi escolhida a VPC do laboratório `Lab VPC` e a sub-rede pública, a atribuição automática de IP público foi habilitada, e um security group foi criado cujo nome foi `Bastion Security Group` e a descrição `Allow SSH`. Uma regra de entrada foi elaborada nesse grupo de segurança permitindo acesso na porta `22` do protocolo `TCP`, que era onde o protocolo `SSH` operava, para qualquer faixa de IP (`0.0.0.0/0`). A configuração de armazenamento foi mantida o padrão, que é um volume do **Amazon Elastic Block Store (Amazon EBS)**, cujo nome do device é `/dev/xvda`, com `8` Gib de memória do tipo `gp3`. A imagem 102 exibe essa instância provisionada.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img102.png" alt="img102"><br>
+    <figcaption>Imagem 102.</figcaption>
+</figure></div><br>
 
+Na tarefa de número 6 foi criado um *NAT Gateway* na sub-rede pública e configurado uma tabela de rota privada com uma rota que direcionava o tráfego da sub-rede privada para o *NAT Gateway*. Dessa forma, a sub-rede privada tinha acesso a internet, mas não era possível acessá-la. O nome do gateway NAT foi `Lab NAT gateway` e a sub-rede pública foi escolhida. A opção alocar IP elástico foi marcada, assim um IP elástico era criado para esse *NAT Gateway*. A imagem 103 exibe essa configuração.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img103.png" alt="img103"><br>
+    <figcaption>Imagem 103.</figcaption>
+</figure></div><br>
+
+A tabela de rota privada já veio construída ao criar a VPC. Com isso, uma nova rota foi adicionada cujo destino foi `0.0.0.0/0` e o alvo (`target`) o *NAT Gateway* criado. Os recursos na sub-rede privada que desejam se comunicar com a internet agora possuíam seu tráfego de rede direcionado para o gateway NAT, que encaminhava a solicitação para a internet. As respostas fluem pelo gateway NAT de volta para a sub-rede privada, mas o acesso a sub-rede privada não era permitido. A imagem 104 é mostrado o fluxo final da VPC.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img104.png" alt="img104"><br>
+    <figcaption>Imagem 104.</figcaption>
+</figure></div><br>
+
+No primeiro desafio opcional deste laboratório, o objetivo foi testar a sub-rede privada. Para isso foi provisionada uma outra instância do EC2, exatamente igual a anterior, mas na sub-rede privada. A tag de nome dessa instância foi `Private Instance`. Em redes, além da alteração de sub-rede, a atribuição de IP público automaticamente foi mantida desabilitada, e um novo security group foi construído cujo nome foi `Private Instance SG` e a descrição `Allow SSH from Bastion`. A regra de entrada deste security group permitia acesso na porta `22` do protocolo `TCP`, apenas para tráfegos partindo da origem `10.0.0.0/16`, que era o IP da VPC criada, ou seja, apenas comunicação interna. Ainda nessa instância foi definido em user data um script em **Bash** para ser executado na instância. Esse script permitia o login usando uma senha, ao invês de ter que configurar um par de chaves. Ele foi incluído para ajudar a encurtar as etapas do laboratório, mas não é recomendado para implementações normais de instâncias. A imagem 105 exibe a instância construída na sub-rede privada.
+
+```bash
+#!/bin/bash
+# Turn on password authentication for lab challenge
+echo 'lab-password' | passwd ec2-user --stdin
+sed -i 's|[#]*PasswordAuthentication no|PasswordAuthentication yes|g' /etc/ssh/sshd_config
+systemctl restart sshd.service
+```
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img105.png" alt="img105"><br>
+    <figcaption>Imagem 105.</figcaption>
+</figure></div><br>
+
+O segundo desafio opcional foi realizar o login no servidor bastion. A instância provisionada estava na sub-rede privada, por isso não era possível fazer login diretamente nela. Em vez disso, primeiro foi preciso realizar o login no servidor bastion na sub-rede pública, depois fazer o login na instância privada pelo servidor bastion. Para se conectar a instância `Bastion Server` foi utilizado o recurso `EC2 Instance Connect`, acesso com usuário padrão `ec2-user`. Neste caso, não era preciso par de chaves, pois como era realizado pelo **AWS Console Management**, a própria **AWS** realizava a autenticação do usuário. Com a conexão bem sucedida, uma nova aba da **AWS** era aberto no navegador da maquina física **Windows** com um terminal já conectado na instância da sub-rede pública.
+
+No desafio opcional seguinte, foi realizado o acesso remoto agora da instância `Bastion Server`, que estava na sub-rede pública, a instância `Private Instance`, que estava na sub-rede privada. Para isso foi necessário copiar o endereço de IP privado da instância que desejava-se conectar. Observe que aqui o IP era privado, pois o acesso remoto era interno, ou seja, entre maquinas da mesma rede, sem acesso externo via internet. De volta a aba com terminal aberto foi executado o comando `ssh 10.0.2.100`. Na primeira vez executado, uma mensagem solicitando confirmação era exibida e foi confirmada digitando `yes`. Nesta conexão, foi solicitado a senha pois não havia par de chaves configurado, portanto a senha `lab-password` foi informada. A imagem 106 exibiu o acesso remoto interno realizado entre as duas instâncias do **Amazon EC2**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img106.png" alt="img106"><br>
+    <figcaption>Imagem 106.</figcaption>
+</figure></div><br>
+
+O último desafio opcional foi verificar que a instância na sub-rede privada tinha acesso a internet através do *NAT Gateway* provisionado. Ainda com a conexão remota interna aberta, foi executado o comando `ping -c 3 amazon.com` que utilizou o software **Ping** para checar o envio dos pacotes. O output do comando é mostrado na imagem 107 abaixo, comprovando que a instância na sub-rede privada tinha acesso a internet.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img107.png" alt="img107"><br>
+    <figcaption>Imagem 107.</figcaption>
+</figure></div><br>
 
 <a name="item5.56"><h4>5.56 181- [JAWS] -Atividade: Solucionar problemas de uma VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta laboratório, desenvolvido no sandbox **Vocareum**, o objetivo foi solucionar problemas de configurações no **Amazon VPC** e analisar os logs de fluxo da VPC. Um bucket no **Amazon S3** foi provisionado para armazenar dados de log do fluxo da VPC, que foi criado para capturar todo o tráfego IP que passava pelas interfaces de rede da VPC. Os dados desse log de fluxo foram baixados e analisados.
 
+Como alguns comandos seriam executados pela **AWS CLI**, uma instância, cuja tag de nome era `CLI Host` e que foi provisionada pela pilha do **AWS CloudFormation** ao iniciar o laboratório, foi utilizada. Para conectar-se a essa instância foi utilizado o recurso `EC2 Instance Connect` acessando através do usuário `ec2-user`. Não foi necessário configurar par de chaves, pois a autenticação era realizada pela própria **AWS**, já que esse recurso era executado no **AWS Console Management**. Como de costume, visto nos outros laboratórios, ao utilizar uma instância `CLI Host`, foi preciso configurar a **AWS CLI**. A linha de comando da **AWS** vem instalada por padrão em instâncias **Amazon Linux**, mas não vem configurada. A **AWS CLI** precisava ser configurada com alguma entidade, seja uma role ou um usuário do IAM. Essa configuração, nos laboratórios anteriores era realizada com o comando `aws configure`, informando a acess key e secret acess key, além da região padrão utilizada pela CLI, que no caso era a região do laboratório, `us-west-2` (Oregon), e o formato de saída dos dados, que foi definido como `json`. As credenciais eram fornecidas pela opção detalhes na página principal do sandbox **Vocareum**. 
 
+Contudo, neste laboratório, foi um pouco diferente, pois as credenciais eram fornecidas de forma diferente, através do arquivo `credentials` que ficava armazenado na pasta `.aws`. Essa pasta é sempre gerada ao executar o comando `aws configure` e informar as configurações do **AWS CLI**. Nela, as credenciais são mantidas no arquivo `credentials` e  as demais configurações (região e formato de dados) no arquivo `config`. Ao invés de executar o comando `aws configure` é possível criar essa pasta e os arquivos manualmente. Então foi copiado o arquivo `credentials` na página principal do sandbox e criado este arquivo na pasta `.aws` no diretório do usuário da instância conectada. A entidade vinculada a **AWS CLI** neste caso era a role de nome `voclabs` que foi criada pelo laboratório. Ainda tinha a opção de utilizar o arquivo par de chaves privada `.pem` e `.ppk` para conectar a instância através da maquina física **Windows**. Esses arquivos podiam ser baixados na página principal do sandbox e configuraria a **AWS CLI** nesta mesma role.
 
+Na segunda tarefa foi construído primeiramente um bucket do **Amazon S3** para armazenar os dados de logs de fluxo da VPC. Em seguida, foi elaborado os logs de fluxo da VPC `VPC1` para capturar informações sobre o tráfego IP entre as interfaces de rede da `VPC1`. Para provisionar o bucket foi utilizado no terminal shell conectado na instância `CLI Host` o comando `aws s3api create-bucket --bucket flowlog598824 --region 'us-west-2' --create-bucket-configuration LocationConstraint='us-west-2'`, substituindo os seis hashs por números aleatórios. A saída em formato JSON, semelhante `http://flowlog598824.s3.amazonaws.com`, mostrava o local de um bucket, onde `flowlog598824` era o nome do bucket criado que seria utilizado na etapa posterior. Se por acaso já existir um bucket do S3 da **AWS** em algum lugar do mundo com esse nome, será preciso colocar um nome diferente. A imagem 108 exibe o bucket provisionado.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img108.png" alt="img108"><br>
+    <figcaption>Imagem 108.</figcaption>
+</figure></div><br>
 
+Para obter o ID da VPC `VPC1` foi utilizado o comando `aws ec2 describe-vpcs --query "Vpcs[*].[VpcId,Tags[?Key=='Name'].Value,CidrBlock]" --filters "Name=tag:Name,Values='VPC1'"`. Com esse ID e nome do bucket construído, foi criado o log de fluxo da VPC com o comando `aws ec2 create-flow-logs --resource-type VPC --resource-ids vpc-090035f06dcb42976 --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::flowlog598824`. A saída do comando retornou FlowLogIds e um ClientToken. Para confirmar se o log de fluxo foi criado, executou-se o seguinte comando `aws ec2 describe-flow-logs`, conforme imagem 109. A saída do comando mostrou que um único log de fluxo foi criado com um `FlowLogStatus` `ACTIVE` (ATIVO) e um destino de log que apontava para o bucket do S3.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img109.png" alt="img109"><br>
+    <figcaption>Imagem 109.</figcaption>
+</figure></div><br>
 
+A tarefa 3 teve como objetivo solucionar problemas de configuração da VPC para permitir acesso aos recursos. Primeramente, foi verificado o acesso ao servidor web executado em uma outra instância do EC2, que operava na sub-rede pública. Para isso, o IP ou DNS público dessa instância foi copiado e utilizado no navegador da maquina física **Windows**. Como observado, a página não era carregada e uma mensagem indicando que o site não podia ser acessado ou que a conexão expirou foi exibida. No terminal conectado na instância `CLI Host` foi executado o comando `aws ec2 describe-instances --filter "Name=ip-address,Values='54.202.16.100'"` com o IP público do servidor web para visualizar detalhes da instância da aplicação web. Com muitas informações eram exibidas, o mesmo comando foi executado filtrando apenas as informações necessárias (`aws ec2 describe-instances --filter "Name=ip-address,Values='54.202.16.100'" --query 'Reservations[*].Instances[*].[State,PrivateIpAddress,InstanceId,SecurityGroups,SubnetId,KeyName]'`). Este comando retornava apenas o estado da instância, o endereço IP privado, o ID da instância, os grupos de segurança aplicados a ela, a sub-rede na qual ela era executada e o nome do par de chaves associado a ela. Os resultados do comando, apresentados na imagem 110, indicava que a instância estava em execução e retornava informações adicionais que poderiam ser usadas posteriormente. 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img110.png" alt="img110"><br>
+    <figcaption>Imagem 110.</figcaption>
+</figure></div><br>
 
+Em seguida, foi realizado uma tentativa de estabelecer uma conexão SSH com a instância do servidor web, cuja tag de nome era `Café Web Server`, usando o `EC2 Instance Connect`. Perceba que após alguns segundos a tentativa de conexão falhou e uma mensagem indicando falha ao tentar conectar com a instância foi exibida. A investigação desse problema foi realizado no terminal da instância `CLI Host`. Primeiro foi utilizado o software **Nmap** para verificar quais portas estavam abertas na instância do EC2 do servidor web. Contudo, foi preciso baixar o software com o comando `sudo yum install -y nmap` e depois executar o comando `nmap 54.202.16.100` informando o IP público do servidor web. Se o **Nmap** não puder encontrar portas abertas, pode haver algo mais bloqueando o acesso à instância. A imagem 111 mostra o uso do **Nmap**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img111.png" alt="img111"><br>
+    <figcaption>Imagem 111.</figcaption>
+</figure></div><br>
 
+Com o comando `aws ec2 describe-security-groups --group-ids 'sg-002984b3594d2d86c'` foi verificado os detalhes do security group que era vinculado a instância. As configurações do grupo de segurança aplicadas à instância do EC2 do servidor web possuía uma regra de entrada que permitia a conectividade com a porta 22. Então foi verificado as configurações da tabela de rota associada à sub-rede em que o servidor web estava em execução, que era a sub-rede pública. Com o comando `aws ec2 describe-route-tables  --route-table-ids 'rtb-061ddb99f1aa68109' --filter "Name=association.subnet-id,Values='subnet-0bd4e59d6b38c8bcf'"` e o ID dessa sub-rede e da sua tabela de rota, foi exibido apenas as informações filtradas dessa tabela de rota. Note que não há uma rota direcionando o tráfego para o *Internet Gateway*, portanto foi preciso criar essa rota utilizando o comando `aws ec2 create-route --route-table-id 'rtb-061ddb99f1aa68109' --gateway-id  'igw-090e52b83dec24305' --destination-cidr-block '0.0.0.0/0'`, substituindo o ID da tabela de rota e do gateway de internet. Este último pôde ser consultado com o comando `aws ec2 describe-internet-gateways` ou através da opção detalhes da página principal do sandbox **Vocareum**, onde tem todos os valores dos recursos utilizados no laboratório. A imagem 112 evidencia estas verificações e correção.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img112.png" alt="img112"><br>
+    <figcaption>Imagem 112.</figcaption>
+</figure></div><br>
 
+Para checar, foi preciso carregar a aba do navegador da maquina física **Windows** que estava aberta na aplicação web. Agora foi possível visualizar a mensagem “Hello From Your Web Server!", significando que o acesso ao servidor web foi realizado com sucesso, conforme imagem 113.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img113.png" alt="img113"><br>
+    <figcaption>Imagem 113.</figcaption>
+</figure></div><br>
 
+Ao resolver o primeiro problema, um segundo problema permanecia. Ao tentar conectar-se a instância do servidor web via `EC2 Instance Connect`, ainda apresentava falha de conexão. No terminal da instância `CLI Host` foi verificado as configurações da lista de controle de acesso de rede (ACL de rede; NACL) que estava associada à sub-rede na qual a instância estava sendo executada, que era a sub-rede pública. Com o comando `aws ec2 describe-network-acls --filter "Name=association.subnet-id,Values='subnet-0bd4e59d6b38c8bcf'" --query 'NetworkAcls[*].[NetworkAclId,Entries]'` e informando o ID da VPC `VPC1` foi visualizado as informações. Alguns registros da NACL estavam causando problemas, mas especificamente a regra de número `40`. Então, com o comando `aws ec2 delete-network-acl-entry --network-acl-id 'acl-00a02118a70a0c151' --ingress --rule-number 40` e informando o ID da NACL foi excluído essa regra. Ao concluir isso, foi realizado uma nova tentativa de conexão à instância `Café Web Server` e dessa vez foi bem sucedida, como mostrado na imagem 114.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img114.png" alt="img114"><br>
+    <figcaption>Imagem 114.</figcaption>
+</figure></div><br>
 
+Os dois problemas de rede foram resolvidos e ao fazer isso foram criado alguns registros úteis nos logs de fluxo da VPC que foi provisionado anteriormente. Nesta última tarefa, esses registros foram consultados para observar as atividades que eles capturaram. De volta ao terminal conectado na instância `CLI Host`, foi criado um diretório na pasta do usuário `ec2-user` com o comando `mkdir flowlogs`. Em seguida, essa pasta foi acessada com o comando `cd flowlogs`. Para listar os buckets do S3 foi utilizado o comando `aws s3 ls` e para baixar os logs de fluxo foi utilizado o comando `aws s3 cp s3://flowlog598824/ . --recursive`. Se o comando for bem-sucedido, muitos arquivos serão baixados para um subdiretório semelhante ao seguinte: `AWSLogs/AccountID/vpcflowlogs/us-west-2/yyyy/mm/dd/`. Em seguida, desça na estrutura de pastas até o subdiretório em que os arquivos foram baixados ou execute o comando `cd <AWSLogs/AccountID/vpcflowlogs/us-west-2/yyyy/mm/dd/` para ir direto para o subdiretório. Com o comando `ls` todos os arquivos de logs baixados foram listados. Todos os nomes de arquivos terminam com log.gz, o que indicava que eles estavam compactados como arquivos GNU .zip. Para extrair os logs foi executado o comando `gunzip *.gz` e executado `ls` novamente. A imagem 115 exibe os arquivos extraídos.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img115.png" alt="img115"><br>
+    <figcaption>Imagem 115.</figcaption>
+</figure></div><br>
+
+A próxima etapa dessa última tarefa foi analisar os logs de fluxo da VPC para verificar se as tentativas de conexão SSH com falha foram capturadas nos logs. Para isso, foi copiado o nome de um dos arquivos extraídos anteriormente e utilizado no comando `head <file name>`. A linha do cabeçalho indica o tipo de dados que cada registro de log continha. Cada registro continha informações, como o endereço IP da origem do evento (na quarta coluna), a porta de destino (sétima coluna), carimbos de data/hora de início e término (no formato de carimbo de data/hora do Unix) e a ação resultante (ACCEPT (Aceitar) ou REJECT (Rejeitar)). Para pesquisar cada arquivo de log no diretório atual e retornar as linhas que continha a palavra REJECT (Rejeitar), foi executado o comando `grep -rn REJECT`. Esse comando retornou um conjunto de dados grande porque incluía todos os eventos em que as configurações da VPC rejeitaram a solicitação. Para saber quantos registros foram retornados, foi executado o comando `grep -rn REJECT . | wc -l`. Os resultados mostram o número de linhas no conjunto de resultados. Para refinar a pesquisa procurando apenas linhas que continham 22 (que era o número da porta em que tentou-se conectar ao servidor web quando o acesso foi bloqueado), foi execute o comando `grep -rn 22 . | grep REJECT`. Esse comando retornou um número menor de resultados. Para isolar o conjunto de resultados para que ele exibisse apenas os registros de log que correspondesse às tentativas de conexão SSH com falha que foi feita, foi filtrado ainda mais os resultados. Lembre-se de que as tentativas malsucedidas de usar SSH para conectar o servidor web foram iniciadas na instância `CLI Host`.
+
+Na etapa seguinte, foi determinado o endereço IP pelo qual a máquina física **Windows** podia ser endereçada pela internet. Para fazer isso foi preciso ir no grupo de segurança vinculado a instância de servidor web e adicionar uma nova regra. Nesta regra, em origem foi selecionado `Meu IP` e esse mesmo endereço de IP foi copiado, ele terminava com `/32`, mas não era preciso copiar essa máscara, apenas o IP. Ao invés de criar de fato a regra, ela foi cancelada, o objetivo foi só obter o endereço de IP da maquina física na internet. Isso poderia ser realizado acessando site on-lines que mostram o IP público da maquina física. De volta ao terminal conectado na instância `CLI Host` foi executado uma consulta refinada nos logs de fluxo com o comando `grep -rn 22 . | grep REJECT | grep <ip-address>45.226.85.120` passando esse endereço de IP copiado. O número de linhas do conjunto de resultados agora deve corresponder ao número de vezes que foi realizado a tentativa malsucedida de conexão SSH a instância do servidor web. Observe que o ID da interface de rede elástica estava em cada um dos registros de log que foram retornados pela consulta. Para confirmar se o ID da interface de rede registrado no log de fluxo corresponde à interface de rede atribuída à instância do servidor web (como parte da interface de rede), foi executado o comando `aws ec2 describe-network-interfaces --filters "Name=association.public-ip,Values='54.202.16.100'" --query 'NetworkInterfaces[*].[NetworkInterfaceId,Association.PublicIp]'`, substituindo o endereço de IP pelo endereço IP da instância de servidor web. Depois, foi convertido os carimbos de data/hora em um formato legível. Observe os dois números grandes que apareceu no final de cada registro de log, antes do termo REJECT (Rejeitar). Esses números eram carimbos de data/hora em formato Unix. O primeiro carimbo de data/hora indica a hora de início de cada evento que foi capturado. O segundo indica a hora de término. É possível convertê-los em um formato legível usando o utilitário date da linha de comando do **Linux**. Por exemplo, se o carimbo de data/hora for 1719960588, seria executado o comando `date -d @1719960588`, conforme imagem 116. 
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img116.png" alt="img116"><br>
+    <figcaption>Imagem 116.</figcaption>
+</figure></div><br>
+
+Para converter um dos carimbos de data/hora em um formato legível por humanos, foi executado o comando `date -d @` para um dos carimbos de data/hora capturados de um dos resultados filtrados de REJECT (Rejeitar). Ele deve indicar um horário a partir de hoje que corresponda ao momento em que este laboratório estava em execução. Para comparar o resultado com o horário atual, foi executado o comando `date`. O uso de grep é uma maneira excelente, ainda que básica, de extrair dados significativos dos arquivos de log de fluxo da VPC. O mercado oferece muitas ferramentas para executar relatórios ou gerar painéis de analytics usando logs. Uma solução seria usar o serviço **Amazon Athena**. É possível utilizar o Athena para ingerir logs para que eles se tornem dados em uma tabela de banco de dados. Depois, é possível executar consultas SQL para extrair informações significativas dos logs. 
 
 <a name="item5.58"><h4>5.58 Visão geral do Cloud Storage</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
