@@ -1982,7 +1982,36 @@ Com relação aos casos de uso desses principais serviços:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.60"><h4>5.60 Demonstração do Amazon EBS-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+criar uma instância do EC2 com um volume do EBS como volume de inicialização (padrão gp2)
+criar um volume do EBS para um disco rígido externo de uma instância do EC2 existente.
+    - gp2
+    - 10 GiB
+    - IOPS 100/3000
+    - AZ da instância
+    - tag: Nome - EBS_EDN1
+anexar o volume do EBS a instância e determinar o nome do device (/dev/sdf)
+conectar a instância linux
+    - df -h: listar todos os volumes
+    - sudo mkfs -t ext3 /dev/sdf : criando um sistema de arquivos no device do volume do EBS e nomeando de ext3
+    - sudo mkdir /mnt/data-store : criar o diretorio para deifnir o local para montar o volume específico.
+    - sudo mount /dev/sdf /mnt/data-store : montando o volume
+    - df -h
+criar um snapshot do volume do EBS:
+    - volume, descrição ("EBS2"), tag (Nome - EBS2)
+
 
 
 
