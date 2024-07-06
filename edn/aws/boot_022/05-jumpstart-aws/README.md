@@ -1972,26 +1972,42 @@ Com relação aos casos de uso desses principais serviços:
 
 <a name="item5.59"><h4>5.59 Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+O armazenamento é outra categoria de serviço fundamental da **AWS**. Ele se divide em três grandes categorias: armazenamento de instâncias (ou armazenamento temporário), **Amazon Elastic Block Store (Amazon EBS)** (armazenamento em bloco) e **Amazon Simple Storage Service (Amazon S3)** (armazenamento de objetos). O armazenamento de instâncias, ou armazenamento temporário, é um tipo de armazenamento temporário adicionado à instância do **Amazon Elastic Compute Cloud (Amazon EC2)**. O **Amazon EBS** é um armazenamento persistente e montável. Um volume do EBS pode ser montado como um dispositivo para uma instância do EC2, mas apenas se ambos estiverem na mesma zona de disponibilidade. De maneira semelhante ao **Amazon EBS**, o **Amazon S3** é um armazenamento persistente. No entanto, pode ser acessado de qualquer lugar.
 
+A principal diferença entre o armazenamento em bloco e o armazenamento de objetos é que, no armazenamento em bloco, apenas o bloco contendo a alteração precisa ser modificado. Já no armazenamento de objetos, todo o arquivo deve ser atualizado. Para compreender as diferenças entre alguns tipos de armazenamento, é crucial saber se oferecem armazenamento em nível de bloco ou em nível de objeto. Essa distinção impacta significativamente a taxa de transferência, a latência e o custo da solução de armazenamento. Em geral, as soluções de armazenamento em bloco são mais rápidas e utilizam menos largura de banda, porém são mais caras do que o armazenamento em nível de objeto.
 
+O **Amazon EBS** é um sistema de armazenamento em bloco fornecido pela **AWS**, ideal para armazenar dados persistentes. O **Amazon EBS** oferece volumes de armazenamento em nível de bloco altamente disponíveis para utilização com instâncias do EC2. O armazenamento persistente refere-se a qualquer dispositivo de armazenamento de dados que mantém os dados após a alimentação ser desligada, também conhecido como armazenamento não volátil. Cada volume do EBS é automaticamente replicado na Zona de disponibilidade para protegê-lo contra falhas de componentes, garantindo alta disponibilidade e durabilidade. Os volumes do EBS proporcionam desempenho consistente e baixa latência, essenciais para a execução de cargas de trabalho. Com o **Amazon EBS**, é possível escalar o uso para cima ou para baixo em minutos, pagando apenas pelos recursos provisionados.
 
+O **Amazon EBS** permite a criação de volumes de armazenamento individuais que podem ser anexados a uma instância do EC2. O **Amazon EBS** oferece armazenamento em nível de bloco com volumes replicados automaticamente dentro da zona de disponibilidade, proporcionando armazenamento durável e destacável, semelhante a um disco rígido externo, para as instâncias do EC2. Os volumes são diretamente conectados às instâncias, fornecendo baixa latência entre o local onde os dados são armazenados e onde podem ser utilizados na instância. Por essa razão, eles podem ser utilizados para executar um banco de dados em uma instância do EC2. Os volumes do EBS também podem ser utilizados para fazer backup das instâncias em Amazon Machine Images (AMIs), que são armazenadas no Amazon Simple Storage Service (Amazon S3) e podem ser reutilizadas para criar novas instâncias do EC2 posteriormente. Os usos incluem: Volumes de inicialização e armazenamento para instâncias do EC2; Armazenamento de dados com um sistema de arquivos; Hosts de banco de dados; Aplicações empresariais. 
 
+Para aumentar ainda mais a durabilidade dos dados, o Amazon EBS permite a criação de snapshots pontuais dos volumes. É possível recriar um novo volume a partir de um snapshot a qualquer momento. Os snapshots podem ser compartilhados ou até copiados para diferentes regiões da **AWS**, oferecendo uma proteção adicional para recuperação de desastres (DR). Por exemplo, é possível criptografar e compartilhar snapshots da Virgínia, EUA, para Tóquio, Japão. O Amazon EBS também oferece a capacidade de fazer backup dos snapshots dos dados no **Amazon S3** para recuperação durável. Caso opte pelos snapshots do **Amazon EBS**, o custo adicional será calculado por GB por mês de dados armazenados.
 
+Também é possível obter volumes criptografados do **Amazon EBS** sem custo adicional. A criptografia ocorre no lado do **Amazon EC2**. Os dados que se movem entre a instância do EC2 e o volume do EBS dentro dos data centers da **AWS** são criptografados em trânsito. Os volumes do EBS podem aumentar a capacidade e mudar para diferentes tipos. É possível trocar de uma unidade de disco rígido (HDD) para uma unidade de estado sólido (SSD) ou aumentar de um volume de 50 GB para um volume de 16 TB. Por exemplo, essa operação de redimensionamento pode ser realizada dinamicamente, sem interromper as instâncias.
 
+Ao estimar o custo do **Amazon EBS**, é importante considerar o seguinte:
+- Volumes: O armazenamento de volume para todos os tipos de volume do EBS é cobrado pelo valor provisionado em GB por mês, até que o armazenamento seja liberado.
+- IOPS: As operações de entrada/saída (E/S) por segundo (IOPS) medem o desempenho dos dispositivos de armazenamento. Um IOPS mais alto significa que um dispositivo de armazenamento pode lidar com mais operações de entrada e saída (ou seja, gravação e leitura). Para o **Amazon EBS**, a E/S está incluída no preço dos volumes de uso geral (SSD), enquanto para volumes magnéticos do **Amazon EBS**, a E/S é cobrada pelo número de solicitações feitas ao volume. Com os volumes de IOPS provisionadas (SSD), também há uma cobrança pelo valor provisionado em IOPS (multiplicado pela porcentagem de dias provisionados para o mês).
 
+O **Amazon EBS** oferece diferentes tipos de volumes com características de desempenho e preços variados para corresponder às necessidades de diversas aplicações. Esses tipos são designados por nomes de três caracteres, como `io1` e `st1`, e se dividem em duas categorias principais: unidades de estado sólido (SSD), ideais para cargas de trabalho que demandam alta taxa de IOPS, e unidades de disco rígido (HDD), adequadas para cargas de trabalho com alta taxa de transferência em MB/s. Escolher a tecnologia adequada para a carga de trabalho é fundamental para otimizar os custos de armazenamento. Os volumes do EBS com suporte para unidades de estado sólido (SSD) de IOPS provisionadas proporcionam o máximo desempenho possível. No entanto, se o aplicativo não requer ou utiliza um desempenho tão alto, pode ser mais vantajoso considerar uma opção de custo mais baixo. Abaixo estão listados os quatro tipos de volumes:
+- SSD de IOPS provisionadas (io1) ou Provisioned IOPS SSD (io1): Utiliza unidades de estado sólido (SSDs) e é a opção de armazenamento de maior desempenho no **Amazon EBS**. Características: Tamanho máximo do volume de 16 TiB; até 32.000 IOPS por volume; até 500 MiB/s de taxa de transferência por volume. Casos de uso: Cargas de trabalho intensivas de E/S, bancos de dados relacionais, bancos de dados NoSQL.
+- SSD de uso geral (gp2) ou General Purpose SSD (gp2): Tipo padrão de volume do EBS para instâncias do EC2. Características: Tamanho máximo do volume de 16 TiB; até 10.000 IOPS por volume; até 160 MiB/s de taxa de transferência por volume. Casos de uso: Maioria das cargas de trabalho, volumes de inicialização do sistema, desktops virtuais, aplicações interativas de baixa latência, ambientes de teste e desenvolvimento.
+- HDD otimizado para taxa de transferência (st1) ou Throughput Optimized HDD (st1): Suportado por unidades de disco rígido (HDDs) e ideal para cargas de trabalho com necessidade intensiva de taxa de transferência e acesso frequente, grandes conjuntos de dados e grandes tamanhos de E/S. Características: Tamanho máximo do volume de 16 TiB; até 500 IOPS por volume; até 500 MiB/s de taxa de transferência por volume. Casos de uso: Cargas de trabalho de streaming que exigem throughput rápido e consistente a um custo acessível, big data, data warehouses, processamento de logs.
+- HDD inativo (sc1) ou Cold HDD (sc1): Utiliza unidades de disco rígido (HDDs) e oferece o menor custo por GB entre todos os tipos de volume do EBS. Ideal para cargas de trabalho com acesso menos frequente, grandes conjuntos de dados inativos. Características: Tamanho máximo do volume de 16 TiB; até 250 IOPS por volume; até 250 MiB/s de taxa de transferência por volume. Casos de uso: Armazenamento orientado para taxa de transferência para grandes volumes de dados acessados com pouca frequência, cenários onde o custo de armazenamento é crucial.
 
+A taxa de transferência máxima de um dispositivo (por exemplo, 500 MiB/s) é a velocidade máxima na qual ele pode mover dados entre o dispositivo de armazenamento e o sistema que o acessa. Quando um dispositivo suporta até 500 IOPS, significa que ele pode executar até 500 operações de leitura ou gravação por segundo. A velocidade máxima de transferência só é atingida para 1 IOPs se ele tiver um tamanho maior ou igual. Quando múltiplas operações de IOPS estão ocorrendo simultaneamente (por exemplo, os 500 IOPS), a taxa de transferência total do dispositivo pode ser distribuída entre essas operações. Isso significa que a taxa de transferência disponível para cada operação individual pode ser menor do que a taxa máxima do dispositivo, especialmente se todas as operações estiverem ocorrendo ao mesmo tempo.
 
+É possível utilizar o Console de gerenciamento da **AWS** ou a Interface de linha de comando da **AWS** (**AWS CLI**) para provisionar um volume. Durante a criação de um volume do EBS, é necessário indicar a Zona de disponibilidade onde ele será alocado. Caso a intenção seja anexá-lo a uma instância existente do EC2, é crucial que o volume seja criado na mesma Zona de disponibilidade em que a instância do EC2 está situada.
 
+É possível realizar backups dos dados de um volume do EBS utilizando snapshots. É essencial capturar snapshots regularmente de todos os dados em ambientes de desenvolvimento, teste ou produção. O **Amazon EBS** oferece a capacidade de criar snapshots de volumes, permitindo restaurá-los em casos de falha do hardware subjacente que suporta o volume ou exclusão acidental do volume. Os snapshots copiam dados em formato de bloco para a infraestrutura do **Amazon S3**, onde são armazenados de forma redundante, suportando a perda simultânea de dados em duas instalações. Quando é dito que os snapshots suportam a perda simultânea de dados em duas instalações, significa que os dados são replicados e armazenados de forma redundante em diferentes locais físicos ou centros de dados da **AWS** na mesma AZ. O primeiro snapshot captura o estado completo do disco no momento da criação. Snapshots subsequentes registram apenas as diferenças em relação ao snapshot anterior, conhecidas como deltas. Se novos dados são adicionados ao volume após a criação do primeiro snapshot e um segundo snapshot é criado, apenas os blocos modificados são copiados para o **Amazon S3**. O segundo snapshot incluirá uma fórmula para restaurar o volume, composta pelos blocos do primeiro snapshot e pelos blocos adicionais. Os snapshots são incrementais, o que significa que são baseados em deltas, copiando apenas as alterações desde os snapshots anteriores. Ao atualizar blocos no volume do EBS e criar um terceiro snapshot, somente os blocos alterados são copiados para o **Amazon S3**, formando uma nova fórmula para restauração.
 
+É possível utilizar o comando create-snapshot da **AWS CLI** para criar um snapshot de um volume do EBS. Os snapshots são processados de forma assíncrona. O snapshot inicial é criado imediatamente, mas o status permanece pendente até que todo o processo de snapshot seja concluído, o que inclui a transferência de todos os blocos modificados para o **Amazon S3**. É possível criar um snapshot de um volume que está sendo utilizado. Contudo, o snapshot registra apenas os dados gravados no volume do EBS no exato momento em que o comando de snapshot é emitido. Durante o processo de conclusão, o snapshot não é influenciado por operações contínuas de leitura e gravação no volume. Isso pode resultar em um snapshot que não inclui dados armazenados em cache por aplicativos ou pelo sistema operacional. Para evitar essa situação, é recomendável pausar todas as operações de gravação no volume ou parar a instância antes de realizar o snapshot. Se não for possível interromper todas as operações de gravação, desmonte o volume de dentro da instância. Especialmente ao criar um snapshot de um volume do EBS usado como dispositivo raiz, é essencial interromper a instância antes de iniciar o snapshot.
 
+Os snapshots têm escopo regional e são visíveis apenas dentro da região em que são criados. Se desejar utilizar um snapshot em uma região diferente ou fazer uma cópia na mesma região, é possível usar o comando copy-snapshot da **AWS CLI** para realizar essa operação. Durante a cópia, os dados do snapshot são protegidos em trânsito por criptografia do lado do servidor (256 bits AES) do **Amazon S3**. A cópia do snapshot recebe um ID diferente do snapshot original. Embora os snapshots sejam armazenados no **Amazon S3**, não são diretamente acessíveis através dos utilitários do **Amazon S3**. Para restaurar um snapshot, deve-se utilizar o comando create-volume da **AWS CLI**. Os blocos de armazenamento em volumes restaurados a partir de snapshots precisam ser inicializados (carregados do **Amazon S3** e gravados no volume) antes de serem acessados. Essa operação inicial pode aumentar significativamente a latência de operações de E/S na primeira vez que cada bloco é acessado. Por essa razão, a **AWS** recomenda a prática de aquecimento do volume para evitar essa penalidade, especialmente em ambientes de produção. Esse aquecimento pode ser realizado lendo todos os blocos que contêm dados antes de utilizar o volume.
 
-
-
-
-
-
-
-
+Pode-se utilizar o **Amazon Data Lifecycle Manager (Amazon DLM)** para automatizar a criação, retenção e exclusão de snapshots utilizados para fazer backup dos volumes do EBS. A automação do gerenciamento de snapshots auxilia em várias áreas: assegurando a proteção de dados valiosos através de backups regulares; mantendo backups conforme exigências de auditores ou regras de conformidade interna; e reduzindo custos ao eliminar backups obsoletos. Para utilizar o **Amazon DLM**, é necessário marcar o volume do EBS e criar uma política de ciclo de vida que defina o comportamento desejado para backup e retenção. A política de ciclo de vida, elaborada através de um arquivo **JavaScript Object Notation (JSON)**, inclui configurações essenciais como:
+- Tipo de recurso: O recurso da **AWS** gerenciado pela política (neste caso, volumes do EBS);
+- Tag de destino: A tag que deve ser associada a um volume do EBS para ser gerenciado pela política;
+- Programação: Define a frequência de criação de snapshots e o número máximo de snapshots a serem mantidos. A criação de um snapshot é iniciada em até uma hora após o horário de início especificado. Caso a criação de um novo snapshot exceda o número máximo definido para o volume, o snapshot mais antigo será excluído.
 
 <a name="item5.60"><h4>5.60 Demonstração do Amazon EBS-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -2001,7 +2017,7 @@ criar um volume do EBS para um disco rígido externo de uma instância do EC2 ex
     - 10 GiB
     - IOPS 100/3000
     - AZ da instância
-    - tag: Nome - EBS_EDN1
+    - tag: Nome - EBSVolEDN1
 anexar o volume do EBS a instância e determinar o nome do device (/dev/sdf)
 conectar a instância linux
     - df -h: listar todos os volumes
@@ -2011,16 +2027,20 @@ conectar a instância linux
     - df -h
 criar um snapshot do volume do EBS:
     - volume, descrição ("EBS2"), tag (Nome - EBS2)
-
-
-
-
-
-
-
-
-
-
+criar um novo volume com o snapshot
+    - gp2
+    - 15 GiB
+    - IOPS 100/3000
+    - AZ da instância
+    - tag: Nome - EBSRestVolEDN1
+anexar o novo volume a instância e determinar o nome do device (/dev/sdg)
+conectar a instância linux
+    - lsblk : mostra todos os volumes
+    - df -h
+    - sudo resize2fs /dev/nvme2n1 : redimensiona a usabilidade real desse volume específico para o tamanho correspondete
+    - df -h
+    - ls /mt/data-store2/
+    - cat /mnt/data-store2/file.txt
 
 
 <a name="item5.61"><h4>5.61 182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -2037,21 +2057,150 @@ criar um snapshot do volume do EBS:
 
 
 
+
+
+
+
+
 <a name="item5.62"><h4>5.62 O armazenamento de instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+Alguns tipos de instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)** incluem armazenamento diretamente anexado em forma de dispositivos em bloco, conhecido como armazenamento de instâncias. Esse tipo de armazenamento oferece temporariamente espaço em bloco para a instância, utilizando discos fisicamente conectados ao host do computador. O armazenamento de instâncias é ideal para necessidades temporárias de armazenamento. No entanto, não deve ser usado para dados valiosos ou de longo prazo. Para esses casos, é recomendado utilizar armazenamentos mais duráveis, como **Amazon S3**, **Amazon EBS** ou **Amazon EFS**. As instâncias que utilizam armazenamento de instâncias não podem ser pausadas, apenas encerradas. Os dados são perdidos ao encerrar a instância, mas são preservados em reinicializações.
+
+Esse armazenamento está fisicamente ligado ao host da instância do EC2. Consiste em volumes de armazenamento de instâncias, também conhecidos como unidades temporárias que operam em blocos de dados. O armazenamento de instâncias é dedicado a uma instância específica do EC2, oferecendo alta velocidade e baixa latência. Os volumes de armazenamento de instâncias não possuem uma API própria de gerenciamento. Em vez disso, são configurados através do mapeamento de dispositivos de blocos na API do **Amazon EC2** e no Console de gerenciamento da **AWS**. Não é possível criar ou excluir volumes de armazenamento de instâncias, mas é possível controlar sua exposição à instância do **Amazon EC2** e o nome do dispositivo utilizado.
+
+Alguns tipos de instância não suportam volumes de armazenamento de instâncias. Para os tipos de instância que são compatíveis com eles, a quantidade e o tamanho dos volumes de armazenamento de instâncias disponíveis variam conforme o tipo de instância. Os tipos de instância que utilizam unidades de estado sólido (SSD) baseadas em NVMe (Non-Volatile Memory Express) ou Serial Advanced Technology Attachment (SATA) proporcionam alto desempenho de E/S aleatórias. O NVMe pode executar milhares de comandos simultaneamente e é uma interface para acessar a memória. Esses tipos de instância são ideais quando é necessário armazenamento com baixa latência, mas os dados não precisam persistir após o encerramento da instância.
+
+Ao executar uma instância, é necessário especificar os volumes de armazenamento de instâncias desejados (exceto os volumes NVMe, que são automaticamente disponibilizados). Não é possível adicionar volumes de armazenamento de instâncias após a execução da instância. Uma vez que a instância esteja em execução, os volumes de armazenamento de instâncias estão disponíveis para ela, porém não podem ser acessados até que sejam montados. Para instâncias do **Microsoft Windows**, o serviço *EC2Launch* realiza a montagem dos volumes de armazenamento de instâncias. No caso de instâncias do **Linux**, o tipo de instância determina quais volumes de armazenamento de instâncias são montados automaticamente e quais requerem montagem manual pelo usuário.
+
+Os volumes de armazenamento de instâncias da **AWS** são ideais para armazenar temporariamente informações em constante mudança, como buffers, caches, dados temporários e outros conteúdos transitórios. Eles também são adequados para armazenar dados replicados entre uma frota de instâncias, como em um pool de servidores web com balanceamento de carga.
+
 <a name="item5.63"><h4>5.63 Elastic File System</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+O **Amazon EFS** oferece armazenamento NFS (Network File System) que é simples, escalável, totalmente gerenciado e elástico. Um sistema de arquivos de rede (NFS) possibilita armazenar e recuperar dados através de uma rede. O **Amazon EFS** pode ser utilizado com serviços de nuvem da **AWS** e recursos locais. É fácil de usar e apresenta uma interface simples para a criação e configuração rápida de sistemas de arquivos. Entre os recursos do **Amazon EFS** estão: sistema de arquivos com escala de petabytes e baixa latência; capacidade elástica; suporte a NFS; compatibilidade com todas as imagens de máquina da Amazon (AMIs) baseadas em **Linux** para o **Amazon Elastic Compute Cloud (Amazon EC2)**.
+
+O armazenamento do **Amazon EFS** é simples, escalável e elástico. Foi projetado para escalar elasticamente sob demanda, sem interromper os aplicativos. Os sistemas de arquivos do **Amazon EFS** crescem e diminuem automaticamente conforme arquivos são adicionados ou removidos, garantindo que os aplicativos tenham o armazenamento necessário, quando necessário. Sendo um serviço gerenciado, o **Amazon EFS** facilita a configuração e o dimensionamento de armazenamento de arquivos na nuvem da **AWS**. É uma solução prática para criar sistemas de arquivos para big data e análise, fluxos de trabalho de processamento de mídia, gerenciamento de conteúdo, veiculação na web e diretórios iniciais.
+
+Para oferecer suporte a uma variedade de cargas de trabalho de armazenamento na nuvem, o **Amazon EFS** disponibiliza atributos que permitem controlar o desempenho do sistema de arquivos. Esses atributos de desempenho incluem modo de desempenho, classe de armazenamento e modo de taxa de transferência. É possível selecionar entre dois modos de desempenho ao criar um sistema de arquivos: uso geral e E/S máxima. Caso nenhum modo de desempenho seja escolhido ao criar o sistema de arquivos, o **Amazon EFS** selecionará automaticamente o modo de uso geral por padrão. Observe que não é possível alterar o modo de desempenho de um sistema de arquivos após a sua criação.
+- Uso geral: O modo de desempenho de uso geral é recomendado para a maioria dos sistemas de arquivos do **Amazon EFS**. Funciona bem para casos de uso sensíveis à latência, como ambientes de serviço web, sistemas de gerenciamento de conteúdo, diretórios iniciais e serviço geral de arquivos.
+- E/S máxima: Os sistemas de arquivos no modo E/S máxima podem ser dimensionados para níveis mais altos de taxa de transferência agregada e operações por segundo, com uma compensação de latências ligeiramente mais altas para operações de arquivos. Aplicativos e cargas de trabalho altamente paralelizados, como análise de big data e processamento de mídia, podem se beneficiar desse modo.
+
+O **Amazon EFS** oferece duas classes de armazenamento: Standard e Acesso Pouco Frequente. A classe de armazenamento Standard é projetada para cargas de trabalho ativas e é adequada para armazenar arquivos acessados com frequência. A classe Acesso Pouco Frequente é uma opção de baixo custo, otimizada para armazenar arquivos de longa duração que são acessados esporadicamente. Existem dois modos de taxa de transferência disponíveis para o sistema de arquivos: Taxa de Transferência Intermitente e Taxa de Transferência Provisionada. No modo Taxa de Transferência Intermitente, a taxa de transferência do **Amazon EFS** aumenta conforme o tamanho do sistema de arquivos na classe de armazenamento Standard cresce, sendo essa a configuração padrão. No modo Taxa de Transferência Provisionada, é possível provisionar instantaneamente a taxa de transferência do sistema de arquivos (em mebibytes por segundo ou MiB/s), independentemente da quantidade de dados armazenados. Esse modo permite superar os limites impostos pela Taxa de Transferência Intermitente.
+
+O **Amazon EFS** oferece armazenamento de arquivos na nuvem, permitindo a criação de um sistema de arquivos que pode ser montado em uma instância do EC2 para leitura e gravação de dados. Um sistema de arquivos do **Amazon EFS** pode ser montado na VPC através do protocolo Network File System versões 4.0 e 4.1 (NFSv4), permitindo o acesso simultâneo de instâncias do EC2 na Amazon VPC, facilitando a escalabilidade de aplicativos além de uma única conexão. Instâncias do EC2 em várias zonas de disponibilidade dentro da mesma região da **AWS** podem acessar o sistema de arquivos, permitindo que múltiplos usuários compartilhem uma fonte de dados comum. Recomenda-se acessar o sistema de arquivos a partir de um destino de montagem na mesma zona de disponibilidade.
+
+Passos para configurar um sistema de arquivos do **Amazon EFS** e torná-lo acessível a uma instância do EC2:
+- Criar o sistema de arquivos do **Amazon EFS**, observando que ele possui um escopo no nível da região.
+- Criar um destino de montagem na Virtual Private Cloud (VPC) da instância, fornecendo um endereço IP para um ponto de extremidade NFSv4 onde o sistema de arquivos pode ser montado.
+- Montar o sistema de arquivos no destino de montagem.
+- Conectar a instância do EC2 ao destino de montagem.
+
+No **Amazon EFS**, o principal recurso é o sistema de arquivos, que possui propriedades como ID, token de criação, hora de criação, tamanho em bytes, número de destinos de montagem criados e estado atual. Além do sistema de arquivos, o **Amazon EFS** suporta outros recursos para configuração, como destinos de montagem e tags. Para acessar o sistema de arquivos, é necessário criar destinos de montagem na VPC. Cada destino de montagem possui propriedades específicas: ID do destino de montagem, ID da sub-rede onde foi criado, ID do sistema de arquivos associado, endereço IP onde o sistema de arquivos pode ser montado e estado do destino de montagem. O endereço IP ou o nome Domain Name System (DNS) pode ser usado no comando de montagem. Tags podem ser atribuídas aos sistemas de arquivos para organizar seus próprios metadados, funcionando como pares de chave/valor. Destinos de montagem e tags são considerados sub-recursos, existindo apenas se associados a um sistema de arquivos.
+
+Os principais casos de uso incluem:
+- Sistema de arquivos para aplicativos corporativos: O Amazon EFS fornece escalabilidade, elasticidade, disponibilidade e durabilidade para ser o armazenamento de arquivos para aplicativos corporativos e para aplicativos entregues como um serviço. A interface padrão do sistema de arquivos, as permissões do sistema de arquivos e a hierarquia de diretórios facilitam a migração de aplicativos corporativos de ambientes locais para a Nuvem AWS.
+- Teste e desenvolvimento de aplicativos: O Amazon EFS fornece aos seus ambientes de desenvolvimento um repositório de armazenamento comum. Com um sistema de arquivos do Amazon EFS, você pode compartilhar código e outros arquivos de forma segura e organizada. O Amazon EFS oferece uma solução escalável e altamente disponível que funciona bem para cargas de trabalho de teste e desenvolvimento.
+- Backups de bancode dados: O Amazon EFS apresenta um sistema de arquivos padrão que pode ser facilmente montado com o NFSv4 a partir de servidores de banco de dados. Ele fornece uma maneira de criar backups de banco de dados portáteis com ferramentas de aplicativos nativos ou aplicativos de backup corporativos.
+- Serviços da Web e gerenciamento de conteúdo: O Amazon EFS fornece um sistema de arquivos durável e de alta taxa de transferência para sistemas de gerenciamento de conteúdo que armazenam e veiculam informações para uma variedade de aplicativos, como sites, publicações on-line e arquivos.
+- Análise de Big Data: O Amazon EFS fornece escala e desempenho para aplicativos de big data que exigem alta taxa de transferência para nós de computação. Ele também fornece consistência de leitura após gravação e operações de arquivo de baixa latência.
+- Fluxos de trabalho de mídia (como edição de vídeo, produção em estúdio, processamento de transmissão, design de som e renderização): geralmente dependem do armazenamento compartilhado para manipular arquivos grandes. Um modelo de consistência de dados robusto com alta taxa de transferência e acesso a arquivos compartilhados pode reduzir o tempo necessário para realizar esses trabalhos. Ele também pode consolidar vários repositórios de arquivos locais em um único local para todos os usuários.
+
 <a name="item5.64"><h4>5.64 Demonstração do Elastic File System-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+- criar duas instância do EC2 em diferentes AZs
+- criar um EFS
+    - vpc da instância
+    - criar o mount targets (Destinos de montagem)
+        - 2 Azs diferentes cada uma com uma sub-rede pública com o mesmo sg
+        - criar uma tag de nome Demo EFS
+        - escolher o modo de desempenho como General Purpose (default)
+        - Não habilitar criptografia
+    - aguardar o mount targets serem criados (life cycle state como Available)
+- selecionar o as instruções de montagem do Amazon EC2 (Amazon EC2 mount instructions)
+    - isso abre uma lista de itens diferentes que precisa ser verificado antes de montar o sistema de EFS em uma instância do EC2
+        - criar um sg para as duas instâncias e para o sistema de arquivos do EFS, para as instâncias do EC2 acessarem o sistema de arquivos do EFS e vice-versa
+            - criar regra de entrada permitindo tráfego de 2049 para o outro sg referente
+    - realizar um acesso remoto SSH na instância do EC2
+        - verificar se todos os utilitários do NFS foram instalados (sudo yum istall -y nfs-utils ou sudo apt-get install nfs-common)
+    - montar o sistema de arquivos:
+        - criar o diretório de montagem (sudo mkdir /mnt/efs)
+        - montar o sistema de arquivos usando o nome de DNS (sudo mount -t nfs4 - nfsvers=4.1,resize=1048576,wsize=1048576,hard,timeo=600,retrans=2 dns name /mnt/efs)
+        - verificar com o comando df -h
+
+
+
 <a name="item5.65"><h4>5.65 Amazon Glacier</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+O Amazon S3 Glacier é uma classe de armazenamento segura, durável e de custo extremamente baixo do Amazon S3 para arquivamento de dados e backup de longo prazo. A definição de preço do Amazon S3 Glacier é baseada na região. O design de custo extremamente baixo é ideal para arquivamento de longo prazo. O serviço foi projetado para 11 9s de durabilidade para objetos. Alguns conceitos são fundamentais para o entendimento do Amazon S3 Glacier:
+- Arquivo: qualquer objeto (como foto, vídeo, arquivo ou documento) armazenado no Amazon S3 Glacier. É a unidade básica de armazenamento no Amazon S3 Glacier. Cada arquivo tem seu próprio ID exclusivo e também pode ter uma descrição.
+- Cofre: um contêiner para armazenar arquivos. Ao criar um cofre, você especifica o nome do cofre e a Região em que deseja que o cofre esteja localizado. Um exemplo de URI: https://glacier.us-west-2.amazonaws.com/111122223333/vaults/examplevault.
+- Política de acesso ao cofre: determina quem pode ou não acessar os dados armazenados no cofre. Também determina quais operações os usuários podem ou não realizar. Uma política de permissões de acesso ao cofre pode ser criada para cada cofre para gerenciar permissões de acesso para um cofre específico. Você também pode usar uma política de bloqueio de cofre para ajudar a garantir que um cofre não possa ser alterado. Cada cofre pode ter uma política de acesso ao cofre e uma política de bloqueio de cofre anexada a ele.
+- Trabalho: trabalhos do Amazon S3 Glacier podem executar uma consulta selecionada em um arquivo, recuperar um arquivo ou obter um inventário de um cofre. Ao executar uma consulta em um arquivo, você inicia um trabalho que fornece uma consulta de linguagem de consulta estruturada (SQL) e uma lista de objetos de arquivamento do Amazon S3 Glacier.
+
+
+
+
+
+
+
+
+
 <a name="item5.66"><h4>5.66 Demonstração do S3 Glacier-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.67"><h4>5.67 Amazon S3 e a CLI da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.68"><h4>5.68 183- [JAWS] -Laboratório: Gerenciar o armazenamento</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 <a name="item5.69"><h4>5.69 Amazon Storage Gateway</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.70"><h4>5.70 184- [JAWS] -Laboratório: [Desafio] Exercício de S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item5.71"><h4>5.71 185- [JAWS] -Atividade: Trabalhar com o Amazon S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-
-<a name="item5.73"><h4>5.73 Esperamos que seu Jumpstart na AWS esteja indo bem!</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
 
