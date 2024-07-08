@@ -2045,6 +2045,7 @@ conectar a instância linux
 
 <a name="item5.61"><h4>5.61 182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta laboratório, desenvolvido no sandbox **Vocareum**, 
 
 
 
