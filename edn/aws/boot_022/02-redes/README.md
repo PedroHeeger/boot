@@ -101,7 +101,7 @@ Na segunda tarefa deste laboratório, duas sub-redes adicionais foram criadas em
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
-Na tarefa de número 3 foi realizado a associação dessas sub-redes adicionais aos gateways incluindo nas duas tabela de rotas existentes. A sub-rede pública na tabela de rota `Public Route Table` e a sub-rede privada na tabela de rota `Private Route Table`. Neste momento a VPC tinha sub-redes públicas e privadas configuradas em duas Zonas de Disponibilidade. A imagem 04 exibe as tabelas de rotas com sub-redes públicas e privadas para cada tabela.
+Na tarefa de número 3 foi realizado a associação dessas sub-redes adicionais aos gateways incluindo nas duas tabelas de rotas existentes. A sub-rede pública na tabela de rota `Public Route Table` e a sub-rede privada na tabela de rota `Private Route Table`. Neste momento a VPC tinha sub-redes públicas e privadas configuradas em duas Zonas de Disponibilidade. A imagem 04 exibe as tabelas de rotas com sub-redes públicas e privadas para cada tabela.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img04.png" alt="img04"><br>
