@@ -341,7 +341,7 @@ O recurso *Insights* integrados do *AWS Systems Manager* agrega e exibe dados op
 
 Neste laboratório, quatro tarefas foram realizadas, onde em cada uma foi explorado um dos seguintes recursos do **AWS System Manager (AWS SSM)**: *Inventory*, *Run Command*, *Parameter Store* e *Session Manager*. Na primeira tarefa foi utilizado o recurso *Fleet Manager* do **AWS System Manager (AWS SSM)** para visualizar as informações de uma frota de instâncias, que no caso só era uma instância do EC2. O recurso *Fleet Manager* do **AWS Systems Manager (AWS SSM)** é uma ferramenta integrada de gerenciamento de servidores que permite aos administradores monitorar e gerenciar a frota de instâncias **Amazon EC2** e servidores on-premises. Ele consegue coletar informações do sistema operacional e de aplicações, além de metadados de instâncias do EC2, possibilitando entender rapidamente quais instâncias estão executando o software e as configurações exigidas pela política de software e quais instâncias precisam ser atualizadas. 
 
-No *Fleet Manager*, as instâncias são listadas como um nó da frota, sendo possível gerenciar toda a frota de instâncias. Ao selecionar a única instância existente, diversas informações foram exibidas, divididas em dois campos: ferramentas, que inclui alguns recursos do **AWS SSM** que pode ser utilizado na instância, e propriedades, que são as propriedades da instância, onde inclui o recurso *Inventory*. Para criar um inventário pelo *Fleet Manager*, foi selecionada a opção `Settings` e em seguida `Set up inventory`. O inventário também poderia ser construído direto no recurso *Inventory*. O invetário possuío o nome `Inventory-Association`, na opção destino foram selecionadas as opções selecionar instâncias manualmente (`Manually selecting instances`) e a única instância gerenciada foi selecionada, as demais opções foram mantidas como padrão. Após isso, foi selecionada a opção configurar inventário e uma mensagem informando que o invetário tinha sido construído com sucesso foi exibida. Com isso, o *inventory* faria a partir de agora o inventário regularmente dessa instância para as propriedades selecionadas. Para visualizar o invetário, foi selecionado o nó da frota de instâncias que direcionou para uma visão geral do nó. Ao selecionar a guia inventário, todas as aplicações na instância foram listadas, conforme evidenciado na imagem 02 a seguir. Também era possível visualizar as algumas informações de inventário direto pelo recurso *Inventory*.
+No *Fleet Manager*, as instâncias são listadas como um nó da frota, sendo possível gerenciar toda a frota de instâncias. Ao selecionar a única instância existente, diversas informações foram exibidas, divididas em dois campos: ferramentas, que inclui alguns recursos do **AWS SSM** que pode ser utilizado na instância, e propriedades, que são as propriedades da instância, onde inclui o recurso *Inventory*. Para criar um inventário pelo *Fleet Manager*, foi selecionada a opção `Settings` e em seguida `Set up inventory`. O inventário também poderia ser construído direto no recurso *Inventory*. O invetário possuío o nome `Inventory-Association`, na opção destino foram selecionadas as opções selecionar instâncias manualmente (`Manually selecting instances`) e a única instância gerenciada foi selecionada, as demais opções foram mantidas como padrão. Após isso, foi selecionada a opção configurar inventário e uma mensagem informando que o invetário tinha sido construído com sucesso foi exibida. Com isso, o *inventory* faria a partir de agora o inventário regularmente dessa instância para as propriedades selecionadas. Para visualizar o inventário, foi selecionado o nó da frota de instâncias que direcionou para uma visão geral do nó. Ao selecionar a guia inventário, todas as aplicações na instância foram listadas, conforme evidenciado na imagem 02 a seguir. Também era possível visualizar as algumas informações de inventário direto pelo recurso *Inventory*.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img02.png" alt="img02"><br>
@@ -468,7 +468,7 @@ A terceira tarefa foi a criação de um bucket no **Amazon S3** utilizando a **A
     <figcaption>Imagem 10.</figcaption>
 </figure></div><br>
 
-Na tarefa 4 foi criado um usuário do IAM no **AWS IAM** que teria acesso total ao **Amazon S3**. Com o comando `aws iam create-user --user-name awsS3user` executado na **AWS CLI** na instância EC2 aberta no navegador da maquina física **Windows**, o usuário `awsS3user` foi criado. Em seguida, com o comando `aws iam create-login-profile --user-name awsS3user --password Training123!`, um perfil de login foi elaborado para esse usuário, define uma senha para acesso a plataforma da **AWS**. Após isso, foi realizado o acesso a plataforma da **AWS** com esse usuário pelo **AWS Console Management**. Contudo isso foi realizado dentro do sandbox **Vocareum**. Como ao abrir a página da **AWS** pelo **Vocareum** já vem logado em um usuário federado, a opção `Sair` foi selecionada para sair da conta desse usuário e acessar com o usuário do IAM criado. Entretanto, foi necessário copiar o ID da conta da raíz da **AWS** desse usuário federado, pois o usuário do IAM construído foi desse usuário federado. Ao acessar o console de gerenciamento da **AWS**, foi escolhida a opção de fazer login com o usuário do IAM, portanto foi necessário colar o ID da conta copiado, eliminando qualquer caractere de traço, mantendo só os números. Em seguida, foi solicitada o nome do usuário do IAM, que era `awsS3user`, e a senha, que era `Training123!`. Então o login foi concluído e foi possível acessar o console da **AWS** com este usuário.
+Na tarefa 4 foi criado um usuário do IAM no **AWS IAM** que teria acesso total ao **Amazon S3**. Com o comando `aws iam create-user --user-name awsS3user` executado na **AWS CLI** na instância EC2 aberta no navegador da maquina física **Windows**, o usuário `awsS3user` foi criado. Em seguida, com o comando `aws iam create-login-profile --user-name awsS3user --password Training123!`, um perfil de login foi elaborado para esse usuário, definindo uma senha para acesso a plataforma da **AWS**, conforme mostrado na imagem imagem 11. Após isso, foi realizado o acesso a plataforma da **AWS** com esse usuário pelo **AWS Console Management**. Contudo isso foi realizado dentro do sandbox **Vocareum**. Como ao abrir a página da **AWS** pelo **Vocareum** já vem logado em um usuário federado, a opção `Sair` foi selecionada para sair da conta desse usuário e acessar com o usuário do IAM criado. Entretanto, foi necessário copiar o ID da conta da raíz da **AWS** desse usuário federado, pois o usuário do IAM construído foi desse usuário federado. Ao acessar o console de gerenciamento da **AWS**, foi escolhida a opção de fazer login com o usuário do IAM, portanto foi necessário colar o ID da conta copiado, eliminando qualquer caractere de traço, mantendo só os números. Em seguida, foi solicitada o nome do usuário do IAM, que era `awsS3user`, e a senha, que era `Training123!`. Então o login foi concluído e foi possível acessar o console da **AWS** com este usuário.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img11.png" alt="img11"><br>
@@ -921,7 +921,7 @@ Na terceira tarefa, o objetivo foi criar um modelo de execução (*launch templa
     <figcaption>Imagem 41.</figcaption>
 </figure></div><br>
 
-A tarefa 4 consistiu na criação do auto scaling group a partir desse modelo de execução elaborado. Portanto, foi selecionado o modelo `lab-app-launch-template` e o nome do deste grupo foi definido como `Lab Auto Scaling Group`. Nas configurações de rede foi selecionada a VPC do laboratório e as duas sub-redes privadas, pois as instâncias do grupo de auto scaling estariam na sub-rede privada. Em configurações avançadas, em balanceador de carga, foi anexado a este grupo o load balancer criado e o grupo de destino (target group) construído `lab-target-group | HTTP` foi vinculado. As verificações de integridade adicionais do **Amazon ELB** foram ativadas, mantendo intervalo da verificação em `300` segundos. Nas configurações da política de escalabilidade, foi definido o tamanho do grupo, informando a capacidade desejada em `2`, a capacidade mínima em `2` e a capacidade máxima em `4`. A política de escalabilidade escolhida foi de rastreamento de deestino, cujo tipo de métrica foi definido com `média de utilização de CPU` e o valor de destino em `50`. Essa alteração informava ao Auto Scaling para manter uma utilização média da CPU em todas as instâncias em 50%. O Auto Scaling adicionaria ou removeria automaticamente a capacidade conforme necessário para manter a métrica no valor de destino especificado ou próxima dele. Uma tag de nome foi criada, cujo valor foi `Lab Instance`, que seria utilizada pelas instâncias desse grupo de auto scaling. A imagem 42 evidencia o auto scaling group desenvolvido com duas instâncias, pois a quantidade desejada foram duas.
+A tarefa 4 consistiu na criação do auto scaling group a partir desse modelo de execução elaborado. Portanto, foi selecionado o modelo `lab-app-launch-template` e o nome do deste grupo foi definido como `Lab Auto Scaling Group`. Nas configurações de rede foi selecionada a VPC do laboratório e as duas sub-redes privadas, pois as instâncias do grupo de auto scaling estariam na sub-rede privada. Em configurações avançadas, em balanceador de carga, foi anexado a este grupo o load balancer criado e o grupo de destino (target group) construído `lab-target-group | HTTP` foi vinculado. As verificações de integridade adicionais do **Amazon ELB** foram ativadas, mantendo intervalo da verificação em `300` segundos. Nas configurações da política de escalabilidade, foi definido o tamanho do grupo, informando a capacidade desejada em `2`, a capacidade mínima em `2` e a capacidade máxima em `4`. A política de escalabilidade escolhida foi de rastreamento de destino, cujo tipo de métrica foi definido com `média de utilização de CPU` e o valor de destino em `50`. Essa alteração informava ao Auto Scaling para manter uma utilização média da CPU em todas as instâncias em 50%. O Auto Scaling adicionaria ou removeria automaticamente a capacidade conforme necessário para manter a métrica no valor de destino especificado ou próxima dele. Uma tag de nome foi criada, cujo valor foi `Lab Instance`, que seria utilizada pelas instâncias desse grupo de auto scaling. A imagem 42 evidencia o auto scaling group desenvolvido com duas instâncias, pois a quantidade desejada foram duas.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img42.png" alt="img42"><br>
@@ -987,7 +987,7 @@ Ao executar o comando, a instância de modelo de servidor web foi provisionada e
     <figcaption>Imagem 49.</figcaption>
 </figure></div><br>
 
-Se tudo estivesse certo, significava que o servidor web modelo estava funcionando e uma AMI da instância poderia ser criada. Com o comando `aws ec2 create-image --name WebServerAMI --instance-id i-0b55e2e216628088f` e passando o ID da instância `WebServer`, imagem de maquina Amazon foi criada. Por padrão, este comando reiniciava a instância atual antes de criar a AMI para garantir a integridade da imagem no sistema de arquivos. A imagem 50 exibe a AMI construída.
+Se tudo estivesse certo, significava que o servidor web modelo estava funcionando e uma AMI da instância poderia ser criada. Com o comando `aws ec2 create-image --name WebServerAMI --instance-id i-0b55e2e216628088f` e passando o ID da instância `WebServer`, a imagem de maquina Amazon foi criada. Por padrão, este comando reiniciava a instância atual antes de criar a AMI para garantir a integridade da imagem no sistema de arquivos. A imagem 50 exibe a AMI construída.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img50.png" alt="img50"><br>
@@ -2042,26 +2042,74 @@ conectar a instância linux
     - ls /mt/data-store2/
     - cat /mnt/data-store2/file.txt
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img117.png" alt="img117"><br>
+    <figcaption>Imagem 117.</figcaption>
+</figure></div><br>
 
 <a name="item5.61"><h4>5.61 182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-Nesta laboratório, desenvolvido no sandbox **Vocareum**, 
+Nesta laboratório, desenvolvido no sandbox **Vocareum**, o objetivo foi construir um volume do **Amazon EBS**, anexá-lo em uma instância do **Amazon EC2** e formatá-lo dentro da instância configurando um sistema de arquivo. Também foi realizado um snapshot desse volume que foi utilizado para construir outro volume para a mesma instância. O snapshot funcionou como backup, onde o arquivo removido após o snapshot foi recuperado ao criar o novo volume a partir desse snapshot
 
+A primeira tarefa foi criar o volume do EBS na mesma zona de disponibilidade da instância do EC2 cuja tag de nome era `Lab`. Essa instância foi provisionada pelo **AWS CloudFormation** ao iniciar o laboratório. A zona de disponibilidade utilizada era `us-west-2a`. Um volume padrão de inicilização do EBS tinha sido construído juntamente com a instância e estava anexada à ela. O novo volume do EBS criado foi do tipo `gp2`, que é um volume SSD para uso geral, o tamanho dele foi de `1` GiB e a zona de disponibilidade foi a mesma da instância `Lab`, `us-west-2a`. A imagem 124 ilustra esse volume do EBS provisionado.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img124.png" alt="img124"><br>
+    <figcaption>Imagem 124.</figcaption>
+</figure></div><br>
 
+Na tarefa 2 foi anexado este volume a instância do EC2 `Lab`. Quando um volume EBS é anexado a uma instância EC2, ele é representado no sistema operacional da instância como um device. Esses devices são pontos de acesso que o sistema operacional usa para se comunicar com o hardware de armazenamento. A nomenclatura dos devices segue uma convenção que pode variar, mas aqui estão alguns exemplos comuns:
+- /dev/sdX: Esse é um padrão tradicional onde 'sd' significa "SCSI disk" (disco SCSI), seguido de uma letra que identifica o disco específico. Por exemplo, /dev/sda, /dev/sdb, etc.
+- /dev/xvdX: No contexto da AWS, a nomenclatura padrão mudou para 'xvd', que significa "Xen Virtual Disk" (Disco Virtual Xen), que é uma tecnologia de virtualização usada pela AWS. Exemplo: /dev/xvda, /dev/xvdb, etc.
+- /dev/nvmeXnY: Para instâncias com armazenamento NVMe, onde X e Y são números.
 
+Neste caso, o nome do dispositivo foi escolhido a opção `/dev/sdf`. A imagem 125 mostra esse novo volume anexado a instância do **Amazon EC2**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img125.png" alt="img125"><br>
+    <figcaption>Imagem 125.</figcaption>
+</figure></div><br>
 
+O objeitvo da terceira tarefa foi realizar um acesso remoto a instância do EC2 através do recurso `EC2 Instance Connect`, já que não tinha um par de chaves para autenticar o acesso. Como isso foi realizado direto pelo console, a autenticação ao usuário `ec2-user` era feita pela própria **AWS**.
 
+Na tarefa 4, utilizando o terminal aberto conectado a instância por esse acesso remoto foi configurado o sistema de arquivos `ext3` para esse novo volume do EBS no ponto de montagem `/mnt/data-store`. Com o comando `df -h` foram listados todos os armazenamentos disponíveis na instância do EC2. Perceba que o novo volume `/dev/sdf` ainda não aparecia, pois não havia sido configurado. Com o comando `sudo mkfs -t ext3 /dev/sdf` o sistema de arquivos `ext3` foi construído para este novo volume. Isso preparava o volume EBS para armazenar dados de maneira organizada, utilizando um sistema de arquivos específico. Com o comando `sudo mkdir /mnt/data-store`, o diretório `/mnt/data-store` foi criado como ponto de montagem para montar o novo volume de armazenamento. Isso tornava o volume acessível em uma pasta (diretório) específica na instância EC2. O novo volume foi montado com o comando `sudo mount /dev/sdf /mnt/data-store` e o comando `echo "/dev/sdf   /mnt/data-store ext3 defaults,noatime 1 2" | sudo tee -a /etc/fstab` garantia que o volume fosse montado mesmo depois que a instância fosse reiniciada. A imagem 126 evidencia essas etapas.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img126.png" alt="img126"><br>
+    <figcaption>Imagem 126.</figcaption>
+</figure></div><br>
 
+Observando na imagem anterior foi notado que quando os armazenamentos disponíveis na instância eram listados, o volume inicial do EBS que foi criado juntamente com o provisionamento da instância do EC2, a nomeclatura dele não era `/dev/xvda` como estava configurado no EBS, na verdade era `/dev/nvme0n1p1`. Isso se repetiu para os dois volumes construídos nesse laboratório, cujos nomes dos dispositivos eram `/dev/sdf` e `/dev/sdg`, mas quando listados tinham os seguintes nomes `/dev/nvme1n1` e `/dev/nvme2n1`. Isso ocorreu porque em instâncias EC2 mais recentes, especialmente aquelas que usam a tecnologia NVMe (Non-Volatile Memory Express), os dispositivos de armazenamento são mapeados para nomes de dispositivos NVMe como `/dev/nvmeXnY` em vez dos nomes tradicionais `/dev/sdX` ou `/dev/xvdX`. Então ao mencionar o dispositivo de armazenamento `/dev/sdf` nos comandos, seria mapeado para o dispositivo `/dev/nvme1n1`.
 
+Para visualizar o arquivo de configuração e ver a configuração na última linha, foi executado o comando `cat /etc/fstab`. Novamente com o comando `df -h` todos os armazenamentos disponíveis na instância eram listados e agora era possível ver o novo volume do EBS `/dev/sdf` (`/dev/nvme1n1`) montado no diretório `/mnt/data-store`. Com o comando `sudo sh -c "echo some text has been written > /mnt/data-store/file.txt"`, um arquivo de texto foi criado com apenas uma linha escrita e foi armazenado neste novo volume. Para confirmar se o texto foi gravado no volume, foi execute `cat /mnt/data-store/file.txt`. A imagem 127 exibe o resultado desses comandos.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img127.png" alt="img127"><br>
+    <figcaption>Imagem 127.</figcaption>
+</figure></div><br>
 
+A quinta tarefa criou um snapshot desse volume que seria restaurado na tarefa seguinte. Lembre que neste momento o volume possuía o arquivo `file.txt` elaborado. Ao criar o snapshot deste volume, uma tag, cuja chave foi `Name` e o valor foi `My Snapshot`, foi adicionada. O status do snapshot ficou pendente até ser concluído. Somente os blocos de armazenamento usados eram copiados para os snapshots, portanto, os blocos vazios não ocupavam espaço de armazenamento do snapshot. A imagem 128 mostra o snapshot criado.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img128.png" alt="img128"><br>
+    <figcaption>Imagem 128.</figcaption>
+</figure></div><br>
 
+De volta a janela do terminal que acessava a instância do EC2, o arquivo `file.txt` elaborado no diretório do volume `/mnt/data-store` foi excluído com o comando `sudo rm /mnt/data-store/file.txt`. Pode ser que seja necessário conectar novamente à instância. Com o comando `ls /mnt/data-store/file.txt` foi confirmado se o arquivo tinha sido excluído.
 
+Na sexta e última tarefa deste laboratório, o objetivo foi restaurar o snapshot criado recuperando o arquivo removido. Para isso era necessário criar um novo volume com esse snapshot. A zona de disponibilidade foi a mesma utilizada, `us-west-2a`, pois tinha que ser a mesma que a instância estava. Uma tag foi adicionada cuja chave foi `Name` e o valor foi `Restored Volume`. Em seguida, este volume foi anexado a instância do EC2. Neste momento a instância possuía três volumes anexados a ela, o primeiro que já veio configurado ao provisionar a instância, o segundo e o terceiro foram volumes criado durante este laboratório, sendo o terceiro construído a partir do snapshot tirado do segundo. O nome do dispositivo foi mantido `sdg` que foi o sugerido. A imagem 129 evidencia este terceiro volume criado.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img129.png" alt="img129"><br>
+    <figcaption>Imagem 129.</figcaption>
+</figure></div><br>
+
+A etapa final foi configurar o volume dentro da instância do EC2 exatamente como foi feito para o segundo volume. No terminal conectado à instância foi executado o comando `sudo mkdir /mnt/data-store2` para criar o diretório de ponto de montagem deste volume de backup. Para montar o volume foi utilizado o comando `sudo mount /dev/sdg /mnt/data-store2`. Não foi preciso criar um sistema de arquivos, pois como era um snapshot do segundo volume, isso já veio configurado neste. Então com o comando `ls /mnt/data-store2/file.txt` foi confirmado a existência do arquivo que tinha sido removido, conforme apresentado na imagem 130.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img130.png" alt="img130"><br>
+    <figcaption>Imagem 130.</figcaption>
+</figure></div><br>
 
 <a name="item5.62"><h4>5.62 O armazenamento de instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
