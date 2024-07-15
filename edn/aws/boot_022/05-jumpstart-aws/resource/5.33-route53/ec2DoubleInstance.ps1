@@ -7,12 +7,12 @@ Write-Output "EC2 DOUBLE CREATION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $tagNameInstance = "mompopcafeserver"
-$instanceA = "1"
-$instanceB = "2"
+$instanceA = "cafeserver1"
+$instanceB = "cafeserver2"
 $sgName = "default"
 $aZA = "us-east-1a"
 $aZB = "us-east-1b"
-$imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
+$imageId = "ami-0195204d5dce06d99"    # Amazon Linux 2 Kernel 5.10 AMI 2.0.20240620.0 x86_64 HVM gp2
 $instanceType = "t2.micro"
 $keyPairPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair"
 $keyPairName = "keyPairUniversal"
@@ -21,6 +21,7 @@ $userDataFile = "udFile.sh"
 $deviceName = "/dev/xvda"
 $volumeSize = 8
 $volumeType = "gp2"
+$instanceProfileName = "instanceProfileEdn1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
