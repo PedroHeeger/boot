@@ -6,14 +6,14 @@ Write-Output "EC2 CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2Test1"
+$tagNameInstance = "ec2Test2"
 $sgName = "default"
-$aZ = "us-east-1a"
+$aZ = "us-east-1b"
 $imageId = "ami-0195204d5dce06d99"    # Amazon Linux 2 Kernel 5.10 AMI 2.0.20240620.0 x86_64 HVM gp2   ami-0ef45c14a8b7161ce
 $instanceType = "t2.micro"
 $keyPairPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair"
 $keyPairName = "keyPairUniversal"
-$userDataPath = "G:/Meu Drive/4_PROJ/boot/edn/aws/boot_022/05-jumpstart-aws/resource/5.33-route53/"
+$userDataPath = "G:/Meu Drive/4_PROJ/boot/edn/aws/boot_022/05-jumpstart-aws/resource/5.33-route53/ec2/"
 $userDataFile = "udFile.sh"
 $deviceName = "/dev/xvda" 
 $volumeSize = 8

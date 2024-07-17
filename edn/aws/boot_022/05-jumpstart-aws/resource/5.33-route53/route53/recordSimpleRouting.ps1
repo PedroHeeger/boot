@@ -6,11 +6,11 @@ Write-Output "RECORD SIMPLE ROUTING-HOSTED ZONE CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-# $hostedZoneName = "hosted-zone-test1.com.br."
-# $domainName = "hosted-zone-test1.com.br"
 $hostedZoneName = "pedroheeger.dev.br."
 $domainName = "pedroheeger.dev.br"
 $resourceRecordName = "www.pedroheeger.dev.br"
+$resourceRecordType = "A"
+$ttl = 300
 $tagNameInstance = "ec2Test1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -46,8 +46,8 @@ if ($resposta.ToLower() -eq 'y') {
                     `"Action`": `"CREATE`",
                     `"ResourceRecordSet`": {
                     `"Name`": `"${resourceRecordName}`",
-                    `"Type`": `"A`",
-                    `"TTL`": 15,
+                    `"Type`": `"${resourceRecordType}`",
+                    `"TTL`": $ttl,
                     `"ResourceRecords`": [
                         {`"Value`": `"${instanceIP}`"}
                     ]
@@ -74,11 +74,11 @@ Write-Output "RECORD SIMPLE ROUTING-HOSTED ZONE EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-# $hostedZoneName = "hosted-zone-test1.com.br."
-# $domainName = "hosted-zone-test1.com.br"
 $hostedZoneName = "pedroheeger.dev.br."
 $domainName = "pedroheeger.dev.br"
 $resourceRecordName = "www.pedroheeger.dev.br"
+$resourceRecordType = "A"
+$ttl = 300
 $albName = "ec2Test1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -110,8 +110,8 @@ if ($resposta.ToLower() -eq 'y') {
                     `"Action`": `"DELETE`",
                     `"ResourceRecordSet`": {
                     `"Name`": `"${resourceRecordName}`",
-                    `"Type`": `"A`",
-                    `"TTL`": 15,
+                    `"Type`": `"${resourceRecordType}`",
+                    `"TTL`": $ttl,
                     `"ResourceRecords`": [
                         {`"Value`": `"${instanceIP}`"}
                     ]
