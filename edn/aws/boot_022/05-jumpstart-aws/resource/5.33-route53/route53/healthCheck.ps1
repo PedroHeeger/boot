@@ -7,14 +7,14 @@ Write-Output "HEALTH CHECK CREATION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $hostedZoneName = "pedroheeger.dev.br."
-$healthCheckName = "healthCheckTest3"
-$ipAddress = "175.184.182.193"
+$healthCheckName = "londres-website-status"
+$ipAddress = ""
 $portNumber = 80
 $typeProtocol = "HTTP"
 $resourcePath = "/"
 $requestInterval = 30
 $failureThreshold = 3
-$tagNameInstance = "ec2Test1"
+$tagNameInstance = "cafeServer1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -36,7 +36,7 @@ if ($resposta.ToLower() -eq 'y') {
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Extraindo o IP da instância $tagNameInstance"
             $instanceIP = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
-            # $ipAddress = $instanceIP
+            $ipAddress = $instanceIP
 
             Write-Output "-----//-----//-----//-----//-----//-----//-----"
             Write-Output "Criando a verificação de integridade de nome $healthCheckName"
