@@ -209,10 +209,58 @@ Os *locais de bordaou Edge Locations* são os locais físicos onde o conteúdo �
 
 <a name="item1.13"><h4>1.13 Serviços e categorias da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
+A infraestrutura global da **AWS** suporta uma vasta gama de serviços fornecidos sob demanda. Muitos desses serviços podem ser acessados em segundos e seguem um modelo de pagamento baseado no uso. Esses serviços são sub-divididos na **AWS** nas seguintes categorias: Computação; Armazenamento; Banco de Dados; Migração e Transferência; Rede e Entrega de Conteúdo; Ferramentas de Desenvolvimento; Gerenciamento e Governança; Segurança, Identidade e Conformidade; Análise; Aprendizado de Máquina; Internet das Coisas (IoT); Web de front-end e móvel; Realidade Aumentada e Realidade Virtual (AR & VR); Tecnologia para Jogos; Aplicativos Corporativos; Aplicativos de Negócios; Computação de Usuário Final; Serviços de Mídia; Comunicação e Contato com o Cliente; Robótica; Satélites; Desenvolvimento Sem Servidor; Gerenciamento de custos; Blockchain; Contêineres. No núcleo desses serviços, as categorias de Computação, Rede e Armazenamento são essenciais. 
+
+Na categoria de armazenamento, destacam os serviços:
+- O **Amazon Simple Storage Service (Amazon S3)** é uma solução de armazenamento de objetos que proporciona escalabilidade, alta disponibilidade de dados, segurança e desempenho superior. Ideal para armazenar e proteger qualquer volume de dados, seja para sites, aplicativos móveis, backup e restauração, arquivamento, aplicativos empresariais, dispositivos da Internet das Coisas (IoT) e análises de big data.
+- O **Amazon Elastic Block Store (Amazon EBS)** é um serviço de armazenamento de alto desempenho desenvolvido para ser utilizado com o **Amazon EC2**, ideal para cargas de trabalho que demandam intensamente transações e altas taxas de transferência. Empregado em várias cargas de trabalho, incluindo bancos de dados relacionais e não relacionais, aplicativos empresariais, aplicativos em contêineres, mecanismos de análise de big data, sistemas de arquivos e fluxos de trabalho de mídia.
+- O **Amazon Elastic File System (Amazon EFS)** fornece um sistema de arquivos NFS totalmente gerenciado, escalável e elástico, para uso com serviços na nuvem **AWS** e recursos locais. Projetado para escalar sob demanda até petabytes, ajusta-se automaticamente conforme os arquivos são adicionados ou removidos. Isso elimina a necessidade de provisionar e gerenciar a capacidade para acomodar o crescimento.
+- O **Amazon Simple Storage Service Glacier (Amazon S3 Glacier)** é uma classe de armazenamento em nuvem do **Amazon S3**, que oferece segurança, durabilidade e baixo custo para arquivamento e backup de longo prazo. Projetado para proporcionar uma durabilidade de mais de 11 noves (99,99999999999%) e fornecer recursos extensivos de segurança e conformidade, atende às exigências regulatórias mais rigorosas.
+
+Na categoria de computação, destacam os serviços:
+- 
+
+
+
+
+
+
+
+
+
+
 
 <a name="item1.15"><h4>1.15 Modelo de responsabilidade compartilhada da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
 <a name="item1.17"><h4>1.17 S3 da Amazon</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="item1.18"><h4>1.18 Demonstração do S3 da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+
+
+
+
+
 
 
 
@@ -229,6 +277,14 @@ Na categoria de máquinas virtuais, a **AWS** oferece dois serviços principais.
 
 
 <a name="item1.21"><h4>1.21 Demonstração do EC2 da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
 
 
 
