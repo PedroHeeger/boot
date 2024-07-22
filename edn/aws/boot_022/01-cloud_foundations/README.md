@@ -218,19 +218,81 @@ Na categoria de armazenamento, destacam os serviços:
 - O **Amazon Simple Storage Service Glacier (Amazon S3 Glacier)** é uma classe de armazenamento em nuvem do **Amazon S3**, que oferece segurança, durabilidade e baixo custo para arquivamento e backup de longo prazo. Projetado para proporcionar uma durabilidade de mais de 11 noves (99,99999999999%) e fornecer recursos extensivos de segurança e conformidade, atende às exigências regulatórias mais rigorosas.
 
 Na categoria de computação, destacam os serviços:
-- 
+- O **Amazon Elastic Compute Cloud (Amazon EC2)** fornece capacidade de computação escalável por meio de máquinas virtuais na nuvem.
+- O **Amazon EC2 Auto Scaling** ajusta automaticamente o número de instâncias EC2 com base nas condições predefinidas.
+- O **AWS Elastic Beanstalk** é um serviço que facilita a implantação e o dimensionamento de aplicativos e serviços web em servidores conhecidos, como **Apache HTTP Server** e **Microsoft Internet Information Services (IIS)**.
+- O **AWS Lambda** permite a execução de código sem necessidade de provisionar ou gerenciar servidores. O pagamento é feito somente pelo tempo de computação utilizado, o que significa que não há cobrança quando o código não está em execução.
 
+Na categoria de contêineres, destacam os serviços:
+- O **Amazon Elastic Container Service (Amazon ECS)** é um serviço de orquestração de contêineres altamente escalável e de alto desempenho, compatível com contêineres **Docker**.
+- O **Amazon Elastic Container Registry (Amazon ECR)** é um registro de contêineres **Docker** totalmente gerenciado que simplifica o armazenamento, gerenciamento e implantação de imagens de contêineres **Docker** para desenvolvedores.
+- O **Amazon Elastic Kubernetes Service (Amazon EKS)** simplifica a implantação, o gerenciamento e o dimensionamento de aplicativos em contêineres que utilizam **Kubernetes** na **AWS**.
+- O **AWS Fargate** é um mecanismo de computação para o **Amazon ECS** que possibilita a execução de contêineres sem a necessidade de gerenciar servidores ou clusters.
 
+Na categoria de banco de dados, destacam os serviços:
+- O **Amazon Relational Database Service (Amazon RDS)** simplifica a criação, operação e escalabilidade de bancos de dados relacionais na nuvem. Proporciona capacidade ajustável e automatiza tarefas administrativas complexas, como provisionamento de hardware, configuração de banco de dados, aplicação de patches e backups.
+- O **Amazon Aurora** é um banco de dados relacional compatível com **MySQL** e **PostgreSQL**. Ele oferece desempenho até cinco vezes superior ao de bancos de dados **MySQL** padrão e até três vezes superior ao de bancos de dados **PostgreSQL** padrão.
+- O **Amazon Redshift** permite a execução de consultas analíticas sobre petabytes de dados armazenados no **Amazon Redshift** e também permite consultas diretamente sobre exabytes de dados no **Amazon S3**. Proporciona desempenho rápido em qualquer escala.
+- O **Amazon DynamoDB** é um banco de dados de documentos e chave-valor que oferece desempenho com latência de um dígito em milissegundos em qualquer escala. Inclui recursos integrados de segurança, backup e restauração, além de cache na memória.
 
+Na categoria de redes e entrega de conteúdo, destacam os serviços:
+- O **Amazon Virtual Private Cloud (Amazon VPC)** permite criar seções logicamente isoladas dentro da **AWS** Cloud.
+- O **Amazon Elastic Load Balancing (Amazon ELB)** distribui automaticamente o tráfego de entrada das aplicações entre vários destinos, como instâncias EC2 da Amazon, contêineres, endereços IP e funções Lambda.
+- O **Amazon CloudFront** é um serviço de rede de entrega de conteúdo (CDN) rápido que distribui dados, vídeos, aplicativos e APIs com segurança para clientes em todo o mundo, oferecendo baixa latência e alta velocidade de transferência.
+- O **AWS Transit Gateway** é um serviço que possibilita a conexão de nuvens virtuais privadas (VPCs) e redes locais a um único gateway.
+- O **Amazon Route 53** é um serviço de DNS em nuvem e escalável, projetado para fornecer uma forma confiável de direcionar os usuários finais para aplicativos na Internet. Ele traduz nomes de domínio (como www.example.com) em endereços IP numéricos (como 192.0.2.1) que os computadores utilizam para se conectar.
+- O **AWS Direct Connect** proporciona uma conexão de rede privada dedicada entre um data center ou escritório e a **AWS**, o que pode reduzir os custos de rede e aumentar a largura de banda.
+- O **AWS VPN** proporciona um túnel privado e seguro que conecta sua rede ou dispositivo à rede global da **AWS**.
 
+Na categoria de segurança, identidade e conformidade, destacam os serviços:
+- O **AWS Identity and Access Management (AWS IAM)** permite gerenciar com segurança o acesso aos serviços e recursos da **AWS**. Com o IAM, é possível criar e gerenciar usuários e grupos, e usar permissões para conceder ou restringir o acesso aos recursos da **AWS**.
+- O **AWS Organizations** permite controlar quais serviços e ações são permitidos nas contas.
+- O **Amazon Cognito** permite adicionar controle de acesso, registro e autenticação de usuários em aplicativos web e móveis.
+- O **AWS Artifact** fornece acesso sob demanda a relatórios de segurança e conformidade da **AWS**, além de acordos selecionados online.
+- O **AWS Key Management Service (AWS KMS)** possibilita a criação e o gerenciamento de chaves. Ele pode ser utilizado para controlar o uso de criptografia em diversos serviços da **AWS** e em aplicativos.
+- O **AWS Shield** é um serviço gerenciado que oferece proteção contra ataques de negação de serviço distribuída (DDoS), protegendo os aplicativos executados na **AWS**.
 
+Na categoria de gerenciamento de custos da **AWS**, destacam os serviços:
+- O **AWS Cost and Usage Report** contém o conjunto mais abrangente de dados de custo e uso do **AWS** disponível, incluindo metadados adicionais sobre serviços, modelo de preço e reservas da **AWS**.
+- O **AWS Budgets** permite definir orçamentos personalizados e envia alertas quando os custos ou o uso excedem, ou estão previstos para exceder, o valor orçado.
+- O **AWS Cost Explorer** oferece uma interface intuitiva que permite visualizar, entender e gerenciar seus custos e uso da **AWS** ao longo do tempo.
 
-
-
-
-
+Na categoria de gerenciamento e governança, destacam os serviços:
+- O **AWS Management Console** fornece uma interface web para acessar e gerenciar a conta da **AWS**.
+- O **AWS Config** é um serviço que auxilia no rastreamento do inventário de recursos e das alterações realizadas.
+- O **Amazon CloudWatch** permite o monitoramento de recursos e aplicativos.
+- O **AWS Auto Scaling** fornece ferramentas para ajustar o tamanho de vários recursos de acordo com a demanda.
+- O **AWS Command Line Interface (CLI)** oferece uma ferramenta unificada para gerenciar os serviços da **AWS**.
+- O **AWS Trusted Advisor** auxilia na otimização do desempenho e da segurança.
+- O **AWS Well-Architected Framework** ajuda na análise e aprimoramento de cargas de trabalho.
+- O **AWS CloudTrail** monitora a atividade do usuário e o uso de APIs.
 
 <a name="item1.15"><h4>1.15 Modelo de responsabilidade compartilhada da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+
+A segurança é a principal prioridade na **AWS**. A **AWS** disponibiliza um ambiente de computação em nuvem escalável, desenhado para garantir alta disponibilidade e confiabilidade, além de fornecer ferramentas que permitem a execução de uma ampla gama de aplicativos. Proteger a confidencialidade, integridade e disponibilidade dos sistemas e dados é fundamental para a **AWS**, assim como preservar a confiança e segurança dos clientes. A **AWS** oferece uma abordagem de segurança semelhante à que as empresas utilizam há décadas, permitindo que os clientes se beneficiem da flexibilidade e do baixo custo da computação em nuvem. Não há inconsistência no fornecimento de infraestrutura sob demanda, e a **AWS** proporciona o isolamento de segurança esperado em ambientes privados tradicionais. Quando os clientes começam a utilizar a **AWS**, a Amazon assume uma parte da responsabilidade pela proteção dos dados na nuvem **AWS**, estabelecendo um modelo de responsabilidade compartilhada para a segurança. Este conceito é conhecido como modelo de responsabilidade compartilhada.
+
+A **AWS** é responsável pela segurança da nuvem. Conforme o modelo de responsabilidade compartilhada, a **AWS** opera, gerencia e controla os componentes do sistema operacional host, a camada de virtualização e a segurança física das instalações onde os serviços são executados. Isso implica que a **AWS** é responsável por proteger a infraestrutura global que sustenta todos os serviços oferecidos na nuvem **AWS**, abrangendo Regiões, Zonas de Disponibilidade e locais de borda. A **AWS** cuida da segurança da infraestrutura física que hospeda seus recursos, incluindo:
+- Segurança física dos data centers, com acesso controlado e baseado em necessidades; localizados em instalações não identificadas, guardas de segurança 24/7; autenticação de dois fatores; análise e registro em log de acesso; vigilância por vídeo; e desmagnetização e destruição de discos.
+- Infraestrutura de hardware, como servidores, serviços de armazenamento e outros recursos essenciais para os serviços da **AWS**.
+- Infraestrutura de software, que abriga sistemas operacionais, aplicativos de serviços e software de virtualização.
+- Infraestrutura de rede, incluindo roteadores, balanceadores de carga, firewalls e cabeamento. Isso envolve monitoramento quase contínuo da rede em limites externos, pontos de acesso seguros e infraestrutura redundante com detecção de intrusão.
+- Infraestrutura de virtualização, assegurando o isolamento de instâncias.
+
+A segurança dessa infraestrutura é a prioridade máxima da **AWS**. Embora não seja possível visitar pessoalmente os data centers ou escritórios da **AWS** para verificar essa segurança, a Amazon disponibiliza vários relatórios de auditores independentes. Esses relatórios confirmam a conformidade da **AWS** com diversas normas e regulamentos de segurança da informação.
+
+Embora a **AWS** proteja e mantenha a infraestrutura de nuvem, a segurança de tudo o que é colocado na nuvem é de responsabilidade dos clientes. Eles são responsáveis pela implementação e segurança dos aplicativos que utilizam na **AWS**. As medidas de segurança que os clientes devem adotar variam conforme os serviços utilizados e a complexidade do sistema. Essas medidas incluem: escolher o sistema operacional da instância, proteger o aplicativo, configurar os security groups e firewalls, e gerenciar a configuração da rede e as contas de usuários.
+
+Quando os clientes utilizam os serviços da **AWS**, os clientes mantêm controle total sobre seu conteúdo. Eles são responsáveis por gerenciar os requisitos essenciais de segurança do conteúdo, incluindo:
+- Qual conteúdo escolhem para armazenar na **AWS**;
+- Quais serviços da **AWS** são utilizados com o conteúdo;
+- Em qual país esse conteúdo é armazenado;
+- O formato e a estrutura do conteúdo e se ele é mascarado, anonimizado ou criptografado;
+- Quem tem acesso ao conteúdo e como esses direitos de acesso são concedidos, gerenciados e revogados.
+
+Os clientes mantêm o controle sobre a segurança que escolhem implementar para proteger seus próprios dados, ambiente, aplicativos, configurações do **AWS Identity and Access Management (AWS IAM)** e sistemas operacionais. Assim, o modelo de responsabilidade compartilhada varia de acordo com os serviços da AWS utilizados pelo cliente.
+
+
+
 
 
 
