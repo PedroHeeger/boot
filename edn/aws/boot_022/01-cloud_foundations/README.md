@@ -88,11 +88,6 @@ O desenvolvimento deste módulo do bootcamp foi dividido em quatorze cursos, nov
 
 Na primeira aula do módulo 1 deste bootcamp foi explicado como funciona a plataforma online **Vocareum**. Esta fornece ambientes de laboratório baseados na nuvem para educação, treinamento e avaliação em áreas como programação. Neste módulo 1, essa foi a plataforma utilizada para criar recursos na AWS. Contudo, existiam alguns limites dos serviços e recursos da **AWS** que podiam ser utilizados. Os serviços e recursos disponíveis foram apresentados nesta aula e basicamente todos os serviços para obtenção da certificação AWS Certified Cloud Practitioner (CLF-C01) estavam disponíveis. Por fim, foi explicado também como realizar o acesso remoto de uma maquina **Windows** em uma instância utilizando o software **PuTTY** e também como acessar remotamente pelo **Mac** ou **Linux** através do software **OpenSSH**. Possuo um curso realizado e versionado aqui no **GitHub** que explica como fazer acesso remoto de diferentes formas, entre diversos sistemas operacionais, tanto para maquina remota ou local, utilizando vários softwares diferentes. Caso queira consultar, o curso é o [curso_092](https://github.com/PedroHeeger/course/tree/main/aws_skill_builder/aws/curso_092).
 
-<div align="Center"><figure>
-    <img src="../0-aux/md3-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
-
 <a name="item1.2"><h4>1.2 Boas-vindas ao AWS re/Start</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
 Nesta aula foi apresentado o objetivo do programa **AWS re/Start** que é a preparação de todos os alunos para o mercado de trabalho em nível básico de TI através do desenvolvimento de conhecimento e competências e da aplicação prática de habilidades técnicas baseadas na nuvem. A abordagem do programa conteve: discussões lideradas por instrutor, atividades de aplicativos, laboratórios práticos, prática de habilidades profissionais e avaliações. Para atender a exigência do programa foi necessário acesso a um computador e a participação e comprometimento com as aulas.
@@ -349,21 +344,45 @@ Ao estimar os custos do **Amazon S3**, considere os seguintes fatores:
 
 <a name="item1.18"><h4>1.18 Demonstração do S3 da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
+Nesta demonstração foi construído um bucket no **Amazon S3** e um arquivo foi carregado para dentro desse bucket como um objeto. Em seguida, tanto o bucket como o objeto foram configurados para permitirem acesso público, ou seja, que qualquer pessoa pudesse acessar esse arquivo. Todas as execuções foram realizadas através de arquivos de script em **PowerShell** contendo comandos **AWS CLI** para interagir com os serviços da **AWS**. A **AWS CLI** já estava instalada na máquina física **Windows** e já tinha o usuário administrador da minha conta na **AWS** (`PedroHeegerAdmin`) configurado nela. Cada arquivo possuía dois scripts, sendo um para criação e outro para remoção do recursos necessários na cloud da **AWS**, sempre precedidos de uma estrutura de condição que aguardava uma entrada do usuário para executar o bloco de código.
 
+Com o arquivo [s3Bucket.ps1](./resource/1.18-s3/s3Bucket.ps1) foi provisionado um bucket no **Amazon S3**, cujo nome foi `acf-edn-s3-demo` e a região escolhida foi `us-east-1` (Norte Virginia). Todas as outras configurações foram mantidas como padrão inicialmente, incluíndo as configurações que tornava o bucket como público. A imagem 02 exibe o bucket construído. Com o arquivo [s3Object.ps1](./resource/1.18-s3/s3Object.ps1) foi criado um objeto no bucket de nome `objTest.png` a partir de um arquivo armazenado na máquina física, tendo sua classe de armazenamento definida como `Standard` e o tipo de conteúdo como `image/png`. A imagem 03 evidência esse objeto dentro do bucket.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
 
+Em seguida foi executado o arquivo [s3BucketPubAccess.ps1](./resource/1.18-s3/s3BucketPubAccess.ps1) para desativar as configurações de bloqueio de acesso público (Block Access Public) do bucket. Esse recurso possuí quatro configurações que impedem o acesso público do bucket e são definidos como true, são eles: `BlockPublicAcls`, `IgnorePublicAcls`, `BlockPublicPolicy` e `RestrictPublicBuckets`. O `BlockPublicAcls` controla se a ACL (Lista de Controle de Acesso) podem ser aplicada no bucket. O `IgnorePublicAcls` é um mecanismo de proteção adicional que ignora ACL pública, ou seja, não valida permissões concedidas na ACL para a entidade `everyone` (todo mundo, ou seja, público). O `BlockPublicPolicy` bloqueia políticas públicas no bucket, ou seja, impede que qualquer política de bucket (Bucket Policy) que conceda permissões públicas seja aplicada ao bucket. Existem duas formas de controlar o acesso a um bucket, pode ser através da Access Control List (ACL) ou Lista de Controle de Acesso, ou através do Bucket Policy ou Política de Bucket. A configuração `BlockPublicPolicy` é exclusiva do Bucket Policy e como ele não seria usado, pôde permanecer como padrão. Já a configuração `RestrictPublicBuckets` é a que mais diretamente protege o bucket de acessos públicos em termos de políticas e permissões, garantindo que apenas contas específicas possam acessar o bucket. Ela garante que apenas as contas especificadas (ou seja, as contas que possuem permissões explícitas para acessar o bucket) possam acessar o bucket. Isso impede que o bucket seja acessível a qualquer pessoa na internet, mesmo que outras configurações (como ACL pública ou políticas de bucket públicas) estejam presentes. A imagem 04 mostra essa configuração realizada no bucket para permitir acesso público.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
 
+Executando o arquivo [s3BucketACL.ps1](./resource/1.18-s3/s3BucketACL.ps1) foi realizado uma alteração na Lista de Controle de Acesso para conceder permissão de leitura dos objetos do bucket construído a entidade `everyone` (todo mundo, ou seja, acesso público). Assim, os objetos criados nesse bucket poderiam ter acesso público se a ACL dos próprios objetos também concedesse essa permissão. Entretanto, por padrão a ACL não pode ser alterada se no recurso `Object Ownership` (Proprietário do Objeto) estiver definido como `BucketOwnerEnforced`. Essa configuração indica que a propriedade dos objetos é sempre atribuída ao proprietário do bucket, independentemente de quem fez o upload. Neste caso, a ACL são ignoradas para os objetos, e o proprietário do bucket controla todas as permissões. Para poder alterar a ACL foi necessário mudar a propriedade do objeto para `BucketOwnerPreferred`, onde o proprietário do bucket (ou seja, a conta que criou o bucket) é preferido para a propriedade dos objetos. Se um objeto é enviado por outra conta, a conta que fez o upload do objeto é a proprietária, mas o proprietário do bucket pode ter permissões adicionais. Essa configuração poderia ser alterada também para `ObjectWriter`, onde o proprietário do objeto é a conta que faz o upload do objeto e o proprietário do bucket não tem controle adicional sobre os objetos que não são seus. Mas nesse caso, o prorietário do bucket não conseguiria gerenciar os objetos que não foi ele quem criou. A imagem 05 exibe a alteração na ACL permitindo a leitura dos objetos no bucket para a entidade `everyone`.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
 
+Essa mesma configuração de ACL também tinha que ser realizada para o objeto especificamente, caso ele tenha sido adicionado antes de alterar a configuração do bucket. Caso contrário, a configuração já estabelecida no bucket é replicada para os objetos adicionados no próprio bucket. A imagem 06 mostra a permissão de leitura do objeto específico concedida para a entidade `everyone`. Já a imagem 07 exibe o objeto sendo acessado pelo navegador da web da máquina física através da URL que cada objeto recebe ao ser criado.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
 
-
-
-
-
-
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
 
 <a name="item1.20"><h4>1.20 Elastic Compute da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
@@ -515,17 +534,30 @@ A Amazon oferece diferentes modelos de preço para instâncias do EC2:
 
 <a name="item1.21"><h4>1.21 Demonstração do EC2 da AWS</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
+Nesta demonstração foi realizado o provisionamento de uma instância do **Amazon EC2** e a execução do acesso remoto da máquina física **Windows** à instância. Geralmente, nos meus projetos utilizo um par de chaves já criado na **AWS**, cujo nome é `keyPairUniversal`. Mas nesse caso, além da instância provisionada foi criado um novo par de chaves (key pairs) para ser utilizado nesta instância. A criação dos recursos e serviços da **AWS** foram realizados na minha conta pessoal, utilizando arquivos de script em **PowerShell** com comandos **AWS CLI** para interação com os serviços. A **AWS CLI** já estava instalada e configurada com meu usuário administrador da conta **AWS** (`PedroHeegerAdmin`) na máquina física **Windows**. Cada arquivo em **PowerShell** possuíam dois scripts, um para criação e outro para exclusão, sempre precedidos de uma estrutura de condição que aguardava uma entrada do usuário para executar a ação.
 
+O primeiro arquivo executado foi o [ec2KeyPair.ps1](./resource/1.21-ec2/ec2KeyPair.ps1) para construção do par de chaves de nome `keyPairEDNTest1` na cloud da **AWS**. A **AWS** utiliza a criptografia de chave pública para autenticar usuários as instâncias, sendo composta por um arquivo de chave pública e um arquivo de chave privada. A chave pública é gerenciada pela **AWS**, no qual ela utiliza para criptografar os dados. Já a chave privada é fornecida ao usuário apenas no momento de criação da chave para ser baixada e armazenada. Essa chave pode ser baixada tanto no formato `.pem` como no formato `.ppk` e é utilizada para descriptografar. Asssim, torna possível autenticar um usuário a uma instância do **Amazon EC2**. Ainda neste arquivo de criação, em seu código, ao criar o par de chaves, o conteúdo do arquivo de chave privada era direcionado para ser armazenado em um arquivo nas minhas pastas de trabalho, cuja essa pasta não era versionada para o **GitHub** por conter dados sensíveis. Esse caminho até o arquivo de chave privada era informado nas configurações ao provisionar a instância para que a chave construída, `keyPairEDNTest1`, fosse utilizada por ela. A imagem 08 exibe pelo console da **AWS**, o par de chaves que foi construído.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
 
+Após a construção do par de chaves, a instância do **Amazon EC2** foi provisionada com o arquivo [ec2Instance.ps1](./resource/1.21-ec2/ec2Instance.ps1), cuja tag de nome teve o seguinte valor `ec2EDNTest1`. A imagem de máquina (AMI) utilizada por essa instância foi `ami-07d9456e59793a7d5` (Microsoft Windows Server 2022 Base / Microsoft Windows 2022 Datacenter edition. [English]) e o tipo de instância foi `t2.micro`. O par de chaves criado `keyPairEDNTest1` foi vinculado a instância. Nas configurações de rede, foi mantida as configurações padrões, utilizado a VPC padrão da região `us-east-1` (Norte Virgínia), a sub-rede na primeira zona de disponibilidade `us-east-1a` e o grupo de segurança foi mantido o padrão (`default`). Nas configurações de armazenamento, também o padrão foi mantido, sendo um volume do **Amazon Elastic Block Store (Amazon EBS)** com `8` GiB do tipo `gp2` (Uso geral) e o nome do dispositivo `/dev/sda1`. A imagem 09 evidência a instância provisionada.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
 
+Por fim, utilizando o software da máquina física **Windows**, **Remote Desktop Protocol Client (RDP Client)**, ou **Remote Desktop Connection (Área de Trabalho Remota)** foi executado um acesso remoto gráfico a essa instância provisionada. Contudo, o RDP Client necessitava da senha do usuário `administrador` para realziar a conexão. Isso foi obtido através do console de gerenciamento da **AWS**, onde uma senha de acesso foi gerada para o usuário especificado, no caso `administrator`, fornecendo o arquivo de chave privada salva na máquina física. Também foi preciso criar uma regra de entrada liberando acesso na porta `3389` do protocolo `TCP`, que é onde o protocolo `RDP` opera, para todas faixas de IP. Isso foi realizado através do arquivo [vpcSgRule.ps1](./resource/1.21-ec2/vpcSgRule.ps1). Após isso, com as credenciais obtidas, o usuário informado conseguiu se autenticar e o acesso remoto foi estabelecido, conforme mostrado na imagem 10 abaixo. Durante a conexão, uma mensagem do **RDP Client** pode aparecer informando problemas com o certificado, proceda adiante pois é possível conectar mesmo sem um certificado.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
 
-
-
-
-
+Caso queira saber mais sobre formas de acesso remoto em instâncias do **Amazon EC2** ou entre máquinas em diferentes locais ou entender melhor a execução dos acessos remotos, acesse o curso [curso_092](https://github.com/PedroHeeger/course/tree/main/aws_skill_builder/aws/curso_092) no meu **GitHub**.
 
 <a name="item1.22"><h4>1.22 11-[CF]-Lab - Introdução ao Amazon EC2</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
 
@@ -539,62 +571,62 @@ systemctl start httpd
 echo '<html><h1>Hello From Your Web Server!</h1></html>' > /var/www/html/index.html
 ```
 
-As duas imagens a seguir mostra algumas configurações da instância e a instância ativa.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img03.png" alt="img03"><br>
-    <figcaption>Imagem 03.</figcaption>
-</figure></div><br>
-
-A tarefa 2 consistiu no monitoramento da instância, verificando o status dela e as métricas do **Amazon CloudWatch**, conforme exibido na imagem 04 e 05 a seguir. Também foi utilizado o recurso `Get Instance Screenshot` que pode ser utilizado para identificar algum problema com a instância quando não é possível realizar acessá-la remotamente, apresentado na imagem 06.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img04.png" alt="img04"><br>
-    <figcaption>Imagem 04.</figcaption>
-</figure></div><br>
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img05.png" alt="img05"><br>
-    <figcaption>Imagem 05.</figcaption>
-</figure></div><br>
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img06.png" alt="img06"><br>
-    <figcaption>Imagem 06.</figcaption>
-</figure></div><br>
-
-Na tarefa 3, o objetivo foi atualizar o grupo de segurança criando uma nova regra de entrada para liberar o acesso a qualquer faixa de IP `0.0.0.0/0` a porta `80` do protocolo `TCP` que é a porta que o protocolo `HTTP` utiliza para se comunicar. Dessa forma, foi possível visualizar pelo navegador de internet da maquina física **Windows**, a página criada pelo servidor web **Apache HTTP (Httpd)**, conforme ilustrado na imagem 07 abaixo. A imagem 08 mostra a regra de entrada criada no grupo de segurança vinculado a essa instância.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img07.png" alt="img07"><br>
-    <figcaption>Imagem 07.</figcaption>
-</figure></div><br>
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img08.png" alt="img08"><br>
-    <figcaption>Imagem 08.</figcaption>
-</figure></div><br>
-
-Na tarefa 4 foi realizado o redimensionamento da instância tanto do tipo da instância, alterando de `t3.micro` para `t3.small`, quanto do volume do **Amazon EBS**, modificando para `10 Gb` do mesmo tipo, o `gp2`. Contudo, para realizar essas alterações foi preciso interromper a instância antes e então, fazer as modificações. Após isso, a instância foi iniciada já com as modificações. A imagem 09 mostram as alterações realizadas do tipo da instância e do volume de armazenamento.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img09.png" alt="img09"><br>
-    <figcaption>Imagem 09.</figcaption>
-</figure></div><br>
-
-Na tarefa 5, o objetivo foi apenas verificar o limite do número de instâncias que pode ser iniciada na região atual `us-east-2` (Oregon). Por fim, a tarefa 6 foi realizar o encerramento da instância, no qual foi necessário primeiro remover a proteção contra encerramento definada nas configurações, para depois seguir com o encerramento da instância. A imagem 10 mostra a instância em estado de encerramento. Enquanto a imagem 11 exibe a tentativa de encerramento quando havia a proteção contra encerramento. Note que um erro foi mostrado.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img10.png" alt="img10"><br>
-    <figcaption>Imagem 10.</figcaption>
-</figure></div><br>
+As duas imagens (11 e 12) a seguir mostra algumas configurações da instância e a instância ativa.
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img11.png" alt="img11"><br>
     <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+A tarefa 2 consistiu no monitoramento da instância, verificando o status dela e as métricas do **Amazon CloudWatch**, conforme exibido na imagem 13 e 14 a seguir. Também foi utilizado o recurso `Get Instance Screenshot` que pode ser utilizado para identificar algum problema com a instância quando não é possível realizar acessá-la remotamente, apresentado na imagem 15.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
+</figure></div><br>
+
+Na tarefa 3, o objetivo foi atualizar o grupo de segurança criando uma nova regra de entrada para liberar o acesso a qualquer faixa de IP `0.0.0.0/0` a porta `80` do protocolo `TCP` que é a porta que o protocolo `HTTP` utiliza para se comunicar. Dessa forma, foi possível visualizar pelo navegador de internet da maquina física **Windows**, a página criada pelo servidor web **Apache HTTP (Httpd)**, conforme ilustrado na imagem 16 abaixo. A imagem 17 mostra a regra de entrada criada no grupo de segurança vinculado a essa instância.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+Na tarefa 4 foi realizado o redimensionamento da instância tanto do tipo da instância, alterando de `t3.micro` para `t3.small`, quanto do volume do **Amazon EBS**, modificando para `10 Gb` do mesmo tipo, o `gp2`. Contudo, para realizar essas alterações foi preciso interromper a instância antes e então, fazer as modificações. Após isso, a instância foi iniciada já com as modificações. A imagem 18 mostram as alterações realizadas do tipo da instância e do volume de armazenamento.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
+Na tarefa 5, o objetivo foi apenas verificar o limite do número de instâncias que pode ser iniciada na região atual `us-east-2` (Oregon). Por fim, a tarefa 6 foi realizar o encerramento da instância, no qual foi necessário primeiro remover a proteção contra encerramento definada nas configurações, para depois seguir com o encerramento da instância. A imagem 19 mostra a instância em estado de encerramento. Enquanto a imagem 20 exibe a tentativa de encerramento quando havia a proteção contra encerramento. Note que um erro foi mostrado.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img19.png" alt="img19"><br>
+    <figcaption>Imagem 19.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
 </figure></div><br>
