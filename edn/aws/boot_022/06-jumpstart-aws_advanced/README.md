@@ -86,39 +86,78 @@ O desenvolvimento deste módulo do bootcamp foi dividido em um curso e um labora
 
 <a name="item6.1"><h4>6.1 Amazon CloudWatch</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Para utilizar os recursos de forma eficiente, é necessário obter insights sobre eles. Deve-se compreender: como identificar o momento adequado para executar mais instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)**; se o desempenho ou a disponibilidade do aplicativo estão sendo afetados devido à capacidade insuficiente; e qual a quantidade real de infraestrutura que está sendo utilizada. Essas informações podem ser capturadas com o **Amazon CloudWatch**.
 
+Ao executar aplicativos em instâncias do EC2, é essencial monitorar o desempenho da carga de trabalho usando o **Amazon CloudWatch**. Durante esse monitoramento, é importante considerar duas questões críticas: como garantir que a carga de trabalho tenha recursos suficientes do EC2 para atender a requisitos flutuantes de desempenho e como automatizar o provisionamento de recursos do **Amazon EC2** sob demanda. O CloudWatch auxilia no monitoramento de desempenho, mas não adiciona nem remove instâncias do EC2 por conta própria. Para isso, o **Amazon EC2 Auto Scaling** pode ser utilizado, ajudando a manter a integridade e a disponibilidade da frota, além de dimensionar dinamicamente as instâncias do EC2 para atender às demandas durante picos e períodos de baixa demanda.
 
+A principal função do **Amazon CloudWatch** é monitorar o desempenho e a integridade dos recursos e aplicativos da **AWS**. O CloudWatch também coleta e monitora arquivos de log de instâncias do EC2, **AWS CloudTrail**, **Amazon Route 53** e outras fontes. Sendo um sistema distribuído de coleta de estatísticas, ele coleta e monitora as métricas dos aplicativos. Além disso, é possível criar e usar métricas personalizadas e receber notificações quando um alarme é disparado. O CloudWatch oferece duas opções de monitoramento:
+- Monitoramento básico para instâncias do **Amazon EC2**: Inclui sete métricas pré-selecionadas com uma frequência de 5 minutos e três métricas de verificação de status com uma frequência de 1 minuto, sem custo adicional.
+- Monitoramento detalhado para instâncias do **Amazon EC2**: Abrange todas as métricas disponíveis no Monitoramento básico, mas com uma frequência de 1 minuto, por um custo adicional. As instâncias com monitoramento detalhado habilitado fornecem agregação de dados pelo **Amazon EC2**, ID da Amazon Machine Image (AMI) e tipo de instância.
 
+O CloudWatch retém métricas por 15 meses sem custo adicional. As métricas são compatíveis com três programações de retenção: pontos de dados de 1 minuto estão disponíveis por 15 dias, pontos de dados de cinco minutos por 63 dias, e pontos de dados de uma hora por 455 dias.
 
+É possível criar um alarme do CloudWatch que monitora uma métrica específica ou o resultado de uma expressão matemática baseada em várias métricas. O alarme executa ações com base no valor da métrica ou na expressão em relação a um limite por alguns períodos. Um alarme pode estar em três estados: OK – a métrica está dentro do limite definido; ALARM – a métrica está fora do limite definido; INSUFFICIENT_DATA – o alarme foi acionado recentemente, a métrica não está disponível ou não há dados suficientes para determinar o estado do alarme. "ALARM" é apenas um nome para o estado e não necessariamente indica uma condição de emergência. Por exemplo, pode-se definir um alarme que notifica quando o CPUCreditBalance de uma instância T2 está baixo, permitindo suspender um trabalho intensivo em CPU até que o saldo de créditos T2 se recupere.
 
+Em um exemplo fictício, uma instância do EC2 possui um agente do CloudWatch instalado e o monitoramento detalhado habilitado. Duas das métricas enviadas pelo agente são mostradas. A primeira é a métrica de utilização da CPU, uma métrica padrão disponível no CloudWatch e facilmente coletada. No entanto, a utilização de memória em uma instância do EC2, que não é visível no nível do hipervisor, requer uma métrica personalizada para monitorar a utilização de memória do serviço httpd. Um alarme do CloudWatch é configurado para ser acionado sempre que a utilização da CPU exceder x por cento. Quando o alarme é acionado, uma mensagem é enviada usando o **Amazon SNS**, gerando uma notificação por e-mail. Um sistema de paginação ou rastreamento de terceiros recebe o alerta, acionando outras ações, como a notificação de funcionários de TI de plantão. O mesmo alarme do CloudWatch também envia uma mensagem a um tópico do **Amazon SQS**, gerando um item de trabalho.
 
+Em outro exemplo, o limite do alarme do CloudWatch é definido como 3, com a condição de violação mínima de 3 períodos consecutivos. Ou seja, o alarme aciona sua ação somente quando o limite é violado por três períodos seguidos. Isso ocorre do terceiro ao quinto períodos, e o estado do alarme é definido como `ALARM`. No sexto período, o valor cai abaixo do limite e o estado é revertido para `OK`. Posteriormente, no nono período, o limite é violado novamente, mas não por três períodos consecutivos, portanto, o estado do alarme permanece como `OK`.
 
+As métricas são os conceitos fundamentais no CloudWatch. Uma métrica representa um conjunto ordenado de pontos de dados publicados no CloudWatch, funcionando como uma variável a ser monitorada, com pontos de dados que representam os valores dessa variável ao longo do tempo. Por exemplo, o uso da CPU de uma instância específica do EC2 é uma métrica fornecida pelo **Amazon EC2**. Os pontos de dados podem vir de qualquer aplicativo ou atividade de negócios de onde se coleta dados. As métricas são definidas exclusivamente por um nome, um namespace e zero ou mais dimensões. Cada ponto de dados possui um carimbo de data/hora e, opcionalmente, uma unidade de medida. Quando são solicitadas estatísticas, o stream de dados retornado é identificado por namespace, nome da métrica, dimensão e (opcionalmente) a unidade. As métricas existem apenas na região onde são criadas.
 
+Um namespace é um contêiner para as métricas do CloudWatch. As métricas em namespaces diferentes são isoladas, garantindo que as métricas de aplicativos distintos não sejam agregadas incorretamente nas mesmas estatísticas. Os namespaces da **AWS** seguem a convenção de nomenclatura `AWS/<service>`. Por exemplo, o **Amazon EC2** usa o namespace `AWS/EC2`. Uma dimensão é um par de nome-valor que identifica uma métrica de forma exclusiva, podendo-se atribuir até 10 dimensões a uma métrica. Cada métrica tem características específicas que a descrevem, e as dimensões podem ser vistas como categorias para essas características. As dimensões auxiliam na projeção de uma estrutura para o plano de estatísticas e podem ser usadas para filtrar os resultados retornados pelo CloudWatch. Por exemplo, ao pesquisar métricas, é possível obter estatísticas para uma determinada instância do EC2, especificando a dimensão InstanceId. Um período é o tempo associado a uma estatística específica do CloudWatch, definido pela contagem de segundos, podendo variar de 1 segundo até 1 dia (86.400 segundos).
 
+O CloudWatch oferece métricas padrão e personalizadas. As métricas padrão são agrupadas por serviço. Por exemplo, ao acessar o Console de gerenciamento da **AWS** e abrir o serviço do CloudWatch, é possível visualizar todas as métricas do **Amazon EC2** através de links específicos, com gráficos que permitem comparações. Usando a **AWS CLI**, o comando `list-metrics` lista as métricas disponíveis; por exemplo, `aws cloudwatch list-metrics --namespace AWS/S3` mostra todas as métricas padrão do **Amazon S3**. Métricas não podem ser excluídas, mas expiram automaticamente após 15 meses se não receberem novos dados. Dados mais antigos que 15 meses são removidos conforme novos dados são adicionados. 
+Os serviços da **AWS** enviam métricas ao CloudWatch. Além disso, é possível publicar métricas personalizadas no CloudWatch utilizando a **AWS CLI**, uma API ou um agente do CloudWatch. Essas métricas personalizadas são organizadas pelo namespace definido no momento da criação.
 
+Um uso comum do **Amazon CloudWatch** é monitorar recursos da conta para identificar atividades suspeitas. Por exemplo, configurar alertas baseados em dados de faturamento pode ajudar a detectar possíveis violações de segurança na conta da **AWS**. Alguns clientes só descobrem que suas credenciais ou chaves de acesso do A**WS Identity and Access Management (AWS IAM)** foram comprometidas ao receber faturas inesperadas com valores altos. Para detectar tais problemas proativamente, é possível ativar alertas de pagamento nas preferências da conta e configurar alarmes no CloudWatch para notificar caso as cobranças estimadas para o mês ultrapassem um limite definido. Também é viável monitorar picos incomuns e prolongados no uso de serviços, como CPU, atividades de disco e **Amazon RDS**.
+
+Os painéis do **Amazon CloudWatch** são páginas de início personalizáveis no console do CloudWatch, permitindo monitorar os recursos em uma única visualização. É possível criar visualizações personalizadas das métricas e alarmes para os recursos da **AWS**. Os painéis automáticos do CloudWatch fornecem uma visão agregada da integridade e desempenho de todos os recursos da **AWS**, com visualizações dinâmicas de métricas e alarmes baseados em contas e recursos. Eles ajudam a identificar a causa raiz de problemas de desempenho, seguindo as melhores práticas recomendadas para os serviços da **AWS** e atualizando-se dinamicamente para refletir o estado mais recente das métricas importantes.
+
+Por padrão, as instâncias do EC2 têm o monitoramento básico do CloudWatch ativado, com dados disponíveis em incrementos de 5 minutos, como parte do nível gratuito da **AWS**. É possível, no entanto, habilitar o monitoramento detalhado, que tem um custo adicional. Com o monitoramento detalhado ativado, os dados são disponibilizados em incrementos de 1 minuto.
 
 <a name="item6.2"><h4>6.2 Mergulhe fundo: Amazon CloudWatch</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+O *Amazon CloudWatch Events* fornece um streaming (fluxo) quase em tempo real de eventos do sistema que relatam alterações nos recursos da **AWS**. Com regras configuráveis, é possível direcionar eventos para um ou mais destinos, como streams ou funções. O CloudWatch Events detecta mudanças operacionais e reage a elas enviando mensagens, ativando funções e capturando informações de estado. É possível usar o CloudWatch Events para programar ações automatizadas com base em expressões cron ou rate. Antes de utilizar o CloudWatch Events, é necessário entender os seguintes conceitos:
+- Um evento representa uma alteração no ambiente da **AWS**, ocorrendo quando o estado de um recurso muda. Por exemplo, o **Amazon EC2** gera um evento quando o estado de uma instância muda de pendente para em execução. Também é possível criar eventos personalizados no nível do aplicativo e publicá-los no CloudWatch Events, bem como configurar eventos programados para serem gerados periodicamente.
+- Um destino é responsável por processar eventos. Exemplos de destinos incluem instâncias do EC2, funções do **AWS Lambda**, tópicos do **Amazon Simple Notification Service (Amazon SNS)** e filas do **Amazon Simple Queue Service (Amazon SQS)**.
+- Uma regra associa eventos de entrada aos destinos para processamento. Uma única regra pode encaminhar eventos para vários destinos simultaneamente, permitindo que diferentes partes de uma organização recebam e processem os eventos conforme suas necessidades.
 
+O *Amazon CloudWatch Logs* permite monitorar, armazenar e acessar arquivos de log de instâncias do **Amazon EC2**, **AWS CloudTrail**, **Amazon Route 53** e outras fontes. Com o CloudWatch Logs, é possível recuperar dados de log, monitorá-los em quase tempo real em busca de frases, valores ou padrões específicos. Por exemplo, é possível configurar um alarme para o número de erros registrados nos logs do sistema em instâncias do EC2 ou visualizar gráficos sobre a latência de solicitações de logs de aplicativos em instâncias do EC2. Os dados de log podem ser armazenados indefinidamente e também podem ser armazenados externamente em instâncias do EC2, evitando a preocupação com o preenchimento de discos rígidos. O processo de análise de logs pode ser dividido em três fases distintas:
+- Configurar: Determine quais informações devem ser capturadas nos logs e defina onde e como essas informações serão armazenadas.
+- Coletar: Com a criação e remoção de instâncias em um ambiente de nuvem, é essencial ter uma estratégia para fazer upload periódico dos arquivos de log, garantindo que dados valiosos não sejam perdidos quando uma instância é encerrada.
+- Analisar: Após a coleta dos dados, é o momento de análise. A análise dos logs oferece uma visão detalhada da integridade diária dos sistemas, revela tendências futuras no comportamento dos clientes e fornece insights sobre como os clientes estão interagindo com o sistema no momento.
 
+O CloudWatch Logs permite a coleta automática de logs de serviços compatíveis, como instâncias do **Amazon EC2**. Para isso, é necessário instalar o novo agente unificado do CloudWatch (ou o agente mais antigo do CloudWatch Logs) nas instâncias do EC2 das quais se deseja coletar dados de log. Após a instalação, é possível agregar dados de múltiplas instâncias em grupos de logs, cada um representando um tipo específico de log com um formato definido. O agente em cada instância coleta os dados do log especificado (como logs de aplicativos) e os envia para o grupo de logs correspondente. Os administradores podem criar filtros de métrica em um grupo de logs para buscar strings ou padrões específicos, com cada correspondência gerando um valor numérico que incrementa uma métrica personalizada do CloudWatch. Essa métrica pode ser utilizada para criar alarmes ou enviar notificações, como qualquer outra métrica personalizada do CloudWatch.
 
+O *CloudWatch Logs Insights* é uma funcionalidade do CloudWatch que oferece uma linguagem de consulta especializada para análise de logs. Com comandos simples, porém poderosos, ele facilita a execução de consultas e a análise de dados. A ferramenta inclui exemplos de consultas, descrições de comandos, preenchimento automático e descoberta de campos de log para agilizar o início do uso. Exemplos de consultas estão disponíveis para vários tipos de logs de serviços da **AWS**.
 
+Os alarmes do CloudWatch podem ser usados para identificar condições fora dos limites em arquivos de log. Por exemplo, considere um grupo de logs chamado HttpAccessLog, que contém dados de log agregados coletados por agentes do CloudWatch instalados em instâncias do EC2. Um administrador pode criar um filtro personalizado no grupo de logs para buscar mensagens de erro HTTP 404 (página não encontrada). Cada ocorrência dessa mensagem aumenta uma métrica personalizada chamada 404Count. Quando essa métrica ultrapassa um valor especificado, o alarme do CloudWatch é acionado, e uma notificação é enviada para a equipe de suporte de TI.
 
+Os logs de aplicativos costumam gerar dados em formatos padronizados. Para analisar efetivamente esses dados, é necessário compreender o formato do log. Por exemplo, um arquivo de log de acesso gerado pelo servidor web **Apache HTTP (Httpd)** geralmente está localizado em `/var/log/httpd/access_log` na instância do EC2 onde o servidor está instalado. Cada vez que o servidor web recebe uma solicitação HTTP, uma nova linha é adicionada ao log de acesso.
 
+Logs do **Apache HTTP (Httpd)** configurados com uma string de substituição no arquivo `httpd.conf` seguem o formato de registro padrão: `%h %l %u %t "%r" %>s %b`. Esse formato é delimitado por espaços e fornece informações sobre cada solicitação HTTP(S). Por exemplo: `127.0.0.1 - marcia [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326`. Neste exemplo, cada entrada de log inclui o seguinte:
+- %h: Representa o endereço IP da máquina que fez a solicitação HTTP.
+- %l: Indica a identidade da máquina do cliente, que geralmente não está disponível e é representada por um traço (-) no exemplo.
+- %u: Refere-se ao ID do usuário que fez a solicitação. Se o site não requer login, essas informações não estarão disponíveis. No exemplo, o usuário é marcia.
+- %t: Mostra o horário em que a solicitação foi recebida.
+- %r: Contém a linha de solicitação, que inclui o tipo de requisição HTTP (como GET) e o recurso solicitado, como uma página HTML, um arquivo gráfico ou uma folha de estilo.
+- %s: Indica o código de status HTTP com o qual o servidor respondeu. No exemplo, o código é 200, que significa sucesso, mas outros códigos, como 404 (recurso não encontrado), podem aparecer.
+- %b: Registra o tamanho do objeto retornado ao cliente solicitante.
 
+Para criar um filtro de métrica no Amazon CloudWatch, é necessário definir um padrão de filtro que esteja em conformidade com a sintaxe estabelecida, lembrando que a diferenciação entre maiúsculas e minúsculas é considerada. Um padrão de filtro pode incluir vários termos, mas para que haja uma correspondência, todos os termos devem estar presentes em um único evento de log. Por exemplo, um padrão de filtro como "Exceção de ERRO" só corresponderá aos registros de log que contenham ambas as palavras "ERRO" e "Exceção". Para criar uma métrica com base em um padrão de filtro, defina um padrão que procure por strings específicas e códigos de status HTTP. Exemplo: Crie uma métrica para todos os resultados que contenham a string "html" em qualquer lugar da solicitação e qualquer erro HTTP da série 400 (erro do cliente). O padrão de filtro seria algo como: `[ip, user, username, timestamp, request = *html*, status_code = 4*, bytes]`.
 
 <a name="item6.3"><h4>6.3 186- [JAWS] -Laboratório: Monitorar a infraestrutura</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
-Neste laboratório, desenvolvido no sandbox **Voccareum**, foi explicado como realizar monitoramentos das aplicações e infraestrutura dos serviços da **AWS** utilizando três recursos do serviço **Amazon CloudWatch**, *Amazon CloudWatch Logs*, *Amazon CloudWatch Events* e *Amazon CloudWatch Agent*, e o serviço **AWS Config**. Outros serviços da **AWS** como **AWS System Manager (AWS SSM)** e **Amazon Simple Notification Service (Amazon SNS)** também foram utilizados integrando com os serviços anteriores. O monitoramento dos logs da aplicação foi realizado pelo *Amazon CloudWatch Agent* e *Amazon CloudWatch Logs*. Enquanto o monitoramento da infraestrutura dos serviços da **AWS** foi executado pelo *Amazon CloudWatch Agent* e as próprias métricas do **Amazon CloudWatch**, sendo a infraestrutura analisada neste caso, uma instância do **Amazon EC2** que funcionava como servidor web, onde a aplicação era executada. Com o *Amazon CloudWatch Events* foi realizado um monitoramento em tempo real com envio de notificações através do **Amazon SNS**. Por fim, com o **AWS Config** foi realizada a verificação de conformidade da infraestrutura.
+Neste laboratório, desenvolvido no sandbox **Voccareum**, foi explicado como realizar monitoramentos das aplicações e infraestrutura dos serviços da **AWS** utilizando três recursos do serviço **Amazon CloudWatch** (*Amazon CloudWatch Logs*, *Amazon CloudWatch Events* e *Amazon CloudWatch Agent*) e o serviço **AWS Config**. Outros serviços da **AWS** como **AWS System Manager (AWS SSM)** e **Amazon Simple Notification Service (Amazon SNS)** também foram utilizados integrando com os serviços anteriores. O monitoramento dos logs da aplicação foi realizado pelo *Amazon CloudWatch Agent* e *Amazon CloudWatch Logs*. Enquanto o monitoramento da infraestrutura dos serviços da **AWS** foi executado pelo *Amazon CloudWatch Agent* e as próprias métricas do **Amazon CloudWatch**, sendo a infraestrutura analisada neste caso, uma instância do **Amazon EC2** que funcionava como servidor web, onde a aplicação era executada. Com o *Amazon CloudWatch Events* foi realizado um monitoramento em tempo real com envio de notificações através do **Amazon SNS**. Por fim, com o **AWS Config** foi realizada a verificação de conformidade da infraestrutura.
 
-A primeira tarefa do laboratório consistiu em instalar e configurar o *Amazon CloudWatch Agent* dentro da instância do **Amazon EC2** para coletar métricas internas da instância e da aplicação que ela executava. A instalação e configuração foi toda realizada através dos recursos *Parameter Store* e *Run Command* do **AWS SSM**, não sendo necessário acessar remotamente a instância. Tanto a instância do EC2 como os templates utilizados no *Run Command* foram provisionados automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. O primeiro comando executado na instância foi do template `AWS-ConfigureAWSPackage`, configurando na seção parâmetros de comando, a ação como instalar, o nome como `AmazonCloudWatchAgent` e a versão como `latest`. Na seção destino foi optado por escolher as instâncias manualmente, sendo selecionada a instância do EC2 de tag de nome igual a `Web Server`. A imagem 02 mostra o comando executado com êxito.
+A primeira tarefa do laboratório consistiu em instalar e configurar o *Amazon CloudWatch Agent* dentro da instância do **Amazon EC2** para coletar métricas internas da instância e da aplicação que ela executava. A instalação e configuração foi toda realizada através dos recursos *Parameter Store* e *Run Command* do **AWS SSM**, não sendo necessário acessar remotamente a instância. A instância do EC2 foi provisionada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Já os Command documents (Documentos de comando) utilizados no *Run Command* eram gerenciados pela **AWS**. O primeiro comando executado na instância foi do Command document `AWS-ConfigureAWSPackage`, configurando na seção parâmetros de comando (Command parameters), a ação como instalar, o nome do pacote que seria instalado que no caso foi o `AmazonCloudWatchAgent` e a versão como `latest`. Na seção seleção de destino (Target selection) foi optado por escolher as instâncias manualmente, sendo selecionada a instância do EC2 de tag de nome igual a `Web Server`. As demais configurações foram mantidas como padrão. A imagem 02 mostra o comando executado com êxito.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-O comando definido pelo template `AWS-ConfigureAWSPackage` realizava na instância do EC2...
+O comando definido pelo Command document `AWS-ConfigureAWSPackage` é usado para gerenciar a instalação e configuração de pacotes de software em instâncias EC2 ou servidores gerenciados. Ele fornece uma maneira automatizada de instalar e configurar pacotes de software, incluindo a possibilidade de instalar pacotes específicos para a sua distribuição **Linux** ou **Windows**. Um dos pacotes em que ele instala e que foi instalado nessa instância foi o *Amazon CloudWatch Agent*. Outros pacotes poderiam ser instalados mas seria necessário indicar o nome deles na seção de Command parameters.
 
 Em destinos e saídas (Targets and outputs) foi possível verificar as saídas do comando e ver que em uma das etapas o agente do **Amazon CloudWatch** foi instalado na instância com sucesso. Uma das etapas do comando não foi executada devido a pré-condições que não foram satisfeitas, portanto ela foi ignorada, mas não comprometeu a execução. Nesta etapa era necessário que o sistema operacional da instância fosse **Windows**, mas neste caso era uma máquina **Amazon Linux**. A imagem 03 exibe os outputs do comando.
 
@@ -127,7 +166,7 @@ Em destinos e saídas (Targets and outputs) foi possível verificar as saídas d
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
-Com o CloudWatch Agent instalado na instância foi preciso configurá-lo para que ele coletasse as informações de log desejada. Neste caso, as informações eram os logs do servidor web onde a aplicação rodava e as métricas gerais do sistema utilizadas para realizar o monitoramento da aplicação e da infraestrutura respectivamente. Para isso foi construído um parâmetro no recurso *Parameter Store* do **AWS SSM**, cujo nome dele foi `Monitor-Web-Server`, a descrição foi `Collect web logs and system metrics` e em valor foi passado o JSON abaixo.
+Com o CloudWatch Agent instalado na instância foi preciso configurá-lo para que ele coletasse as informações de log desejada. Neste caso, as informações eram os logs do servidor web onde a aplicação rodava e as métricas gerais do sistema utilizados para realizar o monitoramento da aplicação e da infraestrutura respectivamente. Para isso foi construído um parâmetro no recurso *Parameter Store* do **AWS SSM**, cujo nome dele foi `Monitor-Web-Server`, a descrição foi `Collect web logs and system metrics` e em valor foi passado o JSON abaixo.
 
 ```json
 {
@@ -199,7 +238,7 @@ Com o CloudWatch Agent instalado na instância foi preciso configurá-lo para qu
 }
 ```
 
-Esse JSON criava no **Amazon CloudWatch** dois grupos de log (Log Group) de nomes `HttpAccessLog` e `HttpErrorLog`, ambos relativo ao servidor web **Apache HTTP (Httpd)** que executava a aplicação na instância do EC2. Os logs eram extraídos das pastas `access_log` e `error_log`, armazenadas no diretório `/var/log/httpd/` dentro da instância do EC2. Então qualquer log do servidor web Apache que fosse gerado nessas pastas seriam extraídos para o log group correspondente do CloudWatch, sendo possível visualizá-los pelo console do próprio CloudWatch. O log stream (fluxo de registro) é uma subdivisão dentro de cada log group para armazenar os logs, onde neste caso teve como nome o próprio ID da instância. Isso seria extremamente útil se fosse uma frota de instância, pois separaria os logs de cada instância pelo seu ID.
+Esse JSON criava no **Amazon CloudWatch** dois grupos de log (Log Group) de nomes `HttpAccessLog` e `HttpErrorLog`, ambos relativo ao servidor web **Apache HTTP (Httpd)** que executava a aplicação na instância do EC2. Os logs eram extraídos das pastas `access_log` e `error_log` armazenadas no diretório `/var/log/httpd/` dentro da instância do EC2. Então qualquer log do servidor web Apache que fosse gerado nessas pastas seriam extraídos para o log group correspondente do CloudWatch, sendo possível visualizá-los pelo console do próprio CloudWatch. O log stream (fluxo de registro) é uma subdivisão dentro de cada log group para armazenar os logs, onde neste caso teve como nome o próprio ID da instância. Isso seria extremamente útil se fosse uma frota de instância, pois separaria os logs de cada instância pelo seu ID.
 
 Ainda no JSON, além dos logs coletados para o monitoramento da aplicação, também foram coletadas métricas do sistema da instância EC2, como: cpu, disk, diskio, mem e swap. Abaixo é informado quais métricas exatamente foram coletadas de cada um. A imagem 04 ilustra o parâmetro construído.
 - cpu:
@@ -222,14 +261,14 @@ Ainda no JSON, além dos logs coletados para o monitoramento da aplicação, tam
     <figcaption>Imagem 04.</figcaption>
 </figure></div><br>
 
-Este parâmetro foi utilizado ao executar um outro comando no *Run Command* para configurar ao agente do CloudWatch já instalado na instância, indicando quais informações deveriam ser coletadas. O template utilizado dessa vez foi o `AmazonCloudWatch-ManageAgent`. Cada template tem várias informações e entre elas um script que é executado dentro da instância. O script desse template fazia referência ao parâmetro construído no *Parameter Store*. Assim, caso quisesse modificar as métricas coletadas era só alterar o valor do parâmetro que é o arquivo JSON, especificar as métricas e então executar um comando com este template. Na seção parâmetros de comando foram feitas as seguintes configurações: em ação foi definido configurar, em modo foi selecionado ec2, em origem da configuração foi selecionado ssm, em local de configuração foi definido `Monitor-Web-Server` e o reinício foi definido como sim. Isso determinava que o agente do CloudWatch utilizasse a configuração estabelecida pelo parâmetro no **AWS SSM**. Na seção de destinos, novamente foi escolhida manualmente a instância de tag de nome `Web Server`. A imagem 05 mostra que o comando foi executado com êxito.
+Este parâmetro foi utilizado ao executar um outro comando no *Run Command* para configurar ao agente do CloudWatch já instalado na instância, indicando quais informações deveriam ser coletadas. O command document utilizado dessa vez foi o `AmazonCloudWatch-ManageAgent`. Cada command document tem várias informações e entre elas um script que é executado dentro da instância. O script desse command document fazia referência ao parâmetro construído no *Parameter Store*. Assim, caso quisesse modificar as métricas coletadas era só alterar o valor do parâmetro que é o arquivo JSON, especificar as métricas e então executar um comando com este command document. Na seção parâmetros de comando (Command parameters) foram feitas as seguintes configurações: em ação foi definido configurar, em modo foi selecionado ec2, em origem da configuração foi selecionado ssm, em local de configuração foi definido `Monitor-Web-Server` e o reinício foi definido como sim. Isso determinava que o agente do CloudWatch utilizasse a configuração estabelecida pelo parâmetro no **AWS SSM**. Na seção de destinos (Target selection), novamente foi escolhida manualmente a instância de tag de nome `Web Server`. A imagem 05 mostra que o comando foi executado com êxito.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img05.png" alt="img05"><br>
     <figcaption>Imagem 05.</figcaption>
 </figure></div><br>
 
-A tarefa de número 2 teve como objetivo gerar dados de logs da aplicação executada no servidor web Apache dentro da instância do EC2 e em seguida monitorá-los através do **Amazon CloudWatch**. Para isso foi necessário acessar a aplicação que era executada na instância. Dessa forma, foi copiado o IP ou DNS público da instância e acessado pelo navegador da máquina física **Windows**. A requisição era direcionada para a página de teste do servidor web. Nesta mesma URL foi acrescentado o path `/start` que era uma pasta que não existia dentro do servidor web. Uma mensagem de erro aparecia indicando que a página não foi encontrada. A finalidade aqui era gerar dados de log tentando acessar uma aplicação que não existia. A imagem 06 exibe a tentativa de acesso a página da aplicação que não existia.
+A tarefa de número 2 teve como objetivo gerar dados de logs da aplicação executada no servidor web Apache dentro da instância do EC2 e em seguida monitorá-los através do **Amazon CloudWatch**. Para isso foi necessário acessar a aplicação que era executada na instância. Dessa forma, foi copiado o IP ou DNS público da instância e acessado pelo navegador da máquina física **Windows**. A requisição era direcionada para a página de teste do servidor web Apache executado na instância. Nesta mesma URL foi acrescentado o path `/start` que era uma pasta que não existia dentro do servidor web. Uma mensagem de erro aparecia indicando que a página não foi encontrada. A finalidade aqui era gerar dados de log tentando acessar uma aplicação que não existia. A imagem 06 exibe a tentativa de acesso a página da aplicação que não existia.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img06.png" alt="img06"><br>
@@ -243,111 +282,127 @@ Para confirmar os logs gerado, no console da **AWS** foi acessado o CloudWatch e
     <figcaption>Imagem 07.</figcaption>
 </figure></div><br>
 
-Ainda nesta tarefa foi construído um filtro de métrica no *Amazon CloudWatch Logs* para identificar erros 404 no arquivo de log. Esse erro normalmente seria uma indicação de que o servidor web está gerando links inválidos os quais os usuários estão escolhendo. Voltando para os grupos de logs e selecionando `HttpAccessLog`, foi criado um filtro de métrica para esse log group. Na caixa padrão de filtro foi colada a seguinte linha `[ip, id, user, timestamp, request, status_code=404, size]`. Essa linha informava ao CloudWatch Logs como interpretar os campos nos dados de log e definia um filtro para encontrar apenas linhas com `status_code=404`, que indicava que uma página não foi encontrada. O ID da instância `Web Server` foi selecionada e o nome do filtro foi definido como `404Errors`. Na seção detalhes da métrica foi realizada as seguintes configurações: o namespace da métrica foi definido como `LogMetrics`, o nome da métrica foi definido como `404Errors`, e o valor da métrica como `1`. Ao finalizar a criação do filtro, os resultados foram exibidos contendo a solicitação feita ao path `/start`, conforme mostrado na imagem 08.
+Ainda nesta tarefa foi construído um filtro de métrica no *Amazon CloudWatch Logs* para identificar erros 404 no arquivo de log. Esse erro normalmente seria uma indicação de que o servidor web estava gerando links inválidos os quais os usuários estavam escolhendo. Voltando para os grupos de logs e selecionando `HttpAccessLog`, foi criado um filtro de métrica para esse log group. Na caixa padrão de filtro foi colada a seguinte linha `[ip, id, user, timestamp, request, status_code=404, size]`. Essa linha informava ao CloudWatch Logs como interpretar os campos nos dados de log e definia um filtro para encontrar apenas linhas com `status_code=404`, que indicava que uma página não foi encontrada. O ID da instância `Web Server` foi selecionada na seção padrão de teste (Test pattern) e era possível testar o padrão do filtro de métrica que estava sendo criado. Ao testar os resultados que possuíam código de status 404 foram exibidos, inclusive a solicitação feita ao path `/start`. Em seguida, o nome do filtro de métrica foi definido como `404Errors`. Na seção detalhes da métrica (Metric details) foram realizadas as seguintes configurações: o namespace da métrica foi definido como `LogMetrics`, o nome da métrica foi definido como `404Errors`, e o valor da métrica como `1`. A imagem 08 evidência a construção do filtro de métrica.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img08.png" alt="img08"><br>
     <figcaption>Imagem 08.</figcaption>
 </figure></div><br>
 
-Após isso foi criado um alarme, utilizando este filtro de métrica, para enviar notificações quando muitos erros 404 fossem recebidos. Para isso o filtro de métrica foi selecionado e então foi configurado o alarme. Na seção métricas, o período foi definido com 30 segundos. Na seção condições foi determinado que sempre que o erro `404Errors` fosse maior ou igual a `5`. Na seção notificações, um tópico do **Amazon SNS** foi elaborado e meu email foi definido para receber a notificação. Lembrando que sempre que o SNS é utilizado com email, é necessário aceitar a subscrição através do primeiro email que é recebido para que os emails futuros possam ser entregues. O nome do alarme foi definido como `404 Errors` e a descrição como `Alert when too many 404s detected on an instance`. Após isso, o alarme apareceu laranja indicando que havia dados insuficientes. O alarme levava um tempo para coletar dados e conseguir verificar a situação. Assim que foi possível verificar, o alarme ficou verde, conforme imagem 09.
+Após isso foi criado um alarme, utilizando este filtro de métrica, para enviar notificações quando muitos erros 404 fossem recebidos. Para isso, o filtro de métrica foi selecionado e então foi configurado o alarme. Assim como logs e metrics, os alarms são um outro recurso do **Amazon CloudWatch**. Na construção do alarme, na seção métricas (Metric), o período foi definido com 30 segundos. Na seção condições foi determinado que sempre que o erro `404Errors` fosse maior ou igual a `5`. Na seção notificações (Notification), um tópico do **Amazon SNS** foi elaborado e meu email foi definido para receber a notificação. O nome do tópico foi mantido o sugerido (`Default_CloudWatch_Alarms_Topic`) e também foi utilizado em outra tarefa desse laboratório. Lembrando que sempre que o SNS é utilizado com email, é necessário aceitar a subscrição através do primeiro email que é recebido para que os emails futuros possam ser entregues. O nome do alarme foi definido como `404 Errors` e a descrição como `Alert when too many 404s detected on an instance`. Após isso, o alarme apareceu laranja indicando que havia dados insuficientes, conforme imagem 09.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img09.png" alt="img09"><br>
     <figcaption>Imagem 09.</figcaption>
 </figure></div><br>
 
-Agora foi preciso testar o alarme gerando novos dados de log que resultassem em erros. Portanto, a aplicação web teve que ser acessada novamente pelo navegador da máquina física **Windows** através do IP ou DNS público da instância acrescentando um path `/start2` que não existia para provocar o erro. Como o alarme foi configurado para ser acionado a partir de 5 requisições, então a página foi atualizada mais quatro vezes. Foi necessário aguardar um tempo de 30 segundos que foi o configurado no alarme. Após esse tempo, o alarme foi acionado ficando vermelho, conforme imagem 10. Na imagem 11, a notificação que foi enviada para o email conforme determinado é visualizada.
+O alarme coletava os dados de 30 em 30 segundos como configurado. Se nesse intervalo de tempo nenhuma requisição com código de status 404 tivesse sido realizada, o status do alarme seria de dados insuficiente, pois ele não tinha dados para contabilizar. Se o número de requisições com código de status 404 fosse entre 1 e 4, o status do alarme seria OK. Mas se 5 ou mais requisições de código de status 404 tivesse sido realizada, o alarme seria acionado, pois foi a configuração estabelecida. A cada intervalo de 30 segundos, o número de requisições era zerado, sendo necessário cinco requisições dentro do mesmo intervalo para acionar o alarme. A imagem 10 mostra o alarme como OK, após apenas uma requisição. Para gerar dados de log que ressultassem em erros, era necessário enviar uma requisição para o servidor web executado na instância do EC2. Como servidor web do Apache funcionava na porta `80` era só enviar uma requisição para o IP ou DNS público da instância, sendo opcional acrescentar a porta `80`, pois ela já é a porta padrão quando nenhuma porta é especificada. Também era preciso adicionar um path inexistente dentro do servidor web a URL, o path utilizado dessa vez foi o `/start2`. Uma das formas de fazer uma requisição é simplesmente acessando um site através de um navegador da web e isso foi feito pelo navegador da máquina física **Windows**.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img10.png" alt="img10"><br>
     <figcaption>Imagem 10.</figcaption>
 </figure></div><br>
 
+Após o alarme ficar com status OK, foi realizado cinco requisições dentro do intervalo de 30 segundos para acionar o alarme, modificando seu status para In Alarm. A imagem 11 exibe a visualização dentro do alarme, onde é possível ver um gráfico monitorando o alarme e evidenciando que ele foi acionado. Na imagem 12, a notificação que foi enviada para o email conforme determinado é visualizada.
+
 <div align="Center"><figure>
     <img src="../0-aux/md6-img11.png" alt="img11"><br>
     <figcaption>Imagem 11.</figcaption>
 </figure></div><br>
-
-A terceira tarefa consistiu na realização do monitoramento da infraestrutura através das métricas coletadas pelo agente do CloudWatch dentro da instância. Dessa forma, o console do **Amazon EC2** foi aberto e a instância `Web Server` foi selecionada alterando a guia para monitoramento para visualizar as métricas, conforme imagem 12. O **Amazon CloudWatch** consegue coletar algumas métricas que visualizam a instância "por fora" como uma máquina virtual, mas não fornecem informações sobre o que está sendo executado "dentro" da instância, como medir memória livre ou espaço livre em disco. Por isso que foi utilizado o agente do CloudWatch para conseguir visualizar informações de dentro da instância. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img12.png" alt="img12"><br>
     <figcaption>Imagem 12.</figcaption>
 </figure></div><br>
 
-O console foi alterado agora para o **Amazon CloudWatch** e o recurso métricas foi selecionado, expandido a visualização paratodas as métricas. A metade inferior da página exibe as várias métricas coletadas pelo CloudWatch. A **AWS** gera automaticamente algumas dessas métricas e o agente do CloudWatch coleta outras. Então foi selecionado `CWAgent` e escolhido `dispositivo, fstype, host, caminho` para visualizar as métricas coletada pelo agente do CloudWatch, conforme apresentado na imagem 13.
+A terceira tarefa consistiu na realização do monitoramento da infraestrutura através das métricas coletadas pelo agente do CloudWatch dentro da instância. Dessa forma, o console do **Amazon EC2** foi aberto e a instância `Web Server` foi selecionada alterando a guia para monitoramento para visualizar as métricas, conforme imagem 13. O **Amazon CloudWatch** consegue coletar algumas métricas que visualizam a instância "por fora" como uma máquina virtual, mas não fornecem informações sobre o que está sendo executado "dentro" da instância, como medir memória livre ou espaço livre em disco. Por isso que foi utilizado o agente do CloudWatch para conseguir visualizar informações de dentro da instância. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img13.png" alt="img13"><br>
     <figcaption>Imagem 13.</figcaption>
 </figure></div><br>
 
-Na tarefa 4 foi criado notificações em tempo real através do *Amazon CloudWatch Events* que informava quando uma instância fosse interrompida ou encerrada. Portanto, no console do CloudWatch, o recurso Events foi escolhido e seleciona regras (Rules). Uma regra foi criada e na seção origem do evento foi configurado: o nome do serviço como EC2, o tipo de evento como notificação de alteração do estado da instância do EC2, a caixa de seleção estados específicos foi marcada e foi selecionado interrompido ou encerrado. Na seção destinos, um destino foi adicionado com as seguintes configurações: SNS e em tópico foi escolhido `Padrão_CloudWatch_Alarmes_Tópico`. Este tópico foi criado na tarefa 2 que já possuía meu email como assinante. Na configuração de detalhes, em definição de regra, o nome foi `Instance_Stopped_Terminated`. A imagem 14 evidência a regra de evento construída.
+O console foi alterado agora para o **Amazon CloudWatch** e o recurso métricas foi selecionado, expandido a visualização para todas as métricas. A metade inferior da página exibia as várias métricas coletadas pelo CloudWatch, separadas por namespaces. A **AWS** gera automaticamente algumas dessas métricas, o agente do CloudWatch coleta outras e ainda é possível criar métricas personalizadas. As métricas no CloudWatch são agrupadas por namespaces, sendo possível criar namespaces para agrupar métricas específicas. Neste caso, na parte superior da página, existiam dois namespaces que foram construídos durante este laboratório. O namespace `CWAgent` foi criado pelo agente do CloudWatch, enquanto o `LogMetrics` foi o namespace criado ao criar um filtro de métrica no recurso de logs do **Amazon CloudWatch**. Quando um filtro de métrica é elaborado no CloudWatch Logs, uma métrica também é criada dentro de um namespace determinado. Neste caso a métrica `404Erros` foi criada dentro do namespace `LogMetrics`.
+
+Dentro do namespace `CWAgent`, as métricas coletadas pelo agente do CloudWatch estavam sub-divididas em `device, fstype, host, path`, `host, name` e `host`. Ao escolher a opção `device, fstype, host, path`, era possível visualizar as métricas coletada pelo agente do CloudWatch, conforme apresentado na imagem 14.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img14.png" alt="img14"><br>
     <figcaption>Imagem 14.</figcaption>
 </figure></div><br>
 
-Agora foi o momento de testar, a instância `Web Server` foi interrompida e assim que o processo de interrupção foi concluído, um mensagem foi enviada para meu email contendo detalhes em JSON sobre a instância que foi interrompida, conforme mostrado na imagem 15.
+Na tarefa 4 foi criado notificações em tempo real através do *Amazon CloudWatch Events* que informava quando uma instância fosse interrompida ou encerrada. Portanto, no console do CloudWatch, o recurso Events foi escolhido e seleciona regras (Rules). Imediatamente o console direcionava para o serviço **Amazon EventBridge**, logo a regra teve que ser criada neste serviço. Na configuração da regra, na seção detalhes da regra (Rule Detail), o nome da regra foi definido como `Instance_Stopped_Terminated` e as demais configurações não foram alteradas. Na etapa de configuração Construir padrão de evento (Build event pattern), na seção Event pattern (Padrão de evento), a fonte do evento (Event source) foi definida como `AWS services`, o serviço escolhido foi o `EC2`, o tipo de evento foi `EC2 Instance State-change Notification` e nas caixas de especificação do tipo de evento (Event Type Specification) foi escolhido dois estados específicos que foram `stopped` e `terminated`, e mantido a seleção de qualquer instância (Any instance). Na seção destinos (Target), um destino foi adicionado com as seguintes configurações: SNS e em tópico foi escolhido `Default_CloudWatch_Alarms_Topic`. Este tópico foi criado na tarefa 2 que já possuía meu email como assinante. A imagem 15 evidência a regra de evento construída.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img15.png" alt="img15"><br>
     <figcaption>Imagem 15.</figcaption>
 </figure></div><br>
 
-Na última tarefa foi executado o monitoramento da conformidade da infraestrutura com o **AWS Config**, ativando duas regras dele para garantir a conformidade de marcação (tags) e dos volumes do **Amazon Elastic Block Store (Amazon EBS)**. Ao abrir o **AWS Config** no console foi selecionado comece a usar e avançado até o fim. Isso configurava o **AWS Config** para uso inicial. Uma janela de Bem-vindo ao **AWS Config** foi exibida, mas pôde ser fechada. O recurso regras (Rules) foi selecionado e a regra `required-tags`, que é gerenciada pela **AWS**, foi adicionada. Essa regra exigia um código de projeto para cada recurso, ou seja, uma tag. Na página de configurar regra, em parâmetros, o valor de `tag1Key` foi definida como `project`. Essa regra agora procurava recursos que não tinham uma tag projeto. A imagem 16 mostra recursos que não atendiam essa regra. Pode ser que leve um tempo até o Config terminar de verificar os recursos.
+Agora foi o momento de testar, a instância `Web Server` foi interrompida e assim que o processo de interrupção foi concluído, um mensagem foi enviada para meu email contendo detalhes em JSON sobre a instância que foi interrompida, conforme mostrado na imagem 16.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img16.png" alt="img16"><br>
     <figcaption>Imagem 16.</figcaption>
 </figure></div><br>
 
-A segunda regra criada foi uma regra que procurava volumes do EBS que não estevam anexados às instâncias do EC2. O volume da instância `Web Server` ainda não tinha sido excluído, portanto não estava anexado a nenhuma instância, já que a instância tinha sido interrompida anteriormente. Esta também foi uma regra gerenciada pela **AWS**, sendo o nome dela `ec2-volume-inuse-check`. O resultado dessa regra é exibido na imagem 17 abaixo.
+Na última tarefa foi executado o monitoramento da conformidade da infraestrutura com o **AWS Config**, ativando duas regras dele para garantir a conformidade de marcação (tags) e dos volumes do **Amazon Elastic Block Store (Amazon EBS)**. Ao abrir o **AWS Config** no console foi selecionado comece a usar e avançado até o fim, mantendo as configurações padrão. Isso configurava o **AWS Config** para uso inicial. Uma janela de Bem-vindo ao **AWS Config** foi exibida, mas pôde ser fechada. O recurso regras (Rules) foi selecionado e a regra `required-tags`, que é gerenciada pela **AWS**, foi adicionada. Essa regra exigia um código de projeto para cada recurso, ou seja, uma tag. Na página de configurar regra (Configure rule), em parâmetros, o valor de `tag1Key` foi definida como `project`. Essa regra agora procurava recursos que não tinham uma tag projeto. A imagem 17 mostra recursos que não atendiam essa regra. Pode ser que leve um tempo até o Config terminar de verificar os recursos.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img17.png" alt="img17"><br>
     <figcaption>Imagem 17.</figcaption>
 </figure></div><br>
 
+A segunda regra criada foi uma regra que procurava volumes do EBS que não estevam anexados às instâncias do EC2. O volume da instância `Web Server` ainda não tinha sido excluído, portanto não estava anexado a nenhuma instância, já que a instância tinha sido interrompida anteriormente. Esta também foi uma regra gerenciada pela **AWS**, sendo o nome dela `ec2-volume-inuse-check` e nenhuma configuração adicional realizada nela. O resultado dessa regra é exibido na imagem 18 abaixo.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
 <a name="item6.4"><h4>6.4 AWS CloudTrail</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+O **AWS CloudTrail** é um serviço que registra chamadas para a interface de programação de aplicativos (API) da **AWS**. Como a API da **AWS** é a base da **AWS Command Line Interface (AWS CLI)** e do Console de gerenciamento da **AWS**, o CloudTrail pode registrar todas as atividades relacionadas aos serviços que monitora. Este serviço é essencial para governança, conformidade, auditoria operacional e auditoria de riscos das contas da **AWS**. Atualmente, um número crescente de serviços da **AWS** é compatível com o CloudTrail.
 
+Após a configuração do CloudTrail, ele envia os logs de auditoria para o **Amazon Simple Storage Service (Amazon S3)**. Embora o CloudTrail forneça uma visão abrangente, ele não rastreia eventos que ocorrem dentro de uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)**. Por exemplo, o CloudTrail não registra ações como o desligamento manual de uma instância por meio de uma conexão de sessão Secure Shell (SSH), onde um comando como `sudo shutdown -h now` pode ser executado.
 
+Usando o CloudTrail, é possível armazenar logs sobre o uso da API em um bucket do S3. Esses logs podem ser analisados para responder a várias perguntas, como:
+- Por que uma instância de longa execução foi encerrada e quem a encerrou? As respostas podem ajudar na rastreabilidade e prestação de contas organizacionais.
+- Quem alterou a configuração de um grupo de segurança? As equipes de auditoria de prestação de contas e segurança podem precisar dessas informações.
+- Há alguma atividade proveniente de um intervalo de endereços IP desconhecido? Isso pode indicar um possível ataque externo, uma preocupação de segurança.
+- Quais atividades foram negadas devido à falta de permissões? Tais atividades podem sinalizar tentativas de ataque internas ou externas.
 
+Por padrão, ao acessar o histórico de eventos do CloudTrail para uma região, o CloudTrail exibe os resultados dos últimos 90 dias. Esses eventos são limitados aos eventos de gerenciamento que envolvem chamadas de APIs para criar, modificar e excluir recursos, além da atividade da conta. Para obter um registro completo da atividade da conta, incluindo todos os eventos de gerenciamento, eventos de dados e todas as atividades somente leitura, é necessário configurar uma trilha do CloudTrail. É possível criar uma trilha usando o console do CloudTrail ou a **AWS CLI**. As seguintes opções podem ser configuradas:
+- Crie um bucket do S3 ou especifique um bucket existente para armazenar os arquivos de log.
+- Configure a trilha para registrar eventos somente leitura, somente gravação ou todos os eventos de gerenciamento e dados. Por padrão, as trilhas registram todos os eventos de gerenciamento.
+- Crie um tópico do **Amazon Simple Notification Service (Amazon SNS)** para receber notificações quando os arquivos de log forem entregues.
+- Opcionalmente, configure o *Amazon CloudWatch Logs* para receber logs do CloudTrail, permitindo a monitorização de eventos de log específicos.
+- Opcionalmente, ative a criptografia de arquivos de log para maior segurança.
+- Como opção, adicione tags (pares de chave-valor personalizados) à trilha.
 
+Cada arquivo de log do CloudTrail formatado no JavaScript Object Notation (JSON) pode conter uma ou mais entradas de log. Cada entrada de log representa uma única solicitação de qualquer fonte e inclui informações sobre a ação de solicitação e a resposta. A seção `requestParameters` de uma entrada de log inclui parâmetros como:
+- `userIdentity`: Quem (ou qual aplicativo) realizou a ação;
+- `eventTime`: A data e a hora em que a ação ocorreu;
+- `eventSource`: Indica se a ação foi realizada por meio do console, da **AWS CLI** ou de uma chamada de API.
 
+Parâmetros adicionais também podem ser incluídos nas entradas de log. A lista específica de parâmetros varia de acordo com o tipo de ação registrada. As entradas de log não seguem uma ordem específica e não representam um rastreamento de pilha de chamadas de API.
 
-
-
-
-
-
-
-
-
-
-
+Ao monitorar a atividade na conta e proteger recursos e dados, os recursos do CloudWatch e do CloudTrail são complementares. O uso conjunto de ambos os serviços é recomendado. Por exemplo, é possível examinar os logs do CloudWatch Logs e do CloudTrail para detectar potenciais usos não autorizados. Outros exemplos de uso desses serviços incluem:
+- Monitorar tentativas de login falhadas no Console de gerenciamento da **AWS**, especialmente de endereços IP suspeitos.
+- Detectar acesso não autorizado a serviços por meio de chamadas de API.
+- Identificar lançamentos suspeitos de recursos da **AWS**.
 
 <a name="item6.5"><h4>6.5 Integração do serviço da AWS com o Athena</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+O **Amazon Athena** é um serviço de consulta interativa que permite a análise de dados diretamente no **Amazon Simple Storage Service (Amazon S3)** usando **SQL** padrão. Para utilizar o **Amazon Athena**, basta apontar para os dados armazenados no **Amazon S3**, definir o esquema e iniciar consultas com **SQL** padrão. A maioria dos resultados é entregue em segundos. Com o Athena, não são necessários trabalhos ETL complexos para preparar os dados para análise, facilitando para qualquer pessoa com habilidades em **SQL** analisar conjuntos de dados em grande escala de forma rápida e eficiente. O Athena suporta diversos formatos de dados padrão, incluindo **CSV**, **JSON**, **Optimized Row Columnar (ORC)**, Apache Avro e Apache Parquet. Embora seja ideal para consultas rápidas e ad hoc, o Athena também é capaz de lidar com análises complexas, como grandes junções e matrizes. Utilizando o **Amazon S3** como datastore subjacente, o Athena garante alta disponibilidade e durabilidade dos dados.
 
+O Athena é um serviço sem necessidade de servidor (serverless), eliminando a necessidade de gerenciar infraestrutura. O pagamento é baseado apenas nas consultas executadas. Permite consultar dados rapidamente no **Amazon S3** sem a necessidade de configurar e gerenciar servidores ou processos complexos de ETL. O Athena proporciona desempenho rápido e interativo para consultas. Ele executa consultas automaticamente em paralelo, o que permite que a maioria dos resultados seja retornada em segundos.
 
+Para utilizar o Athena, aponte para os dados no **Amazon S3**, defina o esquema e inicie consultas usando o editor de consultas integrado. Acesse o serviço **Amazon Athena** no Console de gerenciamento da **AWS** e selecione "Começar a usar". O *Athena Query Editor* será aberto, exibindo bancos de dados e tabelas na coluna esquerda. Crie um banco de dados com um comando como `CREATE DATABASE mydatabase;` e, em seguida, crie uma tabela que define o esquema dos dados. As definições de tabela do Athena são semelhantes às de bancos de dados relacionais e terminam com uma instrução `LOCATION`, que aponta para o bucket do S3 onde os dados estão armazenados. Após definir a tabela, execute consultas SQL padrão no Editor de consultas do Athena, como `SELECT * FROM tableName WHERE columnName='value';`. Os resultados aparecerão no *Athena Query Editor*, e também é possível baixar os resultados em arquivos **CSV**. Além disso, é possível criar um cliente para acessar o Athena e executar consultas **SQL** programaticamente.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+É possível consultar dados de diversos serviços da **AWS** no Athena, incluindo aqueles que monitoram e protegem a conta. Exemplos incluem:
+- Logs do CloudTrail: O Athena pode ser usado para analisar a atividade dos serviços da **AWS** através dos logs do CloudTrail. Tabelas podem ser criadas automaticamente para consultar os logs diretamente do console do CloudTrail. Consultas podem identificar tendências e isolar atividades por atributos como endereço IP de origem ou usuário.
+- Logs do *Application Load Balancer*: Consultar logs do *Application Load Balancer* no Athena permite visualizar a origem do tráfego, latência e bytes transferidos para e a partir de instâncias do **Amazon Elastic Load Balancing (Amazon ELB)** e aplicativos de back-end.
+- Logs de Fluxo do **Amazon VPC**: Os logs de fluxo do **Amazon Virtual Private Cloud (Amazon VPC)** capturam informações sobre o tráfego IP para e de interfaces de rede em uma VPC. Consultar esses logs no Athena ajuda a investigar padrões de tráfego e identificar ameaças e riscos em toda a rede do **Amazon VPC**.
 
 <a name="item6.6"><h4>6.6 187- [JAWS] -Atividade: Trabalhar com o AWS CloudTrail</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
@@ -375,19 +430,134 @@ A segunda regra criada foi uma regra que procurava volumes do EBS que não estev
 
 <a name="item6.8"><h4>6.8 AWS Organizations</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+O **AWS Organizations** é um serviço que facilita o gerenciamento de várias contas **AWS** de forma centralizada. Ele permite consolidar contas em uma organização única, oferecendo recursos de faturamento consolidado e gerenciamento de contas para atender melhor às necessidades orçamentárias, de segurança e de conformidade da empresa. Em uma organização básica, pode-se ter uma raiz que contém várias unidades organizacionais (UOs). Cada UO funciona como um contêiner para várias contas e pode incluir outras UOs, formando uma hierarquia semelhante a uma árvore invertida. Nesta estrutura, a raiz está no topo, com os galhos representando as UOs que se estendem para baixo e terminam em contas, que são as folhas da árvore.
 
+Quando uma política é anexada a um nó na hierarquia do **AWS Organizations**, ela se propaga para baixo, afetando todas as ramificações e folhas subordinadas. Além disso, a organização pode ter várias políticas associadas a UOs específicas ou diretamente a contas individuais. Uma Unidade Organizacional (UO) pode ter apenas um nó pai, e cada conta pode pertencer a exatamente uma UO. Cada conta, por sua vez, é uma conta padrão da **AWS** que contém seus próprios recursos. É possível anexar uma política diretamente a uma conta para aplicar controles específicos apenas a essa conta.
 
+Os principais benefícios do **AWS Organizations** são:
+- Gerenciamento baseado em políticas: Permite a criação de Políticas de Controle de Serviço (SCPs) que controlam centralmente o acesso aos serviços da **AWS** em várias contas.
+- Gerenciamento de contas do grupo: Facilita a criação de grupos de contas e a aplicação de políticas a esses grupos.
+- Gerenciamento de contas por meio de APIs: Oferece a capacidade de automatizar a criação e o gerenciamento de novas contas da **AWS**.
+- Faturamento consolidado: Proporciona uma visão integrada das cobranças acumuladas por todas as contas na organização.
 
+O **AWS Organizations** não substitui as políticas do **AWS Identity and Access Management (AWS IAM)** aplicadas a usuários, grupos e funções em uma conta da **AWS**. As políticas do IAM são usadas para conceder ou negar acesso a serviços da **AWS**, como **Amazon Simple Storage Service (Amazon S3)**, e a recursos específicos da **AWS**, como um bucket do S3, ou a operações individuais da API, como `s3:CreateBucket`. Essas políticas podem ser aplicadas apenas a usuários, grupos ou funções do IAM e não afetam o usuário raiz da conta da **AWS**. Por outro lado, o **AWS Organizations** utiliza *Políticas de Controle de Serviço (SCPs)* para gerenciar o acesso a determinados serviços da **AWS** para contas individuais ou grupos de contas em uma *Unidade Organizacional (UO)*. As ações especificadas em uma SCP afetam todos os usuários, grupos e funções do IAM dentro da conta, incluindo o usuário raiz.
 
+Para criar e configurar uma organização no **AWS Organizations**, siga estas etapas:
+- Criação da Organização: Crie a organização com a conta da **AWS** atual como a conta de gerenciamento. É necessário ter permissões de administrador na conta atual para realizar essa ação. Após a criação da organização, é possível adicionar contas a ela, seja criando novas contas ou convidando contas existentes para ingressar usando a conta de gerenciamento.
+- Criação de *Unidades Organizacionais (UOs)*: Crie *Unidades Organizacionais (UOs)* na nova organização e mova as contas de membro para essas UOs.
+- Criação de *Políticas de Controle de Serviço (SCPs)*: Crie políticas de controle de serviço (SCPs) para aplicar restrições sobre quais ações podem ser delegadas a usuários e funções nas contas-membro. SCPs são um tipo de política de controle da organização.
+- Teste das Políticas: Teste as políticas da organização entrando como usuário para cada função em suas UOs e verifique como as políticas de controle de serviço afetam o acesso à conta. Alternativamente, use o simulador de políticas do IAM para testar e solucionar problemas de IAM e políticas baseadas em recursos anexadas a usuários, grupos ou funções do IAM em sua conta da **AWS**.
 
+Ao criar nomes nas organizações da **AWS**, incluindo nomes de contas, UOs, raízes e políticas, deve-se seguir certas regras:
+- Os nomes devem ser compostos de caracteres Unicode e podem ter até 250 caracteres de comprimento.
+- Número de contas da **AWS**: 4 (um convite enviado para uma conta é contabilizado para esse número).
+- Número de raízes: 1.
+- Número de políticas: 1.000.
+- Tamanho máximo de um documento de políticas de controle de serviço: 5.120 bytes.
+- Aninhamento máximo de UO em uma raiz: 5 níveis de UOs profundamente abaixo de uma raiz.
+- Convites enviados por dia: 20.
+- Número de contas de membros que podem ser criadas simultaneamente: Até cinco podem estar em andamento ao mesmo tempo.
+- Número de entidades às quais se pode associar uma política: Ilimitado.
 
-
+O **AWS Organizations** está disponível para todos os clientes da **AWS** sem custos adicionais e pode ser gerenciado por meio de diferentes interfaces:
+- Console de gerenciamento da **AWS**: Interface baseada em navegador para gerenciar a organização e os recursos da **AWS**, permitindo a execução de qualquer tarefa de gerenciamento.
+- **AWS Command Line Interface (AWS CLI)**: Permite emitir comandos para executar tarefas no **AWS Organizations** e **AWS**, oferecendo uma alternativa mais rápida e conveniente ao console.
+- SDKs da **AWS**: Facilitam o gerenciamento de tarefas com suporte a assinatura criptográfica de solicitações, gerenciamento de erros e tentativas automáticas. Disponível para várias linguagens de programação e plataformas, como **Java**, **Python**, **Ruby**, **.NET**, **iOS** e **Android**.
+- API de consulta HTTPS do **AWS Organizations**: Oferece acesso programático ao **AWS Organizations**, permitindo emitir solicitações HTTPS diretamente para o serviço e requer o código para assinatura digital das solicitações usando as credenciais.
 
 <a name="item6.9"><h4>6.9 Marcação</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Tag é um rótulo atribuído a um recurso da **AWS** que permite identificá-lo ou categorizá-lo de forma significativa. Uma tag consiste em uma chave e um valor, ambos definidos conforme necessário. Por exemplo, se houver duas instâncias do **Amazon Elastic Compute Cloud (Amazon EC2)** em um ambiente de desenvolvimento, pode-se atribuir a ambas uma tag com uma chave de Nome (essencialmente, uma tag de nome). Em seguida, é possível atribuir um valor a cada chave, como `CommandHost` para a primeira instância e `DatabaseServer` para a segunda instância. Com essas tags, a identificação rápida de cada instância e sua finalidade torna-se mais fácil, em comparação com o uso apenas das IDs de instância. Além disso, se foram criadas instâncias semelhantes em outro ambiente, como Teste, pode-se atribuir outra tag a cada instância com uma chave de Ambiente, e então um valor de `Desenvolvimento` ou `Teste`, facilitando a distinção e categorização por ambiente.
 
+As tags possuem várias características importantes, incluindo:
+- Atribuição de tags a um recurso somente após sua criação.
+- Diferenciação entre maiúsculas e minúsculas em chaves e valores de tags, sendo recomendável usar um formato consistente e padronizado.
+- Impossibilidade de editar ou excluir chaves ou valores de tag com o prefixo `aws:`, pois são reservadas e atribuídas pela **AWS** para uso específico, como a tag `aws:createdBy`, gerada automaticamente para fins de alocação de custos, ou a tag `aws:cloudformation:<stack-name>` atribuída pelo **AWS CloudFormation** para identificar o nome da pilha.
+-Herança ou propagação de tags em alguns serviços. Por exemplo, serviços como o **AWS CloudFormation** e o ***Amazon Elastic Beanstalk*** podem criar outros recursos, que herdam tags com referência ao serviço criador, como instâncias do **Amazon Relational Database (Amazon RDS)** ou do EC2 criadas como parte de uma pilha do **AWS CloudFormation** herdam automaticamente a tag `aws:cloudformation:<stack-name>`.
+- Criação de até 50 tags por recurso, sem contar as tags com o prefixo `aws:`.
 
+As tags devem representar dimensões relevantes organizacionalmente. Essas tags ajudam a gerenciar o inventário de recursos, controlar o acesso, rastrear custos, automatizar processos e organizar recursos. Exemplos de tags significativas incluem: Ambiente (produção, teste); Aplicativo; Proprietário; Departamento; Centro de custos; Objetivo; Pilha.
 
+O **AWS Config** fornece regras gerenciadas da **AWS**, que são predefinidas e personalizáveis para avaliar se as configurações de recursos da **AWS** estão em conformidade com as práticas recomendadas. É possível personalizar o comportamento de uma regra gerenciada para atender às necessidades específicas. Por exemplo, a regra gerenciada `required-tags` pode ser usada para avaliar rapidamente se uma tag específica é aplicada aos recursos. Essa regra permite especificar a chave da tag necessária e, opcionalmente, seu valor. Após a ativação da regra, o **AWS Config** compara os recursos com as condições definidas e relata quaisquer recursos não conformes. A avaliação de uma regra gerenciada pode ocorrer quando um recurso é alterado ou periodicamente.
 
+Dois casos de uso comuns para marcação incluem o uso de uma tag para encerrar e reiniciar todas as instâncias que têm uma tag específica e a verificação de conformidade. O primeiro caso envolve marcar todas as instâncias com um atributo que indica o ambiente em que são executadas, como Desenvolvimento, Teste ou Produção. Para economizar custos, pode-se criar um script que desliga automaticamente as instâncias de desenvolvimento nos fins de semana e as reinicia no início da semana.
+
+Em um exemplo que reflete este cenário, uma empresa ou divisão emite um conjunto de políticas sobre quais tags devem ser colocadas em recursos em execução. Um script examina periodicamente todas as instâncias executadas em uma conta da **AWS** e verifica se as tags necessárias existem. Se uma instância não tiver as tags necessárias, a instância será encerrada por não ser compatível. Na prática, empresas que implementam essa estratégia geralmente escalam a implantação ao longo de várias semanas. Na Fase 1, as máquinas não são desligadas imediatamente. Em vez disso, o script da tag ou encerrar é configurado para enviar uma mensagem de e-mail ao usuário do IAM que criou a instância. A mensagem avisa o usuário do IAM de que sua instância pode ser encerrada em breve porque ela não está em conformidade com as políticas corporativas. Na fase 2 da implantação, as instâncias são realmente desativadas, e uma explicação do desligamento é enviada ao usuário do IAM que criou o recurso. 
+
+Depois que as instâncias recebem as tags adequadas para descrever seu papel e função dentro de uma organização, é possível desenvolver outros processos automatizados que implementem estratégias de redução de custos em toda a empresa. As tags também podem ser utilizadas para estruturar relatórios de faturamento que representem a organização interna dos custos, possibilitando obter relatórios mais precisos para a alocação de despesas.
+
+Também é possível criar políticas de IAM que exijam o uso de tags específicas. Por exemplo, ao criar um recurso, uma política do IAM pode ser configurada para obrigar a utilização das tags "departamento" e "centro de custo", ajudando a obter relatórios mais precisos para alocação de custos. Além disso, políticas do IAM podem ser criadas para:
+- Impedir a exclusão de tags exigidas pelos padrões corporativos;
+- Proibir a criação de novas tags para determinados recursos já existentes;
+- Exigir o uso de criptografia para qualquer volume do EBS criado com um valor de tag específico.
+
+Esses requisitos de marcação são especificados em uma política do IAM utilizando o elemento Condição. Em um exemplo de política do IAM, os requisitos são aplicados ao processar uma solicitação para criar um volume do EBS: A solicitação deve incluir apenas as tags "centro de custos" e "departamento", conforme indicado pelo modificador `ForAllValues`. Além disso, os valores das tags "centro de custos" e "departamento" na solicitação devem ser "115" e "Contabilidade", respectivamente, expressos nas chaves `aws:RequestTag/costcenter` e `aws:RequestTag/department`. O efeito dessa política é garantir que todos os volumes do EBS recém-criados sejam marcados com uma tag de "centro de custos" e uma tag de "departamento", com os valores "115" e "Contabilidade", respectivamente.
+
+Aqui estão algumas práticas recomendadas para desenvolver uma estratégia eficaz de atribuição de tags:
+- Utilizar ferramentas automatizadas para gerenciar tags de recursos, como a API de marcação de grupos de recursos. Essa API permite o controle programático das tags, facilitando a gestão, pesquisa e filtragem de tags e recursos de forma automática. Exemplos de tarefas que podem ser realizadas com a API incluem: aplicar e remover tags de recursos compatíveis; buscar recursos com base em filtros de tags; listar todas as chaves de tags existentes; e listar todos os valores para chaves específicas.
+- Desenvolva agrupamentos de tags que sejam relevantes para o negócio, organizando recursos com base em dimensões técnicas, comerciais e de segurança.
+- Prefira usar um número maior de tags, em vez de poucas tags, para uma organização mais detalhada dos recursos.
+- Adote um formato padronizado para as tags, com diferenciação entre maiúsculas e minúsculas, e implemente esse padrão de forma consistente em todos os tipos de recursos.
+- Implemente ferramentas automatizadas para auxiliar na gestão das tags de recursos, como a API Resource Groups Tagging.
 
 <a name="item6.10"><h4>6.10 188- [JAWS] -Laboratório: Gerenciar recursos com marcação</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+<a name="item6.11"><h4>6.11 Gerenciamento de custos da AWS e práticas recomendadas</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="item6.12"><h4>6.12 Demonstração do painel de faturamento da AWS-2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+<a name="item6.14"><h4>6.14 189- [JAWS] -Atividade: Otimizar a utilização</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+<a name="item6.15"><h4>6.15 Estratégia de construção da AMI</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+<a name="item6.16"><h4>6.16 Modelos de inicialização do Amazon EC2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+<a name="item6.17"><h4>6.17 Demonstração do modelo de lançamento EC2-2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
