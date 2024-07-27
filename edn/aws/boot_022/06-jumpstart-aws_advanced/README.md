@@ -408,7 +408,10 @@ Para utilizar o Athena, aponte para os dados no **Amazon S3**, defina o esquema 
 
 
 
-
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img19.png" alt="img19"><br>
+    <figcaption>Imagem 19.</figcaption>
+</figure></div><br>
 
 
 
@@ -512,21 +515,72 @@ Aqui estão algumas práticas recomendadas para desenvolver uma estratégia efic
 
 
 
+
+
+
+
 <a name="item6.11"><h4>6.11 Gerenciamento de custos da AWS e práticas recomendadas</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Um dos benefícios fundamentais da computação em nuvem é pagar apenas pelo que é necessário, quando necessário. Com base nesse princípio, é possível buscar maneiras de usar os recursos de nuvem de forma eficiente e reduzir custos. Diversas estratégias podem ser adotadas para atingir esse objetivo, incluindo:
+- Criação de scripts ou modelos que podem iniciar e encerrar facilmente ambientes inteiros.
+- Desativação de recursos não utilizados. Por exemplo:
+  - Ambientes de desenvolvimento ou de teste podem ser desligados no encerramento do projeto;
+  - Serviços específicos podem ser encerrados após o horário comercial e durante os feriados;
+  - Ambientes de recuperação de desastres (DR) podem permanecer inativos até que sejam necessários;
+  - Instâncias temporárias, marcadas como tal, podem ser desativadas após um período especificado.
 
+As ferramentas e serviços de gerenciamento de custos da **AWS** permitem acessar, organizar, compreender, controlar e otimizar os custos e o uso da **AWS**. Exemplos incluem:
+- **AWS Cost Management**: Acesse o status geral dos custos e uso da **AWS** no painel de faturamento da **AWS**. O painel fornece uma página de Contas (**AWS Billing**) com as informações mais atualizadas sobre custos e uso, incluindo a fatura mensal e um detalhamento dos serviços da **AWS** utilizados. A página de Relatórios de custos e uso da **AWS** (**AWS Cost and Usage Report**) permite gerar um relatório detalhado dos custos e uso da **AWS**, ajudando a analisar e entender melhor os custos e as ofertas de produtos específicos.
+- **AWS Cost Explorer**: Realize uma análise detalhada dos dados de custos e uso. O **AWS Cost Explorer** permite identificar tendências, determinar os fatores de custos e detectar anomalias. Com uma interface intuitiva, é possível criar rapidamente relatórios personalizados, incluindo gráficos e dados tabulares, para analisar dados de custo e uso tanto em alto nível quanto para solicitações específicas.
+- **AWS Budgets**: Permite definir metas de custos e orçamentos de uso personalizados. O serviço envia alertas quando esses limites são excedidos.
+- **Amazon CloudWatch**: Monitora as cobranças de uso, permitindo a criação de alarmes para notificação quando as cobranças excedem um limite especificado.
 
+O painel de faturamento da **AWS** (**AWS Billing and Cost Management**) permite visualizar o status das despesas acumuladas no mês e identificar os serviços que representam a maior parte das despesas gerais. Esse painel também oferece uma visão de alto nível de como os custos estão aumentando. Um dos gráficos presentes no painel é o *Spend Summary* (Resumo de gastos), que mostra quanto foi gasto no mês passado, o custo do uso da **AWS** no mês até o momento e uma previsão de quanto provavelmente será gasto no mês. Outro gráfico disponível é o *Month-to-Date Spend by Service* (Gastos acumulados no mês por serviço), que exibe os principais serviços utilizados e a proporção dos custos atribuídos a cada serviço. No painel de faturamento, diversas ferramentas de gerenciamento de custos estão disponíveis para estimar e planejar os custos da **AWS**, incluindo contas da **AWS**, o **AWS Cost Explorer**, os **AWS Budgets** e os relatórios de custo e uso da **AWS** (**AWS Cost and Usage Report**).
 
+A página **AWS Bills** lista os custos incorridos no último mês para cada serviço da **AWS**, incluindo um detalhamento adicional por região da **AWS** e conta vinculada. Essa ferramenta oferece acesso às informações mais atualizadas sobre custos e uso, incluindo a fatura mensal e uma análise detalhada dos serviços da **AWS** utilizados.
 
+O **AWS Cost Explorer** permite visualizar e analisar custos e uso para identificar tendências. É possível filtrar e agrupar dados em várias dimensões, como serviço, tipo de instância e tag. O Cost Explorer oferece dois tipos de relatórios padrão:
+- Relatórios de custo e uso (**AWS Cost and Usage Report (AWS CUR)**): Permitem entender os custos e o uso de todos os serviços. Por exemplo, o relatório "Custos mensais por serviço" mostra os custos dos últimos três meses, agrupados por serviço. Os cinco principais serviços são exibidos individualmente, enquanto os demais são agrupados em uma barra rotulada como "Outros".
+- *Relatórios de Instância Reservada (IRS)*: Específicos para o uso de Instâncias Reservadas, esses relatórios fornecem uma compreensão dos custos de utilização comparativos para instâncias reservadas em relação às instâncias sob demanda. É possível visualizar dados dos últimos 13 meses, prever gastos para os próximos três meses e obter recomendações sobre quais instâncias reservadas comprar.
 
+Se houver várias contas e o faturamento consolidado estiver habilitado no **AWS Organizations**, o **AWS Cost Explorer** permite visualizar os custos de todas as contas vinculadas. Além disso, é possível monitorar os gastos diários e mensais individuais de cada conta vinculada.
 
+O **AWS Budgets** permite definir orçamentos personalizados que enviam alertas quando o uso ou os custos excedem (ou têm previsão de exceder) o valor orçado. Utilizando a visualização de custos fornecida pelo Cost Explorer, o **AWS Budgets** mostra o status dos orçamentos e fornece previsões dos custos estimados. É possível criar notificações quando os valores previstos ultrapassam o orçamento ou quando os custos previstos superam os orçamentos. Os orçamentos podem ser rastreados em níveis mensal, trimestral ou anual, com datas de início e término personalizáveis. Os alertas de orçamento podem ser enviados por e-mail ou por meio de um tópico do **Amazon Simple Notification Service (Amazon SNS)**. Por exemplo, uma notificação de alerta pode ser gerada pelo **AWS Budgets** quando um limite de orçamento é excedido, como quando os custos reais ultrapassam 80% do orçamento, resultando na notificação de uma pessoa responsável.
 
+A página **AWS Cost and Usage Reports** é um local central para acessar informações detalhadas sobre os custos e o uso da **AWS**. É possível gerar relatórios que contenham itens de linha para cada combinação exclusiva de produtos da **AWS**, tipo de uso e operação utilizados na conta da **AWS**. Os relatórios gerados podem ser personalizados para agregar informações por hora ou por dia. Além disso, é possível publicar os relatórios de faturamento da **AWS** em um bucket do **Amazon Simple Storage Service (Amazon S3)**, sendo que a **AWS** atualiza os relatórios no bucket uma vez por dia.
 
+As cobranças estimadas da **AWS** podem ser monitoradas usando o **Amazon CloudWatch**, que gera um alerta quando os custos excedem um limite especificado. Ao habilitar o monitoramento de estimativas de cobrança para uma conta da **AWS**, as estimativas de cobrança são calculadas e enviadas várias vezes por dia para o CloudWatch como dados de métrica. Esses dados são armazenados na região Leste dos EUA (Virgínia do Norte) e representam cobranças globais. Incluem as estimativas de cobrança para cada serviço da **AWS** utilizado, além do total geral estimado das cobranças. O alarme é acionado quando o faturamento da conta excede o limite especificado e não usa projeções baseadas no uso durante o mês. Se um alerta de faturamento for criado após as cobranças já terem excedido o limite, o alarme mudará para o estado de ALARME imediatamente. As notificações de alarme são enviadas para um endereço de e-mail por meio de um tópico do SNS.
 
+Com o auxílio de ferramentas de gerenciamento de custos, é possível desenvolver uma estratégia eficaz para a redução de despesas com serviços da **AWS**. Uma estratégia sólida de otimização de custos inclui os seguintes princípios:
+- Defina orçamentos personalizados de custos e uso: Essa prática ajuda a seguir o princípio de pagar apenas pelo que for necessário, quando necessário, característico da computação em nuvem.
+- Escolha o tamanho adequado das instâncias:
+  - Avalie o uso de instâncias T2 ou T3 para cargas de trabalho que exigem desempenho intermitente. Essas instâncias são projetadas para oferecer um desempenho de CPU base com a capacidade de aumentar temporariamente conforme a demanda. As instâncias T3, equipadas com os mais recentes processadores Intel Xeon Scalable, proporcionam até 30% mais desempenho por um preço mais baixo em comparação com as instâncias T2.
+  - Considere a aquisição de instâncias reservadas para grupos de instâncias que operam por períodos prolongados.
+  - Utilize instâncias spot para tarefas de processamento em lote, aproveitando a melhor relação custo-benefício. Ajuste suas solicitações com base em relatórios históricos de preços das instâncias spot para otimizar o custo.
+- Considere o uso do **AWS Lambda**: O modelo sem servidor permite a execução de código sem a necessidade de provisionar ou gerenciar servidores, cobrando apenas pelo tempo efetivo de computação. Não há custos quando o código não está em execução.
+- Utilize serviços gerenciados: Serviços gerenciados, como **Amazon S3** e **Amazon Relational Database Service (Amazon RDS)**, reduzem a carga operacional ao eliminar a necessidade de manter servidores e operar em grande escala. Além disso, geralmente oferecem um custo menor por transação ou serviço.
+- Aproveite o **AWS Trusted Advisor**: Utilize o **AWS Trusted Advisor** para obter recomendações específicas sobre como reduzir custos e otimizar seus recursos.
 
+Uma técnica eficaz para reduzir custos é identificar e eliminar desperdícios. Por exemplo, a criação de recursos pode resultar na manutenção de recursos desnecessários em operação. Métricas e alarmes do **Amazon CloudWatch** podem ser utilizados para localizar instâncias ociosas ou pouco usadas e desligá-las. Gráficos de utilização no CloudWatch podem ajudar a identificar essas instâncias. Além disso, o **AWS Cost Explorer** pode ser usado para analisar os custos associados a projetos ou iniciativas inteiras. Essa ferramenta auxilia na identificação dos projetos mais caros, permitindo priorizar a revisão e a busca por oportunidades de economia.
 
+Criar e utilizar um script stopinator é uma técnica eficaz para automatizar o desligamento de instâncias. O termo "stopinator" refere-se a qualquer script ou aplicativo na **AWS** que identifica e interrompe instâncias não utilizadas. Esses scripts são geralmente configurados para rodar durante a noite e nos fins de semana. Utilizar um stopinator pode resultar em economias significativas, liberando orçamento para novos projetos. Além disso, um stopinator é um script utilitário de função dupla útil, pois pode também iniciar recursos quando necessário, por exemplo, no início do expediente. Não é necessário criar ou usar uma instância do **Amazon EC2** para rodar um stopinator. Uma abordagem eficiente é usar uma combinação de uma função do **AWS Lambda** e um evento do *Amazon CloudWatch Events* em uma solução sem servidor. A lógica para parar e iniciar instâncias é implementada na função Lambda, que é acionada por um evento do CloudWatch Events de acordo com a programação desejada.
+
+O **AWS Trusted Advisor** é uma ferramenta online projetada para ajudar a otimizar o ambiente da **AWS**, reduzindo custos, melhorando a performance e fortalecendo a segurança. O Trusted Advisor analisa o ambiente **AWS** e fornece recomendações em cinco áreas principais:
+- Otimização de custos: Sugestões para economizar, eliminando recursos não utilizados e ociosos ou optando por capacidade reservada.
+- Desempenho: Recomendações para aprimorar o desempenho, verificando limites de serviço, garantindo o uso adequado da taxa de transferência provisionada e monitorando instâncias sobrecarregadas.
+- Segurança: Orientações para melhorar a segurança dos aplicativos, preenchendo lacunas, ativando recursos de segurança da **AWS** e revisando permissões.
+- Tolerância a falhas: Dicas para aumentar a disponibilidade e redundância dos aplicativos **AWS**, utilizando escalabilidade automática, verificações de integridade, implantação multi-AZ e recursos de backup.
+- Limites de serviço: Avisos sobre serviços cujo uso ultrapassa 80% do limite estabelecido.
+
+O **AWS Trusted Advisor** pode ser utilizado para identificar recursos ociosos, como instâncias do EC2, balanceadores de carga, volumes subutilizados e endereços IP elásticos não utilizados. Essa ferramenta também é eficaz para otimização de custos, oferecendo verificações e recomendações que auxiliam na redução de despesas. O **AWS Trusted Advisor** disponibiliza planos de suporte avançado, Business Support e Enterprise Support, que fornecem verificações e recomendações adicionais. Ele analisa o ambiente da **AWS** e oferece orientações sobre as melhores práticas, incluindo links para ações diretas. A orientação em tempo real do **AWS Trusted Advisor** facilita o provisionamento de recursos de acordo com as recomendações da **AWS**.
 
 <a name="item6.12"><h4>6.12 Demonstração do painel de faturamento da AWS-2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
 
 
 
@@ -545,16 +599,56 @@ Aqui estão algumas práticas recomendadas para desenvolver uma estratégia efic
 
 
 
+
+
+
+
+
+
 <a name="item6.15"><h4>6.15 Estratégia de construção da AMI</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Suponha que uma organização tenha solicitado que todas as instâncias do EC2 executadas na Nuvem **AWS** tenham um conjunto básico de software pré-instalado. Isso pode incluir utilitários desenvolvidos pela organização, ferramentas internas para utilizar os serviços da **AWS** e software avançado para atividades em escala corporativa, como monitoramento e detecção de intrusões. Considerando esses requisitos, pode-se desenvolver uma ou mais AMIs personalizadas como configuração básica. Para realizar essa tarefa, siga estas etapas: Execute uma instância do EC2 a partir de uma AMI padrão; Pré-configure todo o software exigido pela organização em uma instância do **Amazon EC2**; Crie uma AMI personalizada a partir dessa instância. A nova AMI personalizada se torna a AMI utilizada para criar todas as novas instâncias na organização. Para impor a política de que todas as novas instâncias sejam executadas apenas a partir da nova AMI base, adote os seguintes passos: Crie processos que examinem as instâncias do **Amazon EC2** em execução na conta; Encerre todas as instâncias que não estiverem utilizando as AMIs padrão.
 
+Outra opção é configurar as instâncias no momento da inicialização. Por exemplo, é possível usar a opção de dados do usuário (user data) para executar um script ao iniciar uma instância do EC2. Essa abordagem pode ser combinada com a criação de AMIs personalizadas. Muitas empresas adotam um método híbrido, onde algumas configurações são incluídas em uma AMI de base personalizada e outras são ajustadas dinamicamente no lançamento. A melhor abordagem geralmente é definida ao equilibrar simplicidade e flexibilidade. Considere os seguintes pontos:
+- Tempo de compilação: Uma AMI com pré-requisitos e configurações pré-instaladas pode aumentar o tempo necessário para gerar uma compilação.
+- Tempo de inicialização: Uma AMI contendo apenas a configuração do sistema operacional (SO) pode demorar mais para inicializar uma nova instância. Incluir pré-requisitos em uma AMI personalizada pode reduzir os tempos de inicialização.
+- Vida útil: Quanto mais pré-requisitos uma AMI tem, maior é o risco de vulnerabilidade se não for atualizada frequentemente com correções de segurança ou atualizações de aplicativos. Avalie o impacto que as atualizações de dependências podem ter no aplicativo.
 
+Em resumo, cada abordagem oferece vantagens distintas:
+- AMI completa: Todos os aplicativos e suas dependências são pré-instalados, o que diminui o tempo de inicialização, mas aumenta o tempo de compilação. As AMIs completas geralmente têm uma vida útil mais curta, portanto, considere sua estratégia de reversão.
+- AMIs parcialmente configuradas: Apenas o software e os utilitários necessários são pré-instalados, resultando em uma vida útil mais longa para a AMI. Essa abordagem equilibra a velocidade de inicialização e o tempo de compilação, facilitando as reversões.
+- AMI apenas com o sistema operacional: Essa opção é altamente configurável e atualizável ao longo do tempo, reduzindo o tempo de compilação. No entanto, torna as instâncias do EC2 mais lentas para iniciar, pois todas as instalações e configurações necessárias são feitas durante a inicialização.
 
+Para criar uma AMI, é possível utilizar as seguintes ferramentas: Console de Gerenciamento da **AWS**, **AWS Command Line Interface (AWS CLI)** ou a Interface de Programação de Aplicativos (API) da **AWS**. Alguns pontos importantes a serem observados:
+- AMI restrita à região atual: A AMI criada estará disponível apenas na região atual da **AWS**. Por exemplo, se a AMI for criada a partir de uma instância do EC2 na região eu-west-2, ela existirá apenas nessa região. Para iniciar uma nova instância a partir dessa AMI em outra região, como us-east-1, será necessário copiar a AMI para a nova região primeiro.
+- Reinicialização automática da instância: Por padrão, a instância será reinicializada durante o processo de criação da AMI para garantir a consistência. Esse comportamento pode ser alterado, mas, ao fazer isso, a **AWS** não garantirá a integridade do sistema de arquivos da imagem criada.
+- AMIs com volumes EBS anexados: Se a AMI for criada a partir de uma instância do EC2 que possui volumes adicionais anexados, esses volumes serão incluídos no processo de criação da AMI.
 
+Uma AMI está vinculada a uma região específica. Portanto, para executar uma instância do EC2 a partir de uma AMI criada em outra região, é necessário copiar a AMI para a região desejada primeiro. Para copiar uma AMI para outra região da **AWS**, é possível utilizar um dos seguintes métodos: Console de Gerenciamento da **AWS**, **AWS CLI** ou a API do **Amazon EC2**. É possível copiar tanto AMIs baseadas no **Amazon EBS** quanto AMIs com armazenamento de instâncias, além de AMIs criptografadas e AMIs que possuem snapshots criptografados.
 
+Snapshots criptografados permitem a criptografia usando a chave mestra de cliente (CMK) padrão do **AWS Key Management Service (AWS KMS)** ou uma chave personalizada especificada. É necessário ter permissão para utilizar a chave selecionada. Para uma AMI com snapshots criptografados, é possível recriptografá-los com uma chave diferente durante a ação CopyImage. A CopyImage aceita apenas uma chave por vez e criptografa todos os snapshots de uma imagem (seja raiz ou dados) com essa chave. No entanto, é possível criar manualmente uma AMI com snapshots criptografados utilizando várias chaves. É importante notar que uma cópia pode falhar se a **AWS** não conseguir localizar uma imagem correspondente do *Amazon Kernel (AKI)* na região de destino.
 
+Ao criar uma AMI, o **Amazon EC2** gera snapshots do volume raiz da instância e de quaisquer volumes do EBS anexados à instância. Os snapshots gerados serão cobrados até que a AMI seja cancelada e os snapshots excluídos. Para criar uma AMI do **Linux** baseada no **Amazon EBS**, comece a partir de uma instância executada de uma AMI do **Linux** baseada no **Amazon EBS** existente. Essa AMI pode ser obtida do **AWS Marketplace**, importada ou qualquer outra AMI acessível. Também é possível criar AMIs do **Linux** diretamente a partir do snapshot do volume raiz da instância do EC2.
+
+A ferramenta **Microsoft System Preparation (Sysprep)** facilita a duplicação de uma instalação personalizada do **Windows**. É aconselhável usar o Sysprep para criar uma AMI padronizada, a partir da qual novas instâncias do **Amazon EC2** para **Windows** podem ser criadas. Além disso, é recomendado executar o Sysprep junto com o *EC2Launch* (para **Windows Server 2016** e versões posteriores) ou o serviço *EC2Config* (para versões anteriores ao **Windows Server 2016**).
+
+O serviço E*C2Launch* inicia quando a instância é inicializada, executando tarefas diversas durante o processo. Essas tarefas incluem definir o nome do computador, enviar informações da instância para o console do EC2 e definir uma senha aleatória para a conta de administrador do **Windows**, entre outras. Para *Windows Server 2012 R2* e versões anteriores, as AMIs do **Microsoft Windows** incluem um serviço opcional chamado *EC2Config* (EC2Config.exe). Esse serviço é ativado ao iniciar a instância e executa tarefas tanto na inicialização quanto ao interromper ou reiniciar a instância. Além disso, o *EC2Config* pode executar tarefas sob demanda, algumas ativadas automaticamente e outras manualmente. Embora opcional, o *EC2Config* oferece acesso a recursos avançados não disponíveis de outra forma.
+
+Entretanto, evitar o uso do Sysprep para criar um backup de instância do EC2 é recomendável, pois ele remove informações específicas do sistema. A remoção dessas informações pode causar consequências indesejadas em um backup de instância. O Sysprep é adequado para preparar uma imagem do EC2 para a criação de AMIs, pois remove ferramentas específicas da imagem, configurações e identificações de usuários no sistema **Windows**.
+
+O Sysprep é executado em três fases distintas:
+- Generalizar: A ferramenta remove informações e configurações específicas da imagem, como o identificador de segurança (SID), o nome do computador, os logs de evento e os drivers específicos. Após essa fase, o sistema operacional (SO) estará pronto para a criação da AMI.
+- Especializar: O Plug and Play verifica o computador e instala drivers para todos os dispositivos detectados. Durante essa fase, a ferramenta gera requisitos do sistema operacional, como o nome do computador e o SID, permitindo a execução de comandos personalizados.
+- Out-of-Box Experience (OOBE): O sistema realiza uma configuração abreviada do **Windows**, solicitando ao usuário informações como o idioma do sistema, o fuso horário e a organização registrada. Quando o Sysprep é executado com o EC2Config, um arquivo de resposta automatiza essa fase.
 
 <a name="item6.16"><h4>6.16 Modelos de inicialização do Amazon EC2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
 
 
 
