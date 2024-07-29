@@ -406,30 +406,132 @@ Para utilizar o Athena, aponte para os dados no **Amazon S3**, defina o esquema 
 
 <a name="item6.6"><h4>6.6 187- [JAWS] -Atividade: Trabalhar com o AWS CloudTrail</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Neste laboratório, desenvolvido no sandbox **Voccareum**, foi construído uma trilha do **AWS CloudTrail** que fazia auditoria das ações executadas na conta da **AWS**. O objetivo foi realizar uma investigação para descobrir quem era o hacker que tinha causado um problema no site da cafeteria Café. Esse site era uma aplicação executado em um servidor web dentro da instância do **Amazon EC2**, cuja tag de nome era `Cafe Web Server`. Essa instância, cujo sistema operacional era **Amazon Linux**, tinha sido provisionada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. A investigação foi realizada em três abordagens diferentes. A primeira delas, com uso do software **Grep** dentro da instância para filtrar os logs gerados pelo CloudTrail. A segunda forma, também dentro da instância, foi utilizando comandos **AWS CLI** do CloudTrail também para filtrar os logs. Já a terceira abordagem foi utilizando o serviço **Amazon Athena** para filtrar os logs através de consultas **SQL**, simplificando bastante a execução. Após descobrir a causa do problema, as devidas correções foram aplicadas e ações para que minimizasse a chance desse problema ocorrer novamente também foram executadas.
 
+Na primeira tarefa foi adicionado uma segunda regra ao grupo de segurança que era vinculado a essa instância do EC2. Esta regra liberada a porta `22` do protocolo `TCP` apenas para o IP `My IP`, que era o IP público que a máquina física **Windows** utilizava no momento. Assim, conexões SSH entre a máquina física **Windows** e a instância podiam ser estabelecidas. Além disso, foi visualizado o site da cafeteria através do IP ou DNS público da instância concatenado com o path `/cafe` para verificar se havia alguma irregularidade. Neste momento o site aparentava normal, conforme mostrado na imagem 19.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img19.png" alt="img19"><br>
     <figcaption>Imagem 19.</figcaption>
 </figure></div><br>
 
+A tarefa 2 consistiu na elaboração de uma trilha do **AWS CloudTrail**. Esta trilha possuíu o nome `monitor` e foi indicado para que um bucket do **Amazon S3** fosse construído para armazenar os logs dessa trilha, teve como nome o seguinte padrão `monitoring5988`, onde os caracteres de hash (#) eram números aleatórios. Na opção alias do AWS KMS foi definido como `ph-KMS`. As demais configurações foram mantidas como padrão. A imagem 20 exibe a trilha construída.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
+</figure></div><br>
 
+Logo após a criação da trilha, o site foi invadido. Aparentemente isso já estava programado para acontecer pelo laboratório se o nome da trilha fosse `monitor`. Ao tentar visualizar o site da cafeteria neste momento, foi possível perceber que o site tinha sido invadido pois uma imagem estranha foi inserido nele. A imagem 21 mostra o site com a imagem incorreta. Analisando o security group vinculado a essa instância foi indentificado que uma regra de entrada extra tinha sido criada permitindo conexões SSH de qualquer IP a instância do EC2, conforme apresentado na imagem 22.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img21.png" alt="img21"><br>
+    <figcaption>Imagem 21.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img22.png" alt="img22"><br>
+    <figcaption>Imagem 22.</figcaption>
+</figure></div><br>
 
+Na terceira tarefa, foi utilizado o software **Grep** do **Linux** para analisar os logs gerados no **AWS CloudTrail** e descobrir quem realizou essas alterações. Para utilizar o **Grep** foi preciso executar um acesso remoto na instância do **Amazon EC2** onde a aplicação era executada. Diferetemente dos outros laboratórios, onde essa conexão era realizada pelo recurso `EC2 Instance Connect`, dessa vez foi executada através de softwares na própria máquina física **Windows**. Este laboratório indicava para utilizar o software **PuTTY** se a máquina física fosse **Windows**, que era o caso, mas optei por utilizar o **OpenSSH** que já estava instalado na máquina. Nesta forma de acesso remoto, foi necessário um par de chaves vinculado a instância do EC2 para autenticar o usuário durante a conexão. Esse par de chaves já tinha sido criado e vinculado a instância, o nome dele era `vockey`. O arquivo de chave privada podia ser baixado através da página inicial do sandbox **Voccareum** na opção de detalhes. Com o comando `ssh -i "C:\Users\pedro\Downloads\labsuser.pem" ec2-user@34.212.234.193` executado no **PowerShell** do **Windows Terminal** da máquina física e informando o caminho para o arquivo de chave privada, o nome do usuário, no caso `ec2-user` já que era uma instância **Amazon Linux**, e o IP ou DNS público da instância, a conexão foi estabelecida. A imagem 23 evidencia esse acesso remoto.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img23.png" alt="img23"><br>
+    <figcaption>Imagem 23.</figcaption>
+</figure></div><br>
 
+Dentro da instância foi criado um diretório para armazenar os arquivos de log do CloudTrail com o comando `mkdir ctraillogs`. Em seguida a pasta corrente foi alterada para esse diretório com o comando `cd ctraillogs`. Como essa instância já tinha o **AWS CLI** instalado e configurado, foi executado o comando `aws s3 ls` para listar todos os buckets existentes da conta **AWS**. Com o comando `aws s3 cp s3://monitoring5988/ . --recursive` e passando o nome do bucket que armazenava os logs do CloudTrail, esses logs foram baixados para instância do EC2. Lembrando que o **AWS CloudTrail** publica os logs no **Amazon S3** a cada cinco minutos. Após os logs serem baixados, foi necessário percorrer os diretórios até a última ramificação da pasta `ctraillogs` para encontrar os arquivos de log. A ramificação da pasta de logs segue essa estrutura: `AWSLogs/<account-num>/CloudTrail/<Region>/<yyyy>/<mm>/<dd>`. Com o comando `gunzip *.gz` os arquivos de log foram extraídos. Com comando `ls` foi possível listar os logs, conforme imagem 24.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img24.png" alt="img24"><br>
+    <figcaption>Imagem 24.</figcaption>
+</figure></div><br>
 
+Após isso, foi utilizado o software **Grep** para filtrar os logs. Com o comando `cat` e o nome dos arquivos foi possível verificar que os logs estavam em uma estrutura **JSON**. Com o comando `cat <filename.json> | python -m json.tool` e informando o nome dos arquivos, o **Python** era utilizado para formatar a saída dos dados em um formato mais legível. Observe que cada registro continha os mesmos campos padrão, incluindo `awsRegion`, `eventName`, `eventSource`, `eventTime`, `requestParameters`, `sourceIPAddress`, `userIdentity`, etc. Para iniciar a investigação de quem violou a instância foi filtrado o campo `sourceIPAddress` quando ele fosse igual ao IP da instância do EC2. Portanto, uma variável com o IP da instância foi criada com o comando `ip=34.212.234.193`. Em seguida, o comando `for i in $(ls); do echo $i && cat $i | python -m json.tool | grep sourceIPAddress ; done` foi executado. Este criava um loop for que incluía os nomes dos arquivos no diretório atual e durante cada iteração do loop para, ele ecoava o nome do arquivo e, em seguida, imprimia o conteúdo do arquivo no formato **JSON**. Somente as linhas de **JSON** que continham a tag `sourceIPAddress` eram impressas. Observe que havia vários registros de log na trilha em que `sourceIPAddress` era a instância `Café Web Server`. Um outro comando que segue a mesma lógica foi executado, mas, desta vez, ele filtrava os registros de log para o `eventName` (`for i in $(ls); do echo $i && cat $i | python -m json.tool | grep eventTime ; done`). Os resultados do comando anterior continham detalhes diferentes. Muitas ações describe e list foram registradas e elas pareciam relativamente inofensivas. No entanto, ao percorrer a lista, foi verificado que ações update ocasionais também foram gravadas. Neste caso, era possível utilizar um editor de texto como o **VI** para abrir um log que continha um evento gravado sobre o qual desejava-se saber mais, procurá-lo e examinar os detalhes. A imagem 25 evidência esse primeiro processo de investigação. 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
 
+Uma outra abordagem para analisar os logs do **AWS CloudTrail** seria utilizar seus próprios comandos da **AWS CLI**. O comando `lookup-events` permitia pesquisar eventos com base em um dos oito atributos diferentes, incluindo a chave de acesso da **AWS**, o nome do evento, o nome de usuário e outros. Com o comando `aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=ConsoleLogin`, a trilha do CloudTrail era filtrada pelo login realizado no console da **AWS**. Os resultados indicavam que não houve eventos de login no console ou que o único usuário que fez login no console era o mesmo usuário que estava sendo utilizado para se conectar ao console. No entanto, existiam outras maneiras de modificar recursos na **AWS** em vez de usando o console. O hacker poderia ter utilizado uma abordagem diferente. O comando `aws cloudtrail lookup-events --lookup-attributes AttributeKey=ResourceType,AttributeValue=AWS::EC2::SecurityGroup --output text` foi utilizado para encontrar todas as ações que foram executadas nos grupos de segurança da conta da **AWS**. Contudo, como a quantidade de resultados eram muitos poderia ser difícil de identificar o problema. O melhor seria restringir mais os resultados da pesquisa para obter apenas os resultados relacionados ao grupo de segurança usado pela instância do servidor web. Para isso, primeiro, foi preciso executar os comandos abaixo para capturar a região utilizada por essa instância do **Amazon EC2** através dos seus metadados, em seguida descobrir o ID do grupo de segurança que ela utilizava e armazená-lo em uma variável.
 
+```
+region=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region | cut -d '"' -f4)
+sgId=$(aws ec2 describe-instances --filters "Name=tag:Name,Values='Cafe Web Server'" --query 'Reservations[*].Instances[*].SecurityGroups[*].[GroupId]' --region $region --output text)
+echo $sgId 
+```
 
+Com o ID do security group, uma nova pesquisa foi realizada filtrando mais os resultados, o comando utilizado foi o `aws cloudtrail lookup-events --lookup-attributes AttributeKey=ResourceType,AttributeValue=AWS::EC2::SecurityGroup --region $region --output text | grep $sgId`. A imagem 26 exibe os logs filtrados.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
+</figure></div><br>
 
+Essas duas abordagens apresentadas até o momento poderiam ser um tanto quanto difícil para identificar o problema específico dentro de um conjunto de dados muito grande. Uma forma mais simples e eficaz para essa execução é utilizar o serviço **Amazon Athena**. Com o **Amazon Athena** é possível realizar consultas estruturadas **SQL** nas trilhas do CloudTrail para procurar registros de logs específicos. Embora o Athena seja muito utilizado com o **Amazon S3** para consultas interativas que facilita a análise de dados, ele também pode ser utilizado com outros serviços da **AWS**, e um desses serviços é o **AWS CloudTrail**.
 
+Na quarta tarefa, na página de histórico de eventos no CloudTrail foi selecionado para criar uma tabela no Athena, indicando como local de armazenamento um bucket do **Amazon S3**, que neste caso foi o bucket criado anteriormente de nome `monitoring5988`. Assim, o próprio Athena gerava uma declaração `CREATE TABLE` para criação do esquema de banco de dados. Nesta declaração, ela criava uma coluna de banco de dados para cada um dos pares de nome-valor padrão em cada registro de log do CloudTrail formatado em JSON. Na parte inferior da declaração, o comando `LOCATION` indicava o local do **Amazon S3** em que os dados da tabela estavam armazenados. Nesse caso, os dados já estavam lá. A tabela foi criada com nome padrão `cloudtrail_logs_monitoring5988`, que incluía o nome do bucket do S3, conforme mostrado na imagem 27.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img27.png" alt="img27"><br>
+    <figcaption>Imagem 27.</figcaption>
+</figure></div><br>
+
+Em seguida, o console do **Amazon Athena** foi aberto e o editor de consultas foi exibido. Observe no painel esquerdo do Editor de consultas do Athena, a tabela `cloudtrail_logs_monitoring5988`. Ao escolher a opção `+` ao lado da tabela, os nomes das colunas foram revelados. Note como cada elemento secundário padrão que existia em um registro de log do CloudTrail em formato JSON tinha um nome de coluna correspondente nesse banco de dados. A coluna do banco de dados `useridentity` era um tipo `struct`, porque continha mais do que um único par de nome e valor. Da mesma forma, a coluna resources do banco de dados era uma matriz (`array`). A imagem 28 exibe essa visualização do Athena.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img28.png" alt="img28"><br>
+    <figcaption>Imagem 28.</figcaption>
+</figure></div><br>
+
+Para começar a utilizar o Athena, o local `s3://monitoring5988/results/` foi configurado para os resultados das consultas realizadas. Após isso, a consulta `SELECT * FROM cloudtrail_logs_monitoring5988 LIMIT 5` foi executada. Esta retornava cinco linhas de dados. Observe o conjunto de resultados (role para a direita no painel Resultados para ver dados adicionais da coluna). Concentre-se nas colunas `useridentity`, `eventtime`, `eventsource`, `eventname` e `requestparameters`, que continham as informações mais valiosas para ajudar a encontrar a origem do invasor. A coluna `useridentity` tinha muitos detalhes que dificultam a leitura. Portanto, a consulta `SELECT useridentity.userName, eventtime, eventsource, eventname, requestparameters FROM cloudtrail_logs_monitoring5988 LIMIT 30` foi realizada. Esta retornava apenas os dados das colunas indicadas, sendo na coluna `useridentity` apenas o nome do usuário dessa coluna. A imagem 29 exibe a execução dessa última consulta no Athena.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img29.png" alt="img29"><br>
+    <figcaption>Imagem 29.</figcaption>
+</figure></div><br>
+
+A tarefa seguinte foi um desafio, cujo objetivo foi de fato descobrir o registro de log que incluía as informações essenciais sobre quem invadiu o site. Uma segunda guia de consulta foi aberta, preservando a guia inicial. Esta segunda guia foi utilizada para testar consultas para descobrir as informações necessárias. Era preciso indentificar o nome do usuário da **AWS** que criou a regra extra no grupo de segurança, a hora exata em que essa violação foi realizada e o endereço de IP utilizado para violação. A imagem 30 exibe a consulta (`SELECT useridentity.userName, eventtime, eventsource, eventname, requestparameters FROM cloudtrail_logs_monitoring5988 WHERE eventsource = 'ec2.amazonaws.com';`) que criei para achar todos os eventos relacionados ao **Amazon EC2** e procurar algum evento que alterou o security group dessa instância. Observe vários eventos que o usuário `chaos` executou relacionado ao EC2 e grupo de segurança. Mas nenhum desses eventos alterava o security group, apenas exibia as informações. O mesmo acontecia se executasse query indicada pelo laboratório (`SELECT DISTINCT useridentity.userName, eventName, eventSource FROM cloudtrail_logs_monitoring5988 WHERE from_iso8601_timestamp(eventtime) > date_add('day', -1, now()) ORDER BY eventSource;`). O evento que deveria ser encontrado era o `AuthorizeSecurityGroupIngress` executado pelo usuário `caos` que tinha ocorrido às `17:08:12`. Acontece que a tabela no **Amazon Athena** utilizava os logs armazenados no **Amazon S3** pela trilha gerada pelo CloudTrail, porém só eram extraídos dados de eventos a partir do horário `17:08:55` para frente, não contemplado o passado.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img30.png" alt="img30"><br>
+    <figcaption>Imagem 30.</figcaption>
+</figure></div><br>
+
+Na última tarefa foi analisado ainda mais a invasão a fim de melhorar a segurança. Na primera etapa desta tarefa, o terminal conectado na instância EC2 servidor web foi executado o seguinte comando `sudo aureport --auth` para descobrir quem tinha feito login recentemente nesse sistema operacional (SO). Foi identificado que além do usuário `ec2-user`, que era o usuário utilizado na conexão SSH, um outro usuário de nome `chaos-user` também fez login. Com o comando `who` foi verificado quais usuários estavam conectados no sistema nesse momento, e o usuário `chaos-user` estava conectado por meio de uma outra instância do **Amazon EC2**. Ao tentar remover o usuário com o comando `sudo userdel -r chaos-user` não funcionou, pois ele estava conectado no momento, ao invés disso o número do processo (PID) que permitia a conexão dele foi exibido. Dessa forma, foi executado o comando `sudo kill -9 3982` indicando o número do processo que precisava ser removido. Após remover o processo, com o comando `who` novamente foi verificado se esse usuário ainda estava conectado, como ele não estava mais, o usuário pôde ser removido com o comando `sudo userdel -r chaos-user`. Com o comando `sudo cat /etc/passwd | grep -v nologin` foi verificado se nenhum outro usuário suspeito do sistema operacional poderia fazer login. Observe que a parte `grep` do comando, filtrava os usuários do sistema operacional que não tinham um login. Os usuários `root`, `sync`, `shutdown` e `halt` eram todos padrão do sistema operacional no **Amazon Linux**, portanto, não havia outros logins de usuário relativos nessa instância. A imagem 31 exibe a execução dessa primeira etapa.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img31.png" alt="img31"><br>
+    <figcaption>Imagem 31.</figcaption>
+</figure></div><br>
+
+A segunda etapa foi analisar as configurações de SSH na instância do EC2. Com o comando `sudo ls -l /etc/ssh/sshd_config` foi notado o carimbo de data/hora da última modificação do arquivo. Esse arquivo foi modificado hoje, o que tornava preocupante. Com software **VI** e executando o comando `sudo vi /etc/ssh/sshd_config` foi possível editar o arquivo de configuração SSH. No arquivo foi executado o comando `:set number` para ver os números das linhas dele. Na linha 61, a autenticação de senha estava ativada. Essa definitivamente não é uma prática recomendada de segurança. Isso significava que qualquer pessoa que soubesse ou pudesse adivinhar corretamente a combinação de nome de usuário e senha de um usuário do sistema operacional poderia acessar remotamente essa instância, sem usar um par de chaves SSH. Essa configuração precisava ser corrigida. Assim, a linha de `PasswordAuthentication yes` foi comentada com `#` e a linha de `#PasswordAuthentication no` foi descomentada tirando a `#`. Para entrar no modo de edição no **VI** utilize a tecla `insert` e para sair a tecla `esc`. Após corrigir o arquivo, o modo de edição foi encerrado e o arquivo foi salvo com o comando `:wq`. Para que as alterações fossem efetuadas era necessário reiniciar o serviço SSH com o comando `sudo service sshd restart`. Contudo como a conexão SSH seria encerrada, a imagem 32 mostrou a alteração do arquivo. Ainda na etapa 2, a regra extra criada no grupo de segurança vinculado a instância foi removida, permitindo conexões SSH apenas pelo endereço `My IP`. A imagem 33 exibe como estava o security group.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img32.png" alt="img32"><br>
+    <figcaption>Imagem 32.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img33.png" alt="img33"><br>
+    <figcaption>Imagem 33.</figcaption>
+</figure></div><br>
+
+Na etapa 3 dessa última tarefa, o objetivo foi consertar o site. Portanto, o acesso remoto com a instância foi novamente estabelecido. Caso ele não tivesse sido encerrado, era só utilizá-lo. Em seguida, os comandos `cd /var/www/html/cafe/images/` e `ls -l` foram executados para visualizar todas as imagens da aplicação. Aqui era indicado que o hacker tinha criado um backup do arquivo original. Com o comando `sudo mv Coffee-and-Pastries.backup Coffee-and-Pastries.jpg` o gráfico original do site foi restaurado. O site foi acessado mais uma vez pelo navegador da máquina física **Windows**, sendo possível visualizá-lo corretamente agora, conforme mostrado na imagem 34.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img34.png" alt="img34"><br>
+    <figcaption>Imagem 34.</figcaption>
+</figure></div><br>
+
+Por fim, a última etapa foi excluir o hacker de vez da conta **AWS**. Então no **AWS IAM** em usuários, foi identificado o usuário `chaos` e excluído. A imagem 35 exibe o usuário `chaos` antes de ser excluído.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img35.png" alt="img35"><br>
+    <figcaption>Imagem 35.</figcaption>
+</figure></div><br>
 
 <a name="item6.8"><h4>6.8 AWS Organizations</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
@@ -505,19 +607,70 @@ Aqui estão algumas práticas recomendadas para desenvolver uma estratégia efic
 
 <a name="item6.10"><h4>6.10 188- [JAWS] -Laboratório: Gerenciar recursos com marcação</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Neste laboratório, desenvolvido no sandbox **Voccareum**, o objetivo foi gerenciar recursos da nuvem **AWS** com marcações de tags. Para isso foi utilizado o **AWS CLI** instalado em uma instância do **Amazon EC2** para inspecionar as tags atribuídas a várias instâncias do **Amazon EC2** e alterar algumas dessas tags. Em seguida, a partir dessas tags, utilizando scripts pré-fornecidos com SDKs da **AWS**, várias dessas instâncias foram desligadas e iniciadas simultaneamente. Também foi realizado o encerramento de instâncias que não implementavam tags específicas. Alguns recursos da **AWS** já vinham provisionados automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório, dentre eles, 8 Instâncias **Linux** do **Amazon EC2**. As instâncias privadas tinham três tags personalizadas aplicadas a elas, as tags eram: 
+- Projeto: O projeto ao qual a instância pertence. As instâncias neste laboratório pertenciam a um dos seguintes projetos: `ERPSystem` ou `Experiment1`.
+- Versão: A versão do projeto ao qual esta instância pertence. Todas as tags de Versão estavam definidas como 1.0.
+- Ambiente: Um dos três valores a seguir: `development`, `staging` ou `production`.
 
+Na primeira tarefa foi realizado um acesso remoto a instância do EC2 de tag de nome `Command Host` pela máquina física **Windows**. Com a **AWS CLI** já instalada e configurada na instância, alguns comandos foram executados para encontrar um conjunto de recursos de acordo com suas tags e alterar o valor de uma das tags. Na primeira etapa foi realizado o acesso remoto a instância pela máquina física. Como no laboratório passado, o 187, foi utilizado o software **OpenSSH** para essa conexão, para executar diferente, dessa vez foi utilizado o **PuTTY**. O **PuTTY** pode ser utilizado tanto pela interface gráfica dele como em um terminal. Neste caso, ele foi utilizado no **PowerShell** aberto no **Windows Terminal**. Para a autenticação do usuário que acessaria a instância, no caso o usuário `ec2-user` já que era uma instância **Amazon Linux**, era necessário um par de chaves configurado na instância. O par de chaves `vockey` era um dos recursos criados pela pilha do CloudFormation e o arquivo de chave privada estava disponível para ser baixado na página principal desse sandbox **Voccareum**, na opção de detalhes. Perceba que existem dois arquivos, um no formato `.pem` que é o utilizado pelo **OpenSSH** e outro no formato `.ppk` que é o utilizado pelo **PuTTY**. Portanto o arquivo de chave privada no formato `.ppk` foi baixado para a pasta de downloads da máquina física. O comando do **PuTTY** é muito similar o do **OpenSSH**: `plink -i "C:\Users\pedro\Downloads\labsuser.ppk" -ssh ec2-user@34.209.153.53`. Nele teve que ser informado os mesmos parâmetros: o caminho para o arquivo de chave privada, o usuário que faria a conexão (`ec2-user`) e o IP ou DNS público da instância. Talvez o **PuTTY** encerre as sessões caso não haja interação, mas isso pode ser configurado tanto na interface gráfica como na linha de comando para aumentar o tempo em que a sessão é aberta. No **OpenSSH** isso já estava configurado. Como sempre, na primeira tentiva de conexão, durante a autenticação do usuário, deve ser confirmado com `y` para que o IP da máquina que executava o acesso fosse adicionado na lista de hosts conhecidos pelo servidor SSH da instância. A imagem 36 mostra a conexão realizada pelo **PuTTY** executado no **PowerShell** da máquina física. Lembrando que uma regra de entrada no grupo de segurança tinha que permitir conexões SSH, cuja porta é `22` e o protocolo é `TCP` para o endereço de IP que deseja acessar a instância.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img36.png" alt="img36"><br>
+    <figcaption>Imagem 36.</figcaption>
+</figure></div><br>
 
+Com acesso realizado com sucesso, foi possível utilizar os comandos **AWS CLI** para encontrar os recursos na sub-rede privada que pertenciam ao projeto `ERPSystem` e que estavam no ambiente chamado `development`. O parâmetro `--query` da **AWS CLI** também foi usado para produzir resultados com formatação avançada. O primeiro comando executado foi `aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem"` que filtrava no servidor as instâncias cuja tag `Project` tinha o valor `ERPSystem`. Acontece que sete das oito instâncias possuía essa tag, logo todas foram exibidas. Com o comando seguinte `aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query 'Reservations[*].Instances[*].InstanceId'`, a mesma ação era realizada, porém agora existia um filtro também no cliente com o parâmetro `--query`, onde exibia apenas o ID das instâncias. O comando `--query` usado neste exemplo utilizava a sintaxe curinga `JMESPath` para especificar que o comando deveria iterar por todas as reservas e todas as instâncias e retornar o InstanceId de cada instância nos resultados. O comando `aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query 'Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone}'`, fazia a mesma ação do anterior, só que ao exibir, ele exibia o ID e também a zona de disponibilidade das instâncias. O uso de chaves é utilizado quando uma consulta com várias propriedades precisa ser exibida, podendo informar um alias antes de cada propriedade para deixar em um formato melhor. A imagem 37 mostra as execuções dos comandos até o momento.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img37.png" alt="img37"><br>
+    <figcaption>Imagem 37.</figcaption>
+</figure></div><br>
 
+Ainda seguindo na etapa 2 dessa tarefa, foi executado o comando `aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query "Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key=='Project'] | [0].Value}"`. Esse comando se diferenciava do anterior, porque agora mais uma propriedade era exibida, que neste caso o primeiro valor da tag de chave `Project` encontrado. Com o comando `aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query "Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key=='Project'] | [0].Value,Environment:Tags[?Key=='Environment'] | [0].Value,Version:Tags[?Key=='Version'] | [0].Value}"`, as propriedades foram aumentadas, exibindo agora o primeiro valor das três tags (`Project`, `Environment` e `Version`), ou seja, as três primeiras instâncias de cada tag. Por fim, o comando `aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" "Name=tag:Environment,Values=development" --query "Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key=='Project'] | [0].Value,Environment:Tags[?Key=='Environment'] | [0].Value,Version:Tags[?Key=='Version'] | [0].Value}"` foi executado. Este incluíu no filtro do servidor uma segunda tag, que era a de chave `Environment` que tivesse valor `development`. Neste caso, apenas duas instâncias foram retornadas. A imagem 38 exibe essa execução.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img38.png" alt="img38"><br>
+    <figcaption>Imagem 38.</figcaption>
+</figure></div><br>
 
+Na terceira etapa, a tag de chave `Version`, para as instâncias que possuíam tag de chave `Environment` com valor igual a `Development` e a tag de chave `Project` com valor igual a `ERPSystem`, foi alterada. Isso poderia ser realizado em cada instância individualmente, mas foi optado por realizar de forma automatizada utilizando scripts em **Bash**. Portanto, o arquivo `change-resource-tags.sh` localizado na pasta do usuário `ec2-user` foi aberto com editor de texto **Nano** (`nano change-resource-tags.sh`). Esse script usava primeiro o comando `aws ec2 describe-instances` para retornar apenas uma lista de IDs de instância para as máquinas de desenvolvimento que pertenciam ao projeto `ERPSystem`. Depois, ele passava esses valores para o comando `aws ec2 create-tags`, que criava uma tag ou nesse caso substituía uma tag existente. Observe como o primeiro comando utilizava a opção `--output text` para manipular os resultados de retorno como texto em vez do formato **JSON**. Usar esse comando em vez de **JSON** em um resultado de retorno simples (nesse caso, uma lista de IDs) pode facilitar a manipulação do resultado de retorno e passá-lo para outros comandos. Após visualizar o arquivo, o editor de texto foi fechado e o arquivo foi executado com o comando `./change-resource-tags.sh`. Para verificar se o número da versão nessas instâncias foi modificada corretamente e nas outras instâncias continuou o antigo, foi executado o comando `aws ec2 describe-instances --filter "Name=tag:Project,Values=ERPSystem" --query "Reservations[*].Instances[*].{ID:InstanceId, AZ:Placement.AvailabilityZone, Project:Tags[?Key=='Project'] |[0].Value,Environment:Tags[?Key=='Environment'] | [0].Value,Version:Tags[?Key=='Version'] | [0].Value}"`. A imagem 39 evidência a alteração da tag `Version`.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img39.png" alt="img39"><br>
+    <figcaption>Imagem 39.</figcaption>
+</figure></div><br>
 
+Na tarefa de número 2, o objetivo consistiu em interromper e iniciar recursos das instâncias marcadas como instâncias de desenvolvimento. Para isso, o script `Stopinator` foi examinado. Com o comando `cd aws-tools` foi acessado o diretório que o arquivo estava e com o comando `nano stopinator.php`, ele foi aberto no editor **Nano**. O script `stopinator.php` era um script simples que usava o **AWS SDK** para **PHP** a fim de interromper e reiniciar instâncias com base em um conjunto de tags. Isso permite cenários como desligar servidores de ambiente de desenvolvimento no final do dia e reiniciá-los na manhã seguinte. O script procurava em todas as regiões **AWS** por instâncias que correspondessem às tags especificadas. Ele usa os seguintes argumentos:
+- O -t: um conjunto de tags no formato name=value;name=value. O script convertia essas tags no formato esperado pela chamada `Ec2::DescribeInstance()` do **AWS PHP**. Se esse parâmetro opcional estivesse ausente, o script identificava e encerrava todas as instâncias do **Amazon EC2** em execução na conta.
+- O -s: um parâmetro booliano; nenhum argumento é necessário. Quando esse parâmetro estava presente, as instâncias identificadas por -t eram iniciadas em vez de interrompidas.
 
+O **Nano** foi fechado e o arquivo foi executado com o comando `./stopinator.php -t"Project=ERPSystem;Environment=development"`. A saída indicava que duas instâncias seriam interrompidas na Região atual da **AWS**. O resultado poderia ser diferente dependendo da região do laboratório. A imagem 40 mostra o output do arquivo. Já na imagem 41 é exibido as instâncias interrompidas pelo console da **AWS**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img40.png" alt="img40"><br>
+    <figcaption>Imagem 40.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
+</figure></div><br>
 
+Agora, o mesmo arquivo foi executado novamente passando o parâmetro `-s`: `./stopinator.php -t"Project=ERPSystem;Environment=development" -s`. Assim as instâncias após interrompidas seriam reiniciadas. A imagem 42 mostra as instâncias reiniciando.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img42.png" alt="img42"><br>
+    <figcaption>Imagem 42.</figcaption>
+</figure></div><br>
+
+Na última tarefa que foi de desafio, foram encerradas as instâncias que não estavam em conformidade. Neste caso, foi preciso localizar todas as instâncias em sub-rede privada que não implementavam a tag `Environment`. Para isso foi aberto o arquivo de script `terminate-instances.php` com o editor de texto **Nano** (`nano terminate-instances.php`). Observe que eram necessários dois argumentos: a Região (region) atual em que estava sendo executado e o ID de uma sub-rede (subnetid). O código usava o argumento subnetid para determinar onde procurar instâncias não compatíveis. Um dos blocos de código utilizava o método `describeInstances()`, um filtro para localizar todas as instâncias que tinham a tag `Environment` definida, independentemente do valor da tag. Ele armazenava todas as IDs de instância que encontrava em uma tabela de hash. Em seguida, em um outro bloco, o código examinava todas as instâncias dentro da sub-rede e as comparava à lista de instâncias marcadas com a tag `Environment`. Se uma instância não estivesse na lista de tags, seu ID de instância seria adicionado a uma lista de instâncias a serem encerradas. Na última seção do script, as linhas usavam a lista de IDs de instância não compatíveis como um argumento para o método `terminateInstances`. 
+
+Antes de executar de fato o script, era preciso configurar o ambiente para que houvesse instâncias com essas definições. Ou seja, foi preciso remover a tag `Environment` em instâncias que tivessem na sub-rede privada. Isso foi realizado em duas instâncias, copiando os seus valores de ID da sub-rede privada e a região. Em seguida, o comando `./terminate-instances.php -region us-west-2 -subnetid subnet-0051a4bd74192d544` foi executado, indicando os valores copiados. Assim, as instâncias foram encerradas, conforme mostrado na imagem 43.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img43.png" alt="img43"><br>
+    <figcaption>Imagem 43.</figcaption>
+</figure></div><br>
 
 <a name="item6.11"><h4>6.11 Gerenciamento de custos da AWS e práticas recomendadas</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
@@ -577,8 +730,13 @@ O **AWS Trusted Advisor** pode ser utilizado para identificar recursos ociosos, 
 <a name="item6.12"><h4>6.12 Demonstração do painel de faturamento da AWS-2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
 
+- criar um relatório de custo e uso por ano
+- criar um orçamento
 
-
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img44.png" alt="img44"><br>
+    <figcaption>Imagem 44.</figcaption>
+</figure></div><br>
 
 
 
