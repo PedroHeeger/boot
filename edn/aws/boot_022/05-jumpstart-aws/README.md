@@ -1087,33 +1087,33 @@ Uma implantação azul/verde é uma estratégia que minimiza o risco de indispon
 
 <a name="item5.33"><h4>5.33 Demonstração do Amazon Route 53-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-Nesta demonstração foi provisionado duas instâncias do **Amazon EC2** que seriam os servidores web de uma aplicação de estudo da **AWS** que simulava uma cafeteria. O objetivo foi criar registros em uma zona hospedada (*hosted zone*) no **Amazon Route 53** para testar três diferentes tipos de roteamento: Simple routing (roteamento simples), Failover (Roteamento Failover) e Geolocation (Roteamento de geolocalização). Como as demonstrações não utilizavam o sandbox do **Vocareum**, foi preciso utilizar minha própria conta da **AWS**. Portanto, foi utilizado o **PowerShell** no **Windows Terminal** da maquina física **Windows**, que já possuía instalada a **AWS CLI** e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`). Assim, arquivos de scripts **PowerShell** com comandos **AWS CLI** foram executados para provisionar os serviços e recursos. Cada arquivo possuía dois scripts, um para a construção e outro para remoção, ambos precedidos de uma estrutura de condição que aguardava uma entrada do usuário para decidir se executava ou não o código.
+Nesta demonstração foi provisionado duas instâncias do **Amazon EC2** que seriam os servidores web de uma aplicação de estudo da **AWS** que simulava uma cafeteria. O objetivo foi criar registros em uma zona hospedada (*hosted zone*) no **Amazon Route 53** para testar três diferentes tipos de roteamento: Simple routing (roteamento simples), Failover (Roteamento Failover) e Geolocation (Roteamento de geolocalização). Como as demonstrações não utilizavam o sandbox do **Voccareum**, foi preciso utilizar minha própria conta da **AWS**. Portanto, foi utilizado o **PowerShell** no **Windows Terminal** da maquina física **Windows**, que já possuía instalada a **AWS CLI** e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`). Assim, arquivos de scripts **PowerShell** com comandos **AWS CLI** foram executados para provisionar os serviços e recursos. Cada arquivo possuía dois scripts, um para a construção e outro para remoção, ambos precedidos de uma estrutura de condição que aguardava uma entrada do usuário para decidir se executava ou não o código. Os arquivos foram armazenados na pasta [resource/5.33-route53/](./resource/5.33-route53/), sendo sub-divididos por serviço da **AWS**.
 
-Primeiro foi utilizado o arquivo [ec2DoulbeInstance.ps1](./resource/5.33-route53/ec2/ec2DoubleInstance.ps1) para provisionar duas instâncias do **Amazon EC2** idênticas, apenas se diferenciando na tag de nome e na zona de disponibilidade onde cada uma estava. A tag de nome uma possuía o valor `cafeserver1` e a outra `cafeserver2`. Enquanto a AZ da sub-rede da instância 1 era `us-east-1a` e da instância 2 era `us-east-1b`, ambas na mesma VPC da mesma região. O grupo de segurança foi utilizado o padrão da VPC padrão da região. Logo, foi necessário criar uma regra de entrada liberando acesso na porta `80` e `443` do protocolo `TCP` para todos os IPs (`0.0.0.0/0`), sendo isso realizado com o arquivo [vpcSgRule.ps1](./resource/5.33-route53/ec2/vpcSgRule.ps1). A imagem de maquina utilizada foi `ami-0195204d5dce06d99` (Amazon Linux 2 Kernel 5.10 AMI 2.0.20240620.0 x86_64 HVM gp2) e o tipo de instância foi `t2.micro`. O armazenamento selecionado foi o padrão de inicialização de uma EC2, que era um volume do **Amazon Elastic Block Store (Amazon EBS)**, cujo nome do device foi `/dev/xvda` com `8` GiB do tipo `gp2`. O par de chaves de nome `keyPairUniversal` que é o par de chaves universal que utilizo nos meu projetos foi escolhido. Também foi vinculado o perfil de instância `instanceProfileEdn1` com a role `roleServiceEdn1` com a política de permissão `AmazonSSMFullAccess` para possibilitar a interação da aplicação web com o recurso *Parameter Store* do **AWS System Manager (AWS SSM)**. Antes de executar de fato o provisionamento dessas instâncias, leia mais abaixo o funcionamento da aplicação web, pois foi necessário criar uma role e perfil de instância primeiro. Por fim, um arquivo de user data, criado pela própria **AWS**, foi utilizado para instalar os softwares necessários para aplicação (**Apache HTTP (Httpd)**, **MariaDB**, **PHP**), baixar os arquivos da aplicação, configurar o servidor web, o banco de dados e a aplicação. A imagem 57 mostra a aplicação web, executada nas das instâncias, sendo acessada pelo navegador da maquina física **Windows** através do IP público das instâncias acrescido do path `/cafe`. Observe que cada uma está em uma zona de disponibilidade diferente.
+Primeiro foi utilizado o arquivo [ec2DoulbeInstance.ps1](./resource/5.33-route53/ec2/ec2DoubleInstance.ps1) para provisionar duas instâncias do **Amazon EC2** idênticas, apenas se diferenciando na tag de nome e na zona de disponibilidade onde cada uma estava. A tag de nome uma possuía o valor `cafeServer1` e a outra `cafeServer2`. Enquanto a AZ da sub-rede da instância 1 era `us-east-1a` e da instância 2 era `us-east-1b`, ambas na mesma VPC da mesma região. O grupo de segurança foi utilizado o padrão da VPC padrão da região. Neste security group, foi necessário criar duas regra de entrada liberando acesso na porta `80` e `443` do protocolo `TCP` para todos os IPs (`0.0.0.0/0`), sendo isso realizado com o arquivo [vpcSgRule.ps1](./resource/5.33-route53/ec2/vpcSgRule.ps1). A imagem de maquina utilizada foi `ami-0195204d5dce06d99` (Amazon Linux 2 Kernel 5.10 AMI 2.0.20240620.0 x86_64 HVM gp2) e o tipo de instância foi `t2.micro`. O armazenamento selecionado foi o padrão de inicialização de uma EC2, que era um volume do **Amazon Elastic Block Store (Amazon EBS)**, cujo nome do device foi `/dev/xvda` com `8` GiB do tipo `gp2`. O par de chaves de nome `keyPairUniversal`, que é o par de chaves universal que utilizo nos meu projetos, foi escolhido. Também foi vinculado o perfil de instância `instanceProfileEdn1` com a role `roleServiceEdn1` com a política de permissão `AmazonSSMFullAccess` para possibilitar a interação da aplicação web com o recurso *Parameter Store* do **AWS Systems Manager (AWS SSM)**. Antes de executar de fato o provisionamento dessas instâncias, leia mais abaixo o funcionamento da aplicação web, pois foi necessário criar antes uma role, um perfil de instância e anexar a política a role. Por fim, um arquivo de user data, criado pela própria **AWS**, foi utilizado para instalar os softwares necessários para aplicação (**Apache HTTP (Httpd)**, **MariaDB**, **PHP**), baixar os arquivos da aplicação, configurar o servidor web, o banco de dados e a aplicação. A imagem 57 mostra a aplicação web, executada nas das instâncias, sendo acessada pelo navegador da máquina física **Windows** através do IP público das instâncias acrescido do path `/cafe`. Observe que cada uma estava em uma zona de disponibilidade diferente.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img57.png" alt="img57"><br>
     <figcaption>Imagem 57.</figcaption>
 </figure></div><br>
 
-Esse arquivo de user data precisou ser entendido com mais detalhes para o funcionamento correto da aplicação web. As primeiras ações executadas por esse arquivo foi atualização do pacote e instalação dos softwares utilizados. Em seguida, os servidores web (**Apache HTTP**) e de banco de dados (**MariaDB**) foram iniciados e habilitados. O arquivo raiz `index.html` do sevidor **Apache HTTP (Httpd)**, que ficava armazenado em `/var/www/html/`, foi alterado modificando o texto para `Hello From Your Web Server!`. Assim, ao acessar o IP ou DNS público sem adicionar nenhum path, a requisição bateria neste arquivo que é o arquivo raiz deste servidor web. Isso era só para mostrar que o servidor estava operado, a aplicação web funcionava no diretório `/cafe` dentro do diretório do Apache. Continuando no arquivo de user data, o diretório `/var/www` foi procurado e com o comando `chmod 2775` as permissões desse diretório e dos arquivos dentro dele foram alteradas. Dessa forma o proprietário e o grupo tinham permissões de leitura, escrita e execução, e outros usuários tinham permissões de leitura e execução. Além disso, o bit SetGID foi definido como `2` para que novos arquivos herdassem o grupo do diretório pai. Em seguida os arquivos em `/var/www` foram procurados e as permissões foram alteradas com `chmod 0664`, o que significava que o proprietário e o grupo tinham permissões de leitura e escrita, e outros usuários tinham permissões de leitura.
+Esse arquivo de user data precisou ser entendido com mais detalhes para o funcionamento correto da aplicação web. As primeiras ações executadas por esse arquivo foi atualização do pacote e instalação dos softwares utilizados. Em seguida, os servidores web (**Apache HTTP (Httpd)**) e de banco de dados (**MariaDB**) foram iniciados e habilitados. O arquivo raiz `index.html` do sevidor **Apache HTTP (Httpd)**, que ficava armazenado em `/var/www/html/`, foi alterado modificando o texto para `Hello From Your Web Server!`. Assim, ao acessar o IP ou DNS público da instância do EC2 sem adicionar nenhum path, a requisição bateria neste arquivo que era o arquivo raiz deste servidor web. Isso era só para mostrar que o servidor estava operado, a aplicação web funcionava no diretório `/cafe` dentro do diretório do Apache. Continuando no arquivo de user data, o diretório `/var/www` foi procurado e com o comando `chmod 2775` as permissões desse diretório e dos arquivos dentro dele foram alteradas. Dessa forma o proprietário e o grupo tinham permissões de leitura, escrita e execução, e outros usuários tinham permissões de leitura e execução. Além disso, o bit SetGID foi definido como `2` para que novos arquivos herdassem o grupo do diretório pai. Em seguida os arquivos em `/var/www` foram procurados e as permissões foram alteradas com `chmod 0664`, o que significava que o proprietário e o grupo tinham permissões de leitura e escrita, e outros usuários tinham permissões de leitura.
 
 O próximo comando executado adicionava uma informação através de um comando **PHP** a um arquivo que era criado com nome `phpinfo.php` dentro do diretório do servidor web **Apache HTTP (Httpd)**. O usuário padrão da instância **Amazon Linux**, `ec2-user`, foi adicionado ao grupo `Apache` sem remover os demais. Em seguida, o proprietário e grupo de todos os arquivos dentro de `/var/www` foram alterados para `ec2-user:apache`. Mais uma vez o `chmod` foi executado, basicamente igual ao primeiro `chmod`, alterando as permissões do diretório `/var/www` para que o proprietário e o grupo tivessem permissões de leitura, escrita e execução, e outros usuários tivessem permissões de leitura e execução. O bit SetGID foi definido para garantir que novos arquivos criados dentro deste diretório herdassem o grupo `apache`.
 
 Após isso, os três seguintes arquivos foram baixados: `setup-v2.tar.gz`, `db-v2.tar.gz` e `cafe-v2.tar.gz`. Os dois primeiros foram descompactados no diretório corrente, enquanto o terceiro, que era a aplicação web, foi descompactado dentro do diretório do servidor web **Apache HTTP (Httpd)**, `/var/www/html`. A descompactação do terceiro arquivo resultou no diretório `cafe` com arquivos e pastas que configuravam a aplicação web. Como o diretório `cafe` ficava dentro de `/var/www/html`, que é o diretório raiz do Apache, era preciso adicionar o `/cafe` no path da URL junto com IP ou DNS público da instância para acessar o arquivo `index.html` dentro da pasta `cafe`, que era onde a aplicação web da cafeteria rodava. A descompactação do segundo arquivo resultou na pasta `db` com arquivos e sub-pastas que configuravam o banco de dados dentro da instância do EC2. Já a descompactação do primeiro arquivo resultou na pasta `setup` com apenas dois arquivos: `set-app-parameters.sh` e `createSsmAccessIAMRole.sh`. Alguns desses arquivos foram extremamente importantes para o entendimento do funcionamento da aplicação web.
 
-Com término da descompactação, a pasta `setup` foi acessada e o arquivo `set-app-parameters.sh` foi executado. Este arquivo capturava a zona de disponibilidade em que a instância do EC2, onde esse arquivo era executado, estava, acessando seus metadados. Com a AZ capturada, a região era extraída e exportada para a configuração do **AWS CLI** instalado nessa instância. O DNS público da instância também era capturado através dos metadados da instância do EC2. Por fim, sete parâmetros era configurados no *Parameter Store* do **AWS SSM**, incluíndo o nome do banco de dados, um usuário de acesso ao banco e sua senha de acesso, e a URL do banco de dados, que neste caso utilizou o DNS público da instância do EC2, que era onde o banco de dados operava. A imagem 58 exibe os setes parâmetros elaborados no *Parameter Store* do **AWS SSM**.
-
-Após isso, a pasta `db` foi acessada e o arquivo `set-root-password.sh` foi executado. Este apenas solicitava que o arquivo `set-root-password.sql`, dentro do sub-diretório `sql` dessa pasta, fosse executado enviando o output para o arquivo de nome `set-root-password.log`, que era o arquivo de log do SQL. O arquivo `set-root-password.sql` alterou a senha do usuário root do banco de dados **MariaDB** para a senha definida em um dos parâmetros criados no *Parameter Store*. O parâmetro do *Parameter Store* que definia o usuário utilizado pela aplicação web já era o usuário root, exatamente igual ao arquivo `set-root-password.sql`. Em seguida, o arquivo `create-db.sh`, também na pasta `db`, foi executado e era similar o anterior, solicitava que o arquivo `create-db.sql` na sub-pasta `sql` fosse executado enviando o output para o arquivo de log `create-db.log`. O arquivo `create-db.sql` basicamente construía o banco de dados `cafe_db` no **MariaDB** da instância do EC2 com as tabelas, sendo algumas com dados já inseridos. Esse nome de banco de dados `cafe_db` foi o mesmo configurado em um dos parâmetros do *Parameter Store*.
+Com término da descompactação, a pasta `setup` foi acessada e o arquivo `set-app-parameters.sh` foi executado. Este arquivo capturava a zona de disponibilidade em que a instância do EC2, onde esse arquivo era executado, estava, acessando seus metadados. Com a AZ capturada, a região era extraída e exportada para a configuração do **AWS CLI** instalado nessa instância. O DNS público da instância também era capturado através dos seus metadados. Por fim, sete parâmetros era configurados no *Parameter Store* do **AWS SSM**, incluíndo o nome do banco de dados, um usuário de acesso ao banco e sua senha de acesso, e a URL do banco de dados, que neste caso utilizou o DNS público da instância do EC2 capturado anteriormente. A URL foi o DNS da instância, porque era onde o banco de dados operava. A imagem 58 exibe os setes parâmetros elaborados no *Parameter Store* do **AWS SSM**.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img58.png" alt="img58"><br>
     <figcaption>Imagem 58.</figcaption>
 </figure></div><br>
 
-O arquivo user data chega ao fim aqui, contudo um outro ponto importante foi identificado. Na pasta `setup`, o arquivo `createSsmAccessIAMRole.sh` era executado por algum arquivo da aplicação web da pasta `cafe`. Este arquivo era indispensável para o funcionamento da aplicação web, pois os arquivos de código da aplicação web em **PHP** foram criados utilizando o **AWS SDK** para **PHP** e assim interagiam com recursos da **AWS**. O arquivo `getAppParameters.php` buscava os valores dos setes parâmetros definidos no *Parameter Store* do **AWS SSM** para serem utilizados na aplicação web, caso contrário a aplicação web não funcionaria. Só que para que esse arquivo conseguisse ser executado era necessário permissões que liberessem o **Amazon EC2** interagir com o **AWS SSM**. O arquivo `createSsmAccessIAMRole.sh` fazia exatamente isso, criava uma role cuja entidade na política de confiança era o EC2, elaborava uma política com as permissões `a` e `b`, adicionava essa política a role e criava um perfil de instância anexando essa role. A única coisa não encontrada foi como o perfil de instância foi vinculado a instância, mas foi realizado e por isso que a aplicação web que rodava na instância conseguia interagir com o **AWS SSM** e capturar os parâmetros necessários para aplicação. Se isso não fosse realizado, a aplicação web não era construída corretamente e não funcionava por completo, apenas exibia o título Cafe na aplicação acessada no navegador.
+Após isso, a pasta `db` foi acessada e o arquivo `set-root-password.sh` foi executado. Este apenas solicitava que o arquivo `set-root-password.sql`, dentro do sub-diretório `sql` dessa pasta, fosse executado enviando o output para o arquivo de nome `set-root-password.log`, que era o arquivo de log do **SQL**. O arquivo `set-root-password.sql` alterou a senha do usuário root do banco de dados **MariaDB** para a senha definida em um dos parâmetros criados no *Parameter Store*. O parâmetro do *Parameter Store* que definia o usuário utilizado pela aplicação web já era o usuário root, exatamente igual ao arquivo `set-root-password.sql`. Em seguida, o arquivo `create-db.sh`, também na pasta `db`, foi executado e era similar o anterior, solicitava que o arquivo `create-db.sql` na sub-pasta `sql` fosse executado enviando o output para o arquivo de log `create-db.log`. O arquivo `create-db.sql` basicamente construía o banco de dados `cafe_db` no **MariaDB** da instância do EC2 com as tabelas, sendo algumas com dados já inseridos. Esse nome de banco de dados `cafe_db` foi o mesmo configurado em um dos parâmetros do *Parameter Store*.
 
-Dessa forma, com o arquivo [`iamRoleService.ps1`](./resource/5.33-route53/iam/iamRoleService.ps1), a role `roleServiceEdn1` foi criada tendo como entidade na política de confiança (Trust Policy) o **Amazon EC2**, conforme mostrado na imagem 59. Para não ter criar a política em linha (Inline Policy), foi utilizado uma política já existente que era `AmazonSSMFullAccess` que dava acesso completo ao **AWS SSM**, adicionando ela a role `roleServiceEdn1` com o arquivo ['iamRolePolicy.ps1](./resource/5.33-route53/iam/iamRolePolicy.ps1), conforme imagem 60. Com o arquivo [`iamInstanceProfile.ps1`](./resource/5.33-route53/iam/iamInstanceProfile.ps1), o perfil de instância `instanceProfileEdn1` foi construído adicionando a role `roleServiceEdn1` a ele. Esse perfil de instância foi passado como parâmetro ao provisionar a instância do **Amazon EC2** no início dessa demonstração. Agora o arquivo de provisionamento das instâncias podia ser executado, pois o perfil de instância que ela usaria já estava elaborado.
+A pasta `cafe`, apesar de não ter sido acessada, teve uma enorme importância. Essa pasta continha todos os arquivos da aplicação web que era executada no servidor Apache instalado na instância do EC2. A aplicação era construída em **PHP** e utilizava o **AWS SDK** dessa linguagem para interagir com recursos da **AWS**. Dessa forma, a aplicação interagia com o recurso *Parameter Store* do **AWS SSM** através do arquivo `getAppParameters.php`. Este arquivo buscava os valores dos setes parâmetros definidos no *Parameter Store*, pelo arquivo `set-app-parameters.sh` da pasta `setup`, para utilizá-los na aplicação. Esses dois arquivos mostravam que a instância do **Amazon EC2** se relacionava com *Parameter Store* do **AWS SSM**. Contudo, na **AWS**, para que um serviço se relacione com outro é necessário permissões, caso contrário, não há relacionamento. Na pasta `setup` existia o arquivo `createSsmAccessIAMRole.sh`, ele não era executado, mas indicava que era preciso criar uma role com uma política de permissão e que a entidade na política de confiança fosse o EC2, vincular a role a um perfil de instância e passar esse perfil para a instância em construção. Assim, a instância estaria liberada a interagir com o SSM. Se isso não fosse realizado, a aplicação web não era construída corretamente e não funcionava por completo, pois não teria os valores dos parâmetros necessários, inclusive as informações para conexão com o banco de dados. A aplicação apenas exibia o título Cafe quando acessada no navegador.
+
+Dessa forma, com o arquivo [`iamRoleService.ps1`](./resource/5.33-route53/iam/iamRoleService.ps1), a role `roleServiceEdn1` foi criada tendo como entidade na política de confiança (Trust Policy) o **Amazon EC2**, conforme mostrado na imagem 59. Foi utilizado uma política gerenciada pela **AWS** que era `AmazonSSMFullAccess` que dava acesso completo ao **AWS SSM**, adicionando ela a role `roleServiceEdn1` com o arquivo ['iamRolePolicy.ps1](./resource/5.33-route53/iam/iamRolePolicy.ps1), conforme imagem 60. Com o arquivo [`iamInstanceProfile.ps1`](./resource/5.33-route53/iam/iamInstanceProfile.ps1), o perfil de instância `instanceProfileEdn1` foi construído adicionando a role `roleServiceEdn1` a ele. Esse perfil de instância foi passado como parâmetro ao provisionar a instância do **Amazon EC2** no início dessa demonstração. Agora o arquivo de provisionamento das instâncias podia ser executado, pois o perfil de instância que ela usaria já estava elaborado com as permissões necessárias.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img59.png" alt="img59"><br>
@@ -1125,34 +1125,27 @@ Dessa forma, com o arquivo [`iamRoleService.ps1`](./resource/5.33-route53/iam/ia
     <figcaption>Imagem 60.</figcaption>
 </figure></div><br>
 
-Com os servidores web prontos, a etapa seguinte foi criar os registros em uma zona hospedada e testá-los. Cada registro (record) construído tinha uma das três políticas de roteamento que iriam ser usadas. Após o teste, o registro era removido para criação de um novo com outra política de roteamento. A hosted zone não precisou ser provisionada, pois foi utilizada uma zona hospedada já criada em minha conta da **AWS**. Essa hosted zone já era configurada com domínio que foi criado no **Registro.BR**, cujo nome deste era `pedroheeger.dev.br`. Então os servidores DNS deste hosted zone, que são os quatro valores definidos no registro NS (Name Server), já estavam definidos na configuração de DNS deste domínio no **Registro.BR**. Essa configuração quando realizada levava um tempo para propagar que poderia ser de até 48 horas, por isso, isto já ficava configurado na minha conta da **AWS**. Então qualquer projeto que queira expor através de um domínio criado, utilizo este domínio (`pedroheeger.dev.br`) e esta zona de hospedagem. 
+Com os servidores web prontos, a etapa seguinte foi criar os registros em uma zona hospedada e testá-los. Cada registro (record) construído tinha uma das três políticas de roteamento que iriam ser usadas. Após o teste, o registro era removido para criação de um novo com outra política de roteamento. A hosted zone não precisou ser provisionada, pois foi utilizada uma zona hospedada já criada em minha conta da **AWS**. Essa hosted zone já era configurada com domínio que foi criado no **Registro.BR**, cujo nome deste era `pedroheeger.dev.br`. Então os servidores DNS deste hosted zone, que são os quatro valores definidos no registro NS (Name Server), já estavam definidos na configuração de DNS deste domínio no **Registro.BR**. Essa configuração quando realizada levava um tempo para propagar que poderia ser de até 48 horas, por isso, isto já ficava configurado na minha conta da **AWS**. Então qualquer projeto que queira expor através de um domínio criado, utilizo este domínio (`pedroheeger.dev.br`) e esta zona de hospedagem, cujo nome é o mesmo do domínio. 
 
-Além do record NS que contém os servidores DNS autoritativos, o record SOA (Start of Authority) também já vem criado ao construir uma zona de hospedagem. Ele é um tipo fundamental de registro DNS, pois contém informações essenciais sobre a zona DNS, incluindo detalhes sobre o servidor de DNS primário, a pessoa responsável pela zona, e diversos parâmetros de tempo que controlam a propagação de dados entre servidores de DNS. Um terceiro record, que não era criado ao provisionar a hosted zone, também já existia nessa zona. Este era um registro CNAME (Canonical Name) que é um tipo de registro DNS que mapeia um nome de domínio (o alias) para outro nome de domínio (o nome canônico). Este tipo de registro é usado para criar um alias para um domínio existente, permitindo que vários nomes de domínio apontem para o mesmo destino, facilitando a gestão de mudanças no endereço do servidor ou serviços associados a esses domínios. Neste caso, ele tinha sido utilizado com o **AWS Certificate Manager (AWS ACM)** para validar a propriedade de um domínio quando um certificado SSL/TLS fosse solicitado. Esse certificado também já havia sido criado no **AWS ACM**. Um certificado SSL/TLS promove a criptografia dos dados em trânsito, oferencedo uma maior segurança para as pessoas que acessam o site.
+Além do record NS que contém os servidores DNS autoritativos, o record SOA (Start of Authority) também já vem criado ao construir uma zona de hospedagem. Ele é um tipo fundamental de registro DNS, pois contém informações essenciais sobre a zona DNS, incluindo detalhes sobre o servidor de DNS primário, a pessoa responsável pela zona, e diversos parâmetros de tempo que controlam a propagação de dados entre servidores de DNS. Um terceiro record, que não era criado ao provisionar a hosted zone, também já existia nessa zona. Este era um registro CNAME (Canonical Name) que é um tipo de registro DNS que mapeia um nome de domínio (o alias) para outro nome de domínio (o nome canônico). Este tipo de registro é usado para criar um alias para um domínio existente, permitindo que vários nomes de domínio apontem para o mesmo destino, facilitando a gestão de mudanças no endereço do servidor ou serviços associados a esses domínios. Neste caso, ele tinha sido utilizado com o **AWS Certificate Manager (AWS ACM)** para validar a propriedade de um domínio quando um certificado SSL/TLS fosse solicitado. Esse certificado também já havia sido criado no **AWS ACM**. Um certificado SSL/TLS promove a criptografia dos dados em trânsito, oferencedo uma maior segurança para as pessoas que acessam o site ao enviar informações pessoais.
 
-Após essa introdução sobre a hosted zone, foi construído o primeiro record, cujo subdomínio foi `www`. O tipo de registro foi `A`, ou seja, para rotear tráfego para um endereço de IPv4 e para recursos da **AWS**. Nos valores foi passado o IP público das duas instâncias. O TTL (Time-to-Live), que indica por quanto tempo um resolvedor DNS ou um cache de DNS deve armazenar as informações desse registro antes de descartá-las e solicitar uma nova cópia atualizada dos servidores de DNS autoritativos, foi de `15` segundos. Por fim, a política selecionada foi `Simple routing` (Rotamento simples). Após isso, era possível acessar a aplicação pelo domínio criado, no caso o `pedroheeger.dev.br`, acrescentando o path `/cafe` para ir para página raiz do site. A imagem 61 evidencia o acesso a aplicação por este domínio através do navegador da maquina física **Windows**. Observe que ao atualizar a página várias vezes, a instância que recebia o tráfego era alterada, consequentemente a zona de disponibilidade também era outra, já que as instâncias estavam em AZs distintas.
+Após essa introdução sobre a hosted zone, foi construído o primeiro record, cujo subdomínio foi `www`, através do arquivo [recordSimpleRouting.ps1](./resource/5.33-route53/route53/recordSimpleRouting.ps1). O tipo de registro foi `A`, ou seja, para rotear tráfego para um endereço de IPv4 e para recursos da **AWS**. Nos valores foi passado o IP público da instância de tag de nome `cafeServer1`. O TTL (Time-to-Live), que indica por quanto tempo um resolvedor DNS ou um cache de DNS deve armazenar as informações desse registro antes de descartá-las e solicitar uma nova cópia atualizada dos servidores de DNS autoritativos, foi de `15` segundos. Por fim, a política selecionada foi `Simple routing` (Rotamento simples). Após isso, era possível acessar a aplicação pelo domínio criado, no caso o `pedroheeger.dev.br`, acrescentando o path `/cafe` para ir para página raiz do site. A imagem 61 evidencia o acesso a aplicação por este domínio através do navegador da maquina física **Windows**. O roteamento estava sendo realizado para instância definida pelo IP.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img61.png" alt="img61"><br>
     <figcaption>Imagem 61.</figcaption>
 </figure></div><br>
 
-Para testar uma outra política de roteamento, agora a Failover, foi necessário excluir o record criado anteriormente e construir dois novos registros. Na política Failover, uma instância é estabelecida como primária, no caso foi a instância de tag `cafeserver1`, e a outra instância é a secundária (`cafeserver2`). O tráfego de dados era direcionado apenas para a instância primária, a instância secundária só receberia o tráfego caso a primária apresentasse alguma falha que a derrubasse. Isso é chamado de Failover, que é a capacidade de um sistema, geralmente em redes ou servidores, de transferir automaticamente suas operações para um sistema secundário ou de reserva em caso de falha, garantindo assim a continuidade dos serviços sem interrupções significativas.
+Para testar uma outra política de roteamento, agora a Failover, foi necessário excluir o record criado anteriormente e construir dois novos registros. Na política Failover, uma instância é estabelecida como primária, no caso foi a instância de tag `cafeServer1`, e a outra instância é a secundária (`cafeServer2`). O tráfego de dados era direcionado apenas para a instância primária, a instância secundária só receberia o tráfego caso a primária apresentasse alguma falha que a derrubasse. Isso é chamado de Failover, que é a capacidade de um sistema, geralmente em redes ou servidores, de transferir automaticamente suas operações para um sistema secundário ou de reserva em caso de falha, garantindo assim a continuidade dos serviços sem interrupções significativas.
 
-Antes criar os dois novos registros foi preciso definir um health check (verificação de integridade) no **Amazon Route 53**, para que ele verificasse a saúde das instâncias. Assim ele conseguiria monitorar quando uma instância não fosse íntegra e acionar o Failover. O nome do health check foi definido como `londres-website-status` e foi selecionado que o monitoramento seria em `Endpoint` (ponto de extremidade). Nas especificações de endpoint foi selecionado `IP address`, cujo protocolo foi `HTTP`, a porta `80`, que era onde rodava a aplicação web, o IP público da instância primária foi inserido, o host name foi mantindo em branco, e o path foi `/cafe`. Em configurações avançadas só foi alterado o intervalo de requisição para `Fast (10 seconds)` e o limite de falha (`Failure threshold`) para `2`. Também foi configurado para receber uma notificação quando a verificação de integridade apresentasse falha, criando um alarme e um novo tópico no **Amazon Simple Notification Server (Amazon SNS)**, cujo nome do tópico foi `websitedown` e o endereço de email que receberia a mensagem era o meu. Ao realizar isso, um email foi enviado solicitando que confirmasse a assinatura para receber as mensagens futuras. O health check levava um tempo para calcular e determinar um status, pois ele precisava verificar se a instância respondia as solicitações. A imagem 62 exibe o health check provisionado mostrando que a instância primária está íntegra.
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img62.png" alt="img62"><br>
-    <figcaption>Imagem 62.</figcaption>
-</figure></div><br>
-
-De volta a hosted zone, agora foi criado o primeiro registro, cujo subdomínio foi `www` e o tipo continuo sendo `A` que era para endereços de IPv4. O nome de um record é a união do subdomínio com o domínio, logo resultando em `www.pedroheeger.dev.br`. O IP público apenas da primeira instância foi passado (`cafeServer1`). O TTL foi mantido com `15` segundos e a política de roteamento escolhida foi `Failover`. Ao selecionar failover, foi escolhido um health check pelo seu ID que foi o criado anteriormente (`londres-website-status`). Também foi definido o tipo de registro Failover como `Primary` (primário), já que era o IP público da instância primária, e o identificador do registro (Record ID) foi definido como `Primary`, utilizado para identificar o registro que tivessem o mesmo nome de domínio. O segundo record construído era basicamente igual a esse, alterando apenas o value para o IP público da segunda instância (`cafeServer2`), o health check era mantido em branco, pois não foi criado uma verificação de integridade para instância secundária, o tipo de registro de Failover foi `Secondary`, já que era a segunda instância, e o identificador do registro foi definido como `Secondary`. A imagem 62 mostra os dois novos registros elaborados juntos com os três já existentes.
+Antes criar os dois novos registros foi preciso definir um health check (verificação de integridade) no **Amazon Route 53**, para que ele verificasse a saúde das instâncias. Assim ele conseguiria monitorar quando uma instância não fosse íntegra e acionar o Failover. Isso foi realizado com a execução do arquivo [healthCheck.ps1](./resource/5.33-route53/route53/healthCheck.ps1). O nome do health check foi definido como `londres-website-status` e foi selecionado que o monitoramento seria em `Endpoint` (ponto de extremidade). Nas especificações de endpoint foi selecionado `IP address`, cujo protocolo foi `HTTP`, a porta `80`, que era onde rodava a aplicação web, o IP público da instância primária foi inserido, o host name foi mantindo em branco, e o path foi `/cafe`. Em configurações avançadas só foi alterado o intervalo de requisição para `Fast (10 seconds)` e o limite de falha (`Failure threshold`) para `2`. Isso significava que em cada intervalo de 10 segundos era realizado uma verificação de integridade e o status da verificação só alterava se houvesse dois resultados consecutivos diferente do anterior, ou seja, era preciso que no período de 20 segundos, as duas verificações indicassem que a instância não estava saudável para de fato o health check alterasse para não saudável. O mesmo valia para quando ela voltasse a estar saudável. A imagem 62 exibe o health check provisionado mostrando que a instância primária está íntegra.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img62.png" alt="img62"><br>
     <figcaption>Imagem 62.</figcaption>
 </figure></div><br>
 
-Ao acessar a aplicação nesse momento pelo domínio construído no **Registro.BR**, a instância que recebia o tráfego era a primária (`cafeServer1`). Para testar o Failover foi preciso interromper essa instância e isso foi realizado manualmente pelo **AWS Console Management**. Assim, o health check verificou que a instância primária não estava mas íntegra, conforme exibido na imagem 63, e como ele era o gatilho para acionar o record da política de roteamento Failover, o tráfego foi redirecionado agora para segunda instância. A imagem 64 exibe a aplicação web, acessada pelo navegador da máquina física, sendo servida pela instância secundária, já que a primária falho. Como um tópico no **Amazon SNS** foi configurado, um email avisando que a instância primária não era íntegra foi enviado, conforme evidencaido na imagem 65.
+O health check ao ser provisionado, ele cria automaticamente duas métricas no **Amazon CloudWatch** no namespace padrão da **AWS**, que no caso para o serviço Route 53 era o `AWS/Route53`. Uma dessas métricas é o `HealthCheckStatus` que verifica o status do health check em um período determinado, sendo o período padrão do CloudWatch de 60 segundos. A partir disso, o CloudWatch monta um gráfico e monitora essa métrica. Com essa métrica, um alarme de métrica poderia ser construído para quando acionado realizasse alguma ação. A ação que ele executaria neste caso, seria o envio de uma notificação aos assinantes de um tópico do **Amazon SNS**. Portanto, antes de criar o alarme de métrica, foi preciso elaborar um tópico do SNS e adicionar um assinante. O tópico do SNS foi criado com o arquivo [snsTopic.ps1](./resource/5.33-route53/sns/snsTopic.ps1), cujo nome do tópico foi `websitedown` e o display name foi `websitedown info`. Já o assinante foi adicionado com o arquivo [snsSubscribe.ps1](./resource/5.33-route53/sns/snsSubscribe.ps1), indicando o nome do tópico, o protocolo que foi `email` e um email como endpoint de notificação, que no caso, foi meu email para estudos no **Proton** (`phcstudy@proton.me`). Neste arquivo, ao adicionar um assinante, o código ficava em execução até que a confirmação fosse realizada. Neste caso, como o protocolo foi email, um email inicial foi enviado solicitando que o cliente desse email subscrevesse, conforme mostrado na imagem 63. A imagem 64 evidencia a criação do tópico com um assinante já confirmado.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img63.png" alt="img63"><br>
@@ -1164,29 +1157,93 @@ Ao acessar a aplicação nesse momento pelo domínio construído no **Registro.B
     <figcaption>Imagem 64.</figcaption>
 </figure></div><br>
 
+Com o tópico do SNS e o health check elaborado, foi utilizado a métrica `HealthCheckStatus` gerada pelo health check para criar um alarme de métrica vinculado ao tópico do SNS, sendo executado pelo arquivo [metricAlarmHc.ps1](./resource/5.33-route53/cloudWatch/metricAlarmHc.ps1). O nome desse alarme foi `healthCheckMetricAlarmEdn1` e o display name foi `metricAlarmDescriptionEdn1`. A estatística de cálculo foi definida como `Average` (média), o período de `60` segundos, o limite de falha (`threshold`) foi de `1`, o comparador de operação definido foi `LessThanThreshold` e os períodos de avaliação foi estabelecido como `1`. Dessa forma, se a média dos resultados da métrica em apenas 1 período de intervalo de tempo de 60 segundos fosse menor que o limite de 1, o alarme era acionado. Na métrica, o valor 1 representava que a instância estava saudável e o valor 0 que a instância não estava saudável. Então, se em um único intervalo padrão de avaliação do CloudWatch, que é de 60 segundos, o health check fosse inferior a 1, a instância não estaria saudável e portanto o alarme seria acionado. O nome do tópico criado foi passado (`websitedown`), bem como sua ARN, assim, quando o alarme fosse acionado, uma notificação do SNS seria enviado aos assinantes avisando sobre o ocorrido. O parâmetro `--ok-actions` também foi definido como a ARN do tópico, o que significava que se o alarme estivesse OK, logo a instância estaria saudável, uma notificação também era enviada informando. A imagem 65 exibe o alarme criado com status OK, pois até o momento a instância estava saudável. Já a imagem 66 mostra a notifição do SNS avisando sobre o alarme com status OK. Note que o alarme pode demorar um pouco para modificar seu status, pois a mética ainda pode estar coletando dados.
+
 <div align="Center"><figure>
     <img src="../0-aux/md5-img65.png" alt="img65"><br>
     <figcaption>Imagem 65.</figcaption>
 </figure></div><br>
 
-
-Nesta última etapa foi configurada e testada a política de roteamento de geolocalização (Geolocation). O roteamento de localização geográfica permite que seja escolhido os recursos que atendem o tráfego em função da localização geográfica dos utilizadores, ou seja, a localização no que as consultas DNS se originam. Esta configuração foi um pouco mais complexa, pois foi preciso além de remover os dois registros criados anteriormente, excluir também as duas instâncias, pois agora elas precisavam ser provisionadas em regiões diferentes.
-
-
-
-
-?????????????????????????????
-
-
-
-
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img57.png" alt="img57"><br>
-    <figcaption>Imagem 57.</figcaption>
+    <img src="../0-aux/md5-img66.png" alt="img66"><br>
+    <figcaption>Imagem 66.</figcaption>
 </figure></div><br>
 
+De volta a hosted zone, executando o arquivo [recordFailover.ps1](./resource/5.33-route53/route53/recordFailover.ps1), dois registros foram criados. O primeiro registro, cujo subdomínio foi `www`, o tipo continuou sendo `A` que era para endereços de IPv4. O nome de um record é a união do subdomínio com o domínio, logo resultando em `www.pedroheeger.dev.br`. O IP público apenas da primeira instância foi passado (`cafeServer1`). O TTL foi mantido com `15` segundos e a política de roteamento escolhida foi `Failover`. Ao selecionar failover, foi escolhido um health check pelo seu ID que foi o criado anteriormente (`londres-website-status`). Também foi definido o tipo de registro Failover como `PRIMARY` (primário), já que era o IP público da instância primária, e o identificador do registro (Record ID) foi definido como `Primary`, utilizado para identificar registros que tivessem o mesmo nome de domínio. O segundo record construído era basicamente igual a esse, alterando apenas o value para o IP público da segunda instância (`cafeServer2`), o health check era mantido em branco, pois não foi criado uma verificação de integridade para instância secundária, o tipo de registro de Failover foi `SECONDARY`, já que era a segunda instância, e o identificador do registro foi definido como `Secondary`. A imagem 67 mostra os dois novos registros elaborados juntos com os três já existentes.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img67.png" alt="img67"><br>
+    <figcaption>Imagem 67.</figcaption>
+</figure></div><br>
 
+Ao acessar a aplicação nesse momento pelo domínio construído no **Registro.BR**, a instância que recebia o tráfego era a primária (`cafeServer1`). Para testar o Failover foi preciso interromper essa instância e isso foi realizado manualmente pelo **AWS Console Management**. Assim, o health check verificou que a instância primária não estava mas íntegra, conforme exibido na imagem 68, e como ele era o gatilho para acionar o record da política de roteamento Failover, o tráfego foi redirecionado agora para segunda instância. A imagem 69 exibe a aplicação web, acessada pelo navegador da máquina física, sendo servida pela instância secundária, já que a primária falhou. O alarme de métrica foi acionado devido ao health check ter indicado que a instância primária não estava saudável e uma notificação do SNS foi enviada para o email cadastrado informando a situação. A imagem 70 mostra o alarme de métrica do CloudWatch acionado e a ação sendo executada. Já a imagem 71 exibe a notificação que foi enviada ao email pelo SNS.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img68.png" alt="img68"><br>
+    <figcaption>Imagem 68.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img69.png" alt="img69"><br>
+    <figcaption>Imagem 69.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img70.png" alt="img70"><br>
+    <figcaption>Imagem 70.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img71.png" alt="img71"><br>
+    <figcaption>Imagem 71.</figcaption>
+</figure></div><br>
+
+Nesta última etapa foi configurada e testada a política de roteamento de geolocalização (Geolocation). O roteamento de localização geográfica permite que sejam escolhidos os recursos que atendem o tráfego em função da localização geográfica dos utilizadores, ou seja, a localização no que as consultas DNS se originam. Para executar essa política foi preciso remover quase tudo criado anteriormente: os dois registros criados anteriormente na hosted zone, o health check criado, o alarme de métrica do CloudWatch e o tópico do SNS. Também foi necessário excluir as duas instâncias, pois agora elas precisavam ser provisionadas em regiões diferentes. Os únicos recursos que permaneceram foram os do **AWS IAM**.
+
+Para provisionar duas novas instâncias em regiões diferentes, foi utilizado um arquivo anterior similar ao anterior só que com algumas modificações, [ec2DoubleInstanceRegion.ps1](./resource/5.33-route53/ec2/ec2DoubleInstanceRegion.ps1). Como seriam instâncias em regiões diferentes o parâmetro `--region` teve que ser adicionado na maioria dos comandos, e esses comandos tiveram que ser duplicados para atender as duas regiões (us-east-1 (Norte Virginia) e eu-west-3 (Paris-Europa)). Por consequência, a variável `$aZB` cuja zona de disponibilidade era `us-east-1b` foi modificada para `eu-west-3a` para alterar a região da segunda instância para Paris-Europa. A imagem de máquina (AMI) também teve que ser separada para cada instância, pois cada região possui suas AMIs próprias, não podendo usar uma AMI de outra região em uma região que essa AMI não existe, a não ser que ela fosse copiada. O par de chaves foi retirado das duas instâncias, pois esse par de chaves só existia em uma das regiões, como não seria utilizado, ele foi retirado. A imagem 72 abaixo mostra o site da aplicação web aberto em dois navegadores da máquina física **Windows**, cada um acessando uma instância diferente. Observe que a AZ delas eram diferentes.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img72.png" alt="img72"><br>
+    <figcaption>Imagem 72.</figcaption>
+</figure></div><br>
+
+Com o arquivo [recordGeolocation.ps1](./resource/5.33-route53/route53/) foram construídos dois registros na hosted zone, cujo nome do registro foi `www.pedroheeger.dev.br` para os dois. Neste caso, um identificador para cada registro foi criado para identificá-los. O primeiro registro teve o identificador igual a `US-NorthVirginia`, pois ele utilizava o IP público da instância `cafeServer1`, localizada na região `us-west-1` (Norte Virginia). Enquanto o segundo, teve o identificador igual a `Europe-Paris`, pois ele utilizava o IP público da instância `cafeServer2`, localizada na região `eu-west-3a` (Paris-Europa). O tipo de registro para os dois foi definido como `A` que era para endereços de IPv4. O TTL foi mantido com `15` segundos e a política de roteamento escolhida foi `GeoLocation`. Na política de geolocalização, é preciso definir o código do país (`Country Code`) e se o país for Estados Unidos, o código da subdivisão (`SubdivisionCode`). Neste caso, no primeiro registro o country code foi `BR`, pois direcionava as requisições que saíam do Brasil para o servidor em Norte Virginia. Já o segundo registro teve o código do país igual a `PT`, pois direcionava o tráfego de Portugal para França. A imagem 73 evidencia a criação dos dois registros na hosted zone.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img73.png" alt="img73"><br>
+    <figcaption>Imagem 73.</figcaption>
+</figure></div><br>
+
+A aplicação seria testada acessando o nome do registro criado, que era igual para os dois registros, mais o path `/cafe` que era onde a aplicação era executada nas instâncias. A política do **Amazon Route 53** roteava o tráfego com base na localização do usuário que acessava o site para o servidor mais próximo dele. Dois testes foram realizados, o primeiro de um usuário do Brasil acessando o site e o segundo de um usuário de Portugal acessando o site. O usuário do Brasil era atendido pelo servidor da instância `cafeServer1`, cuja região era Virginia do Norte. Enquanto o usuário de Portugal era atendido pelo servidor da instância `cafeServer2`, cuja região era França. As imagens 74 e 75 exibem os acessos a aplicação por diferentes usuários.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img74.png" alt="img74"><br>
+    <figcaption>Imagem 74.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img75.png" alt="img75"><br>
+    <figcaption>Imagem 75.</figcaption>
+</figure></div><br>
+
+Dois pontos importantes sobre a aplicação web da cafeteria. Como a aplicação utilizava parâmetros definidos no *Parameter Store* do **AWS SSM**, um dos parâmetros era o `/cafe/currency` que era moeda que era exibida no site. Em cada uma das duas regiões (`us-west-1` (Norte Virginia) e `eu-west-3` (Paris-Europa)), os sete parâmetros era criados, podendo alterar o parâmetro `/cafe/currency` de uma das regiões. Portanto, na região `eu-west-3` (Paris-Europa), o valor do parâmetro `/cafe/currency` foi alterado de dólar (`$`) para euro (`e`), que seria a moeda local onde este servidor estava. A imagem 76 mostra a aba `Menu` da aplicação, onde os pedidos eram realizados, observe que a moeda estava em dólar, pois era o servidor localizado na região `us-west-1` (Norte Virginia). Já na imagem 77, na região `eu-west-3` (Paris-Europa) a moeda era euro.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img76.png" alt="img76"><br>
+    <figcaption>Imagem 76.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img77.png" alt="img77"><br>
+    <figcaption>Imagem 77.</figcaption>
+</figure></div><br>
+
+O segundo ponto foi referente ao banco de dados. Cada instância tinha seu próprio banco de dados que era executado na própria instância. O parâmetro `/cafe/dbUrl` do *Parameter Store* do **AWS SSM**, em cada região apontava para a instância da própria região, logo uma instância não apontava para o banco de dados da outra instância, apontava para o seu próprio banco de dados. Dessa forma, eram dois bancos distintos, então o pedido que era feito em uma instância de uma região era armazenado no banco da própria região, não contendo os dados armazenados pelo pedido feito na outra instância. A imagem 78 mostra a aba de `Order History` que eram os dados dos pedidos que tinham sido armazenados no banco de dados. Neste caso, era o banco de dados da instância localizada na região `us-west-1` (Norte Virginia).
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img78.png" alt="img78"><br>
+    <figcaption>Imagem 78.</figcaption>
+</figure></div><br>
 
 <a name="item5.34"><h4>5.34 Amazon CloudFront</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -1206,58 +1263,58 @@ Ao estimar o custo do **Amazon CloudFront**, é importante considerar a distribu
 
 Neste laboratório atividade, desenvolvido no sandbox **Vocareum**, o objetivo foi configurar um roteamento de failover para uma aplicação web no **Amazon Route 53**. O ambiente que já era construído automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório, era composto por duas instâncias do **Amazon EC2** que funcionavam como servidor web, cada uma em uma zona de disponibilidade diferente, sendo ambas na mesma VPC da região `us-west-2` (Oregon). Cada uma das instâncias possuía a pilha LAMP completa instalada e o site de uma cafeteria implantado e em execução. Para testar o failover, a instância principal iria ser interrompida forçadamente e a instância secundária assumiria o tráfego da aplicação. Também foi configurado no **Amazon Route 53** uma verificação de integridade (health check) para quando as instâncias não fossem íntegras, um email fosse enviado e o failover fosse acionado.
 
-A primeira tarefa deste laboratório consistiu em verificar se os sites dos servidores web, no caso as instâncias do EC2, estavam em execução. No sandbox **Vocareu** em detalhes, era fornecido os IPs públicos das instâncias, que também podiam ser visualizados pelo console de gerenciamento da **AWS**, e o IP público com o path para acessar a página raiz do site. Acessando o IP público das instâncias em uma aba do navegador da maquina física **Windows** era possível verificar que essas instâncias eram um servidores web, porém para visualizar a aplicação web em execução nas duas instâncias foi preciso adicionar o path `/cafe` a URL, conforme imagens 67 e 68. Perceba que na parte superior do site foi exibido o número de IP e o ID da instância que estava executando a aplicação web, assim como a zona de disponibilidade em que ela estava situada.
+A primeira tarefa deste laboratório consistiu em verificar se os sites dos servidores web, no caso as instâncias do EC2, estavam em execução. No sandbox **Vocareu** em detalhes, era fornecido os IPs públicos das instâncias, que também podiam ser visualizados pelo console de gerenciamento da **AWS**, e o IP público com o path para acessar a página raiz do site. Acessando o IP público das instâncias em uma aba do navegador da maquina física **Windows** era possível verificar que essas instâncias eram um servidores web, porém para visualizar a aplicação web em execução nas duas instâncias foi preciso adicionar o path `/cafe` a URL, conforme imagens 79 e 80. Perceba que na parte superior do site foi exibido o número de IP e o ID da instância que estava executando a aplicação web, assim como a zona de disponibilidade em que ela estava situada.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img67.png" alt="img67"><br>
-    <figcaption>Imagem 67.</figcaption>
+    <img src="../0-aux/md5-img79.png" alt="img79"><br>
+    <figcaption>Imagem 79.</figcaption>
 </figure></div><br>
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img68.png" alt="img68"><br>
-    <figcaption>Imagem 68.</figcaption>
+    <img src="../0-aux/md5-img80.png" alt="img80"><br>
+    <figcaption>Imagem 80.</figcaption>
 </figure></div><br>
 
-Na tarefa 2 foi configurado a verificação de integridade (health check) no **Amazon Route 53**, pois ela era necessária para configurar o failover. Nas configurações de health check, o nome foi definido como `Primary-Website-Health`, o `Endpoint` foi escolhido para ser monitorado, indicando que ele seria o endereço de IP (`IP Address`) e inserindo o endereço de IPv4 da instância primária. No `path` (caminho) foi definido como `cafe`. Nas configurações avançadas, o intervalo de solicitações foi selecionado como rápido (10 segundos), `Fast (10 seconds)`, e o limite de falha como `2`. Essas opções faziam com que a health check respondesse mais rapidamente. As demais opções foram mantidas padrão, inclusive o hostname que ficou em branco. Na opção de ser notificado se uma verificação de integridade falhar, foi criado um alarme e as notificações foram determinadas que fossem enviadas para um novo tópico do **Amazon Simple Notification Service (Amazon SNS)**. Esse novo tópico teve o nome de `Primary-Website-Health` e meu endereço de email foi indicado. A imagem 69 evidencia a configuração do health check.
+Na tarefa 2 foi configurado a verificação de integridade (health check) no **Amazon Route 53**, pois ela era necessária para configurar o failover. Nas configurações de health check, o nome foi definido como `Primary-Website-Health`, o `Endpoint` foi escolhido para ser monitorado, indicando que ele seria o endereço de IP (`IP Address`) e inserindo o endereço de IPv4 da instância primária. No `path` (caminho) foi definido como `cafe`. Nas configurações avançadas, o intervalo de solicitações foi selecionado como rápido (10 segundos), `Fast (10 seconds)`, e o limite de falha como `2`. Essas opções faziam com que a health check respondesse mais rapidamente. As demais opções foram mantidas padrão, inclusive o hostname que ficou em branco. Na opção de ser notificado se uma verificação de integridade falhar, foi criado um alarme e as notificações foram determinadas que fossem enviadas para um novo tópico do **Amazon Simple Notification Service (Amazon SNS)**. Esse novo tópico teve o nome de `Primary-Website-Health` e meu endereço de email foi indicado. A imagem 81 evidencia a configuração do health check.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img69.png" alt="img69"><br>
-    <figcaption>Imagem 69.</figcaption>
+    <img src="../0-aux/md5-img81.png" alt="img81"><br>
+    <figcaption>Imagem 81.</figcaption>
 </figure></div><br>
 
 A terceira tarefa teve como objetivo configurar os registros (record) do **Amazon Route 53** para uma zona hospedada (hosted zone). Uma zona hospedada é um conjunto de registros DNS para um domínio específico. Esses registros mapeiam nomes de domínio para endereços IP e outros recursos, permitindo que os usuários encontrem seus serviços na internet. No caso do laboratório, uma hosted zone já era criada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Essa zona hospedada possuía um domínio raiz já criado no seguinte padrão `XXXXXX_XXXXXXXXXX.vocareum.training`, onde as letras X eram dígitos exclusivos da conta da **AWS**, ou seja, era o número da conta acessada durante o laboratório. Além do domínio raiz que era necessário para criar uma hosted zone, dois registros também eram criados quando esse domínio era registrado no **Amazon Route 53**. O registro NS, ou o registro de servidor de nomes, listava os quatro servidores de nomes que eram os servidores de nomes autoritativos da zona hospedada na coluna Valor/rotear tráfego para. Não era necessário adicionar, alterar nem excluir servidores de nomes desse registro. O SOA, ou início do registro de autoridade, identificava as informações do sistema de nome de domínio (DNS) sobre o domínio na coluna Valor/rotear tráfego para. Ele também foi criado quando o domínio foi registrado no Route 53.
 
-Um novo record foi elaborado, cujo nome dele foi `www`, o tipo foi `A` que é para IPv4, e o endereço de IP público da instância primária foi indicado. O TTL foi definido em `15` segundos, a política de roteamento foi `failover` e o tipo de registro de failover foi `Primary`. No ID da verificação de integridade foi selecionado integridade do site principal e no ID do registro foi definido como `FailoverPrimary`. Um segundo registro foi criado, cujo nome também foi `www`, o tipo foi `A`, mas o endereço de IP público foi da instância secundária. O TTL também foi de `15` segundos, a política de roteamento foi `failover`, sendo o tipo de registro de failover agora como `Secondary`. O ID da verificação de integridade foi mantido em branco e o ID do registro foi definido como `FailoverSecondary`. A imagem 70 a seguir mostra os dois novos registros construídos, totalizando quatro registros nessa zona de hospedagem.
+Um novo record foi elaborado, cujo nome dele foi `www`, o tipo foi `A` que é para IPv4, e o endereço de IP público da instância primária foi indicado. O TTL foi definido em `15` segundos, a política de roteamento foi `failover` e o tipo de registro de failover foi `Primary`. No ID da verificação de integridade foi selecionado integridade do site principal e no ID do registro foi definido como `FailoverPrimary`. Um segundo registro foi criado, cujo nome também foi `www`, o tipo foi `A`, mas o endereço de IP público foi da instância secundária. O TTL também foi de `15` segundos, a política de roteamento foi `failover`, sendo o tipo de registro de failover agora como `Secondary`. O ID da verificação de integridade foi mantido em branco e o ID do registro foi definido como `FailoverSecondary`. A imagem 82 a seguir mostra os dois novos registros construídos, totalizando quatro registros nessa zona de hospedagem.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img70.png" alt="img70"><br>
-    <figcaption>Imagem 70.</figcaption>
+    <img src="../0-aux/md5-img82.png" alt="img82"><br>
+    <figcaption>Imagem 82.</figcaption>
 </figure></div><br>
 
-Na tarefa de número 4 foi o momento de verificar o DNS do **Amazon Route 53**. Um dos dois record criados foi selecionado e o nome do registro A foi copiado e utilizado em uma outra aba do navegador da maquina física **Windows** adicionando no caminho o `/cafe`. Os dois registros possuíam o mesmo nome de record, então daria no mesmo copiar de qualquer um dos dois. Assim, o site principal da cafeteria deveria ser acessado, o site principal neste momento correspondia a instância primária. A URL deverá ser algo parecido com isso `http://www.XXXXXX_XXXXXXXXXX.vocareum.training/cafe/`, onde os Xs são o número da conta da **AWS** acessada durante o laboratório. A imagem 71 exibe o site sendo acessado pelo navegador, onde mostra que a instância que está servido esse site é a primária como deveria ser, que estava localizada na AZ `us-west-2a`.
+Na tarefa de número 4 foi o momento de verificar o DNS do **Amazon Route 53**. Um dos dois record criados foi selecionado e o nome do registro A foi copiado e utilizado em uma outra aba do navegador da maquina física **Windows** adicionando no caminho o `/cafe`. Os dois registros possuíam o mesmo nome de record, então daria no mesmo copiar de qualquer um dos dois. Assim, o site principal da cafeteria deveria ser acessado, o site principal neste momento correspondia a instância primária. A URL deverá ser algo parecido com isso `http://www.XXXXXX_XXXXXXXXXX.vocareum.training/cafe/`, onde os Xs são o número da conta da **AWS** acessada durante o laboratório. A imagem 83 exibe o site sendo acessado pelo navegador, onde mostra que a instância que está servido esse site é a primária como deveria ser, que estava localizada na AZ `us-west-2a`.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img71.png" alt="img71"><br>
-    <figcaption>Imagem 71.</figcaption>
+    <img src="../0-aux/md5-img83.png" alt="img83"><br>
+    <figcaption>Imagem 83.</figcaption>
 </figure></div><br>
 
-Na última tarefa, o objetivo foi testar o failover. Para isso foi necessário simular uma falha no servidor principal e isso foi realizado interrompendo a instância pelo console. Observando o monitoramento do health check do **Amazon Route 53** do site principal, conforme imagem 72, note que a verificação de integridade para instância primária falha, pois ela foi interrompida. Após um tempo, o stauts de integridade diz que ela está não íntegra, foi neste momento que o failover foi acionado, alterando o tráfego para instância secundária e com o **Amazon SNS** um email foi enviado para conta determinada.
+Na última tarefa, o objetivo foi testar o failover. Para isso foi necessário simular uma falha no servidor principal e isso foi realizado interrompendo a instância pelo console. Observando o monitoramento do health check do **Amazon Route 53** do site principal, conforme imagem 84, note que a verificação de integridade para instância primária falha, pois ela foi interrompida. Após um tempo, o stauts de integridade diz que ela está não íntegra, foi neste momento que o failover foi acionado, alterando o tráfego para instância secundária e com o **Amazon SNS** um email foi enviado para conta determinada.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img72.png" alt="img72"><br>
-    <figcaption>Imagem 72.</figcaption>
+    <img src="../0-aux/md5-img84.png" alt="img84"><br>
+    <figcaption>Imagem 84.</figcaption>
 </figure></div><br>
 
-Ao voltar para aplicação web no navegador da maquina física, perceba que a zona de disponibilidade agora era outra, logo, a instância também era outra. A imagem 73 evidencia esse fato. Já na imagem 74 é mostrado a mensagem que é enviada para o email cadastrado. Contudo, antes de receber essa mensagem, uma outra foi enviada pedindo a confirmação do email para receber as mensagens futuras de alerta.
+Ao voltar para aplicação web no navegador da maquina física, perceba que a zona de disponibilidade agora era outra, logo, a instância também era outra. A imagem 85 evidencia esse fato. Já na imagem 86 é mostrado a mensagem que é enviada para o email cadastrado. Contudo, antes de receber essa mensagem, uma outra foi enviada pedindo a confirmação do email para receber as mensagens futuras de alerta.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img73.png" alt="img73"><br>
-    <figcaption>Imagem 73.</figcaption>
+    <img src="../0-aux/md5-img85.png" alt="img85"><br>
+    <figcaption>Imagem 85.</figcaption>
 </figure></div><br>
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img74.png" alt="img74"><br>
-    <figcaption>Imagem 74.</figcaption>
+    <img src="../0-aux/md5-img86.png" alt="img86"><br>
+    <figcaption>Imagem 86.</figcaption>
 </figure></div><br>
 
 <a name="item5.37"><h4>5.37 AWS Lambda</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -1280,37 +1337,37 @@ O **AWS Lambda** impõe restrições à quantidade de recursos de computação e
 
 Este laboratório, realizado no sandbox **Vocareum**, teve como objetivo a implantação e configuração de uma solução de computação sem servidor com a utilização do serviço **AWS Lambda**. A função do Lambda criada geraria um relatório de análise de vendas, extraindo dados de um banco de dados e enviando os resultados diariamente. Também foi utilizado o *Parameter Store*, um recurso do **AWS Systems Manager (AWS SSM)**, para armazenar as informações de conexão com o banco de dados, que era executado em uma instância do **Linux** no **Amazon Elastic Compute Cloud (Amazon EC2)**. Esta instância, que foi provisionada automaticamente ao iniciar o laboratório pelo **AWS CloudFormation**, também era onde a aplicação web rodava através de um conjunto de softwares: **Apache HTTP (Httpd)**, **MySQL** e **PHP** (LAMP). As funções Lambda foram elaboradas em código **Python**, sendo fornecidas pela plataforma do bootcamp. O foco era se concentrar nas tarefas de SysOps de implantação, configuração e teste dos componentes da solução sem servidor.
 
-Cada função que fosse construída exigiria permissões para acessar determinados recursos da nuvem **AWS**. Portanto, a primeira tarefa foi verificar as roles do IAM e as permissões que elas concediam as duas funções que seria criadas posteriormente: `salesAnalysisReport` e `salesAnalysisReportDataExtractor`. Para a função `salesAnalysisReport` existia a role `salesAnalysisReportRole` cujas políticas de permissões (Permissions Policies) eram: `AmazonSNSFullAccess`, que concedia acesso total aos recursos do **Amazon SNS**; `AmazonSSMReadOnlyAccess`, que concedia acesso somente leitura aos recursos do **AWS Systems Manager (AWS SSM)**, pois era necessário já que as informações do banco de dados estavam no *Parameter Store*; `AWSLambdaBasicRunRole`, que concedia permissões de gravação para o *Amazon CloudWatch Logs* (exigidas por cada função do Lambda); `AWSLambdaRole`, que oferecia a uma função do Lambda a capacidade de invocar outra função do Lambda. A imagem 74 exibe essas políticas vinculada a role mencionada.
+Cada função que fosse construída exigiria permissões para acessar determinados recursos da nuvem **AWS**. Portanto, a primeira tarefa foi verificar as roles do IAM e as permissões que elas concediam as duas funções que seria criadas posteriormente: `salesAnalysisReport` e `salesAnalysisReportDataExtractor`. Para a função `salesAnalysisReport` existia a role `salesAnalysisReportRole` cujas políticas de permissões (Permissions Policies) eram: `AmazonSNSFullAccess`, que concedia acesso total aos recursos do **Amazon SNS**; `AmazonSSMReadOnlyAccess`, que concedia acesso somente leitura aos recursos do **AWS Systems Manager (AWS SSM)**, pois era necessário já que as informações do banco de dados estavam no *Parameter Store*; `AWSLambdaBasicRunRole`, que concedia permissões de gravação para o *Amazon CloudWatch Logs* (exigidas por cada função do Lambda); `AWSLambdaRole`, que oferecia a uma função do Lambda a capacidade de invocar outra função do Lambda. A imagem 87 exibe essas políticas vinculada a role mencionada.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img75.png" alt="img75"><br>
-    <figcaption>Imagem 75.</figcaption>
+    <img src="../0-aux/md5-img87.png" alt="img87"><br>
+    <figcaption>Imagem 87.</figcaption>
 </figure></div><br>
 
-Já a função `salesAnalysisReportDataExtractor` teria vinculada a ela a role `salesAnalysisReportDERole`, onde esta possuía as seguintes políticas de permissões: `AWSLambdaBasicRunRole`, que concedia permissões de gravação para o CloudWatch Logs; `AWSLambdaVPCAccessRunRole`, que concedia permissões para gerenciar interfaces de rede elástica para conectar uma função a uma nuvem privada virtual (VPC). A imagem 76 exibe esta role com suas respectivas políticas de permissão. Ambas as roles possuía `lambda.amazonaws.com` como entidade confiável em sua política de confiança (Trust Policy). Este tipo de política define quais entidades têm permissão para assumir uma determinada função IAM, que neste caso a entidade era o **AWS Lambda**.
+Já a função `salesAnalysisReportDataExtractor` teria vinculada a ela a role `salesAnalysisReportDERole`, onde esta possuía as seguintes políticas de permissões: `AWSLambdaBasicRunRole`, que concedia permissões de gravação para o CloudWatch Logs; `AWSLambdaVPCAccessRunRole`, que concedia permissões para gerenciar interfaces de rede elástica para conectar uma função a uma nuvem privada virtual (VPC). A imagem 88 exibe esta role com suas respectivas políticas de permissão. Ambas as roles possuía `lambda.amazonaws.com` como entidade confiável em sua política de confiança (Trust Policy). Este tipo de política define quais entidades têm permissão para assumir uma determinada função IAM, que neste caso a entidade era o **AWS Lambda**.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img76.png" alt="img76"><br>
-    <figcaption>Imagem 76.</figcaption>
+    <img src="../0-aux/md5-img88.png" alt="img88"><br>
+    <figcaption>Imagem 88.</figcaption>
 </figure></div><br>
 
-Na segunda tarefa, o objetivo foi criar uma camada (Layer) do Lambda chamada `pymysqlLibrary` e fazer o upload da biblioteca do cliente nela para que possa ser usada por qualquer função que a exija. As camadas do Lambda oferecem um mecanismo flexível para reutilizar o código entre funções, de modo que o código não precise ser incluído no pacote de implantação de cada função. Portanto, foi preciso baixar os arquivos `pymysql-v3.zip` e `salesAnalysisReportDataExtractor-v3.zip` da página principal do sandbox para maquina local para depois enviar esses arquivos para o Lambda. O arquivo `salesAnalysisReportDataExtractor-v3.zip` era uma implementação em **Python** de uma função do Lambda que usava a biblioteca do cliente de código aberto **PyMySQL** para acessar o banco de dados **MySQL** da cafeteria, que era a aplicação web. Essa biblioteca foi embalada no `pymysql-v3.zip` que, depois, foi carregada na camada do Lambda. Além do nome `pymysqlLibrary`, a camada construída possuíu as seguintes configurações: a descrição foi definida como `PyMySQL library modules`, o upload do arquivo `pymysql-v3.zip` foi efetuado e em Runtimes compatíveis foi escolhido `Python 3.9`. Após isso, a layer estava criada na versão `1`. Uma observação importante é que o recurso de camadas do Lambda requer que o arquivo .zip que contém o código ou a biblioteca esteja em conformidade com uma estrutura de pastas específica. Neste caso, o arquivo `pymysqlLibrary.zip` usado neste laboratório foi compactado usando a seguinte estrutura de pastas: pymysql-v3.zip -> python -> pymysql;  PyMySQL-1.0.2.dist-info. A imagem 77 evidencia a layer do Lambda construída.
+Na segunda tarefa, o objetivo foi criar uma camada (Layer) do Lambda chamada `pymysqlLibrary` e fazer o upload da biblioteca do cliente nela para que possa ser usada por qualquer função que a exija. As camadas do Lambda oferecem um mecanismo flexível para reutilizar o código entre funções, de modo que o código não precise ser incluído no pacote de implantação de cada função. Portanto, foi preciso baixar os arquivos `pymysql-v3.zip` e `salesAnalysisReportDataExtractor-v3.zip` da página principal do sandbox para maquina local para depois enviar esses arquivos para o Lambda. O arquivo `salesAnalysisReportDataExtractor-v3.zip` era uma implementação em **Python** de uma função do Lambda que usava a biblioteca do cliente de código aberto **PyMySQL** para acessar o banco de dados **MySQL** da cafeteria, que era a aplicação web. Essa biblioteca foi embalada no `pymysql-v3.zip` que, depois, foi carregada na camada do Lambda. Além do nome `pymysqlLibrary`, a camada construída possuíu as seguintes configurações: a descrição foi definida como `PyMySQL library modules`, o upload do arquivo `pymysql-v3.zip` foi efetuado e em Runtimes compatíveis foi escolhido `Python 3.9`. Após isso, a layer estava criada na versão `1`. Uma observação importante é que o recurso de camadas do Lambda requer que o arquivo .zip que contém o código ou a biblioteca esteja em conformidade com uma estrutura de pastas específica. Neste caso, o arquivo `pymysqlLibrary.zip` usado neste laboratório foi compactado usando a seguinte estrutura de pastas: pymysql-v3.zip -> python -> pymysql;  PyMySQL-1.0.2.dist-info. A imagem 89 evidencia a layer do Lambda construída.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img77.png" alt="img77"><br>
-    <figcaption>Imagem 77.</figcaption>
+    <img src="../0-aux/md5-img89.png" alt="img89"><br>
+    <figcaption>Imagem 89.</figcaption>
 </figure></div><br>
 
 Ainda na tarefa 2, o próximo passo foi criar a função extratora de dados. Então foi construída uma função do zero cujo nome foi `salesAnalysisReportDataExtractor` e o tempo de execução foi `Python 3.9`. Na opção de alterar a role de execução padrão foi configurado em role de execução para usar uma role existente que foi `salesAnalysisReportDERole`. Em seguida, a layer personalizada do Lambda construída anteriormente (`pymysqlLibrary`) na versão `1` foi adicionada a esta função. Na sequência foi realizado a importação do código da função extratora de dados. Ao selecionar a função `salesAnalysisReportDataExtractor`, no painel de configuração de runtime foi selecionado editar e em manipulador (handler) foi inserido `salesAnalysisReportDataExtractor.lambda_handler`. Já no painel de origem do código (code source) foi selecionado fazer upload, selecionado arquivo .zip e escolhido o arquivo baixado anteriormente `salesAnalysisReportDataExtractor-v3.zip`. Após isso, o código foi importato e pôde ser visualizado no editor de código da função. Se o código não for visualizado, atualize o console para que seja exibido. Ao revisar o código em **Python**, observe que a função esperava receber as informações de conexão de banco de dados (dbURL, dbName, dbUser e dbPassword) no parâmetro de entrada de evento.
 
-A última etapa desta tarefa foi definir as configurações de rede para esta função, pois esta função requeria acesso à rede ao banco de dados da cafeteria que era executado em uma instância LAMP do EC2. Portanto, foi necessário especificar as informações da VPC, da sub-rede e do grupo de segurança da instância na configuração da função. Em VPC foi selecionada a VPC da cafeteria, que era a deste laboratório. A sub-rede pública 1 (`Cafe Public Subnet 1`) dessa VPC também foi selecionada. Caso seja recomendado escolher duas sub-redes, pode ser ignorado o aviso, pois esta situação é para alta disponibilidade que não era o foco agora. No grupo de segurança foi escolhido o `CafeSecurityGroup` que já possuía as regras de entrada definidas para este laboratório. A imagem 78 evidencia toda a construção dessa função.
+A última etapa desta tarefa foi definir as configurações de rede para esta função, pois esta função requeria acesso à rede ao banco de dados da cafeteria que era executado em uma instância LAMP do EC2. Portanto, foi necessário especificar as informações da VPC, da sub-rede e do grupo de segurança da instância na configuração da função. Em VPC foi selecionada a VPC da cafeteria, que era a deste laboratório. A sub-rede pública 1 (`Cafe Public Subnet 1`) dessa VPC também foi selecionada. Caso seja recomendado escolher duas sub-redes, pode ser ignorado o aviso, pois esta situação é para alta disponibilidade que não era o foco agora. No grupo de segurança foi escolhido o `CafeSecurityGroup` que já possuía as regras de entrada definidas para este laboratório. A imagem 90 evidencia toda a construção dessa função.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img78.png" alt="img78"><br>
-    <figcaption>Imagem 78.</figcaption>
+    <img src="../0-aux/md5-img90.png" alt="img90"><br>
+    <figcaption>Imagem 90.</figcaption>
 </figure></div><br>
 
-Na tarefa seguinte, a terceira, foi executado o teste desta função. Para invocá-la, era necessário fornecer valores para os parâmetros de conexão de banco de dados da cafeteria. Lembre-se de que eles eram arquivados no armazenamento de parâmetros. Portanto foi necessário ir em *Parameter Store* no serviço **AWS System Manager (AWS SSM)** e copiar os valores de cada um dos parâmetros existentes. De volta ao serviço do Lambda, ao selecionar testar para testar a função foi configurado o painel de eventos de teste. Em ação de evento de teste foi criado um novo evento cujo nome foi `SARDETestEvent`, o modelo foi `hello-world` e no painel do JSON do evento foi substituído o JSON existente pelo abaixo. Cada valor das chaves desse documento foi o mesmo valor dos parâmetros armazenados em *Parameter Store*. Em seguida foi só salvar esse evento de teste e executá-lo. A imagem 79 mostra o resultado do teste que apresentou falha.
+Na tarefa seguinte, a terceira, foi executado o teste desta função. Para invocá-la, era necessário fornecer valores para os parâmetros de conexão de banco de dados da cafeteria. Lembre-se de que eles eram arquivados no armazenamento de parâmetros. Portanto foi necessário ir em *Parameter Store* no serviço **AWS System Manager (AWS SSM)** e copiar os valores de cada um dos parâmetros existentes. De volta ao serviço do Lambda, ao selecionar testar para testar a função foi configurado o painel de eventos de teste. Em ação de evento de teste foi criado um novo evento cujo nome foi `SARDETestEvent`, o modelo foi `hello-world` e no painel do JSON do evento foi substituído o JSON existente pelo abaixo. Cada valor das chaves desse documento foi o mesmo valor dos parâmetros armazenados em *Parameter Store*. Em seguida foi só salvar esse evento de teste e executá-lo. A imagem 91 mostra o resultado do teste que apresentou falha.
 
 ```json
 {
@@ -1322,8 +1379,8 @@ Na tarefa seguinte, a terceira, foi executado o teste desta função. Para invoc
 ```
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img79.png" alt="img79"><br>
-    <figcaption>Imagem 79.</figcaption>
+    <img src="../0-aux/md5-img91.png" alt="img91"><br>
+    <figcaption>Imagem 91.</figcaption>
 </figure></div><br>
 
 A próxima etapa dessa tarefa foi solucionar este problema. Para isso em resultado da execução foi selecionado detalhes para obter mais informações. Observe que o objeto de erro exibiu uma mensagem semelhante a mensagem abaixo, após a execução da função. Essa mensagem indicava que o tempo da função expirou após três segundos. A seção resultado de saída do log incluía linhas que começam com as seguintes palavras-chave: START (Início) indicava que a função iniciou a execução; END (Término) indicava que a execução da função terminou; REPORT (Relatório) fornecia um resumo da estatística de desempenho e utilização de recursos associado à execução da função.
@@ -1334,66 +1391,66 @@ A próxima etapa dessa tarefa foi solucionar este problema. Para isso em resulta
 }
 ```
 
-O problema era que não existia uma regra liberando a porta que o **MySQL** utilizava. Portanto, foi necessário criar uma regra de entrada liberando a porta `3306` do protocolo `TCP` no grupo de segurança vinculado a função. Após solucionar o problema, foi realizado novamente o teste do mesmo evento de teste que já tinha sido criado (`SARDETestEvent`). Observe na imagem 80 que o código de status deu 200, o que significava que a execução da função foi bem-sucedida. O campo corpo, que continha os dados do relatório extraídos pela função, estava vazio. Isso ocorreu porque não havia ainda dados de pedidos no banco de dados. Era preciso cadastrar pedidos através da aplicação web.
+O problema era que não existia uma regra liberando a porta que o **MySQL** utilizava. Portanto, foi necessário criar uma regra de entrada liberando a porta `3306` do protocolo `TCP` no grupo de segurança vinculado a função. Após solucionar o problema, foi realizado novamente o teste do mesmo evento de teste que já tinha sido criado (`SARDETestEvent`). Observe na imagem 92 que o código de status deu 200, o que significava que a execução da função foi bem-sucedida. O campo corpo, que continha os dados do relatório extraídos pela função, estava vazio. Isso ocorreu porque não havia ainda dados de pedidos no banco de dados. Era preciso cadastrar pedidos através da aplicação web.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img80.png" alt="img80"><br>
-    <figcaption>Imagem 80.</figcaption>
+    <img src="../0-aux/md5-img92.png" alt="img92"><br>
+    <figcaption>Imagem 92.</figcaption>
 </figure></div><br>
 
-A última etapa dessa tarefa consistiu em acessar novamente a aplicação web pelo navegador da maquina física **Windows** e realizar pedidos na aba de `Menu`. Lembrando que a URL para acessar a aplicação precisa acrescentar o path `/cafe` ao IP ou DNS público da instância. Após realizar os pedidos foi executado um novo teste da função Lambda que além de mostrar o status 200, no corpo vieram as informações dos pedidos realizados. A imagem 81 evidencia a execução do teste desta função `salesAnalysisReportDataExtractor`.
+A última etapa dessa tarefa consistiu em acessar novamente a aplicação web pelo navegador da maquina física **Windows** e realizar pedidos na aba de `Menu`. Lembrando que a URL para acessar a aplicação precisa acrescentar o path `/cafe` ao IP ou DNS público da instância. Após realizar os pedidos foi executado um novo teste da função Lambda que além de mostrar o status 200, no corpo vieram as informações dos pedidos realizados. A imagem 93 evidencia a execução do teste desta função `salesAnalysisReportDataExtractor`.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img81.png" alt="img81"><br>
-    <figcaption>Imagem 81.</figcaption>
+    <img src="../0-aux/md5-img93.png" alt="img93"><br>
+    <figcaption>Imagem 93.</figcaption>
 </figure></div><br>
 
-Na tarefa 4, o objetivo foi configurar notificações criando um tópico do **Amazon Simple Notification Service (Amazon SNS)**. Este tópico iria conter as informações do relatório de análise de vendas e um email de destino para que esse relatório fosse enviado. O tipo do tópico construído foi o padrão, o nome foi `salesAnalysisReportTopic` e o nome de exibição foi `SARTopic`. Em seguida, foi preciso assinar este tópico criando uma assinatura cujo protocolo foi `E-mail` e o endpoint foi meu endereço de email. Após criar a assinatura, ela ficava como pendente até que fosse realizado a confirmação de assinatura com um email que era enviado para o endereço registrado, no caso meu email. Ao confirmar a assinatura, uma outra aba do navegador era aberta confirmando a assinatura. A imagem 83 exibe o tópico criado no SNS com a assinatura cadastrada já confirmada.
+Na tarefa 4, o objetivo foi configurar notificações criando um tópico do **Amazon Simple Notification Service (Amazon SNS)**. Este tópico iria conter as informações do relatório de análise de vendas e um email de destino para que esse relatório fosse enviado. O tipo do tópico construído foi o padrão, o nome foi `salesAnalysisReportTopic` e o nome de exibição foi `SARTopic`. Em seguida, foi preciso assinar este tópico criando uma assinatura cujo protocolo foi `E-mail` e o endpoint foi meu endereço de email. Após criar a assinatura, ela ficava como pendente até que fosse realizado a confirmação de assinatura com um email que era enviado para o endereço registrado, no caso meu email. Ao confirmar a assinatura, uma outra aba do navegador era aberta confirmando a assinatura. A imagem 94 exibe o tópico criado no SNS com a assinatura cadastrada já confirmada.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img82.png" alt="img82"><br>
-    <figcaption>Imagem 82.</figcaption>
+    <img src="../0-aux/md5-img94.png" alt="img94"><br>
+    <figcaption>Imagem 94.</figcaption>
 </figure></div><br>
 
 A última tarefa foi criar a segunda função, cujo nome era `salesAnalysisReport`, para automatizar todo o processo: extrair os valores dos parâmetros do *Parameter Store*, utilizá-los para criar um evento de teste para a função `salesAnalysisReportDataExtractor`, invocar esta função, extrair o corpo do resultado desta função, que é o relatório de análise de vendes, formatá-lo e publicá-lo no tópico do SNS para que seja entregue aos assinantes, no caso, para o email cadastrado. Esta execução foi toda realizada pelo **AWS CLI** instalado em uma outra instância de tag de nome `CLI Host`. Portanto, primeiramente foi preciso realizar um acesso remoto a instância através do recurso `EC2 Instance Connect` e configurar a CLI da **AWS** com o comando `aws configure`. Os valores do access key (chave de acesso) e secret acess key (segredo da chave de acesso) foram fornecidos na página principal do sandbox **Vocareum** na opção de detalhes. A região definida na configuração da CLI foi a mesma utilizada no laboratório, `us-west-2` (Oregon). Já o formato de saída dos dados foi definido como `json`.
 
-Com a CLI configurada, foi necessário confirmar se o arquivo para esta nova função já estava baixado na instância `CLI Host`, sendo feito através dos comandos `cd activity-files` e `ls`. Também foi preciso recuperar o ARN da role `salesAnalysisReportRole`, pois esta era vinculada a função `salesAnalysisReport`. Em seguida com o comando **AWS CLI** abaixo foi criada a nova função. A região foi substituída pela região utilizada no laboratório, `us-west-2` (Oregon), e a role pelo ARN da role recuperado anteriormente. A imagem 83 evidencia essa função criada.
+Com a CLI configurada, foi necessário confirmar se o arquivo para esta nova função já estava baixado na instância `CLI Host`, sendo feito através dos comandos `cd activity-files` e `ls`. Também foi preciso recuperar o ARN da role `salesAnalysisReportRole`, pois esta era vinculada a função `salesAnalysisReport`. Em seguida com o comando **AWS CLI** abaixo foi criada a nova função. A região foi substituída pela região utilizada no laboratório, `us-west-2` (Oregon), e a role pelo ARN da role recuperado anteriormente. A imagem 95 evidencia essa função criada.
 
 ```
 aws lambda create-function --function-name salesAnalysisReport --runtime python3.9 --zip-file fileb://salesAnalysisReport-v2.zip --handler salesAnalysisReport.lambda_handler --region us-west-2 --role arn:aws:iam::744188927919:role/salesAnalysisReportRole<salesAnalysisReportRoleARN>
 ```
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img83.png" alt="img83"><br>
-    <figcaption>Imagem 83.</figcaption>
+    <img src="../0-aux/md5-img95.png" alt="img95"><br>
+    <figcaption>Imagem 95.</figcaption>
 </figure></div><br>
 
-A próxima etapa foi verificar o código da função e criar o evento de teste desta função pelo console de gerenciamento da **AWS**. Contudo, este código utilizava uma variável de nome `topicARN` que era o ARN de um tópico criado no **Amazon SNS**. Então essa variável precisou ser definida no painel de variáveis. A chave dessa variável foi estabelecida como `topicARN` e o valor foi a ARN do tópico construído anteriormente, cujo nome era `salesAnalysisReportTopic`. Após isso, foi criado um evento de teste para esta função, cujo nome foi `SARTestEvent`, o modelo foi `hello-world` e  como a função não exigia parâmetros de entrada, as linhas do JSON foram mantidas em branco. Em seguida, o teste foi executado e o resultado bem-sucedido, conforme imagem 84. No corpo de resultado foi exibida a mensagem `Sale Analysis Report sent`, ou seja, o relatório foi enviado. Caso receba um erro de tempo limite, selecione o botão testar novamente. Às vezes, quando uma função é executada pela primeira vez, ela demora um pouco mais para ser inicializada e o valor de tempo limite padrão do Lambda (três segundos) é excedido. Normalmente, executar a função novamente faz com que o erro desapareça. Como alternativa, é possível aumentar o valor de tempo limite em configuração, configuração geral, editar, ajustar o tempo limite conforme necessário e salvar. 
+A próxima etapa foi verificar o código da função e criar o evento de teste desta função pelo console de gerenciamento da **AWS**. Contudo, este código utilizava uma variável de nome `topicARN` que era o ARN de um tópico criado no **Amazon SNS**. Então essa variável precisou ser definida no painel de variáveis. A chave dessa variável foi estabelecida como `topicARN` e o valor foi a ARN do tópico construído anteriormente, cujo nome era `salesAnalysisReportTopic`. Após isso, foi criado um evento de teste para esta função, cujo nome foi `SARTestEvent`, o modelo foi `hello-world` e  como a função não exigia parâmetros de entrada, as linhas do JSON foram mantidas em branco. Em seguida, o teste foi executado e o resultado bem-sucedido, conforme imagem 96. No corpo de resultado foi exibida a mensagem `Sale Analysis Report sent`, ou seja, o relatório foi enviado. Caso receba um erro de tempo limite, selecione o botão testar novamente. Às vezes, quando uma função é executada pela primeira vez, ela demora um pouco mais para ser inicializada e o valor de tempo limite padrão do Lambda (três segundos) é excedido. Normalmente, executar a função novamente faz com que o erro desapareça. Como alternativa, é possível aumentar o valor de tempo limite em configuração, configuração geral, editar, ajustar o tempo limite conforme necessário e salvar. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img84.png" alt="img84"><br>
-    <figcaption>Imagem 84.</figcaption>
+    <img src="../0-aux/md5-img96.png" alt="img96"><br>
+    <figcaption>Imagem 96.</figcaption>
 </figure></div><br>
 
-A imagem 85 evidencia o envio do email com o relátorio de análise de vendas realizado pelo tópico do **Amazon SNS**. É possível fazer mais pedidos no site da aplicação web e depois executar a função novamente para enviar o relatório atualizado.
+A imagem 97 evidencia o envio do email com o relátorio de análise de vendas realizado pelo tópico do **Amazon SNS**. É possível fazer mais pedidos no site da aplicação web e depois executar a função novamente para enviar o relatório atualizado.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img85.png" alt="img85"><br>
-    <figcaption>Imagem 85.</figcaption>
+    <img src="../0-aux/md5-img97.png" alt="img97"><br>
+    <figcaption>Imagem 97.</figcaption>
 </figure></div><br>
 
-Na última etapa desta tarefa, o objetivo foi adicionar um gatilho à esta função Lambda para que o relatório fosse enviado em um intervalo de dias determinado em um horário específico. Ao acessar o serviço **Amazon CloudWatch** e selecionar a opção rule em envents foi direcionado para outro serviço o **Amazon EventBridge**. Neste, na opção barramento, uma regra de nome `salesAnalysisReportDailyTrigger` foi elaborada com a seguinte descrição `Initiates report generation on a daily basis`. O tipo da regra foi definido como `Expressão de programação` (Programação) e foi especificada a programação desejada usando uma *expressão Cron*. A sintaxe geral de uma *expressão Cron* requer seis campos separados por espaços, da seguinte forma: `cron(Minutes Hours Day-of-month Month Day-of-week Year)`. Além disso, todos os horários em uma *expressão Cron* se baseiam no fuso horário UTC. Portanto foi definida a expressão cron: `cron(45 00 ? * MON-SAT *)`, como eram 00:45 no horário UTC, foi programado que o trigger fosse acionado de segunda a sábado todo dia às 00:45. Também foi definido um serviço da **AWS** que fosse acionado, que neste caso foi a função lambda `salesAnalysisReport`. A imagem 86 exibe essa regra configurada no EventBridge.
+Na última etapa desta tarefa, o objetivo foi adicionar um gatilho à esta função Lambda para que o relatório fosse enviado em um intervalo de dias determinado em um horário específico. Ao acessar o serviço **Amazon CloudWatch** e selecionar a opção rule em envents foi direcionado para outro serviço o **Amazon EventBridge**. Neste, na opção barramento, uma regra de nome `salesAnalysisReportDailyTrigger` foi elaborada com a seguinte descrição `Initiates report generation on a daily basis`. O tipo da regra foi definido como `Expressão de programação` (Programação) e foi especificada a programação desejada usando uma *expressão Cron*. A sintaxe geral de uma *expressão Cron* requer seis campos separados por espaços, da seguinte forma: `cron(Minutes Hours Day-of-month Month Day-of-week Year)`. Além disso, todos os horários em uma *expressão Cron* se baseiam no fuso horário UTC. Portanto foi definida a expressão cron: `cron(45 00 ? * MON-SAT *)`, como eram 00:45 no horário UTC, foi programado que o trigger fosse acionado de segunda a sábado todo dia às 00:45. Também foi definido um serviço da **AWS** que fosse acionado, que neste caso foi a função lambda `salesAnalysisReport`. A imagem 98 exibe essa regra configurada no EventBridge.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img86.png" alt="img86"><br>
-    <figcaption>Imagem 86.</figcaption>
+    <img src="../0-aux/md5-img98.png" alt="img98"><br>
+    <figcaption>Imagem 98.</figcaption>
 </figure></div><br>
 
-Enquanto o gatilho não era acionado, foi realizado pedidos na aplicação web para que o relatório viesse atualizado. Após chegar no horário UTC 00:10, o novo email foi enviado para o destino, que era meu email, com o relatório de análise de vendas atualizado, conforme imagem 87.
+Enquanto o gatilho não era acionado, foi realizado pedidos na aplicação web para que o relatório viesse atualizado. Após chegar no horário UTC 00:10, o novo email foi enviado para o destino, que era meu email, com o relatório de análise de vendas atualizado, conforme imagem 99.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img87.png" alt="img87"><br>
-    <figcaption>Imagem 87.</figcaption>
+    <img src="../0-aux/md5-img99.png" alt="img99"><br>
+    <figcaption>Imagem 99.</figcaption>
 </figure></div><br>
 
 <a name="item5.39"><h4>5.39 APIs e REST da Amazon</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -1600,34 +1657,34 @@ A instância de replicação do **AWS DMS** é executada em uma Virtual Private 
 
 Nesta laboratório, desenvolvido no sandbox **Vocareum**, foi realizado a migração de um banco de dados que rodava na mesma instância do **Amazon EC2**, onde era executada a aplicação web de uma cafeteria, para uma instância do **Amazon RDS** cujo mecanismo de execução era o **MariaDB**. Para executar esse processo foi necessário configurar previamente o ambiente que o RDS seria provisionado, construíndo duas sub-redes privadas em diferentes zonas de disponibilidade e criando um grupo de segurança e um grupo de sub-redes, com as duas sub-redes privadas construídas, para essa instância RDS. Por fim, após a migração, foi realizado o monitoramento dessa instância analisando as métricas do **Amazon CloudWatch**. Os provisionamentos dos serviços da **AWS** foram executados através de comandos **AWS CLI** em uma instância de tag de nome `CLI Host` criada automaticamente pelo **AWS CloudFormation** ao iniciar o laboratório. Já o processo de migração do banco de dados foi realizado na própria instância onde era executado o banco de dados inicialmente, cuja a tag de nome era `CafeInstance` e que também tinha sido provisionada pelo **AWS CloudFormation** ao iniciar o laboratório, através do software **MySQLDump**
 
-A primeira tarefa deste laboratório foi acessar aplicação web que rodava na instância através do navegador da maquina física **Windows** para interagir com a aplicação, realizando pedidos na aba `Menu` do site da cafeteria. Um único pedido foi realizado com uma unidade de cada item que tinha no cardápio. Para acessar a aplicação pelo navegador foi utilizado o IP ou DNS público da instância acrescido do path do site, que era `/cafe`. Para confirmar que o pedido foi realizado, foi acessado a aba `Order History`, onde estava registrado o único pedido, conforme mostrado na imagem 88.
+A primeira tarefa deste laboratório foi acessar aplicação web que rodava na instância através do navegador da maquina física **Windows** para interagir com a aplicação, realizando pedidos na aba `Menu` do site da cafeteria. Um único pedido foi realizado com uma unidade de cada item que tinha no cardápio. Para acessar a aplicação pelo navegador foi utilizado o IP ou DNS público da instância acrescido do path do site, que era `/cafe`. Para confirmar que o pedido foi realizado, foi acessado a aba `Order History`, onde estava registrado o único pedido, conforme mostrado na imagem 100.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img88.png" alt="img88"><br>
-    <figcaption>Imagem 88.</figcaption>
+    <img src="../0-aux/md5-img100.png" alt="img100"><br>
+    <figcaption>Imagem 100.</figcaption>
 </figure></div><br>
 
 Na tarefa de número 2, o objetivo foi criar a instância do **Amazon RDS** pelo **AWS CLI**. Dessa forma, primeiro foi necessário se conectar a instância `CLI Host`, pois era nela que os comandos da **AWS CLI** seriam executados. Essa conexão foi realizada através do recurso `EC2 Instance Connect` no próprio console de gerenciamento da **AWS**. O usuário utilizado na conexão foi o padrão desse tipo de instância que era o **Amazon Linux**, cujo usuário era `ec2-user`. Com o recurso `EC2 Instance Connect` a autenticação do usuário é realizada pela própria **AWS**, sem a necessidade de criação de par de chaves. Esse tipo de instância, por padrão, já vem com a **AWS CLI** instalada, só era necessário configurar o usuário da conta da **AWS** que iria utilizá-la. Com o comando `aws configure`, as quatro informações de configuração foram passadas, sendo a chave de acesso (key acess) e a chave de acesso secreta (secret key acess) informadas no campo detalhes na página principal do sandbox **Vocareum**. A **AWS CLI** foi configurada no caso com o usuário do IAM de nome `awsstudent`, que era criado automaticamente pelo CloudFormation ao iniciar o laboratório e já possuía as políticas de permissões necessárias para interagir com os serviços do laboratório. A região definida foi a padrão do laboratório, `us-west-2` (Oregon) e o formato de saída dos dados foi `json`.
 
-Com a **AWS CLI** configurada já era possível executar os comandos para provisionamento dos serviços na **AWS**. Primeiro seriam construídos os serviços de rede para depois provisionar a instância do RDS. Assim sendo, com o comando `aws ec2 create-security-group --group-name CafeDatabaseSG --description "Security group for Cafe database" --vpc-id vpc-0c542b1e9a81354b3` foi criado o security group de nome `CafeDataBaseSG` que era utilizado para proteger a instância do RDS. O ID da VPC foi substituído pelo ID da VPC do laboratório. Com ID deste grupo de segurança e o comando `aws ec2 authorize-security-group-ingress --group-id sg-0ca9018dcff5730f1 --protocol tcp --port 3306 --source-group sg-096ebcd4874d607ae` foi definida uma regra de entrada nele, permitindo acesso na porta `3306` do protocolo `TCP`, onde o **MariaDB** operava, apenas de um outro security group, que era o grupo de segurança da instância da aplicação web, cujo nome era `CafeSecurityGroup`. Para confirmar que a regra de entrada foi criada de forma correta, foi executado o comando `aws ec2 describe-security-groups --query "SecurityGroups[*].[GroupName,GroupId,IpPermissions]" --filters "Name=group-name,Values='CafeDatabaseSG'"` que mostrou a respectiva regra neste grupo, conforme evidenciado pela imagem 89.
+Com a **AWS CLI** configurada já era possível executar os comandos para provisionamento dos serviços na **AWS**. Primeiro seriam construídos os serviços de rede para depois provisionar a instância do RDS. Assim sendo, com o comando `aws ec2 create-security-group --group-name CafeDatabaseSG --description "Security group for Cafe database" --vpc-id vpc-0c542b1e9a81354b3` foi criado o security group de nome `CafeDataBaseSG` que era utilizado para proteger a instância do RDS. O ID da VPC foi substituído pelo ID da VPC do laboratório. Com ID deste grupo de segurança e o comando `aws ec2 authorize-security-group-ingress --group-id sg-0ca9018dcff5730f1 --protocol tcp --port 3306 --source-group sg-096ebcd4874d607ae` foi definida uma regra de entrada nele, permitindo acesso na porta `3306` do protocolo `TCP`, onde o **MariaDB** operava, apenas de um outro security group, que era o grupo de segurança da instância da aplicação web, cujo nome era `CafeSecurityGroup`. Para confirmar que a regra de entrada foi criada de forma correta, foi executado o comando `aws ec2 describe-security-groups --query "SecurityGroups[*].[GroupName,GroupId,IpPermissions]" --filters "Name=group-name,Values='CafeDatabaseSG'"` que mostrou a respectiva regra neste grupo, conforme evidenciado pela imagem 101.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img89.png" alt="img89"><br>
-    <figcaption>Imagem 89.</figcaption>
+    <img src="../0-aux/md5-img101.png" alt="img101"><br>
+    <figcaption>Imagem 101.</figcaption>
 </figure></div><br>
 
-Ainda nesta tarefa, a próxima etapa foi provisionar das duas sub-redes privadas, cujos nomes eram `sub-rede privada 1 CafeDB` e `sub-rede privada 2 CafeDB`. A sub-rede privada 1 ficou localizada na mesma zona de disponibilidade da instância da aplicação web, `us-west-2a`. Já a sub-rede privada 2 poderia ser executada em qualquer zona de disponibilidade que não fosse da anterior. O objetivo disso era mostrar a alta disponibilidade, trabalhando com o RDS em mais de uma AZ. Ambas as sub-redes privadas foram criadas na mesma VPC da sub-rede pública, onde estava a instância da aplicação web. Portanto, foi preciso se atentar para não sobrepor os blocos CIDR entre as sub-redes e a VPC. O bloco CIDR da VPC era `10.200.0.0/20` e da sub-rede pública era `10.200.0.0/24`, logo foi definido o bloco CIDR das sub-redes privadas como `10.200.2.0/23` e `10.200.10.0/23`. Com os comandos `aws ec2 create-subnet --vpc-id vpc-0c542b1e9a81354b3 --cidr-block 10.200.2.0/23 --availability-zone us-west-2a` e `aws ec2 create-subnet --vpc-id vpc-0c542b1e9a81354b3 --cidr-block 10.200.10.0/23 --availability-zone us-west-2b` foram provisionadas as duas sub-redes privadas. A imagem 90 mostra essa construção.
+Ainda nesta tarefa, a próxima etapa foi provisionar das duas sub-redes privadas, cujos nomes eram `sub-rede privada 1 CafeDB` e `sub-rede privada 2 CafeDB`. A sub-rede privada 1 ficou localizada na mesma zona de disponibilidade da instância da aplicação web, `us-west-2a`. Já a sub-rede privada 2 poderia ser executada em qualquer zona de disponibilidade que não fosse da anterior. O objetivo disso era mostrar a alta disponibilidade, trabalhando com o RDS em mais de uma AZ. Ambas as sub-redes privadas foram criadas na mesma VPC da sub-rede pública, onde estava a instância da aplicação web. Portanto, foi preciso se atentar para não sobrepor os blocos CIDR entre as sub-redes e a VPC. O bloco CIDR da VPC era `10.200.0.0/20` e da sub-rede pública era `10.200.0.0/24`, logo foi definido o bloco CIDR das sub-redes privadas como `10.200.2.0/23` e `10.200.10.0/23`. Com os comandos `aws ec2 create-subnet --vpc-id vpc-0c542b1e9a81354b3 --cidr-block 10.200.2.0/23 --availability-zone us-west-2a` e `aws ec2 create-subnet --vpc-id vpc-0c542b1e9a81354b3 --cidr-block 10.200.10.0/23 --availability-zone us-west-2b` foram provisionadas as duas sub-redes privadas. A imagem 102 mostra essa construção.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img90.png" alt="img90"><br>
-    <figcaption>Imagem 90.</figcaption>
+    <img src="../0-aux/md5-img102.png" alt="img102"><br>
+    <figcaption>Imagem 102.</figcaption>
 </figure></div><br>
 
-Com os IDs dessas duas sub-redes privadas foi construído o grupo de sub-redes no **Amazon RDS** com o comando `aws rds create-db-subnet-group --db-subnet-group-name "CafeDB Subnet Group" --db-subnet-group-description "DB subnet group for Cafe" --subnet-ids subnet-0073df12cbe553962 subnet-0f152862cb23b693e --tags "Key=Name,Value= CafeDatabaseSubnetGroup"`, conforme mostrado na imagem 91.
+Com os IDs dessas duas sub-redes privadas foi construído o grupo de sub-redes no **Amazon RDS** com o comando `aws rds create-db-subnet-group --db-subnet-group-name "CafeDB Subnet Group" --db-subnet-group-description "DB subnet group for Cafe" --subnet-ids subnet-0073df12cbe553962 subnet-0f152862cb23b693e --tags "Key=Name,Value= CafeDatabaseSubnetGroup"`, conforme mostrado na imagem 103.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img91.png" alt="img91"><br>
-    <figcaption>Imagem 91.</figcaption>
+    <img src="../0-aux/md5-img103.png" alt="img103"><br>
+    <figcaption>Imagem 103.</figcaption>
 </figure></div><br>
 
 Finalizando essa tarefa, foi construído de fato a instância de banco de dados no **Amazon RDS**, cuja opção de mecanismo foi **MariaDB** na versão `10.5.13` (alterado para `10.11.8`), o identificador da instância foi `CafeDBInstance`, a classe da instância foi `db.t3.micro`, o armazenamento alocado foi de `20` GB, a zona de disponibilidade foi `a`, o grupo de sub-rede foi `CafeDB Subnet Group` e o security group foi `CafeDatabaseSG`. A acessibilidade pública foi definida como não, o nome do usuário master foi `root` e a senha foi `Re:Start!9`. O comando abaixo executou esse provisionamento.
@@ -1636,32 +1693,32 @@ Finalizando essa tarefa, foi construído de fato a instância de banco de dados 
 aws rds create-db-instance --db-instance-identifier CafeDBInstance --engine mariadb --engine-version 10.11.8 --db-instance-class db.t3.micro --allocated-storage 20 --availability-zone us-west-2a --db-subnet-group-name "CafeDB Subnet Group" --vpc-security-group-ids sg-0ca9018dcff5730f1 --no-publicly-accessible --master-username root --master-user-password 'Re:Start!9'
 ```
 
-Após isso, levou um tempo até que a instância fosse provisionada e ficasse disponível. Com o comando `aws rds describe-db-instances --db-instance-identifier CafeDBInstance --query "DBInstances[*].[Endpoint.Address,AvailabilityZone,PreferredBackupWindow,BackupRetentionPeriod,DBInstanceStatus]"` era possível ir verificando o status da instância. Com relação aos backups, eles ocorrem diariamente durante a janela de backup preferencial e são retidos pela duração especificada pelo período de retenção de backup. Observe o valor 1 para o período de retenção de backup, que indica que, por padrão, os backups diários são retidos por apenas um dia. Além disso, a janela de backup preferencial é definida como um intervalo de trinta minutos por padrão. É possível modificar essas configurações para corresponder à política de backup desejada. O atributo de status mostrará inicialmente o valor criando e depois mudará para modificando. Assim que a instância ficou disponível, como mostrado na imagem 92, foi copiado o endpoint dela para ser utilizado adiante.
+Após isso, levou um tempo até que a instância fosse provisionada e ficasse disponível. Com o comando `aws rds describe-db-instances --db-instance-identifier CafeDBInstance --query "DBInstances[*].[Endpoint.Address,AvailabilityZone,PreferredBackupWindow,BackupRetentionPeriod,DBInstanceStatus]"` era possível ir verificando o status da instância. Com relação aos backups, eles ocorrem diariamente durante a janela de backup preferencial e são retidos pela duração especificada pelo período de retenção de backup. Observe o valor 1 para o período de retenção de backup, que indica que, por padrão, os backups diários são retidos por apenas um dia. Além disso, a janela de backup preferencial é definida como um intervalo de trinta minutos por padrão. É possível modificar essas configurações para corresponder à política de backup desejada. O atributo de status mostrará inicialmente o valor criando e depois mudará para modificando. Assim que a instância ficou disponível, como mostrado na imagem 104, foi copiado o endpoint dela para ser utilizado adiante.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img92.png" alt="img92"><br>
-    <figcaption>Imagem 92.</figcaption>
+    <img src="../0-aux/md5-img104.png" alt="img104"><br>
+    <figcaption>Imagem 104.</figcaption>
 </figure></div><br>
 
 A terceira tarefa foi de fato a realização da migração do banco de dados da instância da aplicação no **Amazon EC2** para instância provisionada do **Amazon RDS**. Para isso foi preciso abrir uma conexão com a instância da aplicação web com o recurso `EC2 Instance Connect` e utilizar o software **MySQLDump** para fazer o backup do banco de dados no momento atual. Lembrando que essa instância da aplicação web conseguia se comunicar com a instância do RDS, através dos seus respectivos grupos de segurança, onde o security group do RDS liberava acesso na porta `3306` para o grupo de segurança da instância da aplicação web. Após conectar a instância, no terminal que foi aberto, o comando `mysqldump --user=root --password='Re:Start!9' --databases cafe_db --add-drop-database > cafedb-backup.sql` foi executado. Esse comando gerou declarações SQL em um arquivo chamado `cafedb-backup.sql`, que podia ser executadas para reproduzir o esquema e os dados do banco de dados `cafe_db original`, que era o banco de dados que rodava na aplicação. Para visualizar esse arquivo ele foi aberto em um editor de texto ou visualizado com o comando `less cafedb-backup.sql` no terminal. Observe os vários comandos SQL para criar o banco de dados, criar tabelas e índices e preencher o banco de dados com os dados originais. 
 
-Fechando a visualização desse arquivo com o comando `q` e voltando para o terminal, foi executado `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com < cafedb-backup.sql`, onde foi passado o endereço de endpoit da instância RDS que executaria o banco de dados. Esse comando criava uma conexão **MySQL** com a instância do **Amazon RDS** e executava as declarações SQL do arquivo cafedb-backup.sql. Como o **MariaDB** é um fork do **MySQL** é possível utilizar comandos do **MySQL** para acessar um banco de dados do **MariaDB**. Para visualizar o banco de dados do **Amazon RDS** pela instância do **Amazon EC2** foi utilizado o comando `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com cafe_db`. Uma conexão era realizada, permitindo interagir com o banco de dados do RDS pela instância do EC2. A imagem 93 exibe a execução do comando `select * from order`, que listava todas linhas da tabela `product`. Essa tabela armazenava todos os pedidos realizados na aplicação web, neste caso, apenas uma linha foi exibida, pois só havia sido feito um único pedido no início deste laboratório. Para sair do **MySQL** foi utilizado o comando `exit`. A conexão com essa instância ainda foi mantida aberta para uso futuro.
+Fechando a visualização desse arquivo com o comando `q` e voltando para o terminal, foi executado `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com < cafedb-backup.sql`, onde foi passado o endereço de endpoit da instância RDS que executaria o banco de dados. Esse comando criava uma conexão **MySQL** com a instância do **Amazon RDS** e executava as declarações SQL do arquivo cafedb-backup.sql. Como o **MariaDB** é um fork do **MySQL** é possível utilizar comandos do **MySQL** para acessar um banco de dados do **MariaDB**. Para visualizar o banco de dados do **Amazon RDS** pela instância do **Amazon EC2** foi utilizado o comando `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com cafe_db`. Uma conexão era realizada, permitindo interagir com o banco de dados do RDS pela instância do EC2. A imagem 105 exibe a execução do comando `select * from order`, que listava todas linhas da tabela `product`. Essa tabela armazenava todos os pedidos realizados na aplicação web, neste caso, apenas uma linha foi exibida, pois só havia sido feito um único pedido no início deste laboratório. Para sair do **MySQL** foi utilizado o comando `exit`. A conexão com essa instância ainda foi mantida aberta para uso futuro.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img93.png" alt="img93"><br>
-    <figcaption>Imagem 93.</figcaption>
+    <img src="../0-aux/md5-img105.png" alt="img105"><br>
+    <figcaption>Imagem 105.</figcaption>
 </figure></div><br>
 
-Até este momento, o banco de dados da aplicação web já tinha sido migrado para instância do **Amazon RDS**, contudo a aplicação web ainda apontava para o banco de dados na instância do **Amazon EC2**. Ou seja, se um novo pedido fosse realizado, não iria ser inserido no banco do RDS e sim no banco do EC2. Portanto, era preciso alterar na aplicação web, o host do banco de dados para apontar para o endereço de endpoint do RDS. Esta tarefa foi facilitada, pois a aplicação web quando construída durante a criação da pilha do **AWS CloudFormation** que utilizou o armazenamento de parâmetros no **AWS System Manager (AWS SSM)**. No *Parameter Store* foi criado um parâmetro de nome `/cafe/dbUrl` que continha como valor a URL do banco de dados (`ec2-35-86-130-112.us-west-2.compute.amazonaws.com`). Dessa forma, foi só editar esse parâmetro trocando o valor para o endereço de endpoint do RDS. Assim, o parâmetro `dbUrl` agora fazia referência à instância de banco de dados do RDS em vez do banco de dados local. Para testar isso, a aplicação web foi novamente aberta no navegador da maquina física **Windows** e um novo pedido foi realizado na aba `Menu`. A imagem 94 exibe a aba `Order History` com agora dois pedidos. Já a imagem 95 mostra a execução novamente do comando `select * from order` no terminal da instância da aplicação, antes conectando ao banco de dados com o comando `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com cafe_db`. Observe que em ambos, agora tem dois pedidos.
+Até este momento, o banco de dados da aplicação web já tinha sido migrado para instância do **Amazon RDS**, contudo a aplicação web ainda apontava para o banco de dados na instância do **Amazon EC2**. Ou seja, se um novo pedido fosse realizado, não iria ser inserido no banco do RDS e sim no banco do EC2. Portanto, era preciso alterar na aplicação web, o host do banco de dados para apontar para o endereço de endpoint do RDS. Esta tarefa foi facilitada, pois a aplicação web quando construída durante a criação da pilha do **AWS CloudFormation** que utilizou o armazenamento de parâmetros no **AWS System Manager (AWS SSM)**. No *Parameter Store* foi criado um parâmetro de nome `/cafe/dbUrl` que continha como valor a URL do banco de dados (`ec2-35-86-130-112.us-west-2.compute.amazonaws.com`). Dessa forma, foi só editar esse parâmetro trocando o valor para o endereço de endpoint do RDS. Assim, o parâmetro `dbUrl` agora fazia referência à instância de banco de dados do RDS em vez do banco de dados local. Para testar isso, a aplicação web foi novamente aberta no navegador da maquina física **Windows** e um novo pedido foi realizado na aba `Menu`. A imagem 106 exibe a aba `Order History` com agora dois pedidos. Já a imagem 107 mostra a execução novamente do comando `select * from order` no terminal da instância da aplicação, antes conectando ao banco de dados com o comando `mysql --user=root --password='Re:Start!9' --host=cafedbinstance.c84aly6rt99h.us-west-2.rds.amazonaws.com cafe_db`. Observe que em ambos, agora tem dois pedidos.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img94.png" alt="img94"><br>
-    <figcaption>Imagem 94.</figcaption>
+    <img src="../0-aux/md5-img106.png" alt="img106"><br>
+    <figcaption>Imagem 106.</figcaption>
 </figure></div><br>
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img95.png" alt="img95"><br>
-    <figcaption>Imagem 95.</figcaption>
+    <img src="../0-aux/md5-img107.png" alt="img107"><br>
+    <figcaption>Imagem 107.</figcaption>
 </figure></div><br>
 
 A última tarefa deste laboratório foi monitorar a instância do **Amazon RDS** através das métricas que o mesmo enviava para o **Amazon CloudWatch**. Pelo console de gerenciamento da **AWS** foi acessado o serviço RDS e selecionada a instância provisionada. Na guia monitoramento, várias métricas foram exibidas através de gráficos. A lista de métricas exibidas incluía o seguinte: 
@@ -1672,16 +1729,16 @@ A última tarefa deste laboratório foi monitorar a instância do **Amazon RDS**
 - WriteIOPS: o número médio de operações de E/S de gravação no disco por segundo; 
 - ReadIOPS: número médio de operações de E/S de leitura no disco por segundo.
 
-A métrica analisada neste laboratório foi a `DatabaseConnections` que possuía registra uma conexão de banco de dados em uso, que foi a conexão realizada pela instância da aplicação web para conferir a tabela `order`. Essa conexão não tinha sido encerrada, portanto era mostrado uma conexão, conforme imagem 96. De volta ao terminal da instância da aplicação foi executado o comando `exit` para fechar e encerrar a conexão **MySQL**. Observe agora na imagem 97 que o número de conexões caiu para zero, pois não havia nenhuma conexão neste momento. Caso não seja alterado de imediato, aguarde um momento e atualiza o grafo.
+A métrica analisada neste laboratório foi a `DatabaseConnections` que possuía registra uma conexão de banco de dados em uso, que foi a conexão realizada pela instância da aplicação web para conferir a tabela `order`. Essa conexão não tinha sido encerrada, portanto era mostrado uma conexão, conforme imagem 108. De volta ao terminal da instância da aplicação foi executado o comando `exit` para fechar e encerrar a conexão **MySQL**. Observe agora na imagem 109 que o número de conexões caiu para zero, pois não havia nenhuma conexão neste momento. Caso não seja alterado de imediato, aguarde um momento e atualiza o grafo.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img96.png" alt="img96"><br>
-    <figcaption>Imagem 96.</figcaption>
+    <img src="../0-aux/md5-img108.png" alt="img108"><br>
+    <figcaption>Imagem 108.</figcaption>
 </figure></div><br>
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img97.png" alt="img97"><br>
-    <figcaption>Imagem 97.</figcaption>
+    <img src="../0-aux/md5-img109.png" alt="img109"><br>
+    <figcaption>Imagem 109.</figcaption>
 </figure></div><br>
 
 <a name="item5.51"><h4>5.51 Amazon VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -1826,62 +1883,62 @@ A seguir é listado alguns problemas de rede que podem ser ocasionados e formas 
 
 Este laboratório, desenvolvido no sandbox **Vocareum**, teve como objetivo o provisionamento de uma VPC com todos seus recursos necessários para que em seguida fosse criadas instâncias no **Amazon EC2** dentro dessa VPC, em cada sub-rede. A VPC possuíu duas sub-redes, uma pública e uma privada, cada uma com sua rota na tabela de rotas, um Gateway de Internet e um NAT Gateway. Ao fim, foi realizado acesso remoto na instância da sub-rede pública e utilizando ela como bastion host, foi realizado um outro acesso remoto para conectar-se na instância da sub-rede privada.
 
-A primeira tarefa foi criar de fato a VPC no **Amazon VPC**, cuja tag de nome dela foi `Lab VPC`. A região utilizada para provisionamento desta VPC era a região do laboratório, `us-west-2` (Oregon). Ao criar a VPC foi escolhido em recursos a serem criados somente VPC. Aqui era possível criar alguns recursos da VPC ao provisioná-la, mas isso seria realizado de forma separada. O bloco CIDR IPv4 foi definido manualmente como `10.0.0.0/16`, enquanto o bloco CIDR IPv6 não foi utilizado. O tenancy foi mantido como padrão (`default`) e as tags sugeridas para esta VPC foram mantidas. A imagem 98 exibe a VPC criada com sucesso.
+A primeira tarefa foi criar de fato a VPC no **Amazon VPC**, cuja tag de nome dela foi `Lab VPC`. A região utilizada para provisionamento desta VPC era a região do laboratório, `us-west-2` (Oregon). Ao criar a VPC foi escolhido em recursos a serem criados somente VPC. Aqui era possível criar alguns recursos da VPC ao provisioná-la, mas isso seria realizado de forma separada. O bloco CIDR IPv4 foi definido manualmente como `10.0.0.0/16`, enquanto o bloco CIDR IPv6 não foi utilizado. O tenancy foi mantido como padrão (`default`) e as tags sugeridas para esta VPC foram mantidas. A imagem 110 exibe a VPC criada com sucesso.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img98.png" alt="img98"><br>
-    <figcaption>Imagem 98.</figcaption>
+    <img src="../0-aux/md5-img110.png" alt="img110"><br>
+    <figcaption>Imagem 110.</figcaption>
 </figure></div><br>
 
 Com a VPC construída, ela foi editada para alterar as configurações de DNS, selecionando habilitar nomes de host DNS (`Enable DNS hostnames`). As instâncias do EC2 iniciadas na VPC agora receberiam automaticamente um nome de host do sistema de nomes de domínio (DNS) IPv4 público.
 
 Na tarefa 2, foi provisionada as duas sub-redes. A primeira foi a sub-rede pública, ou seja, que teria acesso por meio da Internet. Já a segunda foi a sub-rede privada, que não conseguiria ser acessada diretamente pela internet, mas seria possível realizar conexões de saída para a internet. Neste caso, o tráfego de saída para a internet era permitido, assim como as respostas desse tráfego, mas qualquer tentativa de conexão de entrada iniciada da internet não era possível. As duas sub-redes eram vinculadas a VPC construída anteriormente. A sub-rede pública foi nomeada de `Public Subnet`, localizava-se na zona de disponibilidade `us-west-2a` e possuíu no bloco CIDR IPv4 `10.0.0.0/24`. Também foi habilitado a atribuição de endereço de IPv4 público automaticamente (`Enable auto-assign public IPv4 address`).
 
-Já a sub-rede privada teve como nome `Private Subnet`, localizou-se na AZ `us-west-2b` e possuíu o bloco CIDR IPv4 igual a `10.0.2.0/23`. O bloco CIDR `10.0.2.0/23` incluía todos os endereços IP que começam com 10.0.2.x e 10.0.3.x. Essa faixa é duas vezes maior que a sub-rede pública porque a maioria dos recursos devem ser mantidos em sub-redes privadas, a menos que precisem especificamente estar acessíveis pela internet. A imagem 99 exibe as duas sub-redes provisionadas.
+Já a sub-rede privada teve como nome `Private Subnet`, localizou-se na AZ `us-west-2b` e possuíu o bloco CIDR IPv4 igual a `10.0.2.0/23`. O bloco CIDR `10.0.2.0/23` incluía todos os endereços IP que começam com 10.0.2.x e 10.0.3.x. Essa faixa é duas vezes maior que a sub-rede pública porque a maioria dos recursos devem ser mantidos em sub-redes privadas, a menos que precisem especificamente estar acessíveis pela internet. A imagem 111 exibe as duas sub-redes provisionadas.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img99.png" alt="img99"><br>
-    <figcaption>Imagem 99.</figcaption>
+    <img src="../0-aux/md5-img111.png" alt="img111"><br>
+    <figcaption>Imagem 111.</figcaption>
 </figure></div><br>
 
-Na terceira tarefa foi construído um *Internet Gateway* para estabelecer conectividade externa. Esse gateway possuíu a seguinte tag de nome `Lab IGW` e foi associado a VPC. A imagem 100 ilustra isso.
+Na terceira tarefa foi construído um *Internet Gateway* para estabelecer conectividade externa. Esse gateway possuíu a seguinte tag de nome `Lab IGW` e foi associado a VPC. A imagem 112 ilustra isso.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img100.png" alt="img100"><br>
-    <figcaption>Imagem 100.</figcaption>
+    <img src="../0-aux/md5-img112.png" alt="img112"><br>
+    <figcaption>Imagem 112.</figcaption>
 </figure></div><br>
 
-Na tarefa seguinte foi criado uma tabela de rotas desta VPC, onde uma rota também construída direcionava o tráfego da sub-rede pública para o *Internet Gateway*, permitindo então a comunicação com a internet. Ao criar uma tabela de rota, uma rota já vinha definida por padrão, que mostrava que todo o tráfego destinado a 10.0.0/16 (que é o intervalo de Lab VPC) era roteado localmente, ou seja, essa opção permitia que todas as sub-redes na VPC se comunicassem entre sí. A tabela de rota criada teve o nome `Public Route Table` e foi vinculado a VPC `Lab VPC`. Em seguida foi adicionada uma rota a ela, cujo destino (`destination`) era `0.0.0.0/0`, ou seja, qualquer endereço de IP que não tenha sido estabelecido em nenhuma outra rota, e o alvo (`target`) era o *Internet Gateway* provisionado anteriormente. Pode ser um pouco confuso isso, mas para facilitar entenda que o destino (`destination`) não é o local físico para onde o tráfego vai, mas sim o critério usado para determinar qual rota será aplicada ao tráfego. É o intervalo de endereços IP que utilizam essa rota para direcionar o tráfego para o alvo (`target`). Após isso, foi preciso associar a sub-rede pública a essa tabela de rotas. Assim, a sub-rede pública se tornou realmente púlica, pois era possível ser acessada através da internet. A imagem 101 evidencia a construção desta tabela de rota.
+Na tarefa seguinte foi criado uma tabela de rotas desta VPC, onde uma rota também construída direcionava o tráfego da sub-rede pública para o *Internet Gateway*, permitindo então a comunicação com a internet. Ao criar uma tabela de rota, uma rota já vinha definida por padrão, que mostrava que todo o tráfego destinado a 10.0.0/16 (que é o intervalo de Lab VPC) era roteado localmente, ou seja, essa opção permitia que todas as sub-redes na VPC se comunicassem entre sí. A tabela de rota criada teve o nome `Public Route Table` e foi vinculado a VPC `Lab VPC`. Em seguida foi adicionada uma rota a ela, cujo destino (`destination`) era `0.0.0.0/0`, ou seja, qualquer endereço de IP que não tenha sido estabelecido em nenhuma outra rota, e o alvo (`target`) era o *Internet Gateway* provisionado anteriormente. Pode ser um pouco confuso isso, mas para facilitar entenda que o destino (`destination`) não é o local físico para onde o tráfego vai, mas sim o critério usado para determinar qual rota será aplicada ao tráfego. É o intervalo de endereços IP que utilizam essa rota para direcionar o tráfego para o alvo (`target`). Após isso, foi preciso associar a sub-rede pública a essa tabela de rotas. Assim, a sub-rede pública se tornou realmente púlica, pois era possível ser acessada através da internet. A imagem 113 evidencia a construção desta tabela de rota.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img101.png" alt="img101"><br>
-    <figcaption>Imagem 101.</figcaption>
+    <img src="../0-aux/md5-img113.png" alt="img113"><br>
+    <figcaption>Imagem 113.</figcaption>
 </figure></div><br>
 
 A quinta tarefa teve como objetivo construir um servidor bastion na sub-rede pública provisionando ele no **Amazon EC2**. Um servidor bastion (também conhecido como “jump box”) é uma instância do EC2 em uma sub-rede pública configurada com segurança para fornecer acesso a recursos em uma sub-rede privada. Os operadores de sistemas podem se conectar ao servidor bastion, depois acessar os recursos da sub-rede privada. Esse acesso só é possível pois tanto a sub-rede pública como a privada estão na mesma VPC e possuí uma tabela de rotas com uma rota que comunica toda a VPC internamente.
 
-A instância provisionada possuía as seguintes configurações: valor da tag de nome igual a `Bastion Server`, a Amazon Machine Image (AMI) escolhida foi `ami-0604d81f2fd264c7b` (Amazon Linux 2023 AMI 2023.5.20240701.0 x86_64 HVM kernel-6.1), o tipo de instância foi `t3.micro`, nenhum par de chaves foi criado ou vinculado a essa instância. Nas configurações de rede, foi escolhida a VPC do laboratório `Lab VPC` e a sub-rede pública, a atribuição automática de IP público foi habilitada, e um security group foi criado cujo nome foi `Bastion Security Group` e a descrição `Allow SSH`. Uma regra de entrada foi elaborada nesse grupo de segurança permitindo acesso na porta `22` do protocolo `TCP`, que era onde o protocolo `SSH` operava, para qualquer faixa de IP (`0.0.0.0/0`). A configuração de armazenamento foi mantida o padrão, que é um volume do **Amazon Elastic Block Store (Amazon EBS)**, cujo nome do device é `/dev/xvda`, com `8` Gib de memória do tipo `gp3`. A imagem 102 exibe essa instância provisionada.
+A instância provisionada possuía as seguintes configurações: valor da tag de nome igual a `Bastion Server`, a Amazon Machine Image (AMI) escolhida foi `ami-0604d81f2fd264c7b` (Amazon Linux 2023 AMI 2023.5.20240701.0 x86_64 HVM kernel-6.1), o tipo de instância foi `t3.micro`, nenhum par de chaves foi criado ou vinculado a essa instância. Nas configurações de rede, foi escolhida a VPC do laboratório `Lab VPC` e a sub-rede pública, a atribuição automática de IP público foi habilitada, e um security group foi criado cujo nome foi `Bastion Security Group` e a descrição `Allow SSH`. Uma regra de entrada foi elaborada nesse grupo de segurança permitindo acesso na porta `22` do protocolo `TCP`, que era onde o protocolo `SSH` operava, para qualquer faixa de IP (`0.0.0.0/0`). A configuração de armazenamento foi mantida o padrão, que é um volume do **Amazon Elastic Block Store (Amazon EBS)**, cujo nome do device é `/dev/xvda`, com `8` Gib de memória do tipo `gp3`. A imagem 114 exibe essa instância provisionada.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img102.png" alt="img102"><br>
-    <figcaption>Imagem 102.</figcaption>
+    <img src="../0-aux/md5-img114.png" alt="img114"><br>
+    <figcaption>Imagem 114.</figcaption>
 </figure></div><br>
 
-Na tarefa de número 6 foi criado um *NAT Gateway* na sub-rede pública e configurado uma tabela de rota privada com uma rota que direcionava o tráfego da sub-rede privada para o *NAT Gateway*. Dessa forma, a sub-rede privada tinha acesso a internet, mas não era possível acessá-la. O nome do gateway NAT foi `Lab NAT gateway` e a sub-rede pública foi escolhida. A opção alocar IP elástico foi marcada, assim um IP elástico era criado para esse *NAT Gateway*. A imagem 103 exibe essa configuração.
+Na tarefa de número 6 foi criado um *NAT Gateway* na sub-rede pública e configurado uma tabela de rota privada com uma rota que direcionava o tráfego da sub-rede privada para o *NAT Gateway*. Dessa forma, a sub-rede privada tinha acesso a internet, mas não era possível acessá-la. O nome do gateway NAT foi `Lab NAT gateway` e a sub-rede pública foi escolhida. A opção alocar IP elástico foi marcada, assim um IP elástico era criado para esse *NAT Gateway*. A imagem 115 exibe essa configuração.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img103.png" alt="img103"><br>
-    <figcaption>Imagem 103.</figcaption>
+    <img src="../0-aux/md5-img115.png" alt="img115"><br>
+    <figcaption>Imagem 115.</figcaption>
 </figure></div><br>
 
-A tabela de rota privada já veio construída ao criar a VPC. Com isso, uma nova rota foi adicionada cujo destino foi `0.0.0.0/0` e o alvo (`target`) o *NAT Gateway* criado. Os recursos na sub-rede privada que desejam se comunicar com a internet agora possuíam seu tráfego de rede direcionado para o gateway NAT, que encaminhava a solicitação para a internet. As respostas fluem pelo gateway NAT de volta para a sub-rede privada, mas o acesso a sub-rede privada não era permitido. A imagem 104 é mostrado o fluxo final da VPC.
+A tabela de rota privada já veio construída ao criar a VPC. Com isso, uma nova rota foi adicionada cujo destino foi `0.0.0.0/0` e o alvo (`target`) o *NAT Gateway* criado. Os recursos na sub-rede privada que desejam se comunicar com a internet agora possuíam seu tráfego de rede direcionado para o gateway NAT, que encaminhava a solicitação para a internet. As respostas fluem pelo gateway NAT de volta para a sub-rede privada, mas o acesso a sub-rede privada não era permitido. A imagem 116 é mostrado o fluxo final da VPC.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img104.png" alt="img104"><br>
-    <figcaption>Imagem 104.</figcaption>
+    <img src="../0-aux/md5-img116.png" alt="img116"><br>
+    <figcaption>Imagem 116.</figcaption>
 </figure></div><br>
 
-No primeiro desafio opcional deste laboratório, o objetivo foi testar a sub-rede privada. Para isso foi provisionada uma outra instância do EC2, exatamente igual a anterior, mas na sub-rede privada. A tag de nome dessa instância foi `Private Instance`. Em redes, além da alteração de sub-rede, a atribuição de IP público automaticamente foi mantida desabilitada, e um novo security group foi construído cujo nome foi `Private Instance SG` e a descrição `Allow SSH from Bastion`. A regra de entrada deste security group permitia acesso na porta `22` do protocolo `TCP`, apenas para tráfegos partindo da origem `10.0.0.0/16`, que era o IP da VPC criada, ou seja, apenas comunicação interna. Ainda nessa instância foi definido em user data um script em **Bash** para ser executado na instância. Esse script permitia o login usando uma senha, ao invês de ter que configurar um par de chaves. Ele foi incluído para ajudar a encurtar as etapas do laboratório, mas não é recomendado para implementações normais de instâncias. A imagem 105 exibe a instância construída na sub-rede privada.
+No primeiro desafio opcional deste laboratório, o objetivo foi testar a sub-rede privada. Para isso foi provisionada uma outra instância do EC2, exatamente igual a anterior, mas na sub-rede privada. A tag de nome dessa instância foi `Private Instance`. Em redes, além da alteração de sub-rede, a atribuição de IP público automaticamente foi mantida desabilitada, e um novo security group foi construído cujo nome foi `Private Instance SG` e a descrição `Allow SSH from Bastion`. A regra de entrada deste security group permitia acesso na porta `22` do protocolo `TCP`, apenas para tráfegos partindo da origem `10.0.0.0/16`, que era o IP da VPC criada, ou seja, apenas comunicação interna. Ainda nessa instância foi definido em user data um script em **Bash** para ser executado na instância. Esse script permitia o login usando uma senha, ao invês de ter que configurar um par de chaves. Ele foi incluído para ajudar a encurtar as etapas do laboratório, mas não é recomendado para implementações normais de instâncias. A imagem 117 exibe a instância construída na sub-rede privada.
 
 ```bash
 #!/bin/bash
@@ -1892,24 +1949,24 @@ systemctl restart sshd.service
 ```
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img105.png" alt="img105"><br>
-    <figcaption>Imagem 105.</figcaption>
+    <img src="../0-aux/md5-img117.png" alt="img117"><br>
+    <figcaption>Imagem 117.</figcaption>
 </figure></div><br>
 
 O segundo desafio opcional foi realizar o login no servidor bastion. A instância provisionada estava na sub-rede privada, por isso não era possível fazer login diretamente nela. Em vez disso, primeiro foi preciso realizar o login no servidor bastion na sub-rede pública, depois fazer o login na instância privada pelo servidor bastion. Para se conectar a instância `Bastion Server` foi utilizado o recurso `EC2 Instance Connect`, acesso com usuário padrão `ec2-user`. Neste caso, não era preciso par de chaves, pois como era realizado pelo **AWS Console Management**, a própria **AWS** realizava a autenticação do usuário. Com a conexão bem sucedida, uma nova aba da **AWS** era aberto no navegador da maquina física **Windows** com um terminal já conectado na instância da sub-rede pública.
 
-No desafio opcional seguinte, foi realizado o acesso remoto agora da instância `Bastion Server`, que estava na sub-rede pública, a instância `Private Instance`, que estava na sub-rede privada. Para isso foi necessário copiar o endereço de IP privado da instância que desejava-se conectar. Observe que aqui o IP era privado, pois o acesso remoto era interno, ou seja, entre maquinas da mesma rede, sem acesso externo via internet. De volta a aba com terminal aberto foi executado o comando `ssh 10.0.2.100`. Na primeira vez executado, uma mensagem solicitando confirmação era exibida e foi confirmada digitando `yes`. Nesta conexão, foi solicitado a senha pois não havia par de chaves configurado, portanto a senha `lab-password` foi informada. A imagem 106 exibiu o acesso remoto interno realizado entre as duas instâncias do **Amazon EC2**.
+No desafio opcional seguinte, foi realizado o acesso remoto agora da instância `Bastion Server`, que estava na sub-rede pública, a instância `Private Instance`, que estava na sub-rede privada. Para isso foi necessário copiar o endereço de IP privado da instância que desejava-se conectar. Observe que aqui o IP era privado, pois o acesso remoto era interno, ou seja, entre maquinas da mesma rede, sem acesso externo via internet. De volta a aba com terminal aberto foi executado o comando `ssh 10.0.2.100`. Na primeira vez executado, uma mensagem solicitando confirmação era exibida e foi confirmada digitando `yes`. Nesta conexão, foi solicitado a senha pois não havia par de chaves configurado, portanto a senha `lab-password` foi informada. A imagem 118 exibiu o acesso remoto interno realizado entre as duas instâncias do **Amazon EC2**.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img106.png" alt="img106"><br>
-    <figcaption>Imagem 106.</figcaption>
+    <img src="../0-aux/md5-img118.png" alt="img118"><br>
+    <figcaption>Imagem 118.</figcaption>
 </figure></div><br>
 
-O último desafio opcional foi verificar que a instância na sub-rede privada tinha acesso a internet através do *NAT Gateway* provisionado. Ainda com a conexão remota interna aberta, foi executado o comando `ping -c 3 amazon.com` que utilizou o software **Ping** para checar o envio dos pacotes. O output do comando é mostrado na imagem 107 abaixo, comprovando que a instância na sub-rede privada tinha acesso a internet.
+O último desafio opcional foi verificar que a instância na sub-rede privada tinha acesso a internet através do *NAT Gateway* provisionado. Ainda com a conexão remota interna aberta, foi executado o comando `ping -c 3 amazon.com` que utilizou o software **Ping** para checar o envio dos pacotes. O output do comando é mostrado na imagem 119 abaixo, comprovando que a instância na sub-rede privada tinha acesso a internet.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img107.png" alt="img107"><br>
-    <figcaption>Imagem 107.</figcaption>
+    <img src="../0-aux/md5-img119.png" alt="img119"><br>
+    <figcaption>Imagem 119.</figcaption>
 </figure></div><br>
 
 <a name="item5.56"><h4>5.56 181- [JAWS] -Atividade: Solucionar problemas de uma VPC</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -1920,69 +1977,69 @@ Como alguns comandos seriam executados pela **AWS CLI**, uma instância, cuja ta
 
 Contudo, neste laboratório, foi um pouco diferente, pois as credenciais eram fornecidas de forma diferente, através do arquivo `credentials` que ficava armazenado na pasta `.aws`. Essa pasta é sempre gerada ao executar o comando `aws configure` e informar as configurações do **AWS CLI**. Nela, as credenciais são mantidas no arquivo `credentials` e  as demais configurações (região e formato de dados) no arquivo `config`. Ao invés de executar o comando `aws configure` é possível criar essa pasta e os arquivos manualmente. Então foi copiado o arquivo `credentials` na página principal do sandbox e criado este arquivo na pasta `.aws` no diretório do usuário da instância conectada. A entidade vinculada a **AWS CLI** neste caso era a role de nome `voclabs` que foi criada pelo laboratório. Ainda tinha a opção de utilizar o arquivo par de chaves privada `.pem` e `.ppk` para conectar a instância através da maquina física **Windows**. Esses arquivos podiam ser baixados na página principal do sandbox e configuraria a **AWS CLI** nesta mesma role.
 
-Na segunda tarefa foi construído primeiramente um bucket do **Amazon S3** para armazenar os dados de logs de fluxo da VPC. Em seguida, foi elaborado os logs de fluxo da VPC `VPC1` para capturar informações sobre o tráfego IP entre as interfaces de rede da `VPC1`. Para provisionar o bucket foi utilizado no terminal shell conectado na instância `CLI Host` o comando `aws s3api create-bucket --bucket flowlog598824 --region 'us-west-2' --create-bucket-configuration LocationConstraint='us-west-2'`, substituindo os seis hashs por números aleatórios. A saída em formato JSON, semelhante `http://flowlog598824.s3.amazonaws.com`, mostrava o local de um bucket, onde `flowlog598824` era o nome do bucket criado que seria utilizado na etapa posterior. Se por acaso já existir um bucket do S3 da **AWS** em algum lugar do mundo com esse nome, será preciso colocar um nome diferente. A imagem 108 exibe o bucket provisionado.
+Na segunda tarefa foi construído primeiramente um bucket do **Amazon S3** para armazenar os dados de logs de fluxo da VPC. Em seguida, foi elaborado os logs de fluxo da VPC `VPC1` para capturar informações sobre o tráfego IP entre as interfaces de rede da `VPC1`. Para provisionar o bucket foi utilizado no terminal shell conectado na instância `CLI Host` o comando `aws s3api create-bucket --bucket flowlog598824 --region 'us-west-2' --create-bucket-configuration LocationConstraint='us-west-2'`, substituindo os seis hashs por números aleatórios. A saída em formato JSON, semelhante `http://flowlog598824.s3.amazonaws.com`, mostrava o local de um bucket, onde `flowlog598824` era o nome do bucket criado que seria utilizado na etapa posterior. Se por acaso já existir um bucket do S3 da **AWS** em algum lugar do mundo com esse nome, será preciso colocar um nome diferente. A imagem 120 exibe o bucket provisionado.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img108.png" alt="img108"><br>
-    <figcaption>Imagem 108.</figcaption>
+    <img src="../0-aux/md5-img120.png" alt="img120"><br>
+    <figcaption>Imagem 120.</figcaption>
 </figure></div><br>
 
-Para obter o ID da VPC `VPC1` foi utilizado o comando `aws ec2 describe-vpcs --query "Vpcs[*].[VpcId,Tags[?Key=='Name'].Value,CidrBlock]" --filters "Name=tag:Name,Values='VPC1'"`. Com esse ID e nome do bucket construído, foi criado o log de fluxo da VPC com o comando `aws ec2 create-flow-logs --resource-type VPC --resource-ids vpc-090035f06dcb42976 --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::flowlog598824`. A saída do comando retornou FlowLogIds e um ClientToken. Para confirmar se o log de fluxo foi criado, executou-se o seguinte comando `aws ec2 describe-flow-logs`, conforme imagem 109. A saída do comando mostrou que um único log de fluxo foi criado com um `FlowLogStatus` `ACTIVE` (ATIVO) e um destino de log que apontava para o bucket do S3.
+Para obter o ID da VPC `VPC1` foi utilizado o comando `aws ec2 describe-vpcs --query "Vpcs[*].[VpcId,Tags[?Key=='Name'].Value,CidrBlock]" --filters "Name=tag:Name,Values='VPC1'"`. Com esse ID e nome do bucket construído, foi criado o log de fluxo da VPC com o comando `aws ec2 create-flow-logs --resource-type VPC --resource-ids vpc-090035f06dcb42976 --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::flowlog598824`. A saída do comando retornou FlowLogIds e um ClientToken. Para confirmar se o log de fluxo foi criado, executou-se o seguinte comando `aws ec2 describe-flow-logs`, conforme imagem 121. A saída do comando mostrou que um único log de fluxo foi criado com um `FlowLogStatus` `ACTIVE` (ATIVO) e um destino de log que apontava para o bucket do S3.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img109.png" alt="img109"><br>
-    <figcaption>Imagem 109.</figcaption>
+    <img src="../0-aux/md5-img121.png" alt="img121"><br>
+    <figcaption>Imagem 121.</figcaption>
 </figure></div><br>
 
-A tarefa 3 teve como objetivo solucionar problemas de configuração da VPC para permitir acesso aos recursos. Primeramente, foi verificado o acesso ao servidor web executado em uma outra instância do EC2, que operava na sub-rede pública. Para isso, o IP ou DNS público dessa instância foi copiado e utilizado no navegador da maquina física **Windows**. Como observado, a página não era carregada e uma mensagem indicando que o site não podia ser acessado ou que a conexão expirou foi exibida. No terminal conectado na instância `CLI Host` foi executado o comando `aws ec2 describe-instances --filter "Name=ip-address,Values='54.202.16.100'"` com o IP público do servidor web para visualizar detalhes da instância da aplicação web. Com muitas informações eram exibidas, o mesmo comando foi executado filtrando apenas as informações necessárias (`aws ec2 describe-instances --filter "Name=ip-address,Values='54.202.16.100'" --query 'Reservations[*].Instances[*].[State,PrivateIpAddress,InstanceId,SecurityGroups,SubnetId,KeyName]'`). Este comando retornava apenas o estado da instância, o endereço IP privado, o ID da instância, os grupos de segurança aplicados a ela, a sub-rede na qual ela era executada e o nome do par de chaves associado a ela. Os resultados do comando, apresentados na imagem 110, indicava que a instância estava em execução e retornava informações adicionais que poderiam ser usadas posteriormente. 
+A tarefa 3 teve como objetivo solucionar problemas de configuração da VPC para permitir acesso aos recursos. Primeramente, foi verificado o acesso ao servidor web executado em uma outra instância do EC2, que operava na sub-rede pública. Para isso, o IP ou DNS público dessa instância foi copiado e utilizado no navegador da maquina física **Windows**. Como observado, a página não era carregada e uma mensagem indicando que o site não podia ser acessado ou que a conexão expirou foi exibida. No terminal conectado na instância `CLI Host` foi executado o comando `aws ec2 describe-instances --filter "Name=ip-address,Values='54.202.16.100'"` com o IP público do servidor web para visualizar detalhes da instância da aplicação web. Com muitas informações eram exibidas, o mesmo comando foi executado filtrando apenas as informações necessárias (`aws ec2 describe-instances --filter "Name=ip-address,Values='54.202.16.100'" --query 'Reservations[*].Instances[*].[State,PrivateIpAddress,InstanceId,SecurityGroups,SubnetId,KeyName]'`). Este comando retornava apenas o estado da instância, o endereço IP privado, o ID da instância, os grupos de segurança aplicados a ela, a sub-rede na qual ela era executada e o nome do par de chaves associado a ela. Os resultados do comando, apresentados na imagem 122, indicava que a instância estava em execução e retornava informações adicionais que poderiam ser usadas posteriormente. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img110.png" alt="img110"><br>
-    <figcaption>Imagem 110.</figcaption>
+    <img src="../0-aux/md5-img122.png" alt="img122"><br>
+    <figcaption>Imagem 122.</figcaption>
 </figure></div><br>
 
-Em seguida, foi realizado uma tentativa de estabelecer uma conexão SSH com a instância do servidor web, cuja tag de nome era `Café Web Server`, usando o `EC2 Instance Connect`. Perceba que após alguns segundos a tentativa de conexão falhou e uma mensagem indicando falha ao tentar conectar com a instância foi exibida. A investigação desse problema foi realizado no terminal da instância `CLI Host`. Primeiro foi utilizado o software **Nmap** para verificar quais portas estavam abertas na instância do EC2 do servidor web. Contudo, foi preciso baixar o software com o comando `sudo yum install -y nmap` e depois executar o comando `nmap 54.202.16.100` informando o IP público do servidor web. Se o **Nmap** não puder encontrar portas abertas, pode haver algo mais bloqueando o acesso à instância. A imagem 111 mostra o uso do **Nmap**.
+Em seguida, foi realizado uma tentativa de estabelecer uma conexão SSH com a instância do servidor web, cuja tag de nome era `Café Web Server`, usando o `EC2 Instance Connect`. Perceba que após alguns segundos a tentativa de conexão falhou e uma mensagem indicando falha ao tentar conectar com a instância foi exibida. A investigação desse problema foi realizado no terminal da instância `CLI Host`. Primeiro foi utilizado o software **Nmap** para verificar quais portas estavam abertas na instância do EC2 do servidor web. Contudo, foi preciso baixar o software com o comando `sudo yum install -y nmap` e depois executar o comando `nmap 54.202.16.100` informando o IP público do servidor web. Se o **Nmap** não puder encontrar portas abertas, pode haver algo mais bloqueando o acesso à instância. A imagem 123 mostra o uso do **Nmap**.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img111.png" alt="img111"><br>
-    <figcaption>Imagem 111.</figcaption>
+    <img src="../0-aux/md5-img123.png" alt="img123"><br>
+    <figcaption>Imagem 123.</figcaption>
 </figure></div><br>
 
-Com o comando `aws ec2 describe-security-groups --group-ids 'sg-002984b3594d2d86c'` foi verificado os detalhes do security group que era vinculado a instância. As configurações do grupo de segurança aplicadas à instância do EC2 do servidor web possuía uma regra de entrada que permitia a conectividade com a porta 22. Então foi verificado as configurações da tabela de rota associada à sub-rede em que o servidor web estava em execução, que era a sub-rede pública. Com o comando `aws ec2 describe-route-tables  --route-table-ids 'rtb-061ddb99f1aa68109' --filter "Name=association.subnet-id,Values='subnet-0bd4e59d6b38c8bcf'"` e o ID dessa sub-rede e da sua tabela de rota, foi exibido apenas as informações filtradas dessa tabela de rota. Note que não há uma rota direcionando o tráfego para o *Internet Gateway*, portanto foi preciso criar essa rota utilizando o comando `aws ec2 create-route --route-table-id 'rtb-061ddb99f1aa68109' --gateway-id  'igw-090e52b83dec24305' --destination-cidr-block '0.0.0.0/0'`, substituindo o ID da tabela de rota e do gateway de internet. Este último pôde ser consultado com o comando `aws ec2 describe-internet-gateways` ou através da opção detalhes da página principal do sandbox **Vocareum**, onde tem todos os valores dos recursos utilizados no laboratório. A imagem 112 evidencia estas verificações e correção.
+Com o comando `aws ec2 describe-security-groups --group-ids 'sg-002984b3594d2d86c'` foi verificado os detalhes do security group que era vinculado a instância. As configurações do grupo de segurança aplicadas à instância do EC2 do servidor web possuía uma regra de entrada que permitia a conectividade com a porta 22. Então foi verificado as configurações da tabela de rota associada à sub-rede em que o servidor web estava em execução, que era a sub-rede pública. Com o comando `aws ec2 describe-route-tables  --route-table-ids 'rtb-061ddb99f1aa68109' --filter "Name=association.subnet-id,Values='subnet-0bd4e59d6b38c8bcf'"` e o ID dessa sub-rede e da sua tabela de rota, foi exibido apenas as informações filtradas dessa tabela de rota. Note que não há uma rota direcionando o tráfego para o *Internet Gateway*, portanto foi preciso criar essa rota utilizando o comando `aws ec2 create-route --route-table-id 'rtb-061ddb99f1aa68109' --gateway-id  'igw-090e52b83dec24305' --destination-cidr-block '0.0.0.0/0'`, substituindo o ID da tabela de rota e do gateway de internet. Este último pôde ser consultado com o comando `aws ec2 describe-internet-gateways` ou através da opção detalhes da página principal do sandbox **Vocareum**, onde tem todos os valores dos recursos utilizados no laboratório. A imagem 124 evidencia estas verificações e correção.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img112.png" alt="img112"><br>
-    <figcaption>Imagem 112.</figcaption>
+    <img src="../0-aux/md5-img124.png" alt="img124"><br>
+    <figcaption>Imagem 124.</figcaption>
 </figure></div><br>
 
-Para checar, foi preciso carregar a aba do navegador da maquina física **Windows** que estava aberta na aplicação web. Agora foi possível visualizar a mensagem “Hello From Your Web Server!", significando que o acesso ao servidor web foi realizado com sucesso, conforme imagem 113.
+Para checar, foi preciso carregar a aba do navegador da maquina física **Windows** que estava aberta na aplicação web. Agora foi possível visualizar a mensagem “Hello From Your Web Server!", significando que o acesso ao servidor web foi realizado com sucesso, conforme imagem 125.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img113.png" alt="img113"><br>
-    <figcaption>Imagem 113.</figcaption>
+    <img src="../0-aux/md5-img125.png" alt="img125"><br>
+    <figcaption>Imagem 125.</figcaption>
 </figure></div><br>
 
-Ao resolver o primeiro problema, um segundo problema permanecia. Ao tentar conectar-se a instância do servidor web via `EC2 Instance Connect`, ainda apresentava falha de conexão. No terminal da instância `CLI Host` foi verificado as configurações da lista de controle de acesso de rede (ACL de rede; NACL) que estava associada à sub-rede na qual a instância estava sendo executada, que era a sub-rede pública. Com o comando `aws ec2 describe-network-acls --filter "Name=association.subnet-id,Values='subnet-0bd4e59d6b38c8bcf'" --query 'NetworkAcls[*].[NetworkAclId,Entries]'` e informando o ID da VPC `VPC1` foi visualizado as informações. Alguns registros da NACL estavam causando problemas, mas especificamente a regra de número `40`. Então, com o comando `aws ec2 delete-network-acl-entry --network-acl-id 'acl-00a02118a70a0c151' --ingress --rule-number 40` e informando o ID da NACL foi excluído essa regra. Ao concluir isso, foi realizado uma nova tentativa de conexão à instância `Café Web Server` e dessa vez foi bem sucedida, como mostrado na imagem 114.
+Ao resolver o primeiro problema, um segundo problema permanecia. Ao tentar conectar-se a instância do servidor web via `EC2 Instance Connect`, ainda apresentava falha de conexão. No terminal da instância `CLI Host` foi verificado as configurações da lista de controle de acesso de rede (ACL de rede; NACL) que estava associada à sub-rede na qual a instância estava sendo executada, que era a sub-rede pública. Com o comando `aws ec2 describe-network-acls --filter "Name=association.subnet-id,Values='subnet-0bd4e59d6b38c8bcf'" --query 'NetworkAcls[*].[NetworkAclId,Entries]'` e informando o ID da VPC `VPC1` foi visualizado as informações. Alguns registros da NACL estavam causando problemas, mas especificamente a regra de número `40`. Então, com o comando `aws ec2 delete-network-acl-entry --network-acl-id 'acl-00a02118a70a0c151' --ingress --rule-number 40` e informando o ID da NACL foi excluído essa regra. Ao concluir isso, foi realizado uma nova tentativa de conexão à instância `Café Web Server` e dessa vez foi bem sucedida, como mostrado na imagem 126.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img114.png" alt="img114"><br>
-    <figcaption>Imagem 114.</figcaption>
+    <img src="../0-aux/md5-img126.png" alt="img126"><br>
+    <figcaption>Imagem 126.</figcaption>
 </figure></div><br>
 
-Os dois problemas de rede foram resolvidos e ao fazer isso foram criado alguns registros úteis nos logs de fluxo da VPC que foi provisionado anteriormente. Nesta última tarefa, esses registros foram consultados para observar as atividades que eles capturaram. De volta ao terminal conectado na instância `CLI Host`, foi criado um diretório na pasta do usuário `ec2-user` com o comando `mkdir flowlogs`. Em seguida, essa pasta foi acessada com o comando `cd flowlogs`. Para listar os buckets do S3 foi utilizado o comando `aws s3 ls` e para baixar os logs de fluxo foi utilizado o comando `aws s3 cp s3://flowlog598824/ . --recursive`. Se o comando for bem-sucedido, muitos arquivos serão baixados para um subdiretório semelhante ao seguinte: `AWSLogs/AccountID/vpcflowlogs/us-west-2/yyyy/mm/dd/`. Em seguida, desça na estrutura de pastas até o subdiretório em que os arquivos foram baixados ou execute o comando `cd <AWSLogs/AccountID/vpcflowlogs/us-west-2/yyyy/mm/dd/` para ir direto para o subdiretório. Com o comando `ls` todos os arquivos de logs baixados foram listados. Todos os nomes de arquivos terminam com log.gz, o que indicava que eles estavam compactados como arquivos GNU .zip. Para extrair os logs foi executado o comando `gunzip *.gz` e executado `ls` novamente. A imagem 115 exibe os arquivos extraídos.
+Os dois problemas de rede foram resolvidos e ao fazer isso foram criado alguns registros úteis nos logs de fluxo da VPC que foi provisionado anteriormente. Nesta última tarefa, esses registros foram consultados para observar as atividades que eles capturaram. De volta ao terminal conectado na instância `CLI Host`, foi criado um diretório na pasta do usuário `ec2-user` com o comando `mkdir flowlogs`. Em seguida, essa pasta foi acessada com o comando `cd flowlogs`. Para listar os buckets do S3 foi utilizado o comando `aws s3 ls` e para baixar os logs de fluxo foi utilizado o comando `aws s3 cp s3://flowlog598824/ . --recursive`. Se o comando for bem-sucedido, muitos arquivos serão baixados para um subdiretório semelhante ao seguinte: `AWSLogs/AccountID/vpcflowlogs/us-west-2/yyyy/mm/dd/`. Em seguida, desça na estrutura de pastas até o subdiretório em que os arquivos foram baixados ou execute o comando `cd <AWSLogs/AccountID/vpcflowlogs/us-west-2/yyyy/mm/dd/` para ir direto para o subdiretório. Com o comando `ls` todos os arquivos de logs baixados foram listados. Todos os nomes de arquivos terminam com log.gz, o que indicava que eles estavam compactados como arquivos GNU .zip. Para extrair os logs foi executado o comando `gunzip *.gz` e executado `ls` novamente. A imagem 127 exibe os arquivos extraídos.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img115.png" alt="img115"><br>
-    <figcaption>Imagem 115.</figcaption>
+    <img src="../0-aux/md5-img127.png" alt="img127"><br>
+    <figcaption>Imagem 127.</figcaption>
 </figure></div><br>
 
 A próxima etapa dessa última tarefa foi analisar os logs de fluxo da VPC para verificar se as tentativas de conexão SSH com falha foram capturadas nos logs. Para isso, foi copiado o nome de um dos arquivos extraídos anteriormente e utilizado no comando `head <file name>`. A linha do cabeçalho indica o tipo de dados que cada registro de log continha. Cada registro continha informações, como o endereço IP da origem do evento (na quarta coluna), a porta de destino (sétima coluna), carimbos de data/hora de início e término (no formato de carimbo de data/hora do Unix) e a ação resultante (ACCEPT (Aceitar) ou REJECT (Rejeitar)). Para pesquisar cada arquivo de log no diretório atual e retornar as linhas que continha a palavra REJECT (Rejeitar), foi executado o comando `grep -rn REJECT`. Esse comando retornou um conjunto de dados grande porque incluía todos os eventos em que as configurações da VPC rejeitaram a solicitação. Para saber quantos registros foram retornados, foi executado o comando `grep -rn REJECT . | wc -l`. Os resultados mostram o número de linhas no conjunto de resultados. Para refinar a pesquisa procurando apenas linhas que continham 22 (que era o número da porta em que tentou-se conectar ao servidor web quando o acesso foi bloqueado), foi execute o comando `grep -rn 22 . | grep REJECT`. Esse comando retornou um número menor de resultados. Para isolar o conjunto de resultados para que ele exibisse apenas os registros de log que correspondesse às tentativas de conexão SSH com falha que foi feita, foi filtrado ainda mais os resultados. Lembre-se de que as tentativas malsucedidas de usar SSH para conectar o servidor web foram iniciadas na instância `CLI Host`.
 
-Na etapa seguinte, foi determinado o endereço IP pelo qual a máquina física **Windows** podia ser endereçada pela internet. Para fazer isso foi preciso ir no grupo de segurança vinculado a instância de servidor web e adicionar uma nova regra. Nesta regra, em origem foi selecionado `Meu IP` e esse mesmo endereço de IP foi copiado, ele terminava com `/32`, mas não era preciso copiar essa máscara, apenas o IP. Ao invés de criar de fato a regra, ela foi cancelada, o objetivo foi só obter o endereço de IP da maquina física na internet. Isso poderia ser realizado acessando site on-lines que mostram o IP público da maquina física. De volta ao terminal conectado na instância `CLI Host` foi executado uma consulta refinada nos logs de fluxo com o comando `grep -rn 22 . | grep REJECT | grep <ip-address>45.226.85.120` passando esse endereço de IP copiado. O número de linhas do conjunto de resultados agora deve corresponder ao número de vezes que foi realizado a tentativa malsucedida de conexão SSH a instância do servidor web. Observe que o ID da interface de rede elástica estava em cada um dos registros de log que foram retornados pela consulta. Para confirmar se o ID da interface de rede registrado no log de fluxo corresponde à interface de rede atribuída à instância do servidor web (como parte da interface de rede), foi executado o comando `aws ec2 describe-network-interfaces --filters "Name=association.public-ip,Values='54.202.16.100'" --query 'NetworkInterfaces[*].[NetworkInterfaceId,Association.PublicIp]'`, substituindo o endereço de IP pelo endereço IP da instância de servidor web. Depois, foi convertido os carimbos de data/hora em um formato legível. Observe os dois números grandes que apareceu no final de cada registro de log, antes do termo REJECT (Rejeitar). Esses números eram carimbos de data/hora em formato Unix. O primeiro carimbo de data/hora indica a hora de início de cada evento que foi capturado. O segundo indica a hora de término. É possível convertê-los em um formato legível usando o utilitário date da linha de comando do **Linux**. Por exemplo, se o carimbo de data/hora for 1719960588, seria executado o comando `date -d @1719960588`, conforme imagem 116. 
+Na etapa seguinte, foi determinado o endereço IP pelo qual a máquina física **Windows** podia ser endereçada pela internet. Para fazer isso foi preciso ir no grupo de segurança vinculado a instância de servidor web e adicionar uma nova regra. Nesta regra, em origem foi selecionado `Meu IP` e esse mesmo endereço de IP foi copiado, ele terminava com `/32`, mas não era preciso copiar essa máscara, apenas o IP. Ao invés de criar de fato a regra, ela foi cancelada, o objetivo foi só obter o endereço de IP da maquina física na internet. Isso poderia ser realizado acessando site on-lines que mostram o IP público da maquina física. De volta ao terminal conectado na instância `CLI Host` foi executado uma consulta refinada nos logs de fluxo com o comando `grep -rn 22 . | grep REJECT | grep <ip-address>45.226.85.120` passando esse endereço de IP copiado. O número de linhas do conjunto de resultados agora deve corresponder ao número de vezes que foi realizado a tentativa malsucedida de conexão SSH a instância do servidor web. Observe que o ID da interface de rede elástica estava em cada um dos registros de log que foram retornados pela consulta. Para confirmar se o ID da interface de rede registrado no log de fluxo corresponde à interface de rede atribuída à instância do servidor web (como parte da interface de rede), foi executado o comando `aws ec2 describe-network-interfaces --filters "Name=association.public-ip,Values='54.202.16.100'" --query 'NetworkInterfaces[*].[NetworkInterfaceId,Association.PublicIp]'`, substituindo o endereço de IP pelo endereço IP da instância de servidor web. Depois, foi convertido os carimbos de data/hora em um formato legível. Observe os dois números grandes que apareceu no final de cada registro de log, antes do termo REJECT (Rejeitar). Esses números eram carimbos de data/hora em formato Unix. O primeiro carimbo de data/hora indica a hora de início de cada evento que foi capturado. O segundo indica a hora de término. É possível convertê-los em um formato legível usando o utilitário date da linha de comando do **Linux**. Por exemplo, se o carimbo de data/hora for 1719960588, seria executado o comando `date -d @1719960588`, conforme imagem 128. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img116.png" alt="img116"><br>
-    <figcaption>Imagem 116.</figcaption>
+    <img src="../0-aux/md5-img128.png" alt="img128"><br>
+    <figcaption>Imagem 128.</figcaption>
 </figure></div><br>
 
 Para converter um dos carimbos de data/hora em um formato legível por humanos, foi executado o comando `date -d @` para um dos carimbos de data/hora capturados de um dos resultados filtrados de REJECT (Rejeitar). Ele deve indicar um horário a partir de hoje que corresponda ao momento em que este laboratório estava em execução. Para comparar o resultado com o horário atual, foi executado o comando `date`. O uso de grep é uma maneira excelente, ainda que básica, de extrair dados significativos dos arquivos de log de fluxo da VPC. O mercado oferece muitas ferramentas para executar relatórios ou gerar painéis de analytics usando logs. Uma solução seria usar o serviço **Amazon Athena**. É possível utilizar o Athena para ingerir logs para que eles se tornem dados em uma tabela de banco de dados. Depois, é possível executar consultas SQL para extrair informações significativas dos logs. 
@@ -2046,6 +2103,18 @@ Pode-se utilizar o **Amazon Data Lifecycle Manager (Amazon DLM)** para automatiz
 
 <a name="item5.60"><h4>5.60 Demonstração do Amazon EBS-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta demonstração, o objetivo foi criar uma instância do **Amazon EC2** com um volume de inicialização padrão do **Amazon EBS**, em seguida construir um novo volume do EBS, anexá-lo e montá-lo na instância do EC2 como um dispositivo de "disco rígido", ou melhor, como um dispositivo de armazenamento. Para montar o volume na instância foi preciso acessá-la remotamente. Esse volume tornou-se um volume adicional, pois a instância já tinha sido provisionada com um volume padrão (Root Volume), sendo este, o volume onde o sistema operacional foi instalado. Um arquivo foi criado no volume adicional para realizar o backup desse volume através da criação de snapshots. Então o volume adicional foi removido da instância e um segundo volume adicional foi construído a partir do snapshot e montado na instância para comprovar que o arquivo criado estava presente.
+
+Embora as terminologias "disco" e "disco rígido" referem-se a dispositivos de armazenamento que usam discos magnéticos rotativos, abreviados como HD ou HDD, no contexto do **Amazon EBS**, quando é utilizado o termo "disco rígido", esta sendo referido genericamente à função de armazenamento, que pode ser fornecida por tecnologia HDD ou SSD. Contudo, tecnicamente, um SSD não é um "disco" no sentido físico porque não possui discos rotativos internos, ele é melhor definido como um tipo de armazenamento. Portanto, um termo melhor para definição para HD/HDD e SSD seriam drives de armazenamento.
+
+
+
+
+
+
+
+
+
 criar uma instância do EC2 com um volume do EBS como volume de inicialização (padrão gp2)
 criar um volume do EBS para um disco rígido externo de uma instância do EC2 existente.
     - gp2
@@ -2077,9 +2146,15 @@ conectar a instância linux
     - ls /mt/data-store2/
     - cat /mnt/data-store2/file.txt
 
+
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img117.png" alt="img117"><br>
-    <figcaption>Imagem 117.</figcaption>
+    <img src="../0-aux/md5-img129.png" alt="img129"><br>
+    <figcaption>Imagem 129.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img135.png" alt="img135"><br>
+    <figcaption>Imagem 135.</figcaption>
 </figure></div><br>
 
 <a name="item5.61"><h4>5.61 182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -2190,6 +2265,8 @@ Os principais casos de uso incluem:
 
 <a name="item5.64"><h4>5.64 Demonstração do Elastic File System-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+
+
 - criar duas instância do EC2 em diferentes AZs
 - criar um EFS
     - vpc da instância
@@ -2211,9 +2288,19 @@ Os principais casos de uso incluem:
         - verificar com o comando df -h
 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img131.png" alt="img131"><br>
+    <figcaption>Imagem 131.</figcaption>
+</figure></div><br>
+
+
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img136.png" alt="img136"><br>
+    <figcaption>Imagem 136.</figcaption>
+</figure></div><br>
 
 <a name="item5.65"><h4>5.65 Amazon Glacier</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
-
 
 O **Amazon S3 Glacier** é uma classe de armazenamento segura, durável e extremamente econômica do **Amazon S3**, destinada ao arquivamento de dados e backup de longo prazo. A precificação do **Amazon S3 Glacier** varia conforme a região. Seu design de baixo custo é ideal para arquivamentos de longo prazo, oferecendo durabilidade de 11 9s para objetos. Alguns conceitos são essenciais para entender o **Amazon S3 Glacier**:
 - Arquivo: qualquer objeto (como foto, vídeo, arquivo ou documento) armazenado no **Amazon S3 Glacier**. É a unidade básica de armazenamento. Cada arquivo possui um ID exclusivo e pode ter uma descrição.
@@ -2253,6 +2340,19 @@ Por padrão, apenas o proprietário pode acessar seus dados. É possível habili
 criar um cofre (Vault) no Amazon S3 Glacier
      - região e nome do vault (vaultEDN1)
      - não ativar notificações
+
+
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img137.png" alt="img137"><br>
+    <figcaption>Imagem 137.</figcaption>
+</figure></div><br>
+
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img142.png" alt="img142"><br>
+    <figcaption>Imagem 142.</figcaption>
+</figure></div><br>
 
 
 
@@ -2318,7 +2418,17 @@ Alguns recursos adicionais do S3 incluem:
 <a name="item5.68"><h4>5.68 183- [JAWS] -Laboratório: Gerenciar o armazenamento</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img143.png" alt="img143"><br>
+    <figcaption>Imagem 143.</figcaption>
+</figure></div><br>
 
+
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img153.png" alt="img153"><br>
+    <figcaption>Imagem 153.</figcaption>
+</figure></div><br>
 
 
 
@@ -2358,6 +2468,7 @@ O Storage Gateway suporta três principais casos de uso de nuvem híbrida:
 
 <a name="item5.70"><h4>5.70 184- [JAWS] -Laboratório: [Desafio] Exercício de S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Neste laboratório, realizado no sandbox **Voccareum**, 
 
 
 
@@ -2368,6 +2479,10 @@ O Storage Gateway suporta três principais casos de uso de nuvem híbrida:
 
 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img154.png" alt="img154"><br>
+    <figcaption>Imagem 154.</figcaption>
+</figure></div><br>
 
 
 

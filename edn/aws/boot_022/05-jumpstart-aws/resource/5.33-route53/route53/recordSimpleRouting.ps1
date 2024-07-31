@@ -10,8 +10,8 @@ $hostedZoneName = "pedroheeger.dev.br."
 $domainName = "pedroheeger.dev.br"
 $resourceRecordName = "www.pedroheeger.dev.br"
 $resourceRecordType = "A"
-$ttl = 300
-$tagNameInstance = "ec2Test1"
+$ttl = 15
+$tagNameInstance = "cafeServer1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -24,7 +24,7 @@ if ($resposta.ToLower() -eq 'y') {
         $hostedZoneId = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Id" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o DNS do load balancer $albName"
+        Write-Output "Extraindo o IP público da instância $tagNameInstance"
         $instanceIP = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -78,8 +78,8 @@ $hostedZoneName = "pedroheeger.dev.br."
 $domainName = "pedroheeger.dev.br"
 $resourceRecordName = "www.pedroheeger.dev.br"
 $resourceRecordType = "A"
-$ttl = 300
-$albName = "ec2Test1"
+$ttl = 15
+$albName = "cafeServer1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
@@ -92,7 +92,7 @@ if ($resposta.ToLower() -eq 'y') {
         $hostedZoneId = aws route53 list-hosted-zones --query "HostedZones[?Name=='$hostedZoneName'].Id" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        Write-Output "Extraindo o DNS do load balancer $albName"
+        Write-Output "Extraindo o IP público da instância $tagNameInstance"
         $instanceIP = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"

@@ -12,8 +12,8 @@ $ipAddress = ""
 $portNumber = 80
 $typeProtocol = "HTTP"
 $resourcePath = "/"
-$requestInterval = 30
-$failureThreshold = 3
+$requestInterval = 10
+$failureThreshold = 2
 $tagNameInstance = "cafeServer1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
@@ -61,7 +61,7 @@ Write-Output "HEALTH CHECK EXCLUSION"
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
 $hostedZoneName = "pedroheeger.dev.br."
-$healthCheckName = "healthCheckTest2"
+$healthCheckName = "londres-website-status"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
