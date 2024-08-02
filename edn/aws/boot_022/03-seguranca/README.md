@@ -151,42 +151,39 @@ Por outro lado, as políticas baseadas em recursos são documentos de política 
 
 <a name="item3.5"><h4>3.5 Demonstração do AWS IAM</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
 
+Nesta demonstração, foi construído um usuário do IAM e um grupo de usuários no **AWS IAM**, adicionando este usuário ao grupo. Em seguida, uma política de permissões foi adicionada ao grupo. Assim, o usuário adicionado neste grupo herdava a mesma política. O funcionamento da política foi verificado realizado o acesso a **AWS** com usuário criado e conferindo as permissões que a política concedia. Toda a construção desses recursos na nuvem **AWS** foi realizado através de arquivos de scripts em **PowerShell** executados da máquina física **Windows**. Esses arquivos continham comandos **AWS CLI** que permitia a interação com os serviços da **AWS**. A CLI já estava instalada na máquina física e configurada com o usuário do IAM administrador da minha conta **AWS** (`PedroHeegerAdmin`), portanto ele possuía permissões para criação desses recursos. Cada arquivo em **PowerShell** era formado por dois scripts, um para criação e outro para exclusão dos recursos da nuvem, ambos sempre precedidos de uma estrutura de condição que aguardava uma entrada do usuário para decidir se executava ou não o script.
 
-
-
-
-
-
-
-<a name="item3.6"><h4>3.6 279-[SF]-Lab - Introdução ao gerenciamento de identidade e acesso (IAM)</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
-
-Neste laboratório foi utilizado o serviço **AWS Identity Access Management** para verificar os usuários e grupos já construídos pelo lab, para criar uma política de senha para os usuários, para inserir os usuários aos seus respectivos grupos e posteriormente verificar o acesso de cada usuário aos serviços permitidos e não permitidos. Na primeira tarefa, a política de senha para a conta da **AWS** foi editada, aplicando-se ao usuário raiz da conta, que era um usuário federado, e todos os usuários do IAM desta mesma conta. Essa política de senha possuía um comprimento mínimo para a senha de 10 caracteres, a caixa de expiração da senha requer redefinição do administrador foi desmarcada e todas as outras marcadas, a expiração da senha foi mantida o padrão de 90 dias, e em evitar o reuso de senha foi mantida a opção padrão de 5 senhas. Na imagem 02 abaixo é mostrada a política de senha criada.
+O usuário do IAM de nome `iamUserEdn1` foi criado a partir do arquivo [iamUser.ps1](./resource/iamUser.ps1), cuja senha desse usuário foi definida como `SenhaTest123`, indicando que o password deveria ser resetado ao realizar o login. Apesar dessa indicação no comando, era necessário adicionar a política de permissões gerenciada da **AWS** de nome `IAMUserChangePassword` ao usuário, para que ele conseguisse realizar a alteração de senha. Uma tag de nome para este usuário foi gerada cujo valor dela foi `Demo Account`. A política de permissão `IAMUserChangePassword` foi adicionada ao usuário através do arquivo [iamUserPolicy.ps1](./resource/iamUserPolicy.ps1). A imagem 02 exibe o usuário do IAM construído com a devida política.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-Na tarefa 2, o objetivo foi investigar detalhadamente os usuários e grupos do IAM criados pelo laboratório, analisando as políticas atreladas a esses usuários e grupos. Os usuários criados foram: `user-1`, `user-2` e `user-3`. Todos esses não tinham nenhuma política anexada e não faziam parte de nenhum grupo. Os grupos construídos foram: `EC2-Admin`, `EC2-Support` e `S3-Support`, que possuíam as respectivas políticas, `EC2-Admin-Policy`, `AmazonEC2ReadOnlyAccess` e `AmazonS3ReadOnlyAccess`. A primeira política era uma política customer inline (incorporada ao cliente), que é uma política atribuída a apenas um usuário ou grupo e é normalmente usada para aplicar permissões em situações pontuais. Esta permitia execução dos recursos do **Amazon Elastic Compute Cloud (Amazon EC)**. Já as outras duas eram políticas gerenciadas que permitiam apenas leitura dos recursos dos serviços **Amazon EC2** e **Amazon Simple Storage Service (Amazon S3)**. Nesta tarefa, essas políticas foram analisadas para verificar suas permissões e estrutura do JSON. As imagens 03 e 04 a seguir mostram a lista de usuários e grupos, respectivamente.
+A etapa seguinte foi criar um grupo de usuário do IAM, adicionar este usuário ao grupo e vincular políticas de permissões ao grupo. O grupo de usuário foi construído com o arquivo [iamGroup.ps1](./resource/iamGroup.ps1), definindo o nome do grupo como `iamGroupEdn1`. Em seguida, com o arquivo [iamGroupPolicy.ps1](./resource/iamGroupPolicy.ps1), a política de permissões gerenciada pela **AWS** de nome `AmazonS3FullAccess` foi adicionada ao grupo de usuários. Essa política concedia acesso total ao serviço **Amazon S3**. Após isso, o usuário criado foi adicionado ao grupo com o arquivo [iamUserGroup.ps1], herdando então a política de permissão do grupo. A imagem 03 mostra o grupo com o usuário adicionado e as políticas que este usuário possuía, que no caso eram duas, uma a política de alteração de senha e a outra a herdada pelo grupo.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img03.png" alt="img03"><br>
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
+Para comprovar que estava tudo funcionando, um novo acesso foi realizado no console da **AWS**, mas agora autenticando com as credenciais do usuário do IAM criado. Para logar com um usuário do IAM era necessário o ID da conta da **AWS** ao qual esse usuário pertencia. Durante o processo de autenticação foi solicitado a alteração de senha conforme política aplicada diretamente ao usuário. Após o login, o serviço do **Amazon S3** foi aberto, nenhuma mensagem de erro de permissões foi exibida, e foram listados os buckets existentes, que neste caso não havia nenhum. Então foi criado um bucket qualquer pelo próprio console para que ele fosse listado, conforme mostrado na imagem 04.
+
 <div align="Center"><figure>
     <img src="../0-aux/md3-img04.png" alt="img04"><br>
     <figcaption>Imagem 04.</figcaption>
 </figure></div><br>
 
-Na terceira tarefa, os usuários foram adicionados aos seus respectivos grupos de usuários. Então o `user-1` foi adicionado ao grupo `S3-Support`, o `user-2` ao grupo `EC2-Support` e o `user-3` ao grupo `EC2-Admin`. A imagem 05 evidencia os grupos cada um com um usuário.
+<a name="item3.6"><h4>3.6 279-[SF]-Lab - Introdução ao gerenciamento de identidade e acesso (IAM)</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
+
+Neste laboratório foi utilizado o serviço **AWS Identity Access Management** para verificar os usuários e grupos já construídos pelo lab, para criar uma política de senha para os usuários, para inserir os usuários aos seus respectivos grupos e posteriormente verificar o acesso de cada usuário aos serviços permitidos e não permitidos. Na primeira tarefa, a política de senha para a conta da **AWS** foi editada, aplicando-se ao usuário raiz da conta, que era um usuário federado, e todos os usuários do IAM desta mesma conta. Essa política de senha possuía um comprimento mínimo para a senha de 10 caracteres, a caixa de expiração da senha requer redefinição do administrador foi desmarcada e todas as outras marcadas, a expiração da senha foi mantida o padrão de 90 dias, e em evitar o reuso de senha foi mantida a opção padrão de 5 senhas. Na imagem 05 abaixo é mostrada a política de senha criada.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img05.png" alt="img05"><br>
     <figcaption>Imagem 05.</figcaption>
 </figure></div><br>
 
-Por fim, nesta última tarefa, foi acessado a conta de cada usuário do IAM através do link de login ou informando o ID do usuário raiz da conta. Em seguida, o nome do usuário do IAM e a senha de acesso desse usuário deveria ser informada. A senha de acesso de cada usuário foi fornecida pela plataforma do bootcamp, pois neste laboratório os usuários ja haviam sido criados. Esse procedimento foi feito em uma janela anônima do navegador, pois a janela normal já estava logada no usuário raiz da conta da **AWS** pela sandbox **Vocareum**. O primeiro acesso foi realizado com o usuário `user-1`, que possuía acesso de leitura ao serviço S3 e não possuía acesso ao serviço EC2, conforme apresentado nas imagens 06 e 07.
+Na tarefa 2, o objetivo foi investigar detalhadamente os usuários e grupos do IAM criados pelo laboratório, analisando as políticas atreladas a esses usuários e grupos. Os usuários criados foram: `user-1`, `user-2` e `user-3`. Todos esses não tinham nenhuma política anexada e não faziam parte de nenhum grupo. Os grupos construídos foram: `EC2-Admin`, `EC2-Support` e `S3-Support`, que possuíam as respectivas políticas, `EC2-Admin-Policy`, `AmazonEC2ReadOnlyAccess` e `AmazonS3ReadOnlyAccess`. A primeira política era uma política customer inline (incorporada ao cliente), que é uma política atribuída a apenas um usuário ou grupo e é normalmente usada para aplicar permissões em situações pontuais. Esta permitia execução dos recursos do **Amazon Elastic Compute Cloud (Amazon EC)**. Já as outras duas eram políticas gerenciadas que permitiam apenas leitura dos recursos dos serviços **Amazon EC2** e **Amazon Simple Storage Service (Amazon S3)**. Nesta tarefa, essas políticas foram analisadas para verificar suas permissões e estrutura do JSON. As imagens 06 e 07 a seguir mostram a lista de usuários e grupos, respectivamente.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img06.png" alt="img06"><br>
@@ -198,28 +195,47 @@ Por fim, nesta última tarefa, foi acessado a conta de cada usuário do IAM atra
     <figcaption>Imagem 07.</figcaption>
 </figure></div><br>
 
-Acessando com o `user-2`, o mesmo procedimento foi executado, porém este possuía acesso de leitura ao serviço EC2 e não possuía acesso ao serviço S3. As imagens 08 e 09 ilustram essa etapa. Neste caso, apesar de visualizar a instância do EC2, não foi possível interrompe-la, pois a permissão era de apenas leitura.
+Na terceira tarefa, os usuários foram adicionados aos seus respectivos grupos de usuários. Então o `user-1` foi adicionado ao grupo `S3-Support`, o `user-2` ao grupo `EC2-Support` e o `user-3` ao grupo `EC2-Admin`. A imagem 08 evidencia os grupos cada um com um usuário.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img08.png" alt="img08"><br>
     <figcaption>Imagem 08.</figcaption>
 </figure></div><br>
 
+Por fim, nesta última tarefa, foi acessado a conta de cada usuário do IAM através do link de login ou informando o ID do usuário raiz da conta. Em seguida, o nome do usuário do IAM e a senha de acesso desse usuário deveria ser informada. A senha de acesso de cada usuário foi fornecida pela plataforma do bootcamp, pois neste laboratório os usuários ja haviam sido criados. Esse procedimento foi feito em uma janela anônima do navegador, pois a janela normal já estava logada no usuário raiz da conta da **AWS** pela sandbox **Vocareum**. O primeiro acesso foi realizado com o usuário `user-1`, que possuía acesso de leitura ao serviço S3 e não possuía acesso ao serviço EC2, conforme apresentado nas imagens 09 e 10.
+
 <div align="Center"><figure>
     <img src="../0-aux/md3-img09.png" alt="img09"><br>
     <figcaption>Imagem 09.</figcaption>
 </figure></div><br>
-
-Já com o `user-3`, este possuía permissão de execução do EC2 e não possuía acesso ao S3, conforme evidenciado nas imagens 10 e 11. Aqui foi possível interromper a instâncias, pois havia permissão de execução.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img10.png" alt="img10"><br>
     <figcaption>Imagem 10.</figcaption>
 </figure></div><br>
 
+Acessando com o `user-2`, o mesmo procedimento foi executado, porém este possuía acesso de leitura ao serviço EC2 e não possuía acesso ao serviço S3. As imagens 11 e 12 ilustram essa etapa. Neste caso, apesar de visualizar a instância do EC2, não foi possível interrompe-la, pois a permissão era de apenas leitura.
+
 <div align="Center"><figure>
     <img src="../0-aux/md3-img11.png" alt="img11"><br>
     <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+Já com o `user-3`, este possuía permissão de execução do EC2 e não possuía acesso ao S3, conforme evidenciado nas imagens 13 e 14. Aqui foi possível interromper a instâncias, pois havia permissão de execução.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
 </figure></div><br>
 
 <a name="item3.8"><h4>3.8 AWS Cloudtrail</h4></a>[Back to summary](#item3) | <a href="">Certificate</a>
