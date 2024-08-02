@@ -1145,7 +1145,7 @@ Antes criar os dois novos registros foi preciso definir um health check (verific
     <figcaption>Imagem 62.</figcaption>
 </figure></div><br>
 
-O health check ao ser provisionado, ele cria automaticamente duas métricas no **Amazon CloudWatch** no namespace padrão da **AWS**, que no caso para o serviço Route 53 era o `AWS/Route53`. Uma dessas métricas é o `HealthCheckStatus` que verifica o status do health check em um período determinado, sendo o período padrão do CloudWatch de 60 segundos. A partir disso, o CloudWatch monta um gráfico e monitora essa métrica. Com essa métrica, um alarme de métrica poderia ser construído para quando acionado realizasse alguma ação. A ação que ele executaria neste caso, seria o envio de uma notificação aos assinantes de um tópico do **Amazon SNS**. Portanto, antes de criar o alarme de métrica, foi preciso elaborar um tópico do SNS e adicionar um assinante. O tópico do SNS foi criado com o arquivo [snsTopic.ps1](./resource/5.33-route53/sns/snsTopic.ps1), cujo nome do tópico foi `websitedown` e o display name foi `websitedown info`. Já o assinante foi adicionado com o arquivo [snsSubscribe.ps1](./resource/5.33-route53/sns/snsSubscribe.ps1), indicando o nome do tópico, o protocolo que foi `email` e um email como endpoint de notificação, que no caso, foi meu email para estudos no **Proton** (`phcstudy@proton.me`). Neste arquivo, ao adicionar um assinante, o código ficava em execução até que a confirmação fosse realizada. Neste caso, como o protocolo foi email, um email inicial foi enviado solicitando que o cliente desse email subscrevesse, conforme mostrado na imagem 63. A imagem 64 evidencia a criação do tópico com um assinante já confirmado.
+O health check ao ser provisionado, ele cria automaticamente duas métricas no **Amazon CloudWatch** no namespace padrão da **AWS**, que no caso para o serviço Route 53 era o `AWS/Route53`. Uma dessas métricas é o `HealthCheckStatus` que verifica o status do health check em um período determinado, sendo o período padrão do CloudWatch de 60 segundos. A partir disso, o CloudWatch monta um gráfico e monitora essa métrica. Com essa métrica, um alarme de métrica poderia ser construído para quando acionado realizasse alguma ação. A ação que ele executaria neste caso, seria o envio de uma notificação aos assinantes de um tópico do **Amazon SNS**. Portanto, antes de criar o alarme de métrica, foi preciso elaborar um tópico do SNS e adicionar um assinante. O tópico do SNS foi criado com o arquivo [snsTopic.ps1](./resource/5.33-route53/sns/snsTopic.ps1), cujo nome do tópico foi `websitedown` e o display name foi `websitedown info`. Já o assinante foi adicionado com o arquivo [snsSubscribe.ps1](./resource/5.33-route53/sns/snsSubscribe.ps1), indicando o nome do tópico, o protocolo que foi `email` e um email como endpoint de notificação, que no caso, foi meu email para estudos no **Proton Mail** (`phcstudy@proton.me`). Neste arquivo, ao adicionar um assinante, o código ficava em execução até que a confirmação fosse realizada. Neste caso, como o protocolo foi email, um email inicial foi enviado solicitando que o cliente desse email subscrevesse, conforme mostrado na imagem 63. A imagem 64 evidencia a criação do tópico com um assinante já confirmado.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img63.png" alt="img63"><br>
@@ -2105,67 +2105,86 @@ Pode-se utilizar o **Amazon Data Lifecycle Manager (Amazon DLM)** para automatiz
 
 Nesta demonstração, o objetivo foi criar uma instância do **Amazon EC2** com um volume de inicialização padrão do **Amazon EBS**, em seguida construir um novo volume do EBS, anexá-lo e montá-lo na instância do EC2 como um dispositivo de "disco rígido", ou melhor, como um dispositivo de armazenamento. Para montar o volume na instância foi preciso acessá-la remotamente. Esse volume tornou-se um volume adicional, pois a instância já tinha sido provisionada com um volume padrão (Root Volume), sendo este, o volume onde o sistema operacional foi instalado. Um arquivo foi criado no volume adicional para realizar o backup desse volume através da criação de snapshots. Então o volume adicional foi removido da instância e um segundo volume adicional foi construído a partir do snapshot e montado na instância para comprovar que o arquivo criado estava presente.
 
-Embora as terminologias "disco" e "disco rígido" referem-se a dispositivos de armazenamento que usam discos magnéticos rotativos, abreviados como HD ou HDD, no contexto do **Amazon EBS**, quando é utilizado o termo "disco rígido", esta sendo referido genericamente à função de armazenamento, que pode ser fornecida por tecnologia HDD ou SSD. Contudo, tecnicamente, um SSD não é um "disco" no sentido físico porque não possui discos rotativos internos, ele é melhor definido como um tipo de armazenamento. Portanto, um termo melhor para definição para HD/HDD e SSD seriam drives de armazenamento.
+Embora as terminologias "disco" e "disco rígido" refiram-se a dispositivos de armazenamento que usam discos magnéticos rotativos, abreviados como HD ou HDD, no contexto do **Amazon EBS**, quando é utilizado o termo "disco rígido", esta sendo referido genericamente à função de armazenamento, que pode ser fornecida por tecnologia HDD ou SSD. Contudo, tecnicamente, um SSD não é um "disco" no sentido físico porque não possui discos rotativos internos, ele é melhor definido como um tipo de armazenamento. Portanto, um termo melhor para definição para HD/HDD e SSD seriam drives de armazenamento.
 
+As execuções dessa demonstração foram realizadas através de arquivos de script **PowerShell** da máquina física **Windows** com comandos **AWS CLI**. A **AWS CLI** já tinha sido instalada na máquina física e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`). Cada arquivo possuía dois scripts, um para criação e outro para exclusão de algum recurso ou serviço na nuvem, sempre precedidos de uma estrutura de condição que aguardava uma entrada do usuário para determinar se executava ou não o script.
 
-
-
-
-
-
-
-
-criar uma instância do EC2 com um volume do EBS como volume de inicialização (padrão gp2)
-criar um volume do EBS para um disco rígido externo de uma instância do EC2 existente.
-    - gp2
-    - 10 GiB
-    - IOPS 100/3000
-    - AZ da instância
-    - tag: Nome - EBSVolEDN1
-anexar o volume do EBS a instância e determinar o nome do device (/dev/sdf)
-conectar a instância linux
-    - df -h: listar todos os volumes
-    - sudo mkfs -t ext3 /dev/sdf : criando um sistema de arquivos no device do volume do EBS e nomeando de ext3
-    - sudo mkdir /mnt/data-store : criar o diretorio para deifnir o local para montar o volume específico.
-    - sudo mount /dev/sdf /mnt/data-store : montando o volume
-    - df -h
-criar um snapshot do volume do EBS:
-    - volume, descrição ("EBS2"), tag (Nome - EBS2)
-criar um novo volume com o snapshot
-    - gp2
-    - 15 GiB
-    - IOPS 100/3000
-    - AZ da instância
-    - tag: Nome - EBSRestVolEDN1
-anexar o novo volume a instância e determinar o nome do device (/dev/sdg)
-conectar a instância linux
-    - lsblk : mostra todos os volumes
-    - df -h
-    - sudo resize2fs /dev/nvme2n1 : redimensiona a usabilidade real desse volume específico para o tamanho correspondete
-    - df -h
-    - ls /mt/data-store2/
-    - cat /mnt/data-store2/file.txt
-
+O primeiro arquivo executado foi [ec2Instance.ps1](./resource/5.60-ebs/ec2Instance.ps1) que provisionava uma instância do **Amazon EC2**, cuja a tag de nome dela era `ec2TestEdn1`. Essa instância possuía a imagem de máquina `ami-0c7217cdde317cfec` (Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07), ou seja, era um **Linux** **Ubuntu**. O tipo da instância foi definido como `t2.micro` e o par de chaves `keyPairUniversal` foi passado. Esse par de chaves é um par de chaves padrão da minha conta da **AWS** para uso em atividades de estudo que já tinha sido criado anteriormente. Um arquivo de user data também foi indicado para que algumas instalações fossem feitas na instância, porém essa configuração não era necessária. Com relação as configurações de rede, a instância foi provisionada na sub-rede pública localizada na zona de disponibilidade `us-east-1a` da VPC padrão dessa região que era Norte Virginia. O grupo de segurança utilizado foi o padrão dessa mesma VPC, sendo necessário configurar uma regra de entrada liberando a porta `22` do protocolo `TCP` para o IP utilizado pela máquina física (`My IP`) para permitir acesso remoto por conexões **SSH**. Outras abordagens de acesso remoto seria utilizar o recurso `EC2 Instance Connect` ou o *Session Manager* do **AWS SSM**. Caso queira entender mais sobre acesso remoto confira o curso [curso_092](https://github.com/PedroHeeger/course/tree/main/aws_skill_builder/aws/curso_092). Nas configurações de volume, um volume padrão de inicialização foi criado no **Amazon EBS**, cujo nome do dispositivo era `/dev/sda1` com `8` GiB do tipo `gp2` (Uso geral). Esse volume era onde o sistema operacional da instância era instalado. A imagem 129 exibe a instância do **Amazon EC2** provisionada com um volume padrão do EBS.
 
 <div align="Center"><figure>
     <img src="../0-aux/md5-img129.png" alt="img129"><br>
     <figcaption>Imagem 129.</figcaption>
 </figure></div><br>
 
+Após isso, com o arquivo [volumeEBS.ps1](./resource/5.60-ebs/volumeEBS.ps1) foi construído o primeiro volume adicional do **Amazon EBS**, cuja tag de nome era `volumeEBSTestEdn1`. Este volume foi do tipo `gp2` (Uso geral) com `10` GiB de armazenamento. Para que este volume fosse anexado a instância, ele tinha que ser criado na mesma AZ da instância, que era `us-east-1a`. A imagem 130 exibe todos os dois volumes do EBS, o volume padrão já utilizado na instância e o volume adicional.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img130.png" alt="img130"><br>
+    <figcaption>Imagem 130.</figcaption>
+</figure></div><br>
+
+O próximo passo foi anexar esse volume a instância do EC2 e isso foi feito com o arquivo [attachVolEBS.ps1](./resource/5.60-ebs/attachVolEBS.ps1). Neste arquivo era indicado a tag de nome da instância `ec2TestEdn1`, a tag de nome do volume adicional `volumeEBSTestEdn1` e o nome do dispositivo que foi definido como `/dev/sdf`. A imagem 131 mostra que o volume adicional foi anexado a instância. Contudo, ele ainda precisava ser montado dentro dela.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img131.png" alt="img131"><br>
+    <figcaption>Imagem 131.</figcaption>
+</figure></div><br>
+
+Para realizar a montagem do dispositivo de armazenamento na instância, um acesso remoto precisou ser feito. Para isso, foi utilizado o software **OpenSSH** executado no **PowerShell** da máquina física, passando o caminho para o arquivo de chave privada no formato `.pem`, o usuário que iria ser autenticado que era o usuário padrão do **Ubuntu** (`ubuntu`) e o IP ou DNS público da instância do EC2. Com o comando `ssh -i "G:\Meu Drive\4_PROJ\scripts\scripts_model\.default\secrets\awsKeyPair\keyPairUniversal.pem" ubuntu@34.229.139.43` foi realizado o acesso remoto. 
+
+Dentro da instância foi executado o comando `df -h` para exibir informações sobre o uso do espaço em disco dos sistemas de arquivos montados de forma legível para humanos. Nesse momemnto, o volume anexado ainda não aparecia, pois ele precisava ser montado na instância como um sistema de arquivos. Acontece que o volume padrão do EBS que foi provisionado com a instância também não aparecia. Para investigar isso, foi executado o comando `lsblk` que exibia informações sobre todos os dispositivos de bloco disponíveis no sistema. Dispositivos de bloco são dispositivos que lêem e escrevem dados em blocos, como discos rígidos, SSDs e partições. Assim, foi possível identificar dois dispositivos, o `xvda` dividido em três (`xvda1`, `xvda14` e `xvda15`), e o `xvdf`, exatamente com 10 GiB como tinha sido definido. Como a instância era um **Linux** **Ubuntu**, a nomeclatura utilizada para os dispositivos era `xvd`, portanto `xvda1` significava o mesmo que `sda1` e `xvdf` o mesmo que `sdf`. Logo, para trabalhar com o volume adicional do EBS, cujo dispositivo era `/dev/sdf`, na instância tinha que ser utilizado `/dev/xvdf`. Ao analisar novamente o output do comando `df -h` percebia-se que o dispositivo `/dev/xvda15` aparecia e esse era uma subdivisão do dispositivo `/dev/xvda` que era o volume padrão do EBS. O dispositivo que não aparecia era o do volume adicional do EBS. Logo, ele precisva ser montando na instância como um sistema de arquivos. A imagem 132 mostra a execução desses comandos.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img132.png" alt="img132"><br>
+    <figcaption>Imagem 132.</figcaption>
+</figure></div><br>
+
+O comando `sudo mkfs -t ext3 /dev/xvdf` foi executado para formatar o dispositivo de nome `/dev/xvdf`, que era o volume adicional do EBS, como um sistema de arquivos do tipo `ext3`. O Third Extended File System (ext3), ou Terceiro Sistema de Arquivos Estendido, é um sistema de arquivos de journaling usado principalmente no sistema operacional **Linux**. Ele é a evolução do Second Extended File System (ext2), ou Segundo Sistema de Arquivos Estendido, adicionando suporte para journaling, o que melhora a confiabilidade e a recuperação em caso de falhas.
+
+Todo sistema de arquivos (File System) precisa estar vinculado a um diretório para que os arquivos e diretórios dentro dele possam ser acessados. Esse processo é conhecido como "montagem" do sistema de arquivos. Portanto, foi executado o comando `sudo mkdir /mnt/data-store` para criar o diretório `data-store` dentro de `/mnt` que é a pasta usada como um diretório de montagem temporário no sistema de arquivos **Unix** e **Linux**. Em seguida, com o comando `sudo mount /dev/xvdf /mnt/data-store`, o dispositivo de armazenamento `/dev/xvdf`, que era o volume adicional do EBS, foi montado no diretório criado. Ao executar novamente `df -h`, os sistemas de arquivos eram listados, sendo que agora existia o sistema de arquivos do volume adicional do EBS. A imagem 133 mostra as execuções dos comandos para montagem do volume do EBS, indicando o ponto de montagem como `/mnt/data-store`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img133.png" alt="img133"><br>
+    <figcaption>Imagem 133.</figcaption>
+</figure></div><br>
+
+Ainda no terminal da instância, a pasta corrente foi alterada para o diretório desse novo sistema de arquivos com o comando `cd /mnt/data-store`. Nela, um arquivo de teste foi criado com o comando `echo "Esta é uma frase de teste." | sudo tee teste.txt > /dev/null` e com o comando `ls` foi verificado que esse arquivo existia na pasta. Como a pasta `data-store` era referente ao novo sistema de arquivos montado, que era o volume do EBS, tudo salvo dentro dessa pasta estaria salvo no volume do EBS. Para verificar essa situação, um snapshot do primeiro volume adicional do **Amazon EBS** foi criado pelo arquivo [snapshotEBS.ps1](./resource/5.60-ebs/snapshotEBS.ps1). Foi necessário informar a tag de nome do volume (`volumeEBSTestEnd1`), uma tag de nome para o snapshot que estava sendo construído (`snapshotEBSTestEdn1`), além de uma descrição para esse snapshot (`Snapshot Description Test Edn 1`). A imagem 134 exibe o snapshot criado a partir do primeiro volume adicional do EBS.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img134.png" alt="img134"><br>
+    <figcaption>Imagem 134.</figcaption>
+</figure></div><br>
+
+A etapa seguinte consistiu em provisionar um segundo volume adicional do EBS, porém este seria criado a partir do snapshot construído do primeiro volume adicional. Dessa forma, o arquivo `teste.txt` elaborado no primeiro volume deveria existir no segundo volume. Para criar o segundo volume do EBS, foi utilizado o mesmo arquivo do primeiro [volumeEBS](./resource/5.60-ebs/volumeEBS.ps1). A diferença é que a parte comentada criava um volume a partir do snapshot, portanto ela foi descomentada e a parte que criava o volume sem snapshot foi comentada. O tamanho de armazenamento também foi alterado de `10` GiB para `15` e a tag de nome modificada para `volumeEBSTestEdn2`. A imagem 135 exibe todos os três volumes do EBS provisionados, porém o último volume criado ainda não estava anexado a instância. Então o arquivo [attachVolEBS.ps1](./resource/5.60-ebs/attachVolEBS.ps1) foi executado novamente agora para anexar o segundo volume adicional do EBS a instância do EC2, cujo nome do dispositivo foi `/dev/xvdg`, ou seja, o mesmo padrão de nome de dispositivo utilizado pelo **Linux**.
+
 <div align="Center"><figure>
     <img src="../0-aux/md5-img135.png" alt="img135"><br>
     <figcaption>Imagem 135.</figcaption>
+</figure></div><br>
+
+Caso a conexão remota tivesse sido fechada, era necessário abrí-la novamente, pois este novo dispositivo precisva ser montado como um sistema de arquivos na instância. Porém, não era preciso formatá-lo como um sistema de arquivos do tipo `ext3`, pois este segundo volume já possuía um sistema de arquivos herdado do snapshot do primeiro volume. Neste caso, com os comandos `df -h` e `lsblk` foi verificado que o dispositivo de nome `/dev/xvdg`, apesar de já está formatado como sistema de arquivos, ainda não estava montado. Então, com o comando `sudo mkdir /mnt/data-store2` foi criada o diretório de montagem para esse dispositivo. Em seguida, o dispositivo foi montado com o comando `sudo mount /dev/xvdg /mnt/data-store2`, indicando o nome do dispositivo referente ao segundo volume adicional do EBS e o diretório de ponto de montagem, que foi a pasta construída `data-store2`. Dessa forma, com o comando `ls /mnt/data-store2`, o arquivo `teste.txt`, criado na pasta `data-store1`, tinha que estar presente, pois o segundo volume foi criado a partir do snapshot do primeiro volume. A imagem 136 evidencia isso.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img136.png" alt="img136"><br>
+    <figcaption>Imagem 136.</figcaption>
+</figure></div><br>
+
+Com o comando `cat /mnt/data-store2/teste.txt` foi visualizado o conteúdo do arquivo. Apesar do sistema de arquivos já estar criado, devido a esse backup, foi preciso estender a partição do sistema de arquivos para utilizar todo tamanho do volume do EBS, que agora era de 15 GiB e não 10 como era antes. Isso foi realizado executando o comando `sudo resize2fs /dev/xvdg` que redimensionava o tamanho do dispositivo para o correspondente. A imagem 137 exibe esses últimos comandos executados.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img137.png" alt="img137"><br>
+    <figcaption>Imagem 137.</figcaption>
 </figure></div><br>
 
 <a name="item5.61"><h4>5.61 182- [JAWS] -Laboratório: Trabalhar com o Amazon EBS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
 Nesta laboratório, desenvolvido no sandbox **Vocareum**, o objetivo foi construir um volume do **Amazon EBS**, anexá-lo em uma instância do **Amazon EC2** e formatá-lo dentro da instância configurando um sistema de arquivo. Também foi realizado um snapshot desse volume que foi utilizado para construir outro volume para a mesma instância. O snapshot funcionou como backup, onde o arquivo removido após o snapshot foi recuperado ao criar o novo volume a partir desse snapshot
 
-A primeira tarefa foi criar o volume do EBS na mesma zona de disponibilidade da instância do EC2 cuja tag de nome era `Lab`. Essa instância foi provisionada pelo **AWS CloudFormation** ao iniciar o laboratório. A zona de disponibilidade utilizada era `us-west-2a`. Um volume padrão de inicilização do EBS tinha sido construído juntamente com a instância e estava anexada à ela. O novo volume do EBS criado foi do tipo `gp2`, que é um volume SSD para uso geral, o tamanho dele foi de `1` GiB e a zona de disponibilidade foi a mesma da instância `Lab`, `us-west-2a`. A imagem 124 ilustra esse volume do EBS provisionado.
+A primeira tarefa foi criar o volume do EBS na mesma zona de disponibilidade da instância do EC2 cuja tag de nome era `Lab`. Essa instância foi provisionada pelo **AWS CloudFormation** ao iniciar o laboratório. A zona de disponibilidade utilizada era `us-west-2a`. Um volume padrão de inicilização do EBS tinha sido construído juntamente com a instância e estava anexada à ela. O novo volume do EBS criado foi do tipo `gp2`, que é um volume SSD para uso geral, o tamanho dele foi de `1` GiB e a zona de disponibilidade foi a mesma da instância `Lab`, `us-west-2a`. A imagem 138 ilustra esse volume do EBS provisionado.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img124.png" alt="img124"><br>
-    <figcaption>Imagem 124.</figcaption>
+    <img src="../0-aux/md5-img138.png" alt="img138"><br>
+    <figcaption>Imagem 138.</figcaption>
 </figure></div><br>
 
 Na tarefa 2 foi anexado este volume a instância do EC2 `Lab`. Quando um volume EBS é anexado a uma instância EC2, ele é representado no sistema operacional da instância como um device. Esses devices são pontos de acesso que o sistema operacional usa para se comunicar com o hardware de armazenamento. A nomenclatura dos devices segue uma convenção que pode variar, mas aqui estão alguns exemplos comuns:
@@ -2173,52 +2192,52 @@ Na tarefa 2 foi anexado este volume a instância do EC2 `Lab`. Quando um volume 
 - /dev/xvdX: No contexto da AWS, a nomenclatura padrão mudou para 'xvd', que significa "Xen Virtual Disk" (Disco Virtual Xen), que é uma tecnologia de virtualização usada pela AWS. Exemplo: /dev/xvda, /dev/xvdb, etc.
 - /dev/nvmeXnY: Para instâncias com armazenamento NVMe, onde X e Y são números.
 
-Neste caso, o nome do dispositivo foi escolhido a opção `/dev/sdf`. A imagem 125 mostra esse novo volume anexado a instância do **Amazon EC2**.
+Neste caso, o nome do dispositivo foi escolhido a opção `/dev/sdf`. A imagem 139 mostra esse novo volume anexado a instância do **Amazon EC2**.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img125.png" alt="img125"><br>
-    <figcaption>Imagem 125.</figcaption>
+    <img src="../0-aux/md5-img139.png" alt="img139"><br>
+    <figcaption>Imagem 139.</figcaption>
 </figure></div><br>
 
 O objeitvo da terceira tarefa foi realizar um acesso remoto a instância do EC2 através do recurso `EC2 Instance Connect`, já que não tinha um par de chaves para autenticar o acesso. Como isso foi realizado direto pelo console, a autenticação ao usuário `ec2-user` era feita pela própria **AWS**.
 
-Na tarefa 4, utilizando o terminal aberto conectado a instância por esse acesso remoto foi configurado o sistema de arquivos `ext3` para esse novo volume do EBS no ponto de montagem `/mnt/data-store`. Com o comando `df -h` foram listados todos os armazenamentos disponíveis na instância do EC2. Perceba que o novo volume `/dev/sdf` ainda não aparecia, pois não havia sido configurado. Com o comando `sudo mkfs -t ext3 /dev/sdf` o sistema de arquivos `ext3` foi construído para este novo volume. Isso preparava o volume EBS para armazenar dados de maneira organizada, utilizando um sistema de arquivos específico. Com o comando `sudo mkdir /mnt/data-store`, o diretório `/mnt/data-store` foi criado como ponto de montagem para montar o novo volume de armazenamento. Isso tornava o volume acessível em uma pasta (diretório) específica na instância EC2. O novo volume foi montado com o comando `sudo mount /dev/sdf /mnt/data-store` e o comando `echo "/dev/sdf   /mnt/data-store ext3 defaults,noatime 1 2" | sudo tee -a /etc/fstab` garantia que o volume fosse montado mesmo depois que a instância fosse reiniciada. A imagem 126 evidencia essas etapas.
+Na tarefa 4, utilizando o terminal aberto conectado a instância por esse acesso remoto foi configurado o sistema de arquivos `ext3` para esse novo volume do EBS no ponto de montagem `/mnt/data-store`. Com o comando `df -h` foram listados todos os armazenamentos disponíveis na instância do EC2. Perceba que o novo volume `/dev/sdf` ainda não aparecia, pois não havia sido configurado. Com o comando `sudo mkfs -t ext3 /dev/sdf` o sistema de arquivos `ext3` foi construído para este novo volume. Isso preparava o volume EBS para armazenar dados de maneira organizada, utilizando um sistema de arquivos específico. Com o comando `sudo mkdir /mnt/data-store`, o diretório `/mnt/data-store` foi criado como ponto de montagem para montar o novo volume de armazenamento. Isso tornava o volume acessível em uma pasta (diretório) específica na instância EC2. O novo volume foi montado com o comando `sudo mount /dev/sdf /mnt/data-store` e o comando `echo "/dev/sdf   /mnt/data-store ext3 defaults,noatime 1 2" | sudo tee -a /etc/fstab` garantia que o volume fosse montado mesmo depois que a instância fosse reiniciada. A imagem 140 evidencia essas etapas.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img126.png" alt="img126"><br>
-    <figcaption>Imagem 126.</figcaption>
+    <img src="../0-aux/md5-img140.png" alt="img140"><br>
+    <figcaption>Imagem 140.</figcaption>
 </figure></div><br>
 
 Observando na imagem anterior foi notado que quando os armazenamentos disponíveis na instância eram listados, o volume inicial do EBS que foi criado juntamente com o provisionamento da instância do EC2, a nomeclatura dele não era `/dev/xvda` como estava configurado no EBS, na verdade era `/dev/nvme0n1p1`. Isso se repetiu para os dois volumes construídos nesse laboratório, cujos nomes dos dispositivos eram `/dev/sdf` e `/dev/sdg`, mas quando listados tinham os seguintes nomes `/dev/nvme1n1` e `/dev/nvme2n1`. Isso ocorreu porque em instâncias EC2 mais recentes, especialmente aquelas que usam a tecnologia NVMe (Non-Volatile Memory Express), os dispositivos de armazenamento são mapeados para nomes de dispositivos NVMe como `/dev/nvmeXnY` em vez dos nomes tradicionais `/dev/sdX` ou `/dev/xvdX`. Então ao mencionar o dispositivo de armazenamento `/dev/sdf` nos comandos, seria mapeado para o dispositivo `/dev/nvme1n1`.
 
-Para visualizar o arquivo de configuração e ver a configuração na última linha, foi executado o comando `cat /etc/fstab`. Novamente com o comando `df -h` todos os armazenamentos disponíveis na instância eram listados e agora era possível ver o novo volume do EBS `/dev/sdf` (`/dev/nvme1n1`) montado no diretório `/mnt/data-store`. Com o comando `sudo sh -c "echo some text has been written > /mnt/data-store/file.txt"`, um arquivo de texto foi criado com apenas uma linha escrita e foi armazenado neste novo volume. Para confirmar se o texto foi gravado no volume, foi execute `cat /mnt/data-store/file.txt`. A imagem 127 exibe o resultado desses comandos.
+Para visualizar o arquivo de configuração e ver a configuração na última linha, foi executado o comando `cat /etc/fstab`. Novamente com o comando `df -h` todos os armazenamentos disponíveis na instância eram listados e agora era possível ver o novo volume do EBS `/dev/sdf` (`/dev/nvme1n1`) montado no diretório `/mnt/data-store`. Com o comando `sudo sh -c "echo some text has been written > /mnt/data-store/file.txt"`, um arquivo de texto foi criado com apenas uma linha escrita e foi armazenado neste novo volume. Para confirmar se o texto foi gravado no volume, foi execute `cat /mnt/data-store/file.txt`. A imagem 141 exibe o resultado desses comandos.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img127.png" alt="img127"><br>
-    <figcaption>Imagem 127.</figcaption>
+    <img src="../0-aux/md5-img141.png" alt="img141"><br>
+    <figcaption>Imagem 141.</figcaption>
 </figure></div><br>
 
-A quinta tarefa criou um snapshot desse volume que seria restaurado na tarefa seguinte. Lembre que neste momento o volume possuía o arquivo `file.txt` elaborado. Ao criar o snapshot deste volume, uma tag, cuja chave foi `Name` e o valor foi `My Snapshot`, foi adicionada. O status do snapshot ficou pendente até ser concluído. Somente os blocos de armazenamento usados eram copiados para os snapshots, portanto, os blocos vazios não ocupavam espaço de armazenamento do snapshot. A imagem 128 mostra o snapshot criado.
+A quinta tarefa criou um snapshot desse volume que seria restaurado na tarefa seguinte. Lembre que neste momento o volume possuía o arquivo `file.txt` elaborado. Ao criar o snapshot deste volume, uma tag, cuja chave foi `Name` e o valor foi `My Snapshot`, foi adicionada. O status do snapshot ficou pendente até ser concluído. Somente os blocos de armazenamento usados eram copiados para os snapshots, portanto, os blocos vazios não ocupavam espaço de armazenamento do snapshot. A imagem 142 mostra o snapshot criado.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img128.png" alt="img128"><br>
-    <figcaption>Imagem 128.</figcaption>
+    <img src="../0-aux/md5-img142.png" alt="img142"><br>
+    <figcaption>Imagem 142.</figcaption>
 </figure></div><br>
 
 De volta a janela do terminal que acessava a instância do EC2, o arquivo `file.txt` elaborado no diretório do volume `/mnt/data-store` foi excluído com o comando `sudo rm /mnt/data-store/file.txt`. Pode ser que seja necessário conectar novamente à instância. Com o comando `ls /mnt/data-store/file.txt` foi confirmado se o arquivo tinha sido excluído.
 
-Na sexta e última tarefa deste laboratório, o objetivo foi restaurar o snapshot criado recuperando o arquivo removido. Para isso era necessário criar um novo volume com esse snapshot. A zona de disponibilidade foi a mesma utilizada, `us-west-2a`, pois tinha que ser a mesma que a instância estava. Uma tag foi adicionada cuja chave foi `Name` e o valor foi `Restored Volume`. Em seguida, este volume foi anexado a instância do EC2. Neste momento a instância possuía três volumes anexados a ela, o primeiro que já veio configurado ao provisionar a instância, o segundo e o terceiro foram volumes criado durante este laboratório, sendo o terceiro construído a partir do snapshot tirado do segundo. O nome do dispositivo foi mantido `sdg` que foi o sugerido. A imagem 129 evidencia este terceiro volume criado.
+Na sexta e última tarefa deste laboratório, o objetivo foi restaurar o snapshot criado recuperando o arquivo removido. Para isso era necessário criar um novo volume com esse snapshot. A zona de disponibilidade foi a mesma utilizada, `us-west-2a`, pois tinha que ser a mesma que a instância estava. Uma tag foi adicionada cuja chave foi `Name` e o valor foi `Restored Volume`. Em seguida, este volume foi anexado a instância do EC2. Neste momento a instância possuía três volumes anexados a ela, o primeiro que já veio configurado ao provisionar a instância, o segundo e o terceiro foram volumes criado durante este laboratório, sendo o terceiro construído a partir do snapshot tirado do segundo. O nome do dispositivo foi mantido `sdg` que foi o sugerido. A imagem 143 evidencia este terceiro volume criado.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img129.png" alt="img129"><br>
-    <figcaption>Imagem 129.</figcaption>
+    <img src="../0-aux/md5-img143.png" alt="img143"><br>
+    <figcaption>Imagem 143.</figcaption>
 </figure></div><br>
 
-A etapa final foi configurar o volume dentro da instância do EC2 exatamente como foi feito para o segundo volume. No terminal conectado à instância foi executado o comando `sudo mkdir /mnt/data-store2` para criar o diretório de ponto de montagem deste volume de backup. Para montar o volume foi utilizado o comando `sudo mount /dev/sdg /mnt/data-store2`. Não foi preciso criar um sistema de arquivos, pois como era um snapshot do segundo volume, isso já veio configurado neste. Então com o comando `ls /mnt/data-store2/file.txt` foi confirmado a existência do arquivo que tinha sido removido, conforme apresentado na imagem 130.
+A etapa final foi configurar o volume dentro da instância do EC2 exatamente como foi feito para o segundo volume. No terminal conectado à instância foi executado o comando `sudo mkdir /mnt/data-store2` para criar o diretório de ponto de montagem deste volume de backup. Para montar o volume foi utilizado o comando `sudo mount /dev/sdg /mnt/data-store2`. Não foi preciso criar um sistema de arquivos, pois como era um snapshot do segundo volume, isso já veio configurado neste. Então com o comando `ls /mnt/data-store2/file.txt` foi confirmado a existência do arquivo que tinha sido removido, conforme apresentado na imagem 144.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img130.png" alt="img130"><br>
-    <figcaption>Imagem 130.</figcaption>
+    <img src="../0-aux/md5-img144.png" alt="img144"><br>
+    <figcaption>Imagem 144.</figcaption>
 </figure></div><br>
 
 <a name="item5.62"><h4>5.62 O armazenamento de instâncias do EC2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -2265,39 +2284,48 @@ Os principais casos de uso incluem:
 
 <a name="item5.64"><h4>5.64 Demonstração do Elastic File System-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Nesta demonstração, foi provisionado um sistema de arquivos de rede (network file system) no serviço **Amazon Elastic File System (Amazon EFS)** construíndo nele dois pontos de montagem (mount target), cada um em uma zona de disponibilidade diferente (AZ). Em seguida, duas instâncias **Amazon Linux** do **Amazon EC2** foram provisionadas e acessadas remotamente por conexões **SSH** para realizar a montagem do sistema de arquivos. Após a montagem, as duas instâncias poderiam compartilhar arquivos através desse file system criado. A realização dessa atividade usou arquivos de scripts em **PowerShell** com comandos **AWS CLI** executados pela máquina física **Windows**. Cada arquivo possuía dois scripts, sendo um para criação e outro para exclusão de recursos na nuvem da **AWS**, sempre precedidos de uma estrutura de condição que aguardava uma entrada do usuário para executar o bloco de código. A **AWS CLI** já estava instalada na máquina física e configurada com o usuário administrador da minha conta da **AWS** (`PedroHeegerAdmin`).
 
-
-- criar duas instância do EC2 em diferentes AZs
-- criar um EFS
-    - vpc da instância
-    - criar o mount targets (Destinos de montagem)
-        - 2 Azs diferentes cada uma com uma sub-rede pública com o mesmo sg
-        - criar uma tag de nome Demo EFS
-        - escolher o modo de desempenho como General Purpose (default)
-        - Não habilitar criptografia
-    - aguardar o mount targets serem criados (life cycle state como Available)
-- selecionar o as instruções de montagem do Amazon EC2 (Amazon EC2 mount instructions)
-    - isso abre uma lista de itens diferentes que precisa ser verificado antes de montar o sistema de EFS em uma instância do EC2
-        - criar um sg para as duas instâncias e para o sistema de arquivos do EFS, para as instâncias do EC2 acessarem o sistema de arquivos do EFS e vice-versa
-            - criar regra de entrada permitindo tráfego de 2049 para o outro sg referente
-    - realizar um acesso remoto SSH na instância do EC2
-        - verificar se todos os utilitários do NFS foram instalados (sudo yum istall -y nfs-utils ou sudo apt-get install nfs-common)
-    - montar o sistema de arquivos:
-        - criar o diretório de montagem (sudo mkdir /mnt/efs)
-        - montar o sistema de arquivos usando o nome de DNS (sudo mount -t nfs4 - nfsvers=4.1,resize=1048576,wsize=1048576,hard,timeo=600,retrans=2 dns name /mnt/efs)
-        - verificar com o comando df -h
-
+O primeiro arquivo executado foi o [efsFileSystem.ps1](./resource/5.64-efs/efsFileSystem.ps1) que provisionou um sistema de arquivos no serviço **Amazon EFS**. Este sistema de arquivos teve a tag de nome igual a `fsEFSEdn1`, o token de identificação foi `fsTokenEFSEdn1`, o modo de desempenho foi `generalPurpose` e modo de taxa de transferência foi `bursting`. O `bursting` fornece taxa de transferência que se adapta à quantidade de armazenamento para cargas de trabalho com requisitos básicos de desempenho. O tipo de sistema de arquivos foi definido como regional, logo o parâmetro `--availability-zone-name` foi omitido do comando. A criptografia não foi habilitada. A imagem 145 exibe o sistema de arquivos de rede criado.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img131.png" alt="img131"><br>
-    <figcaption>Imagem 131.</figcaption>
+    <img src="../0-aux/md5-img145.png" alt="img145"><br>
+    <figcaption>Imagem 145.</figcaption>
 </figure></div><br>
 
-
+Após a criação do sistema de arquivos, um security group foi desenvolvido para os pontos de montagem do sistema de arquivos que seriam criados. Este foi provisionado pelo arquivo [vpcSg.ps1](./resource/5.64-efs/vpcSg.ps1). O nome do security group foi definido como `sgEfsEdn1` e uma tag de nome cujo valor foi igual foi criada. Este grupo de segurança foi vinculado a VPC padrão da região `us-east-1` (Norte Virginia) e teve a seguinte descrição `Security Group EFS Edn1`. As instâncias do **Amazon EC2** teriam como grupo de segurança o padrão da região (`default`). Logo, uma regra de entrada nos dois grupos de segurança tiveram que ser criadas liberando a porta `2049` do protocolo `TCP`, porta utilizada pelo Network File System (NFS), permitindo o acesso do outro grupo. Assim, a comunicação era estabelecida entre as instâncias e o sistema de arquivos. As regras foram criadas com o arquivo [vpcSgRuleSg.ps1] sendo executado duas vezes, modificando a ordem dos grupos. A imagem 146 mostra os dois security groups com a regra de entrada elaborada, sendo um apontando para o outro. Também foi elaborada uma outra regra de entrada no security group padrão da região, permitindo acesso pela porta `22` do protocolo `TCP` para o IP `0.0.0.0/0`, para que fosse possível realizar o acesso remoto nas duas instâncias para montagem do sistema de arquivos dentro dela.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img136.png" alt="img136"><br>
-    <figcaption>Imagem 136.</figcaption>
+    <img src="../0-aux/md5-img146.png" alt="img146"><br>
+    <figcaption>Imagem 146.</figcaption>
+</figure></div><br>
+
+Na sequência, dois pontos de montagem foram construídos no file system, cada um em uma AZ diferente. Portanto, o arquivo [efsMountTagert.ps1](./resource/5.64-efs/efsMountTarget.ps1) foi executado duas vezes, sendo na primeira vez com a sub-rede pública da zona de disponibilidade igual a `us-east-1a` e na segunda igual a `us-east-1b`, ambas as sub-redes na mesma região (`us-west-1` (Norte Virginia)). A tag de nome do sistema de arquivo foi indicada e o grupo de segurança criado também foi indicado (`sgEfsEdn1`). A imagem 147 exibe os dois pontos de montagem elaborados no sistema de arquivos `fsEFSEdn1`.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img147.png" alt="img147"><br>
+    <figcaption>Imagem 147.</figcaption>
+</figure></div><br>
+
+Com o arquivo [ec2DoubleInstance.ps1](./resource/5.64-efs/ec2DoubleInstance.ps1) duas instâncias do **Amazon EC2** eram provisionadas, cujas tags de nome eram `ec2TestEdn1` e `ec2TestEdn2`. As sub-redes dessas duas instâncias estavam localizadas em diferentes AZs (`us-east-1a` e `us-east-1b`), mas as duas poderiam estar na mesma sub-rede. A imagem de máquina (AMI) utilizada foi `ami-0195204d5dce06d99` (Amazon Linux 2 Kernel 5.10 AMI 2.0.20240620.0 x86_64 HVM gp2) e o tipo da instância `t2.micro`. O par de chaves `keyPairUniversal` foi indicado, sendo este um par de chaves universal já criado e sempre utilizado nos meus projetos de estudo. Um arquivo de user data simples foi passado, mas este não teve relevância. O grupo de segurança vinculado as instâncias foi o padrão da região `us-east-1` (Norte Virginia) que já tinha a regra de entrada para conexão NFS. Por fim, um volume padrão de inicialização do **Amazon EBS** foi configurado, cuja nome do dispositivo foi `/dev/xvda`, o tamanho foi `8` GiB e o tipo `gp2` (Uso geral). A imagem 148 evidência as duas instâncias provisionadas.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img148.png" alt="img148"><br>
+    <figcaption>Imagem 148.</figcaption>
+</figure></div><br>
+
+Agora foi necessário configurar o file system do **Amazon EFS** dentro das instâncias como um sistema de arquivos. Portanto, o mesmo processo foi realizado nas duas instâncias. Um acesso remoto foi realizado, poderia ser executado com o **OpenSSH** ou **PuTTY** pela máquina física, mas foi optado por realizá-lo pelo recurso `EC2 Instance Connect`. Nos terminais aberto, foi executado o comando `sudo yum install -y nfs-utils` para que fosse instalado o software **NFS**. Em seguida, o diretório de ponto de montagem foi criado com o comando `sudo mkdir /mnt/efs`. Com o comando `sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 fs-0f76f6e0635d98b82.efs.us-east-1.amazonaws.com:/ /mnt/efs` foi montado o file system como sistema de arquivos nas instâncias. Neste comando, foi indicado o DNS do file system do EFS e a pasta de ponto de montagem como `efs`, dentro do diretório `/mnt` que é onde fica armazenado os pontos de montagem em uma máquina **Linux**. Com o comando `df -h`, que significa disk free, foram exibidas, em formato legível para humanos, todas as informações sobre o uso do sistema de arquivos e a quantidade de espaço disponível em disco na máquina. A imagem 149 ilustra a montagem do sistema de arquivos nas instâncias do EC2.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img149.png" alt="img149"><br>
+    <figcaption>Imagem 149.</figcaption>
+</figure></div><br>
+
+Com todas as configurações concluídas, foi o momento de testar se o file system estava funcionando. Então os comandos `sudo sh -c "echo Arquivo de Teste 1 > /mnt/efs/file1.txt"` e `sudo sh -c "echo Arquivo de Teste 2 > /mnt/efs/file2.txt"` foram executados em suas respectivas instâncias. Estes comandos criavam arquivos de teste no file system construído do EFS, se tudo estivesse correto, esses arquivos seriam compartilhado entre as instâncias. Portanto, para verificar isso foi executado o comando `ls /mnt/efs` nas duas instâncias. Com os comandos `cat /mnt/efs/file2.txt` e `cat /mnt/efs/file1.txt`, o conteúdo do arquivo construído na outra instância foi exibido na instância atual. A imagem 150 evidência o processo executado com sucesso.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img150.png" alt="img150"><br>
+    <figcaption>Imagem 150.</figcaption>
 </figure></div><br>
 
 <a name="item5.65"><h4>5.65 Amazon Glacier</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
@@ -2337,24 +2365,14 @@ Por padrão, apenas o proprietário pode acessar seus dados. É possível habili
 
 <a name="item5.66"><h4>5.66 Demonstração do S3 Glacier-2</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-criar um cofre (Vault) no Amazon S3 Glacier
-     - região e nome do vault (vaultEDN1)
-     - não ativar notificações
+Esta demonstração foi bem simples, com intuito apenas de mostrar como criar um cofre (vault) no **Amazon S3 Glacier** e deletá-lo. Nenhum arquivo foi adicionado ao vault. Este processo foi realizado através de um arquivo de script em **PowerShell** com comandos **AWS CLI** executado na máquina física **Windows**. A **AWS CLI** já estava instalada na máquina e configurada com o usuário do IAM administrador da minha conta da **AWS** (`PedroHeegerAdmin`). O arquivo possuía dois scripts, um para criação do vault e outro para exclusão, ambos precedidos de uma estrutura de condição que aguardava uma entrada do usuário para decidir se executava ou não o bloco de código.
 
-
+O cofre foi criado com o arquivo [glacierVault.ps1](./resource/5.66-glacier/glacierVault.ps1), cujo nome dele foi `vaultEdn1`. A conta e a região utilizada pelo vault foram as mesmas configuradas previamente na **AWS CLI** desta máquina. A imagem 151 ilustra a construção do cofre.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img137.png" alt="img137"><br>
-    <figcaption>Imagem 137.</figcaption>
+    <img src="../0-aux/md5-img151.png" alt="img151"><br>
+    <figcaption>Imagem 151.</figcaption>
 </figure></div><br>
-
-
-<div align="Center"><figure>
-    <img src="../0-aux/md5-img142.png" alt="img142"><br>
-    <figcaption>Imagem 142.</figcaption>
-</figure></div><br>
-
-
 
 <a name="item5.67"><h4>5.67 Amazon S3 e a CLI da AWS</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
@@ -2419,15 +2437,15 @@ Alguns recursos adicionais do S3 incluem:
 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img143.png" alt="img143"><br>
-    <figcaption>Imagem 143.</figcaption>
+    <img src="../0-aux/md5-img152.png" alt="img152"><br>
+    <figcaption>Imagem 152.</figcaption>
 </figure></div><br>
 
 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img153.png" alt="img153"><br>
-    <figcaption>Imagem 153.</figcaption>
+    <img src="../0-aux/md5-img160.png" alt="img160"><br>
+    <figcaption>Imagem 160.</figcaption>
 </figure></div><br>
 
 
@@ -2468,35 +2486,163 @@ O Storage Gateway suporta três principais casos de uso de nuvem híbrida:
 
 <a name="item5.70"><h4>5.70 184- [JAWS] -Laboratório: [Desafio] Exercício de S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
-Neste laboratório, realizado no sandbox **Voccareum**, 
+Neste laboratório de desafio, realizado no sandbox **Voccareum**, foi provisionado um bucket do **Amazon Simple Storage Service (Amazon S3)** e criado objetos através de uploads de arquivos, configurando as permissões necessárias para tornar os objetos acessíveis ao público por meio de um navegador. Todo desenvolvimento foi executado através da **AWS CLI** que foi configurada em uma instância do **Amazon EC2** que tinha sido provisionada automaticamente ao iniciar o laboratório por uma pilha do **AWS CloudFormation**.
 
+A primeira tarefa deste laboratório exigiu que fosse realizado um acesso remoto à instância do **Amazon EC2**, cuja tag de nome era `CLI Host`. Foi utilizado o recurso `EC2 Instance Connect` para acessar remotamente a instância, mas o mesmo poderia ser realizado da máquina física **Windows** através de softwares como **OpenSSH** e **PuTTY**. O arquivo de chave privada do par de chaves `vockey` que a instância utilizava, era disponibilizado na opção de detalhes na página inicial desse sandbox. Após acessar remotamente a instância, na tarefa 2, foi necessário configurar **AWS CLI** com usuário ou função do **AWS IAM** para que a CLI pudesse ser utilizada nesta máquina virtual. Por padrão, em instâncias **Amazon Linux**, a **AWS CLI** já vem instalada, sendo necessário apenas configurá-la. Isso foi realizado executando o comando `aws configure` e passando as credenciais e configurações necessárias. As credenciais também eram obtidas na opção de detalhes do **Voccareum**. Já a região foi definida como `us-west-2` (Oregon) e o formato de saída dos dados como `json`. Dessa forma, a **AWS CLI** desta instância foi configurada com o usuário do IAM `awsstudent` criado automaticamente pelo CloudFormation ao iniciar o laboratório.
 
-
-
-
-
-
-
-
+Com a **AWS CLI** configurada, a terceira tarefa foi iniciada, que era a execução de comandos para construir toda infraestrutura. Primeiro, o bucket foi criado com o comando `aws s3api create-bucket --bucket bucket-edn-5988 --create-bucket-configuration LocationConstraint=us-west-2`. Quando um bucket é provisionado em uma região que não é a padrão, no caso, `us-east-1` (Norte Virginia), é necessário informar a restrição de localização (LocationConstraint) que é a região onde o bucket deve ser criado. Em seguida, com o comando `aws s3api put-object --bucket bucket-edn-5988 --key cafe-cookies --body "/home/ec2-user/sysops-activity-files/images/Cookies.png" --storage-class STANDARD --content-type image/png`, um objeto cuja chave de identificação era `cafe-cookies` foi criado, enviando a imagem de cookies de uma aplicação que estava armazenada na instância no diretório `sysops-activity-files`. A classe de armazenamento do **Amazon S3** foi definida como Standard e o tipo de conteúdo foi indicado que era uma imagem PNG. A imagem 161 mostra bucket provisionado com o objeto já criado.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md5-img154.png" alt="img154"><br>
-    <figcaption>Imagem 154.</figcaption>
+    <img src="../0-aux/md5-img161.png" alt="img161"><br>
+    <figcaption>Imagem 161.</figcaption>
 </figure></div><br>
 
+Para tornar apenas o objeto público e não o bucket inteiro, algumas ações tiveram que ser realizadas. Primeiro era preciso alterar a lista de controle de acesso (ACL) do objeto, alterando a permissão de Object da entidade `everyone`, que significa acesso público, que não tinha nenhuma permissão, para permissão de leitura (Read). Acontece que, para alterar uma ACL, seja ela do objeto ou de um bucket, é necessário modificar duas configurações antes. A primeira delas, é modificar a proprieade do objeto (*Object Ownership*), que por padrão vem definido como `BucketOwnerEenforced` (Proprietário do bucket aplicado), para `BucketOwnerPreferred` (Proprietário do bucket preferencial). Isso porque no `BucketOwnerEenforced`, as ACLs são desabilitadas. Com o comando `aws s3api put-bucket-ownership-controls --bucket bucket-edn-5988 --ownership-controls="Rules=[{ObjectOwnership=BucketOwnerPreferred}]"` esta ação foi executada. Já a segunda ação eram modificar três configurações do recurso *Block Public Access* (Bloqueio de acesso público) que eram: `BlockPublicAcls`, `IgnorePublicAcls` e `RestrictPublicBuckets`, a configuração `IgnorePublicAcls` era relativo ao recurso *Bucket Policy*. Todas essas configurações, por padrão ficam ativas, impedindo o acesso público. De forma resumida, a `BlockPublicAcls` determina se a ACL, tanto do bucket como do objeto, podem ser alteradas, a `IgnorePublicAcls` determina se deve considerar permissões que concedem acesso público na ACL, e a `RestrictPublicBuckets` garante que apenas contas que tenham permissões explícitas possam acessar o bucket. Com o comando `aws s3api put-public-access-block --bucket bucket-edn-5988 --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=true,RestrictPublicBuckets=false"`, todas as três configurações necessárias foram desativas. Talvez a versão da CLI instalada na instância não permita executar esses comandos, então isso foi realizado pelo console da **AWS**. Após essas etapas, com o comando `aws s3api put-object-acl --bucket bucket-edn-5988 --key cafe-cookies --acl public-read` a permissão de leitura (Read) foi concedida a entidade `everyone` para objetos na ACL de objetos. As imagens 162 e 163 exibem as configurações realizadas para permitir o acesso público apenas do objeto. Já a imagem 164 mostra a imagem sendo acessada pelo navegador da máquina física **Windows** através da URL do objeto que é gerada.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img162.png" alt="img162"><br>
+    <figcaption>Imagem 162.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img163.png" alt="img163"><br>
+    <figcaption>Imagem 163.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img164.png" alt="img164"><br>
+    <figcaption>Imagem 164.</figcaption>
+</figure></div><br>
 
 <a name="item5.71"><h4>5.71 185- [JAWS] -Atividade: Trabalhar com o Amazon S3</h4></a>[Back to summary](#item5) | <a href="">Certificate</a>
 
+Neste laboratório, desenvolvido no sandbox **Voccareum**, foi provisionado um bucket do **Amazon S3** para compartilhar imagens com um usuário externo em uma empresa de mídia fictícia que foi contratada para fornecer imagens dos produtos vendidos por uma cafeteria hipotética. Este bucket foi configurado para enviar automaticamente uma notificação por e-mail ao administrador quando o conteúdo do bucket fosse modificado. Um usuário do **AWS Identity and Access Management (AWS IAM)** chamado `mediacouser`, que representava o usuário externo da empresa de mídia fictícia, foi criado previamente com as permissões corretas do **Amazon S3** para permitir que o usuário adicionasse, alterasse ou excluísse imagens do bucket. As permissões necessárias do **Amazon S3** foram revistas para cada usuário a fim de garantir que o acesso ao bucket fosse seguro e apropriado para cada perfil.  
 
+As seguintes etapas descrevem o fluxo da arquitetura construída: Quando novas imagens de produtos estão disponíveis ou quando as existentes precisam ser atualizadas, um representante da empresa de mídia faz login no Console de Gerenciamento da **AWS** como usuário do IAM `mediacouser` para fazer upload, alterar ou excluir o conteúdo do bucket. Como alternativa, o `mediacouser` pode usar a **AWS Command Line Interface (AWS CLI)** para alterar o conteúdo do bucket do S3. Quando o **Amazon S3** detecta uma alteração no conteúdo do bucket, ele publica uma notificação por e-mail no tópico `s3NotificationTopic` do **Amazon Simple Notification Service (Amazon SNS)**. O administrador inscrito no tópico `s3NotificationTopic` do SNS recebe uma mensagem de e-mail que contém os detalhes das alterações no conteúdo do bucket.
 
+Na primeira tarefa deste laboratório, o objetivo foi se conectar na instância do EC2 `CLI Host` através do recurso *EC2 Instance Connect* e configurar o **AWS CLI**, que já vinha instalado nessa instância, pois era um **Amazon Linux**. A instância `CLI Host` foi provisionada pelo **AWS CloudFormation** ao iniciar o laboratório. O usuário utilizado para se conectar a instância foi o `ec2-user` que é o usuário padrão das instâncias **Amazon Linux**. A autenticação do usuário era realizada automaticamente pelo console da **AWS**, sem a necessidade de informar um arquivo de chave privada. Contudo, essa instância era configurada com o par de chaves `vockey` que poderia ser utilizado para acessá-la via softwares como **OpenSSH** e **PuTTY** da máquina física **Windows**. O arquivo de chave privada necessária para essa conexão era disposto na opção detalhes da página inicial do sandbox. Nesta opção também estavam as informações necessárias para configurar a CLI da **AWS** instalada na instância com um usuário do **AWS IAM** `mediacouser`. Essas informações foram inseridas após executar o comando `aws configure`. A região e o formato de saída dos dados foram respectivamente `us-west-2` (Oregon) e `json`.
 
+Com a CLI configurada com usuário `mediacouser`, usuário criado e configurado com as permissões necessárias pelo CloudFormation ao iniciar o laboratório, foi iniciada a tarefa de número 2. Nesta tarefa, um bucket foi provisionado e objetos foram criados nesse bucket a partir de arquivos enviados da instância do EC2. Com o comando `aws s3 mb s3://cafe-5988 --region 'us-west-2'` o bucket de nome `cafe-5988` foi provisionado. Em seguida, com o comando `aws s3 sync ~/initial-images/ s3://cafe-5988/images`, as imagens armazenadas na pasta `initial-images` da instância foram sincronizadas no bucket criando o prefixo `/images`, onde essas imagens foram armazenadas como objetos. Já com o comando `aws s3 ls s3://cafe-5988/images/ --human-readable --summarize`, os arquivos armazenados no prefixo `images` desse bucket foram listados de forma legível para humanos. A imagem 165 mostra o output dos comandos executados na CLI da instância.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img165.png" alt="img165"><br>
+    <figcaption>Imagem 165.</figcaption>
+</figure></div><br>
 
+Na terceira tarefa, nas duas primeiras etapas, o objetivo consistiu em verificar as políticas de permissões atribuídas ao grupo de usuário do IAM `mediaco` e ao usuário do IAM `mediacouser`, ambos elaborados automaticamente pelo CloudFormation ao iniciar o laboratório. No grupo `mediaco`, a política `IAMUserChangePassword` era gerenciada da **AWS** que permitia aos usuários alterarem a própria senha. Já a política `mediaCoPolicy` estabelecia algumas permissões. A primeira permissão, identificada pelo nome da chave Sid `AllowGroupToSeeBucketListInTheConsole`, definia permissões para que os usuários desse grupo usassem o console do **Amazon S3** para visualizar a lista de buckets do S3 na conta. A segunda permissão, identificada pelo nome de chave Sid `AllowRootLevelListingOfTheBucket`, definia as permissões que possibilitavam que os usuários usassem o console do **Amazon S3** para visualizar a lista de objetos de primeiro nível no bucket cafe e outros objetos no bucket. A terceira permissão, identificada pelo nome de chave Sid `AllowUserSpecificActionsOnlyInTheSpecificPrefix`, definia as permissões que especificavam as ações que o usuário podia executar nos objetos da pasta `cafe-5988/images/*`. As operações principais eram GetObject, PutObject e DeleteObject, que correspondem às permissões de leitura, gravação e exclusão. Duas operações adicionais estavam incluídas para eventuais ações relacionadas à versão (GetObjectVersion e DeleteObjectVersion). O usuário `mediacouser` fazia parte desse grupo, logo, ele herdava as mesmas políticas de permissão. A imagem 166 exibe as permissões do grupo de usuário do IAM `mediaco` e do usuário do IAM `mediacouser`.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img166.png" alt="img166"><br>
+    <figcaption>Imagem 166.</figcaption>
+</figure></div><br>
 
+Na etapa 3 dessa tarefa, o objetivo foi testar as permissões que o usuário `mediacouser` possuía. Para isso, foi necessário fazer o login no **AWS Console Management** com usuário `mediacouser`, mas preservado o acesso já realizado pelo usuário federado. Dessa forma, foi preciso abrir uma guia anônima do navegador e inserir o link de login do console já com ID preenchido. Caso não tenha o ID da conta da **AWS** preechindo, ele pode ser copiado da sessão atual e informado no campo determinado. Em seguida, foi inserido o nome do usuário, que no caso era o `mediacouser`, e a senha `Training1!`. Ao iniciar a nova sessão com esse usuário, o console do **Amazon S3** foi aberto e o bucket provisionado foi listado. Este bucket foi acessado e o prefixo `/images` também foi acessado, exibindo todos os objetos criados nesse bucket. Para testar ainda mais, o objeto `Donuts.jpg` foi aberto, sendo mostrado a imagem no navegador da máquina física **Windows**. A imagem 167 evidencia que as permissões de leitura estavam funcionado para este usuário.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img167.png" alt="img167"><br>
+    <figcaption>Imagem 167.</figcaption>
+</figure></div><br>
 
+Agora foram testadas as permissões de gravação. Para isso, a imagem aberta no navegador foi fechada e no S3 foi retornado para o prefixo `/images` do bucket. Então, pelo console mesmo, foi realizado o upload de uma imagem da máquina física, que foi a imagem de logomarca desse programa (AWS re/start), criando um novo objeto. Em seguida, este objeto foi aberto, sendo exibindo a imagem pelo navegador da máquina física, comprovando a permissão de gravação. A imagem 168 exibe essa execução. 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img168.png" alt="img168"><br>
+    <figcaption>Imagem 168.</figcaption>
+</figure></div><br>
 
+Para testar as permissões de exclusão, o objeto `Cup-of-Hot-Chocolate.jpg` foi removido, conforme mostrado na imagem 169. Na sequência, o teste realizado foi alterar as permissões do bucket, o qual o usuário do IAM `mediacouser` não possuía permissões necessárias, logo uma mensagem de erro era exibida, conforme imagem 170. O usuário também não possuía permissões de fazer upload para a raiz do bucket, no caso, fora do prefixo `/images`. Após comprovar as permissões que o usuário do IAM tinha, a sessão dele na **AWS** foi encerrada e a aba anônima pôde ser fechada, retornando para janela do navegador cuja sessão era autenticada com a identidade federada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img169.png" alt="img169"><br>
+    <figcaption>Imagem 169.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img170.png" alt="img170"><br>
+    <figcaption>Imagem 170.</figcaption>
+</figure></div><br>
+
+Na última tarefa, o bucket foi configurado para gerar uma notificação de eventos para um tópico do **Amazon SNS** sempre que o conteúdo do bucket fosse alterado e essa notifição seria enviada por email para os assinantes deste tópico. O primeiro passo foi construir o tópico do SNS de nome `s3NotificationTopic`, tipo padrão (Standard) e adicionar um assinante definindo o protocolo como email e o endpoint como meu email no **Proton Mail** (`phcstudy@proton.me`). Um email era enviado solicitando a confirmação de subscrição. A imagem 171 exibe o tópico criado com o assinante já subscrito.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img171.png" alt="img171"><br>
+    <figcaption>Imagem 171.</figcaption>
+</figure></div><br>
+
+Na sequência, uma política de acesso (*Access Policy*) foi criada no tópico do SNS a partir do arquivo **JSON** abaixo. Neste arquivo foi preciso informar a ARN do tópico do SNS e o nome do bucket. Essa política concedia ao bucket do S3 da cafeteria a permissão para publicar mensagens no tópico do SNS `s3NotificationTopic`.
+
+```json
+{
+  "Version": "2008-10-17",
+  "Id": "S3PublishPolicy",
+  "Statement": [
+    {
+      "Sid": "AllowPublishFromS3",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "<ARN of s3NotificationTopic>",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:s3:*:*:cafe-5988"
+        }
+      }
+    }
+  ]
+}
+```
+
+Na segunda etapa desta tarefa, foi construído um arquivo de configuração de notificação de eventos que identificava os eventos que o **Amazon S3** publicava e o destino do tópico para o qual o **Amazon S3** enviava as notificações de eventos. Isso foi realizado pela CLI na sessão aberta na instância `CLI Host`. O comando `sudo vi s3EventNotification.json` foi executado para criar o arquivo pelo editor de texto **VI**. No **VI** foi inserido o json abaixo. Este arquivo solicitava que o **Amazon S3** publicasse uma notificação de eventos no tópico do SNS `s3NotificationTopic` sempre que um evento `ObjectCreated` ou `ObjectRemoved` fosse executado em objetos dentro de um recurso do **Amazon S3** com o prefixo `images/`. Neste caso, foi preciso fornecer a ARN do tópico do **Amazon SNS**.
+
+```json
+{
+"TopicConfigurations": [
+    {
+    "TopicArn": "<ARN of s3NotificationTopic>",
+    "Events": ["s3:ObjectCreated:*","s3:ObjectRemoved:*"],
+    "Filter": {
+        "Key": {
+        "FilterRules": [
+            {
+            "Name": "prefix",
+            "Value": "images/"
+            }
+        ]
+        }
+    }
+    }
+]
+}
+```
+
+Para associar o arquivo de configuração de evento ao bucket provisionado foi executado o comando `aws s3api put-bucket-notification-configuration --bucket cafe-5988 --notification-configuration file://s3EventNotification.json`. Após isso, foi preciso aguardar alguns minutos até que uma notificação fosse enviado para o email cadastrado no tópico do SNS. O **Amazon S3** enviou essa notificação como teste da configuração de notificações de eventos que foi configurada. A imagem mostra o recebimento deste email no **Proton Mail**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img172.png" alt="img172"><br>
+    <figcaption>Imagem 172.</figcaption>
+</figure></div><br>
+
+A última etapa consistiu em testar a configuração da notificação de eventos do bucket do S3 executando os casos de uso que o usuário do IAM `mediacouser` esperava executar no bucket. Essas ações incluíam colocar e excluir objetos do bucket, o que enviaria notificações por e-mail. Uma operação não autorizada também foi testada para verificar se ela seria rejeitada. Ao invés de usar o console da **AWS** autenticado com o usuário `mediacouser`, deste vez, estas execuções foram realizadas pela **AWS CLI** instalada na instância `CLI Host`. Contudo, a **AWS CLI** desta instância estava autenticada com outro usuário do IAM, que era o usuário `awsstudent`, também criado pelo CloudFormation ao iniciar o laboratório. 
+
+Desta forma, foi preciso alterar o usuário configurado na CLI e isso foi realizado executando o comando `aws configure` e informando as credenciais do usuário `mediacouser`. Segundo o laboratório, um arquivo de nome `mediacouser_accessKeys.csv` com as credenciais deveria ser baixado na tarefa 3, mas não foi fornecido esse arquivo. A ideia que tive foi criar uma chave de acesso para este usuário através do **AWS IAM**. Essa chave teve a tag de nome igual a `accessKeyMediacouser`. Com chave de acesso (Access Key) e a chave de acesso secreta (Secret Access Key) foi possível autenticar o usuário `mediacouser` na **AWS CLI** da instância, deixando a região e formato de saída dos dados em branco, pois seria mantido as configurações anteriores para eles.
+
+Com o usuário autenticado na CLI, foi executado o comando `aws s3api put-object --bucket cafe-5988 --key images/Caramel-Delight.jpg --body ~/new-images/Caramel-Delight.jpg` que fazia o upload da imagem `Caramel-Delight.jpg`, armazenada no diretório `new-images` na pasta do usuário da instância do EC2, para o prefixo `images/` do bucket provisionado, criando um novo objeto. A imagem 173 exibe esse comando sendo executado e a notificação enviada para o email pelo **Amazon SNS**. Na notificação, note que o valor da chave `eventName` é `ObjectCreated:Put` e o valor do `objeto key` é `images/Caramel-Delight.jpg`, que era a chave do arquivo de imagem que foi especificado no comando. Essa notificação indicava que um novo objeto com uma chave `images/Caramel-Delight.jpg` foi adicionado (put) ao bucket do S3.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img173.png" alt="img173"><br>
+    <figcaption>Imagem 173.</figcaption>
+</figure></div><br>
+
+Agora foi realizado o teste do caso de uso do get. Para isso, foi obtido o objeto com uma chave de `images/Donuts.jpg` do bucket, executando o comando `aws s3api get-object --bucket cafe-5988 --key images/Donuts.jpg Donuts.jpg`. Neste caso, nenhuma notificação por e-mail foi enviada, porque 
+o bucket de armazenamento foi configurado para enviar notificações somente quando os objetos eram criados ou excluídos.
+
+Na sequência foi testado o caso de uso de uma exclusão de um objeto. Para isso, o objeto com uma chave de `images/Strawberry-Tarts.jpg` foi removido do bucket, executando o comando `aws s3api delete-object --bucket cafe-5988 --key images/Strawberry-Tarts.jpg`. Neste caso, uma outra notificação do tópico do SNS foi recebida pelo email cadastrado. Na notificação, perceba que o valor da chave `eventName` é `ObjectRemoved:Delete` e o valor do `objeto key` é `images/Strawberry-Tarts.jpg`, que era a chave do arquivo de imagem que foi especificado no comando. Essa notificação indicava que o objeto com uma chave de `images/Strawberry-Tarts.jpg` foi excluído do bucket do S3. A imagem 174 mostra a execução desse comando.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md5-img174.png" alt="img174"><br>
+    <figcaption>Imagem 174.</figcaption>
+</figure></div><br>
+
+Por fim, foi testado um caso de uso não autorizado. Com o comando `aws s3api put-object-acl --bucket cafe-5988 --key images/Donuts.jpg --acl public-read` foi realizado a tentativa de alterar a permissão do objeto `Donuts.jpg` para que ele pudesse ser lido publicamente. Contudo, o comando falhava e exibia uma mensagem de erro, pois o usuário do IAM `mediacouser` não possuía permissões para isso.

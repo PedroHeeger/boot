@@ -6,7 +6,7 @@ Write-Output "EC2 CREATION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2Test1"
+$tagNameInstance = "ec2TestEdn1"
 $sgName = "default"
 $aZ = "us-east-1a"
 $imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
@@ -83,7 +83,7 @@ Write-Output "EC2 EXCLUSION"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 Write-Output "Definindo variáveis"
-$tagNameInstance = "ec2Test1"
+$tagNameInstance = "ec2TestEdn1"
 
 Write-Output "-----//-----//-----//-----//-----//-----//-----"
 $resposta = Read-Host "Deseja executar o código? (y/n) "
