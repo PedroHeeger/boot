@@ -729,22 +729,30 @@ O **AWS Trusted Advisor** pode ser utilizado para identificar recursos ociosos, 
 
 <a name="item6.12"><h4>6.12 Demonstração do painel de faturamento da AWS-2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Nesta demonstração seria criado um relatório de custo e uso da **AWS**, o **AWS Cost and Usage Reports (AWS CUR)**, porém esse serviço da **AWS** apesar de ainda existir já se encontrava depreciado, sendo substituído pelo serviço **AWS Data Exports**. No **AWS Data Exports** é possível criar os três seguintes tipos de exportação de dados: `Standard data export`, `Cost and usage dashboard powered by QuickSight` e `Legacy CUR export`, sendo esse último o serviço CUR que foi depreciado. Infelizmente, como ainda não estudei mais profundo o serviço **AWS Data Exports** e os tipos de exportação, e também não tinha conhecimento sobre o CUR ainda, optei por realizar a construção de outro relatório. No serviço **AWS Cost Explorer** é possível criar relatórios que ficam salvos no recurso *Cost Explorer Saved Reports*, sendo realizado apenas pelo console da **AWS**. Não há comandos **AWS CLI** para geração desses reports. Dessa forma, nessa demonstração foi elaborado um relatório do Cost Explorer e um orçamento no **AWS Budgets**, sendo este último via **AWS CLI**. 
 
-- criar um relatório de custo e uso por ano
-- criar um orçamento
+Sendo assim, o **AWS Console Management** foi acesso e autenticado com o usuário do IAM administrador da minha conta **AWS**. Este usuário pertencia ao grupo de usuários do IAM `AdminGroup`, cuja política de permissões `AdministratorAccess` era vinculada. Essa política `AdministratorAccess` concedia acesso a praticamente todos os serviços da nuvem **AWS**. Contudo, a **AWS** tem um recurso que protege os serviços de faturamento e custo, impedindo que mesmo que uma política de permissão seja atribuída a uma entidade do IAM, essas entidade não conseguem ter acesso a esses serviços. Este recurso se chama `IAM user and role access to Billing information` que por padrão vem desativado, mas é possível ativá-lo através do usuário raiz da conta. Assim, o usuário do IAM administrador da minha conta **AWS** (`PedroHeegerAdmin`) tinha acesso aos serviços de faturamento e custo.
+
+Com esse usuário, o serviço **AWS Cost Explorer** foi aberto e foi possível visualizar as informações. Um ponto importante observar é que há algum tempo a **AWS** agregou vários serviços de custos em um serviço maior chamado **AWS Billing and Cost Management**. Então serviços de custos como **AWS Cost Explorer**, **AWS Bills**, **AWS Cost and Usage Reports (AWS CUR)**, **AWS Budgets**, **AWS Pricing Calculator**, **AWS Free Tier**, **AWS Data Exports**, entre outros, ficam organizados dentro do **AWS Billing and Cost Management**, podendo ser considerado um recurso deste último. 
+
+No Cost Explorer, um gráfico de custo e uso (`Cost and usage graph`) foi exibido, onde era possível realizar diversos tipos de filtros, sendo muito similar a um software de BI. Logo abaixo desse gráfico, aparecia uma tabela de análise dos dados de custo e uso (`Cost and usage breakdown`), ou seja, uma tabela referente ao gráfico. Neste caso, foi realizado um filtro no campo de data passando um intervalo de 01/12/23 até a data atual, 08/03/24, que era mais ou menos o período de criação desta conta **AWS** até o dia de hoje. A granulometira dos dados foi definida como mensal e mais nenhum outro filtro foi definido. O custo total desse período foi de $6.94, tendo uma média de custo mensal de $0.77 e a quantidade de serviços que resultavam em gastos foram 21, embora muitos desses tiveram o custo $0.00, pois foram utilizados dentro do plano Free Tier da **AWS**. Em seguida, um relatório foi gerado com esses dados, sendo nomeado de `report-cost-aws-ph`. Após isso, a opção `Cost Explorer Saved Reports` foi acessada para visualizar todos os relatórios existentes, conforme mostrado na imagem 44. Com exceção do report construído, todos os outros relatórios foram gerados pela própria **AWS** e não podem ser removidos. Ao selecionar o report elaborado, o mesmo era aberto de volta no Cost Explorer, conforme evidenciado na imagem 45. Observe na imagem 44, o tipo do report, isso mostrava de qual serviço ou recurso o relatório tinha sido gerado, logo esse seria o serviço ou recurso que iria abrí-lo caso selecionado o report referente.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img44.png" alt="img44"><br>
     <figcaption>Imagem 44.</figcaption>
 </figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img45.png" alt="img45"><br>
+    <figcaption>Imagem 45.</figcaption>
+</figure></div><br>
 
+O próximo passo seria visualizar os orçamentos criados no **AWS Budgets**. Ao selecioná-lo, dois orçamentos já existiam na minha conta da **AWS** para controlar os gastos. Então, com o arquivo [budget.ps1](./resource/budget.ps1), um novo orçamento foi elaborado, cujo nome era `Gastos acima de 1.5 dolares`. Nele foi definido para que o orçamento fosse de custo de $1.5 dólares por mês, sendo especificado os parâmetros: `Amount` como `1.5`, `Unit` como `USD`, `TimeMonthly` como `MONTHLY`, `BudgetType` como `COST`. Isso apenas criava o orçamento, sendo necessário um outro comando, que foi realizado na sequência, para configurar o envio de alertas para meu email pessoal quando o custo mensal fosse maior que o limite de 70% do orçamento, que no caso era de $1.5 dólares, logo resultando em $0.70 dólares. Os parâmetros definidos foram: `NotificationType` como `ACTUAL`, `ComparisonOperator` como `GREATER_THAN`, `Threshold` como `70`, `ThresholdType` como `PERCENTAGE`, `NotificationState` como `ALARM`, `SubscriptionType` como `EMAIL` e `Address` como meu email pessoal. A imagem 46 ilustra o orçamento criado junto dos dois já existentes.
 
-
-
-
-
-
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img46.png" alt="img46"><br>
+    <figcaption>Imagem 46.</figcaption>
+</figure></div><br>
 
 <a name="item6.14"><h4>6.14 189- [JAWS] -Atividade: Otimizar a utilização</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
@@ -752,13 +760,18 @@ O **AWS Trusted Advisor** pode ser utilizado para identificar recursos ociosos, 
 
 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img47.png" alt="img47"><br>
+    <figcaption>Imagem 47.</figcaption>
+</figure></div><br>
 
 
 
 
-
-
-
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img51.png" alt="img51"><br>
+    <figcaption>Imagem 51.</figcaption>
+</figure></div><br>
 
 
 
@@ -801,15 +814,101 @@ O Sysprep é executado em três fases distintas:
 
 <a name="item6.16"><h4>6.16 Modelos de inicialização do Amazon EC2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+As instâncias podem ser iniciadas através de diversos métodos, entre os quais os modelos de inicialização são uma opção. Outros métodos incluem o assistente, o uso de uma AMI ou um modelo do CloudFormation. Os modelos de inicialização permitem a criação de templates para as solicitações de lançamento de instâncias. Ao configurar um modelo de inicialização, é possível definir as seguintes configurações: tipo de instância, sub-rede para iniciar a instância, par de chaves e grupo de segurança. Os parâmetros de inicialização podem ser salvos para evitar a necessidade de especificá-los a cada execução de uma instância.
 
+Ao configurar um modelo de inicialização (launch template), são escolhidas as opções que serão incluídas no template. Além disso, esses modelos oferecem os seguintes recursos: possibilitam a pré-seleção das opções de inicialização do EC2 e suportam versionamento. Os modelos de inicialização proporcionam os seguintes benefícios:
+- Simplificam e agilizam o processo de lançamento para EC2 Auto Scaling, Spot Fleet, Instâncias Spot e Instâncias Sob Demanda.
+- Diminuem o número de etapas necessárias para criar uma instância, consolidando todos os parâmetros de inicialização em um único recurso.
+- Facilitam a aplicação de padrões e melhores práticas, resultando nos seguintes benefícios adicionais: ajudam a controlar os custos, aumentam a segurança e reduzem o risco de erros durante a implantação.
 
-
-
-
-
-
-
-
-
+Para cada modelo de inicialização, é possível criar várias versões numeradas, cada uma com parâmetros de inicialização distintos. Ao iniciar uma instância a partir de um modelo de inicialização, é possível escolher qualquer versão disponível. Caso nenhuma versão seja especificada, a versão padrão será utilizada. A versão padrão pode ser configurada conforme necessário, sendo que, por padrão, é a primeira versão do modelo de inicialização.
 
 <a name="item6.17"><h4>6.17 Demonstração do modelo de lançamento EC2-2</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+Nesta demonstração, o objetivo foi mostrar como criar um modelo de implantação (launch template) de instâncias do **Amazon EC2**. O modelo de implantação, como próprio nome já diz, consiste em um modelo onde várias configurações de implantação de uma instância podem ser pré-configurados, e posteriormente utilizado para provisionar de forma mais rápidas as instâncias. Após criar o launch template, um grupo de auto scaling foi provisionado no serviço **Amazon EC2 AutoScaling** com apenas uma instância utilizando como base o modelo de implatanção construído. As execuções desta demonstração foram realizadas através de comandos da **AWS CLI** indicados em arquivos de script em **PowerShell**. Esses arquivos foram executados na máquina física **Windows**, sendo cada um deles divididos em dois scripts, um para criação e outro para exclusão do recurso na nuvem, mas ambos precedidos de uma condicional que aguardava uma entrada do usuário para determinar se o script seria executado. A **AWS CLI** já estava instalada na máquina física e configurada com o usuário do IAM administrador da minha conta da **AWS** (`PedroHeegerAdmin`).
+
+O primeiro arquivo executado foi o [launchTemp1.ps1](./resource/launchTemp1.ps1). Praticamente todas as configurações realizadas na instância poderiam ser já definidas neste arquivo. O nome do modelo foi definido como `launchTempEdn1` e a versão como `My version 1`. A AMI que a instância utilizaria seria `ami-0c7217cdde317cfec` (Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07), que era de um **Linux** **Ubuntu**. O tipo de instância foi definido como `t2.micro`. O par de chaves universal da minha conta da **AWS** foi indicado (`keyPairUniversal`). O perfil de instância `instanceProfileEdn1`, utilizado em outra demonstração, foi vinculado a instância. O grupo de segurança que a instância utilizaria foi determinado como o padrão (default) da VPC padrão da região `us-east-1` (Norte Virginia). Um volume padrão de inicialização do **Amazon EBS** foi indicado, cujo nome do dispositivo era `/dev/xvda` com `8` Gib de armazenamento do tipo `gp2` (Uso geral). Um arquivo de user data qualquer foi também declarado, só para mostrar o funcionamento, pois no modelo de implantação um arquivo de user data tinha que ser convertido em **Base64**. Base64 é um esquema de codificação que converte dados binários em ASCII. A imagem 52 mostra o modelo de implantação desenvolvido na versão 1.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img52.png" alt="img52"><br>
+    <figcaption>Imagem 52.</figcaption>
+</figure></div><br>
+
+Com o modelo de implatanção desenvolvido, foi construído um auto scaling group com o arquivo [asGroup1.ps1](./resource/asGroup1.ps1), cujo nome deste grupo foi `asgEdn1`. Neste arquivo foi indicado o lauch template criado anteriormente na versão `1`. O tamanho mínimo, máximo e desejado do grupo foi de `1`, `2` e `1`, respectivamente. O período de espera após o escalonamento foi definido como `300` segundos, o tipo de health check utilizada pelo grupo foi das instâncias EC2 e o período de carência do health check também foi de `300` segundos. Duas sub-redes foram indicadas, localizadas nas AZs `us-east-1` e `us-east-2`. Uma tag de nome para as instâncias que seriam provisionadas por esse auto scaling foi definida com o valor de `ec2Edn`. O comando subsequente habilitou que diversas métricas do auto scaling group fossem coletadas pelo **Amazon CloudWatch** com granulometria de um minuto. A imagem 53 exibe o grupo de auto scaling construído e a instância que ele provisionou é evidenciada na imagem 54.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img53.png" alt="img53"><br>
+    <figcaption>Imagem 53.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md6-img54.png" alt="img54"><br>
+    <figcaption>Imagem 54.</figcaption>
+</figure></div><br>
+
+<a name="item6.18"><h4>6.18 Infraestrutura como código</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+A criação de recursos de infraestrutura requer consistência e confiabilidade. A infraestrutura como código (IaC) fornece uma estrutura para implementar essas disciplinas. O **AWS CloudFormation** é um serviço que permite a criação de infraestrutura por meio de código. Aqui estão alguns cenários onde a implantação repetitiva e consistente é essencial:
+- Criação de ambientes de réplica para testar novos serviços, realizar testes em uma infraestrutura espelhada da produção ou implantar rapidamente ambientes de recuperação em caso de desastres.
+- Estabelecimento de ambientes temporários para demonstrações. Normalmente, serviços são demonstrados usando infraestrutura que não reflete um ambiente real. Com a IaC, uma cópia da produção pode ser rapidamente implantada e utilizada para a demonstração.
+- Para reduzir custos, os ambientes de desenvolvimento para programadores podem ser criados conforme necessário e removidos quando não forem mais necessários. Essa flexibilidade não apenas economiza dinheiro, mas também garante que os desenvolvedores estejam criando software compatível com os sistemas de produção atuais.
+
+Após provisionar os recursos de infraestrutura e a infraestrutura estar ativa e operante, é necessário atender às necessidades contínuas de gerenciamento de configuração do ambiente. Considere as seguintes situações:
+- Um gerenciador de versões precisa implantar uma nova versão de um aplicativo em um grupo de servidores. Em caso de problemas, é essencial poder reverter para uma versão anterior que esteja funcionando.
+- Um administrador de sistemas recebe uma solicitação para instalar um novo pacote do sistema operacional em ambientes de desenvolvimento, mantendo os outros ambientes inalterados.
+- Um administrador de aplicativos precisa atualizar periodicamente um arquivo de configuração em todos os servidores que hospedam um determinado aplicativo.
+
+Uma maneira de lidar com essas situações é voltar ao estágio de provisionamento, criar novos recursos com as modificações necessárias e descartar os recursos antigos. Essa abordagem, conhecida como imutabilidade da infraestrutura, assegura que os recursos provisionados sejam sempre criados a partir da linha de base do código cada vez que uma alteração é implementada. Esse processo minimiza o desvio de configuração, onde a configuração real dos recursos difere ou se afasta da configuração esperada.
+
+Em certos casos, pode ser desejável adotar uma abordagem diferente. Alguns ambientes possuem altos níveis de durabilidade, onde transações ou dados são armazenados permanentemente. Assim, as alterações confirmadas em um banco de dados podem ser recuperadas ou reconstruídas completamente. Nesses ambientes, pode ser mais vantajoso implementar alterações incrementais nos recursos existentes em vez de reprovisioná-los. Essas alterações podem ser gerenciadas utilizando o **AWS Systems Manager (AWS SSM)** e o **AWS OpsWorks for Chef Automate**.
+
+O **AWS Systems Manager (AWS SSM)** fornece aos engenheiros uma visão detalhada da infraestrutura existente na **AWS**. Ele permite automatizar várias tarefas repetitivas e diminui o tempo necessário para identificar problemas operacionais. Além disso, o Systems Manager possui recursos de automação que aumentam a precisão e a eficiência das tarefas de manutenção. De maneira semelhante, o **AWS OpsWorks for Chef Automate** auxilia na automação e na eficiência de diversas tarefas, oferecendo um servidor **Chef** gerenciado e ferramentas para implantações, testes, segurança, além de fornecer visibilidade e status dos recursos no ambiente de nuvem.
+
+<a name="item6.19"><h4>6.19 Introdução ao JSON e ao YAML</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+<a name="item6.20"><h4>6.20 AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+
+<a name="item6.22"><h4>6.22 190- [JAWS] -Laboratório: Automatização de implantações com o AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
+
+
+
+<a name="item6.23"><h4>6.23 Solucionar problemas do AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+Caso o **AWS CloudFormation** encontre dificuldades para criar, atualizar ou excluir uma pilha, é possível verificar mensagens de erro ou logs para obter mais detalhes sobre o problema. O Guia de solução de problemas do **AWS CloudFormation** é um excelente ponto de partida, oferecendo orientações que vão do geral ao específico. Uma das primeiras ações recomendadas é buscar mensagens de erro no console do **AWS CloudFormation**. Se os erros estiverem relacionados a uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)**, é possível acessar a instância e examinar os arquivos de log `cloud-init` e `cfn` para obter mais informações.
+
+É comum armazenar modelos do **AWS CloudFormation** no **Amazon Simple Storage Service (Amazon S3)**. Posteriormente, o local do **Amazon S3** é especificado ao selecionar um modelo para executar uma pilha. Caso ocorra um erro indicando que o TemplateURL deve referenciar um bucket válido do **Amazon S3**, é importante verificar se o bucket realmente existe e se há permissão para acessá-lo.
+
+Ao tentar criar uma pilha do **AWS CloudFormation** a partir de um modelo e receber uma mensagem de erro indicando que um dos recursos falhou na criação, existem algumas áreas que podem ser investigadas. Primeiramente, verifique se o usuário possui permissões adequadas para criar esse tipo de recurso. Revise as permissões na política do **AWS Identity and Access Management (AWS IAM)** e o nível de acesso do usuário para o serviço **AWS** relacionado ao recurso. Em segundo lugar, assegure-se de que o tipo de recurso especificado tenha todos os parâmetros necessários. Para isso, examine a seção de código **JavaScript Object Notation (JSON)** ou **YAML Ain't Markup Language (YAML)** no modelo que especifica o recurso e compare com um código conhecido que cria o mesmo tipo de recurso corretamente. Adicionalmente, consulte a seção do Guia do usuário do **AWS CloudFormation** que descreve a sintaxe correta para a criação do tipo de recurso em questão. Por exemplo, a página AWS::EC2::Instance descreve a sintaxe para criar um recurso de instância do EC2.
+
+Tenha em mente que WaitConditions são frequentemente usadas quando um recurso de instância do EC2 é criado. Se uma WaitCondition expirar ou retornar um erro durante a criação da pilha do **AWS CloudFormation**, isso indica um problema no código `CloudFormation::Init`. Caso a instância do EC2 ainda esteja acessível após o erro, examine os arquivos `cfn-init.log` e `cfn-wire.log` para obter mais detalhes. Configurar o *Amazon CloudWatch Logs* para coletar os logs da instância pode ser útil. Outra opção é tentar novamente o comando de criação da pilha, desta vez especificando `--on-failure DO_NOTHING`, para evitar que a instância seja revertida, permitindo assim fazer login e verificar os logs. O erro mais comum ocorre quando os arquivos referenciados pelo código `CloudFormation::Init`, como scripts, arquivos MSI (Microsoft Installer) e outros, retornam erros HTTP 403 ou 404, indicando que os recursos não podem ser acessados a partir da instância.
+
+Se o **AWS CloudFormation** enfrentar dificuldades para criar, atualizar ou excluir uma pilha, é possível consultar mensagens de erro ou logs para obter mais informações sobre o problema. Erros relacionados à criação de modelos e recursos são exibidos tanto no console do **AWS CloudFormation** quanto no stdout. No console, é possível monitorar o status da pilha e acessar uma lista de eventos enquanto a pilha está sendo criada, atualizada ou excluída. Caso ocorra um erro durante a execução da pilha, identifique o evento de pilha que falhou e expanda os detalhes para obter informações sobre a causa do erro. O motivo do status pode incluir mensagens de erro do **AWS CloudFormation** ou de um serviço específico, que podem auxiliar na resolução do problema.
+
+Para resolver problemas com o **Amazon EC2**, é recomendável conectar-se à instância, se possível, e verificar os logs `cloud-init` e `cfn`. Esses logs são gerados na própria instância do EC2: em instâncias **Linux**, eles estão localizados no diretório `/var/log/`, enquanto em instâncias **Windows**, encontram-se no diretório `C:\cfn`. Esses registros capturam os processos e saídas dos comandos executados enquanto o **AWS CloudFormation** configura a instância. No **Windows**, também é possível acessar o serviço *EC2Config* e os logs `cfn` nos diretórios `%ProgramFiles%\Amazon\EC2ConfigService` e `C:\cfn\log`. Além disso, é possível configurar o modelo do **AWS CloudFormation** para que os logs sejam enviados ao **Amazon CloudWatch**, permitindo a visualização dos logs diretamente no console de gerenciamento da **AWS**, sem a necessidade de conexão direta à instância do EC2.
+
+<a name="item6.24"><h4>6.24 191- [JAWS] - Atividade do café: Solucionar problemas de implantações do AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
+
+
+
+
+
