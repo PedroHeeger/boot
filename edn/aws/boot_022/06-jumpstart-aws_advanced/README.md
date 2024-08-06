@@ -756,6 +756,10 @@ O próximo passo seria visualizar os orçamentos criados no **AWS Budgets**. Ao 
 
 <a name="item6.14"><h4>6.14 189- [JAWS] -Atividade: Otimizar a utilização</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
+Neste laboratório, desenvolvido no sandbox **Voccareum**, 
+
+
+
 
 
 
