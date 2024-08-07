@@ -71,7 +71,7 @@ This folder refers to Module 6 **Jumpstart no AWS Advanced** from bootcamp [**Bo
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre como funciona as redes na cloud da **AWS**, apresentando o serviço voltado para isso que é o **Amazon Virtual Private Cloud (Amazon VPC)**. Também foi ensinado como construir uma VPC com sub-redes pública e privada, gateway de internet e NAT gateway, tabela de rotas, grupo de segurança e provisionar uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** nesta VPC, acessando ela posteriormente.
+O objetivo deste módulo do bootcamp foi aprofundar um pouco mais na nuvem **AWS**, conhecendo outros serviços como: **AWS Config**, **Amazon CloudWatch**, **Amazon Athena**, **AWS CloudTrail**, **Amazon EC2 AutoScaling**, **AWS Budgets**, **AWS Cost Explorer**, **AWS Cost and Usage Report (AWS CUR)** e **AWS CloudFormation**.
 
 ### Structure:
 A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
@@ -82,7 +82,7 @@ A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme f
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do bootcamp foi dividido em um curso e um laboratório. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em quatorze cursos, seis laboratórios, duas demonstrações e três questionários. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item6.1"><h4>6.1 Amazon CloudWatch</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
@@ -756,29 +756,17 @@ O próximo passo seria visualizar os orçamentos criados no **AWS Budgets**. Ao 
 
 <a name="item6.14"><h4>6.14 189- [JAWS] -Atividade: Otimizar a utilização</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
-Neste laboratório, desenvolvido no sandbox **Voccareum**, 
-
-
-
-
-
-
+Infelizmente, com o término do prazo do curso, não foi possível realizar essa atividade.
 
 <div align="Center"><figure>
     <img src="../0-aux/md6-img47.png" alt="img47"><br>
     <figcaption>Imagem 47.</figcaption>
 </figure></div><br>
 
-
-
-
 <div align="Center"><figure>
     <img src="../0-aux/md6-img51.png" alt="img51"><br>
     <figcaption>Imagem 51.</figcaption>
 </figure></div><br>
-
-
-
 
 <a name="item6.15"><h4>6.15 Estratégia de construção da AMI</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
@@ -870,31 +858,15 @@ O **AWS Systems Manager (AWS SSM)** fornece aos engenheiros uma visão detalhada
 
 <a name="item6.19"><h4>6.19 Introdução ao JSON e ao YAML</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
-
-
-
-
-
-
+Infelizmente, com o término do prazo do curso, não foi possível realizar essa atividade.
 
 <a name="item6.20"><h4>6.20 AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
-
-
-
-
-
-
-
+Infelizmente, com o término do prazo do curso, não foi possível realizar essa atividade.
 
 <a name="item6.22"><h4>6.22 190- [JAWS] -Laboratório: Automatização de implantações com o AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
-
-
-
-
-
-
+Infelizmente, com o término do prazo do curso, não foi possível realizar essa atividade.
 
 <a name="item6.23"><h4>6.23 Solucionar problemas do AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
@@ -912,7 +884,4 @@ Para resolver problemas com o **Amazon EC2**, é recomendável conectar-se à in
 
 <a name="item6.24"><h4>6.24 191- [JAWS] - Atividade do café: Solucionar problemas de implantações do AWS CloudFormation</h4></a>[Back to summary](#item6) | <a href="">Certificate</a>
 
-
-
-
-
+Infelizmente, com o término do prazo do curso, não foi possível realizar essa atividade.
