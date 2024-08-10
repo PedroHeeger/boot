@@ -11,9 +11,9 @@
 This folder refers to Module 1 **Fundamentos de Machine Learning e Ias Generativas** from bootcamp [**Bootcamp Nexa - Machine Learning para Iniciantes na AWS**](../).
 
 ### Theme:
+- Cloud Computing
 - Artificial Intelligence (AI)
 - Machine Learning (ML)
-- Cloud Computing
 
 ### Used Tools:
 - Operating System (OS): 
@@ -46,10 +46,10 @@ This folder refers to Module 1 **Fundamentos de Machine Learning e Ias Generativ
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi aprender sobre o conceito de cloud computing e sobre a cloud da AWS. Como ela funciona, sua infraestrutura, noções de redes e armazenamento nesta cloud. Também foram apresentados diversos serviços da cloud, entre eles, os utilizados foram: **Amazon API Gateway**, **Amazon Elastic Compute Cloud (EC2)**, **Amazon DynamoDB**, **AWS Identity and Access Management (IAM)** e **AWS Lambda**. A utilização desses serviços ocorreu de três maneiras diferentes, a primeira pelo **AWS Management Console**, ambiente gráfico da plataforma da AWS. A segunda com uso do framework **Serverless Framework** para criar uma infraestrutura como código no **AWS CloudFormation**. Já a última forma com o uso do **AWS Command Line Interface (CLI)**, executando os comandos AWS.
+O objetivo deste módulo do bootcamp foi introduzir conceitos fundamentais para melhor compreensão da Inteligência Articial. Conceitos como IA Geral, IA Restrita, Machine Learning (Aprendizado Profundo), Deep Learning, Redes Neurais, IAs Generativas, Processamento de Linguagem Natural, foram abordados. Também foi detalhado minuciosamente como são divididas as redes neurais e que a partir delas surgem as IAs Generativas.
 
 ### Structure:
-A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
+A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img01.png" alt="img01"><br>
@@ -57,7 +57,7 @@ A estrutura das pastas obedece a estruturação do bootcamp, ou seja, conforme f
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do bootcamp foi dividido em onze cursos e um desafio de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em três cursos e uma . Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item1.2"><h4>1.2 Algoritmos e Aprendizado de Máquina</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
