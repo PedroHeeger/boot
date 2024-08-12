@@ -36,7 +36,7 @@ This folder refers to Module 1 **Fundamentos de Machine Learning e Ias Generativ
 ---
 
 ### Bootcamp Module 1 Structure
-1. <a name="item3">Fundamentos de Machine Learning e Ias Generativas</a><br>
+1. <a name="item1">Fundamentos de Machine Learning e Ias Generativas</a><br>
   1.1. Bootcamp DIO: Educação Gratuita e Empregabilidade Juntas!<br>
   1.2. <a href="#item1.2">Algoritmos e Aprendizado de Máquina</a><br>
   1.1. <a href="#item1.3">Processamento de Linguagem Natural</a><br>

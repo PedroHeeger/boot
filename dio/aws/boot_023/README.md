@@ -35,20 +35,20 @@
 ---
 
 ### Bootcamp Structure
-1. <a name="item1">Fundamentos de Machine Learning e Ias Generativas</a>   
-  1.1. [Bootcamp DIO: Educação Gratuita e Empregabilidade Juntas!](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item1.1)   
-  1.2. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item1.2)   
-  1.3. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item1.2)   
-  1.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.2)   
+1. [Fundamentos de Machine Learning e Ias Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen)   
+  1.1. Bootcamp DIO: Educação Gratuita e Empregabilidade Juntas!   
+  1.2. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.2)   
+  1.3. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.3)   
+  1.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.4)   
   1.5. Aula Inaugural: Bootcamp Nexa - Machine Learning para Iniciantes na AWS   
-2. <a name="item2">Machine Learning Sem Código com Amazon SageMaker Canvas</a>   
-  2.1. [Introdução ao Desenvolvimento Low-Code](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.1)   
-  2.2. [Introdução ao SageMaker Canvas: IA Generativas Sem Código](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.2)   
-  2.3. [Transformando Dados em Insights com SageMaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.2)   
+2. [Machine Learning Sem Código com Amazon SageMaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp)   
+  2.1. [Introdução ao Desenvolvimento Low-Code](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.1)   
+  2.2. [Introdução ao SageMaker Canvas: IA Generativas Sem Código](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.2)   
+  2.3. [Transformando Dados em Insights com SageMaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.3)   
   2.4. Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional   
-  2.5. [Desafios de Código: Explorando o SageMaker Canvas com Lógica de Programação](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.2)   
+  2.5. [Desafios de Código: Explorando o SageMaker Canvas com Lógica de Programação](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.5)   
   2.6. Desafios de Projetos: Crie Um Portfólio Vencedor   
-  2.7. [Desafios de Projetos: Previsão de Estoque Inteligente na AWS com Sagemaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011/03-aws_foundation#item3.2)   
+  2.7. [Desafios de Projetos: Previsão de Estoque Inteligente na AWS com Sagemaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.7)   
 
 ---
 

@@ -8,6 +8,7 @@
 This folder refers to all the bootcamps I took on the Digital Innovation One (DIO) platform.
 
 ### Software/Subject:
+- <a href="./ai/">ai    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/contet/ai.jpg" alt="ai" width="auto" height="25"></a>
 - <a href="./aws/">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
 - <a href="./devops">devops   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/devops.png" alt="devops" width="auto" height="25"></a>
 - <a href="./docker">docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25"></a>
