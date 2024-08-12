@@ -181,8 +181,8 @@ Alguns dos diversos benefícios que as IAs generativas proporcionam são:
 
 Neste desafio de projeto o objetivo consistiu em criar conteúdo de qualquer tipo (audio, vídeo, texto), utilizando softwares com tecnologia de inteligência artificial generativa. A opção escolhida foi criar conteúdo de vídeo através do software **D-iD**. O vídeo teve cerca de 1 minuto e meio e explicou sobre o que são as IAs generativas e também o que quer dizer o termo "modelo" no contexto de IA. Durante a criação do conteúdo tiveram que ser definidos: o avatar que apresentaria o curso, uma voz que seria utilizada por esse avatar, um plano de fundo para torná-lo mais real e o script do que o avatar falaria. Observe que várias marcas d'água do software **D-iD** apareceram na imagem do vídeo, pois foi utilizado uma conta de teste do software, apenas para executar este desafio de projeto.
 
-<a href="boot_024-mod2-dp.mp4">
-<!-- <a href="https://studio.d-id.com/share?id=4cde850d3758d4eff04f345d8f51e3bf&utm_source=copy"> -->
+<!-- <a href="./boot_024-mod2-dp.mp4"> -->
+<a href="https://studio.d-id.com/share?id=4cde850d3758d4eff04f345d8f51e3bf&utm_source=copy">
   <img src="./boot_024-mod2-dp.png" alt="boot_024-mod2-dp" width="200"/>
 </a>
 
