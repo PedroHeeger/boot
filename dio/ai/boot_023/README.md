@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../">ai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/ai.jpg" alt="ai" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_023 (Bootcamp Nexa - Machine Learning para Iniciantes na AWS)   <img src="./0-aux/logo_boot.png" alt="boot_023" width="auto" height="25"></a>
 
 #### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-09-14)_Cert_Descubra...Nuvem_AWS-LocalizaLabs_PH_DIO.pdf">Certificate</a>
@@ -10,9 +10,9 @@
 ---
 
 ### Theme:
-- Cloud Computing
 - Artificial Intelligence (AI)
 - Machine Learning (ML)
+- Cloud Computing
 
 ### Used Tools:
 - Operating System (OS): 
@@ -20,13 +20,12 @@
 - Cloud:
   - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
-  - Amazon SageMaker   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_sagemaker.png" alt="aws_sage_maker" width="auto" height="25">
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
-  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+  - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
@@ -35,20 +34,20 @@
 ---
 
 ### Bootcamp Structure
-1. [Fundamentos de Machine Learning e Ias Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen)   
+1. [Fundamentos de Machine Learning e Ias Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/01-fundamentos_ml_ia_gen)   
   1.1. Bootcamp DIO: Educação Gratuita e Empregabilidade Juntas!   
-  1.2. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.2)   
-  1.3. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.3)   
-  1.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.4)   
+  1.2. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/01-fundamentos_ml_ia_gen#item1.2)   
+  1.3. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/01-fundamentos_ml_ia_gen#item1.3)   
+  1.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/01-fundamentos_ml_ia_gen#item1.4)   
   1.5. Aula Inaugural: Bootcamp Nexa - Machine Learning para Iniciantes na AWS   
-2. [Machine Learning Sem Código com Amazon SageMaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp)   
-  2.1. [Introdução ao Desenvolvimento Low-Code](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.1)   
-  2.2. [Introdução ao SageMaker Canvas: IA Generativas Sem Código](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.2)   
-  2.3. [Transformando Dados em Insights com SageMaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.3)   
+2. [Machine Learning Sem Código com Amazon SageMaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/02-nlp)   
+  2.1. [Introdução ao Desenvolvimento Low-Code](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/02-nlp#item2.1)   
+  2.2. [Introdução ao SageMaker Canvas: IA Generativas Sem Código](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/02-nlp#item2.2)   
+  2.3. [Transformando Dados em Insights com SageMaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/02-nlp#item2.3)   
   2.4. Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional   
-  2.5. [Desafios de Código: Explorando o SageMaker Canvas com Lógica de Programação](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.5)   
+  2.5. [Desafios de Código: Explorando o SageMaker Canvas com Lógica de Programação](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/02-nlp#item2.5)   
   2.6. Desafios de Projetos: Crie Um Portfólio Vencedor   
-  2.7. [Desafios de Projetos: Previsão de Estoque Inteligente na AWS com Sagemaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/02-nlp#item2.7)   
+  2.7. [Desafios de Projetos: Previsão de Estoque Inteligente na AWS com Sagemaker Canvas](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/02-nlp#item2.7)   
 
 ---
 

@@ -9,4 +9,5 @@
 This folder refers to all the courses I took on the Digital Innovation One (DIO) platform regarding Artificial Intelligence content.
 
 ### Bootcamps:
+- <a href="./boot_023/">boot_023 (Bootcamp Nexa - Machine Learning para Iniciantes na AWS)   <img src="./boot_023/0-aux/logo_boot.png" alt="boot_023" width="auto" height="25"></a>
 - <a href="./boot_024/">boot_024 (Formação Fundamentos de Inteligência Artificial)   <img src="./boot_024/0-aux/logo_boot.png" alt="boot_024" width="auto" height="25"></a>

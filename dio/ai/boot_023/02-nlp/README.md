@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">ai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/ai.jpg" alt="ai" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_023 (Bootcamp Nexa - Machine Learning para Iniciantes na AWS)   <img src="../0-aux/logo_boot.png" alt="boot_023" width="auto" height="25"></a>
 ### Module: 2. Machine Learning Sem Código com Amazon SageMaker Canvas 
 
@@ -11,9 +11,9 @@
 This folder refers to Module 2 **Machine Learning Sem Código com Amazon SageMaker Canvas** from bootcamp [**Bootcamp Nexa - Machine Learning para Iniciantes na AWS**](../).
 
 ### Theme:
-- Cloud Computing
 - Artificial Intelligence (AI)
 - Machine Learning (ML)
+- Cloud Computing
 
 ### Used Tools:
 - Operating System (OS): 

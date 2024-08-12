@@ -13,4 +13,3 @@ This folder refers to all the courses I took on the Digital Innovation One (DIO)
 - <a href="./boot_012/">boot_012 (Formação AWS Cloud Practitioner Certification)   <img src="./boot_012/0-aux/logo_boot.png" alt="boot_012" width="auto" height="25"></a>
 - <a href="./boot_013/">boot_013 (Descubra a Nuvem AWS - Nexa Resources)   <img src="./boot_013/0-aux/logo_boot.png" alt="boot_013" width="auto" height="25"></a>
 - <a href="./boot_014/">boot_014 (Descubra a Nuvem AWS – LocalizaLabs)   <img src="./boot_014/0-aux/logo_boot.png" alt="boot_014" width="auto" height="25"></a>
-- <a href="./boot_023/">boot_023 (Bootcamp Nexa - Machine Learning para Iniciantes na AWS)   <img src="./boot_023/0-aux/logo_boot.png" alt="boot_023" width="auto" height="25"></a>

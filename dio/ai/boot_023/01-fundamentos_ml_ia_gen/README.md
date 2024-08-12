@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../../">aws    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">ai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/ai.jpg" alt="ai" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_023 (Bootcamp Nexa - Machine Learning para Iniciantes na AWS)   <img src="../0-aux/logo_boot.png" alt="boot_023" width="auto" height="25"></a>
 ### Module: 1. Fundamentos de Machine Learning e Ias Generativas 
 
@@ -11,9 +11,9 @@
 This folder refers to Module 1 **Fundamentos de Machine Learning e Ias Generativas** from bootcamp [**Bootcamp Nexa - Machine Learning para Iniciantes na AWS**](../).
 
 ### Theme:
-- Cloud Computing
 - Artificial Intelligence (AI)
 - Machine Learning (ML)
+- Cloud Computing
 
 ### Used Tools:
 - Operating System (OS): 
@@ -39,7 +39,7 @@ This folder refers to Module 1 **Fundamentos de Machine Learning e Ias Generativ
 1. <a name="item1">Fundamentos de Machine Learning e Ias Generativas</a><br>
   1.1. Bootcamp DIO: Educação Gratuita e Empregabilidade Juntas!<br>
   1.2. <a href="#item1.2">Algoritmos e Aprendizado de Máquina</a><br>
-  1.1. <a href="#item1.3">Processamento de Linguagem Natural</a><br>
+  1.3. <a href="#item1.3">Processamento de Linguagem Natural</a><br>
   1.4. <a href="#item1.4">O que são IAs Generativas</a><br>
   1.5. <a href="#item1.5">Aula Inaugural: Bootcamp Nexa - Machine Learning para Iniciantes na AWS</a><br>
 
