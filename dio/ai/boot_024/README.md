@@ -10,7 +10,8 @@
 ---
 
 ### Theme:
-- Cloud Computing
+- Artificial Intelligence (AI)
+- Machine Learning (ML)
 
 ### Used Tools:
 - Operating System (OS): 
@@ -39,10 +40,10 @@
   2.1. <a href="#item2.1">Aplicações Práticas da Inteligência Artificial</a><br>
   2.2. <a href="#item2.2">Desafio de Projeto: Natural ou Fake Natty? Como Vencer na Era das Ias Generativas!</a><br>
 3. <a name="item3">Os Pilares da Inteligência Artificial</a>   
-  3.1. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.2)   
-  3.2. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.3)  
+  3.1. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/01-fundamentos_ml_ia_gen#item1.2)   
+  3.2. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/01-fundamentos_ml_ia_gen#item1.3)  
   3.3 <a href="#item3.3">Visão Computacional</a><br>
-  3.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.4)  
+  3.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_023/01-fundamentos_ml_ia_gen#item1.4)  
 
 ---
 
@@ -62,7 +63,6 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 
 ### Development:
 Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
-
 
 <a name="item1.1"><h4>1.1 Introdução à Inteligência Artificial</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
 
