@@ -2,10 +2,10 @@
 
 ### Repository: [boot](../../../)   
 ### Platform: <a href="../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
-### Software/Subject: <a href="../">ai    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/contet/ai.jpg" alt="ai" width="auto" height="25"></a>
+### Software/Subject: <a href="../">ai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/ai.jpg" alt="ai" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_024 (Formação Fundamentos de Inteligência Artificial)   <img src="./0-aux/logo_boot.png" alt="boot_024" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cloud/aws/(23-09-14)_Cert_Descubra...Nuvem_AWS-LocalizaLabs_PH_DIO.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/ai/(24-08-12)_Cert_Formacao_Fundamentos...IA_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -15,19 +15,19 @@
 ### Used Tools:
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Cloud:
-  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
-  - VS Code   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+  - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Artificial Intelligence:
+  - D-iD   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/d-id.png" alt="d-id" width="auto" height="25">
 
 ---
 
@@ -64,7 +64,7 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
 
 
-<a name="item1.1"><h4>1.1 Introdução à Inteligência Artificial</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Introdução à Inteligência Artificial</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
 
 A Inteligência Artificial (IA) é um campo da ciência da computação dedicado ao desenvolvimento de máquinas capazes de executar tarefas que tradicionalmente requerem inteligência humana. Em outras palavras, é a capacidade de raciocinar e aprender sendo incorporada aos computadores. Entre os principais casos de uso da IA estão:
 - Assistentes Virtuais: Embora não sejam totalmente baseados em IA, utilizam extensivamente o aprendizado de máquina. Exemplos incluem Siri e Alexa.
@@ -86,7 +86,7 @@ Marvin Minsky foi um dos nomes mais importantes na história da Inteligência Ar
 
 Apesar dos avanços na área de IA, a década de 1970 marcou um período difícil, conhecido como o Inverno da Inteligência Artificial. Esse período foi caracterizado por uma descrença generalizada e uma falta de financiamento na pesquisa, causada por expectativas infladas e limitações tecnológicas da época. Felizmente, na década de 1980, a IA experimentou um renascimento, impulsionado pelo avanço da tecnologia e o aumento do poder computacional, o que revitalizou as pesquisas e ficou conhecido como Renascimento da Inteligência Artificial. Nos anos mais recentes, houve progresso significativo na IA, impulsionado pelo advento da internet, que facilitou o acesso a uma vasta quantidade de dados, e pelo desenvolvimento de algoritmos de aprendizado de máquina cada vez mais sofisticados. Atualmente, a IA está presente em diversos setores, impactando a vida de muitas maneiras, desde a assistência médica, com diagnósticos mais precisos, até a indústria automotiva, onde carros autônomos estão se tornando uma realidade concreta.
 
-<a name="item1.2"><h4>1.2 Aplicações e Impacto da IA no Mundo Atual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<a name="item1.2"><h4>1.2 Aplicações e Impacto da IA no Mundo Atual</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Aplicacoes...IA...Mundo_Atual_PH_DIO.pdf">Certificate</a>
 
 Muitas tecnologias que utilizam IA estão presentes no cotidiano, muitas vezes de forma sutil. Três exemplos comuns são:
 - Teclado do Celular: O teclado dos smartphones utiliza IA para prever e sugerir palavras à medida que se digita, com base no histórico de uso e nos padrões de escrita. Isso torna a digitação mais rápida e precisa, ajustando-se ao estilo de escrita de cada usuário.
@@ -124,7 +124,7 @@ Outro aspecto notável da robótica é a interação humano-robô. Com os avanç
 
 A cada dia, novos robôs são desenvolvidos para enfrentar diversos desafios e aprimorar a qualidade de vida das pessoas. Embora existam robôs voltados para o entretenimento, a maioria deles é projetada para elevar o padrão de vida e acelerar o progresso da humanidade. As aplicações da robótica são extensas e oferecem benefícios em várias indústrias e no cotidiano. A era dos robôs inteligentes e autônomos está moldando a forma como vivemos e trabalhamos, transformando a maneira como interagimos com a tecnologia e com o mundo ao nosso redor.
 
-<a name="item2.1"><h4>2.1 Aplicações Práticas da Inteligência Artificial</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<a name="item2.1"><h4>2.1 Aplicações Práticas da Inteligência Artificial</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-10)_Aplicacoes_Pratica...IA_PH_DIO.pdf">Certificate</a>
 
 A Inteligência Artificial (IA) refere-se à capacidade de conferir às máquinas habilidades de pensamento e aprendizado semelhantes ao processo cognitivo humano. A IA tradicional concentra-se em tarefas como análise, classificação e previsão, baseando-se em padrões encontrados nos dados de entrada. Em vez de gerar novos conteúdos, ela processa dados existentes para fornecer saídas ou tomar decisões, como classificações, previsões ou análises.
 
@@ -177,7 +177,7 @@ Alguns dos diversos benefícios que as IAs generativas proporcionam são:
 - Desafios Éticos: As IA generativas também desafiam sociedades e profissionais a refletirem sobre questões éticas e de propriedade intelectual.
 - Colaboração: Essas IAs permitem a colaboração entre humanos e máquinas, criando parcerias inovadoras e experiências únicas.
 
-<a name="item2.2"><h4>2.2 Natural ou Fake Natty? Como Vencer na Era das Ias Generativas!</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<a name="item2.2"><h4>2.2 Natural ou Fake Natty? Como Vencer na Era das Ias Generativas!</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-12)_DP-Natural...Fake_Natty...IAs_Generativas_PH_DIO.pdf">Certificate</a>
 
 Neste desafio de projeto o objetivo consistiu em criar conteúdo de qualquer tipo (audio, vídeo, texto), utilizando softwares com tecnologia de inteligência artificial generativa. A opção escolhida foi criar conteúdo de vídeo através do software **D-iD**. O vídeo teve cerca de 1 minuto e meio e explicou sobre o que são as IAs generativas e também o que quer dizer o termo "modelo" no contexto de IA. Durante a criação do conteúdo tiveram que ser definidos: o avatar que apresentaria o curso, uma voz que seria utilizada por esse avatar, um plano de fundo para torná-lo mais real e o script do que o avatar falaria. Observe que várias marcas d'água do software **D-iD** apareceram na imagem do vídeo, pois foi utilizado uma conta de teste do software, apenas para executar este desafio de projeto.
 
@@ -186,7 +186,7 @@ Neste desafio de projeto o objetivo consistiu em criar conteúdo de qualquer tip
   <img src="./boot_024-mod2-dp.png" alt="boot_024-mod2-dp" width="200"/>
 </a>
 
-<a name="item3.3"><h4>3.3 Visão Computacional</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<a name="item3.3"><h4>3.3 Visão Computacional</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-12)_Visao_Computacional_PH_DIO.pdf">Certificate</a>
 
 Visão Computacional é uma área da Inteligência Artificial que integra sensoriamento, processamento de imagens e análise avançada por meio de machine learning para interpretar e entender o conteúdo visual. Ela começa com a captura de imagens através de sensores, como câmeras, seguida pelo processamento dessas imagens para aprimorar a qualidade e extrair características relevantes. Posteriormente, essas informações são analisadas utilizando técnicas de machine learning, que permitem identificar padrões, reconhecer objetos e até prever comportamentos, transformando dados visuais em insights acionáveis.
 

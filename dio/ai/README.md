@@ -1,8 +1,8 @@
-# Artificial Intelligence (AI)  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/contet/ai.jpg" alt="ai" width="auto" height="45">
+# Artificial Intelligence (AI)  <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/ai.jpg" alt="ai" width="auto" height="45">
 
 ### Repository: [boot](../../)
 ### Platform: <a href="../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>
-### Software/Subject: <a href="./">ai    <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/contet/ai.jpg" alt="ai" width="auto" height="25"></a>
+### Software/Subject: <a href="./">ai   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/ai.jpg" alt="ai" width="auto" height="25"></a>
 
 ---
 
