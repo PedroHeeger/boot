@@ -32,17 +32,17 @@
 ---
 
 ### Bootcamp Structure
-1. <a name="item1">Primeiros Passos no Mundo da Inteligência Artificial (IA)</a>   
-  1.1. [Introdução à Inteligência Artificial](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item1.1)   
-  1.2. [Aplicações e Impacto da IA no Mundo Atual](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item1.2)   
+1. <a name="item1">Primeiros Passos no Mundo da Inteligência Artificial (IA)</a>    
+  1.1. <a href="#item1.1">Introdução à Inteligência Artificial</a><br>
+  1.2. <a href="#item1.2">Aplicações e Impacto da IA no Mundo Atual</a><br>
 2. <a name="item2">Como e Onde a IA Está Presente em Nosso Dia a Dia</a>   
-  2.1. [Aplicações Práticas da Inteligência Artificial](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.1)   
-  2.2. [Natural ou Fake Natty? Como Vencer na Era das Ias Generativas!](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.2)   
+  2.1. <a href="#item2.1">Aplicações Práticas da Inteligência Artificial</a><br>
+  2.2. <a href="#item2.2">Desafio de Projeto: Natural ou Fake Natty? Como Vencer na Era das Ias Generativas!</a><br>
 3. <a name="item3">Os Pilares da Inteligência Artificial</a>   
-  3.1. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item3.1)   
-  3.2. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.2)  
-  3.3. [Visão Computacional](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.2)  
-  3.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013#item2.2)  
+  3.1. [Algoritmos e Aprendizado de Máquina](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.2)   
+  3.2. [Processamento de Linguagem Natural](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.3)  
+  3.3 <a href="#item3.3">Visão Computacional</a><br>
+  3.4. [O que são IAs Generativas](https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_023/01-fundamentos_ml_ia_gen#item1.4)  
 
 ---
 
@@ -179,27 +179,21 @@ Alguns dos diversos benefícios que as IAs generativas proporcionam são:
 
 <a name="item2.2"><h4>2.2 Natural ou Fake Natty? Como Vencer na Era das Ias Generativas!</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
+Neste desafio de projeto o objetivo consistiu em criar conteúdo de qualquer tipo (audio, vídeo, texto), utilizando softwares com tecnologia de inteligência artificial generativa. A opção escolhida foi criar conteúdo de vídeo através do software **D-iD**. O vídeo teve cerca de 1 minuto e meio e explicou sobre o que são as IAs generativas e também o que quer dizer o termo "modelo" no contexto de IA. Durante a criação do conteúdo tiveram que ser definidos: o avatar que apresentaria o curso, uma voz que seria utilizada por esse avatar, um plano de fundo para torná-lo mais real e o script do que o avatar falaria. Observe que várias marcas d'água do software **D-iD** apareceram na imagem do vídeo, pois foi utilizado uma conta de teste do software, apenas para executar este desafio de projeto.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<a href="boot_024-mod2-dp.mp4">
+<!-- <a href="https://studio.d-id.com/share?id=4cde850d3758d4eff04f345d8f51e3bf&utm_source=copy"> -->
+  <img src="./boot_024-mod2-dp.png" alt="boot_024-mod2-dp" width="200"/>
+</a>
 
 <a name="item3.3"><h4>3.3 Visão Computacional</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
+Visão Computacional é uma área da Inteligência Artificial que integra sensoriamento, processamento de imagens e análise avançada por meio de machine learning para interpretar e entender o conteúdo visual. Ela começa com a captura de imagens através de sensores, como câmeras, seguida pelo processamento dessas imagens para aprimorar a qualidade e extrair características relevantes. Posteriormente, essas informações são analisadas utilizando técnicas de machine learning, que permitem identificar padrões, reconhecer objetos e até prever comportamentos, transformando dados visuais em insights acionáveis.
 
+O Reconhecimento de Pessoas é uma tecnologia que combina o posicionamento estratégico de câmeras com técnicas avançadas de detecção e análise de imagens para identificar indivíduos. Inicialmente, a câmera é posicionada para capturar imagens de forma otimizada. Em seguida, a detecção em imagens é realizada, seja para identificar um único objeto ou múltiplos objetos, como rostos humanos. Após a detecção, a extração de características faciais é conduzida, onde aspectos únicos da face são identificados e classificados. Esse processo permite o reconhecimento preciso de pessoas em diversas aplicações, desde segurança até personalização de serviços.
 
+O Rastreamento de Obstáculos envolve a detecção e monitoramento contínuo de objetos em imagens ao longo do tempo. Inicialmente, os objetos são identificados através de técnicas de detecção de imagens, permitindo que obstáculos sejam localizados com precisão. Após a detecção, o rastreamento desses objetos é realizado, analisando suas posições em função do tempo. Esse processo é essencial em sistemas de navegação autônoma e robótica, onde a identificação e o acompanhamento de obstáculos em movimento são cruciais para a segurança e eficiência operacional.
 
+Mask R-CNN é uma evolução do Faster R-CNN que adiciona uma camada de segmentação de máscaras, permitindo não só a detecção e classificação de objetos em uma imagem, mas também a segmentação precisa de cada objeto, pixel por pixel. Este modelo é especialmente eficaz em cenas complexas onde é necessário distinguir objetos que se sobrepõem ou identificar detalhes finos, como bordas e contornos. No contexto de rastreamento, Mask R-CNN pode ser usado em combinação com algoritmos de tracking para seguir os objetos detectados ao longo de uma sequência de frames, beneficiando-se de sua capacidade de segmentação detalhada para melhorar a precisão em ambientes dinâmicos e desafiadores.
 
+YOLO (You Only Look Once) é um método de detecção de objetos em tempo real que processa a imagem como um todo, dividindo-a em uma grade e fazendo previsões simultâneas para várias caixas delimitadoras e suas respectivas probabilidades de classe. Esse modelo é amplamente utilizado em aplicações que exigem alta velocidade e precisão, como em sistemas de vigilância e veículos autônomos. Para rastreamento ao longo do tempo, YOLO é frequentemente combinado com o algoritmo SORT (Simple Online and Realtime Tracking), que associa os objetos detectados em diferentes frames e mantém a identidade de cada objeto enquanto ele se move. Essa combinação, conhecida como YOLO-SORT, permite não apenas a detecção, mas também o rastreamento contínuo de objetos, oferecendo uma solução eficiente para monitoramento em vídeos.
