@@ -59,7 +59,6 @@ O desenvolvimento deste módulo do bootcamp foi dividido em três cursos e uma .
 
 <a name="item1.1"><h4>1.1 Introdução à Blockchain</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
-
 A blockchain pode ser vista como um registro público de transações, projetado para assegurar que as informações armazenadas permaneçam imutáveis e confiáveis. Este sistema armazena dados como a transferência de criptomoedas entre diferentes carteiras ou o registro de informações em contratos inteligentes. Embora a ideia de blockchain tenha ganhado destaque recentemente, seu conceito remonta a 1991, quando os cientistas Stuart Haber e W. Scott Stornetta propuseram um método de autenticação de documentos digitais que seria à prova de fraudes. Mais tarde, o criptógrafo Hal Finney introduziu o conceito de Proof of Work (PoW) para validar os novos blocos que são adicionados à blockchain.
 
 A blockchain é mantida por uma rede ponto a ponto (Peer-to-Peer), onde cada nó da rede possui uma cópia completa dos dados. Cada bloco na blockchain é identificado por um código exclusivo, conhecido como hash, e contém também o hash do bloco anterior, o que forma uma cadeia de blocos conectados em sequência. Os blocos são elementos essenciais da blockchain, pois armazenam todas as informações registradas ao longo do tempo. Cada bloco possui uma estrutura específica que inclui detalhes de identificação e os dados das transações. A composição de um bloco inclui as seguintes partes:
@@ -120,16 +119,15 @@ Existem várias maneiras de gerenciar carteiras de criptomoedas, incluindo:
 - Desktop Wallets: Aplicações instaladas em computadores que permitem gerenciar e armazenar criptomoedas localmente. Oferecem um equilíbrio entre segurança e conveniência, mas podem ser vulneráveis a malware.
 - Mobile Wallets: Aplicativos para smartphones que permitem a gestão e o acesso às criptomoedas de forma prática e portátil, com a desvantagem de estarem mais expostos a riscos de segurança relacionados a dispositivos móveis.
 
-
-
-
 <a name="item1.2"><h4>1.2 Desafio de Projeto: Criando e Utilizando a Sua Carteira de Criptomoedas</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
 
 
-
-
-
+terminal:
+- criar o arquivo package.json
+  - `npm init -y`
+- baixar pacotes (instalar as dependências) (criar a pasta node_modules e o arquivo package.lock.json)
+  - npm install bip39 bip32@2.0.6 bitcoinjs-lib --save
 
 
 
