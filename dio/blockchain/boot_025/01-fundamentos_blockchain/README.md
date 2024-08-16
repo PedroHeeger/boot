@@ -20,6 +20,7 @@ This folder refers to Module 1 **Fundamentos da Blockchain** from bootcamp [**Fo
 - Cloud:
   - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
+  - Amazon Elastic Compute Cloud (EC2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2.svg" alt="aws_ec2" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
@@ -30,6 +31,8 @@ This folder refers to Module 1 **Fundamentos da Blockchain** from bootcamp [**Fo
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Blockchain:
+  - Electrum Bitcoin Wallet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/electrum_bitcoin_wallet.png" alt="electrum_bitcoin_wallet" width="auto" height="25">
 
 ---
 
@@ -44,7 +47,7 @@ This folder refers to Module 1 **Fundamentos da Blockchain** from bootcamp [**Fo
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi introduzir conceitos fundamentais para melhor compreensão da Inteligência Articial. Conceitos como IA Geral, IA Restrita, Machine Learning (Aprendizado Profundo), Deep Learning, Redes Neurais, IAs Generativas, Processamento de Linguagem Natural, foram abordados. Também foi detalhado minuciosamente como são divididas as redes neurais e que a partir delas surgem as IAs Generativas.
+O objetivo deste módulo do bootcamp foi apresentar os principais conceitos relacionados à tecnologia blockchain, incluindo suas características, origem e funcionamento. Foram abordados temas como a estrutura dos blocos e transações, o funcionamento da criptografia e as diversas técnicas disponíveis, além de explicar o conceito de ledgers e o papel dos mineradores no processo de mineração. O módulo também abordou a criação e utilização de carteiras de criptomoedas (wallets) e endereços. Como parte do aprendizado prático, foi realizado um projeto desafiador que envolveu a criação e a gestão de uma carteira de criptomoedas.  
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
@@ -130,37 +133,6 @@ terminal:
   - npm install bip39 bip32@2.0.6 bitcoinjs-lib --save
 
 
-
-
-
-
-<a name="item1.3"><h4>1.3 Operações da Blockchain</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a name="item1.4"><h4>1.4 Desafio de código: Desafios intermediários Javascript I - Formação Blockchain</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
-
-
-
-
-
-
-
-
-
-
 <div align="Center"><figure>
     <img src="../0-aux/md1-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
@@ -169,7 +141,109 @@ terminal:
 
 
 
+<a name="item1.3"><h4>1.3 Operações da Blockchain</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
+A blockchain é um banco de dados distribuído ou livro-razão público que registra todas as transações ou eventos realizados e é compartilhado entre os participantes da rede. Ao longo dos anos, houve uma significativa evolução no hardware, com avanços em capacidade e processamento, o que impulsionou o desenvolvimento de aplicações mais complexas. Com essa evolução, o hardware permitiu o surgimento de softwares mais robustos, gerando, consequentemente, um volume maior de dados. Todo esse poder computacional foi fundamental para moldar a blockchain como ela é hoje.
 
+Na blockchain, ocorre uma transição de um cenário de singularidade, onde o poder é concentrado em uma única entidade, que detém a propriedade da informação em um ambiente privado e pouco transparente, para um ambiente distribuído. Nesse novo contexto, o poder não está mais nas mãos de uma única pessoa, e toda a rede chega a um consenso sobre o que acontece, decidindo em conjunto quais eventos fazem parte da blockchain. Embora existam blockchains permissionadas, a característica central da blockchain é ser uma plataforma pública, onde as informações podem ser auditadas, e a própria rede é responsável por validar tudo o que ocorre.
 
+As transações e todos os tipos de acordos realizados no mundo real geralmente pressupõem a necessidade de um intermediário, conhecido como Trusted Third Party, ou terceira parte confiável. Essa entidade é responsável por intermediar as transações e os acordos feitos entre duas pessoas ou contas. Exemplos de Trusted Third Party incluem governos, bancos, cartórios, tabeliões e lojas, que desempenham o papel de intermediadores. Uma das características fundamentais da blockchain é a desintermediação, permitindo que duas pessoas realizem suas transações ou acordos diretamente, sem a necessidade de um intermediário.
 
+Algumas da premissas da blockchain incluem:
+- Confiabilidade dos Nós: Na blockchain, a confiança é distribuída entre os nós, que são responsáveis por validar e verificar transações de maneira colaborativa.
+- Participação no Consenso: Os nós participam do processo de consenso, onde as decisões sobre a validade das transações são tomadas coletivamente, garantindo a integridade da rede.
+- Criptografia: A segurança do sistema é assegurada pela criptografia, que protege as transações e dados contra fraudes e manipulações.
+- Trabalho Recompensado: O trabalho de validação realizado pelos nós é recompensado, incentivando a participação ativa e honesta na rede.
+- Colaboração: A blockchain funciona como um sistema descentralizado, onde a colaboração entre os nós é fundamental para o funcionamento seguro e eficiente da rede.
+
+Já as características, destacam-se:
+- Imutabilidade: Os dados registrados na blockchain não podem ser alterados ou excluídos, garantindo a permanência das informações.
+- Irrefutabilidade: As transações, uma vez registradas e validadas, não podem ser negadas ou contestadas pelos participantes da rede.
+- Disponibilidade: A blockchain está disponível de forma contínua e descentralizada, com acesso garantido a todos os participantes.
+- Integridade: A estrutura criptográfica da blockchain assegura que os dados sejam precisos e não corrompidos.
+- Transparência: Todas as transações são visíveis para os participantes da rede, permitindo a verificação pública dos registros.
+- Visibilidade: Os dados na blockchain são acessíveis para consulta, promovendo a clareza das operações realizadas.
+- Desintermediação: Permite que transações sejam realizadas diretamente entre as partes envolvidas, sem a necessidade de intermediários.
+- Pseudo-anonimidade: As identidades dos participantes são protegidas, embora as transações sejam públicas, oferecendo um nível de privacidade.
+
+Com relação aos tipos de difusão e armazenamento, existem:
+- Difusão Tradicional: Os dados são centralizados em um único servidor ou banco de dados, tornando-os vulneráveis a falhas e ataques.
+- Difusão Distribuída: Os dados são replicados e armazenados em vários servidores, aumentando a redundância e a disponibilidade, mas ainda podem depender de autoridades centrais.
+- Blockchain: Combina armazenamento distribuído com segurança e imutabilidade, onde cada bloco é validado por consenso entre os nós da rede, eliminando a necessidade de intermediários e garantindo transparência.
+
+Os principais aspectos da tecnologia blockchain incluem:
+- Rede P2P (Peer-to-Peer): A blockchain opera em uma rede descentralizada onde cada nó participa diretamente da comunicação e validação, sem necessidade de um servidor central. Cada nó atua como cliente e servidor, compartilhando e recebendo dados diretamente de outros nós.
+- Processamento Concentrado nos Nós da Rede: Em uma blockchain, o processamento e a validação das transações são realizados pelos nós da rede, distribuindo a carga de trabalho e evitando a dependência de um único ponto central de controle.
+- Consenso Distribuído: O processo de validação de transações e manutenção da integridade da blockchain é realizado através de algoritmos de consenso, onde os nós da rede colaboram para chegar a um acordo sobre quais transações são válidas. Isso garante que todos os participantes da rede concordem com o estado atual da blockchain.
+- Anonimato: Na blockchain, as identidades dos participantes são protegidas através de endereços públicos e chaves criptográficas. Embora as transações sejam registradas e visíveis na blockchain, a identidade dos usuários é mantida em anonimato, oferecendo um nível de privacidade.
+- Criptografia: A segurança da blockchain é assegurada através da criptografia, que protege as transações e dados. Cada bloco é criptograficamente ligado ao anterior, e as transações são assinadas digitalmente, garantindo a integridade e autenticidade das informações.
+
+Entre os conceitos fundamentais da tecnologia blockchain, destacam-se os seguintes:
+- Distributed Ledger (Livro-Razão Distribuído): Refere-se a um banco de dados compartilhado e replicado entre vários participantes da rede. Em vez de ser mantido por uma única entidade, o livro-razão distribuído é atualizado e verificado por todos os nós da rede, garantindo a integridade e a transparência das transações.
+- Remote Independent Writers (Escritores Independentes Remotos): São participantes ou clientes da rede que podem criar e submeter transações de qualquer local. Esses escritores operam de maneira independente, sem depender de um intermediário centralizado, permitindo a inclusão de novas transações na blockchain.
+- Existence in Absence of Trust (Existência na Ausência de Confiança): Refere-se à capacidade da blockchain de operar e validar transações sem depender da confiança entre os participantes. Em vez disso, a confiança é estabelecida através de algoritmos criptográficos e mecanismos de consenso, eliminando a necessidade de confiar em uma única entidade.
+- Causing Disintermediation (Causando Desintermediação): A blockchain elimina a necessidade de intermediários, permitindo que transações e acordos sejam realizados diretamente entre as partes envolvidas. Isso reduz custos, aumenta a eficiência e minimiza o risco de manipulação.
+- Economic Benefit for Participants (Benefícios Econômicos para os Participantes): Participantes da blockchain podem se beneficiar economicamente através de recompensas, como a mineração de criptomoedas, e a redução de custos associados a intermediários e processos tradicionais. Além disso, a transparência e a eficiência da blockchain podem criar oportunidades de negócios e reduzir despesas operacionais.
+
+Historicamente, armazenava-se informações sobre acordos e transações em meios físicos. Atualmente, a transição para o digital está em curso, com o uso crescente de certificados digitais e sistemas como SGBDs distribuídos e NAS para armazenamento. A evolução trazida pela blockchain representa uma mudança significativa, substituindo o modelo tradicional de SGBD por uma estrutura de armazenamento em blocos dentro de uma rede distribuída.
+
+Ledgers, ou livros-razão, são sistemas de registro e armazenamento de informações financeiras e transações. Eles funcionam como um registro contínuo e atualizado de todas as operações realizadas dentro de um sistema ou organização. Em essência, um ledger mantém um histórico detalhado de transações e eventos, assegurando que as informações estejam disponíveis para consulta e auditoria. Existem diferentes tipos de ledgers, dependendo da forma como são mantidos e geridos:
+- Ledgers Centralizados (Ledgers Tradicionais): São registros físicos ou digitais mantidos por uma única entidade, como um banco ou uma empresa. O controle centralizado pode facilitar a gestão, mas também pode criar vulnerabilidades relacionadas à segurança e à confiança na entidade responsável, como erros, fraudes e falhas de segurança.
+- Ledgers Distribuídos: Utilizam uma rede de computadores para manter e atualizar o registro de transações. Cada participante da rede possui uma cópia do ledger, o que aumenta a segurança e a transparência. A blockchain é um exemplo de ledger distribuído, onde todos os participantes colaboram para validar e registrar transações sem depender de uma entidade central.
+
+Os Ledgers centralizados enfrentam vários desafios significativos:
+- Registros Hackeados ou Perdidos: Como são geridos por uma única entidade, os ledgers centralizados estão vulneráveis a ataques cibernéticos e perda de dados, o que pode comprometer a integridade das informações.
+- Validação de Transações: A validação das transações é realizada por um único ponto central, o que pode criar um gargalo e aumentar o risco de erros ou fraudes.
+- Inclusão das Listas de Transação: A inclusão de novas transações depende do controle centralizado, que pode afetar a eficiência e a transparência do processo.
+- Alteração de Parâmetros das Transações: O controle central permite a alteração dos parâmetros das transações, o que pode levantar preocupações sobre a manipulação e a justiça das transações.
+- Confiança no Owner: A confiança está completamente centrada na entidade que gerencia o ledger. Isso exige uma alta confiança no proprietário, o que pode ser uma fraqueza caso haja falhas na segurança ou na integridade da gestão.
+
+A blockchain é uma tecnologia que mantém um registro contínuo e imutável das transações realizadas. Cada transação é registrada publicamente na rede, permitindo que qualquer participante possa visualizar e verificar as informações. A validação dessas transações é realizada coletivamente pelos nós da rede, garantindo que todas as transações sejam confirmadas e aprovadas antes de serem adicionadas ao blockchain. Uma vez inserida, a transação não pode ser alterada, garantindo a integridade e a segurança dos dados armazenados na blockchain.
+
+A organização da blockchain é fundamental para garantir a integridade e a confiança no sistema. Os eventos são registrados de forma sequencial em blocos, que são encadeados uns aos outros para formar uma cadeia contínua. Cada bloco contém um conjunto de transações, um timestamp, e um hash do bloco anterior, criando uma estrutura onde cada novo bloco valida e reforça o bloco que o precede. A estrutura da blockchain é composta por blocos que se conectam através de referências criptográficas, formando uma rede de dados imutável. Cada bloco é verificado e validado pelos nós da rede antes de ser adicionado à cadeia, o que garante que todos os participantes concordem sobre a validade das transações.
+
+Para garantir a autenticidade e a confiabilidade da blockchain, são utilizados mecanismos de consenso e criptografia avançada. O consenso é alcançado através de algoritmos que exigem que a maioria dos nós da rede valide as transações e os blocos antes de sua inclusão. A criptografia assegura que as transações e os dados registrados não possam ser alterados ou falsificados, mantendo a segurança e a integridade das informações ao longo do tempo.
+
+A organização das transações nos blocos da blockchain é facilitada pela estrutura da Árvore Merkle. Esse método começa com um hash root, que representa um resumo criptográfico de todas as transações incluídas no bloco. As transações são agrupadas em pares e seus hashes são combinados para formar o próximo nível da árvore, criando uma estrutura de árvore binária. Esse processo de hashing continua até que todos os hashes das transações sejam condensados em um único hash root no topo da árvore. A Árvore Merkle oferece uma maneira eficiente e segura de organizar e verificar as transações dentro de um bloco. Graças a essa estrutura, qualquer alteração em uma transação específica altera o hash root, permitindo que a integridade do bloco seja facilmente verificada. Isso assegura que todas as transações dentro do bloco são consistentes e não foram modificadas, mantendo a segurança e a confiabilidade da blockchain.
+
+A autenticidade das transações na blockchain é garantida através do uso de criptografia de chave assimétrica. Quando uma transação é criada, ela é assinada digitalmente com a chave privada do remetente. Esta assinatura serve como uma prova de que a transação foi realmente autorizada pelo detentor da chave privada, que é conhecida apenas pelo proprietário da conta. Após a assinatura, a transação é verificada pela rede usando a chave pública correspondente, que pode ser compartilhada publicamente. A chave pública permite que qualquer participante da rede confirme a validade da assinatura sem precisar conhecer a chave privada. Assim, o processo de verificação assegura que a transação é genuína e não foi alterada após a assinatura. Uma vez validada, a transação é incluída em um bloco. Esse bloco, por sua vez, passa por um processo de validação adicional antes de ser adicionado à blockchain. Esse processo de validação é crucial para garantir que todas as transações são legítimas e que o bloco atenda aos critérios de consenso da rede. Somente após essa validação é que o bloco é integrado à cadeia de blocos, mantendo a integridade e a segurança da blockchain.
+
+O minerador desempenha um papel crucial na blockchain, sendo responsável por validar e inserir blocos na cadeia por meio do processo de mineração. Esse processo envolve a execução de trabalho computacional complexo para resolver problemas criptográficos e garantir a integridade e segurança das transações. A mineração utiliza o algoritmo SHA-256, com criptografia de 256 bits, para gerar um hash criptográfico único que varia com o input, garantindo que cada bloco seja único e imutável. Após a resolução do desafio criptográfico e a descoberta do hash, um mecanismo de consenso valida o bloco e o propaga para toda a rede. Os mineradores recebem uma recompensa, geralmente na forma de criptomoedas, e transações com taxas (fees) mais altas são processadas antes das com taxas (fees) mais baixas, incentivando a mineração. A mineração assegura que a rede permaneça descentralizada e confiável, mantendo a consistência dos registros e a integridade do sistema.
+
+Ao encadear blocos, cria-se uma sequência de eventos que garante rastreabilidade. Cada bloco contém o hash do bloco anterior, o que implica que a função hash do bloco atual depende do hash do bloco anterior. Isso impede a modificação dos blocos: para alterar um bloco, seria necessário também alterar o bloco anterior, e assim sucessivamente, até o início da cadeia. A necessidade de modificar todos os blocos anteriores requer um poder computacional imenso, tornando mais viável contribuir com a rede do que tentar comprometer sua integridade.
+
+Em momentos de alta demanda ou quando as taxas de transação são baixas, é possível que as transações não sejam imediatamente incluídas em um bloco. Quando a rede está congestionada, as transações podem permanecer na fila de mempool até que um minerador as processe. Esse atraso pode resultar em um tempo de confirmação mais longo, afetando o tempo necessário para que as transações sejam registradas na blockchain.
+
+É possível que mais de um bloco seja validado com o mesmo timestamp devido à natureza competitiva da mineração. Como mineradores competem para encontrar um hash válido que identifique seu bloco, é possível que dois blocos sejam encontrados quase simultaneamente. Quando isso ocorre, apenas o bloco que chega primeiro à rede é aceito e adicionado à blockchain. O bloco subsequente, embora válido, será rejeitado e descartado. Essa situação pode levar à criação de bifurcações ou forks, onde mais de um bloco é referenciado como o próximo na cadeia. Os forks ocorrem quando dois blocos são validados quase ao mesmo tempo, gerando dois encadeamentos paralelos na blockchain. A resolução desses forks é feita com base na regra da cadeia mais longa: o encadeamento que acumular mais blocos válidos posteriormente é mantido como a blockchain principal, enquanto o outro é descartado. Isso ocorre porque o encadeamento mais longo representa a cadeia com maior poder computacional e consenso da rede. 
+
+Um exemplo disso seria um hacker que tenta inserir um bloco isolado, criando um fork para tentar enganar a rede. No entanto, o encadeamento criado pelo hacker terá menos blocos e menos poder computacional comparado ao encadeamento da rede principal, tornando-o menos eficiente para crescer. Portanto, o fork gerado pelo hacker será eventualmente descartado em favor da cadeia principal que continua a se expandir de forma mais robusta. Existe um conceito chamado de ataque de 51% em que um grupo controlando mais de 50% do poder computacional de uma rede blockchain pode reescrever o histórico da blockchain. Isso ocorre porque, com a maioria do poder computacional, esse grupo pode criar um encadeamento mais longo que substitua o histórico anterior, possibilitando a reversão de transações e a criação de um novo registro. No entanto, essa prática não é atraente para os participantes da rede, uma vez que compromete a integridade e a confiança da blockchain. A operação normal e honesta da blockchain oferece benefícios maiores para todos os envolvidos, incentivando a colaboração em vez de ataques prejudiciais.
+
+Na blockchain, as atualizações de software e plataformas são realizadas através de forks, que são alterações na estrutura da blockchain para manutenção e melhorias. Essas atualizações requerem um consenso da rede, onde todos os participantes devem concordar com a nova estrutura para que a atualização seja implementada. O Soft Fork é uma modificação que não afeta o funcionamento diário da blockchain. Usuários não precisam aderir à nova versão para que o sistema continue operando normalmente. Já o Hard Fork implica uma mudança significativa que exige a aceitação de todos os participantes da rede. Caso um grupo de usuários não aceite a modificação, um hard fork resulta na criação de uma nova plataforma que compartilha o mesmo blockchain gênesis, gerando duas redes distintas.
+
+A inclusão de blocos na blockchain é um processo meticuloso que envolve vários componentes-chave para garantir a segurança e a integridade da rede. Cada bloco é composto por um conjunto de transações e seu próprio hash, que é uma representação criptográfica do bloco anterior. Esse hash conecta os blocos, formando uma cadeia imutável. Para que um bloco seja inserido na blockchain, ele precisa ser validado através do consenso da rede. Este processo envolve um trabalho computacional significativo, onde mineradores competem para resolver um problema criptográfico complexo. A solução encontrada é verificada pelos outros nós da rede, que devem concordar com a validade do bloco. O consenso é fundamental em sistemas distribuídos para garantir a manutenção do estado e a consistência das informações. Um dos desafios enfrentados nesse contexto é o problema dos generais bizantinos, que se refere à dificuldade de alcançar um consenso em um sistema distribuído quando alguns participantes podem agir de forma maliciosa ou falhar na comunicação. Esse problema é crucial para garantir que a blockchain funcione de maneira confiável e segura, mesmo na presença de falhas ou comportamentos adversos dentro da rede.
+
+Os mecanismos de consenso são essenciais para a operação e segurança das blockchains, estabelecendo as diretrizes e regras para a validação e inclusão de blocos na rede. Entre os algoritmos de consenso existentes: 
+- Practical Byzantine Fault Tolerance (PBFT): Um algoritmo que permite alcançar consenso mesmo na presença de falhas bizantinas. Ele é eficaz em redes permissionadas e se baseia na comunicação entre todos os nós para garantir que o sistema permaneça funcional e confiável.
+- Proof of Work (PoW): Utiliza poder computacional para resolver problemas criptográficos complexos e validar transações. É o algoritmo de consenso utilizado pelo Bitcoin, onde mineradores competem para encontrar um hash válido e adicionar novos blocos à blockchain.
+- Proof of Stake (PoS): Baseia-se na quantidade de criptomoeda que um usuário detém e está disposto a "apostar" como garantia. Os validadores são escolhidos para criar blocos com base na quantidade de moeda que possuem, o que reduz o consumo de energia em comparação ao PoW.
+- Leased Proof of Stake (LPoS): Variante do PoS onde os usuários podem "alugar" suas moedas para outros validadores em troca de uma parte das recompensas. Isso permite que mais participantes influenciem a validação dos blocos, promovendo uma maior descentralização.
+- Proof of Capacity (PoC): Utiliza o espaço de armazenamento disponível no disco rígido para validar transações. Os mineradores pré-preenchem seus discos com dados criptográficos e os blocos são escolhidos com base na capacidade de armazenamento disponível.
+
+A atualização de uma cópia da blockchain não pode ser feita por qualquer um, pois envolve um processo rigoroso e estruturado. O sistema blockchain opera com regras e mecanismos de consenso que garantem a integridade e a segurança da rede. Antes que um bloco possa ser adicionado ou alterado, ele deve passar por um processo de validação que é realizado pelos participantes da rede, conhecidos como nós. Esses nós seguem protocolos específicos e algoritmos de consenso para garantir que qualquer atualização ou nova transação seja válida e aceita por todos os participantes. Portanto, a atualização não é uma tarefa simples e exige a coordenação e o acordo de toda a rede para garantir a consistência e a confiabilidade da blockchain.
+
+Diferentes categorias de blockchain atendem a necessidades e objetivos variados, cada uma com suas características distintas:
+- Blockchains Públicas: São sistemas não-permissionados que oferecem resistência à censura e garantem anonimato e transparência nas transações. A premissa fundamental é a presença de usuários maliciosos que precisam ser considerados no design do sistema. Exemplos incluem **Bitcoin** e **Ethereum**.
+- Blockchains Permissionadas ou Federadas (Privadas): Destinadas a ambientes empresariais e governamentais, essas blockchains gerenciam dados sensíveis e exigem permissão para acesso e participação. Exemplos notáveis são **Tradelens**, **Hyperledger** e **Corda (Consórcio R3)**.
+- Blockchains Híbridas: Combinam aspectos de privacidade parcial e utilizam tokens próprios para funções específicas dentro da rede. Um exemplo é **XinFin**, que integra características das blockchains públicas e privadas para oferecer soluções mais adaptáveis.
+
+Os desafios enfrentados pelas blockchains podem ser classificados em dois grupos principais:
+- Desafios Relacionados à Tecnologia: Incluem o alto gasto computacional necessário para operar a rede, o risco de um ataque de 51% que pode comprometer a integridade do sistema, e o gargalo na validação de transações que pode afetar a eficiência da rede.
+- Desafios Dependentes do Contexto: Envolvem problemas como o hacking de exchanges, erros de código não intencionais, questões relacionadas à regulação governamental e a volatilidade do mercado, que podem impactar a operação e a adoção das tecnologias de blockchain.
+
+<a name="item1.4"><h4>1.4 Desafio de código: Desafios intermediários Javascript I - Formação Blockchain</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
+
+Nesse trio de desafios de código, o primeiro desafio, cujo nome foi [batmain.js](./04-dc/batmain.js), consistiu em extrair a primeira linha da entrada, que era composta por um numério inteiro que indicava a quantidade de casos de testes que seriam realizados, armazenando esse valor na variável T. Cada caso de teste era formado por uma cadeia de caracteres de tamanho N (1 < N < 26), sendo todos os caracteres letras maiúsculas ou minúsculas do alfabeto inglês. Para cada teste realizado o objetivo era imprimir a letra "Y", pois foi assumido que qualquer cadeia de caractere seria válida. Logo, uma estrutura de repetição foi criada que imprimia a letra "Y" até o atingir o valor do numéro inteiro extraído da entrada e armazenado na variável T.
+
+No segundo desafio, cujo nome do arquivo foi [frota_taxi.js](./04-dc/frota_taxi.js), o objetivo consistiu em determinar se seria mais vantajoso economicamente utilizar alcool ou gasolina, a partir dos preços por litro e rendimentos do automóvel utilizando cada um desses combutíveis informados nos dados de entrada. Os dados de entrada eram extraídos e armazenados em quatro variáveis, em seguida, o preço por quilômetro de cada combustível era calculado com a divisão do preço do respectivo combustível pelo rendimento que o próprio combustível proporcionava. Com um operador condicional ternário, era determinado o uso de alcool ou gasolina com base no menor valor, optando em caso de valores iguais, pelo uso da gasolina. 
+
+No último desafio dessa série de desafios de código, cujo nome era [gerente.js](./04-dc/gerente.js), a ideia foi aplicar descontos de forma automática em preços de produtos de uma loja. O valor do desconto seria passado em porcentagem e armazenado em uma variável, enquanto o preço sem o desconto seria extraído para outra variável. Dessa forma, foi só calcular o preço com desconto que seria igual ao preço sem o desconto subtraído do cálculo do desconto, que seria o preço sem o desconto multiplicado pelo desconto sobre 100, já que era em porcentagem. Por fim, o preço com o desconto era impresso.
