@@ -12,27 +12,38 @@ const network = bitcoin.networks.testnet       // Rede de Teste (Testnet)
 // const path = `m/49'/0'/0'/0`               // Mainnet
 const path = `m/49'/1'/0'/0`                  // Testnet
 
-// Criando o Minemônico para a seed (Conjunto de palavras aleatórias que formam a seed (palavras de senha))
+// Criando a frase mnemônica para a seed (Conjunto de palavras aleatórias que formam a seed)
 let mnemonic = bip39.gerenateMnemonic()
+
+// Criando a Seed a partir da frase mnemônica
 const seed = bip39.mnemonicToSeedSync(mnemonic)
 
-// Criando a raiz da carteira HD
-let root = bip32.fromSeed(seed, network)
+// Criando a chave mestra (raiz) da carteira HD
+let masterKey = bip32.fromSeed(seed, network)
 
+// Criando uma conta (Múltiplos pares de chaves: privadas e públicas)
+let account = masterKey.derivePath(path)
 
-// Criando uma conta - Par pvt-pub keys
-let account = root.derivePath(path)
-let node = account.derive(0).derive(0)
+// Selecionando o primeiro par de chaves
+let keyPair = account.derive(0).derive(0)
 
 // Criando um endereço
 let btcAddress = bitcoin.payments.p2pkh({
-    pubkey: node.publicKey,
+    pubkey: keyPair.publicKey,
     network: network,
 }).address
 
 
 // Escrever 
 console.log("Carteira Gerada")
-console.log("Endereço:", btcAddress)
-console.log("Chave Privada:", node.toWIF())
 console.log("Seed:", mnemonic)
+
+console.log("Endereço:", btcAddress)
+console.log("Chave Privada:", keyPair.toWIF())
+
+
+
+console.log("Seed:", seed)
+console.log("Seed:", masterKey)
+console.log("Seed:", account)
+console.log("Seed:", keyPair)

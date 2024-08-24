@@ -145,10 +145,16 @@ Para realização do acesso remoto foi executado o comando `a`, passando o IP ou
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-Dando sequência, no diretório do usuário foi criada uma pasta específica para o projeto com o comando `mkdir btcwallet`. Em seguida essa pasta foi acessada com o comando `cd btcwallet`. Neste pasta que seriam construídos os arquivos em **JavaScript** com o **Node.js**. Assim, o comando `npm init -y` foi executado para iniciar um projeto **Node.js**. Este criou o arquivo de configuração `package.json`, onde as dependências (bibliotecas) para o projeto são indicadas. Neste projeto foram utilizadas as seguintes bibliotecas: **bip39**, **bip32@2.0.6** e **bitcoinjs-lib**. Para instalá-las foi executado o comando `npm install bip39 bip32@2.0.6 bitcoinjs-lib --save`
+Dando sequência, no diretório do usuário foi criada uma pasta específica para o projeto com o comando `mkdir btcwallet`. Em seguida essa pasta foi acessada com o comando `cd btcwallet`. Neste pasta que seriam construídos os arquivos em **JavaScript** com o **Node.js**. Assim, o comando `npm init -y` foi executado para iniciar um projeto **Node.js**. Este criou o arquivo de configuração `package.json`, onde as dependências (bibliotecas) para o projeto são indicadas. Neste projeto foram utilizadas as seguintes bibliotecas: **bip39**, **bip32** e **bitcoinjs-lib**. Para instalá-las foi executado o comando `npm install bip39 bip32@2.0.6 bitcoinjs-lib --save`, sendo o **bit32** instalado na versão `2.0.6`. 
 
+Após isso, foi criada a pasta `src` com o comando `mkdir src` e nela foi construído o arquivo [createWallet.js](./02-dp/createWallet.js). Este arquivo realizou toda criação da carteira, sendo uma wallet do tipo determinística hierárquica. Então primeiro foi definido a rede que seria utilizada, no caso a testnet. Em seguida, a forma de derivação da carteira foi definida como `m/49'/1'/0'/0`, que era para rede testnet. Caso fosse para mainnet, tinha que ser `m/49'/0'/0'/0`. Logo depois, foi criado a frase mnemônica, que é uma sequência de palavras usadas para gerar e recuperar chaves criptográficas em carteiras de criptomoedas, facilitando a memorização e a recuperação dos fundos. Ela é traduzida em uma sequência binária que pode ser usada para derivar todas as chaves e endereços de uma Hierarchical Deterministic Wallet (HD Wallet). Com a frase mnemônica foi criada a seed e com o seed e a rede foi gerado a chave mestre, também chamada de raiz da carteira HD.
 
+A partir da raiz, uma conta foi criada indicando a forma de derivação da carteira dela definido anteriormente. Com essa conta, múltiplos pares de chaves (privados e públicos) poderiam ser criados. Ao executar `account.derive(0).derive(0)` indicava a primeira chave pública e privada da conta, ou seja, o primeiro par de chaves foi selecionado. A partir desse par de chaves, a chave pública foi extraída e junto com a rede especificada foi construído um endereço vinculado a chave pública desse par de chaves. Por fim, todos os elementos criado foram exibidos, conforme mostrado na imagem 03.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
 
 
 - baixar pacotes (instalar as dependências) (criar a pasta node_modules e o arquivo package.lock.json)
