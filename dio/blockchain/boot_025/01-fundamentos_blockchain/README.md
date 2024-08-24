@@ -24,14 +24,24 @@ This folder refers to Module 1 **Fundamentos da Blockchain** from bootcamp [**Fo
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
+  - JavaScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
+- Runtime Environment:
+  - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Library:
+  - Bitcoin Improvement Proposal 39 (bip39)   <img src="" alt="bip39" width="auto" height="25">
+  - Bitcoin Improvement Proposal 32 (bip32)   <img src="" alt="bip32" width="auto" height="25">
+  - bitcoinjs-lib   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/bitcoinjs-lib.png" alt="bitcoinjs-lib" width="auto" height="25">
 - Blockchain:
+  - Bitcoin (BTC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/btc.webp" alt="btc" width="auto" height="25">
+  - Bitcoin Faucet Generator   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/btc.webp" alt="bitcoin_faucet_generator" width="auto" height="25">
+  - Blockchain.com   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/blockchain_com.png" alt="blockchain_com" width="auto" height="25">
   - Electrum Bitcoin Wallet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/electrum_bitcoin_wallet.png" alt="electrum_bitcoin_wallet" width="auto" height="25">
 
 ---
@@ -124,19 +134,28 @@ Existem várias maneiras de gerenciar carteiras de criptomoedas, incluindo:
 
 <a name="item1.2"><h4>1.2 Desafio de Projeto: Criando e Utilizando a Sua Carteira de Criptomoedas</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
+Neste desafio de projeto, o objetivo foi através de arquivos de código em **JavaScript** gerar uma carteira de **Bitcoin**, importar essa carteira para um software gerenciador de carteiras (Wallet) e realizar de transações de envio e recebimento de **Bitcoin**. A criptomoeda utilizada foi **Bitcoin Faucet Generator** que é uma criptomoeda que não possui valor de mercado, o que é ótima para testes. Ela foi utilizada na testnet da blockchain do **Bitcoin**, que é uma rede auxiliar para testes. A wallet escolhida foi a **Electrum Bitcoin Wallet** que teve que ser instalada na máquina física **Windows**. Também foi utilizado o **Blockchain.com** como wallet, pois ele funciona pelo navegador sem a necessidade de fazer instalação. Contudo, foi necessário criar uma conta e validar informações pessoais para obter acesso total ao software. O bom dele é que ele funcionava também como um explorador de bloco, que seria utilizado posteriormente.
 
+Com relação a parte de codificação, para não ter que instalar o **Node.js** na máquina física, foi utilizado uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)**, que é um serviço da cloud **AWS** para provisionamento de máquinas virtuais. A instância foi definida como do tipo `t2.micro`, com a imagem de máquina (AMI) `a` (a) baseada em **Linux Ubuntu**. Um arquivo de user data foi usado para instalar previamente **Node.js** e **NPM**, além de ferramentas básicas do **Linux**. O par de chaves `keyPairUniversal` foi utilizado. Este é um par de chaves já criado na minha conta da **AWS** para projetos de estudo, no qual o arquivo de chave privada já estava salvo na máquina física. O provisionamento da instância foi gerenciado por um arquivo em **PowerShell** com comandos **AWS CLI**, dividido em dois scripts, um para criação e outro para exclusão, e estruturado com condições que aguardavam a entrada do usuário para executar o código. A **AWS CLI** estava previamente instalada e configurada na máquina física com o usuário administrador da **AWS** (`PedroHeegerAdmin`). O acesso remoto à instância foi realizado usando o software **OpenSSH**, já instalado na máquina física. Para garantir a comunicação, regras de entrada foram configuradas no grupo de segurança vinculado à instância, incluindo a liberação da porta `22` do protocolo `TCP` para acesso remoto. Essa instância utilizou o security group padrão para agilizar o processo. Dessa forma, com a execução do arquivo [ec2Instance.ps1](./02-dp/ec2Instance.ps1) a instância do **Amazon EC2** foi provisionada na **AWS**.
 
-terminal:
-- criar o arquivo package.json
-  - `npm init -y`
-- baixar pacotes (instalar as dependências) (criar a pasta node_modules e o arquivo package.lock.json)
-  - npm install bip39 bip32@2.0.6 bitcoinjs-lib --save
-
+Para realização do acesso remoto foi executado o comando `a`, passando o IP ou DNS público da instância, o usuário que iria fazer o acesso remoto, que no caso era o usuário `ubuntu` já que era uma máquina **Linux Ubuntu**, e também foi passado o caminho para o arquivo de chave privada para realização da autenticação desse usuário. Para confirmar que o **Node.js** e o **NPM** tinham sido instalados corretamente foi executado no terminal da instância os comandos `node --version` e `npm --version`. A imagem 02 mostra os dois softwares instalados na instância.
 
 <div align="Center"><figure>
     <img src="../0-aux/md1-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
+
+Dando sequência, no diretório do usuário foi criada uma pasta específica para o projeto com o comando `mkdir btcwallet`. Em seguida essa pasta foi acessada com o comando `cd btcwallet`. Neste pasta que seriam construídos os arquivos em **JavaScript** com o **Node.js**. Assim, o comando `npm init -y` foi executado para iniciar um projeto **Node.js**. Este criou o arquivo de configuração `package.json`, onde as dependências (bibliotecas) para o projeto são indicadas. Neste projeto foram utilizadas as seguintes bibliotecas: **bip39**, **bip32@2.0.6** e **bitcoinjs-lib**. Para instalá-las foi executado o comando `npm install bip39 bip32@2.0.6 bitcoinjs-lib --save`
+
+
+
+
+
+- baixar pacotes (instalar as dependências) (criar a pasta node_modules e o arquivo package.lock.json)
+
+
+
+
 
 
 
