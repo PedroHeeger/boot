@@ -210,18 +210,11 @@ Exemplos de Blockchain Híbrida incluem:
 
 <a name="item2.2"><h4>2.2 Desafio de Código: Desafios Básicos Javascript - Formação Web3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
+No primeiro desafio desse conjunto de três desafios de código, cujo nome do arquivo foi [ganhou_perdeu.js](./02-dp/ganhou_perdou.js), o objetivo consistiu em criar uma estrutura de condição if determinando resultados diferentes para duas condições que eram avaliadas a partir de um número fornecido como entrada. Se o valor da entrada fosse igual a `"1"`, o resultado tinha que ser a string `Ficou rico!`. Já se o valor de entrada fosse igual a `"0"`, o resultado seria a string `Perdeu tudo!`.
 
+No desafio 2, intitulado [rendimento_mes.js](./02-dp/rendimento_mes.js), o próposito foi calcular o total de criptomoedas que um personagem fictício teria após determinado tempo, ao investir inicialmente 50 criptomoedas. No desafio foi considerado que 10 criptomoedas rendia 1 e o tempo em meses era fornecido por um número como entrada. Dessa forma, uma variável foi criada para representar a quantidade de criptomoedas inicialmente. Em seguida, uma outra variável foi utilizada para calcular qual seria o rendimento mensal ao dividir o número de criptomoedas inicial por 10. Esse valor foi multiplicado pelo número de meses fornecido como entrada, armazenando o resutado em uma variável que seria o rendimento total. Por fim, o valor total de criptomoedas foi impresso, somando a quantidade inicial de criptomoedas com o rendimento total no período.
 
-
-
-
-<div align="Center"><figure>
-    <img src="../0-aux/md1-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
-
-
-
+O último desafio de código foi nomeado de [maior_rendimento.js](./02-dp/maior_rendimento.js) e teve como objetivo criar um array com a lista de 4 valores fornecido como entrada. Em seguida, utilizando a função `Math.max(...arr)` no array, foi extraído o seu maior elemento e armazenado em uma variável. Por fim, esse valor foi impresso.
 
 <a name="item2.3"><h4>2.3 Como Token Fungíveis Funcionam</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
@@ -309,6 +302,22 @@ Aqui estão os principais métodos de arrecadação de fundos e distribuição d
 <a name="item2.4"><h4>2.4 Desafio de Projeto: Criando o seu Primeiro Token do Zero nos Padrões Web3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
 
 
+- MetaMask
+- rpc.info
+- Faucet
+
+
+O MetaMask é utilizado como extensão do navegador que pode ser o Chrome, o Brave, entre outros. Ela funciona também como aplicativo mobile. Após adicionar a extensão ao navegador Chrome da máquina física Windows, já é possível utilizá-la pelo próprio navegador. A primiera ação a ser realizada é ou importar uma carteira já existente ou criar uma carteira.
+
+
+- Criar uma carteira
+  - Criar uma senha adicional de segurança a carteira
+  - Gerar e copiar a Frase de recuperação secreta
+  - Com o rpc.info é possível adicionar vários tipos de redes de várias blockchains diferentes a carteira da MetaMask, podendo fazer isso ao clicar ou de forma manual configurando a rede.
+  - Escolher a rede e configurá-la.
+  - Procurar no Google um Faucet para essa rede.
+    - Ele criou uma conta na Alchemy para obter os faucets
+    - Conectar com MetaMask
 
 
 
@@ -317,6 +326,11 @@ Aqui estão os principais métodos de arrecadação de fundos e distribuição d
 
 
 
+
+<div align="Center"><figure>
+    <img src="../0-aux/md1-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
 
 
 
