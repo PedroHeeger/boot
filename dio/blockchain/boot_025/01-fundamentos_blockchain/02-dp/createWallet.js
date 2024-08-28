@@ -3,7 +3,7 @@ const bip32 = require('bip32')
 const bip39 = require('bip39')
 const bitcoin = require('bitcoinjs-lib')
 
-// Definir a rede
+// Definindo a rede
 // const network = bitcoin.networks.bitcoin    // Rede Principal (Mainnet)
 const network = bitcoin.networks.testnet       // Rede de Teste (Testnet)
 
@@ -13,7 +13,7 @@ const network = bitcoin.networks.testnet       // Rede de Teste (Testnet)
 const path = `m/49'/1'/0'/0`                  // Testnet
 
 // Criando a frase mnemônica para a seed (Conjunto de palavras aleatórias que formam a seed)
-let mnemonic = bip39.gerenateMnemonic()
+let mnemonic = bip39.generateMnemonic()
 
 // Criando a Seed a partir da frase mnemônica
 const seed = bip39.mnemonicToSeedSync(mnemonic)
@@ -28,22 +28,14 @@ let account = masterKey.derivePath(path)
 let keyPair = account.derive(0).derive(0)
 
 // Criando um endereço
-let btcAddress = bitcoin.payments.p2pkh({
+let btcAddress = bitcoin.payments.p2wpkh({
     pubkey: keyPair.publicKey,
     network: network,
 }).address
 
 
-// Escrever 
+// Imprimindo as informações
 console.log("Carteira Gerada")
 console.log("Seed:", mnemonic)
-
 console.log("Endereço:", btcAddress)
 console.log("Chave Privada:", keyPair.toWIF())
-
-
-
-console.log("Seed:", seed)
-console.log("Seed:", masterKey)
-console.log("Seed:", account)
-console.log("Seed:", keyPair)

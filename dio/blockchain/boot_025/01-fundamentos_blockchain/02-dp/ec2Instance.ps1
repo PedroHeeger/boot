@@ -13,7 +13,7 @@ $imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jamm
 $instanceType = "t2.micro"
 $keyPairPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair"
 $keyPairName = "keyPairUniversal"
-$userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/basic/"
+$userDataPath = "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/aws/ec2_userData/node_npm/"
 $userDataFile = "udFile.sh"
 # $deviceName = "/dev/xvda" 
 $deviceName = "/dev/sda1" 
@@ -52,11 +52,7 @@ if ($resposta.ToLower() -eq 'y') {
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Criando a instância EC2 de nome de tag $tagNameInstance"
         aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --block-device-mappings "[{`"DeviceName`":`"$deviceName`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":`"$volumeType`"}}]" --no-cli-pager
-
-        # Write-Output "-----//-----//-----//-----//-----//-----//-----"
-        # Write-Output "Criando a instância EC2 de nome de tag $tagNameInstance"
-        # aws ec2 run-instances --image-id $imageId --instance-type $instanceType --key-name $keyPairName --security-group-ids $sgId --subnet-id $subnetId --count 1 --user-data "file://$userDataPath\$userDataFile" --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$tagNameInstance}]" --block-device-mappings "[{`"DeviceName`":`"$deviceName`",`"Ebs`":{`"VolumeSize`":$volumeSize,`"VolumeType`":`"$volumeType`"}}]" --iam-instance-profile Name=$instanceProfileName --no-cli-pager
-    
+   
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o nome da tag de todas as instâncias EC2 criadas"
         aws ec2 describe-instances --query "Reservations[].Instances[].Tags[?Key=='Name'].Value" --output text
