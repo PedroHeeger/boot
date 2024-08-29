@@ -39,7 +39,7 @@ This folder refers to Module 3 **Desenvolvimento com Solidity para Blockchain** 
 ---
 
 ### Bootcamp Module 3 Structure
-3. <a name="item1">Desenvolvimento com Solidity para Blockchain</a><br>
+3. <a name="item3">Desenvolvimento com Solidity para Blockchain</a><br>
   3.1. <a href="#item3.1">Introdução à Linguagem Solidity para Blockchain</a><br>
   3.2. <a href="#item3.2">Desenvolvimento de Smart Contracts para Blockchain</a><br>
   3.3. <a href="#item3.3">Desafio de Projeto: Criando a Sua Primeira Criptomoeda da Rede Ethereum</a><br>
@@ -64,7 +64,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em três cursos, dois desafios de projeto e um desafio de código. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item3.1"><h4>3.1 Introdução à Linguagem Solidity para Blockchain</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<a name="item3.1"><h4>3.1 Introdução à Linguagem Solidity para Blockchain</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
 **Solidity** é uma linguagem de alto nível voltada para contratos, com uma sintaxe simples que facilita o registro e leitura de transações em contratos inteligentes na blockchain. Inspirada pelas linguagens **Python**, **C++** e **JavaScript**, **Solidity** foi desenvolvida para rodar na **Ethereum Virtual Machine (EVM)**. Ela é amplamente utilizada para criar contratos inteligentes que envolvem votações, crowdfunding, rastreamento de ativos, NFTs, e outras aplicações semelhantes.
 
@@ -118,14 +118,12 @@ A IDE **Remix IDE** é um ambiente de desenvolvimento robusto para criar e impla
 
 ##### Parte Prática
 
-A partir deste ponto, inicia-se a parte prática do curso. Inicialmente, foram criados arquivos de código em **Solidity** para testar a linguagem e suas funcionalidades de forma individual. Após dominar a linguagem, as três ferramentas principais para o desenvolvimento de contratos inteligentes — **Ganache**, **Truffle** e **Hardhat** — foram utilizadas para testar a implantação de dois contratos inteligentes desenvolvidos com **Solidity** através da **Remix IDE**, em blockchains locais simuladas por essas ferramentas. A comunicação entre as ferramentas e o ambiente de desenvolvimento foi facilitada pela carteira **MetaMask**, instalada como extensão no navegador **Google Chrome** na máquina física **Windows**. A configuração de rede da **MetaMask** foi ajustada para se conectar à blockchain emulada por essas ferramentas. A integração automática da **MetaMask** com o **Remix IDE** ocorreu, pois ambos eram executados no navegador da máquina física, bastando apenas selecionar a **MetaMask** como ambiente de execução e escolher uma conta da carteira.
-
-Para evitar a instalação de múltiplos softwares na máquina física, uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** foi provisionada na **AWS**. Foi utilizada a mesma instância do módulo 1 do bootcamp, do tipo `t2.micro`, com a imagem de máquina (AMI) `a` (a) baseada em **Linux Ubuntu**. Um arquivo de user data foi usado para instalar previamente **Node.js** e **NPM**. O provisionamento da instância foi gerenciado por um arquivo em **PowerShell** com comandos **AWS CLI**, dividido em dois scripts, um para criação e outro para exclusão, e estruturado com condições que aguardam a entrada do usuário para executar o código. A **AWS CLI** estava previamente instalada e configurada na máquina física com o usuário administrador da **AWS** (`PedroHeegerAdmin`). O acesso remoto à instância foi realizado usando o software **OpenSSH**, já instalado na máquina física. Para garantir a comunicação, regras de entrada foram configuradas no grupo de segurança vinculado à instância, incluindo a liberação da porta `22` do protocolo `TCP` para acesso remoto.
+A partir deste ponto, inicia-se a parte prática do curso. Inicialmente, foram criados arquivos de código em **Solidity** para testar a linguagem e suas funcionalidades de forma individual. Após familiarizar com a linguagem, as três ferramentas principais para o desenvolvimento de contratos inteligentes (**Ganache**, **Truffle** e **Hardhat**) foram utilizadas para criar e testar contratos inteligentes, desenvolvidos com **Solidity**, em blockchains locais simuladas por elas. Esses softwares foram instalados e utilizados em uma instância do **Amazon EC2** da cloud **AWS** para evitar instalações na máquina física **Windows**. O **Ganache** e **Truffle** foram utilizados em conjunto e o **Hardhat** individualmente. Na etapa seguinte, que foi a principal, o objetivo foi criar um smart contrct mais robusto pelo **Remix IDE**, que simulava uma votação, e fazer o deploy dele no **Ganache** da instância do EC2. A ponte para conexão dessas duas ferramentas foi o software de wallet **MetaMask** que foi utilizado para criar uma nova carteira, importar uma das contas do **Ganache** e configurar a rede que o deploy seria feito, que no caso era o servidor RPC do **Ganache**. A integração automática do **MetaMask** com o **Remix IDE** possibilitava o deploy dos contratos pelo **MetaMask** que direcionava para rede configurada. Por fim, uma última etapa foi realizada, no qual um outro contrato foi criado no **Remix IDE** e a biblioteca **Web3.js** foi baixada para executar esse contrato e interagir com ele pelo próprio **Node.js** instalado na instância do EC2.
 
 No **Remix IDE** com a linguagem **Solidity** vários arquivos foram criados para testar essa linguagem e suas funcionalidades. A seguir esses arquivos foram listados na ordem de aprendizado, explicando o que foi trabalhado em cada um. 
 - [state_variable.sol](./01-solidity/linguagem/state_variable.sol): Neste arquivo o objetivo foi testar uma variável de estado visualizando que ela é persistente em todo o contrato em que ela foi criada.
 - [function.sol](./01-solidity/linguagem/function.sol): Neste arquivo o propósito foi explicar como criar uma função em um contrato. As funções em um contrato inteligente são utilizadas para interagir com esse contrato, podendo ser de dois tipos. O tipo Read Functions (call) é somente leitura, ou seja, usada apenas para ler dados do contrato sem alterar seu estado, não consumindo gas e nem sendo registrada em blocos. Já as funções do tipo Transaction Functions (transaction ou send) são funções que alteram o estado do contrato e, portanto, consomem gas, são registradas em blocos e geram hash de transação. No caso deste arquivo foi criado apenas uma função somente leitura que retornava o valor calculado dentro da função.
-- [modify_functons.sol](./01-solidity/linguagem/modify_function.sol): Neste arquivo o objetivo consistiu em extrair o endereço da conta do proprietário que fez o deploy do contrato através do comando `msg.sender` e armazená-lo em uma variável pública global do tipo `address`. Em seguida, um modificador garantia que apenas o proprietário que fez o deploy pudesse interagir com o contrato, comparando o endereço da conta do proprietário, que foi armazenado na variável no construtor ao fazer o deploy do contrato, com o valor, obtido pelo comando `msg.sender`, do endereço da conta que estava tentndo interagir com o contrato. Se o endereço da conta não fosse a do proprietário que realizou o deploy do contrato, a mensagem de erro `Not authorized` era exibida.
+- [modify_functons.sol](./01-solidity/linguagem/modify_function.sol): Neste arquivo o objetivo consistiu em extrair o endereço da conta do proprietário que fez o deploy do contrato através do comando `msg.sender` e armazená-lo em uma variável pública global do tipo `address`. Em seguida, um modificador garantia que apenas o proprietário que fez o deploy pudesse interagir com o contrato, comparando o endereço da conta do proprietário, que foi armazenado na variável no construtor ao fazer o deploy do contrato, com o valor, obtido pelo comando `msg.sender` do endereço da conta que estava tentndo interagir com o contrato. Se o endereço da conta não fosse a do proprietário que realizou o deploy do contrato, a mensagem de erro `Not authorized` era exibida.
 - [view_functions.sol](./01-solidity/linguagem/view_function.sol): Neste arquivo a ideia foi criar uma função view, ou seja uma função somente leitura. Nesse tipo de função, as variáveis de estado, aquelas declaradas dentro do contrato mas fora das funções, não devem ser modificadas após chamá-las. Se por acaso essa função alterar uma variável de estado, ela vai gerar um aviso (warning). Os métodos getters são um exmeplo de view.
 - [pure_functions.sol](./01-solidity/linguagem/pure_function.sol): Este arquivo teve o propósito de criar uma função pure que são funções puras que não leem e nem modificam as variáveis de estado, retornando os valores apenas utilizando os parâmetros passados para a função ou variáveis locais presentes nela. Portanto, observe que na função pure todas as variáveis são locais, pois não seria possível utilizar uma variável de estado, apenas se fosse passada como atributo da função.
 - [library](./01-solidity/linguagem/library.sol): Neste arquivo o objetivo foi criar uma biblioteca com apenas uma função que calculava a potenciação de um número a partir de outro número. Em seguida, criar um contrato, importar essa biblioteca para dentro do contrato e utilizar sua função para executar o cálculo. Para que a função executasse o cálculo era necessário interagir com o contrato passando dois números. O endereço da conta que interagia com o contrato, ou seja, executava a sua função, era também retornado.
@@ -135,88 +133,107 @@ No **Remix IDE** com a linguagem **Solidity** vários arquivos foram criados par
 - [array_dinamic.sol](.//01-solidity/linguagem/array_dinamic.sol): Este exemplo foi basicamente igual ao anterior, alterando apenas o tamanho do array, deixando em branco, pois era um array dinâmico. Dentro da função, após criar o array com seus elementos, a propriedade `push` foi utilizada para inserir mais um elemento ao final do array. Por fim, o array foi retornado.
 - [struct.sol](.//01-solidity/linguagem/struct.sol): Este foi o último arquivo de aprendizado da linguagem **Solidity**, o objetivo aqui foi criar uma struct. Structs são tipos que armazenam registros de dados, muito parecida com o conceito de classe e objetos em POO. Primeiro uma struct de nome Book foi criada com três propriedades (atributos). Cada um desses atributos tiveram um tipo específico. Em seguida, um instância da struct foi criada de nome `book`. Duas funções foram criadas para interagir com as propriedades das instâncias da struct. A primeira função é do tipo set, ou seja, altera os valores das propriedades da struct instanciada. Já a segunda é uma função do tipo get que tem apenas um único retorno que é armazenado temporariamente (memory). Este retorno é uma das propriedades da struct instanciada.
 
-Após toda essa introdução a linguagem **Solidity**, chegou o momento da construção de contratos que seriam utilizados em blockchains locais emuladas pelas ferramentas **Ganache**, **Truffle** e **Hardhat**. O primeiro contrato criado foi o [HelloContract.sol](./01-solidity/contracts/HelloContract.sol). Neste, duas variáveis foram criadas, sendo uma em branco intitulada de `name`. Em seguida, duas funções do tipo set foram construídas para passar dados na interação com o contrato para modificar os valores dessas duas variáveis.
-Em **Solidity**, quando é declarada uma variável de estado como `public`, o compilador automaticamente gera uma função getter para essa variável. Isso permite que qualquer pessoa possa acessar o valor dessa variável diretamente ao interagir com o contrato. Dessa forma, foi executado primeiro as funções get para retornar os valores da variáveis. Em seguida, a variável de nome que estava em branco foi alterada pela sua função set, informando meu nome `Pedro`. Observe na imagem 02, a alteração da variável que foi feita pela função set ao interagir com o contrato e recuperada pela função get após a alteração.
+Após testar a linguagem **Solidity** no **Remix IDE**, foi a etapa de instalar e utilizar os softwares **Ganache**, **Truffle** e **Hardhat**. Para evitar a instalação de múltiplos softwares na máquina física, uma instância do **Amazon Elastic Compute Cloud (Amazon EC2)** foi provisionada na **AWS** com as mesmas configurações da instância do módulo 1 desse bootcamp. O tipo foi definido como `t2.micro` e a imagem de máquina (AMI) foi `ami-0c7217cdde317cfec` (Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07) baseada em **Linux Ubuntu**. O mesmo arquivo de user data foi usado para instalar previamente **Node.js** e **NPM**, pois era um pré-requisito para instalar os três softwares acima.
+
+O provisionamento da instância foi gerenciado pelo mesmo arquivo em **PowerShell** com comandos **AWS CLI**, [ec2Instance.ps1](../01-fundamentos_blockchain/02-dp/ec2Instance.ps1). Este era dividido em dois scripts, um para criação e outro para exclusão, e estruturado com condições que aguardam a entrada do usuário para executar o código. A **AWS CLI** estava previamente instalada e configurada na máquina física com o usuário administrador da **AWS** (`PedroHeegerAdmin`). O acesso remoto à instância foi realizado usando o software **OpenSSH**, já instalado na máquina física. Para garantir a comunicação, regras de entrada foram configuradas no grupo de segurança vinculado à instância, incluindo a liberação da porta `22` do protocolo `TCP` para acesso remoto. Com o comando `ssh -i "G:/Meu Drive/4_PROJ/scripts/scripts_model/.default/secrets/awsKeyPair\keyPairUniversal.pem" ubuntu@54.89.207.96`, passando o IP ou DNS público da instância, o usuário que iria fazer o acesso remoto, que no caso era o usuário `ubuntu` já que era uma máquina **Linux Ubuntu**, e também o caminho para o arquivo de chave privada para a autenticação desse usuário, foi possível estabelecer o acesso remoto à instância.
+
+O primeiro software utilizado foi o **Ganache**, que poderia ser usado através de uma interface gráfica do usuário (GUI) ou de uma interface de linha de comando (CLI). Como seria instalado em uma instância **Linux Ubuntu** que não tinha ambiente gráfico, foi utilizado apenas o CLI do **Ganache**. Com o comando `npm install -g ganache-cli` executado no terminal da instância, foi instalado o **Ganache** CLI. Ao executar o comando `ganache`, ele iniciou uma instância do **Ganache** e um servidor RPC (Remote Procedure Call). A instância do **Ganache** emulava uma blockchain local, enquanto o servidor RPC era a interface de comunicação entre o cliente (o código, ferramentas de desenvolvimento) e a blockchain local que o **Ganache** estava simulando. A blockchain local criada pelo **Ganache** foi responsável por provisionar vários recursos dentro dela, que incluíam:
+- Available Accounts (Contas Disponíveis): Dez contas pré-criadas, cada uma com um saldo inicial de **Ether** (ou outra criptomoeda dependendo da configuração).
+- Private Keys (Chaves Privadas): Cada uma das dez contas têm uma chave privada associada, permitindo a realização de transações. Como são geradas também dez chaves privadas, a chave privada de cada uma das contas segue o índice de ordenação.
+- HD Wallet: Se o **Ganache** estiver configurado para usar uma HD Wallet, ele gera uma frase mnemônica e um caminho base HD (HD Path). Utilizando essa frase e caminho em uma carteira do tipo determinística hierárquica, como a **MetaMask**, múltiplas contas e chaves são derivadas de uma única chave mestre, facilitando a gestão de várias contas em uma única carteira.
+- Gas Price: Define o preço padrão do gas (a taxa necessária para realizar transações ou executar contratos inteligentes).
+- BlockGas Limit: Define o limite de gas que pode ser consumido em cada bloco, simulando as restrições que existem em uma blockchain real como o **Ethereum**.
+- Call Gas Limit: Define o limite máximo de gas que pode ser consumido por chamadas de contrato inteligentes ou transações em uma única execução. Isso ajuda a evitar que uma execução consuma uma quantidade excessiva de recursos e afete o desempenho da blockchain emulada.
+- Chain ID: Identificador único da cadeia de blocos emulada pelo **Ganache**. O Chain ID é usado para diferenciar a blockchain emulada de outras redes, como a mainnet do **Ethereum** ou outras redes de teste. Ele garante que as transações e contratos executados na instância do **Ganache** não sejam confundidos com aqueles de outras redes.
+- RPC Listening: Indica o endereço e a porta em que o servidor RPC do **Ganache** está escutando por conexões. O servidor RPC permite que aplicativos e ferramentas interajam com a blockchain emulada, enviando comandos e recebendo informações sobre o estado da rede.
+
+O **Ganache** é uma ferramenta que faz parte do **Truffle** Suite, projetada para emular blockchains locais. Ele permite a execução e teste de contratos inteligentes em um ambiente controlado. O **Truffle** usa o **Ganache** para realizar o deploy e testar contratos inteligentes criados com sua própria suíte de desenvolvimento. No entanto, o **Ganache** também pode ser usado de forma independente para fazer deploy de contratos criados com outras ferramentas, como o **Remix IDE**. Dessa forma, foi realizado primeiro o deploy de um contrato criado pelo **Truffle**, portanto foi necessário instalá-lo. Para isso, no terminal da instância do EC2 foi executado o comando `npm i -g truffle`. Após instalação, dentro do diretório do usuário foi criado uma pasta com o comando `mkdir solidity-truffle-test` e essa pasta foi acessada com o comando `cd solidity-truffle-test`. Para iniciar o projeto foi executado o comando `truffle init` que criava uma estrutura básica de diretórios e arquivos necessários para um projeto de desenvolvimento de contratos inteligentes usando o **Truffle**. 
+
+Essa pasta foi aberta em uma janela do **VS Code** da máquina física **Windows**, utilizando a extensão *Remote - SSH* para realizar um acesso remoto com a instância do **Amazon EC2**. Na sub-pasta de nome `contracts`, onde ficavam armazenados todos os contratos, foi criado o smart contract pelo arquivo **Solidity** [MyFirstContract.sol](./01-solidity/contracts/MyFirstContract.sol). Esse contrato foi bem simples, apenas para teste, ele armazenava uma variável com o texto `Hello World!` e com uma função get retornava o conteúdo dessa variável. Na sub-pasta `migrations` foi criado o arquivo **JavaScript** [2_deploy_contract.js](./01-solidity/contracts/2_deploy_contracts.js) que armzenava toda a informação do arquivo de contrato em uma variável de nome `MFC` e utilizando o método `deployer` do **Truffle** esse contrato seria implantando. Contudo, era necessário ter um cliente, ou seja, era preciso ter uma blockchain local emulada, isso já tinha sido feito ao provisionar a instância do **Ganache**. Então foram utilizadas as informações de rede do servidor RPC para comunicar o **Truffle** com o **Ganache** e conseguir implantar o smart contract na blockchain local emulada pelo **Ganache**. No arquivo `truffle-config.js`, foi necessário descomentar algumas linhas de código do campo `networks` para indicar a rede fornecida pelo servidor RPC do **Ganache**. Por padrão, o **Ganache** utilizava a porta `7545` para o RPC server, a mesma utilizada pelo **Truffle**. No entanto, era possível que algum deles utilizassem uma porta diferente. Quando isso acontece, é preciso alterar a porta no arquivo de configuração do **Truflle** para que ele direcione para a porta utilizada pelo servidor RPC do **Ganache**. O host utilizado pelos dois, por padrão, era o localhost (`127.0.0.1`), mas isso também poderia ser alterado se necessário. Como nesse caso era uma simulação de uma blockchain local, não foi necessário alterar o host. Em uma rede **Ethereum**, a porta padrão para o RPC server (para o cliente Geth ou Parity) é `8545`, mas novamente, isso poderia ser configurado para usar uma porta diferente. Após a correta configuração de rede, era só executar o comando `truffle migrate`, para implantar o contrato inteligente na blockchain local emulada pelo **Ganache**. A imagem 03 evidencia que o contrato foi deployado com sucesso.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md3-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
+    <img src="../0-aux/md3-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
+Nessa etapa, ao invés de utilizar os softwares **Ganache** e **Truffle**, agora foi utilizado o **Hardhat**. Portanto, foi preciso instalá-lo na instância do **Amazon EC2** e isso foi feito executando o comando `npm install --save-dev hardhat`. Em seguida, de dentro do diretório do usuário da instância foi criada uma pasta do projeto para deploy com o **Hardhat**, sendo executado o comando `mkdir HardhatTest`. Com o comando `cd HardhatTest` essa pasta foi acessada e então o comando `npx hardhat` executado criou o projeto com o **Hardhat**. Essa criação era interativa e configurações eram solicitadas no terminal. A primeira configuração era indicar que seria um projeto **JavaScript**. A segunda configuração era definir a raiz do projeto que no caso era a pasta criada. Em seguida, foi optado por não criar o arquivo `.gitignore`, pois não seria trabalhado com **Git** na instância do EC2. Após isso, um comando `a` foi fornecido para instalar as dependências necessárias para o projeto. Então ele foi copiado e executado. Na sequência a pasta do projeto do **Hardhat** foi aberta pelo **VS Code** da máquina física **Windows**, também utilizando a extensão *Remote - SSH* para realizar um acesso remoto à instância do **Amazon EC2** direto na pasta do projeto.
 
+Com o **Hardhat** instalado, foi executado o comando `npx hardhat compile` para compilar um contrato gerado automaticamente pelo software dentro da pasta `contracts`. Em seguida foi executado o comando `npx hardhat test` que realizava um teste antes de implantar o contrato para verificar se estava tudo certo. A imagem mostra que o contrato passou em tudos os testes. Com isso, o deploy do contrato foi executado com o comando `npx hardhat run scripts/deploy.js` ????. Para fazer o deploy do contrato em uma rede, foi preciso iniciar um node do **Hardhat** com o comando `npx hardhat node`. Este node era quem emulava a blockchain local do **Hardhat**, semelhante ao realizado com o **Ganache**. Algumas contas e chaves privadas eram fornecidas pela blockchain emulada pelo nó do **Hardhat**. Então o deploy foi realizado agora pelo comando `npx hardhat run scripts/deploy.js --network localhost`, onde a rede foi especificada como localhost, ou seja, uma blockchain local. A imagem 05 mostra o contrato executado.
 
-instalar o Ganache CLI
-  - precisa do node.js e o npm
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
 
-instalar o truffle
-  - criar a pasta: mkdir solidity-truffle-test
-    - entrar na pasta e dar o truffle init
-    - abrir com vs code e criar os dois arquivos da pasta (contracts)
-    - executar o comando `ganache` para verificar a porta utilizada pelo Ganache.
-    - ir no arquivo truffle-config.js e descomentar a parte que tem host, porta e network_id
-    - alterar a porta para a indicada.
-    - executar o truffle migrate no terminal
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
 
-instalar o hardhat
-  - criar uma pasta para ele: mkdir HardHatTest
-    - executar o comando npx hardhat e criar o projeto JS
-      - indicar a raiz do projeto, no caso essa pasta
-      - não criar o .gitignore
-      - instalar as dependências necessárias pelo comando fornecido
-      - abrir com o vs code
-      - executar o comando `npx hardhat compile` para compilar o contrato
-      - executar o comando `npx hardhat test` para testar o contrato
-      - executar o comando `npx hardhat run scripts/deploy.js` para implantar o contrato.
-      - executar o comando `npx hardhat node`
-      - executar o comando `npx hardhat run scripts/deploy.js --network localhost`
+Após entender sobre a liguagem **Solidity** e a IDE **Remix IDE**, aprender a criar um smart contract, instalar e utilizar as três ferramentas de desenvolvimento de contratos inteligentes (**Ganache**, **Truffle** e **Hardhat**), a etapa final foi criar um contrato com o **Solidity** no **Remix IDE** e fazer o deploy dele utilizando o **Truffle** e o **Ganache**. O contrato criado foi o [DIOVoting.sol](./01-solidity/contracts/DIOVoting.sol), que simulava uma votação, onde uma lista de candidatos era criada e três funções executavam as ações. A primeira função era para contabilizar os votos totais recebidos por um candidato específico. A segunda função era para votar em uma candidato específico. Já a terceira função, era uma função auxiliar utilizada nas outras duas para verificar se o candidato indicado existia. Com o contrato construído, ele foi implantado no ambiente do próprio **Remix IDE** para testá-lo, antes de implantar em uma blockchain local.
 
+Para realizar o deploy de um contrato criado no **Remix IDE** era necessário o software **MetaMask** instalado, pois ele que seria a ponte entre o contrato executado no **Remix IDE** e a blockchain local emulada pelo **Ganache**, através das suas configurações de rede. O **MetaMask** foi utilizado como extensão do navegador **Google Chrome** na máquina física **Windows**. Ao acessar o **MetaMask**, era possível importar uma carteira ou criar uma nova, muito parecido com o realizado no **Electrum** no módulo 1 deste bootcamp. Uma nova carteira foi criada e logo em seguida, foi preciso criar uma senha para ela, que foi `dio-boot_025-test1`. A frase mnemônica do Seed foi fornecida com 12 palavras que deveria ser armazenadas. Após confirmar a frase novamente, a carteira foi criada, conforme imagem 06.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
 
+Com a carteira construída, a chave privada de uma das contas que era fornecido pela instância do **Ganache** foi copiada e utilizada para importar essa conta para a carteira do **MetaMask**. Assim, uma segunda conta ficava disponível no **MetaMask**. Contudo, ainda era preciso configurar a rede. Na configuração de rede, o nome da rede (`Network Name`) foi `DIO`, a URL RPC (`New RPC URL`) era a URL do servidor RPC fornecido pelo **Ganache**, para visualizar foi só executar `ganache` no terminal. O `Chain ID` foi o indicado que era `1337` e o símbolo da moeda (`Currency Simbol`) foi definido como `DIO`. Acontece que como o **Ganache** funcionava na instância, o host da URL não seria o localhost e sim o IP público da instância. Também era necessário executar o comando `ganache-cli -h 0.0.0.0` para que ele escutasse todas as interfaces de rede e permitisse conexões externas. A imagem 07 mostra como ficou a configuração de rede no **MetaMask**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
 
-criar um smart contract utilizando a linguagem Solidity
-  - criar um contrato de votação, onde teremos uma lista de candidatos, funções para registrar e consultar votos.
-  - Para criar o nosso contrato, vamos acessar a IDE Remix online
-  - Testar as funções do contrato
+Com tudo pronto, agora era só executar o contrato pelo **Remix IDE** alterando o ambiente para a carteira **MetaMask** especificando a conta importada no **Ganache**. O **MetaMasK** e **Remix IDE** por funcionarem no mesmo navegador se integravam automaticamente. A imagem 08 exibe o contrato executado. Já a imagem 09 mostra as transações e saldo na carteira **MetaMask**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
 
-criar uma carteira MetaMask
- - adicionar a extensão no chrome
- - criar uma carteira nova
-  - criar uma senha
-  - guardar a frase de recuperação (seed)
-  - confirmar a chave
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
 
-- abrir o ganache
-  - criar uma nova workspace; ProjectWorkspace
-  - pegar a chave privada da primeira conta do ganache e salvar
-  - importar a conta no metamask informando a chave privada
-  - configurar a network na MetaMask
-    - Name: DIO
-    - New RPC URL: Copiar do Ganache
-    - Chain ID: 1337
-    - Currency Simbol: DIO
+Um outro contrato foi criado com **Solidity** no **Remix IDE** e testado, cujo nome foi [HelloContract.sol](./01-solidity/contracts/HelloContract.sol). Neste, duas variáveis foram criadas, sendo uma em branco intitulada de `name` e a outra com a mensagem `Hello World`. Em seguida, duas funções do tipo set foram construídas para passar dados na interação com o contrato para modificar os valores dessas duas variáveis. Em **Solidity**, quando é declarada uma variável de estado como `public`, o compilador automaticamente gera uma função getter para essa variável. Isso permite que qualquer pessoa possa acessar o valor dessa variável diretamente ao interagir com o contrato. Dessa forma, foi executado primeiro as funções getters para retornar os valores da variáveis. Em seguida, a variável de nome que estava em branco foi alterada pela sua função set, informando meu nome `Pedro`. Observe na imagem 10, a alteração da variável que foi feita pela função set ao interagir com o contrato e recuperada pela função get após a alteração.
 
-conectar o metamesk ao remix
-  - criar um novo arquivo Solidity no Remix (HelloContract.sol)
-  - alterar o environment para o MetaMask e a conta que adiconamos lá
-  - fazer o deploy e executar o contrato
-  - confirmar a transação pelo MetaMask
-  - analisar as transações no ganache
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
 
-começar a trabalha com o web3.js
-  - Executar o comando npm install web3 --save para instalar a lib
-  - acessar o node com o comando node
-  - executar o comando: const Web3 = require('web3')
-  - executar o comando: const web3 = new Web3('http://127.0.0.1:7545')
+O teste desse contrato foi no próprio **Remix IDE** primeiro, depois o ambiente foi alterado para **MetaMask** escolhendo a conta importada do **Ganache** para que o deploy fosse na blockchain local emulada pelo **Ganache** que funcionava na instância do EC2. A imagem 11 evidencia o deploy na blockchain emulada pelo **Ganache**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
 
+Na instância do **Amazon EC2**, a biblioteca **Web3.js** foi instalada com o comando `npm install web3 --save`. A **Web3.js** é uma biblioteca **JavaScript** que permite interagir com a blockchain **Ethereum** e com contratos inteligentes a partir de um aplicativo web ou de um ambiente **Node.js**, funcionando como se fosse o **Remix IDE**. Em seguida, o **Node.js** foi acessado com o comando `node`. O comando `const Web3 = require('web3')` foi executado para importar a biblioteca e o comando `const web3 = new Web3('http://127.0.0.1:7545')` para criar uma nova instância do **Web3.js** indicando a rede do servidor RPC do **Ganache**. Para visualizar todas as contas do **Ganache** foi executado o comando `web3.eth.getAccounts().then(console.log)`, conforme imagem 12.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
 
+Agora, uma nova instância do contrato seria criada. Para isso, no terminal da instância do EC2, foi executado o comando `nano ABI.json` para criar o arquivo [ABI.json](./01-solidity/contracts/ABI.json) com o editor de texto **Nano**. O conteúdo desse arquivo foi copiado do contrato `HelloContract.sol` do **Remix IDE**, mas na opção `ABI` no compilador. Este conteúdo era todo o contrato em **JSON**. Após isso, de volta para o terminal com o **Node.js** aberto, foi executado o comando `let abi = require("./abi.json")` para armazenar o **JSON** em uma variável. Com o comando `let contract = new web3.eth.Contract(abi, "endereco")`, o contrato foi criado passando a variável com o **JSON** e o endereço do contrato no **Remix IDE**. Dessa forma, foi possível interagir com contrato pelo **Node.js**. Com o comando `contract.methods.name().call().then(console.log)` era exibido o nome alterado na variável. Enquanto com o comando `contract.methods.hello().call().then(console.log)` era exibido a mensagem na outra variável. A imagem 13 ilustra essas execuções.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
 
+Essas interações foram todas do tipo call. Para fazer uma interação do tipo transaction, foi utilizado o comando `contract.methods.setName("Bahia").send({from:"endereço"}).then(console.log)` que alterava o valor da variável `name`, sendo necessário indicar um endereço da carteira que estava executando a transação. Em seguida, o comando `contract.methods.name().call().then(console.log)` foi utilizado para exibir o valor da variável, conforme mostrado na imagem 14.
 
-<a name="item3.2"><h4>3.2 Desenvolvimento de Smart Contracts para Blockchain</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+<a name="item3.2"><h4>3.2 Desenvolvimento de Smart Contracts para Blockchain</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
 Contratos inteligentes, ou smart contracts, são acordos automatizados entre as partes envolvidas, registrados na blockchain para garantir sua imutabilidade e irreversibilidade. Eles podem ser usados para criar uma variedade de aplicações, como sistemas de votação, crowdfunding, rastreamento de ativos e emissão de tokens adicionais, incluindo tokens fungíveis e não fungíveis (NFTs). Para ser classificado como um smart contract, o contrato deve seguir regras e padrões específicos estabelecidos.
 
@@ -239,28 +256,37 @@ Os tokens ERC-721 são projetados para representar ativos digitais únicos e ind
 
 O IPFS (Interplanetary File System) é um protocolo descentralizado projetado para melhorar a eficiência e a economia na transferência e armazenamento de arquivos. O objetivo do IPFS é tornar a distribuição de arquivos na internet mais eficiente, reduzindo custos e aumentando a redundância e a preservação dos dados. Em vez de depender de servidores centralizados, o IPFS utiliza uma rede distribuída de nós para armazenar e compartilhar arquivos. Entre suas principais características, o IPFS permite uma entrega de conteúdo mais rápida e eficiente ao baixar partes de arquivos de nós localizados geograficamente próximos, o que ajuda a minimizar a latência. Quando um arquivo é adicionado à rede IPFS, ele é fragmentado em blocos menores, cada um com um identificador único, facilitando o acesso e a recuperação do conteúdo de forma distribuída.
 
-<a name="item3.3"><h4>3.3 Desafio de Projeto: Criando a Sua Primeira Criptomoeda da Rede Ethereum</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
+<a name="item3.3"><h4>3.3 Desafio de Projeto: Criando a Sua Primeira Criptomoeda da Rede Ethereum</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
+Neste desafio de projeto, o objetivo consistiu em criar um token fungível adicional no padrão ERC-20 e realizar transações com ele. O ERC-20 é um padrão técnico para a criação de tokens fungíveis na blockchain do **Ethereum**. Ele define um conjunto de regras e interfaces que todos os tokens compatíveis devem seguir, garantindo que sejam interoperáveis e possam ser facilmente integrados em exchanges, carteiras e outras aplicações. Os softwares utilizados foram os mesmos do primeiro curso deste módulo, onde o **Ganache** e o **Truffle** funcionavam em uma instância do **Amazon EC2** provisionada na cloud da **AWS**. A wallet **MetaMask** já tinha sido instalada como extensão do navegador **Chrome** da máquina física **Windows** e a carteira utilizada foi a mesma criada no curso anterior. Enquanto a linguagem **Solidity** era utilizada para construir o smart contract no **Remix IDE** que funcionava na web através do navegador da máquina física. A conexão de rede do **MetaMask** com o **Ganache** já tinha sido realizada ao definir a URL do servidor RPC do **Ganache**, passando o IP público da instância do **Amazon EC2** no lugar do localhost. Uma conta do **Ganache** já tinha sido importada para a **MetaMask** no curso 1 deste módulo, mas foi optado por importar uma outra conta do mesmo servidor do **Ganache**, já que ele fornecia dez contas. Dessa forma, após elaborar o smart contract que criaria o token, era só fazer o deploy do contrato, via **MetaMask**, na blockchain local emulada pelo **Ganache** indicando a nova conta importada para o **MetaMask**.
 
-
-
-
-
-
-
-
-
-
-
-
+Como a mesma carteira do **MetaMask** era utilizada, ela já tinha duas contas, uma padrão que veio ao criar e outra importada de uma das dez contas que o **Ganache** gerava. Essa segunda conta foi renomeada no **MetaMask** para `DIO-boot_025-1`. Uma terceira conta foi criada ao importar uma outra conta das dez que o **Ganache** fornecia, sendo esta intitulada de `DIO-boot_025-2`. Para importar uma conta do **Ganache** na wallet **MetaMask** era utilizado a chave privada vinculada a conta determinada. A conexão entre o **Remix IDE** e a **MetaMask** era quase que automática, ao indicar no environment do **Remix IDE** que o deploy seria na wallet **MetaMask**, uma caixa do **MetaMask** era aberta para confirmar a conexão e escolher a conta da carteira que faria o deploy, que neste caso foi a terceira conta que foi nomeada de `DIO-boot_025-2`. A imagem 15 exibe essa conexão sendo executada.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md1-img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
+    <img src="../0-aux/md3-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
 </figure></div><br>
 
+A etapa seguinte foi criar o arquivo do smart contrat, cujo nome foi [DIOCoin.sol](./03-dp/DIOCoin.sol). Este arquivo criava uma interface de nome `IERC20` com três funções getters, três outras funções e dois eventos. Esta interface era utilizada para criar tokens no padrão ERC-20 na blockchain **Ethereum**. Ao criar o contrato inteligente chamado `DIOCoin` utilizando a interface, as seis funções tinham que ser implantadas. O token era construído com o nome `DIO Coin`, símbolo `DIO` e com `18` decimais. O contrato definia as variáveis para armazenar os saldos de cada endereço (balances) e as permissões de gasto (allowed). O `totalSupply_` era inicializado com 10 tokens, que eram atribuídos ao endereço do criador do contrato no construtor. As funções implementadas permitiam a transferência de tokens entre endereços, aprovações para terceiros gastarem tokens em nome do proprietário, e verificações de saldo e permissões.
 
-<a name="item3.4"><h4>3.4 O Mercado de Blockchain e Criptomoedas</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
+Para testar, foi realizado o deploy do contrato na conta `DIO-boot_025-2`. Ao implantar, o construtor do contrato era acionado e fornecia um supply para esta conta. O supply foi definido em variável como `10` e como tinha `18` decimais, ficou `10^18` como total de supply. Após isso, as funções foram executadas tudo pela conta `DIO-boot_025-2` no **MetaMask**.
+- Funções Getters:
+  - Função `balanceOf`: Esta foi executada para verificar o saldo nas duas contas importadas do **Ganache** para o **MetaMask** nomeadas de `DIO-boot_025-2` e `DIO-boot_025-1`, sendo o saldo delas respectivamente `10^18` e `0` tokens.
+  - Função `totalSupply`: Esta retornava o total de tokens em circulação.
+  - Função `allowance`: Esta verificava a quantidade de tokens que a conta delegada de uma conta proprietário poderia gastar em seu nome. No caso, quanto a conta `DIO-boot_025-1` podia gastar em nome da conta `DIO-boot_025-2`. A princípio era zero, pois ela ainda não tinha sido aprovada como uma conta delegada.
+- Funções de Transação:
+  - Função `transfer`: Foi transferido da conta que interagia com o contrato (`DIO-boot_025-2`) para a conta `DIO-boot_025-1`, `50^17` tokens, ou seja, metade dos tokens da conta que implantou o contrato. Para conferir os saldos das duas, era só executar a função `balanceOf` novamente.
+  - Função `approve`: Esta definia a conta `DIO-boot_025-1` como conta delegada, permitindo ela a gastar um número de tokens informado, que no caso foi `20^10` tokens, em nome da conta proprietária (`DIO-boot_025-2`). Para verificar qual era o limite de tokens permitido que a conta delegada transferisse em nome da conta proprietária era só executar novamente a função `allowance`.
+  - Função `transferFrom`: Nesta função, a conta que interagia o contrato que era a conta que o implantou (`DIO-boot_025-2`) foi alterada para a conta `DIO-boot_025-1`, pois ela quem iria interagir com o contrato agora. O objetivo foi passar a conta proprietária `DIO-boot_025-2`, uma terceira conta do **Ganache** que não tinha sido importada para a **MetaMask** e um número de tokens, para mostrar que a conta delegada `DIO-boot_025-1` tinha permissão para enviar tokens da conta proprietária para uma terceira conta até o limite estabelecido na função `approve`. Então foi transferido `20^5` tokens. Com a função `balanceOf`, o saldo da conta `DIO-boot_025-2` e deste outra conta podia ser verificado.
+
+A imagem 16 exibe algumas dessas funções sendo executadas.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+<a name="item3.4"><h4>3.4 O Mercado de Blockchain e Criptomoedas</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
 Segundo a consultoria Brandessence Market Research, o mercado global de blockchain teve um faturamento de US$ 4,62 bilhões em 2021, com expectativas de alcançar US$ 173,68 bilhões até 2028, a uma taxa de crescimento anual de 67,9% até lá. No segundo trimestre de 2021, o número de carteiras blockchain registradas superou os 70 milhões. As habilidades em blockchain tornaram-se uma das mais procuradas globalmente, com a demanda crescendo cerca de 2.000% entre 2017 e 2020. Em 2022, os gastos com soluções blockchain chegaram a cerca de US$ 11,7 bilhões. Entre os principais players do mercado estão IBM, AWS, SAP, Intel, Oracle, Huawei, Accenture, Wipro, Bitfury, Chain, Blockcypher, Guardtime, Cegeka, Symbiont, Bigchain DB, Applied Blockchain, Auxesis Group, Spinsys, Infosys, NTT Data, Factom, R3, Consensys, Records Keeper, Stratis, Blockchain Foundry, Blockpoint, Leewayhertz, e Dragonchain.
 
@@ -289,7 +315,7 @@ Decentralized Applications (DApps), ou Aplicações Descentralizadas, são aplic
 
 
 
-<a name="item3.5"><h4>3.5 Desafio de Projeto: Crie o seu NFT de Pokémon com Blockchain</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
+<a name="item3.5"><h4>3.5 Desafio de Projeto: Crie o seu NFT de Pokémon com Blockchain</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
 
 
@@ -309,7 +335,7 @@ Decentralized Applications (DApps), ou Aplicações Descentralizadas, são aplic
 
 
 
-<a name="item3.6"><h4>3.6 Desafio de código: Desafios intermediários Javascript III - Formação Blockchain</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
+<a name="item3.6"><h4>3.6 Desafio de código: Desafios intermediários Javascript III - Formação Blockchain</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
 Neste trio de desafios de código, o desafio inicial, de nome [tempo_dobby.js](./06-dc/tempo_dobby.js), foi verificar se a soma do tempo para confecção de dois presentes era maior ou menor que o tempo restante para o fim do expediente. Caso fosse maior, a confecção do presente era deixado para o dia seguinte. Qualquer outro resultado, os presentes eram confeccionados no dia corrente.
 
