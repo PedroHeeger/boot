@@ -3,7 +3,7 @@
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">blockchain   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/blockchain.jpg" alt="blockchain" width="auto" height="25"></a>
-### Bootcamp: <a href="../">boot_025 (Formação Blockchain Specialist)   <img src="./0-aux/logo_boot.png" alt="boot_025" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_025 (Formação Blockchain Specialist)   <img src="../0-aux/logo_boot.png" alt="boot_025" width="auto" height="25"></a>
 ### Module: 3. Desenvolvimento com Solidity para Blockchain 
 
 ---
@@ -17,6 +17,8 @@ This folder refers to Module 3 **Desenvolvimento com Solidity para Blockchain** 
 - Operating System (OS): 
   - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
+- Linux Distribution:
+  - Ubuntu   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="ubuntu" width="auto" height="25">
 - Cloud:
   - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
@@ -30,11 +32,19 @@ This folder refers to Module 3 **Desenvolvimento com Solidity para Blockchain** 
   - Ethereum Virtual Machine (EVM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/evm.png" alt="evm" width="auto" height="25">
   - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
+  - Nano   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Blockchain:
+  - Ethereum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ethereum.png" alt="ethereum" width="auto" height="25">
+  - Ganache   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ganache.png" alt="ganache" width="auto" height="25">
+  - Hardhat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/hardhat.png" alt="hardhat" width="auto" height="25">
+  - MetaMask   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meta_mask.png" alt="meta_mask" width="auto" height="25">
+  - Remix IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/remix_ide.png" alt="remix_ide" width="auto" height="25">
+  - Truffle Framework   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/truffle_framework.png" alt="truffle_framework" width="auto" height="25">
 
 ---
 
@@ -172,7 +182,9 @@ Com o **Hardhat** instalado, foi executado o comando `npx hardhat compile` para 
 
 Após entender sobre a liguagem **Solidity** e a IDE **Remix IDE**, aprender a criar um smart contract, instalar e utilizar as três ferramentas de desenvolvimento de contratos inteligentes (**Ganache**, **Truffle** e **Hardhat**), a etapa final foi criar um contrato com o **Solidity** no **Remix IDE** e fazer o deploy dele utilizando o **Truffle** e o **Ganache**. O contrato criado foi o [DIOVoting.sol](./01-solidity/contracts/DIOVoting.sol), que simulava uma votação, onde uma lista de candidatos era criada e três funções executavam as ações. A primeira função era para contabilizar os votos totais recebidos por um candidato específico. A segunda função era para votar em uma candidato específico. Já a terceira função, era uma função auxiliar utilizada nas outras duas para verificar se o candidato indicado existia. Com o contrato construído, ele foi implantado no ambiente do próprio **Remix IDE** para testá-lo, antes de implantar em uma blockchain local.
 
-Para realizar o deploy de um contrato criado no **Remix IDE** era necessário o software **MetaMask** instalado, pois ele que seria a ponte entre o contrato executado no **Remix IDE** e a blockchain local emulada pelo **Ganache**, através das suas configurações de rede. O **MetaMask** foi utilizado como extensão do navegador **Google Chrome** na máquina física **Windows**. Ao acessar o **MetaMask**, era possível importar uma carteira ou criar uma nova, muito parecido com o realizado no **Electrum** no módulo 1 deste bootcamp. Uma nova carteira foi criada e logo em seguida, foi preciso criar uma senha para ela, que foi `dio-boot_025-test1`. A frase mnemônica do Seed foi fornecida com 12 palavras que deveria ser armazenadas. Após confirmar a frase novamente, a carteira foi criada, conforme imagem 06.
+Para realizar o deploy de um contrato criado no **Remix IDE** era necessário o software **MetaMask** instalado, pois ele que seria a ponte entre o contrato executado no **Remix IDE** e a blockchain local emulada pelo **Ganache**, através das suas configurações de rede. Sempre ao fazer o deploy com qualquer carteira, tinha que indicar qual a conta, ou melhor, qual o endereço da conta que estava fazendo o deploy. Neste caso, a conta que faria o deploy seria uma das contas gerada pela instância do **Ganache** e que seria importada para uma carteira construída no **MetaMask**. Além da conta que fazia o deploy do smart contract, era necessário definir onde esse contrato seria implantado. Por padrão, a **MetaMask** vem configurada para realizar o deploy na rede principal da blockchain **Ethereum** que é a mainnet. Contudo também era possível fazer o deploy em redes de testes da mesma blockchain, conhecidas como testnets. Além dessas duas opções, poderia ser definido para fazer o deploy na rede da blockchain local emulada pelo **Ganache**. Essas configurações eram realizadas nas definições de rede da carteira criada na **MetaMask**.
+
+O **MetaMask** era utilizado como extensão do navegador **Google Chrome** na máquina física **Windows**. Ao acessar o **MetaMask**, era possível importar uma carteira ou criar uma nova, muito parecido com o realizado no **Electrum** no módulo 1 deste bootcamp. Uma nova carteira foi criada e logo em seguida, foi preciso criar uma senha para ela, que foi `dio-boot_025-test1`. A frase mnemônica do Seed foi fornecida com 12 palavras que deveria ser armazenadas. Após confirmar a frase novamente, a carteira foi criada, conforme imagem 06.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img06.png" alt="img06"><br>
@@ -267,7 +279,7 @@ Como a mesma carteira do **MetaMask** era utilizada, ela já tinha duas contas, 
     <figcaption>Imagem 15.</figcaption>
 </figure></div><br>
 
-A etapa seguinte foi criar o arquivo do smart contrat, cujo nome foi [DIOCoin.sol](./03-dp/DIOCoin.sol). Este arquivo criava uma interface de nome `IERC20` com três funções getters, três outras funções e dois eventos. Esta interface era utilizada para criar tokens no padrão ERC-20 na blockchain **Ethereum**. Ao criar o contrato inteligente chamado `DIOCoin` utilizando a interface, as seis funções tinham que ser implantadas. O token era construído com o nome `DIO Coin`, símbolo `DIO` e com `18` decimais. O contrato definia as variáveis para armazenar os saldos de cada endereço (balances) e as permissões de gasto (allowed). O `totalSupply_` era inicializado com 10 tokens, que eram atribuídos ao endereço do criador do contrato no construtor. As funções implementadas permitiam a transferência de tokens entre endereços, aprovações para terceiros gastarem tokens em nome do proprietário, e verificações de saldo e permissões.
+A etapa seguinte foi criar o arquivo do smart contrat, cujo nome foi [DIOCoin.sol](./03-dp-token/DIOCoin.sol). Este arquivo criava uma interface de nome `IERC20` com três funções getters, três outras funções e dois eventos. Esta interface era utilizada para criar tokens no padrão ERC-20 na blockchain **Ethereum**. Ao criar o contrato inteligente chamado `DIOCoin` utilizando a interface, as seis funções tinham que ser implantadas. O token era construído com o nome `DIO Coin`, símbolo `DIO` e com `18` decimais. O contrato definia as variáveis para armazenar os saldos de cada endereço (balances) e as permissões de gasto (allowed). O `totalSupply_` era inicializado com 10 tokens, que eram atribuídos ao endereço do criador do contrato no construtor. As funções implementadas permitiam a transferência de tokens entre endereços, aprovações para terceiros gastarem tokens em nome do proprietário, e verificações de saldo e permissões.
 
 Para testar, foi realizado o deploy do contrato na conta `DIO-boot_025-2`. Ao implantar, o construtor do contrato era acionado e fornecia um supply para esta conta. O supply foi definido em variável como `10` e como tinha `18` decimais, ficou `10^18` como total de supply. Após isso, as funções foram executadas tudo pela conta `DIO-boot_025-2` no **MetaMask**.
 - Funções Getters:
@@ -304,23 +316,24 @@ Decentralized Applications (DApps), ou Aplicações Descentralizadas, são aplic
 - Proof of Work (PoW): Nesse sistema, as decisões sobre mudanças no DApp são baseadas na quantidade de trabalho que os participantes realizam, também conhecido como mineração.
 - Proof of Stake (PoS): Aqui, as decisões são tomadas com base na porcentagem de tokens que cada interessado possui no aplicativo. Por exemplo, um stakeholder com 10% dos tokens tem um voto correspondente de 10%.
 
-
-
-
-
-
-
-
-
-
-
-
 <a name="item3.5"><h4>3.5 Desafio de Projeto: Crie o seu NFT de Pokémon com Blockchain</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
+Este desafio foi muito parecido com o desafio anterior de criação de token fungível no padrão ERC-20. Entretanto, o token construído agora era um não fungível no padrão ERC-721. Ambos os tokens foram construídos na blockchain do **Ethereum** através de smart contracts. Foram mantidas as mesmas configurações, ou seja, o mesmo servidor do **Ganache**, executado na instância do **Amazon EC2** foi utilizado com a mesma configuração de rede. A carteira **MetaMask** foi mantida a mesma, que já tinha três endereços de contas, sendo duas importadas do **Ganache**, cujos nomes eram `DIO-boot_025-2` e `DIO-boot_025-1`. Como o **Ganache** gerava dez endereços, um endereço diferente dos outros dois foi utilizado para importar uma quarta conta, nomeando ela de `DIONFT`. Para importação era sempre utilizado a chave privada vinculada ao endereço da conta. Um pequena alteração foi realizada nas configurações de rede, alterando o símbolo da moeda para `DIONFT`.
 
+O processo de execução era basicamente o mesmo do token ERC-20. Um contrato era elaborado em **Solidity** no **Remix IDE** e era deployado pela carteira do **MetaMask** na blockchain local emulada pelo **Ganache**, indicando que a nova conta (`DIONFT`) faria o deploy. A diferença mesmo era no código do contrato inteligente que para esse contrato foi utilizado o arquivo [PokeDIO.sol](./05-dp-nft/PokeDIO.sol). Neste, ao invés de criar uma interface para ser implementada pelo contrato determinando um padrão, foi importando o contrato já existente `ERC721` da **OpenZeppelin**, que implementava o padrão para tokens não fungíveis (NFTs). A **OpenZeppelin** é uma biblioteca de contratos inteligentes escritos em **Solidity**, usada para desenvolver e proteger aplicações descentralizadas na **Ethereum**, oferecendo implementações padrão e auditadas para tokens, governança, e outros recursos blockchain. O objetivo desse contrato era criar um jogo de batalhas de pokémons, onde apenas o proprietário do jogo, ou seja, o endereço da conta que fez o deploy do contrato, poderia criar os pokémons, bem como os NFTs. Todavia, o dono do jogo poderia criar pokemons para outras contas. Esses pokemons criados ficavam disponíveis para batalhar e apenas o dono do pokemon poderia batalhar com ele como atacante.
 
+O novo contrato, nomeado de `PokeDIO`, herdava as funcionalidades do contrato `ERC721` que era um padrão para implementação de tokens não fungíveis. A estrutura do contrato foi definida da seguinte maneira:
+- Uma Struct foi criada para definir um pokemon com um nome, nível e uma imagem.
+- Um Array foi construído para armazenar todos os pokemons criados no jogo, sendo que só o proprietário do jogo, ou seja, o endereço da conta que fez o deploy do contrato, poderia criar os pokémons, bem como os NFTs.
+- Uma Variável foi elaborada para armazenar o endereço do dono do jogo, que teria permissão para criar novos Pokemons.
+- Um Construtor do contrato que definia o nome e o símbolo do token, e atribui o criador do contrato como o dono do jogo.
+- Um Modificador que restringia que apenas o dono do pokemon específico pudesse batalhar com ele.
+- Uma Função que permitia que dois Pokemons batalhassem entre si, aumentando o nível do vencedor e do perdedor. Os pokemons eram escolhidos pelo seu índice no array, sendo um pokemon para ataque e outro para a defesa. A Lógica de batalha determinava que se o pokemon atacante tivesse nível maior ou igual ao defensor, ele ganharia dois níveis e o pokemon defensor apenas um nível. O mesmo fucionaria caso o pokemon de defesa tivesse um nível maior, mas ele que ganharia dois níveis. Apenas o dono do pokemon poderia batalhar com ele como um atacante.
+- Uma Função que criava um novo Pokemon definindo o nome e imagem. O level já era definido como `1`. Esse novo pokemon era adicionado no array de pokemons e também era utilizada a função `_safeMint` da ERC721 para criar um NFT desse pokemon atribuindo um endereço. No início dessa função era definido que apenas o proprietário do jogo, ou seja, o endereço da conta que fez o deploy do contrato, poderia criar os pokémons, bem como os NFTs. Todavia, o dono do jogo poderia criar pokemons para outras contas.
 
+Neste desafio também foi utilizado o software **InterPlanetary File System (IPFS)** para armazenar as imagens dos quatro pokemons que seria criados. O IPFS é um protocolo e rede descentralizada para armazenar e compartilhar arquivos de forma distribuída. Ele utiliza uma arquitetura baseada em conteúdo e endereçamento por hash, permitindo que arquivos sejam localizados e recuperados de qualquer ponto da rede sem depender de um servidor centralizado. Ele foi instalado na instância do **Amazon EC2**, mas precisou do **Wget** e o **Tar** para realizar sua instalação. Com o comando `wget https://dist.ipfs.tech/go-ipfs/v0.22.0/go-ipfs_v0.22.0_linux-amd64.tar.gz` foi baixada a versão mais recente do IPFS. Com o comando `tar -xvzf go-ipfs_v0.22.0_linux-amd64.tar.gz` o arquivo foi extraído. Em seguida, a pasta foi acessada com o comando `cd go-ipfs` e então com o comando `sudo bash install.sh`, ele foi instalado. Para confirmar a instalação, foi executado o comando `ipfs --version`.
 
+Com o comando `ipfs daemon` foi verificado se o daemon do IPFS estava rodando. Para adicionar um arquivo ao IPFS foi utilizado o comando `ipfs add` e o caminho do arquivo. No caso, as quatro imagens dos quatro pokemons foram enviadas para o IPFS.
 
 
 
