@@ -26,7 +26,9 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Formaç�
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - JavaScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
+  - Solidity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/solidity.svg" alt="solidity" width="auto" height="25">
 - Runtime Environment:
+  - Ethereum Virtual Machine (EVM)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/evm.png" alt="evm" width="auto" height="25">
   - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
@@ -35,7 +37,14 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Formaç�
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Blockchain:
-  - Electrum Bitcoin Wallet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/electrum_bitcoin_wallet.png" alt="electrum_bitcoin_wallet" width="auto" height="25">
+  - Ether (ETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ethereum.png" alt="eth" width="auto" height="25">
+  - Ethereum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ethereum.png" alt="ethereum" width="auto" height="25">
+  - Etherscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/etherscan.png" alt="etherscan" width="auto" height="25">
+  - Giga-Wei (Gwei)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gwei.png" alt="gwei" width="auto" height="25">
+  - Google Ethereum Sepolia Faucet   <img src="" alt="google_sepolia_faucet" width="auto" height="25">
+  - MetaMask   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meta_mask.png" alt="meta_mask" width="auto" height="25">
+  - Remix IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/remix_ide.png" alt="remix_ide" width="auto" height="25">
+  - Sepolia; Sepolia Ether (SepoliaETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sepolia_eth.png" alt="sepolia_eth" width="auto" height="25">
 
 ---
 
@@ -301,53 +310,202 @@ Aqui estão os principais métodos de arrecadação de fundos e distribuição d
 
 <a name="item2.4"><h4>2.4 Desafio de Projeto: Criando o seu Primeiro Token do Zero nos Padrões Web3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
 
+Neste desafio de projeto, o objetivo consistiu em criar um token fungível no padrão ERC-20 na blockchain do **Ethereum**. Este token foi criado através de smart contract em **Solidity** no **Remix IDE** e implantado , através de uma conta na carteira **MetaMask**.
 
-- MetaMask
-- rpc.info
-- Faucet
-
-
-O MetaMask é utilizado como extensão do navegador que pode ser o Chrome, o Brave, entre outros. Ela funciona também como aplicativo mobile. Após adicionar a extensão ao navegador Chrome da máquina física Windows, já é possível utilizá-la pelo próprio navegador. A primiera ação a ser realizada é ou importar uma carteira já existente ou criar uma carteira.
-
-
-- Criar uma carteira
-  - Criar uma senha adicional de segurança a carteira
-  - Gerar e copiar a Frase de recuperação secreta
-  - Com o rpc.info é possível adicionar vários tipos de redes de várias blockchains diferentes a carteira da MetaMask, podendo fazer isso ao clicar ou de forma manual configurando a rede.
-  - Escolher a rede e configurá-la.
-  - Procurar no Google um Faucet para essa rede.
-    - Ele criou uma conta na Alchemy para obter os faucets
-    - Conectar com MetaMask
-
-
-
-
-
-    
-
-
-
-
-
-
+O primeiro passo foi instalar o **MetaMask** e criar uma carteira nova. O **MetaMask** foi instalado como extensão do navegador **Google Chrome** da máquina física **Windows**. Ele funciona também em outros navegadores ou como aplicativo mobile. Após instalar o **MetaMask**, poderia ser importado uma carteira já existente ou criar uma nova. Neste caso, foi construído uma nova carteira. Ao criar a carteira, era solicitado a criação de uma senha que foi definida como `DIO-boot_026`. Em seguida, o **MetaMask** sugeria criar uma proteção para a carteira ao gerar a chave de recuperação secreta, que nada mais é que a frase mnemônica do Seed com 12 palavras ordenadas (`math call chuckle weapon address kidney example order track measure pencil toward`). A frase gerada foi copiada e confirmada logo na sequência. Assim, a carteira do **MetaMask** já podia ser acessada e uma primeira conta foi gerada automaticamente para ela, conforme imagem 02.
 
 <div align="Center"><figure>
-    <img src="../0-aux/md1-img02.png" alt="img02"><br>
+    <img src="../0-aux/md2-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
+Novas contas poderiam ser criadas ou importadas para a mesma carteira. Cada conta possuía um endereço e uma chave privada, a chave privada ficava em posse somente do proprietário da conta, enquanto o endereço da conta era utilizado para executar as transferências. Por padrão, ao criar uma carteira, ela já vinha com a configuração de rede conectada na mainnet da blockchain **Ethereum**. A mainnet é a rede principal da blockchain, a rede de produção. No módulo 3 do bootcamp [boot_025](), a rede configurada na carteira do **MetaMask** foram de blockchains locais emuladas por softwares específicos como **Ganache** e o **Hardhat**. Neste desafio, ao invés de utilizar a rede de uma blockchain emulada, foi utilizada a rede de teste da blockchain do **Ethereum**, que é a testnet. No próprio **MetaMask** tinham uma opção para ativar as redes de testes e assim era possível alterar para redes como **Goerli**, **Sepolia**, que eram tipos de testnets da blockchain **Ethereum**. Uma vez escolhida, a configuração já estava feita, conforme mostrado na imagem 03. Contudo era possível também alterar a configuração manualmente como foi realizado no bootcamp 025, só que ao invés de passar a rede de uma blockchain emulada, informaria uma rede de teste da blockchain do **Ethereum**. No site [https://rpc.info/](./https://rpc.info/) era possível verificar as redes principais e de teste de diversas blockchains diferentes.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+A testnet escolhida pelo expert foi a **Goerli**, mas essa não estava mais disponível na **MetaMask**, portanto optei por utilizar a testnet **Sepolia**. Ao escolher a rede de testnet, as configurações de rede, que incluíam nome da rede, URl do servidor RPC, ID da cadeia (`Chain ID`) e símbolo da moeda (`Currency Token`), eram alteradas. A testenet escolhida, por exemplo tinha o `Chain ID` igual a `11155111`, o `Currency Token` era `SepoliaETH`, o nome da rede era `Sepolia test network` e a URL da RPC era `https://sepolia.infura.io/v3/`. Geralmente, contas criadas pelo **MetaMask** vêm zeradas de tokens, sendo necessário utilizar faucets para adquirir uma certa quantidade de tokens. Um faucet é um serviço que distribui pequenas quantidades de criptomoeda gratuitamente para usuários, geralmente para fins de teste ou para incentivar o uso e a adoção da criptomoeda. Ele pode oferecer moedas reais na mainnet ou moedas sem valor real na testnet. Como era utilizado a rede de teste **Sepolia**, foram adquiridas tokens `SepoliaETH`, que não possuíam valor.
+
+A melhor forma de adquirir esses tokens era procurando os faucets do token utilizado, no caso o `SepoliaETH`, na internet, pois esses sites estão sempre mudando. Em um faucet, um campo era destinado para informar o endereço da conta, no caso a conta gerada pelo **MetaMask**, cujo nome era `Account1`. Geralmente, esses sites determinavam a quantidade de tokens que iria enviar, um site ou outro tinha a possibilidade de escolher a quantidade. A maioria dos sites precisava fazer algum tipo de cadastro, foi utilizado o faucet **Ethereum Sepolia Faucet** que era da **Google**. A imagem 04 exibe o envio de 0.05 pelo faucet da **Google**. Já a imagem 05 mostra a quantidade de tokens `SepoliaETH` recebido na conta da carteira **MetaMask**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
+
+A etapa seguinte foi criar o token fungível no padrão ERC-20 através de um smart contract desenvolvido em **Solidity** no **Remix IDE**. No **Remix IDE** era possível criar workspaces para diferentes trabalahos, mas foi utilizado o workspace padrão dele, que era o `default_workspace`. Nesse workspace estavam também os arquivos dos smart contracts construídos no bootcamp 025. O arquivo [token.sol](./04-dc-token/token.sol) foi elaborado na raiz do workspace. Este arquivo fazia basicamente a mesma coisa que o arquivo do desafio de projeto ([item 3.3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.3)) do bootcamp 025. A diferença era a forma que foi realizada a codificação em **Solidity**, mas o resultado era o mesmo. 
+
+Neste arquivo, três smart contracts eram elaborados, sendo o primeiro e o segundo de nomes `SafeMath` e `ERC20Interface` respectivamente. Eles foram usado como base para quarto contrato, intitulado `DIOToken`, funcionando como se fosse uma interface. O contrato `SafeMath` era criado para garantir que as quatro operações básicas de matemática não ocasionasse erros de cálculo. Ele possuía as quatro seguintes funções:
+- `safeAdd`: Função para adição segura de dois inteiros sem risco de overflow.
+- `safeSub`: Função para subtração segura de dois inteiros sem risco de underflow.
+- `safeMul`: Função para multiplicação segura de dois inteiros sem risco de overflow.
+- `safeDiv`: Função para divisão segura de dois inteiros sem risco de divisão por zero.
+
+O smart contract `ERC20Interface` criava um padrão para construção de tokens fungíveis ERC-20, só que como um contrato ao invés de interface, mesmo ele sendo utilizado como se fosse uma interface. Dessa forma, o contrato principal (`DIOToken`) era construído com base nesse contrato e no contrato `SafeMath`, implementando as funções deles. Este contrato basicamente criava um token fungível no padrão ERC-20 e permitia interagir com ele através das funções. Abaixo é explicado detalhadamente o papel de cada elemento no contrato:
+- Variáveis:
+  - `symbol`: Variável que armazenava o símbolo do token construído.
+  - `name`: Variável que armazenava o nome do token construído.
+  - `decimals`: Variável que armazenava a quantidade de decimais (dígitos) que esse token teria.
+  - `_totalSupply`: Variável que armazenava a quantidade total de tokens emitidos.
+- Mapping (Em **Solidity** é uma estrutura de dados fundamental e funciona de forma semelhante a uma tabela de hash (hash table) ou um dicionário em outras linguagens de programação):
+  - `balances`: Mapping que mapeia endereços aos seus saldos de tokens.
+  - `allowed`: Mapping que mapeia endereços aos seus respectivos limites de gasto aprovados.
+- Construtor:
+  - `symbol`: Definia como `DIO`.
+  - `name`: Definia como `DIO Coin`.
+  - `decimals`: Definia que o token tem `2` casas decimais.
+  - `_totalSupply`: Definia o suprimento total de tokens em `100000`.
+  - `balances`: Atribui todo o suprimento de tokens ao endereço da conta indicada. Tinha que informar o endereço da conta.
+  - Criava um registro de transferência de um endereço zero para o endereço da conta indicada da quantidade total de tokens. O endereço da conta tinha que ser o mesmo endereço informando em `balances`.
+- Funções Call:
+  - `totalSupply()`: Retornava o total de tokens em circulação (exclui tokens queimados). Os tokens queimados (excluídos) eram aqueles enviado para endereço zero.
+  - `balanceOf`: Retornava o saldo do proprietário de um endereço de conta específica.
+  - `allowance`: Retornava a quantidade de tokens que um 'spender' ainda podia gastar em nome de uma outra conta.
+- Funções Transactions:
+  - `transfer`: Transferia tokens do endereço de conta que interagia para um endereço de conta especificado, criando o registro de transferência.
+  - `approve`: Aprovava um 'spender' para gastar uma quantidade específica de tokens em nome de outro endereço de conta. Um spender é um endereço de conta que tinha permissão para transferir uma quantidade específica de tokens de outra conta para uma terceira conta.
+  - `transferFrom`: Transferia tokens de um endereço para outro, usando a permissão aprovada na função `approve`. Ou seja, a conta B conseguia trasferir tokens da conta A para a conta C. O limite de tokens que a conta B podia transferir em nome da conta A era reduzido a cada transferência realizada.
+- Fallback:
+  - `payable`: Fallback function para reverter transações quando o contrato era chamado diretamente sem dados. Ou seja, quando ao interagir com o contrato não fosse passados dados ou fosse informado dados incorretos, a transação era revertida, garantido que nada seja alterado.
+
+Antes de executar o smart contract na testnet **Sepolia** via **MetaMask**, foi feito o deploy primeiro em uma das instâncias do próprio **Remix IDE** (`Remix VM (Cancun)`) para testar todas as funcionalidades do contrato. Isso porque quando o contrato fosse deployado na testnet, haveriam custos de token `SepoliaETH`. Embora fosse possível enviar esses tokens para endereço da conta por faucets, a quantidade era pequena, sendo preciso realizar esse processo várias vezes. No construtor do contrato `DIOToken`, foi preciso informar o endereço da conta que teria o total de tokens existentes, ou seja, os `100000 DIO` que estavam sendo gerados. O endereço foi de uma das contas do **Remix IDE** (`0x5B38Da6a701c568545dCfcB03FcB875f56beddC4`) e uma transferência de `100000 DIO` seria emitida do endereço zero para esse, iniciando a existência do token. Ao realizar o deploy do contrato, tudo que estava definido no construtor eram implantado na rede blockchain, que no caso, era uma rede emulada por uma das VMs do **Remix IDE**.
+
+Após implantar o contrato na rede da própria **Remix IDE**, o endereço de conta `0x5B38Da6a701c568545dCfcB03FcB875f56beddC4` era o único que possuía tokens `DIO` criados, detendo o suprimento total em circulação que foi definido no construtor em `100000 DIO`. Ao executar as funções `totalSupply` e `balanceOf`, era exibido o total de tokens `DIO` em circulação e a quantidade de tokens `DIO` possuía pela conta do **Remix IDE**, conforme mostrado na imagem 06.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
+Toda variável criada em um smart contract gerava uma função getter automaticamente, portanto ao executar a função `_totalSupply` seria mostrado o total de tokens em circulação. A função `symbol` exibia o símbolo do token, no caso `DIO`. A variável name mostrava o nome do token, no caso `DIO Coin`. Já a variável `decimals` exibia a quantidade de casas decimais do token. A imagem 07 ilustra a execução das funções getters dessas variáveis.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+Um segundo endereço de conta do **Remix IDE** foi copiado para ser utilizado como uma segunda conta (`0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2`). Essa segunda conta receberia uma transferência executada pela primeira conta de `50000 DIO`. Ao executar a função `balanceOf` para primeira e segunda conta, ambas teria `50000 DIO`. A imagem 08 evidencia o saldo a primeira conta após realizar a transferência.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
+
+Um terceiro endereço de conta do **Remix IDE** foi copiado para ser utilizado como uma terceira conta (`0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db`). Esta conta não tinha saldo, ou seja, ao executar a função `balanceOf` para ela, o valor de tokens `DIO` seria zero. A segunda conta (`0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2`) foi passada na função `approve`, informando uma quantidade de tokens `DIO` limite, para permitir que esta conta pudesse transferir da primeira conta essa quantidade limite. Com a função `allowance` era possível visualizar o limite que uma conta 'spender' poderia gastar em nome de conta proprietária. Neste caso, foi passado com conta proprietária a primeira conta e o spender como o endereço da segunda conta. A imagem 09 mostra que a conta spender podia utilizar um limite de `25000 DIO` da conta proprietária.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
+
+Até o momento toda as interações realizadas eram feitas pela primeira conta. Agora, foi alterado para segunda conta (`0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2`) e a função `transferFrom` foi utilizada para que a segunda conta transferisse da primeira conta (`0x5B38Da6a701c568545dCfcB03FcB875f56beddC4`) para a terceira conta (`0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db`), a quantia de `10000 DIO`, resultando em um saldo de `40000 DIO` para a primeira conta e `10000 DIO` para a terceira conta. Já o limite disponível que a segunda conta podia enviar em nome da primeira foi reduzido para `15000 DIO`. A imagem 10 exibe essa transferência.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
+
+Após teste de todas as funcionalidades do contrato na instância do **Remix IDE**, o endereço da conta indicada no construtor foi alterada para a conta da carteira **MetaMask** (`0x6599332D989686533048898A386BC10Ae3De8d67`) para execução do deploy do smart contract utilizando a wallet. Para isso, foi preciso alterar o `environment` do **Remix IDE** para conectar a carteira **MetaMask** e escolher o endereço da conta da carteira. O **MetaMask** já estava configurado para utilizar a testnet **Sepolia** e já tinha uma certa quantidade de tokens `SepoliaETH` na carteira, obtidos por faucets. Ao executar o deploy, a confirmação foi solicitada no **MetaMask** informando o custo de fee em `SepoliaETH`, conforme mostrado na imagem 11.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+Utilizando o **Etherscan** e alterando para rede do **Sepolia**, era possível visualizar as transações e o bloco em que as transações eram encaixadas na blockchain do **Ethereum**. A imagem 12 abaixo evidencia a transação que executou o deploy do contrato. Note que ela foi encaixada no bloco de número `6602394` e já tinham 10 blocos de confirmação, ou seja, 10 blocos após o bloco em que a transação foi encaixada.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+Várias outras informações eram fornecidas como o hash da transação, o endereço da conta que fez a transação, que no caso era a `Account 1` da carteira **MetaMask**. Em `ERC-20 Tokens Transferred:` foi possível ver que uma transferência do endereço da conta `0x0000000000000000000000000000000000000000` para endereço da conta da carteira **MetaMask** tinha sido feita, transferindo `1000 DIO` que foi o token criado pelo smart contract. O total de supply tinha sido declarado no construtor do contrato como `100000`, mas como foi definida duas casas decimais na variável `decimals`, dois zeros da quantidade tornaram-se decimais. Também era mostrado o preço do gas em Gwei e ETH, e o fee (a taxa de transação desse contrato) em ETH. O **Ether (ETH)** neste caso era o `SepoliaETH` já que estava sendo implantado na testnet. Como o `DIO Coin` tornou-se um token, também era possível consultá-lo pelo **Etherscan**, pois agora ele existia na blockchain. A imagem 13 mostra informações sobre o token construído.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+De volta pro **Remix IDE** as funções do contrato poderia ser acionadas, sendo que funções do tipo transaction teriam custo em `SepoliaETH`. As funções do tipo call foram executadas, essas não eram adicionadas a blockchain, porque não gerava hash de transação, era apenas para obter informações. Neste momento, a conta `Account 1` da **MetaMask** possuía todos os tokens `DIO` em circulação. O token `DIO` podia ser importado para a carteira do **MetaMask** através do seu endereço de contrato (`0xCeB5DE0307467d437bD56E0BE1b5623eE9793e63`). A imagem 14 evidencia o token `DIO` importado para conta `Account 1` da **MetaMask**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+Pelo próprio **MetaMask** era possível enviar o token `DIO` para um endereço de conta. Neste caso, foi utilizado o endereço de conta gerada pelo **Remix IDE**, enviando para ele `80 DIO`, sobrando `920 DIO` na carteira. A imagem 15 mostra a execução da transferência. Um taxa (fee) era cobrada já que era como se estivesse executado uma função do tipo transaction do contrato. A imagem 16 exibe todas as transações realizadas pelo **MetaMask** tanto em `SepoliaETH` como em tokens `DIO`. Observe que o status estava pendente, pois neste momento a transação estava aguardando para entrar em um bloco da blockchain.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+O próprio **MetaMask** mostrava algumas informações sobre a transação, conforme imagem 17. Observe as taxas: o gas utilizado na transação foi de `52412`, enquanto a base somada a taxa de prioridade dava `1.624119898`. Multiplicando a taxa pelo gas utilizado era obtido o custo da transação em **Gwei**. Convertendo para **Ether (ETH)**, ou seja, dividindo por `10^9`, o custo era de `0.000085123 SepoliaETH`, já que era na testnet. O ID da transação também era fornecido e podia ser utilizado para visualizar em um explorador de blocos como o **Etherscan**. As demais funções do smart contract podiam ser utilizadas pelo **Remix IDE**, só que deployando com a conta do **MetaMask**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+Ainda neste desafio de projeto, o professor apresentou o software **CherrySwap** que uma de suas utilidades é para criar tokens no-code, ou seja, sem a necessidade de codificar um smart contrat. Contudo, para sua utilização era necessário uma quantidade de criptomoeda **Okex** na rede mainnet da blockchain **Okex**.
 
 <a name="item2.5"><h4>2.5 Introdução ao NFT: Funcionamento e Marketplaces</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
 
+Tokens não fungíveis (NFTs) são ativos criptográficos em uma blockchain, identificados por códigos exclusivos e metadados que os diferenciam entre si. Ao contrário das criptomoedas e tokens fungíveis, que são intercambiáveis, os NFTs não podem ser trocados por equivalência direta. Um exemplo inicial de NFT é o Cryptokitties (2017), representações digitais de gatos com identificações únicas na blockchain da **Ethereum**. Cada gatinho é único, possui um preço em **Ether (ETH)**, e pode se reproduzir, gerando descendentes com atributos e valores distintos dos seus pais.
 
+Os NFTs podem representar diversos tipos de propriedades, incluindo itens digitais exclusivos. Para que um item seja um NFT, ele precisa ter valor e a propriedade deve ser comprovável. Exemplos incluem arte digital, cards colecionáveis, música, objetos raros, itens de jogos, e até imóveis. Comparado a uma escritura de uma casa, o NFT seria a escritura, não o imóvel em si. É possível tokenizar ativos do mundo real, como propriedades, documentos, licenças, históricos médicos e certidões. Contudo, esses casos de uso ainda estão em estágio inicial e são relativamente raros. No entanto, com o desenvolvimento dos NFTs, é possível que em breve seja viável possuir um lote de terreno em outro país, armazenado em uma carteira digital.
 
+Nem todos os NFTs são tecnicamente iguais. Existem diferentes tipos de NFTs, incluindo ERC-721, ERC-1155 e Soulbound Tokens (SBT).
+- ERC-721: Esses tokens representam itens exclusivos ou identificáveis, geralmente dentro de uma coleção, como PFPs (Profile Pictures), arte colecionável, propriedades, ingressos, entre outros.
+- ERC-1155: Combina as propriedades dos tokens ERC-20 (fungíveis) e ERC-721, oferecendo uma única interface que gerencia qualquer combinação desses tipos de token. Esse padrão é mais moderno e possui propriedades otimizadas, especialmente para jogos.
+- Soulbound Tokens (SBT): São tokens que não podem ser transferidos ou vendidos. Não são criados para ter valor de mercado, são pessoais e únicos.
 
+Os NFTs vão além de simples artes digitais; são uma tecnologia emergente que ainda está em sua fase inicial. É importante não temer a inovação e explorar novos modelos de negócios com base nessas possibilidades.
 
+Certamente, ferramentas são essenciais para analisar a crescente quantidade de NFTs sendo criados. Algumas das principais incluem:
+- Flips: Ferramenta de análise especializada em rastrear deslistagens, aumentos de preço e volume.
+- Artiva: Plataforma que permite construir sua própria plataforma NFT sem necessidade de código.
+- Drips: Aplicação que suporta assinaturas e associações via NFT, com pagamentos recorrentes.
+- Landworks: Ferramenta para alugar ou emprestar NFTs de terrenos virtuais.
+- Rarity: Rastreador de raridade.
 
+O Proof Of Attendance Protocol (POAP), ou Protocolo de Prova de Presença, funciona como um canhoto de ingresso digital, sendo uma maneira imutável de registrar a participação em eventos ou experiências, sejam virtuais ou presenciais, como treinamentos, palestras, e conferências. Exemplos de uso incluem: reuniões regulares, comemoração de marcos em esportes, emissão de lembranças em casamentos, verificação de participação em treinamentos corporativos, e reconhecimento de formandos em instituições educacionais. O POAP pode ser vendido, mas é mais adequado ser visto como uma memorabilia digital, não como um item de venda. Para que tenha valor de mercado, é necessário que ele seja valorizado. Algumas comunidades distribuem tokens (airdrops) aos detentores de POAP. Para criar um POAP, é preciso acessar o site POAP.XYZ, utilizar um contrato inteligente específico, incluir metadados com um período de validade (até um ano) e associar uma imagem. Após a criação, o organizador decide como distribuir os POAPs, seja por meio de QR codes em eventos ou links de download enviados por e-mail.
 
+Os NFTs ainda são uma inovação recente, com novos casos de uso surgindo além da arte digital. Exemplos notáveis incluem:
+- **Bored Ape Yacht Club**: Coleção de 10.000 NFTs únicos, oferecendo acesso a coleções futuras, áreas exclusivas e eventos no mundo real. Blockchain: **Ethereum**.
+- **Flyfish Club**: Coleção de 3.035 NFTs lançados por Gary Vaynerchuk, o primeiro restaurante NFT do mundo. Proporciona acesso a um restaurante exclusivo em Nova York e permite aluguel do NFT. Blockchain: **Ethereum**.
+- **CryptoPunks**: Lançado em 2017 pela Larva Labs, com 10.000 personagens únicos em pixel art. É uma das coleções mais valiosas e usadas como perfil em redes sociais. Blockchain: **Ethereum**.
+- **Fitness Fiends**: NFT que concede adesão gratuita à academia Fitness Fiends London, com benefícios adicionais como descontos e acesso ao Metaverse para aulas de fitness. Blockchain: **Ethereum**.
+- **Kings of Leon**: Banda que leiloou o primeiro álbum tokenizado, incluindo entradas vitalícias para shows e arte exclusiva, arrecadando US$ 2 milhões.
+- **NBA Top Shot**: Plataforma que vende trechos de vídeos de jogos de basquete, arrecadando cerca de US$ 200 milhões. Um trecho de LeBron James foi vendido por US$ 208 mil.
 
-
-
+Grande parte das ferramentas de mercado para NFTs são marketplaces, plataformas que conectam criadores/vendedores e compradores. Essas plataformas facilitam a compra e venda de NFTs em todo o mundo. Enquanto o NFT pertence a uma pessoa e ela decide onde ofertá-lo, algumas plataformas possuem curadoria e não aceitam qualquer NFT. Exemplos de plataformas abertas incluem **Rarible**, **OpenSea** e **Uptick**. Já as plataformas fechadas incluem **Nifty Gateway**, **SuperRare** e **Binance**.
 
 <a name="item2.6"><h4>2.6 Desafio de Projeto: Criando um NFT na Prática</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
