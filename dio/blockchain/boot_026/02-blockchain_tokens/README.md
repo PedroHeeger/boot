@@ -42,9 +42,13 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Formaç�
   - Etherscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/etherscan.png" alt="etherscan" width="auto" height="25">
   - Giga-Wei (Gwei)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gwei.png" alt="gwei" width="auto" height="25">
   - Google Ethereum Sepolia Faucet   <img src="" alt="google_sepolia_faucet" width="auto" height="25">
+  - IRISnet (IRIS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iris.png" alt="iris" width="auto" height="25">
+  - Keplr   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/keplr.png" alt="keplr" width="auto" height="25">
   - MetaMask   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meta_mask.png" alt="meta_mask" width="auto" height="25">
+  - Polygon (MATIC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/polygon.png" alt="polygon" width="auto" height="25">
   - Remix IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/remix_ide.png" alt="remix_ide" width="auto" height="25">
   - Sepolia; Sepolia Ether (SepoliaETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sepolia_eth.png" alt="sepolia_eth" width="auto" height="25">
+  - Uptick (UPTK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/uptk.jpeg" alt="uptk" width="auto" height="25">
 
 ---
 
@@ -497,10 +501,40 @@ Grande parte das ferramentas de mercado para NFTs são marketplaces, plataformas
 
 
 
+- Pegar uma imagem qualquer na net para transformar em NFT
+- Abrir o OpenSea
+  - Conferir se o MetaMask está conectado ao site
+  - Clicar em criar
+    - Inserir e a imagem e um nome para ela `DIO-boot_026-NFT-1`
+    - Não por link externo que explica a mais sobre a NFT
+    - Colocar uma descrição: `Primeiro NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Construído na OpenSea`
+    - Não tem coleção para o NFT
+    - Unlockable Content: Caso habilitado, após a pessoa comprar o NFT, ela teria acesso a um conteúdo específico
+    - Definir a quantidade (Supply) do NFT: `1`
+    - Escolher a blockchain utilizada: `Polygon`
+  - Após criá-lo, disponibilizar para a venda:
+    - Definir o tipo de venda: `Fixed Price` ou `Timed Auction`
+    - Definir um preço: `100 ETH`
+    - Duração: `1 month`
 
-
-
-
+- Criar outro NFT
+  - Instalar a wallet Keplr no navegador Chrome
+  - Conectar ao Uptick NFT
+  - Escolher a blockchain IRISnet
+  - Definir as configurações do NFT:
+    - NFT Name: `DIO-boot_026-NFT-2`
+    - Description: `Segundo NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Construido na Uptick.`
+    - Definir a quantidade (Supply) do NFT: `1`. É uma `Artwork`.
+    - Não colocar tags
+    - Amount for sale: `Fixed Price (Sold at a fix priced)`
+    - Editions: `1`
+    - Não marcar `This work involves adult information`
+    - Criar
+    - Confirmar o fee (taxa) na carteira e pagar.
+  - Colocar para vender:
+    - Tipo: Fixed Price
+    - Token: IRIS
+    - `1000` 
 
 
 
