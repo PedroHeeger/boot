@@ -1,5 +1,11 @@
 # **GreenFutureDAO**
 
+<!-- ![GreenFutureDAO Logo](./dao.jpeg) -->
+
+<div align="Center"><figure>
+    <img src="./dao.jpeg" alt="dao" width="450"><br>
+</figure></div><br>
+
 ## **Missão**
 A GreenFutureDAO tem como missão promover iniciativas sustentáveis e projetos de impacto ambiental positivo, utilizando o poder da comunidade para financiar, desenvolver e implementar soluções ecológicas. Nosso objetivo é incentivar práticas sustentáveis em comunidades globais, reduzindo a pegada de carbono e preservando recursos naturais para futuras gerações.
 

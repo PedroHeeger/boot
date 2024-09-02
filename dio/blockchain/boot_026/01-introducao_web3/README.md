@@ -3,7 +3,7 @@
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">blockchain   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/blockchain.jpg" alt="blockchain" width="auto" height="25"></a>
-### Bootcamp: <a href="../">boot_026 (Formação Web3 Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_026" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_026 (Formação Web3 Fundamentals)   <img src="../0-aux/logo_boot.png" alt="boot_026" width="auto" height="25"></a>
 ### Module: 1. Introdução e Visão Geral Sobre Web3 
 
 ---
