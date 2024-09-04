@@ -20,7 +20,6 @@ This folder refers to Module 3 **Web3 e Descentralização** from bootcamp [**Fo
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
-  - JavaScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
@@ -43,7 +42,7 @@ This folder refers to Module 3 **Web3 e Descentralização** from bootcamp [**Fo
 ### Objective:
 O objetivo deste módulo do bootcamp foi apresentar conceitos fundamentais no universo da blockchain e da Web3. Entre os principais tópicos abordados, destacam-se as Organizações Autônomas Descentralizadas (DAO) e as Finanças Descentralizadas (DeFi), ambos centrados no princípio da descentralização em suas respectivas áreas. Esses dois conceitos frequentemente se complementam e, além disso, possuem uma estreita relação com o conceito de Aplicações Descentralizadas (DApp). Pode-se afirmar que todas as plataformas DeFi são, essencialmente, DApps voltadas para o setor financeiro.
 
-A partir desses três conceitos centrais, diversas outras vertentes emergem, como as Exchanges Descentralizadas (DEX), Finanças Regenerativas (ReFi), Ciência Descentralizada (DeSci), Redes Sociais Descentralizadas (DeSo), Identidade Descentralizada (DeID), entre outras. Todos esses conceitos compartilham a descentralização como princípio fundamental em suas áreas específicas. A descentralização é a essência das tecnologias Web3 e das blockchains, promovendo uma web significativamente mais democrática e inclusiva em comparação à atual.
+A partir desses três conceitos centrais, diversas outras vertentes emergem, como as Exchanges Descentralizadas (DEX), Finanças Regenerativas (ReFi), Ciência Descentralizada (DeSci), Redes Sociais Descentralizadas (DeSo), Identidade Descentralizada (DeID), entre outras. Todos esses conceitos compartilham a descentralização como princípio fundamental em suas áreas específicas. A descentralização é a essência das tecnologias Web3 e  blockchain, promovendo uma web significativamente mais democrática e inclusiva em comparação à atual.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 

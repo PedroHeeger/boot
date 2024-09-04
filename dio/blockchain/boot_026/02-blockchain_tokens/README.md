@@ -34,8 +34,8 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Forma√ß√
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 - Blockchain:
   - Ether (ETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ethereum.png" alt="eth" width="auto" height="25">
-  - Ethereum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/ethereum.png" alt="ethereum" width="auto" height="25">
-  - Etherscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/etherscan.png" alt="etherscan" width="auto" height="25">
+  - Ethereum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ethereum.png" alt="ethereum" width="auto" height="25">
+  - Etherscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/etherscan.png" alt="etherscan" width="auto" height="25">
   - Giga-Wei (Gwei)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gwei.png" alt="gwei" width="auto" height="25">
   - Google Ethereum Sepolia Faucet   <img src="" alt="google_sepolia_faucet" width="auto" height="25">
   - IRISnet (IRIS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iris.png" alt="iris" width="auto" height="25">

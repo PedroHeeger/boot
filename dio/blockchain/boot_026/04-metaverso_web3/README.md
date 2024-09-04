@@ -84,10 +84,10 @@ Alguns dos principais metaversos incluem:
 - **Gala Games (GALA)** : Um ecossistema de jogos que permite aos usuários participar da criação e governança de jogos baseados em blockchain. O token **GALA** é usado para transações e recompensas dentro da plataforma, promovendo uma experiência de jogo descentralizada.
 - **Otherside (APE Coin)**: Um metaverso inovador associado ao projeto ApeCoin, oferecendo uma plataforma para a exploração e criação de mundos virtuais. Utiliza o token **APE Coin** e NFTs exclusivos para facilitar interações e transações dentro deste universo expansivo.
 
-<div align="Center"><figure>
+<!-- <div align="Center"><figure>
     <img src="../0-aux/md4-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
+</figure></div><br> -->
 
 <a name="item4.2"><h4>4.2 Conhecendo o Mercado e Oportunidades Web3</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
