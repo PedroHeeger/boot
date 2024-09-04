@@ -3,7 +3,7 @@
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">blockchain   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/blockchain.jpg" alt="blockchain" width="auto" height="25"></a>
-### Bootcamp: <a href="../">boot_026 (Formação Web3 Fundamentals)   <img src="./0-aux/logo_boot.png" alt="boot_026" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_026 (Formação Web3 Fundamentals)   <img src="../0-aux/logo_boot.png" alt="boot_026" width="auto" height="25"></a>
 ### Module: 2. Blockchain e Tokens 
 
 ---
@@ -15,12 +15,8 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Formaç�
 
 ### Used Tools:
 - Operating System (OS): 
-  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Cloud:
-  - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
-  - Amazon Elastic Compute Cloud (EC2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2.svg" alt="aws_ec2" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
@@ -46,6 +42,7 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Formaç�
   - Keplr   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/keplr.png" alt="keplr" width="auto" height="25">
   - MetaMask   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meta_mask.png" alt="meta_mask" width="auto" height="25">
   - Polygon (MATIC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/polygon.png" alt="polygon" width="auto" height="25">
+  - PolygonScan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/polygonscan.svg" alt="polygonscan" width="auto" height="25">
   - Remix IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/remix_ide.png" alt="remix_ide" width="auto" height="25">
   - Sepolia; Sepolia Ether (SepoliaETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sepolia_eth.png" alt="sepolia_eth" width="auto" height="25">
   - Uptick (UPTK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/uptk.jpeg" alt="uptk" width="auto" height="25">
@@ -65,18 +62,18 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Formaç�
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi apresentar os principais conceitos relacionados à tecnologia blockchain, incluindo suas características, origem e funcionamento. Foram abordados temas como a estrutura dos blocos e transações, o funcionamento da criptografia e as diversas técnicas disponíveis, além de explicar o conceito de ledgers e o papel dos mineradores no processo de mineração. O módulo também abordou a criação e utilização de carteiras de criptomoedas (wallets) e endereços. Como parte do aprendizado prático, foi realizado um projeto desafiador que envolveu a criação e a gestão de uma carteira de criptomoedas.  
+O objetivo deste módulo do bootcamp foi apresentar a tecnologia blockchain e seus principais conceitos, com uma explicação detalhada sobre o que são tokens e a diferença entre tokens fungíveis e tokens não fungíveis (NFTs). Foram realizarados dois desafios de projetos: o primeiro envolveu a construção de um token fungível utilizando codificação de smart contracts com **Solidity** no **Remix IDE**, enquanto o segundo focou na criação de dois NFTs sem a necessidade de codificação, utilizando as plataformas **OpenSea** e **Uptick**.
 
 ### Structure:
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md1-img01.png" alt="img01"><br>
+    <img src="../0-aux/md2-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do bootcamp foi dividido em três cursos e uma . Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em três cursos, um desafio de código e dois desafios de projeto. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item2.1"><h4>2.1 Entendendo Conceitos de Blockchain</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
@@ -223,11 +220,11 @@ Exemplos de Blockchain Híbrida incluem:
 
 <a name="item2.2"><h4>2.2 Desafio de Código: Desafios Básicos Javascript - Formação Web3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
-No primeiro desafio desse conjunto de três desafios de código, cujo nome do arquivo foi [ganhou_perdeu.js](./02-dp/ganhou_perdou.js), o objetivo consistiu em criar uma estrutura de condição if determinando resultados diferentes para duas condições que eram avaliadas a partir de um número fornecido como entrada. Se o valor da entrada fosse igual a `"1"`, o resultado tinha que ser a string `Ficou rico!`. Já se o valor de entrada fosse igual a `"0"`, o resultado seria a string `Perdeu tudo!`.
+No primeiro desafio desse conjunto de três desafios de código, cujo nome do arquivo foi [ganhou_perdeu.js](./02-dc/ganhou_perdou.js), o objetivo consistiu em criar uma estrutura de condição if determinando resultados diferentes para duas condições que eram avaliadas a partir de um número fornecido como entrada. Se o valor da entrada fosse igual a `"1"`, o resultado tinha que ser a string `Ficou rico!`. Já se o valor de entrada fosse igual a `"0"`, o resultado seria a string `Perdeu tudo!`.
 
-No desafio 2, intitulado [rendimento_mes.js](./02-dp/rendimento_mes.js), o próposito foi calcular o total de criptomoedas que um personagem fictício teria após determinado tempo, ao investir inicialmente 50 criptomoedas. No desafio foi considerado que 10 criptomoedas rendia 1 e o tempo em meses era fornecido por um número como entrada. Dessa forma, uma variável foi criada para representar a quantidade de criptomoedas inicialmente. Em seguida, uma outra variável foi utilizada para calcular qual seria o rendimento mensal ao dividir o número de criptomoedas inicial por 10. Esse valor foi multiplicado pelo número de meses fornecido como entrada, armazenando o resutado em uma variável que seria o rendimento total. Por fim, o valor total de criptomoedas foi impresso, somando a quantidade inicial de criptomoedas com o rendimento total no período.
+No desafio 2, intitulado [rendimento_mes.js](./02-dc/rendimento_mes.js), o próposito foi calcular o total de criptomoedas que um personagem fictício teria após determinado tempo, ao investir inicialmente 50 criptomoedas. No desafio foi considerado que 10 criptomoedas rendia 1 e o tempo em meses era fornecido por um número como entrada. Dessa forma, uma variável foi criada para representar a quantidade de criptomoedas inicialmente. Em seguida, uma outra variável foi utilizada para calcular qual seria o rendimento mensal ao dividir o número de criptomoedas inicial por 10. Esse valor foi multiplicado pelo número de meses fornecido como entrada, armazenando o resutado em uma variável que seria o rendimento total. Por fim, o valor total de criptomoedas foi impresso, somando a quantidade inicial de criptomoedas com o rendimento total no período.
 
-O último desafio de código foi nomeado de [maior_rendimento.js](./02-dp/maior_rendimento.js) e teve como objetivo criar um array com a lista de 4 valores fornecido como entrada. Em seguida, utilizando a função `Math.max(...arr)` no array, foi extraído o seu maior elemento e armazenado em uma variável. Por fim, esse valor foi impresso.
+O último desafio de código foi nomeado de [maior_rendimento.js](./02-dc/maior_rendimento.js) e teve como objetivo criar um array com a lista de 4 valores fornecido como entrada. Em seguida, utilizando a função `Math.max(...arr)` no array, foi extraído o seu maior elemento e armazenado em uma variável. Por fim, esse valor foi impresso.
 
 <a name="item2.3"><h4>2.3 Como Token Fungíveis Funcionam</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Introducao...Conceito...Cloud_PH_DIO.pdf">Certificate</a>
 
@@ -312,7 +309,7 @@ Aqui estão os principais métodos de arrecadação de fundos e distribuição d
 - Fan Token Offering (FTO), ou Oferta de Token de Fã: Uma FTO envolve a emissão de tokens para fãs de equipes esportivas ou celebridades, permitindo que os detentores participem em votações, acessem conteúdo exclusivo e obtenham outros benefícios relacionados ao grupo.
 - Security Token Offering (STO), ou Oferta de Token de Segurança: STOs são ofertas de tokens que representam ativos financeiros, como ações ou dívidas. Esses tokens são regulamentados por autoridades financeiras e oferecem direitos legais aos investidores, como dividendos ou participação nos lucros.
 
-<a name="item2.4"><h4>2.4 Desafio de Projeto: Criando o seu Primeiro Token do Zero nos Padrões Web3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
+<a name="item2.4"><h4>2.4 Desafio de Projeto: Criando o seu Primeiro Token do Zero nos Padrões Web3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/blockchain/(24-08-31)_DP_Criando...Token...Web3_PH_DIO.pdf">Certificate</a>
 
 Neste desafio de projeto, o objetivo consistiu em criar um token fungível no padrão ERC-20 na blockchain do **Ethereum**. Este token foi criado através de smart contract em **Solidity** no **Remix IDE** e implantado , através de uma conta na carteira **MetaMask**.
 
@@ -344,7 +341,7 @@ A melhor forma de adquirir esses tokens era procurando os faucets do token utili
     <figcaption>Imagem 05.</figcaption>
 </figure></div><br>
 
-A etapa seguinte foi criar o token fungível no padrão ERC-20 através de um smart contract desenvolvido em **Solidity** no **Remix IDE**. No **Remix IDE** era possível criar workspaces para diferentes trabalahos, mas foi utilizado o workspace padrão dele, que era o `default_workspace`. Nesse workspace estavam também os arquivos dos smart contracts construídos no bootcamp 025. O arquivo [token.sol](./04-dc-token/token.sol) foi elaborado na raiz do workspace. Este arquivo fazia basicamente a mesma coisa que o arquivo do desafio de projeto ([item 3.3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.3)) do bootcamp 025. A diferença era a forma que foi realizada a codificação em **Solidity**, mas o resultado era o mesmo. 
+A etapa seguinte foi criar o token fungível no padrão ERC-20 através de um smart contract desenvolvido em **Solidity** no **Remix IDE**. No **Remix IDE** era possível criar workspaces para diferentes trabalahos, mas foi utilizado o workspace padrão dele, que era o `default_workspace`. Nesse workspace estavam também os arquivos dos smart contracts construídos no bootcamp 025. O arquivo [token.sol](./04-dp-token/token.sol) foi elaborado na raiz do workspace. Este arquivo fazia basicamente a mesma coisa que o arquivo do desafio de projeto ([item 3.3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.3)) do bootcamp 025. A diferença era a forma que foi realizada a codificação em **Solidity**, mas o resultado era o mesmo. 
 
 Neste arquivo, três smart contracts eram elaborados, sendo o primeiro e o segundo de nomes `SafeMath` e `ERC20Interface` respectivamente. Eles foram usado como base para quarto contrato, intitulado `DIOToken`, funcionando como se fosse uma interface. O contrato `SafeMath` era criado para garantir que as quatro operações básicas de matemática não ocasionasse erros de cálculo. Ele possuía as quatro seguintes funções:
 - `safeAdd`: Função para adição segura de dois inteiros sem risco de overflow.
@@ -465,7 +462,7 @@ O próprio **MetaMask** mostrava algumas informações sobre a transação, conf
 
 Ainda neste desafio de projeto, o professor apresentou o software **CherrySwap** que uma de suas utilidades é para criar tokens no-code, ou seja, sem a necessidade de codificar um smart contrat. Contudo, para sua utilização era necessário uma quantidade de criptomoeda **Okex** na rede mainnet da blockchain **Okex**.
 
-<a name="item2.5"><h4>2.5 Introdução ao NFT: Funcionamento e Marketplaces</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
+<a name="item2.5"><h4>2.5 Introdução ao NFT: Funcionamento e Marketplaces</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/blockchain/(24-08-31)_Introducao...NFT_Funcionamento...PH_DIO.pdf">Certificate</a>
 
 Tokens não fungíveis (NFTs) são ativos criptográficos em uma blockchain, identificados por códigos exclusivos e metadados que os diferenciam entre si. Ao contrário das criptomoedas e tokens fungíveis, que são intercambiáveis, os NFTs não podem ser trocados por equivalência direta. Um exemplo inicial de NFT é o Cryptokitties (2017), representações digitais de gatos com identificações únicas na blockchain da **Ethereum**. Cada gatinho é único, possui um preço em **Ether (ETH)**, e pode se reproduzir, gerando descendentes com atributos e valores distintos dos seus pais.
 
@@ -499,23 +496,57 @@ Grande parte das ferramentas de mercado para NFTs são marketplaces, plataformas
 
 <a name="item2.6"><h4>2.6 Desafio de Projeto: Criando um NFT na Prática</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
 
+Neste desafio de projeto, o objetivo foi construir duas NFTs, uma na plataforma da **OpenSea** e a outra na plataforma **Uptick**. Essas plataformas fornecem uma interface gráfica do usuário (GUI) para construção de NFT de forma no-code. Diferentemente do realizado no bootcamp [boot_025](../../boot_025/), onde a NFT foi construída via smart contract codificado em **Solidity** no **Remix IDE**. Ao criar a NFT com essas plataformas via GUI, o que ocorre na realidade é que por baixo dos panos está havendo uma interação com um smart contract existente, criados pelas próprias plataformas no padrão ERC-721 para desenvolvimento de tokens não fungíveis (NFTs). Dessa forma, o uso das plataformas facilita o trabalho de criação, já que não é necessário codificar o smart contract, nem mesmo entedê-lo. Contudo, é possível visualizá-lo em um explorador de blocos, bem como as transações vinculadas a ele, ou seja, as transações que criam os NFTs.
+
+Cada uma das plataformas foi utilizada com uma wallet diferente. A **OpenSea** foi utilizada com a carteira construída na **MetaMask** no desafio anterior, cuja senha era `DIO-boot_026`, selecionando a única conta existente (`Account 1`). Para facilitar o nome dessa conta foi alterado para `DIO-boot_026-Account1` através da opção `Detalhes da conta`, conforme imagem 18 abaixo. Essa conta utilizou a mainnet da blockchain **Ethereum** para interagir com um contrato criado pela **OpenSea** para construção de NFTs no padrão ERC-721. Não foi necessário visualizar o smart contract diretamente, pois as definições da NFT criada foram configuradas através da interface gráfica da **OpenSea**. A plataforma, então, interagia com o smart contract na blockchain para realizar as operações necessárias. Ou seja, o **OpenSea** utilizava contratos inteligentes para executar o processo de criação, transferência e gerenciamento das NFTs, e a interface do **OpenSea** simplificava esse processo para os usuários, gerando as transações que são registradas na blockchain.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
+O primeiro passo foi conectar a conta da **MetaMask** com a **OpenSea**, conforme imagem 19. Após isso, foi possível iniciar o processo de construção da NFT na **OpenSea**. A imagem [imagem-nft1.jpeg](./06-dp-nft/imagem-nft1.jpeg) foi gerada aleatoriamente pela IA generativa **DALL-E** do **Microsoft Bing** e foi utilizada no **OpenSea**, pois o NFT construído seria dessa imagem. Para criar a NFT no **OpenSea** foi necessário clicar em `Create` e escolher a opção `Collection or item` para poder realizar as configurações. Contudo, para construir a NFT foi preciso criar uma coleção em que ela faria parte. Ao selecionar a opção de criar coleção, foi preciso enviar a imagem gerada pelo **DALL-E**, definir um nome de contrato, que foi `DIO-boot_026-NFT-Contrat`, e um símbolo de token, definido como `DIO`. Também foi preciso escolher a blockchain que faria o deploy do contrato. Como a blockchain da **Ethereum** tinha um custo para criação, foi optado pela blockchain **Polygon**, que também operava na mainnet. Embora a **Polygon** não tivesse um custo fixo para deploy como a **Ethereum**, ela possuía um fee (taxa) de sua moeda nativa que era o **MATIC**. Portanto, foi preciso encontrar um faucet para enviar **MATIC** para endereço da conta da carteira da **MetaMask**. A imagem 20 exibe a obtenção da moeda em um faucet. Já a imagem 21 mostra a coleção criada por smart contrat no **OpenSea**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img19.png" alt="img19"><br>
+    <figcaption>Imagem 19.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
+</figure></div><br>
+
+
+O nome do NFT foi definido como `DIO-boot_026-NFT-1` e a descrição foi `Primeiro NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Este foi construído na plataforma da OpenSea.`. Nenhum link externo com explicações adicionais sobre o NFT foi inserido. Este NFT também não foi definido em uma coleção. A opção `Unlockable Content` (Conteúdo Desbloquado) foi mantido desabilitado, pois este servia para caso quisesse fornecer ao comprador da NFT algum conteúdo específico que só o detentor da NFT teria. A quantidade (`Supply`) foi mantida como `1`, pois seria apenas um NFT. Por fim, a blockchain **Polygon** foi escolhida como utilizada. A imagem 20 exibe a NFT construída na plataforma **OpenSea**.
+
+
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
+</figure></div><br>
+
+Após criar o NFT, ela foi disponibilizada para a venda. Assim, o tipo de venda foi definido como `Fixed Price` (Preço fixo), mas poderia ser `Timed Auction` (Leilão Cronometrado). O preço do NFT foi determinado em `100 ETH` e a duração foi definida em `1 month`. A imagem 21 mostra o NFT disponibilizado para venda.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img21.png" alt="img21"><br>
+    <figcaption>Imagem 21.</figcaption>
+</figure></div><br>
+
+
+
+
+
+
+
+
+
+
 
 
 - Pegar uma imagem qualquer na net para transformar em NFT
-- Abrir o OpenSea
-  - Conferir se o MetaMask está conectado ao site
-  - Clicar em criar
-    - Inserir e a imagem e um nome para ela `DIO-boot_026-NFT-1`
-    - Não por link externo que explica a mais sobre a NFT
-    - Colocar uma descrição: `Primeiro NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Construído na OpenSea`
-    - Não tem coleção para o NFT
-    - Unlockable Content: Caso habilitado, após a pessoa comprar o NFT, ela teria acesso a um conteúdo específico
-    - Definir a quantidade (Supply) do NFT: `1`
-    - Escolher a blockchain utilizada: `Polygon`
-  - Após criá-lo, disponibilizar para a venda:
-    - Definir o tipo de venda: `Fixed Price` ou `Timed Auction`
-    - Definir um preço: `100 ETH`
-    - Duração: `1 month`
+
 
 - Criar outro NFT
   - Instalar a wallet Keplr no navegador Chrome
