@@ -50,7 +50,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em apenas um curso. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.1"><h4>1.1 Entendendo Conceitos de Web3</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Entendendo Conceitos de Web3</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/blockchain/(24-08-21)_Entendendo...Web3_PH_DIO.pdf">Certificate</a>
 
 Web3 representa a próxima evolução da web: uma internet mais aberta, transparente, descentralizada e executada em infraestrutura de blockchains. É uma mudança de paradigma em direção a uma internet mais democratizada, governada pelo coletivo em vez de corporações e interesses especiais. Para compreender Web3, é importante revisitar as diferentes fases da web:
 - Web1: Conhecida como a era "somente leitura" (Read-Only), essa fase ocorreu entre os anos 1980 e o início dos anos 2000. A internet era majoritariamente composta por sites estáticos, onde os usuários consumiam conteúdo sem interagir ou gerar material próprio.

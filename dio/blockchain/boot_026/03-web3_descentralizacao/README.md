@@ -49,7 +49,7 @@ A partir desses três conceitos centrais, diversas outras vertentes emergem, com
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md1-img01.png" alt="img01"><br>
+    <img src="../0-aux/md3-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 

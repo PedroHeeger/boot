@@ -15,8 +15,6 @@
 ### Used Tools:
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Cloud:
-  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -32,24 +30,24 @@
 ---
 
 ### Bootcamp Structure
-1. [Introdução e Visão Geral Sobre Web3]()   
-  1.1. [Entendendo Conceitos de Web3]()   
-2. [Blockchain e Tokens]()   
-  2.1. [Entendendo Conceitos de Blockchain]()   
-  2.2. [Desafio de Código: Desafios Básicos Javascript - Formação Web3]()   
-  2.3. [Como Token Fungíveis Funcionam]()   
-  2.4. [Desafio de Projeto: Criando o seu Primeiro Token do Zero nos Padrões Web3]()   
-  2.5. [Introdução ao NFT: Funcionamento e Marketplaces]()   
-  2.6. [Desafio de Projeto: Criando um  NFT na Prática]()   
+1. [Introdução e Visão Geral Sobre Web3](./01-introducao_web3/)   
+  1.1. [Entendendo Conceitos de Web3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/01-introducao_web3#item1.1)   
+2. [Blockchain e Tokens](./02-blockchain_tokens/)   
+  2.1. [Entendendo Conceitos de Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/02-blockchain_tokens#item2.1)   
+  2.2. [Desafio de Código: Desafios Básicos Javascript - Formação Web3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/02-blockchain_tokens#item2.2)   
+  2.3. [Como Token Fungíveis Funcionam](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/02-blockchain_tokens#item2.3)   
+  2.4. [Desafio de Projeto: Criando o seu Primeiro Token do Zero nos Padrões Web3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/02-blockchain_tokens#item2.4)   
+  2.5. [Introdução ao NFT: Funcionamento e Marketplaces](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/02-blockchain_tokens#item2.5)   
+  2.6. [Desafio de Projeto: Criando um  NFT na Prática](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/02-blockchain_tokens#item2.6)   
   2.7. Materiais Complementares - Blockchain e Tokens   
-3. [Web3 e Descentralização]()   
-  3.1. [Decentralized Autonomous Organizations (DAO)]()   
-  3.2. [Decentralized Finance (DeFi)]()   
-  3.3. [Desafio de Projeto: Criando uma Organização Autônoma Descentralizada nos Padrões Web3]()   
+3. [Web3 e Descentralização](./03-web3_descentralizacao/)   
+  3.1. [Decentralized Autonomous Organizations (DAO)](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/03-web3_descentralizacao#item3.1)   
+  3.2. [Decentralized Finance (DeFi)](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/03-web3_descentralizacao#item3.2)   
+  3.3. [Desafio de Projeto: Criando uma Organização Autônoma Descentralizada nos Padrões Web3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/03-web3_descentralizacao#item3.3)   
   3.4. Materiais Complementares - Web3 e Descentralização
-4. [Metaverso e Mercado Web3]()   
-  4.1. [Introdução ao Metaverso]()   
-  4.2. [Conhecendo o Mercado e Oportunidades Web3]()   
+4. [Metaverso e Mercado Web3](./04-metaverso_web3/)   
+  4.1. [Introdução ao Metaverso](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/04-metaverso_web3#item4.1)   
+  4.2. [Conhecendo o Mercado e Oportunidades Web3](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/04-metaverso_web3#item4.2)   
   4.3. Materiais Complementares: Metaverso e Mercado Web3  
 
 ---
