@@ -41,6 +41,7 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Formaç�
   - IRISnet (IRIS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iris.png" alt="iris" width="auto" height="25">
   - Keplr   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/keplr.png" alt="keplr" width="auto" height="25">
   - MetaMask   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/meta_mask.png" alt="meta_mask" width="auto" height="25">
+  - OpenSea Testnet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/opensea.png" alt="opensea_testnet" width="auto" height="25">
   - Polygon (MATIC)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/polygon.png" alt="polygon" width="auto" height="25">
   - PolygonScan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/polygonscan.svg" alt="polygonscan" width="auto" height="25">
   - Remix IDE   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/remix_ide.png" alt="remix_ide" width="auto" height="25">
@@ -313,7 +314,7 @@ Aqui estão os principais métodos de arrecadação de fundos e distribuição d
 
 Neste desafio de projeto, o objetivo consistiu em criar um token fungível no padrão ERC-20 na blockchain do **Ethereum**. Este token foi criado através de smart contract em **Solidity** no **Remix IDE** e implantado , através de uma conta na carteira **MetaMask**.
 
-O primeiro passo foi instalar o **MetaMask** e criar uma carteira nova. O **MetaMask** foi instalado como extensão do navegador **Google Chrome** da máquina física **Windows**. Ele funciona também em outros navegadores ou como aplicativo mobile. Após instalar o **MetaMask**, poderia ser importado uma carteira já existente ou criar uma nova. Neste caso, foi construído uma nova carteira. Ao criar a carteira, era solicitado a criação de uma senha que foi definida como `DIO-boot_026`. Em seguida, o **MetaMask** sugeria criar uma proteção para a carteira ao gerar a chave de recuperação secreta, que nada mais é que a frase mnemônica do Seed com 12 palavras ordenadas (`math call chuckle weapon address kidney example order track measure pencil toward`). A frase gerada foi copiada e confirmada logo na sequência. Assim, a carteira do **MetaMask** já podia ser acessada e uma primeira conta foi gerada automaticamente para ela, conforme imagem 02.
+O primeiro passo foi instalar o **MetaMask** e criar uma carteira nova. O **MetaMask** foi instalado como extensão do navegador **Google Chrome** da máquina física **Windows**. Ele funciona também em outros navegadores ou como aplicativo mobile. Após instalar o **MetaMask**, poderia ser importado uma carteira já existente ou criar uma nova. Neste caso, foi construído uma nova carteira. Ao criar a carteira, era solicitado a criação de uma senha que foi definida como `Senha_wallet_123`. Em seguida, o **MetaMask** sugeria criar uma proteção para a carteira ao gerar a chave de recuperação secreta, que nada mais é que a frase mnemônica do Seed com 12 palavras ordenadas (`mountain breeze galaxy drift coral comet moonlight ripple journey sunset whisper ocean`). A frase gerada foi copiada e confirmada logo na sequência. Assim, a carteira do **MetaMask** já podia ser acessada e uma primeira conta foi gerada automaticamente para ela, conforme imagem 02.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img02.png" alt="img02"><br>
@@ -496,16 +497,43 @@ Grande parte das ferramentas de mercado para NFTs são marketplaces, plataformas
 
 <a name="item2.6"><h4>2.6 Desafio de Projeto: Criando um NFT na Prática</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-11)_Infraestrutura_Global_AWS_PH_DIO.pdf">Certificate</a>
 
-Neste desafio de projeto, o objetivo foi construir duas NFTs, uma na plataforma da **OpenSea** e a outra na plataforma **Uptick**. Essas plataformas fornecem uma interface gráfica do usuário (GUI) para construção de NFT de forma no-code. Diferentemente do realizado no bootcamp [boot_025](../../boot_025/), onde a NFT foi construída via smart contract codificado em **Solidity** no **Remix IDE**. Ao criar a NFT com essas plataformas via GUI, o que ocorre na realidade é que por baixo dos panos está havendo uma interação com um smart contract existente, criados pelas próprias plataformas no padrão ERC-721 para desenvolvimento de tokens não fungíveis (NFTs). Dessa forma, o uso das plataformas facilita o trabalho de criação, já que não é necessário codificar o smart contract, nem mesmo entedê-lo. Contudo, é possível visualizá-lo em um explorador de blocos, bem como as transações vinculadas a ele, ou seja, as transações que criam os NFTs.
+Neste desafio de projeto, o objetivo foi construir duas NFTs: uma na plataforma **OpenSea** e a outra na **Uptick**. Essas plataformas oferecem interfaces gráficas do usuário (GUI) para a criação de NFTs de forma no-code. Isso difere do processo realizado no bootcamp [boot_025](../../boot_025/), onde a NFT foi desenvolvida via smart contract codificado em **Solidity** no **Remix IDE**. Ao criar NFTs nessas plataformas através da GUI, na realidade, ocorre uma interação com smart contracts existentes, criados pelas próprias plataformas conforme o padrão ERC-721 para tokens não fungíveis (NFTs). Esses smart contracts são utilizados por qualquer usuário ao desenvolver NFTs nessas plataformas. Dessa forma, o uso dessas plataformas simplifica o processo de criação, uma vez que não é necessário codificar o smart contract nem compreendê-lo profundamente. No entanto, é possível visualizar informações sobre o contrato que originou a NFT através de um explorador de blocos, onde também é possível verificar todas as transações vinculadas a ele, ou seja, as transações que criaram as NFTs.
 
-Cada uma das plataformas foi utilizada com uma wallet diferente. A **OpenSea** foi utilizada com a carteira construída na **MetaMask** no desafio anterior, cuja senha era `DIO-boot_026`, selecionando a única conta existente (`Account 1`). Para facilitar o nome dessa conta foi alterado para `DIO-boot_026-Account1` através da opção `Detalhes da conta`, conforme imagem 18 abaixo. Essa conta utilizou a mainnet da blockchain **Ethereum** para interagir com um contrato criado pela **OpenSea** para construção de NFTs no padrão ERC-721. Não foi necessário visualizar o smart contract diretamente, pois as definições da NFT criada foram configuradas através da interface gráfica da **OpenSea**. A plataforma, então, interagia com o smart contract na blockchain para realizar as operações necessárias. Ou seja, o **OpenSea** utilizava contratos inteligentes para executar o processo de criação, transferência e gerenciamento das NFTs, e a interface do **OpenSea** simplificava esse processo para os usuários, gerando as transações que são registradas na blockchain.
+Cada uma das duas plataformas foi utilizada com uma wallet diferente. A primeira plataforma utilizada foi a **OpenSea** que foi conectada a carteira construída na **MetaMask** no desafio anterior, cuja senha era `Senha_wallet_123`, selecionando a única conta existente (`Account 1`). Para facilitar, o nome dessa conta foi alterado para `DIO-boot_026-Account1` através da opção `Detalhes da conta`, conforme imagem 18 abaixo. 
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img18.png" alt="img18"><br>
     <figcaption>Imagem 18.</figcaption>
 </figure></div><br>
+, para o deploy do contrato da coleção de NFTs
 
-O primeiro passo foi conectar a conta da **MetaMask** com a **OpenSea**, conforme imagem 19. Após isso, foi possível iniciar o processo de construção da NFT na **OpenSea**. A imagem [imagem-nft1.jpeg](./06-dp-nft/imagem-nft1.jpeg) foi gerada aleatoriamente pela IA generativa **DALL-E** do **Microsoft Bing** e foi utilizada no **OpenSea**, pois o NFT construído seria dessa imagem. Para criar a NFT no **OpenSea** foi necessário clicar em `Create` e escolher a opção `Collection or item` para poder realizar as configurações. Contudo, para construir a NFT foi preciso criar uma coleção em que ela faria parte. Ao selecionar a opção de criar coleção, foi preciso enviar a imagem gerada pelo **DALL-E**, definir um nome de contrato, que foi `DIO-boot_026-NFT-Contrat`, e um símbolo de token, definido como `DIO`. Também foi preciso escolher a blockchain que faria o deploy do contrato. Como a blockchain da **Ethereum** tinha um custo para criação, foi optado pela blockchain **Polygon**, que também operava na mainnet. Embora a **Polygon** não tivesse um custo fixo para deploy como a **Ethereum**, ela possuía um fee (taxa) de sua moeda nativa que era o **MATIC**. Portanto, foi preciso encontrar um faucet para enviar **MATIC** para endereço da conta da carteira da **MetaMask**. A imagem 20 exibe a obtenção da moeda em um faucet. Já a imagem 21 mostra a coleção criada por smart contrat no **OpenSea**.
+Em uma primeira tentativa de execução, foi utilizado a mainnet da blockchain **Polygon**, pois nela o fee (taxa) era muito mais barato do que o da mainnet da blockchain **Ethereum**. Outras blockchains poderiam ser utilizadas como a **Base**, **Avalanche** e **Arbitrum**. Entretanto, todas essas, incluíndo a **Polygon**, por serem mainnets (redes principais), o token nativo, ou seja, a criptomoeda da rede, possuía valor de mercado. A obtenção de uma quantidade de tokens nativos de mainnets por faucets é um processo muito complicado e lento, pois há poucos faucets, muitos exigem diversas condições e distribuem quantias muito pequenas. Como diz a frase `Não existe almoço grátis`, ninguém vai dar dinheiro a ninguém, mesmo que digital, sem nenhuma condição e de forma muito fácil.
+
+Sendo assim, a forma encontrada para criação do NFT, foi utilizar a própria plataforma da **OpenSea** na testnet (**OpenSea Testnet**). Nessa plataforma, ao invés de fazer o deploy em uma mainnet de uma blockchain, a implantação era executada na testnet das blockchains. As opções de testnets da blockchain **Polygon** era **Polygon Mumbai** ou **Polygon Amoy**. Contudo, não consegui configurar essas redes na **MetaMask**. Para facilitar, foi utilizado a testnet da blockchain **Ethereum** que era a **Sepolia**. Essa testnet já estava configurado na conta `DIO-boot_026-Account1` da carteira **MetaMask** e também já possuía uma quantidade boa de tokens **SepoliaETH**, obtidos por faucets no desafio de projeto anterior. Esses uma quantia desses tokens seriam necessário para cobrir o fee (taxa) ao fazer o deploy do smart contract.
+
+Após a definição da rede e da blockchain, para criar um NFT tanto na **OpenSea** quanto na **OpenSea Testnet**, era necessário indicar a qual coleção de NFTs ele pertencia. Caso não houvesse nenhuma coleção criada, era preciso criar uma coleção antes. Nas configurações da coleção de NFTs, foi necessário incluir uma imagem de logo para a coleção, enquanto para criar um NFT foi preciso uma imagem específica. Como seriam duas NFTs, foi necessário primeiro gerar essas duas imagens, bem como a imagem de logo da coleção. Essas três imagens foram geradas pelo software de IA generativa **DALL-E**, disponível no **Microsoft Bing**, passando um prompt determinado no **Microsoft Copilot**. As imagens geradas são apresentadas abaixo.
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./06-dp-nft/imagem-nft1.jpeg" alt="Imagem 1" width="300px">
+      <br>
+      <sub><b>Imagem do NFT 1</b></sub>
+    </td>
+    <td align="center">
+      <img src="./06-dp-nft/imagem-nft2.jpeg" alt="Imagem 2" width="300px">
+      <br>
+      <sub><b>Imagem do NFT 2</b></sub>
+    </td>
+    <td align="center">
+      <img src="./06-dp-nft/logo-nft.jpeg" alt="Logo da Coleção" width="300px">
+      <br>
+      <sub><b>Logo da Coleção de NFTs</b></sub>
+    </td>
+  </tr>
+</table>
+
+Com as imagens geradas, o primeiro passo foi conectar a conta da **MetaMask** com a **OpenSea Testnet**, conforme imagem 19. Em seguida, foi iniciado o processo de construção do primeiro NFT. Para construção do NFT no **OpenSea**, ou no **OpenSea Testnet**, foi necessário clicar em `Create` e escolher a opção `Collection or item` para poder realizar as configurações. Como dito antes, um NFT precisava ser vinculada a uma coleção de NFTs. Se não houvesse a coleção, era preciso criá-la. Dessa forma, a imagem de logo da coleção foi fornecida, o nome do smart contract que criaria essa coleção foi definido como `DIO-boot_026-NFT-Contrat` e o símbolo de token (Token symbol) foi definido como `DIO`. Como estava sendo utilizado a plataforma **OpenSea Testnet**, a testnet escolhida para fazer o deploy desse contrato foi a **Sepolia**. Uma quantia de tokens **SepoliaETH** foi utilizado como fee (taxa). A imagem 20 exibe a coleção de NFTs criada com sucesso.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img19.png" alt="img19"><br>
@@ -517,60 +545,80 @@ O primeiro passo foi conectar a conta da **MetaMask** com a **OpenSea**, conform
     <figcaption>Imagem 20.</figcaption>
 </figure></div><br>
 
-
-O nome do NFT foi definido como `DIO-boot_026-NFT-1` e a descrição foi `Primeiro NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Este foi construído na plataforma da OpenSea.`. Nenhum link externo com explicações adicionais sobre o NFT foi inserido. Este NFT também não foi definido em uma coleção. A opção `Unlockable Content` (Conteúdo Desbloquado) foi mantido desabilitado, pois este servia para caso quisesse fornecer ao comprador da NFT algum conteúdo específico que só o detentor da NFT teria. A quantidade (`Supply`) foi mantida como `1`, pois seria apenas um NFT. Por fim, a blockchain **Polygon** foi escolhida como utilizada. A imagem 20 exibe a NFT construída na plataforma **OpenSea**.
-
-
-
-<div align="Center"><figure>
-    <img src="../0-aux/md2-img20.png" alt="img20"><br>
-    <figcaption>Imagem 20.</figcaption>
-</figure></div><br>
-
-Após criar o NFT, ela foi disponibilizada para a venda. Assim, o tipo de venda foi definido como `Fixed Price` (Preço fixo), mas poderia ser `Timed Auction` (Leilão Cronometrado). O preço do NFT foi determinado em `100 ETH` e a duração foi definida em `1 month`. A imagem 21 mostra o NFT disponibilizado para venda.
+Nesse momento, um dos smart contracts já criado pela plataforma **OpenSea Testnet** foi interagido, executando uma de suas funções. Não foi necessário codificar o contrato, tudo foi realizado automaticamente pela plataforma, sendo as únicas configurações o nome do contrato, o símbolo de token e a imagem de logo. A própria plataforma já fornecia um link para abrir o explorador de blocos **Etherscan** na transação que criou essa coleção de NFTs. Ao abrir a transação no **Etherscan**, foi possível verificar que a função `Create Clone` do contrato foi acionada pelo endereço da conta `DIO-boot_026-Account1` da carteira **MetaMask** (`0x6599332D989686533048898A386BC10Ae3De8d67`), conforme mostrado na imagem 21. Perceba que a transação foi inserida no bloco de número `6634483` e já haviam 12 blocos de confirmação. Na imagem 22 foi aberto no explorador o endereço dessa conta e foi verificado todas as transações realizadas, esta transação que criou a coleção de NFTs e as outras, que foram executadas no desafio anterior. Já na imagem 23 foi possível visualizar no **Etherscan** o contrato que foi interagido. Observe que haviam diversas transações de diferentes endereços, sendo a última transação, da conta `DIO-boot_026-Account1`. Todos esses endereços de contas de carteiras utilizavam a plataforma **OpenSea Testnet** para interagir com o contrato, sem a necessidade de visualizar a codificação do contrato, ou seja, de forma totalmente no-code.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img21.png" alt="img21"><br>
     <figcaption>Imagem 21.</figcaption>
 </figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img22.png" alt="img22"><br>
+    <figcaption>Imagem 22.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img23.png" alt="img23"><br>
+    <figcaption>Imagem 23.</figcaption>
+</figure></div><br>
 
+Continuando o desafio, agora foi o momento de configurar o NFT que seria criado. O nome do NFT foi definido como `DIO-boot_026-NFT-1` e a descrição foi `Primeiro NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Este foi construído na plataforma da OpenSea Testnet.`. Nenhum link externo com explicações adicionais sobre o NFT foi inserido. A coleção de NFT escolhida foi a criada, `DIO-boot_026-NFT-Contrat`. A quantidade (`Supply`) foi mantida como `1`, pois seria apenas um NFT. Para realizar a transação que executava a criação, foi necessário confirmar com a conta da carteira **MetaMask** e pagar o fee da transação, que neste caso era tokens **SepoliaETH**, já que a rede utilizada era **Sepolia**. A imagem 24 ilustra o NFT criado com sucesso.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img24.png" alt="img24"><br>
+    <figcaption>Imagem 24.</figcaption>
+</figure></div><br>
 
+Basicamente a mesma ação foi realizada. Após configurar o NFT e executar a transação, por baixo dos panos a plataforma **OpenSea Testnet** interagia com uma função de um dos seus smart contract para criar o NFT. Dessa forma, também foi possível verificar a transação pelo **Etherscan**, conforme mostrado na imagem 25. Perceba que era uma outra transação, mas sendo executada do mesmo endreço de conta, que era da conta `DIO-boot_026-Account1` da carteira **MetaMask**. Contudo, o smart contract interagido foi outro, mas criado pela plataforma **OpenSea Testnet**. A imagem 26 exibe todas as transações realizadas pelo endereço da conta `DIO-boot_026-Account1`.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
+</figure></div><br>
 
+Após criar o NFT, foi possível visualizá-lo na plataforma **OpenSea Testnet** dentro da coleção criada. A imagem 27 exibe o NFT construído. Em seguida, ele foi disponibilizado para a venda. O tipo de venda foi definido como `Fixed Price` (Preço fixo), mas poderia ser `Timed Auction` (Leilão Cronometrado). O preço do NFT foi determinado em `100 ETH` e a duração foi definida em `1 month`. A imagem 28 confirma que o NFT foi disponibilizado para venda.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img27.png" alt="img27"><br>
+    <figcaption>Imagem 27.</figcaption>
+</figure></div><br>
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img28.png" alt="img28"><br>
+    <figcaption>Imagem 28.</figcaption>
+</figure></div><br>
 
+Por fim, o NFT foi importado para a conta `DIO-boot_026-Account1` da carteira **MetaMask**. A imagem 29 mostra os token fungíveis da conta, sendo eles, o token nativo da rede (**SepoliaETH**) e o token adicional criado no desafio anterior (`DIO`); o token não fungível criado nesse desafio de projeto; e todas as atividades que o endereço dessa conta realizou. Vale ressaltar que tudo isso foi executado na testnet da blockchain **Ethereum**, que é a rede **Sepolia**. 
 
-- Pegar uma imagem qualquer na net para transformar em NFT
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img29.png" alt="img29"><br>
+    <figcaption>Imagem 29.</figcaption>
+</figure></div><br>
 
+A segunda plataforma foi a **Uptick** que foi utilizada com a wallet **Keplr**. Neste caso, foi preciso instalar a **Keplr** no navegador **Google Chrome** da máquina física, da mesma forma que a **MetaMask** foi instalada. Em seguida, foi necessário criar uma carteira, que basicamente eram os mesmos passos da **MetaMask**. Ao criar a carteira foi gerado uma nova frase de recuperação. Essa frase de recuperação, era a frase mnemônica do seed, com as 12 palavras ordenadas (`pineapple harmony crimson jungle twilight echo orbit lighthouse whisper vortex ponder nebula`). Na **Keplr**, ela podia ser gerada com 24 palavras ao invés de 12. Depois, duas dessas palavras foram confirmadas, um nome de conta e uma senha para a carteira foram criadas, sendo definido `DIO-boot_026-Account2` e `Senha_wallet_123`. Após isso, as blockchains que seriam utilizadas pela carteira poderiam ser selecionadas, além das três já marcadas, foi selecionado a blockchain **IRISnet**. A imagem 30 exibe a conta `DIO-boot_026-Account2` criada na carteira.
 
-- Criar outro NFT
-  - Instalar a wallet Keplr no navegador Chrome
-  - Conectar ao Uptick NFT
-  - Escolher a blockchain IRISnet
-  - Definir as configurações do NFT:
-    - NFT Name: `DIO-boot_026-NFT-2`
-    - Description: `Segundo NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Construido na Uptick.`
-    - Definir a quantidade (Supply) do NFT: `1`. É uma `Artwork`.
-    - Não colocar tags
-    - Amount for sale: `Fixed Price (Sold at a fix priced)`
-    - Editions: `1`
-    - Não marcar `This work involves adult information`
-    - Criar
-    - Confirmar o fee (taxa) na carteira e pagar.
-  - Colocar para vender:
-    - Tipo: Fixed Price
-    - Token: IRIS
-    - `1000` 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img30.png" alt="img30"><br>
+    <figcaption>Imagem 30.</figcaption>
+</figure></div><br>
 
+O funcionamento dela era muito semelhante a wallet **MetaMask**, tendo algumas opções adicionais, além de várias outras blockchains. Após isso, foi conectada a conta da carteira da **Keplr** com a plataforma **Uptick** para construir o segundo token não fungível (NFT). A blockchain utilizada foi a **IRISnet** na mainnet. A **IRISnet** é construída usando o **Cosmos SDK**, que é um framework para construir blockchains personalizadas e escaláveis dentro do ecossistema **Cosmos**. O ecossistema **Cosmos** é um projeto que visa criar uma rede de blockchains interoperáveis, permitindo que diferentes blockchains se comuniquem e interajam de forma eficiente. O objetivo é resolver alguns dos principais problemas enfrentados pelas blockchains existentes, como escalabilidade, interoperabilidade e complexidade. O **Cosmos Hub (ATOM)** é o blockchain central e o núcleo do ecossistema **Cosmos**. Ele atua como um hub que conecta várias "zones" (ou blockchains independentes) e permite a transferência de tokens e informações entre elas por meio do protocolo IBC (Inter-Blockchain Communication). A escolha da wallet **Keplr** para esse segundo NFT, foi porque ela se integra muito bem com blockchains baseadas no **Cosmos SDK** e outras redes compatíveis com o **Cosmos**. A imagem 31 mostra a conexão da carteira **Keplr** com a plataforma **Uptick** na blockchain **IRISnet**.
 
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img31.png" alt="img31"><br>
+    <figcaption>Imagem 31.</figcaption>
+</figure></div><br>
 
+Dando continuidade, foi escolhido a opção `Criar NFT` e as configurações foram passadas na plataforma. A imagem gerada no **DALL-E** foi enviada, o nome do NFT foi definido como `DIO-boot_026-NFT-2`, a descrição foi `Segundo NFT criado no desafio de projeto "Criando um NFT na Prática" do módulo 2 do bootcamp Formação Web3 Fundamentals da DIO. Construido na Uptick.`. A categoria foi definida como `Somente NFT` e `Obra de arte`. A quantidade para venda (Supply) foi definido como `1`. Não foi determinado propriedades e também não foi marcada a opção `This work involves adult information`, pois não era um conteúdo adulto. O fee (taxa) para criação da NFT, ou seja, interação com alguma função de algum smart contract da própria plataforma, era de 0.1 **IRIS**.
 
+Infelizmente, tive o mesmo problema para adquirir quantias de token **IRIS** na mainnet em faucets. O único faucet que encontrei solicitava uma publicação no aplicativo **X** (antigo **Twitter**) e neste momento, dia `05/09/2024`, o aplicativo **X** estava bloquado no país em que resido, sendo aplicado multas para quem tentar acessar de outras formas. Dessa forma, aguardarei até que esse aplicativo possa ser utilizado novamente. A imagem 32, exibe toda configuração feita do segundo NFT na plataforma **Uptick**.
 
-
-
-
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img32.png" alt="img32"><br>
+    <figcaption>Imagem 32.</figcaption>
+</figure></div><br>
