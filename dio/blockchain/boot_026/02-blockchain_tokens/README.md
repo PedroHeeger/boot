@@ -48,10 +48,10 @@ This folder refers to Module 2 **Blockchain e Tokens** from bootcamp [**Forma√ß√
   - Sepolia; Sepolia Ether (SepoliaETH)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sepolia_eth.png" alt="sepolia_eth" width="auto" height="25">
   - Uptick (UPTK)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/uptk.jpeg" alt="uptk" width="auto" height="25">
 - Artificial Intelligence:
-  - DALL-E   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dall-e.jpg" alt="dall-e" width="auto" height="25">
+  - DALL-E   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/dall-e.png" alt="dall-e" width="auto" height="25">
   - Microsoft Bing   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/microsoft_bing.png" alt="microsoft_bing" width="auto" height="25">
   - Microsoft Copilot   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/microsoft_copilot.png" alt="microsoft_copilot" width="auto" height="25">
-  
+
 ---
 
 ### Bootcamp Module 2 Structure
