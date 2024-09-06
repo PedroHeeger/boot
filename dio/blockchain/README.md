@@ -11,3 +11,4 @@ This folder refers to all the courses I took on the Digital Innovation One (DIO)
 ### Bootcamps:
 - <a href="./boot_025/">boot_025 (Formação Blockchain Specialist)   <img src="./boot_025/0-aux/logo_boot.png" alt="boot_025" width="auto" height="25"></a>
 - <a href="./boot_026/">boot_026 (Formação Web3 Fundamentals)   <img src="./boot_026/0-aux/logo_boot.png" alt="boot_026" width="auto" height="25"></a>
+- <a href="./boot_027/">boot_027 (Binance - Blockchain Developer with Solidity)   <img src="./boot_027/0-aux/logo_boot.png" alt="boot_027" width="auto" height="25"></a>
