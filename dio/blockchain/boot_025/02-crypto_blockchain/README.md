@@ -3,7 +3,7 @@
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
 ### Software/Subject: <a href="../../">blockchain   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/blockchain.jpg" alt="blockchain" width="auto" height="25"></a>
-### Bootcamp: <a href="../">boot_025 (Formação Blockchain Specialist)   <img src="./0-aux/logo_boot.png" alt="boot_025" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_025 (Formação Blockchain Specialist)   <img src="../0-aux/logo_boot.png" alt="boot_025" width="auto" height="25"></a>
 ### Module: 2. Crypto com Blockchain 
 
 ---
@@ -25,8 +25,9 @@ This folder refers to Module 2 **Crypto com Blockchain** from bootcamp [**Forma�
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - JavaScript   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
-  - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
   - Python   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" width="auto" height="25">
+- Runtime Environment:
+  - Node.js   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
@@ -37,7 +38,7 @@ This folder refers to Module 2 **Crypto com Blockchain** from bootcamp [**Forma�
 ---
 
 ### Bootcamp Module 2 Structure
-2. <a name="item1">Crypto com Blockchain</a><br>
+2. <a name="item2">Crypto com Blockchain</a><br>
   2.1. <a href="#item2.1">Cryptocurrencies com Blockchain</a><br>
   2.2. <a href="#item2.2">Blockchain e Smart Contracts: ETHEREUM</a><br>
   2.3. <a href="#item2.3">Desafio de Código: Desafios intermediários Javascript II - Formação Blockchain</a><br>

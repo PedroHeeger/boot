@@ -127,18 +127,63 @@ Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a e
 
 <a name="item1.1"><h4>1.1 Introdução à Experiencia Blockchain e Web3</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
 
-
-
-
-
-
+Neste curso foram abordados os principais conceitos que seriam aprendidos neste bootcamp em parceria com a **Binance**. A **Binance** é uma corretora de criptomoeda, reconhecida por sua segurança:
+- Web3: Evolução da internet com foco na descentralização e controle pelos usuários.
+- Token: Representação digital de ativos ou utilidades.
+  - Token Fungível: Intercambiável, como criptomoedas.
+    - Criptomoedas/Criptoativos: Ativos digitais com valor monetário.
+  - Token Não Fungível (NFT): Único, usado para representar propriedade digital.
+- Smart Contract: Contratos automáticos que executam regras programadas.
+  - **Solidity**: Linguagem de programação usada em contratos inteligentes.
+- Aplicações Descentralizadas (Dapps): Softwares rodando em redes blockchain.
+  - Finanças Descentralizadas (DeFi): Sistema financeiro sem intermediários.
+    - Exchanges Descentralizadas (DEX): Plataformas de negociação direta entre usuários.
+- Organizações Autônomas Descentralizadas (DAO): Organizações geridas por regras de smart contracts, sem hierarquia centralizada.
 
 <a name="item1.4"><h4>1.4 Versionamento de Código com Git e GitHub</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
 
+Versionamento de código é o processo de gerenciar e controlar as alterações feitas em arquivos de código ao longo do tempo. Ele permite que desenvolvedores acompanhem modificações, revertam para versões anteriores e colaborem de forma eficiente em equipes. Ferramentas como **Git** são amplamente usadas para esse propósito. Os Sistemas de Controle de Versão (VCS) gerenciam as versões de um arquivo ao longo do tempo, registrando o histórico de atualizações, mudanças, datas e autores, oferecendo organização, controle e segurança. Eles podem ser divididos nos dois tipos abaixo:
+- VCS Centralizado (CVCS): Exemplos incluem **CVS** e **Subversion**. Estes sistemas mantêm o histórico e as versões em um repositório centralizado, exigindo acesso contínuo ao servidor para realizar alterações.
+- VCS Distribuído (DVCS): Exemplos incluem **Git** e **Mercurial**. Clonam o repositório completo, incluindo o histórico de versões, permitindo que cada clone funcione como um backup. Oferecem um fluxo de trabalho flexível, com a capacidade de trabalhar offline e sincronizar mudanças posteriormente.
 
+O **Git** é um Sistema de Controle de Versão Distribuíd (DVCS) gratuito e de código aberto, conhecido por sua eficiência em ramificações (branching) e fusões (merging), além de ser leve e rápido. Em 2002, o kernel do **Linux** começou a usar o **BitKeeper**, um DVCS proprietário. Em 2005, devido a conflitos com a comunidade e à revogação da licença gratuita do **BitKeeper**, Linus Torvalds e sua equipe criaram o **Git**. O fluxo básico do **Git** são:
+- git clone: Clona um repositório **Git** existente para um novo diretório local.
+- git commit: Grava alterações no repositório local.
+- git pull: Puxa alterações do repositório remoto para o local, buscando e mesclando atualizações.
 
+O **GitHub** é uma plataforma de hospedagem de código que usa **Git** para controle de versão e colaboração, destacando-se por sua comunidade ativa, uso global e pelo mascote "Octocat". Ela foi desenvolvido em 2008 por Chris Wanstrath, J. Hyett, Tom Preston-Werner e Scott Chacon. Em 2018, enfrentou um dos maiores ataques de DDoS e foi adquirido pela **Microsoft Corporation** por US $ 7,5 bilhões. A autenticação de dois fatores (2FA) adiciona uma camada extra de segurança à conta **GitHub**, exigindo um código adicional além da senha. Para ativar, vá até a seção de configurações da conta **GitHub**, selecione "Password and authentication" e depois "Two-factor authentication". Escolha "Authenticator app", leia o QR Code com um aplicativo autenticador como o **Microsoft Authenticator**, insira o código gerado e salve os códigos de recuperação fornecidos. Com isso, a autenticação de dois fatores estará ativada.
+ 
+O **Git** é um sistema de controle de versão distribuído que gerencia e rastreia alterações no código-fonte. Enquanto o **GitHub** é uma plataforma de hospedagem de código que utiliza **Git** para controle de versão e facilita a colaboração entre desenvolvedores, oferecendo recursos como repositórios remotos, pull requests e integração com outras ferramentas.
 
+Instalando o **Git**: 
+- Windows: Acesse [https://git-scm.com/download/win](https://git-scm.com/download/win) e faça o download do instalador. Execute o arquivo baixado e, na etapa "Select Components", mantenha as opções “Git Bash Here” e “Git GUI Here” selecionadas. Aceite a licença, clique em “Next” e continue configurando conforme suas preferências. Finalize a instalação clicando em “Install” e depois em “Finish”.
+- Linux: Consulte a documentação em [https://git-scm.com/download/linux](https://git-scm.com/download/linux). Para instalar a última versão estável, execute os seguintes comandos:
+  ```bash
+  sudo add-apt-repository ppa:git-core/ppa
+  sudo apt update
+  sudo apt install git
+  ```
+- MacOS: Consulte a documentação em [https://git-scm.com/download/mac](https://git-scm.com/download/mac). Primeiro, instale o Homebrew seguindo as instruções em https://brew.sh/. Em seguida, instale o **Gi**t com o comando: `brew install git`.
 
+Para autenticar via Token no **GitHub**, acesse a conta, clique em "Settings", depois em "Developer settings", selecione "Tokens (classic)" e clique em "Generate new token" para criar um novo Token de autenticação. Para armazenar as credenciais e reduzir a frequência com que digita seu nome de usuário ou senha, é possível utilizar gerenciadores de credenciais ou ajustar configurações no **Git**. Para autenticar via chave SSH, vá até a conta no **GitHub**, clique em "Settings", depois em "SSH and GPG keys" e selecione "New SSH key" para adicionar uma nova chave SSH à conta.
+
+Existem duas formas de obter um repositório Git na máquina: transformando um diretório local que não está sob controle de versão em um repositório Git ou clonando um repositório Git existente. Para criar um repositório local, acesse a pasta desejada pelo terminal ou use o atalho "Git Bash Here", inicialize o repositório com o comando git init e, em seguida, conecte-o ao repositório remoto com git remote add origin https://github.com/username/nome-do-repositorio.git. Para clonar um repositório, acesse o repositório no GitHub, copie o código HTTPS ou SSH conforme a autenticação, abra o Git Bash e execute git clone https://github.com/username/nome-do-repositorio. Para criar um repositório remoto, acesse sua conta no GitHub, clique no “+” no canto superior direito e selecione “New repository”. Insira um nome (obrigatório) e uma descrição (opcional), defina a visibilidade (público ou privado) e escolha a inicialização do repositório (se desejar deixá-lo vazio, desmarque as opções). Clique em “Create repository” para finalizar.
+
+Existem duas formas de obter um repositório **Git** na sua máquina: transformando um diretório local que não está sob controle de versão, num repositório **Git**, ou clonando um repositório remoto **Git** existente, que foi criado pelo **GitHub**.
+- Criando um Repositório Local: Acesse a pasta desejada pelo terminal, inicialize o repositório com `git init` e conecte-o ao repositório remoto com g`it remote add origin https://github.com/username/nome-do-repositorio.git`.
+- Clonando um Repositório: Acesse o repositório no **GitHub**, copie o código HTTPS ou SSH e use `git clone https://github.com/username/nome-do-repositorio` no **Git Bash** para clonar o repositório.
+- Criando um Repositório Remoto: No **GitHub**, clique no “+” para criar um novo repositório, insira um nome, defina a visibilidade e escolha se deseja inicializar o repositório vazio, depois clique em “Create repository”.
+
+Alguns comandos básicos do **Git**:
+- Salvando Alterações no Repositório Local: Adicione o conteúdo que deseja inserir no commit com `git add` e crie o commit com uma mensagem descritiva usando `git commit -m "message"`.
+- Desfazendo Alterações no Repositório Local: Para alterar a mensagem do último commit, use `git commit --amend`. Para alterar a mensagem sem abrir o editor, utilize `git commit --amend -m "nova mensagem"`.
+- Desfazendo Alterações no Repositório Local: Para desfazer um commit, é possível usar `git reset`, com as opções `--soft`, `--mixed`, ou `--hard` para diferentes níveis de desfazer alterações.
+- Enviando Alterações para o Repositório Remoto: Envie as alterações do repositório local para o remoto com `git push` e “puxe” as alterações do repositório remoto para o local com `git pull`.
+
+Uma branch é uma ramificação do projeto, funcionando como um ponteiro móvel para um commit específico no histórico do repositório. Ao criar uma nova branch a partir de uma existente, ela inicia apontando para o mesmo commit da branch original. Alguns comandos básicos com as branches incluem:
+- Criar uma Nova Branch e Trocar para Ela: Use `git checkout -b nome-da-branch` para criar uma nova branch e mudar para ela simultaneamente.
+- Deletar uma Branch: Utilize `git branch -d nome-da-branch` para deletar uma branch local que já foi mesclada. Para deletar uma branch que não foi mesclada, use `-D` em vez de `-d`.
+- Ver o Último Commit de Cada Branch: Execute `git branch -v` para exibir o último commit de cada branch local.
 
 <a name="item1.6"><h4>1.6 Desafio de Projeto: Contribuindo em um Projeto Open Source no GitHub</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
 
@@ -150,7 +195,23 @@ Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a e
 
 
 
-<a name="item2.11"><h4>2.11 Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
+
+
+
+
+
+
+<a name="item2.11"><h4>2.11 Desafio de Código: Desvendando os Contratos Inteligentes com Lógica de Programação</h4></a>[Back to summary](#item2)
+
+No primeiro desafio de código desse trio de desafios, cujo nome foi [blockchain_smart_contract.py](./02.11-dp/blockchain_smart_contract.py), a proposta foi a partir de um termo enviado como entrada pelo usuário, decidir qual descrição era a correta para o respectivo termo e imprimir a descrição na tela. Este código utilizou uma estrutura de condição dentro de uma função que verificava os quatro termos possíveis para retornar a descrição correspondente. Os termos e descrições eram relacionados ao conceito de blockchain. 
+
+No desafio 2, intitulado de [smart_contract.py](./02.11-dp/smart_contract.py), o objetivo foi o mesmo do anterior, contudo os termos eram referentes ao conceito de contratos inteligentes (Smart Contract). A codificação foi praticamente a mesma, só alterando os termos e as descrições dos ifs e returns. O último desafio também foi igual aos outros dois, sendo nomeado de [smart_contract2.py](./). O tema também foi relacionado a smart contracts, sendo os termos de assuntos mais aprofundados.
+
+<a name="item3.9"><h4>3.9 Desafio de Código: Explorando NFTs com Lógica de Programação</h4></a>[Back to summary](#item3)
+
+Neste trio de desafios de código, o primeiro desafio foi chamado de [nfts_criptomoedas.py](./03.09-dp/nfts_criptomoedas.py), tendo como objetivo retornar as descrições corretas para os termos enviados como entrada pelo usuário. Os termos eram de assuntos relacionados a NFTs e criptomoedas. Este código utilizou uma estrutura de condição dentro de uma função que verificava os quatro termos possíveis para retornar a descrição correspondente.
+
+O segundo desafio, cujo nome era [token_nft.py](./03.09-dp/token_nft.py), a codifição foi a mesma do anterior, apenas alterando as informações. Neste caso, uma característica seria passada como entrada pelo usuário, e o retorno seria o padrão de token que possuí essa característica. Os padrões de tokens não fungíveis (NFTs) eram `ERC-721` e `ERC-1155`. O último desafio, intitulado de [dao_defi.py](./03.09-dp/dao_defi.py), foi exatamente igual aos demais. A única diferença era os termos e descrições, que agora eram relacionados aos conceitos de Organizações Autônomas Descentralizadas (DAO) e Finanças Descentralizadas (DeFi).
 
 
 
@@ -162,4 +223,6 @@ Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a e
 
 
 
-<a name="item3.9"><h4>3.9 Desafio de Código: Explorando NFTs com Lógica de Programação</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
+
+
+

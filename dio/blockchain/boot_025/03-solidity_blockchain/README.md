@@ -22,6 +22,7 @@ This folder refers to Module 3 **Desenvolvimento com Solidity para Blockchain** 
 - Cloud:
   - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
+  - Amazon Elastic Compute Cloud (EC2)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_ec2.svg" alt="aws_ec2" width="auto" height="25">
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
@@ -38,6 +39,8 @@ This folder refers to Module 3 **Desenvolvimento com Solidity para Blockchain** 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+- Library:
+  - Web3.js   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/frame_library/web3js.png" alt="web3js" width="auto" height="25">
 - Blockchain:
   - Ethereum   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ethereum.png" alt="ethereum" width="auto" height="25">
   - Ganache   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ganache.png" alt="ganache" width="auto" height="25">
@@ -67,7 +70,7 @@ O objetivo deste módulo do bootcamp foi introduzir conceitos fundamentais para 
 A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
 
 <div align="Center"><figure>
-    <img src="../0-aux/md1-img01.png" alt="img01"><br>
+    <img src="../0-aux/md3-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 

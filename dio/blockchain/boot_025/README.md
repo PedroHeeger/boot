@@ -15,8 +15,6 @@
 ### Used Tools:
 - Operating System (OS): 
   - Windows 11 <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Cloud:
-  - AWS <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
 - Cloud Services:
   - Google Drive <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -32,24 +30,24 @@
 ---
 
 ### Bootcamp Structure
-1. [Fundamentos da Blockchain]()   
-  1.1. [Introdução à Blockchain]()   
-  1.2. [Desafio de Projeto: Criando e Utilizando a Sua Carteira de Criptomoedas]()   
-  1.3. [Operações da Blockchain]()   
-  1.4. [Desafio de código: Desafios intermediários Javascript I - Formação Blockchain]()   
+1. [Fundamentos da Blockchain](./01-fundamentos_blockchain/)   
+  1.1. [Introdução à Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/01-fundamentos_blockchain#item1.1)   
+  1.2. [Desafio de Projeto: Criando e Utilizando a Sua Carteira de Criptomoedas](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/01-fundamentos_blockchain#item1.2)   
+  1.3. [Operações da Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/01-fundamentos_blockchain#item1.3)   
+  1.4. [Desafio de código: Desafios intermediários Javascript I - Formação Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/01-fundamentos_blockchain#item1.4)   
   1.5. Materiais Complementares - Fundamentos da Blockchain   
-2. [Crypto com Blockchain]()   
-  2.1. [Cryptocurrencies com Blockchain]()   
-  2.2. [Blockchain e Smart Contracts: ETHEREUM]()   
-  2.3. [Desafio de Código: Desafios intermediários Javascript II - Formação Blockchain]()   
+2. [Crypto com Blockchain](./02-crypto_blockchain/)   
+  2.1. [Cryptocurrencies com Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/02-crypto_blockchain#item2.1)   
+  2.2. [Blockchain e Smart Contracts: ETHEREUM](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/02-crypto_blockchain#item2.2)   
+  2.3. [Desafio de Código: Desafios intermediários Javascript II - Formação Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/02-crypto_blockchain#item2.3)   
   2.4. Materiais Complementares - Crypto com Blockchain   
-3. [Desenvolvimento com Solidity para Blockchain]()   
-  3.1. [Introdução à Linguagem Solidity para Blockchain]()   
-  3.2. [Desenvolvimento de Smart Contracts para Blockchain]()   
-  3.3. [Desafio de Projeto: Criando a Sua Primeira Criptomoeda da Rede Ethereum]()   
-  3.4. [O Mercado de Blockchain e Criptomoedas]()   
-  3.5. [Desafio de Projeto: Crie o seu NFT de Pokémon com Blockchain]()   
-  3.6. [Desafio de código: Desafios intermediários Javascript III - Formação Blockchain]()   
+3. [Desenvolvimento com Solidity para Blockchain](./03-solidity_blockchain/)   
+  3.1. [Introdução à Linguagem Solidity para Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.1)   
+  3.2. [Desenvolvimento de Smart Contracts para Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.2)   
+  3.3. [Desafio de Projeto: Criando a Sua Primeira Criptomoeda da Rede Ethereum](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.3)   
+  3.4. [O Mercado de Blockchain e Criptomoedas](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.4)   
+  3.5. [Desafio de Projeto: Crie o seu NFT de Pokémon com Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.5)   
+  3.6. [Desafio de código: Desafios intermediários Javascript III - Formação Blockchain](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/03-solidity_blockchain#item3.6)   
   3.7. Materiais Complementares - Desenvolvimento com Solidity para Blockchain   
 
 ---
