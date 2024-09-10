@@ -69,7 +69,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 ## Main Repository
 
 <div style="overflow: auto;">
-    <a href="https://github.com/PedroHeeger/main" target="_blank">
+    <a href="https://github.com/PedroHeeger/main" target="_blank" style="float: right; width: 40%; max-width: 400px;>
         <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="width: 40%; height: auto; display: block;" />
     </a>
     <p style="margin: 0; padding: 0; width: 50%; float: left;">
