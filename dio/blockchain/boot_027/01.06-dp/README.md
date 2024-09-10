@@ -70,15 +70,9 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 <div style="display: flex; align-items: flex-start; width: 100%; gap: 20px;">
   <div style="flex: 1; max-width: 50%; box-sizing: border-box;">
-    <p>This is my main repository where I talk a little more about myself and 
-    explain my GitHub account. In this repository, three sub-folders are 
-    available. One with all the certificates that I obtained in some events 
-    and educational experiences carried out. Another sub-folder with all the 
-    certificates that I obtained in language courses. The last sub-folder, 
-    with all the reports and dashboards that I developed in the studies 
-    carried out. You can access them through the links below.</p>
+    <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
   </div>
-  <div style="flex: 1; max-width: 50%; box-sizing: border-box; display: flex; justify-content: flex-end;">
+  <div style="flex: 0 0 auto; max-width: 50%; box-sizing: border-box; display: flex; justify-content: flex-end;">
     <a href="https://github.com/PedroHeeger/main" target="_blank">
       <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="max-width: 200px; width: auto; height: auto;" />
     </a>
