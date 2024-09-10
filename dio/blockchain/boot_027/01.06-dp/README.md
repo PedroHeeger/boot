@@ -78,7 +78,8 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     <div style="clear: both;"></div>
 </div>
 
-<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 20px;">
+<!-- Contêiner flexível para os ícones -->
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 20px;">
   <div style="text-align: center; flex: 1 1 200px; margin: 0 15px;">
     <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
       <div style="font-size: 5em;">💻</div>
@@ -100,6 +101,37 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </a>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+<!-- <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 20px;">
+  <div style="text-align: center; flex: 1 1 200px; margin: 0 15px;">
+    <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="font-size: 5em;">💻</div>
+      <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
+    </a>
+  </div>
+
+  <div style="text-align: center; flex: 1 1 200px; margin: 0 15px;">
+    <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="font-size: 5em;">🌐</div>
+      <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
+    </a>
+  </div>
+
+  <div style="text-align: center; flex: 1 1 200px; margin: 0 15px;">
+    <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="font-size: 5em;">📊</div>
+      <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
+    </a>
+  </div>
+</div> -->
 
 
 
