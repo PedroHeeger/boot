@@ -79,29 +79,22 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 </div>
 
 <!-- Contêiner flexível para os ícones -->
-<table style="border-collapse: collapse; width: 100%; table-layout: fixed;">
-  <tr>
-    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
-      <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="font-size: 5em;">💻</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
-      </a>
-    </td>
-    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
-      <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="font-size: 5em;">🌐</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
-      </a>
-    </td>
-    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
-      <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="font-size: 5em;">📊</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
-      </a>
-    </td>
-  </tr>
-</table>
+<div style="display: flex; justify-content: space-around; align-items: center; margin-top: 20px;">
+  <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1;">
+    <div style="font-size: 5em;">💻</div>
+    <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
+  </a>
 
+  <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1;">
+    <div style="font-size: 5em;">🌐</div>
+    <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
+  </a>
+
+  <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1;">
+    <div style="font-size: 5em;">📊</div>
+    <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
+  </a>
+</div>
 
 
 
