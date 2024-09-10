@@ -81,24 +81,24 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 <!-- Contêiner flexível para os ícones -->
 
 
-<table style="border-collapse: collapse; width: 100%;">
+<table style="width: 100%; border-collapse: separate; border-spacing: 30px 0; text-align: center;">
   <tr>
-    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
+    <td style="border: none; width: 33%; vertical-align: middle;">
       <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="font-size: 6em;">💻</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
+        <div style="font-size: 12em;">💻</div>
+        <div style="margin-top: 10px; font-size: 5em;">Technology<br>Certificate</div>
       </a>
     </td>
-    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
+    <td style="border: none; width: 33%; vertical-align: middle;">
       <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="font-size: 6em;">🌐</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
+        <div style="font-size: 12em;">🌐</div>
+        <div style="margin-top: 10px; font-size: 5em;">Language<br>Certificate</div>
       </a>
     </td>
-    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
+    <td style="border: none; width: 33%; vertical-align: middle;">
       <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit;">
-        <div style="font-size: 6em;">📊</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
+        <div style="font-size: 12em;">📊</div>
+        <div style="margin-top: 10px; font-size: 5em;">Reports<br>and Dashboards</div>
       </a>
     </td>
   </tr>
