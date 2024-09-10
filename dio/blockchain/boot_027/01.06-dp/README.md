@@ -38,7 +38,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 ## Most Used Skills <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Flexed%20Biceps%20Medium-Light%20Skin%20Tone.png" alt="Flexed Biceps Medium-Light Skin Tone" width="25" height="25" />
 
-<div style="text-align: center;">
+<div align="center">
     <div style="text-align: center;">
         <h4>Programming Language</h4>
         <img alt="Python" src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" />
