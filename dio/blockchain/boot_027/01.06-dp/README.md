@@ -55,13 +55,14 @@ I've always been fascinated by technology and, mainly, by data, I've always like
       <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 39%; max-width: 500px;" />
     </nobr>
   </div>
-</div>
 
-
-<div style="margin-top: 10px; display: flex; justify-content: center; width: 100%; margin-left: 140px">
-<a href="https://git.io/streak-stats">
-    <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" style="width: 65%; max-width: 800px;" />
-</a>
+  <div style="margin-top: 10px; width: 100%; display: flex; justify-content: center;">
+    <div style="max-width: 800px; width: 100%;">
+      <a href="https://git.io/streak-stats" style="display: block; width: 100%; text-align: center;">
+        <img src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" style="width: 65%; max-width: 800px; margin: 0 auto;" />
+      </a>
+    </div>
+  </div>
 </div>
 
 
