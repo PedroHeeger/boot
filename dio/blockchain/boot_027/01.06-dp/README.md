@@ -50,12 +50,12 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 <div style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; flex-direction: row;">
-    <nobr>
-      <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 60%;" />
-      <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 42%;" />
-    </nobr>
+    <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 60%;" />
+    <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 42%;" />
   </div>
 </div>
+
+
   <br>
 <div style="display: flex; flex-direction: column; align-items: center;">
   <div style="margin: auto;">
