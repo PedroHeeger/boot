@@ -79,28 +79,30 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 </div>
 
 <!-- Contêiner flexível para os ícones -->
-<div style="display: flex; justify-content: space-between; align-items: center; overflow-x: auto; margin-top: 20px;">
-  <div style="flex: 0 0 auto; text-align: center; margin: 0 15px; white-space: nowrap;">
-    <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
-      <div style="font-size: 5em;">💻</div>
-      <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
-    </a>
-  </div>
+<table style="border-collapse: collapse; width: 100%; table-layout: fixed;">
+  <tr>
+    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
+      <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
+        <div style="font-size: 5em;">💻</div>
+        <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
+      </a>
+    </td>
+    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
+      <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit;">
+        <div style="font-size: 5em;">🌐</div>
+        <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
+      </a>
+    </td>
+    <td style="text-align: center; padding: 20px; border: none; width: 33%;">
+      <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit;">
+        <div style="font-size: 5em;">📊</div>
+        <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
+      </a>
+    </td>
+  </tr>
+</table>
 
-  <div style="flex: 0 0 auto; text-align: center; margin: 0 15px; white-space: nowrap;">
-    <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit;">
-      <div style="font-size: 5em;">🌐</div>
-      <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
-    </a>
-  </div>
 
-  <div style="flex: 0 0 auto; text-align: center; margin: 0 15px; white-space: nowrap;">
-    <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit;">
-      <div style="font-size: 5em;">📊</div>
-      <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
-    </a>
-  </div>
-</div>
 
 
 
