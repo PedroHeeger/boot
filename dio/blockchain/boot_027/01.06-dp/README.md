@@ -90,11 +90,21 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 - ⚡ Fun fact - My name is Cassiano, but my mom, family and friends call me Cassio. Feel free to choose. -->
 
-
-
-
-<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+<!-- <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
   <div align="left" style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
+    <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
+  </div>
+
+  <div align="right" style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
+    <a href="https://github.com/PedroHeeger/main" target="_blank">
+      <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" />
+    </a>
+  </div>
+</div> -->
+
+
+<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: nowrap;">
+  <div style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
     <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
   </div>
 
@@ -106,7 +116,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 </div>
 
 
-
+<br>
 
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
   <div style="text-align: center; margin: 0 105px;">
