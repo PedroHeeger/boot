@@ -79,20 +79,20 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 </div>
 
 <!-- Contêiner flexível para os ícones -->
-<div style="display: flex; justify-content: space-around; align-items: center; margin-top: 20px;">
-  <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1;">
-    <div style="font-size: 5em;">💻</div>
-    <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+  <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1; margin: 0 10px;">
+    <div style="font-size:10em;">💻</div>
+    <div style="margin-top: 10px; font-size: 1.5em;">Technology<br>Certificate</div>
   </a>
 
-  <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1;">
-    <div style="font-size: 5em;">🌐</div>
-    <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
+  <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1; margin: 0 10px;">
+    <div style="font-size: 10em;">🌐</div>
+    <div style="margin-top: 10px; font-size: 1.5em;">Language<br>Certificate</div>
   </a>
 
-  <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1;">
-    <div style="font-size: 5em;">📊</div>
-    <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
+  <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1; margin: 0 10px;">
+    <div style="font-size: 10em;">📊</div>
+    <div style="margin-top: 10px; font-size: 1.5em;">Reports<br>and Dashboards</div>
   </a>
 </div>
 
