@@ -117,18 +117,20 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </a>
 </div> -->
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;">
-  <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit; text-align: center; width: 30%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="65" height="auto">
-    <figcaption>Technology<br>Certificate</figcaption>
+<div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: nowrap;">
+  <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit; text-align: center; width: 30%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 10px;">
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="80" height="auto">
+    <figcaption style="font-size: 1.2em; margin-top: 10px;">Technology<br>Certificate</figcaption>
   </a>
   
-  <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit; text-align: center; width: 30%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Language" width="65" height="auto">  <figcaption>Language<br>Certificate</figcaption>
+  <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit; text-align: center; width: 30%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 10px;">
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Language" width="80" height="auto">
+    <figcaption style="font-size: 1.2em; margin-top: 10px;">Language<br>Certificate</figcaption>
   </a>
   
-  <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit; text-align: center; width: 30%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="65" height="auto"><figcaption>Reports<br>and Dashboards</figcaption>
+  <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit; text-align: center; width: 30%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 10px;">
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="80" height="auto">
+    <figcaption style="font-size: 1.2em; margin-top: 10px;">Reports<br>and Dashboards</figcaption>
   </a>
 </div>
 
