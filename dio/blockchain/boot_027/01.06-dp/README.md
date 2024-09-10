@@ -84,28 +84,46 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 <table width="100%" style="border: none;">
   <tr style="border: none; width: 100%;">
-    <td align="left" style="padding: 0 100px; border: none; width: 33%;">
+    <td align="center">
       <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank">
-        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="80">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="200px">
         <br><span style="font-size: 1.2em;">Technology<br>Certificate</span>
       </a>
     </td>
-    <td align="center" style="padding: 0 40px; border: none; width: 33%;">
+    <td align="center">
       <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank">
-        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Books" width="80">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Books" width="200px">
         <br><span style="font-size: 1.2em;">Language<br>Certificate</span>
       </a>
     </td>
-    <td align="right" style="padding: 0 40px; border: none; width: 33%;">
+    <td align="center">
       <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank">
-        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="80">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="200px">
         <br><span style="font-size: 1.2em;">Reports<br>and Dashboards</span>
       </a>
     </td>
   </tr>
 </table>
 
-
+<!-- <table>
+  <tr>
+    <td align="center">
+      <img src="./06-dp-nft/imagem-nft1.jpeg" alt="Imagem 1" width="300px">
+      <br>
+      <sub><b>Imagem do NFT 1</b></sub>
+    </td>
+    <td align="center">
+      <img src="./06-dp-nft/imagem-nft2.jpeg" alt="Imagem 2" width="300px">
+      <br>
+      <sub><b>Imagem do NFT 2</b></sub>
+    </td>
+    <td align="center">
+      <img src="./06-dp-nft/logo-nft.jpeg" alt="Logo da Coleção" width="300px">
+      <br>
+      <sub><b>Logo da Coleção de NFTs</b></sub>
+    </td>
+  </tr>
+</table> -->
 
 
 
