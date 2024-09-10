@@ -74,7 +74,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </div>
     <div style="flex: 1; max-width: 50%; box-sizing: border-box; display: flex; justify-content: flex-end;">
         <a href="https://github.com/PedroHeeger/main" target="_blank">
-            <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="width: 70%; max-width: 400px;" />
+            <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="width: 40%; max-width: 400px;" />
         </a>
     </div>
 </div>
