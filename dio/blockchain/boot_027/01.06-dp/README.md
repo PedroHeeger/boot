@@ -81,6 +81,45 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 <!-- Contêiner flexível para os ícones -->
 
 
+
+<table>
+  <tr style="border: none;">
+    <td align="center" style="padding: 0 60px; border: none;">
+      <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="80">
+        <br><span style="font-size: 1.2em;">Technology<br>Certificate</span>
+      </a>
+    </td>
+    <td align="center" style="padding: 0 60px; border: none;">
+      <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Books" width="80">
+        <br><span style="font-size: 1.2em;">Language<br>Certificate</span>
+      </a>
+    </td>
+    <td align="center" style="padding: 0 60px; border: none;">
+      <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank">
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="80">
+        <br><span style="font-size: 1.2em;">Reports<br>and Dashboards</span>
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <div style="display: flex; justify-content: space-around; align-items: center;">
   <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit; text-align: center;">
     <div style="font-size: 30em;">💻</div>
@@ -117,7 +156,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </a>
 </div> -->
 
-<div style="display: flex; flex-wrap: nowrap;">
+<!-- <div style="display: flex; flex-wrap: nowrap;">
   <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-align: left; width: 30%; display: flex; flex-direction: column; align-items: left; justify-content: left; margin: 0 10px; flex-wrap: nowrap;">
     <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="80" height="auto">
     <figcaption style="font-size: 1.2em; margin-top: 10px;">Technology<br>Certificate</figcaption>
@@ -130,7 +169,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="80" height="auto">
     <figcaption style="font-size: 1.2em; margin-top: 10px;">Reports<br>and Dashboards</figcaption>
   </a>
-</div>
+</div> -->
 
 
 
