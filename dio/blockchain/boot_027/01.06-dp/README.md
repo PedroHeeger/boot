@@ -19,34 +19,16 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 
 <table style="border-collapse: collapse; width: 100%; background: transparent; border: none;">
-  <tr style="border: none; background: transparent;">
-    <td style="border: none; padding: 0; text-align: center; background: transparent;">
+  <tr style="border: none; background: none;">
+    <td style="border: none; padding: 0; text-align: center; background: none;">
       <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 90%;" />
     </td>
-    <td style="border: none; padding: 0; text-align: center; background: transparent;">
+    <td style="border: none; padding: 0; text-align: center; background: none;">
       <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 100%;" />
     </td>
   </tr>
-  <tr style="border: none; background: transparent;">
-    <td colspan="2" align="center" style="border: none; padding: 0; background: transparent;">
-      <a href="https://git.io/streak-stats">
-        <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" />
-      </a>
-    </td>
-  </tr>
-</table>
-
-<!-- <table>
-  <tr>
-    <td>
-      <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 100%;" />
-    </td>
-    <td>
-      <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 100%;" />
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">
+  <tr style="border: none; background: none;">
+    <td colspan="2" align="center" style="border: none; padding: 0; background: none;">
       <a href="https://git.io/streak-stats">
         <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" />
       </a>
@@ -57,23 +39,9 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 
 
-<table>
-  <tr>
-    <td>
-      <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 100%;" />
-    </td>
-    <td>
-      <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 100%;" />
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" style="text-align: center;">
-      <a href="https://git.io/streak-stats">
-        <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" />
-      </a>
-    </td>
-  </tr>
-</table> -->
+
+
+
 
 
 <!-- <div style="display: flex; flex-direction: row;">
