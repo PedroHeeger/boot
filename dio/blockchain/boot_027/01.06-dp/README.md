@@ -68,12 +68,12 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 ## Main Repository
 
-<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px;">
-  <div style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
+<div style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+  <div style="flex: 1 1 50%; box-sizing: border-box; padding: 10px;">
     <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
   </div>
 
-  <div style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
+  <div style="flex: 1 1 50%; box-sizing: border-box; padding: 10px;">
     <a href="https://github.com/PedroHeeger/main" target="_blank">
       <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" />
     </a>
