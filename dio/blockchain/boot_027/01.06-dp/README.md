@@ -82,21 +82,21 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 
 
-<table>
-  <tr style="border: none;">
-    <td align="center" style="padding: 0 60px; border: none;">
+<table width="100%" style="border: none;">
+  <tr style="border: none; width: 100%;">
+    <td align="left" style="padding: 0 40px; border: none; width: 33%;">
       <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank">
         <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="80">
         <br><span style="font-size: 1.2em;">Technology<br>Certificate</span>
       </a>
     </td>
-    <td align="center" style="padding: 0 60px; border: none;">
+    <td align="center" style="padding: 0 40px; border: none; width: 33%;">
       <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank">
         <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Books" width="80">
         <br><span style="font-size: 1.2em;">Language<br>Certificate</span>
       </a>
     </td>
-    <td align="center" style="padding: 0 60px; border: none;">
+    <td align="right" style="padding: 0 40px; border: none; width: 33%;">
       <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank">
         <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="80">
         <br><span style="font-size: 1.2em;">Reports<br>and Dashboards</span>
@@ -104,6 +104,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </td>
   </tr>
 </table>
+
 
 
 
