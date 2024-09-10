@@ -82,24 +82,24 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 
 
-<table width="100%" style="border: none;">
+<table align="center" width="100%" style="border: none;">
   <tr style="border: none; width: 100%;">
-    <td align="center">
+    <td align="center" style="border: none;">
       <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank">
-        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="200px">
-        <br><span style="font-size: 1.2em;">Technology<br>Certificate</span>
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="150px">
+        <br><span style="font-size: 1.6em;">Technology<br>Certificate</span>
       </a>
     </td>
-    <td align="center">
+    <td align="center" style="border: none;">
       <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank">
-        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Books" width="200px">
-        <br><span style="font-size: 1.2em;">Language<br>Certificate</span>
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" alt="Books" width="150px">
+        <br><span style="font-size: 1.6em;">Language<br>Certificate</span>
       </a>
     </td>
-    <td align="center">
+    <td align="center" style="border: none;">
       <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank">
-        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="200px">
-        <br><span style="font-size: 1.2em;">Reports<br>and Dashboards</span>
+        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Reports" width="150px">
+        <br><span style="font-size: 1.6em;">Reports<br>and Dashboards</span>
       </a>
     </td>
   </tr>
