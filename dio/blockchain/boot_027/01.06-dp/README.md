@@ -79,22 +79,22 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 </div>
 
 <!-- Contêiner flexível para os ícones -->
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
-  <div style="text-align: center; flex: 1 1 200px;">
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px; white-space: nowrap;">
+  <div style="text-align: center; flex: 1 1 auto; margin: 0 15px; flex-shrink: 0;">
     <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
       <div style="font-size: 5em;">💻</div>
       <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
     </a>
   </div>
 
-  <div style="text-align: center; flex: 1 1 200px;">
+  <div style="text-align: center; flex: 1 1 auto; margin: 0 15px; flex-shrink: 0;">
     <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit;">
       <div style="font-size: 5em;">🌐</div>
       <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
     </a>
   </div>
 
-  <div style="text-align: center; flex: 1 1 200px;">
+  <div style="text-align: center; flex: 1 1 auto; margin: 0 15px; flex-shrink: 0;">
     <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit;">
       <div style="font-size: 5em;">📊</div>
       <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
