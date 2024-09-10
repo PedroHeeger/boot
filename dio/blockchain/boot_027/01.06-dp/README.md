@@ -471,19 +471,8 @@ These are my study repositories, where I create my specific projects for each st
 
 ## Thanks For Visiting! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" width="25">
 
-
-<div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 500px; margin: 0 auto;">
+<div align="center">
     <img src="https://komarev.com/ghpvc/?username=PedroHeeger&color=orange&abbreviated=true" alt="Profile Views" width="130" />
-    <img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&color=orange&hide_border=true" alt="GitHub badge Followers counter" width="150" style="border-radius: 5px;" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&color=orange&hide_border=true" alt="GitHub badge Followers counter" width="150" />
 </div>
-
-
-
-
-<!-- <img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&color=orange&labelColor=black&hide_border=true" alt="GitHub badge Followers counter" width="130" /> -->
-
-
-
-<!-- ![Profile Views](https://komarev.com/ghpvc/?username=PedroHeeger&color=orange&abbreviated=true)
-
-<img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&hide_border=true" alt="GitHub badge Followers conunter" width="130"  align="right" /></a> -->
