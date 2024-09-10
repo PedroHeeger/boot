@@ -68,16 +68,16 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 ## Main Repository
 
-<!-- <div style="display: flex; align-items: flex-start; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box;">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box;">
     <div style="flex: 1; max-width: 50%; padding-right: 20px; box-sizing: border-box;">
-        <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
+        This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.
     </div>
     <div style="flex: 1; max-width: 50%; display: flex; justify-content: flex-end; box-sizing: border-box;">
         <a href="https://github.com/PedroHeeger/main" target="_blank">
             <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="max-width: 100%; height: auto;" />
         </a>
     </div>
-</div> -->
+</div>
 
 
 <!-- <div style="display: flex; width: 100%;">
@@ -106,7 +106,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 <a href="https://github.com/PedroHeeger/main" target="_blank">
     <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" />
 
-This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.
+<p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.<p>
 
 
 
