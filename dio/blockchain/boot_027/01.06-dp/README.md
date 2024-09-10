@@ -90,14 +90,14 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 - ⚡ Fun fact - My name is Cassiano, but my mom, family and friends call me Cassio. Feel free to choose. -->
 
-<div style="display: flex; flex-direction: row; width: 100%; box-sizing: border-box;">
+<div style="display: flex; width: 100%; box-sizing: border-box;">
   <!-- Div do texto -->
-  <div style="flex: 1; max-width: 50%; box-sizing: border-box; padding: 10px; text-align: left;">
+  <div style="flex: 1; max-width: 50%; box-sizing: border-box; padding: 10px;">
     <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
   </div>
 
   <!-- Div do card -->
-  <div style="flex: 1; max-width: 50%; box-sizing: border-box; padding: 10px; text-align: right;">
+  <div style="flex: 1; max-width: 50%; box-sizing: border-box; padding: 10px; display: flex; justify-content: flex-end; align-items: center;">
     <a href="https://github.com/PedroHeeger/main" target="_blank">
       <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="width: 100%; max-width: 400px;" />
     </a>
