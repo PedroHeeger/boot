@@ -68,26 +68,40 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 ## Main Repository
 
-<div style="display: flex; width: 100%;">
+<!-- <div style="display: flex; width: 100%;">
   <div style="flex: 1; max-width: 50%; box-sizing: border-box;">
     <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
   </div>
   <div style="flex: 1; max-width: 50%; box-sizing: border-box;"></div>
-</div>
+</div> -->
+
+
+<!-- <a href="https://github.com/PedroHeeger/main" target="_blank">
+    <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" />
+
+- 🔥 Junior Front-end Developer.
+
+- 🔭 I’m currently working as Junior Front-end Developer, freelance helping Senior Full-stack Developers, and also local tech companies, with daily tasks.
+     I have different levels of expertise in front-end development technologies, encompassing HTML, CSS, JavaScript, TypeScript, Tailwind CSS, React.JS, Axios, Formik, Yup, Jira, Git, GitFlow, and others.
+
+- 🌱 I’m currently studying front-end development, artificial intelligence, and also getting in touch with back-end development for a future full-stack carreer.
+
+- 💬 I can speak Portuguese, Spanish, English, and I am currently studying Italian. 
+
+- ⚡ Fun fact - My name is Cassiano, but my mom, family and friends call me Cassio. Feel free to choose. -->
 
 
 
 
-
-<!-- <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
   <div style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
     <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
   </div>
 
-  <div style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
+  <div align="right" style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
     <a href="https://github.com/PedroHeeger/main" target="_blank">
-      <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" />
-    </a> -->
+      <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" />
+    </a>
   </div>
 </div>
 
