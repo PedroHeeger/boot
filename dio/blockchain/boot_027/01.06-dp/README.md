@@ -83,16 +83,16 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
     <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1; min-width: 200px;">
-        <div style="font-size: 6em;">💻</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
+        💻
+        Technology<br>Certificate
     </a>
     <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1; min-width: 200px;">
-        <div style="font-size: 6em;">🌐</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
+        🌐
+        Language<br>Certificate
     </a>
     <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit; text-align: center; flex: 1; min-width: 200px;">
-        <div style="font-size: 6em;">📊</div>
-        <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
+        📊
+        Reports<br>and Dashboards
     </a>
 </div>
 
