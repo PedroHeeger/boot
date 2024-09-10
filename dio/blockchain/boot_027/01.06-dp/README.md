@@ -70,31 +70,47 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 <div>
     <a href="https://github.com/PedroHeeger/main" target="_blank">
-        <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="width: 60%; max-width: 400px; float: right;" />
+        <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" style="width: 50%; max-width: 400px; float: right;" />
     </a>
     <p style="margin: 0; padding: 0; width: 50%; float: left;">
         This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.
     </p>
+    <div style="clear: both;"></div>
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-top: 20px;">
+  <div style="text-align: center; flex: 1 1 200px; margin: 0 15px;">
+    <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="font-size: 5em;">💻</div>
+      <div style="margin-top: 10px; font-size: 1.2em;">Technology<br>Certificate</div>
+    </a>
+  </div>
+
+  <div style="text-align: center; flex: 1 1 200px; margin: 0 15px;">
+    <a href="https://github.com/PedroHeeger/main/tree/main/cert_languages" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="font-size: 5em;">🌐</div>
+      <div style="margin-top: 10px; font-size: 1.2em;">Language<br>Certificate</div>
+    </a>
+  </div>
+
+  <div style="text-align: center; flex: 1 1 200px; margin: 0 15px;">
+    <a href="https://github.com/PedroHeeger/main/tree/main/report" target="_blank" style="text-decoration: none; color: inherit;">
+      <div style="font-size: 5em;">📊</div>
+      <div style="margin-top: 10px; font-size: 1.2em;">Reports<br>and Dashboards</div>
+    </a>
+  </div>
 </div>
 
 
 
+<!-- <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/README.md" target="_blank" style="display: block; text-decoration: none; color: inherit; text-align: center; margin: 20px 0;">
+    <div style="font-size: 3em;">💻</div>
+    <div style="margin-top: 10px; font-size: 1.0em;">Technology<br>Certificate</div>
+</a> -->
 
 
-<!-- <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: nowrap;">
-  <div style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
-    <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
-  </div>
 
-  <div align="right" style="flex: 1; min-width: 0; max-width: 50%; box-sizing: border-box;">
-    <a href="https://github.com/PedroHeeger/main" target="_blank">
-      <img align="right" src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=main&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000" alt="Main Repo" />
-    </a>
-  </div>
-</div> -->
-
-
-<br>
+<!-- <br>
 
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
   <div style="text-align: center; margin: 0 105px;">
@@ -117,7 +133,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
       <div style="margin-top: 10px;">Reports and Dashboards</div>
     </a>
   </div>
-</div><br>
+</div><br> -->
 
 ## Study Repositories <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" alt="Open Book" width="25" height="25" />
 
