@@ -49,15 +49,15 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 
 <div style="display: flex; flex-direction: column; align-items: center;">
-  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%;">
+  <div style="display: flex; flex-direction: row; justify-content: center; width: 100%; max-width: 1200px;">
     <nobr>
-      <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 56%;" />
-      <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 39%;" />
+      <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 56%; max-width: 500px; margin-right: 10px;" />
+      <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 39%; max-width: 500px;" />
     </nobr>
   </div>
-  <div style="margin-top: 7px; display: flex; justify-content: center; width: 70%;">
+  <div style="margin-top: 7px; display: flex; justify-content: center; width: 100%;">
     <a href="https://git.io/streak-stats">
-      <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" />
+      <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" style="width: 80%; max-width: 800px;" />
     </a>
   </div>
 </div>
