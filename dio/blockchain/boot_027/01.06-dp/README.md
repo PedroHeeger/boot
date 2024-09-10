@@ -16,38 +16,6 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 ## Github Stats <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Bar Chart" width="25" height="25" />
 
 <!-- theme=great-gatsby -->
-
-
-<!-- <table style="border-collapse: collapse; width: 100%; background: transparent; border: none;">
-  <tr style="border: none; background: none;">
-    <td style="border: none; padding: 0; text-align: center; background: none;">
-      <img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 90%;" />
-    </td>
-    <td style="border: none; padding: 0; text-align: center; background: none;">
-      <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 100%;" />
-    </td>
-  </tr>
-  <tr style="border: none; background: none;">
-    <td colspan="2" align="center" style="border: none; padding: 0; background: none;">
-      <a href="https://git.io/streak-stats">
-        <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" />
-      </a>
-    </td>
-  </tr>
-</table> -->
-
-
-
-<!-- <div style="display: flex; flex-direction: row;">
-    <nobr><img align="center" src="https://github-readme-stats.vercel.app/api?username=PedroHeeger&show_icons=true&line_height=27&count_private=true&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&bg_color=000000&hide_border=true" style="width: 60%;"/>
-    <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 42%;"/>
-    </nobr>
-</div><br>
-
-
-<p align="center"><a href="https://git.io/streak-stats"><img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" /></a></p> -->
-
-
 <div style="display: flex; flex-direction: column; align-items: center;">
     <div style="display: flex; flex-direction: row; justify-content: center; width: 100%; max-width: 1200px;">
         <nobr>
@@ -55,7 +23,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
         <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroHeeger&layout=compact&title_color=FFA726&text_color=e5f7ef&icon_color=526777&hide_border=true&bg_color=000000&langs_count=8" style="width: 39%; max-width: 500px;" />
         </nobr>
     </div>
-    <div align="center" style="margin-top: 10px;">
+    <div align="center" style="margin-top: 20px;">
         <a href="https://git.io/streak-stats">
         <img align="center" src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" style="width: 65%; max-width: 800px;" />
         </a>
@@ -63,14 +31,6 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 </div>
 
 
-
-  <!-- <div style="margin-top: 10px; width: 100%; display: flex; justify-content: center;">
-    <div style="max-width: 800px; width: 100%;">
-      <a href="https://git.io/streak-stats" style="display: block; width: 100%; text-align: center;">
-        <img src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" style="width: 65%; max-width: 800px; margin: 0 auto;" />
-      </a>
-    </div>
-  </div> -->
 
 
 ## Most Used Skills <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Flexed%20Biceps%20Medium-Light%20Skin%20Tone.png" alt="Flexed Biceps Medium-Light Skin Tone" width="25" height="25" />
@@ -108,8 +68,8 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 ## Main Repository
 
-<div style="display: flex;">
-  <div style="max-width: 50%; text-align: left;">
+<div style="display: flex; align-items: flex-start;">
+  <div style="flex: 1; max-width: 50%; text-align: left;">
     <p>This is my main repository where I talk a little more about myself and explain my GitHub account. In this repository, three sub-folders are available. One with all the certificates that I obtained in some events and educational experiences carried out. Another sub-folder with all the certificates that I obtained in language courses. The last sub-folder, with all the reports and dashboards that I developed in the studies carried out. You can access them through the links below.</p>
   </div>
 
