@@ -56,7 +56,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </nobr>
   </div>
     <div>
-        <a href="https://git.io/streak-stats" style="display: block; width: 100%; text-align: center;">
+        <a href="https://git.io/streak-stats">
         <img src="https://github-readme-streak-stats.herokuapp.com?user=PedroHeeger&background=000000&border=000000&stroke=FFA726&ring=FFA726&fire=FFA726&currStreakNum=e5f7ef&sideNums=FFA726&currStreakLabel=e5f7ef&sideLabels=FFA726&dates=e5f7ef" alt="GitHub Streak" style="width: 65%; max-width: 800px; margin: 0 auto;" />
         </a>
     </div>
