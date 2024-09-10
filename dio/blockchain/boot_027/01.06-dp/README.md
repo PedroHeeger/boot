@@ -3,18 +3,16 @@
 
 ## Welcome to my GitHub! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Call%20Me%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Call Me Hand Medium-Light Skin Tone" width="25" height="25" /> <br>
 
-[![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FPedroHeeger&label=visitors%20(daily%2Ftotal)%3A&labelColor=%23000000&countColor=%23FFA726&labelStyle=upper&dateShow=true)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FPedroHeeger)
+<!-- [![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FPedroHeeger&label=visitors%20(daily%2Ftotal)%3A&labelColor=%23000000&countColor=%23FFA726&labelStyle=upper&dateShow=true)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FPedroHeeger) -->
 
+<!-- [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://pedroheeger.github.io/main/)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pedroheeger) -->
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://pedroheeger.github.io/main/)
-[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pedroheeger)
-
-## About me <img src="https://github.com/Tarikul-Islam-Anik/tarikul-islam-anik/blob/main/assets/images/Nerd%20Face.png?raw=true" wigth="28" height="28">
+## About me <img src="https://github.com/Tarikul-Islam-Anik/tarikul-islam-anik/blob/main/assets/images/Nerd%20Face.png?raw=true" wigth="25" height="25">
 
 I started my career in Civil Engineering until I made the most important decision of my life, so far, which was to break into this world of technology and start a career transition process to the data area, which is where I find myself today.
 
 I've always been fascinated by technology and, mainly, by data, I've always liked to create tables and organize information about things that were relevant to me. That's why I took this important decision to explore this area that every day has played a central role in the digital economy, driving innovation, efficiency and transformation in various sectors of society.
-
 
 ## Github Stats <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Bar Chart" width="25" height="25" />
 
@@ -32,9 +30,6 @@ I've always been fascinated by technology and, mainly, by data, I've always like
         </a>
     </div>
 </div>
-
-
-
 
 ## Most Used Skills <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Flexed%20Biceps%20Medium-Light%20Skin%20Tone.png" alt="Flexed Biceps Medium-Light Skin Tone" width="25" height="25" />
 
@@ -159,7 +154,8 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&section=footer&reversal=false&textBg=false&fontAlign=50&rotate=-1"/>
 
 
-## Main Repository
+
+## Main Repository <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Pushpin.png" alt="Pushpin" width="25" height="25" />
 
 <div>
     <a href="https://github.com/PedroHeeger/main" target="_blank">
@@ -170,10 +166,6 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </p>
     <div style="clear: both;"></div>
 </div>
-
-<!-- Contêiner flexível para os ícones -->
-
-
 
 <table align="center" width="100%" style="border: 0px solid transparent;">
   <tr style="border: none; width: 100%;">
@@ -212,12 +204,11 @@ These are my study repositories, where I create my specific projects for each st
   </a>
 </div>
 
-<!-- [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=boot&show_owner=true&theme=holi)](https://github.com/PedroHeeger/boot)
+---
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=course&show_owner=true&theme=holi)](https://github.com/PedroHeeger/course) -->
 
 <details>
-<summary><h2 style="margin: 0;">Main Projects</h2></summary>
+<summary><h2 style="margin: 0;">Main Projects</h2> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="25" height="25" /></summary>
     <ul>
     <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/xperiun/power_bi/curso_048">curso_048 (Minicurso Power BI Experience)   <img src="https://github.com/PedroHeeger/course/blob/main/xperiun/power_bi/curso_048/0-aux/logo_course.png" alt="curso_048" width="auto" height="25"></a></summary>Construção de um report em <b>Power BI</b>, com modo dark e light, para análises das vendas de uma empresa em um cenário hipotético.</details></li>
     <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/xperiun/power_bi/curso_051">curso_051 (Desafio Missão ZERO - Bootcamp HPN)   <img src="https://github.com/PedroHeeger/course/blob/main/xperiun/power_bi/curso_051/0-aux/logo_course.png" alt="curso_051" width="auto" height="25"></a></summary>Construção de um report em <b>Power BI</b> para análises das vendas da empresa Heavy Power Nutrition (HPN).</details></li>
@@ -238,8 +229,9 @@ These are my study repositories, where I create my specific projects for each st
 
 ---
 
+
 <details>
-<summary><h2 style="margin: 0;">All Projects</h2></summary>
+<summary><h2 style="margin: 0;">All Projects</h2> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Ledger.png" alt="Ledger" width="25" height="25" /></summary>
     <details><summary>Cloud Computing</summary>
         <ul>
             <li><details><summary>AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></summary>
@@ -437,3 +429,61 @@ These are my study repositories, where I create my specific projects for each st
         </ul>
     </details>
 </details>
+
+---
+
+
+## Liked My Work? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Orange%20Heart.png" alt="Orange Heart" width="25" height="25" />
+
+<div style="text-align: left; margin-top: 20px;">
+    <p>
+        <a href="https://www.linkedin.com/in/pedroheeger/" target="_blank">
+            Connect with me on Linkedin 
+            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://github.com/PedroHeeger" target="_blank">
+            Follow me on GitHub 
+            <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://pedroheeger.github.io/main/" target="_blank">
+            Check my online CV 
+            <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://www.dio.me/users/pedroheeger19" target="_blank">
+            Follow me on DIO Platform 
+            <img src="https://hermes.digitalinnovation.one/assets/diome/logo-full.svg" width="35" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://github.com/PedroHeeger/PedroHeeger" target="_blank">
+            Give a star to this project 
+            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Dizzy.png" width="25" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+</div>
+
+
+## Thanks For Visiting! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" width="25">
+
+
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 500px; margin: 0 auto;">
+    <img src="https://komarev.com/ghpvc/?username=PedroHeeger&color=orange&abbreviated=true" alt="Profile Views" width="130" />
+    <img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&color=orange&hide_border=true" alt="GitHub badge Followers counter" width="150" style="border-radius: 5px;" />
+</div>
+
+
+
+
+<!-- <img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&color=orange&labelColor=black&hide_border=true" alt="GitHub badge Followers counter" width="130" /> -->
+
+
+
+<!-- ![Profile Views](https://komarev.com/ghpvc/?username=PedroHeeger&color=orange&abbreviated=true)
+
+<img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&hide_border=true" alt="GitHub badge Followers conunter" width="130"  align="right" /></a> -->
