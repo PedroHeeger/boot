@@ -3,16 +3,58 @@
 
 ## Welcome to my GitHub! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Call%20Me%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Call Me Hand Medium-Light Skin Tone" width="25" height="25" /> <br>
 
-<!-- [![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FPedroHeeger&label=visitors%20(daily%2Ftotal)%3A&labelColor=%23000000&countColor=%23FFA726&labelStyle=upper&dateShow=true)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2FPedroHeeger) -->
+<!-- <a href="https://pedroheeger.github.io/main/" target="_blank"><img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a> -->
 
-<!-- [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://pedroheeger.github.io/main/)
-[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pedroheeger) -->
+<a href="https://www.linkedin.com/in/pedroheeger/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a>
+<a href="https://pedroheeger.github.io/main/" target="_blank"><img src="https://img.shields.io/badge/My%20Online%20CV-FFA500?style=for-the-badge&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a>
+<a href="https://github.com/PedroHeeger" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a>
+<a href="https://www.dio.me/users/pedroheeger19" target="_blank"><img src="https://img.shields.io/badge/-Perfil%20DIO-52579F?style=for-the-badge" style="vertical-align: middle; margin-left: 10px;"/></a>
+<a href="https://www.dio.me/users/pedroheeger19" target="_blank"><img src="https://img.shields.io/badge/Microsoft Learn-7CC627?style=for-the-badge&logo=microsoft&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a>
+<a href="https://learn.microsoft.com/pt-br/users/pedroheegercosta-7965/" target="_blank"><img src="https://img.shields.io/badge/Credly-FFA500?style=for-the-badge&logo=credly&logoColor=white" alt="Credly Badge" style="vertical-align: middle; margin-left: 10px;" /></a>
+<a href="https://www.discord.com/channels/pedroheeger/" target="_blank"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Credly Badge" style="vertical-align: middle; margin-left: 10px;" /></a>
+
+
 
 ## About me <img src="https://github.com/Tarikul-Islam-Anik/tarikul-islam-anik/blob/main/assets/images/Nerd%20Face.png?raw=true" wigth="25" height="25">
 
 I started my career in Civil Engineering until I made the most important decision of my life, so far, which was to break into this world of technology and start a career transition process to the data area, which is where I find myself today.
 
 I've always been fascinated by technology and, mainly, by data, I've always liked to create tables and organize information about things that were relevant to me. That's why I took this important decision to explore this area that every day has played a central role in the digital economy, driving innovation, efficiency and transformation in various sectors of society.
+
+## Liked My Work? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Orange%20Heart.png" alt="Orange Heart" width="25" height="25" />
+
+<div style="text-align: left; margin-top: 20px;">
+    <p>
+        <a href="https://www.linkedin.com/in/pedroheeger/" target="_blank">
+            Connect with me on Linkedin 
+            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://github.com/PedroHeeger" target="_blank">
+            Follow me on GitHub 
+            <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://pedroheeger.github.io/main/" target="_blank">
+            Check my online CV 
+            <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://www.dio.me/users/pedroheeger19" target="_blank">
+            Follow me on DIO Platform 
+            <img src="https://hermes.digitalinnovation.one/assets/diome/logo-full.svg" width="35" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+    <p>
+        <a href="https://github.com/PedroHeeger/PedroHeeger" target="_blank">
+            Give a star to this project 
+            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Dizzy.png" width="25" style="vertical-align: middle; margin-left: 10px;"/>
+        </a>
+    </p>
+</div>
 
 ## Github Stats <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Bar Chart" width="25" height="25" />
 
@@ -433,40 +475,7 @@ These are my study repositories, where I create my specific projects for each st
 ---
 
 
-## Liked My Work? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Orange%20Heart.png" alt="Orange Heart" width="25" height="25" />
 
-<div style="text-align: left; margin-top: 20px;">
-    <p>
-        <a href="https://www.linkedin.com/in/pedroheeger/" target="_blank">
-            Connect with me on Linkedin 
-            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://github.com/PedroHeeger" target="_blank">
-            Follow me on GitHub 
-            <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://pedroheeger.github.io/main/" target="_blank">
-            Check my online CV 
-            <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://www.dio.me/users/pedroheeger19" target="_blank">
-            Follow me on DIO Platform 
-            <img src="https://hermes.digitalinnovation.one/assets/diome/logo-full.svg" width="35" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://github.com/PedroHeeger/PedroHeeger" target="_blank">
-            Give a star to this project 
-            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Dizzy.png" width="25" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-</div>
 
 
 ## Thanks For Visiting! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" width="25">
@@ -475,4 +484,6 @@ These are my study repositories, where I create my specific projects for each st
     <img src="https://komarev.com/ghpvc/?username=PedroHeeger&color=orange&abbreviated=true" alt="Profile Views" width="130" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <img src="https://img.shields.io/github/followers/PedroHeeger?label=Followers&logo=GitHub&style=for-the-badge&color=orange&hide_border=true" alt="GitHub badge Followers counter" width="150" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/PedroHeeger/PedroHeeger" target="_blank" style="text-decoration: none;"><img src="https://img.shields.io/badge/Give%20a%20star%20to%20this%20project-555555?style=for-the-badge&logo=star&logoColor=white" alt="Give a star to this project" width="230" /><img src="https://img.shields.io/badge/-FE7D37?style=for-the-badge&logo=star&logoColor=white" alt="Star emoji"/></a>
 </div>
