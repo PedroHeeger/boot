@@ -249,40 +249,40 @@ These are my study repositories, where I create my specific projects for each st
 <div align="center">
     <div style="text-align: center;">
         <h4>Certificações</h4>
-        <img alt="aws_clf02" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-22)_aws_clf-c02.png" height="60" />
+        <img alt="aws_clf02" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-22)_aws_clf-c02.png" width="100" />
     </div>
     <div style="text-align: center;">
         <h4>Programas</h4>
-        <img alt="aws_re-start" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-30)_aws_re-start.png" height="60" />
-        <img alt="sca-engenharia_dados" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/data/(22-01-28)_Cert_Eng_Dados_PH_SCA.png" height="60" />
+        <img alt="aws_re-start" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-30)_aws_re-start.png" width="100" />
+        <img alt="sca-engenharia_dados" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/data/(22-01-28)_Cert_Eng_Dados_PH_SCA.png" width="100" />
     </div>
     <div style="text-align: center;">
         <h4>Bootcamps / Cursos</h4>
-        <img alt="dio-boot_003" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_003/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_004" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_004/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_005" src="https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_005/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_006" src="https://github.com/PedroHeeger/boot/blob/main/dio/docker/boot_006/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_007" src="https://github.com/PedroHeeger/boot/blob/main/dio/html/boot_007/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_011" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_011/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_012" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_012/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_013" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_013/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_014" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_014/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_015" src="https://github.com/PedroHeeger/boot/blob/main/dio/kubernetes/boot_015/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_017" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_017/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_020" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_020/0-aux/logo_boot.webp" height="60" />
-        <img alt="dio-boot_024" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_024/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_025" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_025/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_026" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_026/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_027" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_027/0-aux/logo_boot.png" height="60" />
-        <img alt="dio-boot_028" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_028/0-aux/logo_boot.png" height="60" />
+        <img alt="dio-boot_003" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_003/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_004" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_004/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_005" src="https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_005/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_006" src="https://github.com/PedroHeeger/boot/blob/main/dio/docker/boot_006/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_007" src="https://github.com/PedroHeeger/boot/blob/main/dio/html/boot_007/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_011" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_011/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_012" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_012/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_013" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_013/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_014" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_014/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_015" src="https://github.com/PedroHeeger/boot/blob/main/dio/kubernetes/boot_015/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_017" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_017/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_020" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_020/0-aux/logo_boot.webp" width="100" />
+        <img alt="dio-boot_024" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_024/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_025" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_025/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_026" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_026/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_027" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_027/0-aux/logo_boot.png" width="100" />
+        <img alt="dio-boot_028" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_028/0-aux/logo_boot.png" width="100" />
     </div>
     <div style="text-align: center;">
         <h4>Eventos</h4>
-        <img alt="iniciativa_devops-docker" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-03)_Docker_PH_Iniciativa_Devops.png" height="60" />
-        <img alt="iniciativa_devops-kubernetes" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-05)_Kubernetes_PH_Iniciativa_Devops.png" height="60" />
-        <img alt="iniciativa_devops-terraform" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_Terraform_PH_Iniciativa_Devops.png" height="60" />
-        <img alt="iniciativa_devops-github_actions" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_GitHub_Actions_PH_Iniciativa_Devops.png" height="60" />
-        <img alt="iniciativa_devops-prometheus_grafana" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-07)_Prometheus...Grafana_PH_Iniciativa_Devops.png" height="60" />
+        <img alt="iniciativa_devops-docker" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-03)_Docker_PH_Iniciativa_Devops.png" width="100" />
+        <img alt="iniciativa_devops-kubernetes" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-05)_Kubernetes_PH_Iniciativa_Devops.png" width="100" />
+        <img alt="iniciativa_devops-terraform" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_Terraform_PH_Iniciativa_Devops.png" width="100" />
+        <img alt="iniciativa_devops-github_actions" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_GitHub_Actions_PH_Iniciativa_Devops.png" width="100" />
+        <img alt="iniciativa_devops-prometheus_grafana" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-07)_Prometheus...Grafana_PH_Iniciativa_Devops.png" width="100" />
     </div>
 </div>
 
