@@ -249,12 +249,12 @@ These are my study repositories, where I create my specific projects for each st
 <div align="center">
     <div style="text-align: center;">
         <h4>Certificações</h4>
-        <img alt="aws_clf02" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-22)_aws_clf-c02.png" width="75" />
+        <img alt="aws_clf02" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-22)_aws_clf-c02.png" width="90" />
     </div>
     <div style="text-align: center;">
         <h4>Programas</h4>
-        <img alt="aws_re-start" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-30)_aws_re-start.png" width="75" />
-        <img alt="sca-engenharia_dados" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/data/(22-01-28)_Cert_Eng_Dados_PH_SCA.png" width="75" />
+        <img alt="aws_re-start" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-30)_aws_re-start.png" width="90" />
+        <img alt="sca-engenharia_dados" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/data/(22-01-28)_Cert_Eng_Dados_PH_SCA.png" width="90" />
     </div>
     <div style="text-align: center;">
         <h4>Bootcamps / Cursos</h4>
@@ -278,19 +278,21 @@ These are my study repositories, where I create my specific projects for each st
     </div>
     <div style="text-align: center;">
         <h4>Eventos</h4>
-        <img alt="iniciativa_devops-docker" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-03)_Docker_PH_Iniciativa_Devops.png" width="150" />
-        <img alt="iniciativa_devops-kubernetes" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-05)_Kubernetes_PH_Iniciativa_Devops.png" width="150" />
-        <img alt="iniciativa_devops-terraform" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_Terraform_PH_Iniciativa_Devops.png" width="150" />
-        <img alt="iniciativa_devops-github_actions" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_GitHub_Actions_PH_Iniciativa_Devops.png" width="150" />
-        <img alt="iniciativa_devops-prometheus_grafana" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-07)_Prometheus...Grafana_PH_Iniciativa_Devops.png" width="150" />
+        <img alt="iniciativa_devops-docker" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-03)_Docker_PH_Iniciativa_Devops.png" width="130" />
+        <img alt="iniciativa_devops-kubernetes" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-05)_Kubernetes_PH_Iniciativa_Devops.png" width="130" />
+        <img alt="iniciativa_devops-terraform" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_Terraform_PH_Iniciativa_Devops.png" width="130" />
+        <img alt="iniciativa_devops-github_actions" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_GitHub_Actions_PH_Iniciativa_Devops.png" width="130" />
+        <img alt="iniciativa_devops-prometheus_grafana" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-07)_Prometheus...Grafana_PH_Iniciativa_Devops.png" width="130" />
     </div>
 </div>
 
-<br><br><br>
+<br>
 
+
+## Main Projects <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="25" height="25" />
 
 <details>
-<summary><h2 style="margin: 0;">Main Projects</h2> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="25" height="25" /></summary>
+<summary><h5 style="margin: 0;">Click here to expand</h5></summary>
     <ul>
     <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/xperiun/power_bi/curso_048">curso_048 (Minicurso Power BI Experience)   <img src="https://github.com/PedroHeeger/course/blob/main/xperiun/power_bi/curso_048/0-aux/logo_course.png" alt="curso_048" width="auto" height="25"></a></summary>Construção de um report em <b>Power BI</b>, com modo dark e light, para análises das vendas de uma empresa em um cenário hipotético.</details></li>
     <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/xperiun/power_bi/curso_051">curso_051 (Desafio Missão ZERO - Bootcamp HPN)   <img src="https://github.com/PedroHeeger/course/blob/main/xperiun/power_bi/curso_051/0-aux/logo_course.png" alt="curso_051" width="auto" height="25"></a></summary>Construção de um report em <b>Power BI</b> para análises das vendas da empresa Heavy Power Nutrition (HPN).</details></li>
@@ -310,10 +312,10 @@ These are my study repositories, where I create my specific projects for each st
 </details>
 
 ---
-
+## All Projects <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Ledger.png" alt="Ledger" width="25" height="25" />
 
 <details>
-<summary><h2 style="margin: 0;">All Projects</h2> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Ledger.png" alt="Ledger" width="25" height="25" /></summary>
+<summary><h6 style="margin: 0;">Click here to expand</h6></summary>
     <details><summary>Cloud Computing</summary>
         <ul>
             <li><details><summary>AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25"></summary>
@@ -513,7 +515,7 @@ These are my study repositories, where I create my specific projects for each st
 </details>
 
 ---
-<br><br><br>
+<br><br>
 
 
 ## Thanks For Visiting! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" width="25">
