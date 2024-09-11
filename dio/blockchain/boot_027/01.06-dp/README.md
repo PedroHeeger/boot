@@ -289,6 +289,7 @@ These are my study repositories, where I create my specific projects for each st
 <br>
 
 
+
 ## Main Projects <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="25" height="25" />
 
 <details>
@@ -311,7 +312,8 @@ These are my study repositories, where I create my specific projects for each st
     </ul>
 </details>
 
----
+
+
 ## All Projects <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Ledger.png" alt="Ledger" width="25" height="25" />
 
 <details>
@@ -514,8 +516,7 @@ These are my study repositories, where I create my specific projects for each st
     </details>
 </details>
 
----
-<br><br>
+<br>
 
 
 ## Thanks For Visiting! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" width="25">
