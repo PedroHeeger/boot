@@ -1,10 +1,8 @@
-
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Pedro%20Heeger&fontSize=90&animation=fadeIn&fontAlignY=38&desc=Data%20Engineer&descAlignY=55&descAlign=55"/>
 
 ## Welcome to my GitHub! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Call%20Me%20Hand%20Medium-Light%20Skin%20Tone.png" alt="Call Me Hand Medium-Light Skin Tone" width="25" height="25" /> <br>
 
 <!-- <a href="https://pedroheeger.github.io/main/" target="_blank"><img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a> -->
-
 <a href="https://www.linkedin.com/in/pedroheeger/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a>
 <a href="https://pedroheeger.github.io/main/" target="_blank"><img src="https://img.shields.io/badge/My%20Online%20CV-FFA500?style=for-the-badge&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a>
 <a href="https://github.com/PedroHeeger" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/></a>
@@ -21,7 +19,7 @@ I started my career in Civil Engineering until I made the most important decisio
 
 I've always been fascinated by technology and, mainly, by data, I've always liked to create tables and organize information about things that were relevant to me. That's why I took this important decision to explore this area that every day has played a central role in the digital economy, driving innovation, efficiency and transformation in various sectors of society.
 
-## Liked My Work? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Orange%20Heart.png" alt="Orange Heart" width="25" height="25" />
+<!-- ## Liked My Work? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Orange%20Heart.png" alt="Orange Heart" width="25" height="25" />
 
 <div style="text-align: left; margin-top: 20px;">
     <p>
@@ -54,7 +52,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
             <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Dizzy.png" width="25" style="vertical-align: middle; margin-left: 10px;"/>
         </a>
     </p>
-</div>
+</div> -->
 
 ## Github Stats <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Bar Chart" width="25" height="25" />
 
@@ -73,7 +71,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </div>
 </div>
 
-## Most Used Skills <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Flexed%20Biceps%20Medium-Light%20Skin%20Tone.png" alt="Flexed Biceps Medium-Light Skin Tone" width="25" height="25" />
+## Technologies studied during my journey <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Flexed%20Biceps%20Medium-Light%20Skin%20Tone.png" alt="Flexed Biceps Medium-Light Skin Tone" width="25" height="25" />
 
 <div align="center">
     <div style="text-align: center;">
@@ -193,8 +191,6 @@ I've always been fascinated by technology and, mainly, by data, I've always like
     </div>
 </div>
 
-<img width=100% src="https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&section=footer&reversal=false&textBg=false&fontAlign=50&rotate=-1"/>
-
 
 
 ## Main Repository <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Pushpin.png" alt="Pushpin" width="25" height="25" />
@@ -232,11 +228,12 @@ I've always been fascinated by technology and, mainly, by data, I've always like
   </tr>
 </table>
 
+
 ## Study Repositories <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" alt="Open Book" width="25" height="25" />
 
 These are my study repositories, where I create my specific projects for each study I carry out.
 
-<div style="display: flex; justify-content: center; gap: 5px;">
+<div align="center" style="display: flex; justify-content: center; gap: 5px;">
   <a href="https://github.com/PedroHeeger/boot">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=PedroHeeger&repo=boot&show_owner=true&bg_color=000000&title_color=FFA726&text_color=e5f7ef&icon_color=FFA726&border_color=000000" alt="Boot Repo" />
   </a>
@@ -246,7 +243,50 @@ These are my study repositories, where I create my specific projects for each st
   </a>
 </div>
 
----
+
+## Badges
+
+<div align="center">
+    <div style="text-align: center;">
+        <h4>Certificações</h4>
+        <img alt="aws_clf02" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-22)_aws_clf-c02.png" />
+    </div>
+    <div style="text-align: center;">
+        <h4>Programas</h4>
+        <img alt="aws_re-start" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-30)_aws_re-start.png" />
+        <img alt="sca-engenharia_dados" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/data/(22-01-28)_Cert_Eng_Dados_PH_SCA.png" />
+    </div>
+    <div style="text-align: center;">
+        <h4>Bootcamps / Cursos</h4>
+        <img alt="dio-boot_003" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_003/0-aux/logo_boot.png" />
+        <img alt="dio-boot_004" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_004/0-aux/logo_boot.png" />
+        <img alt="dio-boot_005" src="https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_005/0-aux/logo_boot.png" />
+        <img alt="dio-boot_006" src="https://github.com/PedroHeeger/boot/blob/main/dio/docker/boot_006/0-aux/logo_boot.png" />
+        <img alt="dio-boot_007" src="https://github.com/PedroHeeger/boot/blob/main/dio/html/boot_007/0-aux/logo_boot.png" />
+        <img alt="dio-boot_011" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_011/0-aux/logo_boot.png" />
+        <img alt="dio-boot_012" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_012/0-aux/logo_boot.png" />
+        <img alt="dio-boot_013" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_013/0-aux/logo_boot.png" />
+        <img alt="dio-boot_014" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_014/0-aux/logo_boot.png" />
+        <img alt="dio-boot_015" src="https://github.com/PedroHeeger/boot/blob/main/dio/kubernetes/boot_015/0-aux/logo_boot.png" />
+        <img alt="dio-boot_017" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_017/0-aux/logo_boot.png" />
+        <img alt="dio-boot_020" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_020/0-aux/logo_boot.webp" />
+        <img alt="dio-boot_024" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_024/0-aux/logo_boot.png" />
+        <img alt="dio-boot_025" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_025/0-aux/logo_boot.png" />
+        <img alt="dio-boot_026" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_026/0-aux/logo_boot.png" />
+        <img alt="dio-boot_027" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_027/0-aux/logo_boot.png" />
+        <img alt="dio-boot_028" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_028/0-aux/logo_boot.png" />
+    </div>
+    <div style="text-align: center;">
+        <h4>Eventos</h4>
+        <img alt="iniciativa_devops-docker" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-03)_Docker_PH_Iniciativa_Devops.png" />
+        <img alt="iniciativa_devops-kubernetes" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-05)_Kubernetes_PH_Iniciativa_Devops.png"/>
+        <img alt="iniciativa_devops-terraform" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_Terraform_PH_Iniciativa_Devops.png"/>
+        <img alt="iniciativa_devops-github_actions" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_GitHub_Actions_PH_Iniciativa_Devops.png"/>
+        <img alt="iniciativa_devops-prometheus_grafana" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-07)_Prometheus...Grafana_PH_Iniciativa_Devops.png"/>
+    </div>
+</div>
+
+<br><br><br>
 
 
 <details>
@@ -473,9 +513,7 @@ These are my study repositories, where I create my specific projects for each st
 </details>
 
 ---
-
-
-
+<br><br><br>
 
 
 ## Thanks For Visiting! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" width="25">
@@ -487,3 +525,5 @@ These are my study repositories, where I create my specific projects for each st
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://github.com/PedroHeeger/PedroHeeger" target="_blank" style="text-decoration: none;"><img src="https://img.shields.io/badge/Give%20a%20star%20to%20this%20project-555555?style=for-the-badge&logo=star&logoColor=white" alt="Give a star to this project" width="230" /><img src="https://img.shields.io/badge/-FE7D37?style=for-the-badge&logo=star&logoColor=white" alt="Star emoji"/></a>
 </div>
+
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&section=footer&reversal=false&textBg=false&fontAlign=50&rotate=-1"/>
