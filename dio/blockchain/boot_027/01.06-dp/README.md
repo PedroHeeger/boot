@@ -19,40 +19,7 @@ I started my career in Civil Engineering until I made the most important decisio
 
 I've always been fascinated by technology and, mainly, by data, I've always liked to create tables and organize information about things that were relevant to me. That's why I took this important decision to explore this area that every day has played a central role in the digital economy, driving innovation, efficiency and transformation in various sectors of society.
 
-<!-- ## Liked My Work? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Orange%20Heart.png" alt="Orange Heart" width="25" height="25" />
 
-<div style="text-align: left; margin-top: 20px;">
-    <p>
-        <a href="https://www.linkedin.com/in/pedroheeger/" target="_blank">
-            Connect with me on Linkedin 
-            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://github.com/PedroHeeger" target="_blank">
-            Follow me on GitHub 
-            <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://pedroheeger.github.io/main/" target="_blank">
-            Check my online CV 
-            <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://www.dio.me/users/pedroheeger19" target="_blank">
-            Follow me on DIO Platform 
-            <img src="https://hermes.digitalinnovation.one/assets/diome/logo-full.svg" width="35" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-    <p>
-        <a href="https://github.com/PedroHeeger/PedroHeeger" target="_blank">
-            Give a star to this project 
-            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Dizzy.png" width="25" style="vertical-align: middle; margin-left: 10px;"/>
-        </a>
-    </p>
-</div> -->
 
 ## Github Stats <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Bar Chart" width="25" height="25" />
 
@@ -70,6 +37,8 @@ I've always been fascinated by technology and, mainly, by data, I've always like
         </a>
     </div>
 </div>
+
+
 
 ## Technologies studied during my journey <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Flexed%20Biceps%20Medium-Light%20Skin%20Tone.png" alt="Flexed Biceps Medium-Light Skin Tone" width="25" height="25" />
 
@@ -229,6 +198,7 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 </table>
 
 
+
 ## Study Repositories <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" alt="Open Book" width="25" height="25" />
 
 These are my study repositories, where I create my specific projects for each study I carry out.
@@ -244,37 +214,38 @@ These are my study repositories, where I create my specific projects for each st
 </div>
 
 
-## Badges
+
+## Badges <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Trophy.png" alt="Trophy" width="25" height="25" />
 
 <div align="center">
     <div style="text-align: center;">
         <h4>Certificações</h4>
-        <img alt="aws_clf02" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-22)_aws_clf-c02.png" width="90" />
+        <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/01-espec/cloud/aws/(24-07-22)_aws_clf-c02.pdf"><img alt="aws_clf02" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-22)_aws_clf-c02.png" width="90" /></a>
     </div>
     <div style="text-align: center;">
         <h4>Programas</h4>
-        <img alt="aws_re-start" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-30)_aws_re-start.png" width="90" />
-        <img alt="sca-engenharia_dados" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/data/(22-01-28)_Cert_Eng_Dados_PH_SCA.png" width="90" />
+        <a href="https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022"><img alt="aws_re-start" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(24-07-30)_aws_re-start.png" width="90" /></a>
+        <a href=""><img alt="sca-engenharia_dados" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/data/(22-01-28)_Cert_Eng_Dados_PH_SCA.png" width="90" /></a>
     </div>
     <div style="text-align: center;">
         <h4>Bootcamps / Cursos</h4>
-        <img alt="dio-boot_003" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_003/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_004" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_004/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_005" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_005/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_006" src="https://github.com/PedroHeeger/boot/blob/main/dio/docker/boot_006/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_007" src="https://github.com/PedroHeeger/boot/blob/main/dio/html/boot_007/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_011" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_011/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_012" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_012/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_013" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_013/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_014" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_014/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_015" src="https://github.com/PedroHeeger/boot/blob/main/dio/kubernetes/boot_015/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_017" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_017/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_020" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_020/0-aux/logo_boot.webp" width="75" />
-        <img alt="dio-boot_024" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_024/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_025" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_025/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_026" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_026/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_027" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_027/0-aux/logo_boot.png" width="75" />
-        <img alt="dio-boot_028" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_028/0-aux/logo_boot.png" width="75" />
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_003"><img alt="dio-boot_003" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_003/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_004"><img alt="dio-boot_004" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_004/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/linux/boot_005"><img alt="dio-boot_005" src="https://github.com/PedroHeeger/boot/blob/main/dio/linux/boot_005/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/docker/boot_006"><img alt="dio-boot_006" src="https://github.com/PedroHeeger/boot/blob/main/dio/docker/boot_006/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/html/boot_007"><img alt="dio-boot_007" src="https://github.com/PedroHeeger/boot/blob/main/dio/html/boot_007/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_011"><img alt="dio-boot_011" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_011/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_012"><img alt="dio-boot_012" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_012/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_013"><img alt="dio-boot_013" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_013/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/aws/boot_014"><img alt="dio-boot_014" src="https://github.com/PedroHeeger/boot/blob/main/dio/aws/boot_014/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/kubernetes/boot_015"><img alt="dio-boot_015" src="https://github.com/PedroHeeger/boot/blob/main/dio/kubernetes/boot_015/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_017"><img alt="dio-boot_017" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_017/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/devops/boot_020"><img alt="dio-boot_020" src="https://github.com/PedroHeeger/boot/blob/main/dio/devops/boot_020/0-aux/logo_boot.webp" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_024"><img alt="dio-boot_024" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_024/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_025/"><img alt="dio-boot_025" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_025/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_026/"><img alt="dio-boot_026" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_026/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_027/"><img alt="dio-boot_027" src="https://github.com/PedroHeeger/boot/blob/main/dio/blockchain/boot_027/0-aux/logo_boot.png" width="75" /></a>
+        <a href="https://github.com/PedroHeeger/boot/tree/main/dio/ai/boot_028"><img alt="dio-boot_028" src="https://github.com/PedroHeeger/boot/blob/main/dio/ai/boot_028/0-aux/logo_boot.png" width="75" /></a>
     </div>
     <div style="text-align: center;">
         <h4>Eventos</h4>
