@@ -327,7 +327,7 @@ These are my study repositories, where I create my specific projects for each st
                     <li><a href="https://github.com/PedroHeeger/course/tree/main/aws_skill_builder/aws/curso_114">curso_114 (Amazon EKS Primer)   <img src="https://github.com/PedroHeeger/course/blob/main/aws_skill_builder/aws/curso_114/0-aux/logo_course.png" alt="curso_114" width="auto" height="25"></a></li>
                     <li><a href="https://github.com/PedroHeeger/course/tree/main/outros/henrylle_maia/aws/curso_117">curso_117 (Domine AWS com Henrylle Maia)   <img src="https://github.com/PedroHeeger/course/blob/main/outros/henrylle_maia/aws/curso_117/0-aux/logo_course.png" alt="curso_117" width="auto" height="25"></a></li>
                     <li><a href="https://github.com/PedroHeeger/boot/tree/main/edn/aws/boot_022">boot_022 (AWS re/Start - Cloud Computing
-                    )   <img src="https://github.com/PedroHeeger/boot/blob/main/edn/aws/boot_022/0-aux/logo_course.png" alt="boot_022" width="auto" height="25"></a></li>
+                    )   <img src="https://github.com/PedroHeeger/boot/blob/main/edn/aws/boot_022/0-aux/logo_boot.png" alt="boot_022" width="auto" height="25"></a></li>
                 </ul>
             </details></li>
         </ul>
