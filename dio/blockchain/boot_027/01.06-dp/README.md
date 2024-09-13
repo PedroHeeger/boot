@@ -21,6 +21,10 @@ I've always been fascinated by technology and, mainly, by data, I've always like
 
 
 
+
+
+
+
 ## Github Stats <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Bar Chart" width="25" height="25" />
 
 <!-- theme=great-gatsby -->
