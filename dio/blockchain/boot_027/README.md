@@ -167,7 +167,7 @@ Instalando o **Git**:
 
 Para autenticar via Token no **GitHub**, acesse a conta, clique em "Settings", depois em "Developer settings", selecione "Tokens (classic)" e clique em "Generate new token" para criar um novo Token de autenticação. Para armazenar as credenciais e reduzir a frequência com que digita seu nome de usuário ou senha, é possível utilizar gerenciadores de credenciais ou ajustar configurações no **Git**. Para autenticar via chave SSH, vá até a conta no **GitHub**, clique em "Settings", depois em "SSH and GPG keys" e selecione "New SSH key" para adicionar uma nova chave SSH à conta.
 
-Existem duas formas de obter um repositório Git na máquina: transformando um diretório local que não está sob controle de versão em um repositório Git ou clonando um repositório Git existente. Para criar um repositório local, acesse a pasta desejada pelo terminal ou use o atalho "Git Bash Here", inicialize o repositório com o comando git init e, em seguida, conecte-o ao repositório remoto com git remote add origin https://github.com/username/nome-do-repositorio.git. Para clonar um repositório, acesse o repositório no GitHub, copie o código HTTPS ou SSH conforme a autenticação, abra o Git Bash e execute git clone https://github.com/username/nome-do-repositorio. Para criar um repositório remoto, acesse sua conta no GitHub, clique no “+” no canto superior direito e selecione “New repository”. Insira um nome (obrigatório) e uma descrição (opcional), defina a visibilidade (público ou privado) e escolha a inicialização do repositório (se desejar deixá-lo vazio, desmarque as opções). Clique em “Create repository” para finalizar.
+Existem duas formas de obter um repositório Git na máquina: transformando um diretório local que não está sob controle de versão em um repositório Git ou clonando um repositório Git existente. Para criar um repositório local, acesse a pasta desejada pelo terminal ou use o atalho "Git Bash Here", inicialize o repositório com o comando git init e, em seguida, conecte-o ao repositório remoto com `git remote add origin https://github.com/username/nome-do-repositorio.git`. Para clonar um repositório, acesse o repositório no GitHub, copie o código HTTPS ou SSH conforme a autenticação, abra o Git Bash e execute `git clone https://github.com/username/nome-do-repositorio`. Para criar um repositório remoto, acesse sua conta no GitHub, clique no “+” no canto superior direito e selecione “New repository”. Insira um nome (obrigatório) e uma descrição (opcional), defina a visibilidade (público ou privado) e escolha a inicialização do repositório (se desejar deixá-lo vazio, desmarque as opções). Clique em “Create repository” para finalizar.
 
 Existem duas formas de obter um repositório **Git** na sua máquina: transformando um diretório local que não está sob controle de versão, num repositório **Git**, ou clonando um repositório remoto **Git** existente, que foi criado pelo **GitHub**.
 - Criando um Repositório Local: Acesse a pasta desejada pelo terminal, inicialize o repositório com `git init` e conecte-o ao repositório remoto com g`it remote add origin https://github.com/username/nome-do-repositorio.git`.
@@ -187,31 +187,91 @@ Uma branch é uma ramificação do projeto, funcionando como um ponteiro móvel 
 
 <a name="item1.6"><h4>1.6 Desafio de Projeto: Contribuindo em um Projeto Open Source no GitHub</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-08-09)_Introducao...IA_PH_DIO.pdf">Certificate</a>
 
+Um Projeto Open Source é um projeto de Código Aberto, livre para ser utilizado, modificado e distribuído. Alguns exemplos são: [Linux](https://github.com/torvalds/linux), sob a licença GNU General Public License (GPL); [Roadmaps DIO](https://github.com/digitalinnovationone/roadmaps/tree/main?tab=readme-ov-file), sob a licença MIT License (MIT).
 
+Neste desafio de projeto o objetivo foi contribuir em um projeto específico no **GitHub** da DIO. O nome do projeto era `Contribuindo em um Projeto Open Source no GitHub`, sendo armazenado no repositório [dio-lab-open-source](https://github.com/digitalinnovationone/dio-lab-open-source). Para isso foi necessário criar um fork desse projeto para o meu **GitHub**, armazenando ele em novo repositório. Este repositório foi criado apenas para executar este desafio e foi mantido o nome do repositório original `dio-lab-open-source` e também a descrição `Repositório do lab "Contribuindo em um Projeto Open Source no GitHub" da Digital Innovation One.`. Foi marcada a opção de copiar somente a branch main, que era a branch principal. A imagem 01 exibe o repositório forkeado para o meu **GitHub**.
 
+<div align="Center"><figure>
+    <img src="./0-aux/img01.png" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
 
+A contribuição que era indicava para ser feita era adicionar um arquivo de perfil (profile) do **GitHub** na pasta `community`. Nesta pasta estavam os profiles de todos os usuários do **GitHub** que contribuíram neste projeto. O **GitHub** profile nada mais é que um arquivo em **Markdown** que é adicionado a um repositório específico do **GitHub**. Este repositório utiliza esse arquivo para apresentar um perfil do usuário quando o **GitHub** dele é acessado. Isso é bastante útil para apresentar um **GitHub** mais atrativo. Atualmente, o meu **GitHub** já tinha um profile construído a partir de um arquivo **Markdown**, conforme mostrado nas imagens 02 e 03. 
 
+<div align="center">
+    <div style="display: inline-block; margin: 0 10px;">
+        <figure>
+            <img src="./0-aux/img02.png" alt="img02" width="430"><br>
+            <figcaption>Imagem 02.</figcaption>
+        </figure>
+    </div>
+    <div style="display: inline-block; margin: 0 10px;">
+        <figure>
+            <img src="./0-aux/img03.png" alt="img03" width="340"><br>
+            <figcaption>Imagem 03.</figcaption>
+        </figure>
+    </div>
+</div>
 
+Contudo, já tinha um tempo que minha inteção era refatorar esse arquivo, para apresentar um perfil mais atualizado e mais bonito. Então, utilizei esse desafio de projeto não só para atender o desafio, como para refatorar todas minhas informações de perfil no **GitHub** e também no **Linkedin** e nos meus currículos. Dessa forma, foi construído o arquivo de perfil [README.md](01.06-dp/README.md), neste repositório (`boot`), que é meu repositório padrão para todos os bootcamps. Após finalizá-lo, ele foi utilizado em dois repositórios diferentes, além de ser salvo em uma pasta do computador que armazenava todos os arquivos de perfil do **GitHub**, onde neste momento, esse seria o segundo, conforme exibido na imagem 04. Uma cópia deste arquivo foi utilizada no repositório padrão do **GitHub** que construía o perfil do **GitHub**. Outra cópia foi armazenada no repositório `a` que foi forkeado do repositório desse desafio de projeto no **GitHub** da DIO. Assim, as duas demandas eram atendidas, executava o desafio de projeto e também refatorava todos os meus perfis, que já era uma coisa que estava querendo. As imagens 05 e 06 evidenciam como ficou meu novo perfil do **GitHub**.
 
+<div align="Center"><figure>
+    <img src="./0-aux/img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
 
+<div align="center">
+    <div style="display: inline-block; margin: 0 10px;">
+        <figure>
+            <img src="./0-aux/img05.png" alt="img05" width="430"><br>
+            <figcaption>Imagem 05.</figcaption>
+        </figure>
+    </div>
+    <div style="display: inline-block; margin: 0 10px;">
+        <figure>
+            <img src="./0-aux/img06.png" alt="img06" width="330"><br>
+            <figcaption>Imagem 06.</figcaption>
+        </figure>
+    </div>
+</div>
 
+Com relação ao desafio de projeto, a expert do curso fez um pouco diferente, após criar o fork do repositório da DIO, ela clonou esse repositório localmente na máquina e conectou o repositório local com o remoto. Assim, ela realizava as alterações na própria máquina e enviava para o repositório remoto. No meu caso, como a contribuição foi desenvolvida neste repositório (`boot`) e só forkiei o repositório da DIO para entregar o desafio, tudo foi executado apenas no repositório remoto, sem a necessidade de criá-lo localmente. Dessa forma, o novo arquivo de perfil, o [README.md](01.06-dp/README.md), foi adicionado uma cópia na pasta `community` do repositório forkeado [dio-lab-open-source](https://github.com/PedroHeeger/dio-lab-open-source). A imagem 07 mostra o arquivo adicionado na pasta `community`, sendo renomeando para `PedroHeeger.md`. Na execução desse processo, foi necessário dar um commit para atualizar o repositório remoto, sendo a mensagem do commit `Adicionando o perfil de Pedro Heeger` e a descrição da mensagem `Adicionando o perfil de Pedro Heeger na pasta community para realizar o pull request`.
 
+<div align="Center"><figure>
+    <img src="./0-aux/img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
 
+Em seguida, este repositório no meu **GitHub** estava um commit a frente do repositório da **DIO**, de onde foi forkeado. Dessa forma, foi criado um pull request para solicitar que as alterações feita na branch main do repositório do meu **GitHub** fosse mesclada para a branch main do repositório da **DIO**. A mensagem e a descrição do commit realizado foi utilizada como título e descrição do pull request. Na descrição, um padrão também era fornecido para completar com as informações. A imagem 08 exibe como foi definido as configurações do pull request.
 
+<div align="Center"><figure>
+    <img src="./0-aux/img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
 
+Após criar o pull request, o proprietário do repositório **DIO** tinha que aceitar as modificações. Pode ser que leve um tempo ou alguns erros ocorram, pois a primeira verificação era realizada pelo sistema, caso não fosse aprovado, uma verificação humana era realizada e aceitaria as mudanças. A imagem 09 exibe o pull request aceito. Já na imagem 10 é evidenciado meu arquivo de perfil no repositório da **DIO**.
 
+<div align="Center"><figure>
+    <img src="./0-aux/img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="./0-aux/img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
 
 <a name="item2.11"><h4>2.11 Desafio de Código: Desvendando os Contratos Inteligentes com Lógica de Programação</h4></a>[Back to summary](#item2)
 
-No primeiro desafio de código desse trio de desafios, cujo nome foi [blockchain_smart_contract.py](./02.11-dp/blockchain_smart_contract.py), a proposta foi a partir de um termo enviado como entrada pelo usuário, decidir qual descrição era a correta para o respectivo termo e imprimir a descrição na tela. Este código utilizou uma estrutura de condição dentro de uma função que verificava os quatro termos possíveis para retornar a descrição correspondente. Os termos e descrições eram relacionados ao conceito de blockchain. 
+No primeiro desafio de código desse trio de desafios, cujo nome foi [blockchain_smart_contract.py](./02.11-dc/blockchain_smart_contract.py), a proposta foi a partir de um termo enviado como entrada pelo usuário, decidir qual descrição era a correta para o respectivo termo e imprimir a descrição na tela. Este código utilizou uma estrutura de condição dentro de uma função que verificava os quatro termos possíveis para retornar a descrição correspondente. Os termos e descrições eram relacionados ao conceito de blockchain. 
 
-No desafio 2, intitulado de [smart_contract.py](./02.11-dp/smart_contract.py), o objetivo foi o mesmo do anterior, contudo os termos eram referentes ao conceito de contratos inteligentes (Smart Contract). A codificação foi praticamente a mesma, só alterando os termos e as descrições dos ifs e returns. O último desafio também foi igual aos outros dois, sendo nomeado de [smart_contract2.py](./). O tema também foi relacionado a smart contracts, sendo os termos de assuntos mais aprofundados.
+No desafio 2, intitulado de [smart_contract.py](./02.11-dc/smart_contract.py), o objetivo foi o mesmo do anterior, contudo os termos eram referentes ao conceito de contratos inteligentes (Smart Contract). A codificação foi praticamente a mesma, só alterando os termos e as descrições dos ifs e returns. O último desafio também foi igual aos outros dois, sendo nomeado de [smart_contract2.py](./02.11-dc/smart_contract2.py). O tema também foi relacionado a smart contracts, sendo os termos de assuntos mais aprofundados.
 
 <a name="item3.9"><h4>3.9 Desafio de Código: Explorando NFTs com Lógica de Programação</h4></a>[Back to summary](#item3)
 
-Neste trio de desafios de código, o primeiro desafio foi chamado de [nfts_criptomoedas.py](./03.09-dp/nfts_criptomoedas.py), tendo como objetivo retornar as descrições corretas para os termos enviados como entrada pelo usuário. Os termos eram de assuntos relacionados a NFTs e criptomoedas. Este código utilizou uma estrutura de condição dentro de uma função que verificava os quatro termos possíveis para retornar a descrição correspondente.
+Neste trio de desafios de código, o primeiro desafio foi chamado de [nfts_criptomoedas.py](./03.09-dc/nfts_criptomoedas.py), tendo como objetivo retornar as descrições corretas para os termos enviados como entrada pelo usuário. Os termos eram de assuntos relacionados a NFTs e criptomoedas. Este código utilizou uma estrutura de condição dentro de uma função que verificava os quatro termos possíveis para retornar a descrição correspondente.
 
-O segundo desafio, cujo nome era [token_nft.py](./03.09-dp/token_nft.py), a codifição foi a mesma do anterior, apenas alterando as informações. Neste caso, uma característica seria passada como entrada pelo usuário, e o retorno seria o padrão de token que possuí essa característica. Os padrões de tokens não fungíveis (NFTs) eram `ERC-721` e `ERC-1155`. O último desafio, intitulado de [dao_defi.py](./03.09-dp/dao_defi.py), foi exatamente igual aos demais. A única diferença era os termos e descrições, que agora eram relacionados aos conceitos de Organizações Autônomas Descentralizadas (DAO) e Finanças Descentralizadas (DeFi).
+O segundo desafio, cujo nome era [token_nft.py](./03.09-dc/token_nft.py), a codifição foi a mesma do anterior, apenas alterando as informações. Neste caso, uma característica seria passada como entrada pelo usuário, e o retorno seria o padrão de token que possuí essa característica. Os padrões de tokens não fungíveis (NFTs) eram `ERC-721` e `ERC-1155`. O último desafio, intitulado de [dao_defi.py](./03.09-dc/dao_defi.py), foi exatamente igual aos demais. A única diferença era os termos e descrições, que agora eram relacionados aos conceitos de Organizações Autônomas Descentralizadas (DAO) e Finanças Descentralizadas (DeFi).
 
 
 
