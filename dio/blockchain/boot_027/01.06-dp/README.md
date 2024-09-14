@@ -259,9 +259,10 @@ These are my study repositories, where I create my specific projects for each st
         <img alt="atlantico_avanti" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/avanti.png" width="80" />
         <img alt="cev" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/curso_em_video.png" width="80" />
         <img alt="dio" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" width="80" />
+        <img alt="msft_learn" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/msft_learn.jpg" width="80" />
         <img alt="simplifica_treinamentos" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/simplifica_treinamentos.png" width="80" />
-        <img alt="soulcode_academy" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/soulcode_academy.png" width="80" />
-        <img alt="xperiun" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/xperiun.png" width="80" /><br>
+        <img alt="soulcode_academy" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/soulcode_academy.png" width="85" />
+        <img alt="xperiun" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/xperiun.png" width="85" /><br>
         <img alt="4linux" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/4.linux.png" width="65" />
         <img alt="aws_skill_builder" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/aws_skill_builder.png" width="65" />
         <img alt="cloud_treinamentos" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/cloud_treinamentos.jpg" width="65" />
@@ -271,7 +272,6 @@ These are my study repositories, where I create my specific projects for each st
         <img alt="full_cycle" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/full_cycle.jpg" width="65" />
         <img alt="grasshoper" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/grasshoper.png" width="65" />
         <img alt="hashtag" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/hashtag.png" width="65" />
-        <img alt="msft_learn" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/msft_learn.jpg" width="65" />
     </div>
 </div>
 
