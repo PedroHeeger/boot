@@ -271,6 +271,7 @@ These are my study repositories, where I create my specific projects for each st
         <img alt="full_cycle" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/full_cycle.jpg" width="65" />
         <img alt="grasshoper" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/grasshoper.png" width="65" />
         <img alt="hashtag" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/hashtag.png" width="65" />
+        <img alt="msft_learn" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/msft_learn.jpg" width="65" />
     </div>
 </div>
 
