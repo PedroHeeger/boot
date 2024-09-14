@@ -201,31 +201,15 @@ A contribuição que era indicada para ser feita era adicionar um arquivo de per
 <table align="center">
     <tr>
         <td align="center">
-            <img src="./0-aux/img02.png" alt="img02" width="360">
+            <img src="./0-aux/img02.png" alt="img02" width="410">
             <br>Imagem 02
         </td>
         <td align="center">
-            <img src="./0-aux/img03.png" alt="img03" width="270">
+            <img src="./0-aux/img03.png" alt="img03" width="310">
             <br>Imagem 03
         </td>
     </tr>
 </table>
-
-
-<!-- <div align="center">
-    <div style="display: inline-block; margin: 0 10px;">
-        <figure>
-            <img src="./0-aux/img02.png" alt="img02" width="360"><br>
-            <figcaption>Imagem 02.</figcaption>
-        </figure>
-    </div>
-    <div style="display: inline-block; margin: 0 10px;">
-        <figure>
-            <img src="./0-aux/img03.png" alt="img03" width="270"><br>
-            <figcaption>Imagem 03.</figcaption>
-        </figure>
-    </div>
-</div> -->
 
 Contudo, já tinha um tempo que minha intenção era refatorar esse arquivo, para apresentar um perfil mais atualizado e mais bonito. Então, utilizei esse desafio de projeto não só para atender o desafio, como para refatorar todas minhas informações de perfil no **GitHub** e também no **Linkedin** e nos meus currículos. Dessa forma, foi construído o arquivo de perfil [README.md](01.06-dp/README.md), neste repositório (`boot`), que é meu repositório padrão para todos os bootcamps. Após finalizá-lo, ele foi utilizado em dois repositórios diferentes, além de ser salvo em uma pasta do computador que armazenava todos os arquivos de perfil do **GitHub**, onde neste momento, esse seria o segundo, conforme exibido na imagem 04. Uma cópia deste arquivo foi utilizada no repositório padrão do **GitHub** que construía o perfil do **GitHub**. Outra cópia foi armazenada no repositório [dio-lab-open-source](https://github.com/PedroHeeger/dio-lab-open-source), que foi forkeado do repositório desse desafio de projeto no **GitHub** da DIO. Assim, as duas demandas eram atendidas, o desafio de projeto era executado e também refatorava todos os meus perfis, que já era uma coisa que estava querendo. As imagens 05 e 06 evidenciam como ficou meu novo perfil do **GitHub**.
 
@@ -234,20 +218,18 @@ Contudo, já tinha um tempo que minha intenção era refatorar esse arquivo, par
     <figcaption>Imagem 04.</figcaption>
 </figure></div><br>
 
-<div align="center">
-    <div style="display: inline-block; margin: 0 10px;">
-        <figure>
-            <img src="./0-aux/img05.png" alt="img05" width="340"><br>
-            <figcaption>Imagem 05.</figcaption>
-        </figure>
-    </div>
-    <div style="display: inline-block; margin: 0 10px;">
-        <figure>
-            <img src="./0-aux/img06.png" alt="img06" width="260"><br>
-            <figcaption>Imagem 06.</figcaption>
-        </figure>
-    </div>
-</div>
+<table align="center">
+    <tr>
+        <td align="center">
+            <img src="./0-aux/img05.png" alt="img05" width="400">
+            <br>Imagem 05
+        </td>
+        <td align="center">
+            <img src="./0-aux/img06.png" alt="img06" width="310">
+            <br>Imagem 06
+        </td>
+    </tr>
+</table>
 
 Com relação ao desafio de projeto, a expert do curso fez um pouco diferente, após criar o fork do repositório da **DIO**, ela clonou esse repositório localmente na máquina e conectou o repositório local com o remoto. Assim, ela realizava as alterações na própria máquina e enviava para o repositório remoto. No meu caso, como a contribuição foi desenvolvida neste repositório (`boot`) e só forkiei o repositório da **DIO** para entregar o desafio, tudo foi executado apenas no repositório remoto, sem a necessidade de criá-lo localmente. Dessa forma, uma cópia do novo arquivo de perfil, o [README.md](01.06-dp/README.md), foi adicionado na pasta `community` do repositório forkeado [dio-lab-open-source](https://github.com/PedroHeeger/dio-lab-open-source). A imagem 07 mostra o arquivo adicionado na pasta `community`, sendo renomeando para `PedroHeeger.md`. Na execução desse processo, foi necessário dar um commit para atualizar o repositório remoto, sendo a mensagem do commit `Adicionando o perfil de Pedro Heeger` e a descrição da mensagem `Adicionando o perfil de Pedro Heeger na pasta community para realizar o pull request`.
 
