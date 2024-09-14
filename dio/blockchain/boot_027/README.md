@@ -198,7 +198,21 @@ Neste desafio de projeto o objetivo foi contribuir em um projeto específico no 
 
 A contribuição que era indicada para ser feita era adicionar um arquivo de perfil (profile) do **GitHub** na pasta `community`. Nesta pasta estavam os profiles de todos os usuários do **GitHub** que contribuíram neste projeto. O **GitHub** profile nada mais é que um arquivo em **Markdown** que é adicionado a um repositório específico do **GitHub**. Este repositório utiliza esse arquivo para apresentar um perfil do usuário quando o **GitHub** dele é acessado. Isso é bastante útil para apresentar um **GitHub** mais atrativo. Atualmente, o meu **GitHub** já tinha um profile construído a partir de um arquivo **Markdown**, conforme mostrado nas imagens 02 e 03. 
 
-<div align="center">
+<table align="center">
+    <tr>
+        <td align="center">
+            <img src="./0-aux/img02.png" alt="img02" width="360">
+            <br>Imagem 02
+        </td>
+        <td align="center">
+            <img src="./0-aux/img03.png" alt="img03" width="270">
+            <br>Imagem 03
+        </td>
+    </tr>
+</table>
+
+
+<!-- <div align="center">
     <div style="display: inline-block; margin: 0 10px;">
         <figure>
             <img src="./0-aux/img02.png" alt="img02" width="360"><br>
@@ -211,7 +225,7 @@ A contribuição que era indicada para ser feita era adicionar um arquivo de per
             <figcaption>Imagem 03.</figcaption>
         </figure>
     </div>
-</div>
+</div> -->
 
 Contudo, já tinha um tempo que minha intenção era refatorar esse arquivo, para apresentar um perfil mais atualizado e mais bonito. Então, utilizei esse desafio de projeto não só para atender o desafio, como para refatorar todas minhas informações de perfil no **GitHub** e também no **Linkedin** e nos meus currículos. Dessa forma, foi construído o arquivo de perfil [README.md](01.06-dp/README.md), neste repositório (`boot`), que é meu repositório padrão para todos os bootcamps. Após finalizá-lo, ele foi utilizado em dois repositórios diferentes, além de ser salvo em uma pasta do computador que armazenava todos os arquivos de perfil do **GitHub**, onde neste momento, esse seria o segundo, conforme exibido na imagem 04. Uma cópia deste arquivo foi utilizada no repositório padrão do **GitHub** que construía o perfil do **GitHub**. Outra cópia foi armazenada no repositório [dio-lab-open-source](https://github.com/PedroHeeger/dio-lab-open-source), que foi forkeado do repositório desse desafio de projeto no **GitHub** da DIO. Assim, as duas demandas eram atendidas, o desafio de projeto era executado e também refatorava todos os meus perfis, que já era uma coisa que estava querendo. As imagens 05 e 06 evidenciam como ficou meu novo perfil do **GitHub**.
 
