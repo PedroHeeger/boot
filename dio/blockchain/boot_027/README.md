@@ -201,13 +201,13 @@ A contribuição que era indicada para ser feita era adicionar um arquivo de per
 <div align="center">
     <div style="display: inline-block; margin: 0 10px;">
         <figure>
-            <img src="./0-aux/img02.png" alt="img02" width="410"><br>
+            <img src="./0-aux/img02.png" alt="img02" width="360"><br>
             <figcaption>Imagem 02.</figcaption>
         </figure>
     </div>
     <div style="display: inline-block; margin: 0 10px;">
         <figure>
-            <img src="./0-aux/img03.png" alt="img03" width="320"><br>
+            <img src="./0-aux/img03.png" alt="img03" width="270"><br>
             <figcaption>Imagem 03.</figcaption>
         </figure>
     </div>
@@ -223,13 +223,13 @@ Contudo, já tinha um tempo que minha intenção era refatorar esse arquivo, par
 <div align="center">
     <div style="display: inline-block; margin: 0 10px;">
         <figure>
-            <img src="./0-aux/img05.png" alt="img05" width="400"><br>
+            <img src="./0-aux/img05.png" alt="img05" width="340"><br>
             <figcaption>Imagem 05.</figcaption>
         </figure>
     </div>
     <div style="display: inline-block; margin: 0 10px;">
         <figure>
-            <img src="./0-aux/img06.png" alt="img06" width="300"><br>
+            <img src="./0-aux/img06.png" alt="img06" width="260"><br>
             <figcaption>Imagem 06.</figcaption>
         </figure>
     </div>
