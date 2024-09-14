@@ -254,6 +254,24 @@ These are my study repositories, where I create my specific projects for each st
         <img alt="iniciativa_devops-github_actions" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-06)_GitHub_Actions_PH_Iniciativa_Devops.png" width="130" />
         <img alt="iniciativa_devops-prometheus_grafana" src="https://github.com/PedroHeeger/main/blob/main/cert_ti/06-badgr/(22-08-07)_Prometheus...Grafana_PH_Iniciativa_Devops.png" width="130" />
     </div>
+    <div style="text-align: center;">
+        <h4>Plataformas de Estudo</h4>
+        <img alt="4linux" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/4.linux.png" width="70" />
+        <img alt="atlantico_avanti" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/avanti.png" width="70" />
+        <img alt="aws_skill_builder" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/aws_skill_builder.png" width="70" />
+        <img alt="cloud_treinamentos" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/cloud_treinamentos.jpg" width="70" />
+        <img alt="cubo_tres" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/cubo_tres.jpeg" width="70" />
+        <img alt="cev" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/curso_em_video.png" width="70" />
+        <img alt="dio" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" width="70" />
+        <img alt="edn" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/edn.png" width="70" />
+        <img alt="empowerdata" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/empowerdata.jpg" width="70" />
+        <img alt="full_cycle" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/full_cycle.jpg" width="70" />
+        <img alt="grasshoper" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/grasshoper.png" width="70" />
+        <img alt="hashtag" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/hashtag.png" width="70" />
+        <img alt="simplifica_treinamentos" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/simplifica_treinamentos.png" width="70" />
+        <img alt="soulcode_academy" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/soulcode_academy.png" width="70" />
+        <img alt="xperiun" src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/xperiun.png" width="70" />
+    </div>
 </div>
 
 <br>
@@ -265,7 +283,7 @@ These are my study repositories, where I create my specific projects for each st
 <details>
 <summary><h5 style="margin: 0;">Click here to expand</h5></summary>
     <ul>
-    <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/xperiun/power_bi/curso_048">curso_048 (Minicurso Power BI Experience)   <img src="https://github.com/PedroHeeger/course/blob/main/xperiun/power_bi/curso_048/0-aux/logo_course.png" alt="curso_048" width="auto" height="25"></a></summary>Construção de um report em <b>Power BI</b>, com modo dark e light, para análises das vendas de uma empresa em um cenário hipotético.</details></li>
+    <li><details><summary>curso_048: <a href="https://github.com/PedroHeeger/course/tree/main/xperiun/power_bi/curso_048">Minicurso Power BI Experience   <img src="https://github.com/PedroHeeger/course/blob/main/xperiun/power_bi/curso_048/0-aux/logo_course.png" alt="curso_048" width="auto" height="25"></a></summary>Construção de um report em <b>Power BI</b>, com modo dark e light, para análises das vendas de uma empresa em um cenário hipotético.</details></li>
     <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/xperiun/power_bi/curso_051">curso_051 (Desafio Missão ZERO - Bootcamp HPN)   <img src="https://github.com/PedroHeeger/course/blob/main/xperiun/power_bi/curso_051/0-aux/logo_course.png" alt="curso_051" width="auto" height="25"></a></summary>Construção de um report em <b>Power BI</b> para análises das vendas da empresa Heavy Power Nutrition (HPN).</details></li>
     <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/dio/python/curso_066">curso_066 (Dev Week - Ifood Ciência de Dados com Python)   <img src="https://github.com/PedroHeeger/course/blob/main/dio/python/curso_066/0-aux/dev_week.png" alt="curso_066" width="auto" height="25"></a></summary>Análise da satisfação dos feedbacks de um bootcamp, através do cálculo do Net Promoter Score (NPS) com utilização da linguagem <b>Python</b>, executando o código em três paradigmas diferentes: Paradigma Imperativo, Paradigma Funcional e Paradigma Orientado a Objetos (POO). A partir do valor calculado do NPS, foi construindo um gráfico com uso da biblioteca Matplotlib. Por fim, com a biblioteca Openai foi construída uma função para o <b>ChatGPT</b> analisar os sentimentos com base nos comentários do feedback.</details></li>
     <li><details><summary><a href="https://github.com/PedroHeeger/course/tree/main/aws_skill_builder/aws/curso_092">curso_092 (Introduction to Amazon Elastic Compute Cloud (EC2))   <img src="https://github.com/PedroHeeger/course/blob/main/aws_skill_builder/aws/curso_092/0-aux/logo_course.png" alt="curso_092" width="auto" height="25"></a></summary>Provisionamento de instâncias no serviço <b>Amazon Elastic Compute Cloud (EC2)</b> na cloud da <b>AWS</b> e execução de várias formas de acesso remoto entre maquinas de diferentes sistemas operacionais. Os tipos de acesso remoto foram: acesso remoto, execução remota de comandados, transferência de arquivos, transferência de pastas e acesso remoto gráfico. Já os sistemas operacionais utilizados foram: <b>Windows</b>, <b>Linux Ubuntu</b>, <b>Windows Server</b> e <b>Amazon Linux</b> com interface gráfica. Já os softwares utilizados foram: <b>OpenSSH</b>, <b>PuTTY</b>, <b>Telnet</b>, <b>PowerShell</b> com o recurso <i>PowerShell Remoting</i>, <b>RDP Client</b> ou <b>Remote Desktop Connection</b>, <b>TeamViewer</b>, <b>Google Chrome Desktop</b> e o recurso <i>Session Manager</i> do serviço <b>AWS System Manager (SSM)</b>.</details></li>
