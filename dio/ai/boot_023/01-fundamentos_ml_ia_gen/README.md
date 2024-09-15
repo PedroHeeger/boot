@@ -41,7 +41,7 @@ This folder refers to Module 1 **Fundamentos de Machine Learning e Ias Generativ
   1.2. <a href="#item1.2">Algoritmos e Aprendizado de Máquina</a><br>
   1.3. <a href="#item1.3">Processamento de Linguagem Natural</a><br>
   1.4. <a href="#item1.4">O que são IAs Generativas</a><br>
-  1.5. <a href="#item1.5">Aula Inaugural: Bootcamp Nexa - Machine Learning para Iniciantes na AWS</a><br>
+  1.5. Aula Inaugural: Bootcamp Nexa - Machine Learning para Iniciantes na AWS<br>
 
 ---
 
@@ -57,7 +57,7 @@ A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme 
 </figure></div><br>
 
 ### Development:
-O desenvolvimento deste módulo do bootcamp foi dividido em três cursos e uma . Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+O desenvolvimento deste módulo do bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 <a name="item1.2"><h4>1.2 Algoritmos e Aprendizado de Máquina</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-09)_AWS_Official_Content-Introducao...AWS_PH_DIO.pdf">Certificate</a>
 
@@ -186,10 +186,3 @@ Deepfake é uma técnica de inteligência artificial que emprega redes neurais a
     <img src="../0-aux/md3-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
-
-
-<a name="item1.5"><h4>1.5 Aula Inaugural: Bootcamp Nexa - Machine Learning para Iniciantes na AWS</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cloud/aws/(23-09-12)_Computacao...AWS_PH_DIO.pdf">Certificate</a>
-
-
-
-
