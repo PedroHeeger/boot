@@ -342,6 +342,10 @@ Com o comando `ipfs daemon` foi verificado se o daemon do IPFS estava rodando. P
 
 
 
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
 
 
 
