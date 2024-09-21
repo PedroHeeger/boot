@@ -10,7 +10,6 @@ $tagNameInstance = "ec2Test1"
 $sgName = "default"
 $aZ = "us-east-1a"
 $imageId = "ami-0c7217cdde317cfec"    # Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-12-07
-# $imageId = "ami-0b8aeb1889f1a812a"    # Amazon Linux 2 with .NET 6, PowerShell, Mono, and MATE Desktop Environment
 $so = "ubuntu"
 # $so = "ec2-user"
 $instanceType = "t3.medium"
