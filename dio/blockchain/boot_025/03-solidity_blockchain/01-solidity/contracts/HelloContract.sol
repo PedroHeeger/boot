@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
-contract HelloWorl{
+contract HelloWorld{
     string public hello = "Hello World";
     string public name = "";
 

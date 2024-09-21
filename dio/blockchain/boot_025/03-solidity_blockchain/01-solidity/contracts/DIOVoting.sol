@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
-pragma solidity >=0.7.0 <0.9.0;
+// pragma solidity >=0.7.0 <0.9.0;
 
 contract DIOVoting {
     // Mapeamento que associa o nome de cada candidato ao número de votos recebidos.
