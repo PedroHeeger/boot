@@ -75,24 +75,113 @@ Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a e
 
 <a name="item2.2"><h4>2.2 Otimize Seus Prompts e Aprenda Mais Usando IAs Generativas</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-09-08)_Ment...IA_Generativa...Claude_3...Amazon_Bedrock_PH_DIO.pdf">Certificate</a>
 
+No cenário tecnológico em constante evolução, as IAs generativas surgem como ferramentas influentes, capazes de redefinir a interação com informações e a execução de atividades rotineiras. Elas são projetadas para gerar textos, solucionar questões e até desenvolver códigos de maneira autônoma e inteligente. No entanto, o aproveitamento pleno dessas tecnologias exige a habilidade de criar prompts bem elaborados. Um prompt é basicamente um conjunto de dados fornecidos pelo usuário para direcionar um modelo de linguagem, como os LLMs no **Amazon Bedrock**, a produzir uma resposta. Ele pode ser visto como uma instrução ou uma questão apresentada à IA, permitindo que ela compreenda a solicitação e ofereça uma resposta apropriada.
 
+Um prompt bem estruturado é composto por diversos elementos, como a tarefa ou instrução que se deseja que os modelos LLMs realizem, o contexto da atividade (como uma descrição relevante do domínio), exemplos ilustrativos e o texto inicial necessário para que os LLMs gerem uma resposta. Esses componentes variam de acordo com o uso pretendido, a disponibilidade dos dados e o tipo de tarefa. Entre os principais elementos de um prompt estão:
+- Formato de Resposta: Define como a resposta deve ser apresentada (por exemplo, em forma de lista, parágrafo ou código). Exemplo: `Organize a explicação em uma lista de etapas.`
+- Escopo e Limites: Estabelece o que deve ser abordado ou excluído na resposta. Exemplo: `Não inclua informações sobre funcionalidades que não estejam relacionadas à pesquisa.`
+- Pergunta ou Instrução: A tarefa específica ou a questão que o modelo deve resolver. Exemplo: `Descreva como utilizar a função de busca no aplicativo.`
+- Tom e Estilo: Orienta o tom e o estilo da resposta, que pode ser formal, casual, técnico, ou mais acessível. Exemplo: `Adote um tom amigável e acessível.`
+- Contexto: Fornece informações de base ou o cenário necessário para que a solicitação seja compreendida. Exemplo: `O objetivo é criar um manual de usuário para um novo aplicativo.`
+- Restrições e Requisitos: Estabelece condições que a resposta precisa atender. Exemplo: `A resposta deve ser clara e objetiva, com no máximo 200 palavras.`
+- Exemplos: Demonstrações de respostas ou formatos desejados que exemplificam o tipo de retorno esperado. Exemplo: `Etapa 1 - Abra o aplicativo e toque no ícone de pesquisa.`
+  - Few-Shot Prompting: Esse método consiste em oferecer ao modelo alguns exemplos de entrada e saída para ajudar a contextualizar e compreender a tarefa a ser executada. Também é conhecido como aprendizado contextual ou solicitação de algumas tomadas.
+  - Zero-Shot Prompting: Nesse caso, o modelo não recebe exemplos prévios. Ele é solicitado a executar a tarefa apenas com base na descrição fornecida, sem qualquer exemplo de orientação.
 
+Em alguns casos, fornecer exemplos pode ser útil para que os LLMs ajustem suas respostas conforme o esperado. Isso é chamado de solicitação com poucos exemplos ou aprendizado contextual, onde uma entrada é acompanhada pela saída desejada. Uma prática recomendada é o uso de tags XML para incluir esses exemplos. Além disso, é aconselhável usar delimitadores diferentes, como `H:` e `A:`, para evitar confusões com os tradicionais `Humano:` (`Human:`) e `Assistente:` (`Assistant:`) ao longo do prompt.
 
+Um modelo de prompt estabelece a estrutura básica de um prompt, permitindo a substituição de conteúdo conforme necessário. Esses modelos atuam como "fórmulas" para aplicar LLMs em diferentes tarefas, como classificação, resumo, respostas a perguntas, entre outras. Um modelo de prompt pode incluir instruções, exemplos breves, contexto relevante e perguntas adequadas para uma aplicação específica.
 
-<div align="Center"><figure>
-    <img src="./0-aux/img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
-</figure></div><br>
+A engenharia de prompts refere-se ao processo de aprimorar a entrada textual fornecida aos LLMs, com o objetivo de gerar respostas precisas. Esses modelos de linguagem de grande escala (LLM), treinados com vastos volumes de dados textuais, utilizam os prompts para executar diversas funções, como classificação, resposta a perguntas, geração de código, redação criativa, entre outras. A qualidade dos prompts desempenha um papel fundamental na precisão das respostas geradas. Quando se discute a engenharia de prompts, o foco está nas estratégias voltadas à criação e otimização das solicitações, levando em consideração a escolha cuidadosa de palavras, frases, pontuação e delimitadores para maximizar a eficiência dos LLMs em diferentes contextos.
 
+A seguir, são listadas algumas categorias de tarefas comuns aplicáveis aos LLMs, que ilustram suas capacidades e mostram como os prompts podem ser formulados para orientar o modelo a gerar respostas precisas e relevantes. Cada tipo de tarefa oferece uma forma específica de interação com o modelo, seja para obter informações ou para gerar conteúdo adequado:
+- Classificação: Um prompt apresenta uma pergunta com múltiplas opções, e o modelo precisa identificar a resposta correta. Um exemplo disso é a análise de sentimentos, onde o texto fornecido é classificado pelo modelo como positivo, negativo, neutro ou tóxico.
+  ```
+  Prompt: "Classifique o sentimento do seguinte texto: 'Amei o novo livro que li. Foi incrível!'"
+  Resposta: "Positivo"
+  ```
+- Pergunta-resposta, sem contexto: O modelo deve fornecer uma resposta utilizando apenas o conhecimento já incorporado, sem apoio de informações externas ou complementares.
+  ```
+  Prompt: "Qual é a capital da França?"
+  Resposta: "Paris"
+  ```
+- Pergunta-resposta, com contexto: Um texto é fornecido junto com uma pergunta, e o modelo deve gerar a resposta utilizando as informações contidas nesse texto. Posicionar a pergunta após o texto pode auxiliar os modelos de linguagem no **Amazon Bedrock** a oferecer respostas mais precisas. Além disso, incentivar o modelo pode ser eficaz nesse tipo de situação.
+  ```
+  Texto de Contexto: "João e Maria foram ao mercado ontem. João comprou maçãs e Maria comprou laranjas."
+  Pergunta: "O que Maria comprou no mercado?"
+  Resposta: "Laranjas"
+  ```
+- Resumo: O prompt consiste em um texto, e o modelo deve gerar uma versão resumida, destacando os pontos principais. É útil indicar quantas frases ou parágrafos devem formar o resumo, pois isso ajuda a guiar o modelo nesse contexto.
+  ```
+  Texto: "O Sol é uma estrela no centro do nosso sistema solar. Ele fornece luz e calor para a Terra e é vital para a vida. O Sol é composto principalmente de hidrogênio e hélio e tem uma enorme influência sobre o clima e o tempo na Terra."
+  Instrução: "Resuma o texto acima."
+  Resumo: "O Sol é uma estrela central no sistema solar, essencial para a vida na Terra, fornecendo luz e calor, e é composto principalmente de hidrogênio e hélio."
+  ```
+- Geração de texto aberto: A partir de um prompt, o modelo deve criar um texto original que atenda à descrição fornecida, como histórias, poemas ou roteiros de filmes.
+  ```
+  Prompt: "Escreva um pequeno poema sobre a natureza."
+  Resposta: No bosque onde o sol brilha, As folhas dançam com o vento, O rio murmura sua trilha, E a paz reina em cada momento.
+  ```
+- Geração de código: O modelo é solicitado a criar um código conforme as especificações fornecidas, como escrever scripts em SQL ou Python.
+  ```
+  Prompt: "Escreva um código Python que calcula a soma de todos os números de 1 a 10."
+  Resposta: 
+    total = sum(range(1, 11))
+    print(total)
+  ```
+- Matemática: A entrada apresenta um problema que demanda resolução por meio de raciocínio matemático, seja em termos numéricos, lógicos, geométricos ou outros. Para solucionar esse desafio, é vantajoso instruir o modelo a proceder de forma sequencial, incluindo frases como "Vamos analisar isso passo a passo" ou "Considere cada etapa para encontrar a resposta correta".
+  ```
+  Prompt: "Qual é a raiz quadrada de 64?"
+  Resposta: "8"
+  ```
+- Raciocínio ou pensamento lógico: O modelo é encarregado de realizar uma sequência de deduções lógicas para resolver o problema apresentado. É útil solicitar ao modelo que explique suas respostas.
+  ```
+  Prompt: "Se todos os gatos são animais e alguns animais são cães, podemos afirmar que alguns gatos são cães?"
+  Resposta: "Não, porque os gatos e os cães são categorias distintas de animais."
+  ```
+- Extração de entidades: O modelo identifica e extrai entidades específicas a partir de um texto ou entrada, com base na solicitação ou pergunta fornecida. Para realizar a extração de entidades a partir de uma pergunta de entrada, é viável utilizar tags XML para identificar as entidades no texto gerado, simplificando o processamento subsequente.
+  ```
+  Texto: "O livro 'Dom Casmurro' foi escrito por Machado de Assis e publicado em 1899."
+  Pergunta: "Quais são as entidades mencionadas no texto?"
+  Resposta: "Livro: Dom Casmurro; Autor: Machado de Assis; Ano de publicação: 1899"
+  ```
+- Raciocínio em cadeia de pensamento: O modelo é solicitado a apresentar um raciocínio detalhado, passo a passo, explicando como chegou à resposta com base na solicitação recebida.
+  ```
+  Prompt: "Como você resolveria o problema de encontrar a soma dos números de 1 a 5?"
+  Resposta: 
+    Liste os números: 1, 2, 3, 4, 5
+    Some os números: 1 + 2 + 3 + 4 + 5
+    O resultado é 15. Portanto, a soma dos números de 1 a 5 é 15.
+  ```
 
+As diretrizes consistem em princípios ou recomendações específicas no âmbito da engenharia de prompts. Elas atuam como um conjunto de melhores práticas que facilitam a elaboração e a otimização de prompts. Essas diretrizes são práticas e detalhadas, contribuindo para estruturar o processo de engenharia de maneira eficaz. A seguir, são apresentadas algumas diretrizes:
+- Desenvolva um bom prompt: Os LLMs podem produzir respostas indesejadas quando as instruções ou o formato do prompt são inconsistentes, pouco claros ou prolixos.
+- Uso de parâmetros de inferência: Os "parâmetros de inferência" referem-se às configurações que determinam como o modelo gera respostas ou executa tarefas durante a fase de inferência, que é quando o modelo é utilizado para realizar previsões ou gerar texto com base nas entradas fornecidas. Os LLMs oferecem diversos parâmetros de inferência que podem ser ajustados para influenciar as respostas do modelo. Alguns parâmetros de inferência são:
+  - Temperatura: Refere-se a um valor que varia de 0 a 1 e influencia a criatividade das respostas geradas. Uma temperatura baixa resulta em respostas mais previsíveis, enquanto uma temperatura alta promove respostas mais inovadoras e criativas.
+  - Comprimento máximo de geração/máximo de novos tokens: Define um limite para a quantidade de tokens que o modelo pode gerar em uma solicitação. Essa configuração é útil para tarefas que não requerem respostas extensas, como a análise de sentimentos.
+  - Top-p: Este parâmetro controla a seleção de tokens com base nas suas probabilidades. Quando ajustado para um valor abaixo de 1.0, o modelo considera apenas as opções mais prováveis, resultando em respostas mais coerentes e consistentes.
+  - Token final/sequência final: Indica o token que sinaliza ao modelo o término da resposta. O modelo interrompe a geração de novos tokens ao encontrar esse token. Geralmente, não há necessidade de os usuários ajustarem essa configuração.
+  - Top-K (**Anthropic Claude**): Esta técnica de amostragem é empregada durante a geração de texto em modelos de linguagem. Em cada etapa, o modelo calcula as probabilidades de todas as palavras que poderiam ser a próxima na sequência. Em vez de selecionar sempre a palavra mais provável, o modelo considera apenas as K palavras com maior probabilidade e escolhe uma delas de forma aleatória. Isso cria um equilíbrio entre diversidade e relevância nas respostas.
+  - **AI21 Labs Jurassic**: Inclui parâmetros como penalidade de presença, penalidade de contagem, penalidade de frequência e penalidade de token especial. Para uma compreensão detalhada, é essencial consultar a documentação específica de cada modelo. Ajustar esses parâmetros adequadamente é fundamental para controlar como os LLMs respondem, assegurando que os resultados desejados sejam alcançados nas diversas tarefas.
 
+As diretrizes a seguir são essenciais para otimizar a engenharia de prompts:
+- Instruções Simples, Claras e Completas: Utilizar instruções diretas ajuda a reduzir ambiguidades e garante uma correta interpretação do prompt pelo modelo.
+- Pergunta ou Instrução no Final: Posicionar a tarefa no final auxilia o modelo a identificar quais informações precisa buscar.
+- Caracteres Separadores para Chamadas de API: Empregar separadores, como quebras de linha, é importante para otimizar o desempenho dos modelos de linguagem, pois a formatação da entrada pode fazer uma diferença significativa.
+- Indicadores de Saída: Incluir detalhes sobre as restrições desejadas na saída contribui para obter respostas mais precisas.
+- Tarefas Complexas: Ao abordar tarefas mais elaboradas, desenvolver a resposta passo a passo pode facilitar o entendimento e a estruturação do raciocínio do modelo.
 
+Otimizar Solicitações para Modelos de Texto: Para melhorar a eficácia dos modelos de linguagem, algumas estratégias podem ser adotadas:
+- Fornecer uma resposta padrão que o modelo deve usar se não tiver certeza das respostas: Uma resposta padrão pode evitar que os modelos retornem respostas que pareçam corretas, mesmo quando há pouca confiança.
+- Solicitação rápida: Incluir exemplos (pares de entrada e resposta) no prompt pode aprimorar significativamente as respostas dos modelos de linguagem (LLMs). Para tarefas simples, como classificação de texto, 3 a 5 exemplos podem ser suficientes, enquanto tarefas mais complexas podem exigir um número maior de exemplos. Optar por exemplos semelhantes aos dados do mundo real pode aumentar ainda mais o desempenho.
+- Refinar o prompt com modificadores: Ajustar a instrução da tarefa envolve alterar a instrução, a tarefa ou a pergunta no prompt. Métodos úteis incluem:
+  - Especificação de domínio/entrada: Fornecer detalhes sobre os dados de entrada, como a origem ou o contexto, por exemplo, "O texto de entrada é um resumo de um filme."
+  - Especificação da tarefa: Descrever a tarefa exata pedida ao modelo, por exemplo, "Para resumir o texto, capture os pontos principais."
+  - Descrição do rótulo: Oferecer detalhes sobre as opções de saída para um problema de classificação, por exemplo, "Escolha se o texto se refere a uma pintura ou a uma escultura."
+  - Especificação de saída: Indicar o que o modelo deve produzir, por exemplo, "Por favor, resuma o texto da avaliação do restaurante em três frases."
+  - Incentivo ao LLM: Os modelos de linguagem podem apresentar melhor desempenho quando recebem um incentivo emocional, como "Se você responder corretamente, deixará o usuário muito feliz."
 
-
-
-
-
-
+Ao utilizar LLMs no **Amazon Bedrock** via chamadas de API, é importante lembrar que esses modelos não armazenam informações de prompts anteriores, a menos que as interações passadas sejam incluídas no prompt atual. Essa prática é essencial para manter conversas ou fazer solicitações de acompanhamento. Ao acessar os modelos **Anthropic Claude** através de chamadas de API, em vez do playground de texto do **Amazon Bedrock**, recomenda-se agrupar as solicitações em um formato conversacional para obter as respostas desejadas, enquanto para os modelos *Titan Text* e **AI21 Labs Jurassic**, essa abordagem não é necessária.
 
 <a name="item2.3"><h4>2.3 Fundamentos de Engenharia de Prompts com Claude 3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-09-08)_Ment_Amazon%20Q_IA_Generativa...Copiloto...PH_DIO.pdf">Certificate</a>
 
@@ -123,6 +212,10 @@ Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a e
 
 
 
+<div align="Center"><figure>
+    <img src="./0-aux/img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
 
 
 
