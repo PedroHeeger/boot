@@ -221,8 +221,8 @@ Ao utilizar LLMs no **Amazon Bedrock** via chamadas de API, é importante lembra
 
 
 <div align="Center"><figure>
-    <img src="./0-aux/img02.png" alt="img02"><br>
-    <figcaption>Imagem 02.</figcaption>
+    <img src="./0-aux/img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
 
