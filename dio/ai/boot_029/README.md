@@ -225,6 +225,12 @@ Ao utilizar LLMs no **Amazon Bedrock** via chamadas de API, é importante lembra
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
+<div align="Center"><figure>
+    <img src="./0-aux/img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+
 
 
 <a name="item2.8"><h4>2.8 Introdução a AWS Step Functions</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-09-08)_Ment_Amazon%20Q_IA_Generativa...Copiloto...PH_DIO.pdf">Certificate</a>
