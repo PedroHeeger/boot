@@ -185,14 +185,64 @@ Ao utilizar LLMs no **Amazon Bedrock** via chamadas de API, é importante lembra
 
 <a name="item2.3"><h4>2.3 Fundamentos de Engenharia de Prompts com Claude 3</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-09-08)_Ment_Amazon%20Q_IA_Generativa...Copiloto...PH_DIO.pdf">Certificate</a>
 
+A família **Claude 3**, criada pela **Anthropic**, representa a nova geração de modelos de inteligência artificial, trazendo avanços significativos em diversas tarefas cognitivas. Esses modelos são capazes de interpretar tanto texto quanto dados visuais, gerando saídas textuais. A linha é composta por três modelos com diferentes níveis de capacidade:
+- *Claude 3 Haiku*: Este é o modelo mais ágil e leve, projetado para oferecer respostas extremamente rápidas. Sua eficiência o torna ideal para tarefas que exigem agilidade, como moderação de conteúdo, gestão de inventário e traduções automáticas de alta precisão.
+- *Claude 3 Sonnet*: Combinando velocidade e inteligência, *Claude 3 Sonnet* é voltado para aplicações em larga escala, executando tarefas como geração de conteúdo criativo, programação, matemática avançada e raciocínio complexo.
+- *Claude 3 Opus*: O mais sofisticado dos três, *Claude 3 Opus*, se destaca em tarefas complexas e de alta fluência, incluindo automação de processos e pesquisa em diversas áreas. Ele também possui habilidades avançadas em visão computacional e na compreensão de várias línguas.
 
+Os modelos Claude 3 são amplamente reconhecidos por seu desempenho superior em benchmarks de inteligência artificial, atingindo resultados notáveis tanto em precisão quanto em eficiência. Além de superarem expectativas nos testes, esses modelos definem novos parâmetros para o que a IA contemporânea pode alcançar. Algumas das principais características incluem:
+- Facilidade de Condução: Esses modelos são mais fáceis de direcionar, seguem instruções com maior precisão, proporcionando um controle melhor e resultados previsíveis de alta qualidade.
+- Análise Visual e de Imagem: Têm a capacidade de interpretar e analisar informações visuais, como imagens e interfaces, gerando metadados úteis.
+- Suporte Multilíngue: Oferecem maior competência em vários idiomas, como espanhol e japonês, facilitando traduções e criação de conteúdo global.
+- Contexto Extenso e Recordação Precisa: Suportam uma janela de contexto de até 200K tokens, possibilitando o processamento de textos extensos e complexos sem perder informações.
+- Atualizações Periódicas: São atualizados periodicamente para aprimorar seu desempenho e adicionar novas funcionalidades.
 
+Os modelos **Claude 3** podem ser acessados na **AWS** por meio do **Amazon Bedrock**, um serviço que simplifica a integração e uso de modelos avançados de IA, como os da família **Claude 3**. No **Amazon Bedrock**, é possível configurar e implementar facilmente os modelos Haiku, Sonnet e Opus para diversas finalidades. Para habilitar o acesso a esses modelos, é importante garantir que eles estejam disponíveis na região selecionada. Os playgrounds do **Amazon Bedrock** oferecem a possibilidade de testar a execução de inferências em vários modelos e configurações antes de integrá-los a uma aplicação. Estão disponíveis playgrounds para diferentes tipos de modelos, como chat, texto e imagem.
 
+As métricas do modelo são essenciais para avaliar tanto o desempenho quanto os custos associados ao seu uso. Entre as principais, destacam-se:
+- Latência (Latency): Refere-se ao tempo que o modelo base (FM) leva para gerar cada token em uma sequência, calculado com base no consumo sob demanda.
+- Contagem de tokens de entrada (Input token count): Número de tokens de entrada utilizados pelo FM durante o processo de inferência.
+- Contagem de tokens de saída (Output token count): Quantidade de tokens gerados em uma resposta pelo FM.
+- Custo (Cost): Estimativa do custo para processar tokens de entrada e saída, baseada no modelo de consumo sob demanda.
 
+A engenharia de prompts é uma prática focada em criar e ajustar instruções (prompts) para melhorar a interação com modelos de linguagem artificial, com o objetivo de gerar respostas mais precisas e úteis. Esse processo envolve:
+- Clareza e Precisão: Elaborar instruções bem definidas e específicas;
+- Contexto: Oferecer informações relevantes de fundo;
+- Exemplos: Incluir exemplos para direcionar o modelo;
+- Restrições: Estabelecer limites ou condições para as respostas;
+- Formato: Indicar o formato desejado para a saída;
+- Iteração: Refinar as instruções com base nos resultados obtidos.
 
+Os parâmetros de inferência são configurações que definem como um modelo de Inteligência Artificial processa e responde a novos dados após o treinamento. Esses ajustes influenciam a forma como o modelo gera previsões ou respostas. Alguns desses parâmetros são:
+- System prompts: Instruções iniciais que definem o comportamento do modelo conforme o contexto específico.
+  - Aplicação: Personalização em assistentes virtuais e suporte.
+- Temperature: Controla a criatividade das respostas; valores altos geram saídas mais variadas, enquanto valores baixos produzem respostas mais previsíveis.
+  - Aplicação: Conteúdo criativo com valores altos, suporte técnico com valores baixos.
+- Top P: Define a gama de opções para o próximo token, excluindo as menos prováveis.
+  - Aplicação: Equilíbrio entre diversidade e coerência em assistentes e chatbots.
+- Top K: Limita as escolhas aos K tokens mais prováveis, útil para explorar variedade dentro de opções controladas.
+  - Aplicação: Geração criativa, como diálogos de jogos.
+- Maximum Length: Limita o número de tokens gerados.
+  - Aplicação: Resumos e respostas concisas.
+- Stop Sequences: Sequências que interrompem a geração de texto.
+  - Aplicação: Controle de conteúdo em descrições e FAQs.
 
+No **Claude**, um token corresponde a cerca de 3,5 caracteres em inglês, embora essa quantidade possa variar de acordo com o idioma utilizado.
 
+A latência, em modelos de linguagem de grande escala (LLMs) como o *Claude*, corresponde ao tempo necessário para processar a entrada e gerar a resposta. Algumas estratégias para reduzi-la incluem: criar prompts diretos e concisos, evitar informações desnecessárias, solicitar respostas mais curtas e diminuir o valor do parâmetro de comprimento máximo da saída.
 
+Algumas boas práticas para criar bons prompts:
+- Ser específico e direto: Formule perguntas claras e objetivas, evitando ambiguidades.
+- Fornecer contexto relevante: Inclua informações essenciais para a tarefa, explicando seu objetivo.
+- Usar exemplos: Demonstre o tipo de resposta esperado e ilustre conceitos complexos com casos concretos.
+- Dividir tarefas complexas: Separe problemas maiores em partes menores, solicitando feedback intermediário.
+- Especificar o formato de saída: Indique o formato desejado, como listas, parágrafos ou tabelas, e defina restrições de comprimento, se necessário.
+- Explorar diferentes perspectivas: Solicite análises de múltiplos ângulos ou prós e contras em questões complexas.
+- Utilizar instruções de role-play: Peça ao modelo para assumir papéis específicos, estabelecendo o contexto no prompt do sistema para direcionar a interação. As instruções de role-play podem ser incorporadas no prompt do sistema durante a inferência. Essa abordagem auxilia na definição do contexto e das regras para a interação com o modelo de linguagem, assegurando que ele compreenda e siga o papel ou a perspectiva atribuída.
+- Ser claro sobre o nível de detalhe: Especifique se a resposta deve ser concisa ou detalhada, pedindo elaborações quando necessário.
+- Usar tags XML: Estruture o prompt com componentes claros, utilizando tags como `<instructions>`, `<example>`, e `<formatting>` para evitar confusão entre as partes.
+- Aproveitar capacidades multimodais: Utilize imagens para complementar o contexto visual em tarefas apropriadas.
+- Iterar e refinar: Ajuste os prompts conforme as respostas recebidas, testando diferentes abordagens para otimizar os resultados.
 
 <a name="item2.5"><h4>2.5 Desafio de Código: Explorando Engenharia de Prompts e Claude 3 com Lógica de Programação</h4></a>[Back to summary](#item2)
 
@@ -247,6 +297,13 @@ Ao utilizar LLMs no **Amazon Bedrock** via chamadas de API, é importante lembra
 
 
 <a name="item2.9"><h4>2.9 Desafio de Projeto: Criando um Assistente de Delivery com AWS Step Functions e Bedrock</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/ai/(24-09-08)_Ment_Amazon%20Q_IA_Generativa...Copiloto...PH_DIO.pdf">Certificate</a>
+
+
+
+
+
+
+
 
 
 

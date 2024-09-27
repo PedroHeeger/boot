@@ -1,0 +1,32 @@
+<instructions>
+  <context>
+    Forneça aqui o contexto geral para o assistente Claude. Isso pode incluir       informações sobre o cenário, o papel que Claude deve assumir, ou qualquer conhecimento prévio necessário.
+  </context>
+  <task>
+    Descreva aqui a tarefa específica ou o conjunto de tarefas que Claude deve realizar. Seja o mais claro e específico possível.
+  </task>
+  <constraints>
+    Liste aqui quaisquer restrições ou limitações que Claude deve observar ao realizar a tarefa.
+  </constraints>
+</instructions>
+
+<example>
+  <user-input>
+    Forneça aqui um exemplo de entrada do usuário relacionada à tarefa.
+  </user-input>
+  <claude-response>
+    Forneça aqui um exemplo de como Claude deve responder à entrada do usuário acima.
+  </claude-response>
+</example>
+
+<formatting>
+  <style>
+    Especifique aqui o estilo de escrita desejado (por exemplo, formal, casual, técnico).
+  </style>
+  <structure>
+    Descreva a estrutura desejada para a resposta (por exemplo, lista com marcadores, parágrafos, seções numeradas).
+  </structure>
+  <length>
+    Indique o comprimento aproximado desejado para a resposta (por exemplo, conciso, detalhado, número específico de palavras).
+  </length>
+</formatting>
