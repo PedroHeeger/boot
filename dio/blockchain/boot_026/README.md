@@ -53,7 +53,7 @@
 ---
 
 ### Objective:
-Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO**.
+Segue abaixo o objetivo deste bootcamp conforme descrito na plataforma da **DIO**.
   
 >Se você quer entender o que é a Web3 como ela mudará a forma como nos relacionamos com a tecnologia, você está no lugar certo. Na prática, a Web3 é gerida por meio de blockchains, que são plataformas de acesso público que armazenam os dados e transações dos usuários. Sendo assim, a Web3 promete revolucionar e descentralizar a rede, limitando a influência das grandes empresas de tecnologia. Durante essa incrível jornada, você entenderá desde os conceitos fundamentais sobre Web3 e Blockchain, até como criar NFTs na prática.
 
@@ -64,7 +64,7 @@ Segue abaixo o objetivo deste bootcamp, conforme descrito na plataforma da **DIO
 - Para melhor organização deste bootcamp, a estruturação das pastas acompanhou a estrutura do bootcamp. Dessa forma, foram criadas sub-pastas para cada módulo ou curso desse bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos desafios ou cursos realizados.
 - Nos arquivos de README de cada módulo ou curso está descrito o que foi realizado em cada um, e podem ser acessado nos links clicáveis na opção **Bootcamp Strucutre**. Os links que não forem clicáveis, são de cursos ou módulos que, na sua maior parte ou inteiramente, foram assuntos teóricos e não possuem materiais.
 - Alguns cursos podem ter sido desenvolvidos em outro bootcamp, já que são os mesmos cursos, portanto, a explicação sobre esses cursos e seus respectivos materiais vão está no outro bootcamp e podem ser acessados através dos links do **Bootcamp Structure**.
-- A sub-pasta **0-aux** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
+- A sub-pasta **0-aux** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README deste bootcamp.
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada uma deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.
+Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada um deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas.

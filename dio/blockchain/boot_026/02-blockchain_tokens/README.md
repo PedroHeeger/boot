@@ -509,7 +509,6 @@ Cada uma das duas plataformas foi utilizada com uma wallet diferente. A primeira
     <img src="../0-aux/md2-img18.png" alt="img18"><br>
     <figcaption>Imagem 18.</figcaption>
 </figure></div><br>
-<!-- , para o deploy do contrato da coleção de NFTs -->
 
 Em uma primeira tentativa de execução, foi utilizado a mainnet da blockchain **Polygon**, pois nela o fee (taxa) era muito mais barato do que o da mainnet da blockchain **Ethereum**. Outras blockchains poderiam ser utilizadas como a **Base**, **Avalanche** e **Arbitrum**. Entretanto, todas essas, incluíndo a **Polygon**, por serem mainnets (redes principais), o token nativo, ou seja, a criptomoeda da rede, possuía valor de mercado. A obtenção de uma quantidade de tokens nativos de mainnets por faucets é um processo muito complicado e lento, pois há poucos faucets, muitos exigem diversas condições e distribuem quantias muito pequenas. Como diz a frase `Não existe almoço grátis`, ninguém vai dar dinheiro a ninguém, mesmo que digital, sem nenhuma condição e de forma muito fácil.
 
