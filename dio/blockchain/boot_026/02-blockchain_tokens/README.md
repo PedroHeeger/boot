@@ -625,6 +625,3 @@ Infelizmente, tive o mesmo problema para adquirir quantias de token **IRIS** na 
     <img src="../0-aux/md2-img32.png" alt="img32"><br>
     <figcaption>Imagem 32.</figcaption>
 </figure></div><br>
-
-
-
