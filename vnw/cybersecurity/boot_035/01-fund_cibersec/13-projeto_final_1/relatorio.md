@@ -58,61 +58,69 @@ Essa configuração permite ao Analyst visibilidade e capacidade de análise em 
 
 ### Sub-rede 10.10.10.0/24
 
-<table border="1" style="margin-left:auto; margin-right:auto; border-collapse: collapse; text-align: center;">
-    <thead>
-        <tr>
-            <th style="padding: 5px; text-align: center;">Host/IP</th>
-            <th style="padding: 5px; text-align: center;">Serviço</th>
-            <th style="padding: 5px; text-align: center;">Risco identificado</th>
-            <th style="padding: 5px; text-align: center;">Evidência</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Sub-rede 10.10.10.0/24 -->
-        <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-        <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-        <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-        <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-        <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
-    </tbody>
-</table><br>
-<table border="1" style="margin-left:auto; margin-right:auto; border-collapse: collapse; text-align: center;">
-    <thead>
-        <tr>
-            <th style="padding: 5px; text-align: center;">Host/IP</th>
-            <th style="padding: 5px; text-align: center;">Serviço</th>
-            <th style="padding: 5px; text-align: center;">Risco identificado</th>
-            <th style="padding: 5px; text-align: center;">Evidência</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Sub-rede 10.10.30.0/24 -->
-        <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-        <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-        <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-        <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-        <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
-    </tbody>
-</table><br>
-<table border="1" style="margin-left:auto; margin-right:auto; border-collapse: collapse; text-align: center;">
-    <thead>
-        <tr>
-            <th style="padding: 5px; text-align: center;">Host/IP</th>
-            <th style="padding: 5px; text-align: center;">Serviço</th>
-            <th style="padding: 5px; text-align: center;">Risco identificado</th>
-            <th style="padding: 5px; text-align: center;">Evidência</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Sub-rede 10.10.50.0/24 -->
-        <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-        <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-        <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-        <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-        <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
-    </tbody>
-</table>
+<div align="center">
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">Host/IP</th>
+                <th style="padding: 5px; text-align: center;">Serviço</th>
+                <th style="padding: 5px; text-align: center;">Risco identificado</th>
+                <th style="padding: 5px; text-align: center;">Evidência</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+        </tbody>
+    </table>
+</div>
 
+### Sub-rede 10.10.30.0/24
+
+<div align="center">
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">Host/IP</th>
+                <th style="padding: 5px; text-align: center;">Serviço</th>
+                <th style="padding: 5px; text-align: center;">Risco identificado</th>
+                <th style="padding: 5px; text-align: center;">Evidência</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+        </tbody>
+    </table>
+</div>
+
+### Sub-rede 10.10.50.0/24
+
+<div align="center">
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">Host/IP</th>
+                <th style="padding: 5px; text-align: center;">Serviço</th>
+                <th style="padding: 5px; text-align: center;">Risco identificado</th>
+                <th style="padding: 5px; text-align: center;">Evidência</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+        </tbody>
+    </table>
+</div>
 
 
 
