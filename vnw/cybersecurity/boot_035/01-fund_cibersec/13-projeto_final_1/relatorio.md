@@ -69,11 +69,11 @@ Essa configuração permite ao Analyst visibilidade e capacidade de análise em 
             </tr>
         </thead>
         <tbody>
-            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+            <tr><td><div style="text-align:center;">IP 1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td><div style="text-align:center;">IP 2</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td><div style="text-align:center;">IP 3</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td><div style="text-align:center;">IP 4</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td><div style="text-align:center;">IP 5</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
         </tbody>
     </table>
 </div>
