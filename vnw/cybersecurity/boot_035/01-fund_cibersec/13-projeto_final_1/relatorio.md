@@ -29,107 +29,106 @@ Todos os procedimentos foram executados manualmente, com registro dos comandos u
 
 O container Analyst está conectado a três interfaces de rede, cada uma pertencente a uma sub-rede distinta da rede corporativa interna:
 
-<table align="center" style="border-collapse: collapse;">
-  <tr>
-    <th style="text-align:center;">Interface</th>
-    <th style="text-align:center;">IP do Container</th>
-    <th style="text-align:center;">Sub-rede</th>
-  </tr>
-  <tr>
-    <td style="text-align:center;">eth0</td>
-    <td style="text-align:center;">10.10.10.2</td>
-    <td style="text-align:center;">10.10.10.0/24</td>
-  </tr>
-  <tr>
-    <td style="text-align:center;">eth1</td>
-    <td style="text-align:center;">10.10.50.5</td>
-    <td style="text-align:center;">10.10.50.0/24</td>
-  </tr>
-  <tr>
-    <td style="text-align:center;">eth2</td>
-    <td style="text-align:center;">10.10.30.2</td>
-    <td style="text-align:center;">10.10.30.0/24</td>
-  </tr>
-</table>
+<div align="center">
+    <table style="border-collapse: collapse; text-align: center;">
+        <tr>
+            <th style="text-align:center;">Interface</th>
+            <th style="text-align:center;">IP do Container</th>
+            <th style="text-align:center;">Sub-rede</th>
+        </tr>
+        <tr>
+            <td style="text-align:center;">eth0</td>
+            <td style="text-align:center;">10.10.10.2</td>
+            <td style="text-align:center;">10.10.10.0/24</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;">eth1</td>
+            <td style="text-align:center;">10.10.50.5</td>
+            <td style="text-align:center;">10.10.50.0/24</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;">eth2</td>
+            <td style="text-align:center;">10.10.30.2</td>
+            <td style="text-align:center;">10.10.30.0/24</td>
+        </tr>
+    </table>
+</div>
 
 Essa configuração permite ao Analyst visibilidade e capacidade de análise em múltiplos segmentos da rede, facilitando o levantamento dos ativos e a avaliação de segmentação e riscos.
 
-## Diagnóstico (Achados)
-
-### Sub-rede 10.10.10.0/24
-
-<div align="center">
-    <table border="1" style="border-collapse: collapse; text-align: center;">
-        <thead>
-            <tr>
-                <th style="padding: 5px; text-align: center;">Host/IP</th>
-                <th style="padding: 5px; text-align: center;">Serviço</th>
-                <th style="padding: 5px; text-align: center;">Risco identificado</th>
-                <th style="padding: 5px; text-align: center;">Evidência</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td><div style="text-align:center;">IP 1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-            <tr><td><div style="text-align:center;">IP 2</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-            <tr><td><div style="text-align:center;">IP 3</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-            <tr><td><div style="text-align:center;">IP 4</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-            <tr><td><div style="text-align:center;">IP 5</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
-        </tbody>
-    </table>
-</div>
-
-### Sub-rede 10.10.30.0/24
-
-<div align="center">
-    <table border="1" style="border-collapse: collapse; text-align: center;">
-        <thead>
-            <tr>
-                <th style="padding: 5px; text-align: center;">Host/IP</th>
-                <th style="padding: 5px; text-align: center;">Serviço</th>
-                <th style="padding: 5px; text-align: center;">Risco identificado</th>
-                <th style="padding: 5px; text-align: center;">Evidência</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
-        </tbody>
-    </table>
-</div>
-
-### Sub-rede 10.10.50.0/24
-
-<div align="center">
-    <table border="1" style="border-collapse: collapse; text-align: center;">
-        <thead>
-            <tr>
-                <th style="padding: 5px; text-align: center;">Host/IP</th>
-                <th style="padding: 5px; text-align: center;">Serviço</th>
-                <th style="padding: 5px; text-align: center;">Risco identificado</th>
-                <th style="padding: 5px; text-align: center;">Evidência</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
-        </tbody>
-    </table>
-</div>
-
-
-
-
 ### Hosts e Serviços Identificados
+
+<div align="center">
+    <h3>Sub-rede 10.10.10.0/24</h3>
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">Host/IP</th>
+                <th style="padding: 5px; text-align: center;">Serviço</th>
+                <th style="padding: 5px; text-align: center;">Risco identificado</th>
+                <th style="padding: 5px; text-align: center;">Evidência</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><div align="center">IP 1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td><div align="center">IP 2</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td><div align="center">IP 3</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td><div align="center">IP 4</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td><div align="center">IP 5</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div align="center">
+    <h3>Sub-rede 10.10.30.0/24</h3>
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">Host/IP</th>
+                <th style="padding: 5px; text-align: center;">Serviço</th>
+                <th style="padding: 5px; text-align: center;">Risco identificado</th>
+                <th style="padding: 5px; text-align: center;">Evidência</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div align="center">
+    <h3>Sub-rede 10.10.50.0/24</h3>
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">Host/IP</th>
+                <th style="padding: 5px; text-align: center;">Serviço</th>
+                <th style="padding: 5px; text-align: center;">Risco identificado</th>
+                <th style="padding: 5px; text-align: center;">Evidência</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>IP 1</td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td>IP 2</td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td>IP 3</td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td>IP 4</td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td>IP 5</td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<!-- ### Hosts e Serviços Identificados
 
 - **[Host/IP]** - **[Serviço]** - **[Porta]**  
 - **Risco identificado:** Descrever o risco encontrado relacionado a esse host/serviço.  
-- **Evidência:** Inserir trecho do output do scan, captura ou referência ao arquivo com evidências.  
+- **Evidência:** Inserir trecho do output do scan, captura ou referência ao arquivo com evidências.   -->
 
 
 
