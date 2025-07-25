@@ -33,6 +33,7 @@ O container Analyst está conectado a três interfaces de rede, cada uma pertenc
     <table style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
+                <th style="padding: 5px; text-align: center;">Nome da rede</th>
                 <th style="padding: 5px; text-align: center;">Interface</th>
                 <th style="padding: 5px; text-align: center;">IP do Container</th>
                 <th style="padding: 5px; text-align: center;">Sub-rede</th>
@@ -40,16 +41,19 @@ O container Analyst está conectado a três interfaces de rede, cada uma pertenc
         </thead>
         <tbody>
             <tr>
+                <td><div align="center">corp_net</div></td>
                 <td><div align="center">eth0</div></td>
                 <td><div align="center">10.10.10.2</div></td>
                 <td><div align="center">10.10.10.0/24</div></td>
             </tr>
             <tr>
+                <td><div align="center">infra_net</div></td>
                 <td><div align="center">eth1</div></td>
                 <td><div align="center">10.10.50.5</div></td>
                 <td><div align="center">10.10.50.0/24</div></td>
             </tr>
             <tr>
+                <td><div align="center">guest_net</div></td>
                 <td><div align="center">eth2</div></td>
                 <td><div align="center">10.10.30.2</div></td>
                 <td><div align="center">10.10.30.0/24</div></td>
@@ -64,7 +68,7 @@ Essa configuração permite ao Analyst visibilidade e capacidade de análise em 
 ### Hosts e Serviços Identificados
 
 <div align="center">
-    <h3>Sub-rede 10.10.10.0/24</h3>
+    <h3>Sub-rede 10.10.10.0/24 (corp_net)</h3>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -75,17 +79,17 @@ Essa configuração permite ao Analyst visibilidade e capacidade de análise em 
             </tr>
         </thead>
         <tbody>
-            <tr><td><div align="center">IP 1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-            <tr><td><div align="center">IP 2</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-            <tr><td><div align="center">IP 3</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-            <tr><td><div align="center">IP 4</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-            <tr><td><div align="center">IP 5</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+            <tr><td><div align="center">10.10.10.1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td><div align="center">10.10.10.10</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td><div align="center">10.10.10.101</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td><div align="center">10.10.10.127</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td><div align="center">10.10.10.222</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
         </tbody>
     </table>
 </div>
 
 <div align="center">
-    <h3>Sub-rede 10.10.30.0/24</h3>
+    <h3>Sub-rede 10.10.30.0/24 (guest_net)</h3>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -96,17 +100,19 @@ Essa configuração permite ao Analyst visibilidade e capacidade de análise em 
             </tr>
         </thead>
         <tbody>
-            <tr><td><div align="center">IP 1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-            <tr><td><div align="center">IP 2</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-            <tr><td><div align="center">IP 3</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-            <tr><td><div align="center">IP 4</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-            <tr><td><div align="center">IP 5</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+            <tr><td><div align="center">10.10.30.1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td><div align="center">10.10.30.10</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td><div align="center">10.10.30.11</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td><div align="center">10.10.30.15</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td><div align="center">10.10.30.17</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+            <tr><td><div align="center">10.10.30.117</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+            <tr><td><div align="center">10.10.30.227</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
         </tbody>
     </table>
 </div>
 
 <div align="center">
-    <h3>Sub-rede 10.10.50.0/24</h3>
+    <h3>Sub-rede 10.10.50.0/24 (infra_net)</h3>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -117,11 +123,11 @@ Essa configuração permite ao Analyst visibilidade e capacidade de análise em 
             </tr>
         </thead>
         <tbody>
-            <tr><td><div align="center">IP 1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
-            <tr><td><div align="center">IP 2</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
-            <tr><td><div align="center">IP 3</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
-            <tr><td><div align="center">IP 4</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
-            <tr><td><div align="center">IP 5</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
+            <tr><td><div align="center">10.10.50.1</div></td><td>Serviço X</td><td>Descrever risco do host 1</td><td>Referência ao output ou trecho 1</td></tr>
+            <tr><td><div align="center">10.10.50.2</div></td><td>Serviço X</td><td>Descrever risco do host 2</td><td>Referência ao output ou trecho 2</td></tr>
+            <tr><td><div align="center">10.10.50.3</div></td><td>Serviço X</td><td>Descrever risco do host 3</td><td>Referência ao output ou trecho 3</td></tr>
+            <tr><td><div align="center">10.10.50.4</div></td><td>Serviço X</td><td>Descrever risco do host 4</td><td>Referência ao output ou trecho 4</td></tr>
+            <tr><td><div align="center">10.10.50.6</div></td><td>Serviço X</td><td>Descrever risco do host 5</td><td>Referência ao output ou trecho 5</td></tr>
         </tbody>
     </table>
 </div>
@@ -164,18 +170,18 @@ Outputs:
     - [docker_networks.txt](./outputs/environments/docker_networks.txt)
 - [networks](./outputs/networks/):
     - [network_interfaces.txt](./outputs/networks/network_interfaces.txt)
-    - [eth0](./outputs/eth0/):
-        - [arp-netdiscover_eth0.txt](./outputs/networks/eth0/arp-netdiscover_eth0.txt)
-        - [nmap_eth0.txt](./outputs/networks/eth0/nmap_eth0.txt)
-        - [rustscan_eth0.txt](./outputs/networks/eth0/rustscan_eth0.txt)
-    - [eth1](./outputs/eth1/):
-        - [arp-netdiscover_eth1.txt](./outputs/networks/eth1/arp-netdiscover_eth1.txt)
-        - [nmap_eth1.txt](./outputs/networks/eth1/nmap_eth1.txt)
-        - [rustscan_eth1.txt](./outputs/networks/eth1/rustscan_eth1.txt)
-    - [eth2](./outputs/eth2/):
-        - [arp-netdiscover_eth2.txt](./outputs/networks/eth2/arp-netdiscover_eth2.txt)
-        - [nmap_eth2.txt](./outputs/networks/eth2/nmap_eth2.txt)
-        - [rustscan_eth2.txt](./outputs/networks/eth2/rustscan_eth2.txt)
+    - [corp_net](./outputs/corp_net/):
+        - [arp-netdiscover.txt](./outputs/networks/corp_net/arp-netdiscover.txt)
+        - [nmap.txt](./outputs/networks/corp_net/nmap.txt)
+        - [rustscan.txt](./outputs/networks/corp_net/rustscan.txt)
+    - [guest_net](./outputs/guest_net/):
+        - [arp-netdiscover.txt](./outputs/networks/guest_net/arp-netdiscover.txt)
+        - [nmap.txt](./outputs/networks/guest_net/nmap.txt)
+        - [rustscan.txt](./outputs/networks/guest_net/rustscan.txt)
+    - [infra_net](./outputs/infra_net/):
+        - [arp-netdiscover.txt](./outputs/networks/infra_net/arp-netdiscover.txt)
+        - [nmap.txt](./outputs/networks/infra_net/nmap.txt)
+        - [rustscan.txt](./outputs/networks/infra_net/rustscan.txt)
 - [tools](./outputs/tools/):
     - [arp-netdiscover.txt](./outputs/tools/arp-netdiscover.txt)
     - [nmap-rustscan.txt](./outputs/tools/nmap-rustscan.txt)
