@@ -1,0 +1,44 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# nmap -sn -T4 10.10.10.0/24 -oG - | awk '/Up$/{print $2, $3}' | tee corp_net_ips_hosts.txt
+10.10.10.1 (ip-10-10-10-1.ec2.internal)
+10.10.10.10 (WS_001.projeto_final_opcao_1_corp_net)
+10.10.10.101 (WS_002.projeto_final_opcao_1_corp_net)
+10.10.10.127 (WS_003.projeto_final_opcao_1_corp_net)
+10.10.10.222 (WS_004.projeto_final_opcao_1_corp_net)
+10.10.10.2 (81961e6c169a)
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# arp-scan --interface=eth0 --localnet
+Interface: eth0, type: EN10MB, MAC: de:21:1a:c1:de:48, IPv4: 10.10.10.2
+WARNING: Cannot open MAC/Vendor file ieee-oui.txt: Permission denied
+WARNING: Cannot open MAC/Vendor file mac-vendor.txt: Permission denied
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+10.10.10.1      52:8f:08:37:7a:6a       (Unknown: locally administered)
+10.10.10.10     d2:8c:a5:25:c0:c2       (Unknown: locally administered)
+10.10.10.101    96:93:ad:25:d6:5f       (Unknown: locally administered)
+10.10.10.127    e6:a8:39:11:49:2b       (Unknown: locally administered)
+10.10.10.222    a6:ab:68:aa:3b:70       (Unknown: locally administered)
+
+5 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.10.0: 256 hosts scanned in 1.789 seconds (143.10 hosts/sec). 5 responded
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# netdiscover -i eth0 -r 10.10.10.0/24 -P
+ _____________________________________________________________________________
+   IP            At MAC Address     Count     Len  MAC Vendor / Hostname
+ -----------------------------------------------------------------------------
+ 10.10.10.1      52:8f:08:37:7a:6a      1      42  Unknown vendor
+ 10.10.10.10     d2:8c:a5:25:c0:c2      1      42  Unknown vendor
+ 10.10.10.101    96:93:ad:25:d6:5f      1      42  Unknown vendor
+ 10.10.10.127    e6:a8:39:11:49:2b      1      42  Unknown vendor
+ 10.10.10.222    a6:ab:68:aa:3b:70      1      42  Unknown vendor
+
+-- Active scan completed, 5 Hosts found.

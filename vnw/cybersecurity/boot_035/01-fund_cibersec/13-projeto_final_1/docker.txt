@@ -1,0 +1,30 @@
+ubuntu@ip-172-31-23-198:~$ docker ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED       STATUS                 PORTS                           NAMES
+b9a4cd14efdc   dperson/samba                   "/sbin/tini -- /usr/…"   8 hours ago   Up 8 hours (healthy)   139/tcp, 137-138/udp, 445/tcp   samba-server
+130c5f8e9a21   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             WS_002
+f37b1441250a   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             laptop-vastro
+1dc19637fc7e   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             WS_003
+d407663d7112   stilliard/pure-ftpd             "/bin/sh -c '/run.sh…"   8 hours ago   Up 8 hours             21/tcp, 30000-30009/tcp         ftp-server
+81961e6c169a   projeto_final_opcao_1-analyst   "tail -f /dev/null"      8 hours ago   Up 8 hours                                             analyst
+b4ad64344db5   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             laptop-luiz
+38f07d2c7cd9   zabbix/zabbix-appliance         "/sbin/tini -- /usr/…"   8 hours ago   Up 8 hours             80/tcp, 443/tcp, 10051/tcp      zabbix-server
+012c8913b870   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             WS_004
+dacc53cda6d1   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             legacy-server
+6328492df97c   osixia/openldap                 "/container/tool/run"    8 hours ago   Up 8 hours             389/tcp, 636/tcp                openldap
+43054fc40a7b   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             macbook-aline
+b8581709a001   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             WS_001
+a0f8a638a1c6   ubuntu                          "tail -f /dev/null"      8 hours ago   Up 8 hours                                             notebook-carlos
+1265c91792c2   mysql:8.0                       "docker-entrypoint.s…"   8 hours ago   Up 8 hours             3306/tcp, 33060/tcp             mysql-server
+
+
+---
+
+
+ubuntu@ip-172-31-23-198:~$ docker network ls
+NETWORK ID     NAME                              DRIVER    SCOPE
+2d83e8d489dc   bridge                            bridge    local
+b20806281b23   host                              host      local
+2d16195d5e10   none                              null      local
+1e11def0bec3   projeto_final_opcao_1_corp_net    bridge    local
+594567f70831   projeto_final_opcao_1_guest_net   bridge    local
+fd2a1a3a7ae8   projeto_final_opcao_1_infra_net   bridge    local

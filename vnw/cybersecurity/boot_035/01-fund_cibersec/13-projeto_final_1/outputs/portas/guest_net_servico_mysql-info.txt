@@ -1,0 +1,83 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# nmap -p 3306 --script mysql-info 10.10.30.11 > guest_net_servico_mysql-info.txt
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ls
+corp_net_ips.txt        guest_net_ips.txt        guest_net_servico_ftp-anon.txt    guest_net_servico_zabbix.txt  infra_net_ips_ports.txt
+corp_net_ips_hosts.txt  guest_net_ips_hosts.txt  guest_net_servico_mysql-info.txt  infra_net_ips.txt             recon-redes.txt
+corp_net_ips_ports.txt  guest_net_ips_ports.txt  guest_net_servico_webserver.txt   infra_net_ips_hosts.txt       recon_ip_maps.txt
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# cat guest_net_servico_mysql-info.txt
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-27 01:14 UTC
+Nmap scan report for mysql-server.projeto_final_opcao_1_infra_net (10.10.30.11)
+Host is up (0.000059s latency).
+
+PORT     STATE SERVICE
+3306/tcp open  mysql
+| mysql-info:
+|   Protocol: 10
+|   Version: 8.0.43
+|   Thread ID: 29
+|   Capabilities flags: 65535
+|   Some Capabilities: Support41Auth, FoundRows, Speaks41ProtocolOld, Speaks41ProtocolNew, LongColumnFlag, SupportsCompression, LongPassword, SupportsTransactions, SupportsLoadDataLocal, IgnoreSpaceBeforeParenthesis, IgnoreSigpipes, SwitchToSSLAfterHandshake, ODBCClient, InteractiveClient, ConnectWithDatabase, DontAllowDatabaseTableColumn, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: i=Eg .\x05\x1A2UKI\x07Ad"s\x1CAw
+|_  Auth Plugin Name: caching_sha2_password
+MAC Address: DE:30:2E:C9:D4:98 (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# mysql -h 10.10.30.11 -P 3306 -u root -p
+Enter password:
+WARNING: option --ssl-verify-server-cert is disabled, because of an insecure passwordless login.
+ERROR 1045 (28000): Access denied for user 'root'@'10.10.30.2' (using password: NO)
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# mysql -h 10.10.30.11 -P 3306 -u root -p
+Enter password:
+ERROR 2026 (HY000): TLS/SSL error: self-signed certificate in certificate chain
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# mysql -h 10.10.30.11 -P 3306 -u root -p --ssl --ssl-verify-server-cert=FALSE
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 28
+Server version: 8.0.43 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.001 sec)
+
+MySQL [(none)]> create database hacker;
+Query OK, 1 row affected (0.010 sec)
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hacker             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.001 sec)
+
+MySQL [(none)]>

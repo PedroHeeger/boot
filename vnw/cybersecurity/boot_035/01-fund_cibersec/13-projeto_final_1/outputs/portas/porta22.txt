@@ -1,0 +1,61 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh -V
+OpenSSH_10.0p2 Debian-5, OpenSSL 3.5.0 8 Apr 2025
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh root@10.10.50.1
+The authenticity of host '10.10.50.1 (10.10.50.1)' can't be established.
+ED25519 key fingerprint is SHA256:/FOQPDjP801wnVJhmfzvs+0gxur7zueNOLN7WOCINMA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.50.1' (ED25519) to the list of known hosts.
+root@10.10.50.1: Permission denied (publickey).
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh root@10.10.50.1
+root@10.10.50.1: Permission denied (publickey).
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh root@10.10.30.1
+The authenticity of host '10.10.30.1 (10.10.30.1)' can't be established.
+ED25519 key fingerprint is SHA256:/FOQPDjP801wnVJhmfzvs+0gxur7zueNOLN7WOCINMA.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.30.1' (ED25519) to the list of known hosts.
+root@10.10.30.1: Permission denied (publickey).
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh root@10.10.30.1
+root@10.10.30.1: Permission denied (publickey).
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh root@10.10.10.1
+The authenticity of host '10.10.10.1 (10.10.10.1)' can't be established.
+ED25519 key fingerprint is SHA256:/FOQPDjP801wnVJhmfzvs+0gxur7zueNOLN7WOCINMA.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: [hashed name]
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.10.10.1' (ED25519) to the list of known hosts.
+root@10.10.10.1: Permission denied (publickey).
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh root@10.10.10.1
+root@10.10.10.1: Permission denied (publickey).
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh ubuntu@10.10.10.1
+ubuntu@10.10.10.1: Permission denied (publickey).
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh ubuntu@10.10.30.1
+ubuntu@10.10.30.1: Permission denied (publickey).
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ssh ubuntu@10.10.50.1
+ubuntu@10.10.50.1: Permission denied (publickey).

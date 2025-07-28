@@ -1,0 +1,90 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# nmap -p 389 --script ldap-rootdse 10.10.30.17 > guest_net_servico_ldap-rootdse.txt
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ls
+corp_net_ips.txt        guest_net_ips.txt        guest_net_servico_ftp-anon.txt      guest_net_servico_webserver.txt  infra_net_ips_hosts.txt  recon_ip_maps.txt
+corp_net_ips_hosts.txt  guest_net_ips_hosts.txt  guest_net_servico_ldap-rootdse.txt  guest_net_servico_zabbix.txt     infra_net_ips_ports.txt
+corp_net_ips_ports.txt  guest_net_ips_ports.txt  guest_net_servico_mysql-info.txt    infra_net_ips.txt                recon-redes.txt
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# cat guest_net_servico_ldap-rootdse.txt
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-27 01:18 UTC
+Nmap scan report for openldap.projeto_final_opcao_1_infra_net (10.10.30.17)
+Host is up (0.000056s latency).
+
+PORT    STATE SERVICE
+389/tcp open  ldap
+| ldap-rootdse:
+| LDAP Results
+|   <ROOT>
+|       namingContexts: dc=example,dc=org
+|       supportedControl: 2.16.840.1.113730.3.4.18
+|       supportedControl: 2.16.840.1.113730.3.4.2
+|       supportedControl: 1.3.6.1.4.1.4203.1.10.1
+|       supportedControl: 1.3.6.1.1.22
+|       supportedControl: 1.2.840.113556.1.4.319
+|       supportedControl: 1.2.826.0.1.3344810.2.3
+|       supportedControl: 1.3.6.1.1.13.2
+|       supportedControl: 1.3.6.1.1.13.1
+|       supportedControl: 1.3.6.1.1.12
+|       supportedExtension: 1.3.6.1.4.1.1466.20037
+|       supportedExtension: 1.3.6.1.4.1.4203.1.11.1
+|       supportedExtension: 1.3.6.1.4.1.4203.1.11.3
+|       supportedExtension: 1.3.6.1.1.8
+|       supportedLDAPVersion: 3
+|       supportedSASLMechanisms: GS2-IAKERB
+|       supportedSASLMechanisms: GS2-KRB5
+|       supportedSASLMechanisms: SCRAM-SHA-1
+|       supportedSASLMechanisms: SCRAM-SHA-256
+|       supportedSASLMechanisms: GSSAPI
+|       supportedSASLMechanisms: GSS-SPNEGO
+|       supportedSASLMechanisms: DIGEST-MD5
+|       supportedSASLMechanisms: OTP
+|       supportedSASLMechanisms: NTLM
+|       supportedSASLMechanisms: CRAM-MD5
+|_      subschemaSubentry: cn=Subschema
+MAC Address: 12:EF:DD:EB:68:56 (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.16 seconds
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ldapsearch -x -H ldap://10.10.30.17 -b dc=example,dc=org
+# extended LDIF
+#
+# LDAPv3
+# base <dc=example,dc=org> with scope subtree
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# search result
+search: 2
+result: 32 No such object
+
+# numResponses: 1
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ldapsearch -x -H ldap://10.10.30.17 -s base -b "" namingContexts
+# extended LDIF
+#
+# LDAPv3
+# base <> with scope baseObject
+# filter: (objectclass=*)
+# requesting: namingContexts
+#
+
+#
+dn:
+namingContexts: dc=example,dc=org
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 2
+# numEntries: 1

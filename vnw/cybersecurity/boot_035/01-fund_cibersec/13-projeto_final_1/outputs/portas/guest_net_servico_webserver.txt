@@ -1,0 +1,35 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# curl -I http://10.10.30.117 > guest_net_servico_webserver.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# ls
+corp_net_ips.txt        corp_net_ips_ports.txt  guest_net_ips_hosts.txt  guest_net_servico_webserver.txt  infra_net_ips_hosts.txt  recon-redes.txt
+corp_net_ips_hosts.txt  guest_net_ips.txt       guest_net_ips_ports.txt  infra_net_ips.txt                infra_net_ips_ports.txt  recon_ip_maps.txt
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# cat guest_net_servico_webserver.txt
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 27 Jul 2025 00:46:30 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Keep-Alive: timeout=20
+X-Powered-By: PHP/7.3.14
+Set-Cookie: PHPSESSID=f422e8da6825f38f75b9255d1ef8e5e4; HttpOnly
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# zabbix_get -s 10.10.30.117 -p 10051 -k agent.ping
+zabbix_get [2134]: Check access restrictions in Zabbix agent configuration

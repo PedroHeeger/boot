@@ -1,0 +1,48 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# arp-scan --version
+arp-scan 1.10.0
+
+Copyright (C) 2005-2022 Roy Hills
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+libpcap version 1.10.5 (with TPACKET_V3)
+Built with libcap POSIX.1e capability support.
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# netdiscover -h
+Netdiscover 0.11 [Active/passive ARP reconnaissance tool]
+Written by: Jaime Penalba <jpenalbae@gmail.com>
+
+Usage: netdiscover [-i device] [-r range | -l file | -p] [-m file] [-F filter] [-s time] [-c count] [-n node] [-dfPLNS]
+  -i device: your network device
+  -r range: scan a given range instead of auto scan. 192.168.6.0/24,/16,/8
+  -l file: scan the list of ranges contained into the given file
+  -p passive mode: do not send anything, only sniff
+  -m file: scan a list of known MACs and host names
+  -F filter: customize pcap filter expression (default: "arp")
+  -s time: time to sleep between each ARP request (milliseconds)
+  -c count: number of times to send each ARP request (for nets with packet loss)
+  -n node: last source IP octet used for scanning (from 2 to 253)
+  -d ignore home config files for autoscan and fast mode
+  -R assume user is root or has the required capabilities without running any checks
+  -f enable fastmode scan, saves a lot of time, recommended for auto
+  -P print results in a format suitable for parsing by another program and stop after active scan
+  -L similar to -P but continue listening after the active scan is completed
+  -N Do not print header. Only valid when -P or -L is enabled.
+  -S enable sleep time suppression between each request (hardcore mode)
+
+If -r, -l or -p are not enabled, netdiscover will scan for common LAN addresses.
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# nmap --version
+Nmap version 7.95 ( https://nmap.org )
+Platform: x86_64-pc-linux-gnu
+Compiled with: liblua-5.4.7 openssl-3.5.0 libssh2-1.11.1 libz-1.3.1 libpcre2-10.45 libpcap-1.10.5 nmap-libdnet-1.12 ipv6
+Compiled without:
+Available nsock engines: epoll poll select
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# rustscan --version
+rustscan 2.0.0

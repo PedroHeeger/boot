@@ -1,0 +1,50 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# nmap -sn -T4 10.10.30.0/24 -oG - | awk '/Up$/{print $2, $3}' | tee guest_net_ips_hosts.txt
+10.10.30.1 (ip-10-10-30-1.ec2.internal)
+10.10.30.10 (ftp-server.projeto_final_opcao_1_infra_net)
+10.10.30.11 (mysql-server.projeto_final_opcao_1_infra_net)
+10.10.30.15 (samba-server.projeto_final_opcao_1_infra_net)
+10.10.30.17 (openldap.projeto_final_opcao_1_infra_net)
+10.10.30.117 (zabbix-server.projeto_final_opcao_1_infra_net)
+10.10.30.227 (legacy-server.projeto_final_opcao_1_infra_net)
+10.10.30.2 (81961e6c169a)
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# arp-scan --interface=eth2 --localnet
+Interface: eth2, type: EN10MB, MAC: b2:76:3f:32:7e:31, IPv4: 10.10.30.2
+WARNING: Cannot open MAC/Vendor file ieee-oui.txt: Permission denied
+WARNING: Cannot open MAC/Vendor file mac-vendor.txt: Permission denied
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+10.10.30.1      1a:b1:bd:4f:1d:60       (Unknown: locally administered)
+10.10.30.10     46:49:32:91:88:81       (Unknown: locally administered)
+10.10.30.11     de:30:2e:c9:d4:98       (Unknown: locally administered)
+10.10.30.15     4a:6b:87:64:47:5b       (Unknown: locally administered)
+10.10.30.17     12:ef:dd:eb:68:56       (Unknown: locally administered)
+10.10.30.117    0e:9d:3f:fc:88:a5       (Unknown: locally administered)
+10.10.30.227    5a:55:86:88:7a:51       (Unknown: locally administered)
+
+7 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.10.0: 256 hosts scanned in 1.790 seconds (143.02 hosts/sec). 7 responded
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# netdiscover -i eth2 -r 10.10.30.0/24 -P
+ _____________________________________________________________________________
+   IP            At MAC Address     Count     Len  MAC Vendor / Hostname
+ -----------------------------------------------------------------------------
+ 10.10.30.1      1a:b1:bd:4f:1d:60      1      42  Unknown vendor
+ 10.10.30.10     46:49:32:91:88:81      1      42  Unknown vendor
+ 10.10.30.11     de:30:2e:c9:d4:98      1      42  Unknown vendor
+ 10.10.30.15     4a:6b:87:64:47:5b      1      42  Unknown vendor
+ 10.10.30.17     12:ef:dd:eb:68:56      1      42  Unknown vendor
+ 10.10.30.117    0e:9d:3f:fc:88:a5      1      42  Unknown vendor
+ 10.10.30.227    5a:55:86:88:7a:51      1      42  Unknown vendor
+
+-- Active scan completed, 7 Hosts found.

@@ -1,0 +1,160 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# rustscan -a 'infra_net_ips.txt' | grep Open > infra_net_ips_ports.txt
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# cat infra_net_ips_ports.txt
+Open 10.10.50.1:22
+Open 10.10.50.6:56622
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# nmap -sV -O -Pn 10.10.50.0/24
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-26 17:07 UTC
+Nmap scan report for ip-10-10-50-1.ec2.internal (10.10.50.1)
+Host is up (0.000068s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.12 (Ubuntu Linux; protocol 2.0)
+MAC Address: 82:67:5D:5B:F9:8D (Unknown)
+Device type: general purpose|router
+Running: Linux 4.X|5.X, MikroTik RouterOS 7.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 cpe:/o:mikrotik:routeros:7 cpe:/o:linux:linux_kernel:5.6.3
+OS details: Linux 4.15 - 5.19, OpenWrt 21.02 (Linux 5.4), MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3)
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for notebook-carlos.projeto_final_opcao_1_guest_net (10.10.50.2)
+Host is up (0.000050s latency).
+All 1000 scanned ports on notebook-carlos.projeto_final_opcao_1_guest_net (10.10.50.2) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 92:B2:39:EB:80:EB (Unknown)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+Nmap scan report for macbook-aline.projeto_final_opcao_1_guest_net (10.10.50.3)
+Host is up (0.000012s latency).
+All 1000 scanned ports on macbook-aline.projeto_final_opcao_1_guest_net (10.10.50.3) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 0A:ED:CC:2C:F1:CD (Unknown)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+Nmap scan report for laptop-luiz.projeto_final_opcao_1_guest_net (10.10.50.4)
+Host is up (0.000010s latency).
+All 1000 scanned ports on laptop-luiz.projeto_final_opcao_1_guest_net (10.10.50.4) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 7E:78:E9:50:E7:C6 (Unknown)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+Nmap scan report for laptop-vastro.projeto_final_opcao_1_guest_net (10.10.50.5)
+Host is up (0.0000080s latency).
+All 1000 scanned ports on laptop-vastro.projeto_final_opcao_1_guest_net (10.10.50.5) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: D2:8B:88:D2:23:FD (Unknown)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+Nmap scan report for 81961e6c169a (10.10.50.6)
+Host is up (0.000055s latency).
+All 1000 scanned ports on 81961e6c169a (10.10.50.6) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 0 hops
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 256 IP addresses (6 hosts up) scanned in 6.14 seconds
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# rustscan -a 'infra_net_ips.txt'
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+🌍HACK THE PLANET🌍
+
+[~] The config file is expected to be at "/root/.rustscan.toml"
+[~] File limit higher than batch size. Can increase speed by increasing batch size '-b 1048476'.
+Open 10.10.50.1:22
+Open 10.10.50.6:42152
+Open 10.10.50.6:60892
+[!] Looks like I didn't find any open ports for 10.10.50.2. This is usually caused by a high batch size.
+
+*I used 4500 batch size, consider lowering it with 'rustscan -b <batch_size> <ip address>' or a comfortable number for your system.
+
+ Alternatively, increase the timeout if your ping is high. Rustscan -t 2000 for 2000 milliseconds (2s) timeout.
+
+[!] Looks like I didn't find any open ports for 10.10.50.3. This is usually caused by a high batch size.
+
+*I used 4500 batch size, consider lowering it with 'rustscan -b <batch_size> <ip address>' or a comfortable number for your system.
+
+ Alternatively, increase the timeout if your ping is high. Rustscan -t 2000 for 2000 milliseconds (2s) timeout.
+
+[!] Looks like I didn't find any open ports for 10.10.50.4. This is usually caused by a high batch size.
+
+*I used 4500 batch size, consider lowering it with 'rustscan -b <batch_size> <ip address>' or a comfortable number for your system.
+
+ Alternatively, increase the timeout if your ping is high. Rustscan -t 2000 for 2000 milliseconds (2s) timeout.
+
+[!] Looks like I didn't find any open ports for 10.10.50.5. This is usually caused by a high batch size.
+
+*I used 4500 batch size, consider lowering it with 'rustscan -b <batch_size> <ip address>' or a comfortable number for your system.
+
+ Alternatively, increase the timeout if your ping is high. Rustscan -t 2000 for 2000 milliseconds (2s) timeout.
+
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+[~] Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-26 17:13 UTC
+Initiating SYN Stealth Scan at 17:13
+Scanning 81961e6c169a (10.10.50.6) [2 ports]
+Completed SYN Stealth Scan at 17:13, 0.01s elapsed (2 total ports)
+Nmap scan report for 81961e6c169a (10.10.50.6)
+Host is up, received localhost-response (0.000047s latency).
+Scanned at 2025-07-26 17:13:48 UTC for 0s
+
+PORT      STATE  SERVICE REASON
+42152/tcp closed unknown reset ttl 64
+60892/tcp closed unknown reset ttl 64
+
+Read data files from: /usr/share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+           Raw packets sent: 2 (88B) | Rcvd: 4 (168B)
+
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+[~] Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-26 17:13 UTC
+Initiating ARP Ping Scan at 17:13
+Scanning 10.10.50.1 [1 port]
+Completed ARP Ping Scan at 17:13, 0.04s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:13
+Completed Parallel DNS resolution of 1 host. at 17:13, 0.00s elapsed
+DNS resolution of 1 IPs took 0.00s. Mode: Async [#: 1, OK: 1, NX: 0, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 17:13
+Scanning ip-10-10-50-1.ec2.internal (10.10.50.1) [1 port]
+Discovered open port 22/tcp on 10.10.50.1
+Completed SYN Stealth Scan at 17:13, 0.01s elapsed (1 total ports)
+Nmap scan report for ip-10-10-50-1.ec2.internal (10.10.50.1)
+Host is up, received arp-response (0.000053s latency).
+Scanned at 2025-07-26 17:13:48 UTC for 0s
+
+PORT   STATE SERVICE REASON
+22/tcp open  ssh     syn-ack ttl 64
+MAC Address: 82:67:5D:5B:F9:8D (Unknown)
+
+Read data files from: /usr/share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 0.10 seconds
+           Raw packets sent: 2 (72B) | Rcvd: 2 (72B)

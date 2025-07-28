@@ -1,0 +1,44 @@
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# nmap -sn -T4 10.10.50.0/24 -oG - | awk '/Up$/{print $2, $3}' | tee infra_net_ips_hosts.txt
+10.10.50.1 (ip-10-10-50-1.ec2.internal)
+10.10.50.2 (notebook-carlos.projeto_final_opcao_1_guest_net)
+10.10.50.3 (macbook-aline.projeto_final_opcao_1_guest_net)
+10.10.50.4 (laptop-luiz.projeto_final_opcao_1_guest_net)
+10.10.50.5 (laptop-vastro.projeto_final_opcao_1_guest_net)
+10.10.50.6 (81961e6c169a)
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# arp-scan --interface=eth1 --localnet
+Interface: eth1, type: EN10MB, MAC: 2e:2f:28:50:79:b0, IPv4: 10.10.50.6
+WARNING: Cannot open MAC/Vendor file ieee-oui.txt: Permission denied
+WARNING: Cannot open MAC/Vendor file mac-vendor.txt: Permission denied
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+10.10.50.1      82:67:5d:5b:f9:8d       (Unknown: locally administered)
+10.10.50.2      92:b2:39:eb:80:eb       (Unknown: locally administered)
+10.10.50.3      0a:ed:cc:2c:f1:cd       (Unknown: locally administered)
+10.10.50.4      7e:78:e9:50:e7:c6       (Unknown: locally administered)
+10.10.50.5      d2:8b:88:d2:23:fd       (Unknown: locally administered)
+
+5 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.10.0: 256 hosts scanned in 1.786 seconds (143.34 hosts/sec). 5 responded
+
+
+---
+
+
+┌──(root㉿81961e6c169a)-[/home/analyst]
+└─# netdiscover -i eth1 -r 10.10.50.0/24 -P
+ _____________________________________________________________________________
+   IP            At MAC Address     Count     Len  MAC Vendor / Hostname
+ -----------------------------------------------------------------------------
+ 10.10.50.1      82:67:5d:5b:f9:8d      1      42  Unknown vendor
+ 10.10.50.2      92:b2:39:eb:80:eb      1      42  Unknown vendor
+ 10.10.50.3      0a:ed:cc:2c:f1:cd      1      42  Unknown vendor
+ 10.10.50.4      7e:78:e9:50:e7:c6      1      42  Unknown vendor
+ 10.10.50.5      d2:8b:88:d2:23:fd      1      42  Unknown vendor
+
+-- Active scan completed, 5 Hosts found.

@@ -78,7 +78,7 @@ O diagrama abaixo representa a topologia da rede analisada durante a execução 
 A máquina Analyst possui três interfaces de rede conectadas a sub-redes distintas da rede corporativa interna (corp_net, guest_net e infra_net), permitindo a coleta de informações e o levantamento dos ativos presentes em cada segmento da rede.
 
 <div align="center">
-    <table style="border-collapse: collapse; text-align: center;">
+    <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
                 <th style="padding: 5px; text-align: center;">Interface</th>
@@ -116,7 +116,7 @@ A máquina Analyst possui três interfaces de rede conectadas a sub-redes distin
 A seguir, estão listados os hosts ativos detectados em cada sub-rede da rede corporativa interna, com suas respectivas funções e sistemas operacionais, quando identificados. Essa catalogação auxilia na compreensão da infraestrutura e no planejamento de análises posteriores.
 
 <div align="center">
-    <h3>Sub-rede 10.10.10.0/24 (corp_net)</h3>
+    <h4>Sub-rede 10.10.10.0/24 (corp_net)</h4>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -138,7 +138,7 @@ A seguir, estão listados os hosts ativos detectados em cada sub-rede da rede co
 </div>
 
 <div align="center">
-    <h3>Sub-rede 10.10.30.0/24 (guest_net)</h3>
+    <h4>Sub-rede 10.10.30.0/24 (guest_net)</h4>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -162,7 +162,7 @@ A seguir, estão listados os hosts ativos detectados em cada sub-rede da rede co
 </div>
 
 <div align="center">
-    <h3>Sub-rede 10.10.50.0/24 (infra_net)</h3>
+    <h4>Sub-rede 10.10.50.0/24 (infra_net)</h4>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -189,7 +189,7 @@ A seguir, estão listados os hosts ativos detectados em cada sub-rede da rede co
 O levantamento a seguir apresenta as portas abertas identificadas em cada sub-rede da infraestrutura, os serviços correspondentes e os respectivos níveis de risco associados. A categorização de risco foi baseada em boas práticas de segurança, considerando a exposição dos serviços, presença de autenticação, e possibilidades de exploração. Evidências adicionais foram incluídas quando aplicável.
 
 <div align="center">
-    <h3>Sub-rede 10.10.10.0/24 (corp_net)</h3>
+    <h4>Sub-rede 10.10.10.0/24 (corp_net)</h4>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -209,7 +209,7 @@ O levantamento a seguir apresenta as portas abertas identificadas em cada sub-re
 </div>
 
 <div align="center">
-    <h3>Sub-rede 10.10.30.0/24 (guest_net)</h3>
+    <h4>Sub-rede 10.10.30.0/24 (guest_net)</h4>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -238,7 +238,7 @@ O levantamento a seguir apresenta as portas abertas identificadas em cada sub-re
 </div>
 
 <div align="center">
-    <h3>Sub-rede 10.10.50.0/24 (infra_net)</h3>
+    <h4>Sub-rede 10.10.50.0/24 (infra_net)</h4>
     <table border="1" style="border-collapse: collapse; text-align: center;">
         <thead>
             <tr>
@@ -260,58 +260,58 @@ O levantamento a seguir apresenta as portas abertas identificadas em cada sub-re
 
 ## Diagnósticos e Recomendações
 
-🔐 **SSH (porta 22)**
+🔐 **SSH (porta 22):** 🟠 Médio
 - SSH é utilizado para acesso remoto a dispositivos e servidores, especialmente em ambientes de administração de rede.  
 - Porta SSH aberta pode ser vetor de ataques caso não esteja devidamente configurada (ex: uso de senhas fracas, ausência de autenticação por chave, ou exposição desnecessária à internet).  
 - Provavelmente, por se tratar de roteadores físicos/virtuais em sub-redes distintas, a porta 22 precisa estar aberta para permitir a administração remota quando necessário. Entretanto, apenas funcionários autorizados devem ter esse acesso.  
 - **Recomendação:** validar políticas de acesso (definindo quais hosts podem acessar via SSH), exigir autenticação forte (preferencialmente com chaves) e utilizar firewall para mitigar riscos de acesso não autorizado e ataques de força bruta.  
 - **Situação:** foi realizado um teste de conexão a partir da máquina de análise para os três hosts de cada sub-rede, e em todos os casos foi solicitada a chave privada para autenticação. Isso indica a presença de um nível básico de segurança no controle de acesso remoto.
 
-📤 **FTP (porta 21)**
+📤 **FTP (porta 21):** 🔴 Alto
 - O FTP transmite dados em texto claro, incluindo credenciais (usuário e senha), facilitando a interceptação por atacantes na rede, especialmente em redes não confiáveis, o que representa um risco alto.
 - Embora o servidor não permita login anônimo, o que reduz a chance de acesso livre, o protocolo continua intrinsecamente inseguro por não criptografar os dados. Em ambientes internos corporativos, o risco imediato pode ser menor, mas o FTP ainda é considerado um ponto vulnerável.
 - **Recomendação:** substituir o FTP por protocolos mais seguros como SFTP ou FTPS, que garantem a criptografia dos dados e das credenciais durante a transmissão. Além disso, recomenda-se isolar o servidor da rede guest usando firewall e validar políticas de acesso para restringir usuários e redes autorizados a se conectar.
 - **Situação:** testes realizados a partir da máquina Analyst confirmaram que o login anônimo não é permitido, porém um ataque de força bruta poderia potencialmente obter acesso ao servidor.
 
-🛢️ **MySQL (porta 3306)**
+🛢️ **MySQL (porta 3306):** 🔴 Alto
 - Porta utilizada para acesso remoto ao banco de dados MySQL.
 - Porta aberta pode permitir coleta de informações sensíveis se mal configurada (ex: autenticação fraca, sem restrição de IP).
 - **Recomendação:** restringir acesso a IPs autorizados, exigir autenticação forte e considerar tunelamento por SSH ou VPN para proteger a conexão, garantindo que o tráfego seja criptografado e acessível apenas por usuários autorizados, além do uso de firewall para bloquear acessos não autorizados.
 - **Situação:** foi executado um scan para coleta de informações do serviço, retornando a versão 8.0.43 e detalhes das capacidades do servidor MySQL, incluindo suporte a SSL e autenticação via plugin caching_sha2_password.
 - **Situação:** foi realizado um teste de conexão a partir da máquina de análise para o host utilizando o usuário root e senha root; o acesso ao banco foi obtido, sendo possível criar um banco de dados e interagir com o servidor.
 
-📁 **SMB (portas 139 e 445)**
+📁 **SMB (portas 139 e 445):** 🔴 Alto
 - SMB é um protocolo utilizado para compartilhamento de arquivos, impressoras e outros recursos em redes locais.
 - A existência de compartilhamentos SMB, especialmente com acesso anônimo ou permissões mal configuradas, pode ser vetor para ataques como enumeração de recursos, acesso não autorizado e execução remota de código.
 - **Recomendação:** continuar com SMB1 desabilitado, desabilitar acesso anônimo ao IPC$, revisar e restringir permissões, aplicar hardening no Samba, e monitorar logs para tentativas suspeitas.
 - **Situação:** Testes de enumeração anônima indicam que, apesar do acesso ao IPC$, não foi possível listar compartilhamentos ou arquivos acessíveis anonimamente. No entanto, a exposição do compartilhamento IPC$ pode ser usada para enumeração de informações, o que amplia a superfície de ataque, mesmo sem compartilhamentos acessíveis.
 - **Situação:** SMB1 está desabilitado no servidor, sendo utilizado SMB2/SMB3, o que melhora a segurança contra vulnerabilidades antigas do SMB1.
 
-📚 **LDAP (porta 389)**
+📚 **LDAP (porta 389):** 🔴 Alto
 - LDAP é utilizado para serviços de diretório e autenticação, permitindo a consulta e gerenciamento de informações de usuários e recursos na rede.
 - A porta 389 aberta permite consultas anônimas RootDSE, expondo informações sobre a estrutura do diretório, o que pode facilitar reconhecimento e mapeamento para ataques futuros, representando risco alto.
 - **Recomendação:** restringir o acesso ao serviço LDAP apenas a hosts autorizados, exigir autenticação para consultas detalhadas, implementar mecanismos de autenticação forte e utilizar LDAP sobre SSL/TLS (LDAPS) para garantir a criptografia das comunicações. Além disso, é importante monitorar os acessos e tentativas de consultas anônimas para identificar possíveis varreduras ou ataques.
 - **Situação:** O scan com ldap-rootdse revelou que a consulta RootDSE retorna os namingContexts e várias capacidades suportadas pelo servidor, indicando que não há restrição para consultas anônimas básicas.
 - **Situação:** O comando ldapsearch sem autenticação não conseguiu listar objetos além do contexto base, retornando “No such object”, o que indica algum nível de restrição para consultas amplas. Apesar disso, a exposição do RootDSE permite reconhecimento e mapeamento da estrutura do diretório, informação valiosa para um atacante.
 
-🔒 **LDAPS (porta 636)**
+🔒 **LDAPS (porta 636):** 🟢 Baixo
 - Versão segura do LDAP utilizando SSL/TLS para criptografar toda a comunicação.
 - Comunicação protegida contra interceptação e vazamento de credenciais sensíveis em trânsito.
 - Considerado de baixo risco quando configurado corretamente, com certificados válidos e uso de protocolos TLS seguros.
 - **Recomendação:** garantir uso exclusivo do LDAPS, desabilitando o LDAP na porta 389 sempre que possível para evitar conexões não seguras; validar periodicamente certificados e configurações TLS; restringir o acesso somente a hosts autorizados para aumentar a segurança.
 
-🌐 **HTTP-Nginx (porta 80)**
+🌐 **HTTP-Nginx (porta 80):** 🟠 Médio
 - Servidor web Nginx em execução, com potencial exposição de aplicações como o Zabbix.
 - Porta HTTP aberta pode permitir ataques caso o servidor ou aplicações estejam desatualizados ou mal configurados (ex: XSS, CSRF, falhas de autenticação).
 - **Recomendação:** manter Nginx e aplicações atualizados, aplicar boas práticas de segurança web e usar HTTPS, reduzindo vulnerabilidades conhecidas e protegendo a comunicação.
 - **Situação:** Um teste HTTP retornou status 200 OK, confirmando o servidor ativo, com cabeçalhos que indicam algumas proteções básicas (X-Content-Type-Options, X-XSS-Protection e X-Frame-Options). Tentativa de comunicação via Zabbix agent falhou devido a restrições de acesso configuradas no agente, indicando algum nível de controle na aplicação.
 
-📊 **Zabbix Server (porta 10051)**
+📊 **Zabbix Server (porta 10051):** 🟠 Médio
 - Serviço de monitoramento Zabbix coletando dados pela rede.
 - Se mal configurado, pode permitir acesso não autorizado ou injeção de comandos.
 - **Recomendação:** aplicar autenticação forte, restringir IPs de origem e monitorar acessos, a fim de evitar comprometimento da infraestrutura de monitoramento.
 
-📡 **Zabbix Proxy (porta 10052)**
+📡 **Zabbix Proxy (porta 10052):** 🟠 Médio
 - Comunicação entre proxy e servidor Zabbix.
 - Porta pode ser explorada se não houver autenticação ou criptografia adequadas.
 - **Recomendação:** utilizar autenticação mútua e criptografia TLS entre proxy e servidor, para assegurar a integridade e a confidencialidade da comunicação.
@@ -334,7 +334,7 @@ A tabela a seguir apresenta um plano de ação baseado no princípio de Pareto (
                 <th style="padding: 5px; text-align: center;">Prioridade</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody align="center">
             <tr><td>1</td><td>Restringir acesso SSH apenas a hosts autorizados</td><td>Alto</td><td>Média</td><td>Alta</td></tr>
             <tr><td>2</td><td>Usar autenticação por chave pública no SSH (desabilitar senha)</td><td>Alto</td><td>Média</td><td>Alta</td></tr>
             <tr><td>3</td><td>Substituir FTP por SFTP ou FTPS para garantir criptografia nas transmissões</td><td>Alto</td><td>Média</td><td>Alta</td></tr>
@@ -373,7 +373,7 @@ Esta seção reúne os materiais complementares utilizados ou gerados durante a 
     <li><a href="./diagrama.png">Diagrama da rede</a></li>
     <li><a href="./softwares.md">Softwares/Ferramentas utilizadas</a></li>
     <li><a href="./softwares.md">Comandos utilizados</a></li>
-    <li><details><summary><a href="./outputs/">Outputs dos Comandos</a></summary>
+    <li><details><summary><a href="./outputs/">Outputs dos comandos</a></summary>
         <ul>
             <li><a href="./outputs/ping.txt">ping.txt</a></li>
             <li><a href="./outputs/recon-ip_maps.txt">recon-ip_maps.txt</a></li>
@@ -390,7 +390,6 @@ Esta seção reúne os materiais complementares utilizados ou gerados durante a 
                     <li><a href="./outputs/guest_net/guest_net_ips.txt">guest_net_ips.txt</a></li>
                     <li><a href="./outputs/guest_net/guest_net_ips_hosts.txt">guest_net_ips_hosts.txt</a></li>
                     <li><a href="./outputs/guest_net/guest_net_ips_ports.txt">guest_net_ips_ports.txt</a></li>
-                    <li><a href="./outputs/guest_net/rustscan.txt">rustscan.txt</a></li>
                 </ul></details>
             <details><summary>infra_net</summary>
                 <ul>

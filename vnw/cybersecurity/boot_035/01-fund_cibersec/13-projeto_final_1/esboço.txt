@@ -1,0 +1,113 @@
+Projeto Técnico: Mapeamento de Rede Corporativa – Lab Docker
+Instruções para o Projeto Técnico – Lab de Rede Segmentada
+Roteiro de Análise – Mapeamento de Rede
+Exemplo de Documentação de Redes Descobertas (Inventário Técnico?)
+Modelo de Relatório Técnico – Lab Segmentação de Rede
+
+
+
+- QUESTIONAMENTOS:
+1. Ausência de segmentação lógica? 
+- Isso é meio difícil de analisar dentro do container Analyst já que ele tem acesso as três redes ne? Para ele, realmente não vai ter segmentação lógica, pois ele tem acesso a tudo.
+2. Houve uma confusão, pois no documento principal do projeto (Projeto Técnico), a sub-rede guest_net era 10.10.30.0/24 e a infra_net 10.10.50.0/24, uma inversão. Apesar de na descrição mencionar que a guest era para Rede de visitantes e dispositivos pessoais e a infra era para Rede de infraestrutura crítica (servidores). Acabei seguindo essa inversão do documento e ficou alterado. Inclusive no documento dos códigos que você utilizou pela última vez (https://gist.githubusercontent.com/jcarlos78/8111a9f0d7466f0d76217fa617827e27/raw/70f453a430af0284dc7641af7da5ac3b256cf244/), tem um momento que trata a 30.0 como guest_net e a 50.0 como infra_net, o que é o errado. Depois, nesse mesmo docuemnto, quando os arquivos são salvados, tudo que é salvo da 30.0 vai para infra e 50.0 para guest. Depois, conferindo no arquivo YAML do Docker Compose, pude verificar que a 30.0 era realmente a infra e que a 50.0 era a guest. Esse era o documento mais fiel, já que ele constrói o ambiente. Mas infelizmente, acabei seguindo pelo docuemnto principal do projeto que estava trocado, e acabei trocando tudo. Dessa forma, todos os prints e outputs de comandos foram salvos com essa inversão e se eu fosse alterar tudo não ia dar tempo. Teria problema deixar assim?
+
+
+
+
+Projeto Técnico: Mapeamento de Rede Corporativa – Lab Docker
+Objetivos:
+Identificar todas as máquinas acessíveis.    -> identificação dos hosts ativos em cada sub-rede
+Determinar as sub-redes existentes e seus propósitos.       -> detecção das sub-redes existentes e avaliação da segmentação entre elas
+Criar um inventário técnico com IPs, nomes e sistemas detectados.  -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+Elaborar um relatório com diagnóstico, recomendações e plano de ação 80/20.  -> Relatório
+
+
+
+Instruções para o Projeto Técnico – Lab de Rede Segmentada
+Tarefas
+Levantar informações usando ferramentas como:
+nmap
+rustscan
+netdiscover
+arp-scan
+whois, dig, traceroute
+
+Descobrir:
+Quantos hosts existem?         -> identificação dos hosts ativos em cada sub-rede
+Quais serviços estão expostos?  -> avaliação da exposição desses serviços
+Quais portas estão abertas?     -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+Existem informações que indicam riscos?  -> avaliação da exposição desses serviços
+
+Criar:
+Inventário técnico da rede                -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+Diagrama de topologia                              -> Diagrama
+Relatório técnico com diagnóstico e recomendações  -> Relatório
+
+
+Tarefa Obrigatória: Documentar as Redes
+Você deverá mapear e documentar as redes simuladas do ambiente.
+
+Inclua no seu relatório:
+Quais sub-redes foram identificadas             -> detecção das sub-redes existentes e avaliação da segmentação entre elas 
+Endereçamento IP de cada host descoberto        -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+Quais dispositivos pertencem a cada rede        -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+Função de cada dispositivo                      -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+Possíveis riscos de comunicação entre redes     -> detecção das sub-redes existentes e avaliação da segmentação entre elas
+
+
+
+
+Roteiro de Análise – Mapeamento de Rede
+Reconhecimento Inicial
+Use netdiscover ou arp-scan para mapear hosts ativos     -> identificação dos hosts ativos em cada sub-rede
+Identifique o range de IPs e sub-redes                   -> detecção das sub-redes existentes e avaliação da segmentação entre elas
+
+Varredura Detalhada
+Utilize nmap ou rustscan para identificar serviços por host  -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+Anote portas abertas e banners                               -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+
+Identificação de Ativos
+Categorize os hosts por função (ex: web, fileserver, estação, etc.)  -> mapeamento dos endereços IP atribuídos, descoberta das portas abertas e dos serviços ativos em cada host
+
+Avaliação de Riscos
+Serviços desnecessários?                           -> avaliação da exposição desses serviços
+Portas abertas sem autenticação?                   -> avaliação da exposição desses serviços
+Ausência de segmentação lógica?                    -> detecção das sub-redes existentes e avaliação da segmentação entre elas
+
+Produção de Relatório
+Diagrama da rede                              -> Diagrama
+Achados + recomendações                       -> Relatório
+Plano de ação baseado em impacto e facilidade -> Plano de Ação
+
+
+
+
+
+Destrinchando o objetivo:
+Análise técnica da rede corporativa segmentada, com foco em:
+- Detectar as sub-redes existentes: Identificar quais e quantas sub-redes estão presentes na rede interna.
+- Avaliar a segmentação entre elas: Verificar a efetividade do isolamento entre as sub-redes e possíveis comunicações indevidas.
+- Identificar os hosts ativos em cada sub-rede: Verificar quantos e quais hosts estão ativos em cada sub-rede.
+- Mapear os endereços IP atribuídos: Associar corretamente cada IP ao seu respectivo host.
+- Descobrir as portas abertas: Verificar quais hosts possuem portas abertas e quais são essas portas.
+- Identificar os serviços ativos em cada host: Determinar quais e quantos serviços estão sendo executados em cada host.
+- Avaliar a exposição dos serviços identificados: Analisar aspectos como acesso anônimo permitido, possibilidade de captura de informações sensíveis e ausência de mecanismos de segurança como SSL/TLS.
+
+
+
+📋 Sequência da análise (em tópicos, arrumado e sucinto):
+- Identificação das interfaces e sub-redes conectadas
+    - Verificação das interfaces da máquina analisadora.
+    - Detecção das sub-redes acessíveis (3 no total).
+- Descoberta de hosts ativos em cada sub-rede
+    - Coleta de IPs ativos por meio de varreduras ARP, ping e etc.
+- Identificação de serviços expostos
+    - Varredura de portas com ferramentas como nmap e rustscan.
+- Enumeração de serviços específicos
+    - Inspeção detalhada dos serviços detectados nas portas abertas.
+- Coleta de informações adicionais (banners, protocolos, falhas).
+    - Avaliação de riscos e exposição
+    - Análise de segurança com base nas descobertas.
+- Verificação de criptografia, acessos indevidos, interfaces expostas e falhas na segmentação.
+    - Inventário e classificação dos ativos de rede
+    - Organização dos dados obtidos em tabelas técnicas, agrupadas por função e sub-rede.
