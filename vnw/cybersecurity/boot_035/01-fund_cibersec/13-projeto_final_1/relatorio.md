@@ -68,7 +68,9 @@ A análise foi conduzida utilizando uma estação de trabalho com acesso à rede
 
 O diagrama abaixo representa a topologia da rede analisada durante a execução dos testes. Ele ilustra a disposição dos principais ativos, a segmentação em sub-redes, os dispositivos de interconexão e a máquina de análise utilizada na varredura. Esse mapeamento visual foi fundamental para compreender a arquitetura do ambiente, identificar os pontos de exposição e orientar as atividades de enumeração e diagnóstico.
 
-![diagrama](./diagrama.png)
+<div align="center">
+    <img src="./diagrama.png" alt="diagrama" style="max-width: 100%; height: auto;">
+</div>
 
 
 ## Inventário Técnico
