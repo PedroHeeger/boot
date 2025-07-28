@@ -6,20 +6,20 @@
 
 ## Sumário Executivo
 
-A rede que analisada tem vários computadores e serviços que conversam entre si para fazer o trabalho funcionar. Alguns desses serviços estão configurados de forma segura, mas outros apresentam riscos que podem facilitar ataques de pessoas mal-intencionadas. Os principais problemas encontrados são:
+A rede analisada possui diversos computadores e serviços que se comunicam entre si para manter o funcionamento do ambiente. Alguns desses serviços estão configurados de forma segura, mas outros apresentam vulnerabilidades que podem facilitar ataques por pessoas mal-intencionadas. Os principais problemas identificados foram:
 - Alguns acessos importantes estão liberados para muitas pessoas ou usam senhas fáceis, o que pode permitir invasões.
 - Um protocolo antigo chamado FTP está em uso, e ele envia informações como senhas sem proteção, correndo risco de serem capturadas.
 - Um serviço que organiza informações da rede (LDAP) está aberto para consultas sem muita proteção, o que facilita o mapeamento da rede por quem quer atacar.
 - O sistema de monitoramento da rede está protegido, mas precisa garantir que toda comunicação seja segura e que só pessoas autorizadas tenham acesso.
 
-Para melhorar a segurança, é sugerido:
+Para melhorar a segurança da rede, recomenda-se:
 - Restringir os acessos, permitindo que só pessoas e computadores confiáveis possam entrar.
-- Substituir o protocolo FTP por versões que protegem as informações enviadas.
-- Garantir que todos os acessos e comunicações importantes estejam protegidos por senha forte e criptografia, que é uma forma de deixar os dados ilegíveis para quem não deve er.
-- Atualizar os sistemas regularmente para evitar que falhas antigas sejam exploradas.
-- Monitorar o que acontece na rede para identificar qualquer tentativa de acesso indevido.
+- Substituir o protocolo FTP por alternativas seguras que utilizam criptografia.
+- Garantir que todos os acessos e comunicações importantes estejam protegidos com senhas fortes e criptografia, tornando os dados ilegíveis para quem não tem autorização.
+- Manter os sistemas atualizados para evitar a exploração de vulnerabilidades conhecidas.
+- Monitorar continuamente a rede a fim de identificar e responder rapidamente a tentativas de acesso indevido.
 
-Essas ações vão proteger a rede de forma eficiente e com pouco esforço, reduzindo bastante os riscos de ataques.
+A adoção dessas medidas fortalece a segurança da rede de forma eficiente, reduzindo significativamente os riscos com um esforço relativamente baixo
 
 
 ## Objetivo
