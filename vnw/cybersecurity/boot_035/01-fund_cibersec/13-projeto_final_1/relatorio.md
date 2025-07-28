@@ -1,4 +1,4 @@
-# Relatório Técnico – Lab Segmentação de Rede
+# Relatório Técnico – Rede Corporativa da Empresa
 
 **Autor:** Pedro Heeger Costa  
 **Data:** 25/07/25  
@@ -222,7 +222,7 @@ O levantamento a seguir apresenta as portas abertas identificadas em cada sub-re
             </tr>
         </thead>
         <tbody align="center">
-            <tr><td>10.10.30.1</td><td>22</td><td>SSH</td><td>OpenSSH 9.6</td><td>🟠 Médio</td><td><a href="./outputs/portas/porta22.txt">porta22.txt</a></td></tr>
+            <tr><td>10.10.30.1</td><td>22</td><td>SSH</td><td>OpenSSH 9.6</td><td>🟠&nbsp;Médio</td><td><a href="./outputs/portas/porta22.txt">porta22.txt</a></td></tr>
             <tr><td>10.10.30.2</td><td>37820; 40754; 45072; 56622; 59102</td><td>Portas Efêmeras/Dinâmicas</td><td>Nmap / Rustscan</td><td>🟢 Baixo</td><td>-</td></tr>
             <tr><td>10.10.30.10</td><td>21</td><td>FTP</td><td>Pure-FTPd</td><td>🔴 Alto</td><td><a href="./outputs/portas/guest_net_servico_ftp-anon.txt">guest_net_servico_ftp-anon.txt</a></td></tr>
             <tr><td>10.10.30.11</td><td>3306</td><td>MySQL</td><td>MySQL 8.0.43</td><td>🔴 Alto</td><td><a href="./outputs/portas/guest_net_servico_mysql-info.txt">guest_net_servico_mysql-info.txt</a></td></tr>
@@ -230,9 +230,9 @@ O levantamento a seguir apresenta as portas abertas identificadas em cada sub-re
             <tr><td>10.10.30.15</td><td>445</td><td>SMB via TCP</td><td>Samba smbd 4</td><td>🔴 Alto</td><td><a href="./outputs/portas/guest_net_servico_smb.txt">guest_net_servico_smb.txt</a></td></tr>
             <tr><td>10.10.30.17</td><td>389</td><td>LDAP (Lightweight Directory Access Protocol)</td><td>LDAP</td><td>🔴 Alto</td><td><a href="./outputs/portas/guest_net_servico_ldap-rootdse.txt">guest_net_servico_ldap-rootdse.txt</a></td></tr>
             <tr><td>10.10.30.17</td><td>636</td><td>LDAP via SSL/TLS (LDAP seguro)</td><td>LDAPS</td><td>🟢 Baixo</td><td>-</a></td></tr>
-            <tr><td>10.10.30.117</td><td>80</td><td>HTTP</td><td>Nginx</td><td>🟠 Médio</td><td><a href="./outputs/portas/guest_net_servico_webserver.txt">guest_net_servico_webserver.txt</a></td></tr>
-            <tr><td>10.10.30.117</td><td>10051</td><td>Zabbix</td><td>Zabbix Server</td><td>🟠 Médio</td><td><a href="./outputs/portas/guest_net_servico_zabbix.txt">guest_net_servico_zabbix.txt</a></td></tr>
-            <tr><td>10.10.30.117</td><td>10052</td><td>Zabbix</td><td>Zabbix Proxy</td><td>🟠 Médio</td><td><a href="./outputs/portas/guest_net_servico_zabbix.txt">guest_net_servico_zabbix.txt</a></td></tr>
+            <tr><td>10.10.30.117</td><td>80</td><td>HTTP</td><td>Nginx</td><td>🟠&nbsp;Médio</td><td><a href="./outputs/portas/guest_net_servico_webserver.txt">guest_net_servico_webserver.txt</a></td></tr>
+            <tr><td>10.10.30.117</td><td>10051</td><td>Zabbix</td><td>Zabbix Server</td><td>🟠&nbsp;Médio</td><td><a href="./outputs/portas/guest_net_servico_zabbix.txt">guest_net_servico_zabbix.txt</a></td></tr>
+            <tr><td>10.10.30.117</td><td>10052</td><td>Zabbix</td><td>Zabbix Proxy</td><td>🟠&nbsp;Médio</td><td><a href="./outputs/portas/guest_net_servico_zabbix.txt">guest_net_servico_zabbix.txt</a></td></tr>
         </tbody>
     </table>
 </div>
@@ -372,7 +372,7 @@ Esta seção reúne os materiais complementares utilizados ou gerados durante a 
 <ul>
     <li><a href="./diagrama.png">Diagrama da rede</a></li>
     <li><a href="./softwares.md">Softwares/Ferramentas utilizadas</a></li>
-    <li><a href="./softwares.md">Comandos utilizados</a></li>
+    <li><a href="./cmds.md">Comandos utilizados</a></li>
     <li><details><summary><a href="./outputs/">Outputs dos comandos</a></summary>
         <ul>
             <li><a href="./outputs/ping.txt">ping.txt</a></li>
