@@ -8,7 +8,7 @@
 
 ---
 
-Esta pasta refere-se ao projeto final opção 1 do módulo 1 **Fundamentos de Cibersegurança** do bootcamp [**Formação Cybersec**](../../).
+Esta pasta refere-se ao projeto final opção 1 do módulo 1 **Fundamentos de Cibersegurança** do bootcamp [**Formação Cybersec**](../../). O artefato entregável principal foi o relatório da análise técnica construído no arquivo [relatorio.md](./relatorio.md). Os demais artefáteis entregáveis fizeram parte do projeto e também estão disponíveis nessa pasta e anexados ao relatório.
 
 ### Theme:
 - Cybersecurity
@@ -58,27 +58,38 @@ Esta pasta refere-se ao projeto final opção 1 do módulo 1 **Fundamentos de Ci
 
 ### Bootcamp Module 1 Final Project 1 Structure
 1. <a name="item1">Opção 1 – Projeto Técnico: Mapeamento de Rede em Docker<br>
-    1.1. <a href="#item1.1">Reconhecimento Inicial</a><br>
-    1.2. <a href="#item1.2">Varredura Detalhada</a><br>
-    1.3. <a href="#item1.3">Identificação de Ativos</a><br>
-    1.4. <a href="#item1.4">Avaliação de Riscos</a><br>
-    1.5. <a href="#item1.5">Produção de Relatório</a><br>
-    1.6. <a href="#item1.6">Ferramentas: Kali Linux, Nmap, Wireshark</a><br>
+    1.1. <a href="#item1.1">Reconhecimento Técnico da Infraestrutura</a><br>
+    1.2. <a href="#item1.2">Análise de Serviços e Exposição de Ativos</a><br>
+    1.3. <a href="#item1.3">Avaliação de Riscos e Exposição</a><br>
+    1.4. <a href="#item1.4">Inventário Técnico e Classificação dos Ativos de Rede</a><br>
+    1.5. <a href="#item1.5">Diagnóstico e Recomendações</a><br>
+    1.6. <a href="#item1.6">Documentação Técnica</a><br>
 
 ---
 
 ### Objective:
-O objetivo deste projeto técnico foi aplicar, de forma prática, os conhecimentos adquiridos sobre reconhecimento, varredura de rede e análise de exposição, por meio da investigação de uma rede corporativa simulada em ambiente **Docker**. A proposta consistiu em assumir o papel de um analista de segurança e conduzir um mapeamento completo dos ativos e sub-redes, elaborando um diagnóstico técnico preciso. Ao final, foi produzido um relatório estruturado que apresentou o inventário, o diagrama da rede, recomendações e um plano de ação baseado na estratégia 80/20.
+O objetivo deste projeto foi aplicar, de forma prática, os conhecimentos adquiridos sobre reconhecimento, varredura de rede e análise de exposição, por meio da investigação de uma rede corporativa simulada em ambiente **Docker**. A proposta consistiu em assumir o papel de um analista de segurança em uma empresa fictícia e conduzir um mapeamento completo dos ativos e sub-redes, elaborando um diagnóstico técnico preciso das exposições encontradas, bem como suas respectivas soluções. Ao final, toda a análise foi consolidada em um relatório técnico estruturado, contendo o inventário dos ativos, o diagrama da rede, os diagnósticos e recomendações das exposições identificadas, além de um plano de ação baseado na estratégia 80/20.
 
-<!-- ### Structure:
-- A estrutura do bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. 
-- Para melhor organização deste bootcamp, a estruturação das pastas acompanhou a estrutura do bootcamp. Dessa forma, foram criadas sub-pastas para cada módulo ou curso desse bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos desafios ou cursos realizados.
-- Nos arquivos de README de cada módulo ou curso está descrito o que foi realizado em cada um, e podem ser acessado nos links clicáveis na opção **Bootcamp Strucutre**. Os links que não forem clicáveis, são de cursos ou módulos que, na sua maior parte ou inteiramente, foram assuntos teóricos e não possuem materiais.
-- Alguns cursos podem ter sido desenvolvidos em outro bootcamp, já que são os mesmos cursos, portanto, a explicação sobre esses cursos e seus respectivos materiais vão está no outro bootcamp e podem ser acessados através dos links do **Bootcamp Structure**.
-- A sub-pasta **0-aux** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp. -->
+### Structure:
+- Este documento de README, escrito em **Markdown**, descreve todo o desenvolvimento do projeto. Embora não seja um artefato entregável, complementa o projeto.
+- [relatorio.md](./relatorio.md): Relatório de análise técnica da rede interna da empresa fictícia. É o principal artefato entregável.
+- [softwares.md](./softwares.md): Documento em **Markdown** contendo informações relevantes sobre todos os softwares e ferramentas utilizados na análise técnica. É um anexo do relatório técnico.
+- [cmds.md](./cmds.md): Documento em **Markdown** com os comandos executados durante a análise técnica. É um anexo do relatório técnico.
+- [diagrama.png](./diagrama.png): Arquivo em **PNG** com o diagrama da topologia de rede, construído no **Draw.io**. É um anexo do relatório técnico.
+- [outputs](./outputs): Pasta contendo arquivos em **TXT** com os outputs dos comandos executados. É um anexo do relatório técnico.
+- [img](./img): Pasta com imagens (prints) dos outputs dos comandos executados. É um anexo do relatório técnico e utilizado neste arquivo de README.
 
 ### Development:
-Nesta proposta de projeto, assim como nos laboratórios realizados ao longo do Módulo 1, o ambiente utilizado foi o **Docker** no **WSL**. No entanto, optei por utilizar o **Docker** na plataforma **Play With Docker (PWD)** e, quando a memória disponível não foi suficiente, recorri a uma instância do **Amazon Elastic Compute Cloud (EC2)**, na nuvem da **Amazon Web Services (AWS)**.
+Nesta proposta de projeto, foi elaborado um relatório técnico com base na análise realizada de uma rede interna corporativa simulada em ambiente **Docker**. Para sua construção, foi utilizado um modelo em **Markdown** fornecido pela plataforma do curso. Esse modelo contemplava os seguintes itens: sumário executivo, objetivo, escopo, metodologia, diagrama de rede, diagnóstico (achados), recomendações, plano de ação 80/20, conclusão e anexos. Todo o material do projeto, incluindo o modelo de relatório técnico, os documentos de instrução e os arquivos para construção do ambiente, está disponível neste [link](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/projeto_final_opcao_1) do GitHub, repositório oficial deste curso da Vai na Web.
+
+A construção do ambiente foi realizada, assim como nos laboratórios do Módulo 1, utilizando o **Docker** em conjunto com o **WSL**. No entanto, optei por utilizar a plataforma **Play With Docker (PWD)** e, nos momentos em que a memória disponível se mostrou insuficiente, recorri a uma instância do **Amazon Elastic Compute Cloud (EC2)**, na nuvem da **Amazon Web Services (AWS)**, como foi o caso deste projeto.
+
+
+
+#TODO: ESTOU CONCLUÍDO ESSE MATERIAL - PREVISÃO DE FINALIZAÇÃO: 02/08/25
+
+
+
 
 A criação da instância EC2 foi automatizada por meio do script [ec2Instance.ps1](../../environment/ec2Instance.ps1), desenvolvido em **PowerShell** com comandos da **AWS Command Line Interface (CLI)**, localizado na pasta [environment](../../environment/) deste bootcamp. A instância utilizava a imagem `ami-020cba7c55df1f615`, baseada no sistema operacional **Linux Ubuntu**, com um volume **Amazon Elastic Block Store (EBS)** de `8 GB`, do tipo `gp` (General Purpose). O tipo instância definido foi `t3.medium` que tem 2vCPU e 4 gigas de memória. O par de chaves utilizado foi o `keyPairUniversal`, já existente na minha conta da AWS, e o security group associado foi o `default`, na zona de disponibilidade `us-east-1a` (Norte da Virgínia). Além disso, foi utilizado um arquivo de user data para automatizar a instalação do **Git** e do **Docker** durante o provisionamento da instância.
 
@@ -100,7 +111,7 @@ A rede interna simulada da empresa estava segmentada em três sub-redes, conform
 - **Rede `guest_net`**: rede destinada a visitantes e dispositivos pessoais. CIDR: `10.10.30.0/24`.
 - **Rede `infra_net`**: rede de infraestrutura crítica, composta por servidores internos. CIDR: `10.10.50.0/24`.
 
-<a name="item1.1"><h4>1.1. Reconhecimento Inicial</h4></a>[Back to summary](#item1)
+<a name="item1.1"><h4>1.1. Reconhecimento Técnico da Infraestrutura</h4></a>[Back to summary](#item1)
 
 Com o ambiente construído e, de dentro do container `analyst`, os primeiros comandos foram executados para realizar o reconhecimento inicial. A maioria deles pertence a softwares já instalados nesse container, cuja imagem base era um **Kali Linux** — portanto, o sistema operacional também era um Kali. Os comandos `ip a`, `ip addr` ou `ip address`, pertencentes ao pacote **Iproute2**, e o comando `ifconfig`, do pacote **Net-tools**, foram os primeiros utilizados, exibindo todas as interfaces de rede às quais o container estava conectado. Interfaces como `eth0`, `eth1`, etc., são interfaces de rede **Ethernet** — um padrão tecnológico para redes locais (LAN), originalmente voltado a conexões cabeadas (como cabos de par trançado com conector RJ-45), mas que hoje pode se referir tanto a interfaces físicas quanto virtuais que utilizem esse padrão. Já a interface `lo` representa o **loopback**, usada para que o sistema se comunique consigo mesmo. Ela corresponde ao endereço IP `127.0.0.1`, conhecido como `localhost`. As imagens 02 e 03 mostram os outputs desses comandos, que apresentaram os mesmos resultados.
 
@@ -150,6 +161,40 @@ Os softwares **arp-scan** e **netdiscover**, que não estavam instalados no cont
     <figcaption>Imagem 09.</figcaption>
 </figure></div><br> -->
 
+<table style="margin: auto;">
+  <tr>
+    <td style="text-align: center;">
+      <img src="./img/img04.png" alt="img04"><br>
+      <figcaption>Imagem 04.</figcaption>
+    </td>
+    <td style="text-align: center;">
+      <img src="./img/img05.png" alt="img05"><br>
+      <figcaption>Imagem 05.</figcaption>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <img src="./img/img06.png" alt="img06"><br>
+      <figcaption>Imagem 06.</figcaption>
+    </td>
+    <td style="text-align: center;">
+      <img src="./img/img07.png" alt="img07"><br>
+      <figcaption>Imagem 07.</figcaption>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <img src="./img/img08.png" alt="img08"><br>
+      <figcaption>Imagem 08.</figcaption>
+    </td>
+    <td style="text-align: center;">
+      <img src="./img/img09.png" alt="img09"><br>
+      <figcaption>Imagem 09.</figcaption>
+    </td>
+  </tr>
+</table>
+
+
 <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 20px;">
     <figure style="text-align: center;">
         <img src="./img/img04.png" alt="img04">
@@ -185,7 +230,7 @@ Os softwares **arp-scan** e **netdiscover**, que não estavam instalados no cont
 
 Analisando os outputs, identificou-se que na sub-rede `10.10.10.0` (`corp_net`) foram encontrados cinco hosts ativos. Na sub-rede `10.10.30.0` (`guest_net`), sete hosts foram identificados, enquanto na sub-rede `10.10.50.0` (`infra_net`) foram descobertos cinco hosts. Em todas as três sub-redes, o container `analyst` não foi considerado na contagem, pois era a máquina a partir da qual os comandos foram executados.
 
-<a name="item1.2"><h4>1.2. Varredura Detalhada</h4></a>[Back to summary](#item1)
+<a name="item1.2"><h4>1.2. Análise de Serviços e Exposição de Ativos</h4></a>[Back to summary](#item1)
 
 A segunda etapa consitiu na varredura detalhada, onde foram utilizados os softwares **Nmap** e **Rustscan** para identificar os serviços de cada host, as portas abertas e os banners. Um banner é uma mensagem de texto ou informação que um serviço de rede (que está escutando numa porta aberta) envia quando alguém conecta ou faz uma requisição. Geralmente ele contém detalhes sobre o serviço, como: Nome do serviço (exemplo: Apache, OpenSSH, Microsoft IIS), Versão do software (exemplo: OpenSSH 7.6p1), Informações adicionais que podem indicar o sistema operacional ou configuração. 
 
@@ -198,7 +243,7 @@ Dessa forma, os softwares que já estavam instalados no container, foram utiliza
 
 
 
-LDAP (Lightweight Directory Access Protocol)
+<!-- LDAP (Lightweight Directory Access Protocol)
 O que é?
 LDAP é um protocolo usado para acessar e gerenciar serviços de diretórios na rede. Esses diretórios funcionam como bases de dados especializadas que armazenam informações organizadas, como usuários, grupos, permissões, dispositivos e outras entidades em uma rede.
 
@@ -212,20 +257,35 @@ Portas padrão:
 
 Por que é importante?
 Serviços LDAP são usados em muitas organizações para gerenciar usuários e permissões (como Active Directory, OpenLDAP). Se não estiverem bem configurados, podem expor informações sensíveis ou permitir acessos não autorizados.
-
-
-
-<a name="item1.3"><h4>1.3. Identificação de Ativos</h4></a>[Back to summary](#item1)
-
+ -->
 
 
 
 
-<a name="item1.4"><h4>1.4. Avaliação de Riscos</h4></a>[Back to summary](#item1)
+<a name="item1.3"><h4>1.3. Avaliação de Riscos e Exposição</h4></a>[Back to summary](#item1)
 
 
 
 
 
 
-<a name="item1.5"><h4>1.5. Produção de Relatório</h4></a>[Back to summary](#item1)
+
+<a name="item1.4"><h4>1.4. Inventário Técnico e Classificação dos Ativos de Rede</h4></a>[Back to summary](#item1)
+
+
+
+
+
+
+
+
+
+<a name="item1.5"><h4>1.5. Diagnóstico e Recomendações</h4></a>[Back to summary](#item1)
+
+
+
+
+
+
+
+<a name="item1.6"><h4>1.6. Documentação Técnica</h4></a>[Back to summary](#item1)
