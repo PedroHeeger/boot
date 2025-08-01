@@ -84,6 +84,7 @@ Nesta proposta de projeto, foi elaborado um relatório técnico com base na aná
 
 A construção do ambiente foi realizada, assim como nos laboratórios do Módulo 1, utilizando o **Docker** em conjunto com o **WSL**. No entanto, optei por utilizar a plataforma **Play With Docker (PWD)** e, nos momentos em que a memória disponível se mostrou insuficiente, recorri a uma instância do **Amazon Elastic Compute Cloud (EC2)**, na nuvem da **Amazon Web Services (AWS)**, como foi o caso deste projeto.
 
+A criação da instância EC2 foi automatizada por meio do script [ec2Instance.ps1](../../environment/ec2Instance.ps1), desenvolvido em **PowerShell** com comandos da **AWS Command Line Interface (CLI)**, localizado na pasta [environment](../../environment/) deste bootcamp. A instância utilizava a imagem `ami-020cba7c55df1f615`, baseada no sistema operacional **Linux Ubuntu**, com um volume **Amazon Elastic Block Store (EBS)** de `8 GB` do tipo `gp` (General Purpose). O tipo instância definido foi `t3.medium` que tem 2vCPU e 4 gigas de memória. O par de chaves utilizado foi o `keyPairUniversal`, já existente na minha conta da **AWS**, e o security group associado foi o `default` da zona de disponibilidade `us-east-1a` (Norte da Virgínia). Além disso, foi utilizado um arquivo de user data para automatizar a instalação do **Git** e do **Docker** durante o provisionamento da instância.
 
 
 #TODO: ESTOU CONCLUÍDO ESSE MATERIAL - PREVISÃO DE FINALIZAÇÃO: 02/08/25
@@ -91,7 +92,7 @@ A construção do ambiente foi realizada, assim como nos laboratórios do Módul
 
 
 
-A criação da instância EC2 foi automatizada por meio do script [ec2Instance.ps1](../../environment/ec2Instance.ps1), desenvolvido em **PowerShell** com comandos da **AWS Command Line Interface (CLI)**, localizado na pasta [environment](../../environment/) deste bootcamp. A instância utilizava a imagem `ami-020cba7c55df1f615`, baseada no sistema operacional **Linux Ubuntu**, com um volume **Amazon Elastic Block Store (EBS)** de `8 GB`, do tipo `gp` (General Purpose). O tipo instância definido foi `t3.medium` que tem 2vCPU e 4 gigas de memória. O par de chaves utilizado foi o `keyPairUniversal`, já existente na minha conta da AWS, e o security group associado foi o `default`, na zona de disponibilidade `us-east-1a` (Norte da Virgínia). Além disso, foi utilizado um arquivo de user data para automatizar a instalação do **Git** e do **Docker** durante o provisionamento da instância.
+
 
 A interação com a instância podia ser realizada tanto pelo console da própria **AWS** quanto por meio de conexão SSH utilizando o software **OpenSSH**, executado no **Windows PowerShell** da máquina física. Neste último caso, era necessário fornecer o caminho do arquivo de chave privada, o nome do usuário do sistema operacional e o endereço IP ou DNS público da instância, como no exemplo: `ssh -i "G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/universal\keyPairUniversal.pem" ubuntu@54.160.249.118`. Além disso, o **Security Group** associado à instância precisava conter uma regra de entrada liberando a porta `22` para o IP público da máquina física, a fim de permitir o estabelecimento da conexão SSH.
 
