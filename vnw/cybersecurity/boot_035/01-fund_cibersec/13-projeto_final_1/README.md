@@ -90,18 +90,20 @@ A interação com a instância podia ser realizada tanto pelo console da própri
 
 Com relação a construção do ambiente de laboratório deste projeto, o instrutor do curso disponibilizou um arquivo `docker-compose.yml` que, ao ser executado, criava múltiplos containers e redes virtuais, simulando um ambiente de rede corporativa interna, com servidores, estações de trabalho e sub-redes. Este ambiente foi projetado especificamente para o treinamento de habilidades de reconhecimento e análise de exposição em um cenário controlado. O material de referência para criação do ambiente e instruções do projeto pôde ser consultado no repositório oficial da formação, disponível [neste link](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/projeto_final_opcao_1).
 
-#TODO: ESTOU CONCLUÍDO ESSE MATERIAL - PREVISÃO DE FINALIZAÇÃO: 05/08/25
-
-
-
-
-
-
-
-
-
-
 Para executar o ambiente simulado foi utilizado essa instância construída do **Amazon EC2**. Nessa máquina, o repositório da formação completa foi clonado com o comando `git clone https://github.com/Kensei-CyberSec-Lab/formacao-cybersec.git`. Em seguida, foi necessário navegar até a pasta do projeto com o comando `cd formacao-cybersec/modulo1-fundamentos/projeto_final_opcao_1` e executar o comando `docker compose up -d` para iniciar os containers e as redes definidas no arquivo `docker-compose.yml`. Com o comando `docker ps -a`, todos os containers criados (ativos ou inativos) foram listados. Já com o comando `docker network ls`, foi possível visualizar todas as redes construídas. A imagem 01 comprova que o ambiente foi construído com sucesso.
+
+#TODO: ESTOU CONCLUÍDO ESSE MATERIAL - PREVISÃO DE FINALIZAÇÃO: 10/08/25
+
+
+
+
+
+
+
+
+
+
+
 
 <div align="center"><figure>
     <img src="./img/img01.png" alt="img01"><br>
