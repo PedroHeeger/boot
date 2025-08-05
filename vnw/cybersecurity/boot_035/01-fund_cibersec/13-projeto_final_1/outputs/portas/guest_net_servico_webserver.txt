@@ -25,11 +25,3 @@ Pragma: no-cache
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 X-Frame-Options: SAMEORIGIN
-
-
----
-
-
-┌──(root㉿81961e6c169a)-[/home/analyst]
-└─# zabbix_get -s 10.10.30.117 -p 10051 -k agent.ping
-zabbix_get [2134]: Check access restrictions in Zabbix agent configuration
