@@ -8,4 +8,4 @@
 This folder refers to all the bootcamps I took on the Vai na Web (VNW) platform.
 
 ### Software/Subject:
-- <a href="./cybersecurity/">cybersecurity   <img src="https://github.com/PedroHeeger/main/tree/main/0-aux/logos/content/cybersecurity.jpg" alt="cybersecurity" width="auto" height="25"></a>
+- <a href="./cybersecurity/">cybersecurity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/cybersecurity.jpg" alt="cybersecurity" width="auto" height="25"></a>
