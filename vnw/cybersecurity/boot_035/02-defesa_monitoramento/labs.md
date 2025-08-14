@@ -29,6 +29,7 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
 - Containerization: 
   - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
   - Docker Compose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_compose.png" alt="docker_compose" width="auto" height="25">
+  - Docker Playground; Play With Docker (PWD)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/docker_playground.jpg" alt="docker_playground" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
@@ -42,19 +43,26 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
   - AWS Command Line Interface (CLI)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cli.svg" alt="aws_cli" width="auto" height="25">
   - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
 - Tools:
+  - Advanced Package Tool (Apt)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt.png" alt="apt" width="auto" height="25">
+  - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
   - Curl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
 - Network:
+  - netstat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netstat.webp" alt="netstat" width="auto" height="25">
+  - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
+
+- Offensive Security:
+  - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+
   - Arp-scan   <img src="" alt="arp-scan" width="auto" height="25">
   - Domain Information Groper (Dig)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dig.jpeg" alt="dig" width="auto" height="25">
   - Iproute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iproute.png" alt="iproute" width="auto" height="25">
   - Iputils-ping; Iputils   <img src="" alt="iputils" width="auto" height="25">
   - Netdiscover   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netdiscover.png" alt="netdiscover" width="auto" height="25">
   - Net-tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net-tools.svg" alt="net-tools" width="auto" height="25">
-  - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
+
   - Ping   <img src="" alt="iputils" width="auto" height="25">
   - Rustscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rustscan.png" alt="rustscan" width="auto" height="25">
-- Offensive Security:
-  - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+
 
 ---
 
@@ -62,17 +70,9 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
 1. <a name="item1">Módulo 2: Defesa & Monitoramento (Blue Team)<br>
     1.1. <a href="#item1.1">Arquitetura em Camadas</a><br>
     1.2. <a href="#item1.2">Hardening</a><br>
-    1.3. <a href="#item1.3">Firewall</a><br>
-    <!-- 1.4. <a href="#item1.4">Reconhecimento & Footprinting</a><br>
-    1.5. <a href="#item1.5">Infraestrutura de Rede - Conceitos e Componentes</a><br>
-    1.6. <a href="#item1.6">Ferramentas: Kali Linux, Nmap, Wireshark</a><br>
-    1.7. <a href="#item1.7">Endereçamento IP & Subnetting</a><br>
-    1.8. <a href="#item1.8">Seu Dojo de Ataque no Kali Linux (CLI & GUI)</a><br>
-    1.9. <a href="#item1.9">Ports/Portas</a><br>
-    1.10. <a href="#item1.10">Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</a><br>
-    1.11. <a href="#item1.11">Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</a><br>
-    1.12. <a href="#item1.12">Documentação Técnica Profissional</a><br>
-    1.13. <a href="#item1.13">Projeto Final</a><br> -->
+    1.3. <a href="#item1.3">Firewall & ACL</a><br>
+    1.4. <a href="#item1.4">IDS e IPS</a><br>
+    1.5. <a href="#item1.5">IDS e IPS</a><br>
 
 ---
 
@@ -161,7 +161,7 @@ A análise do resultado do primeiro comando indicava que a porta `3000` estava a
 <a name="item1.2"><h4>1.2 Hardening</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_2)
 
-No laboratório anterior, foi realizado o acesso e a exploração de sistemas inseguros — o servidor web e o servidor **Ubuntu** — ambos sem qualquer mecanismo de defesa implantado. Neste segundo laboratório, iniciou-se o processo de hardening, com a aplicação de técnicas básicas de segurança. A dinâmica consistia em acessar primeiro o container **Kali Linux**, utilizado para atacar o container de defesa (o servidor **Ubuntu**), evidenciando suas vulnerabilidades. Em seguida, era feito o acesso ao servidor **Ubuntu** para aplicar as técnicas de hardening correspondentes. Por fim, o ataque era repetido a partir do **Kali Linux** para verificar se a vulnerabilidade havia sido mitigada. As técnicas de hardening aplicadas foram:
+No laboratório anterior, foi realizado o acesso e a exploração de sistemas inseguros — o servidor web e o servidor **Ubuntu** — ambos sem qualquer mecanismo de defesa implantado. Neste segundo laboratório, iniciou-se o processo de hardening, com a aplicação de técnicas básicas de segurança. A dinâmica consistia em acessar primeiro o container **Kali Linux**, utilizado para atacar o container de defesa — neste caso, o servidor **Ubuntu** — evidenciando suas vulnerabilidades. Em seguida, realizava-se o acesso ao servidor **Ubuntu** para aplicar as técnicas de hardening correspondentes e, por fim, repetia-se o ataque a partir do **Kali Linux** para verificar se as vulnerabilidades haviam sido mitigadas. As técnicas de hardening aplicadas foram:
 - Criação de um usuário com privilégios de `sudo`;
 - Ativação do login por chave pública;
 - Desativação do login com o usuário `root`;
@@ -170,12 +170,30 @@ No laboratório anterior, foi realizado o acesso e a exploração de sistemas in
 - Remoção de serviços desnecessários;
 - Restrição de permissões inadequadas.
 
+O ambiente **Docker** construído neste laboratório, conforme ilustrado na imagem 08, era composto por apenas dois containers: o `kali_lab_2`, atuando como máquina de ataque, e o `ubuntu_lab_2`, atuando como máquina de defesa onde as técnicas de hardening seriam implementadas. Diferentemente do laboratório anterior, o container com a aplicação vulnerável **OWASP Juice Shop** não foi utilizado. Ambos os containers estavam conectados à mesma rede interna, com o endereço de rede `172.20.0.0/24`.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
+
+Dentro do container **Kali Linux**, após executar o comando `docker exec -it kali_lab_2 /bin/bash` foi realizada uma tentativa de conexão SSH com o servidor **Ubuntu** utilizando o comando `ssh root@172.20.0.10`. Nesse comando, especificava-se o usuário (`root`) e o endereço IP da máquina de destino (o container **Ubuntu**). Como ainda não havia sido aplicada nenhuma técnica de hardening e o servidor estava desprotegido, a conexão foi estabelecida com sucesso, conforme mostrado na imagem 09.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
 
 
 
 
 
-<a name="item1.3"><h4>1.3 Firewall</h4></a>[Back to summary](#item1)   
+
+
+
+
+
+<a name="item1.3"><h4>1.3 Firewall & ACL</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_3)
 
 
@@ -185,3 +203,16 @@ No laboratório anterior, foi realizado o acesso e a exploração de sistemas in
 
 
 
+
+
+<a name="item1.4"><h4>1.4 IDS e IPS</h4></a>[Back to summary](#item1)   
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_4)
+
+
+
+
+
+
+
+<a name="item1.5"><h4>1.5 </h4></a>[Back to summary](#item1)   
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_5)
