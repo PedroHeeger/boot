@@ -49,6 +49,7 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
 - Network:
   - netstat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netstat.webp" alt="netstat" width="auto" height="25">
   - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
+  - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
 
 - Offensive Security:
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
@@ -161,7 +162,7 @@ A análise do resultado do primeiro comando indicava que a porta `3000` estava a
 <a name="item1.2"><h4>1.2 Hardening</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_2)
 
-No laboratório anterior, foi realizado o acesso e a exploração de sistemas inseguros — o servidor web e o servidor **Ubuntu** — ambos sem qualquer mecanismo de defesa implantado. Neste segundo laboratório, iniciou-se o processo de hardening, com a aplicação de técnicas básicas de segurança. A dinâmica consistia em acessar primeiro o container **Kali Linux**, utilizado para atacar o container de defesa — neste caso, o servidor **Ubuntu** — evidenciando suas vulnerabilidades. Em seguida, realizava-se o acesso ao servidor **Ubuntu** para aplicar as técnicas de hardening correspondentes e, por fim, repetia-se o ataque a partir do **Kali Linux** para verificar se as vulnerabilidades haviam sido mitigadas. As técnicas de hardening aplicadas foram:
+No laboratório anterior, foi realizado o acesso e a exploração de sistemas inseguros — o servidor web **OWASP** e o servidor **Ubuntu** — ambos sem qualquer mecanismo de defesa implantado. Neste segundo laboratório, iniciou-se o processo de hardening, com a aplicação de técnicas básicas de segurança. A dinâmica consistia em acessar primeiro o container **Kali Linux**, utilizado para atacar o container de defesa — neste caso, o servidor **Ubuntu** — evidenciando suas vulnerabilidades. Em seguida, realizava-se o acesso ao servidor **Ubuntu** para aplicar as técnicas de hardening correspondentes e, por fim, repetia-se o ataque a partir do **Kali Linux** para verificar se as vulnerabilidades haviam sido mitigadas. As técnicas de hardening aplicadas foram:
 - Criação de um usuário com privilégios de `sudo`;
 - Ativação do login por chave pública;
 - Desativação do login com o usuário `root`;
@@ -177,25 +178,54 @@ O ambiente **Docker** construído neste laboratório, conforme ilustrado na imag
     <figcaption>Imagem 08.</figcaption>
 </figure></div><br>
 
-Dentro do container **Kali Linux**, após executar o comando `docker exec -it kali_lab_2 /bin/bash` foi realizada uma tentativa de conexão SSH com o servidor **Ubuntu** utilizando o comando `ssh root@172.20.0.10`. Nesse comando, especificava-se o usuário (`root`) e o endereço IP da máquina de destino (o container **Ubuntu**). Como ainda não havia sido aplicada nenhuma técnica de hardening e o servidor estava desprotegido, a conexão foi estabelecida com sucesso, conforme mostrado na imagem 09.
+Para facilitar a execução das atividades, foram utilizadas duas abas do **Windows PowerShell** na máquina física, ambas conectadas via **OpenSSH** à instância do **Play With Docker (PWD)**. A primeira aba foi destinada ao container de ataque (**Kali Linux**), acessado com o comando `docker exec -it kali_lab_2 /bin/bash`. A segunda aba foi usada para o container de defesa (**Ubuntu**), acessado por meio do comando `docker exec -it ubuntu_lab_2 /bin/bash`.
+
+Antes de aplicar qualquer técnica de hardening no **Ubuntu**, o container **Kali Linux** foi utilizado para tentar uma conexão SSH com o servidor **Ubuntu**, com o comando `ssh root@172.20.0.10`, passando o usuário (`root`) e o endereço IP do container de destino. A senha do `root`, que era `rootlab`, foi solicitada para concluir a conexão. Como nenhuma técnica de hardening havia sido aplicada e o sistema se encontrava desprotegido, a conexão foi estabelecida com sucesso, conforme mostrado na imagem 09.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img09.png" alt="img09"><br>
     <figcaption>Imagem 09.</figcaption>
 </figure></div><br>
 
+Duas das técnicas de hardening que foram aplicadas eram desativar o login com o usuário `root` e alterar a autenticação de login, ao invés de ser por senha, utilizar a chave pública. A desativação do login com usuário `root` é extremamente importante tendo em vista que ele é o principal o usuário do sistema e portanto, ele possuí todas as permissões, o que pode ser bastante perigoso caso alguém consiga acessá-lo. Sendo assim, antes de desativar o login com o `root`, um novo usuário foi criado com o comando `adduser defensor`, onde foi solicitado a criação de uma senha para ele que foi definida como `Teste!@3`, e adicionado ao grupo de usuários `sudo` através do comando `usermod -aG sudo defensor`. O grupo de usuários `sudo` é .... Após essa primeira configuração, o container Kali foi novamente utilizado para se conectar com o container de defesa, só que agora utilizando o usuário `defensor`, que foi o criado (`ssh defensor@172.20.0.10`). Na imagem 10, é possível visualizar que ao tentar se conectar via SSH foi solicitado a senha deste usuário.
 
+Duas das técnicas aplicadas nesse laboratório foram a desativação do login com o usuário `root` e a troca da autenticação por senha para autenticação por chave pública. A desativação do login com `root` é fundamental, pois esse é o usuário com nível máximo de privilégio no sistema e, em caso de comprometimento, pode ser utilizado para causar danos críticos. Por esse motivo, antes de bloquear o acesso direto, foi criado um novo usuário com o comando `adduser defensor` (a senha utilizada foi `Teste!@3`) e ele foi adicionado ao grupo de usuários `sudo` com o comando `usermod -aG sudo defensor`. O grupo `sudo` permite que usuários autorizados executem comandos administrativos utilizando o mecanismo de elevação de privilégio `sudo`, sem a necessidade de utilização do usuário `root`. Após essa configuração inicial, o container **Kali Linux** foi novamente utilizado para realizar uma conexão SSH, desta vez com o usuário `defensor` (`ssh defensor@172.20.0.10`). Na imagem 10 é possível observar que, ao tentar a nova conexão, a senha do usuário foi solicitada, e ao informá-la, a conexão foi estabelecida com sucesso.
 
+<div align="center"><figure>
+    <img src="../0-aux/md2-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
 
+A desativação do login por `root` e da autenticação por senha são configurações realizadas no arquivo do serviço SSH (`/etc/ssh/sshd_config`). No entanto, ao desabilitar o login por senha, o usuário criado (`defensor`) também seria impactado. Por esse motivo, antes de modificar o arquivo de configuração, foi necessário gerar um par de chaves para o usuário `defensor`, transferir a chave privada para o container **Kali Linux** e testar o acesso por meio de autenticação baseada em chave. No **Ubuntu**, o comando `sudo -u defensor ssh-keygen -t rsa -b 4096 -f /home/defensor/.ssh/id_rsa -N ""` foi utilizado para gerar, com o software **OpenSSH**, um par de chaves do tipo `RSA` com 4096 bits, sem senha e armazenado no diretório `.ssh`. Em seguida, com o comando `sudo -u defensor bash -c "cat /home/defensor/.ssh/id_rsa.pub >> /home/defensor/.ssh/authorized_keys"`, o conteúdo da chave pública criada foi adicionado ao arquivo `authorized_keys`. Por fim, foram executados três comandos para ajustar permissões e proprietários dos diretórios:
+- `chmod 700 /home/defensor/.ssh`: define permissão total somente para o proprietário do diretório `.ssh`;
+- `chmod 600 /home/defensor/.ssh/authorized_keys`: restringe o acesso ao arquivo de chaves autorizadas apenas ao proprietário;
+- `chown -R defensor:defensor /home/defensor/.ssh`: define o usuário e o grupo `defensor` como proprietários do diretório `.ssh` e de todo o seu conteúdo.
 
+Para transferir o arquivo de chave privada de um container para o outro, foi necessária uma terceira aba do **Windows PowerShell**, conectada via SSH ao nó do **Play With Docker (PWD)**, mas sem acessar nenhum container. Dessa forma, os comandos foram executados diretamente na instância. Primeiro, o comando `docker cp ubuntu_lab_2:/home/defensor/.ssh/id_rsa ./id_rsa_defensor` foi utilizado para copiar o arquivo de chave privada do container `ubuntu_lab_2` para o diretório local da própria instância. Em seguida, o comando `chmod 600 id_rsa_defensor` foi executado para limitar o acesso ao arquivo apenas ao proprietário. Por fim, o comando `docker cp ./id_rsa_defensor kali_lab_2:/root/.ssh/id_rsa_defensor` foi utilizado para copiar o arquivo da instância para o container `kali_lab_2`.
 
+Na aba do **PowerShell** em que o container **Kali Linux** estava acessado, o comando `chmod 600 ~/.ssh/id_rsa_defensor` foi executado para ajustar as permissões da chave importada. Em seguida, o comando `ssh -i ~/.ssh/id_rsa_defensor defensor@172.20.0.10` foi utilizado para estabelecer a conexão com o container **Ubuntu**, especificando o usuário (`defensor`), o endereço IP de destino e o caminho do arquivo de chave privada para autenticação. A imagem 11 mostra a conexão estabelecida com sucesso.
 
+<div align="center"><figure>
+    <img src="../0-aux/md2-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
 
+A etapa seguinte consistiu na desativação do login com `root` e da autenticação por senha. No container **Ubuntu**, o arquivo de configuração do SSH foi aberto no editor de texto **Nano** pelo comando `nano /etc/ssh/sshd_config`. As opções `PermitRootLogin no` e `PasswordAuthentication no` foram editadas ou adicionadas, caso não existissem. Em seguida, o serviço SSH foi reiniciado com o comando `service ssh restart` para que as alterações entrassem em vigor, garantindo que o acesso direto como `root` fosse bloqueado e que apenas autenticação por chave fosse permitida.
 
+As três técnicas de hardening restantes aplicadas foram: ativar o firewall, remover serviços desnecessários e restringir permissões inadequadas. Para remover serviços desnecessários, o software **Telnet** foi desinstalado com o comando `apt remove telnet -y`. O Telnet é um protocolo de comunicação que transmite dados, incluindo senhas, em texto puro, sendo considerado inseguro. Para restringir permissões inadequadas, a permissão do arquivo `/etc/shadow` foi ajustada com o comando `chmod 640 /etc/shadow`, protegendo as senhas dos usuários contra leitura por usuários não autorizados. O arquivo `/etc/shadow` é onde o **Linux** armazena as senhas dos usuários de forma segura. Ele contém informações sensíveis de cada conta do sistema, como nome de usuário, a senha criptografada, entre outros. Por fim, o firewall **UFW** foi instalado com `apt update && apt install -y ufw`, a permissão para conexões SSH foi liberada com `ufw allow OpenSSH` e o firewall foi ativado de forma forçada com `ufw --force enable`, garantindo que apenas os serviços permitidos fossem acessíveis.
+
+Para finalizar, o **PowerShell** com o container de ataque acessado foi utilizado para executar os testes finais. Primeiramente, foram realizadas duas tentativas de conexão SSH com a máquina **Ubuntu**, utilizando os comandos `ssh root@172.20.0.10` e `ssh defensor@172.20.0.10`. Em cada comando, o usuário que tentava logar era diferente. Em ambos os casos, a conexão falhou corretamente, pois o SSH não permitia mais autenticação por senha, então nenhuma senha era solicitada e a conexão não era estabelecida. Por fim, o comando `ssh -i ~/.ssh/id_rsa_defensor defensor@172.20.0.10` foi utilizado, empregando o usuário criado `defensor` e sua respectiva chave privada, que havia sido previamente gerada e transferida para o container **Kali Linux**. A imagem 12 evidencia o funcionamento correto de todas as técnicas de hardening aplicadas.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
 
 <a name="item1.3"><h4>1.3 Firewall & ACL</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_3)
 
+
+Neste terceiro laboratório, o objetivo foi aprimorar os conhecimentos de firewall e controle de acesso à rede utilizando o software **iptables** no **Linux**. Foram construídas regras de firewall para proteção dos sistemas, bloqueando ataques maliciosos e permitindo o tráfego legítimo e essencial. Também foram gerados logs para auditoria e diagnóstico, além do teste e validação dessas configurações de segurança.
 
 
 
