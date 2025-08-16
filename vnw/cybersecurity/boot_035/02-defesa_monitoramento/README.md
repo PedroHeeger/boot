@@ -55,7 +55,7 @@ Este módulo foi estruturado em aulas, cada uma dedicada a um tema específico. 
 
 A primeira aula abordou a construção de arquiteturas resilientes com base no conceito de Defesa em Profundidade, destacando a importância da aplicação de múltiplos mecanismos de proteção distribuídos por diferentes camadas da infraestrutura. Também foram apresentados exemplos práticos de controles por camada, além de estudos de caso que ilustram falhas e estratégias bem-sucedidas de defesa.
 
-🔐 Defesa em Profundidade
+🔐 Defesa em Profundidade   
 A abordagem de Defesa em Profundidade consiste na implementação de diversos níveis de segurança, de forma que, se uma barreira for comprometida, as demais continuem exercendo controle sobre o avanço da ameaça. Essa metodologia, inspirada em estratégias militares, distribui os mecanismos de proteção ao longo da superfície de ataque, aumentando progressivamente a dificuldade de comprometimento à medida que se aproxima de ativos mais sensíveis. Esse modelo minimiza o risco de dependência de um único ponto de defesa, reforçando a postura de segurança com redundância e diversidade de controles. Cada camada pode atuar como elemento de detecção, retardo ou bloqueio do ataque.
 
 Exemplos de mecanismos utilizados em conjunto para compor essas defesas incluem:
@@ -66,7 +66,7 @@ Exemplos de mecanismos utilizados em conjunto para compor essas defesas incluem:
 - Autenticação Forte: Reforço na verificação de identidade com múltiplos fatores.
 - Monitoramento Contínuo: Coleta e análise de eventos para identificar comportamentos anômalos.
 
-🧱 Camadas de Segurança
+🧱 Camadas de Segurança   
 A arquitetura em camadas organiza os controles de segurança em sete níveis distintos, que atuam de forma coordenada:
 - Camada Física: Proteção de acesso físico aos equipamentos (hardwares) e ambientes (DataCenters).
 - Camada Lógica: Barreiras digitais como autenticação, criptografia e controle de acesso.
@@ -76,10 +76,10 @@ A arquitetura em camadas organiza os controles de segurança em sete níveis dis
 - Camada de Dados: Proteção da integridade, confidencialidade e disponibilidade das informações.
 - Camada de Missão Crítica: Garantia de continuidade para os ativos e serviços essenciais à operação da organização.
 
-🔒 Modelo Zero Trust
+🔒 Modelo Zero Trust   
 O modelo Zero Trust rompe com a ideia tradicional de confiança baseada na localização na rede. Em vez disso, assume que nenhuma entidade — interna ou externa — deve ser considerada confiável por padrão. A segurança é reforçada por meio da validação contínua de identidade, do contexto da solicitação e do estado do dispositivo. A máxima "Never Trust, Always Verify" define a lógica dessa abordagem, que exige autenticação constante, monitoração rigorosa e restrição de privilégios em todos os níveis.
 
-💣 Ciclo de um Ataque Ransomware
+💣 Ciclo de um Ataque Ransomware   
 O ransomware segue uma sequência bem estruturada com o objetivo de causar máximo impacto operacional e psicológico. As fases incluem:
 - Acesso Inicial: Realizado por meio de phishing (e-mails com links ou anexos maliciosos), exploração de falhas de segurança (exploits de vulnerabilidades em softwares) ou credenciais expostas (como em conexões RDP).
 - Movimentação Lateral e Persistência: Após a invasão, o código malicioso se propaga e instala mecanismos para se manter ativo, sempre buscando sistemas e dados críticos.

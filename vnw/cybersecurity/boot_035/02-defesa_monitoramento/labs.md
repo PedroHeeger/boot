@@ -85,7 +85,7 @@ As máquinas virtuais do **Play With Docker (PWD)** também foram acessadas via 
 
 Com o ambiente **Docker** em execução, cada laboratório era iniciado separadamente a partir de arquivos `docker-compose.yml` e `Dockerfile`, fornecidos pelo instrutor do curso. O arquivo de **Docker Compose** era responsável por definir os serviços, volumes e redes necessários para o laboratório em questão. Para executar esses arquivos, o processo era basicamente o mesmo, o que mudava era o caminho para o arquivo correto. Dessa forma, a sequência era:
 - Clonagem do repositório do bootcamp: `git clone https://github.com/Kensei-CyberSec-Lab/formacao-cybersec.git`.
-- Alteração do diretório corrente para o diretório do arquivo: `cd formacao-cybersec/modulo2-defesa-monitoramento/lab_1`. Aqui era só trocar a última pasta do path para a aula correta.
+- Alteração do diretório corrente para o diretório do arquivo: `cd formacao-cybersec/modulo2-defesa-monitoramento/lab_1`. Aqui era só trocar a última pasta do path para o lab correto.
 - Execução do ambiente com **Docker Compose**: `docker compose up -d`. Este comando tinha que ser sempre executado na pasta onde o arquivo `docker-compose.yml` estava.
 - Verificação dos containers ativos: `docker ps`.
 - Comando para acessar os containers existentes: `docker exec -it kali /bin/bash`. Aqui era só trocar o nome do container que desejava-se acessar.
@@ -112,7 +112,7 @@ Este laboratório foi executado no **Play With Docker (PWD)**, utilizando apenas
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-Logo ao acessar a aplicação, uma mensagem de boas-vindas era exibida, informando que o **OWASP Juice Shop** é uma aplicação web com um vasto número de vulnerabilidades de segurança intencionais. Essa aplicação é amplamente utilizada para testes e práticas de identificação de vulnerabilidades. Dentre as funcionalidades disponíveis, havia a opção de login, permitindo que o usuário acesse uma conta existente ou realize um novo cadastro. Para fins de teste, foi criado um cadastro fictício com o e-mail aleatório `teste@gmail.com` e a senha `Testes1@`. Após o login, já era possível adicionar produtos ao carrinho, simulando o funcionamento típico de um site de e-commerce. A imagem 03 ilustra um exemplo de carrinho montado na seção `Your Basket`.
+Logo ao acessar a aplicação, uma mensagem de boas-vindas era exibida, informando que o **OWASP Juice Shop** é uma aplicação web com um vasto número de vulnerabilidades de segurança intencionais. Essa aplicação é amplamente utilizada para testes e práticas de identificação de vulnerabilidades. Dentre as funcionalidades disponíveis, havia a opção de login, permitindo que o usuário acessasse uma conta existente ou realizasse um novo cadastro. Para fins de teste, foi criado um cadastro fictício com o e-mail aleatório `teste@gmail.com` e a senha `Testes1@`. Após o login, já era possível adicionar produtos ao carrinho, simulando o funcionamento típico de um site de e-commerce. A imagem 03 ilustra um exemplo de carrinho montado na seção `Your Basket`.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img03.png" alt="img03"><br>
