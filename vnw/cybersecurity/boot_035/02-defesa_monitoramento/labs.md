@@ -34,6 +34,7 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
 - Integrated Development Environment (IDE) and Text Editor:
+  - Nano   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nano.png" alt="nano" width="auto" height="25">
   - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
 - Versioning: 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
@@ -50,20 +51,9 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
   - netstat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netstat.webp" alt="netstat" width="auto" height="25">
   - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
-
+  - Uncomplicated Firewall (UFW)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ufw.webp" alt="ufw" width="auto" height="25">
 - Offensive Security:
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
-
-  - Arp-scan   <img src="" alt="arp-scan" width="auto" height="25">
-  - Domain Information Groper (Dig)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dig.jpeg" alt="dig" width="auto" height="25">
-  - Iproute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iproute.png" alt="iproute" width="auto" height="25">
-  - Iputils-ping; Iputils   <img src="" alt="iputils" width="auto" height="25">
-  - Netdiscover   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netdiscover.png" alt="netdiscover" width="auto" height="25">
-  - Net-tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net-tools.svg" alt="net-tools" width="auto" height="25">
-
-  - Ping   <img src="" alt="iputils" width="auto" height="25">
-  - Rustscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rustscan.png" alt="rustscan" width="auto" height="25">
-
 
 ---
 
@@ -73,7 +63,7 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
     1.2. <a href="#item1.2">Hardening</a><br>
     1.3. <a href="#item1.3">Firewall & ACL</a><br>
     1.4. <a href="#item1.4">IDS e IPS</a><br>
-    1.5. <a href="#item1.5">IDS e IPS</a><br>
+    1.5. <a href="#item1.5"></a><br>
 
 ---
 
@@ -87,7 +77,7 @@ Implementar estratégias de defesa em profundidade e monitoramento contínuo de 
 ### Development:
 A configuração do ambiente foi realizada, assim como nos laboratórios do Módulo 1, utilizando o **Docker** em conjunto com o **WSL**. No entanto, foi adotada a plataforma **Play With Docker (PWD)**. Em situações em que os recursos disponíveis foram insuficientes, especialmente em laboratórios mais exigentes, foi utilizada uma instância do **Amazon Elastic Compute Cloud (EC2)**, na nuvem da **Amazon Web Services (AWS)**, como alternativa de execução.
 
-A criação da instância EC2 foi automatizada por meio do script [`ec2Instance.ps1`](../../environment/ec2Instance.ps1), desenvolvido em **PowerShell** utilizando comandos da **AWS Command Line Interface (CLI)**. O script está localizado na pasta [`environment`](../../environment/) deste bootcamp. A instância foi provisionada com a imagem `ami-020cba7c55df1f615`, baseada no sistema operacional **Ubuntu Linux**, associada a um volume **Amazon Elastic Block Store (EBS)** de `8 GB`, do tipo `gp` (General Purpose). O tipo de instância utilizado foi o `t3.medium`, com 2 vCPUs e 4 GB de memória. Para acesso, foi utilizado o par de chaves `keyPairUniversal`, previamente existente na conta da **AWS**, e o grupo de segurança atribuído foi o `default` da zona de disponibilidade `us-east-1a` (Norte da Virgínia). Um script de *user data* também foi utilizado para automatizar a instalação do **Git** e do **Docker** durante o processo de inicialização.
+A criação da instância EC2 foi automatizada por meio do script [`ec2Instance.ps1`](../environment/ec2Instance.ps1), desenvolvido em **PowerShell** utilizando comandos da **AWS Command Line Interface (CLI)**. O script está localizado na pasta [`environment`](../environment/) deste bootcamp. A instância foi provisionada com a imagem `ami-020cba7c55df1f615`, baseada no sistema operacional **Ubuntu Linux**, associada a um volume **Amazon Elastic Block Store (EBS)** de `8 GB`, do tipo `gp` (General Purpose). O tipo de instância utilizado foi o `t3.medium`, com 2 vCPUs e 4 GB de memória. Para acesso, foi utilizado o par de chaves `keyPairUniversal`, previamente existente na conta da **AWS**, e o grupo de segurança atribuído foi o `default` da zona de disponibilidade `us-east-1a` (Norte da Virgínia). Um script de *user data* também foi utilizado para automatizar a instalação do **Git** e do **Docker** durante o processo de inicialização.
 
 O acesso à instância podia ser feito tanto pelo console da **AWS** quanto por meio de conexão SSH utilizando o **OpenSSH** no **Windows PowerShell** da máquina local. Neste último caso, era necessário informar o caminho do arquivo `.pem`, o nome do usuário do sistema e o IP ou DNS público da instância. Um exemplo de comando seria: `ssh -i "G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/universal/keyPairUniversal.pem" ubuntu@54.160.249.118`. Além disso, o Security Group associado à instância precisava conter uma regra de entrada liberando a porta `22` para o IP público da máquina física, a fim de permitir o estabelecimento da conexão SSH.
 
@@ -187,9 +177,7 @@ Antes de aplicar qualquer técnica de hardening no **Ubuntu**, o container **Kal
     <figcaption>Imagem 09.</figcaption>
 </figure></div><br>
 
-Duas das técnicas de hardening que foram aplicadas eram desativar o login com o usuário `root` e alterar a autenticação de login, ao invés de ser por senha, utilizar a chave pública. A desativação do login com usuário `root` é extremamente importante tendo em vista que ele é o principal o usuário do sistema e portanto, ele possuí todas as permissões, o que pode ser bastante perigoso caso alguém consiga acessá-lo. Sendo assim, antes de desativar o login com o `root`, um novo usuário foi criado com o comando `adduser defensor`, onde foi solicitado a criação de uma senha para ele que foi definida como `Teste!@3`, e adicionado ao grupo de usuários `sudo` através do comando `usermod -aG sudo defensor`. O grupo de usuários `sudo` é .... Após essa primeira configuração, o container Kali foi novamente utilizado para se conectar com o container de defesa, só que agora utilizando o usuário `defensor`, que foi o criado (`ssh defensor@172.20.0.10`). Na imagem 10, é possível visualizar que ao tentar se conectar via SSH foi solicitado a senha deste usuário.
-
-Duas das técnicas aplicadas nesse laboratório foram a desativação do login com o usuário `root` e a troca da autenticação por senha para autenticação por chave pública. A desativação do login com `root` é fundamental, pois esse é o usuário com nível máximo de privilégio no sistema e, em caso de comprometimento, pode ser utilizado para causar danos críticos. Por esse motivo, antes de bloquear o acesso direto, foi criado um novo usuário com o comando `adduser defensor` (a senha utilizada foi `Teste!@3`) e ele foi adicionado ao grupo de usuários `sudo` com o comando `usermod -aG sudo defensor`. O grupo `sudo` permite que usuários autorizados executem comandos administrativos utilizando o mecanismo de elevação de privilégio `sudo`, sem a necessidade de utilização do usuário `root`. Após essa configuração inicial, o container **Kali Linux** foi novamente utilizado para realizar uma conexão SSH, desta vez com o usuário `defensor` (`ssh defensor@172.20.0.10`). Na imagem 10 é possível observar que, ao tentar a nova conexão, a senha do usuário foi solicitada, e ao informá-la, a conexão foi estabelecida com sucesso.
+Duas das técnicas aplicadas nesse laboratório foram a desativação do login com o usuário `root` e a troca da autenticação por senha para autenticação por chave pública. A desativação do login com `root` é fundamental, pois esse é o usuário com nível máximo de privilégio no sistema e, em caso de comprometimento, pode ser utilizado para causar danos críticos. Por esse motivo, dentro do servidor **Ubuntu**, antes de bloquear o acesso direto, foi criado um novo usuário com o comando `adduser defensor`, definindo a senha como `Teste!@3` e as demais informações mantendo vazias. Este usuário foi adicionado ao grupo de usuários `sudo` com o comando `usermod -aG sudo defensor`. O grupo `sudo` permite que usuários autorizados executem comandos administrativos utilizando o mecanismo de elevação de privilégio `sudo`, sem a necessidade de utilização do usuário `root`. Após essa configuração inicial, o container **Kali Linux** foi novamente utilizado para realizar uma conexão SSH, desta vez com o usuário `defensor` (`ssh defensor@172.20.0.10`). Na imagem 10 é possível observar que, ao tentar a nova conexão, a senha do usuário foi solicitada, e ao informá-la, a conexão foi estabelecida com sucesso.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img10.png" alt="img10"><br>
@@ -201,18 +189,18 @@ A desativação do login por `root` e da autenticação por senha são configura
 - `chmod 600 /home/defensor/.ssh/authorized_keys`: restringe o acesso ao arquivo de chaves autorizadas apenas ao proprietário;
 - `chown -R defensor:defensor /home/defensor/.ssh`: define o usuário e o grupo `defensor` como proprietários do diretório `.ssh` e de todo o seu conteúdo.
 
-Para transferir o arquivo de chave privada de um container para o outro, foi necessária uma terceira aba do **Windows PowerShell**, conectada via SSH ao nó do **Play With Docker (PWD)**, mas sem acessar nenhum container. Dessa forma, os comandos foram executados diretamente na instância. Primeiro, o comando `docker cp ubuntu_lab_2:/home/defensor/.ssh/id_rsa ./id_rsa_defensor` foi utilizado para copiar o arquivo de chave privada do container `ubuntu_lab_2` para o diretório local da própria instância. Em seguida, o comando `chmod 600 id_rsa_defensor` foi executado para limitar o acesso ao arquivo apenas ao proprietário. Por fim, o comando `docker cp ./id_rsa_defensor kali_lab_2:/root/.ssh/id_rsa_defensor` foi utilizado para copiar o arquivo da instância para o container `kali_lab_2`.
+Para transferir o arquivo de chave privada de um container para o outro, foi necessária uma terceira aba do **Windows PowerShell**, conectada via SSH ao nó do **Play With Docker (PWD)**, ou o próprio navegador com a instância do PWD aberta, mas sem acessar nenhum container. Dessa forma, os comandos foram executados diretamente na instância. Primeiro, o comando `docker cp ubuntu_lab_2:/home/defensor/.ssh/id_rsa ./id_rsa_defensor` foi utilizado para copiar o arquivo de chave privada do container `ubuntu_lab_2` para o diretório local da própria instância. Em seguida, o comando `chmod 600 id_rsa_defensor` foi executado para limitar o acesso ao arquivo apenas ao proprietário. Por fim, o comando `docker cp ./id_rsa_defensor kali_lab_2:/root/.ssh/id_rsa_defensor` foi utilizado para copiar o arquivo da instância para o container `kali_lab_2`.
 
-Na aba do **PowerShell** em que o container **Kali Linux** estava acessado, o comando `chmod 600 ~/.ssh/id_rsa_defensor` foi executado para ajustar as permissões da chave importada. Em seguida, o comando `ssh -i ~/.ssh/id_rsa_defensor defensor@172.20.0.10` foi utilizado para estabelecer a conexão com o container **Ubuntu**, especificando o usuário (`defensor`), o endereço IP de destino e o caminho do arquivo de chave privada para autenticação. A imagem 11 mostra a conexão estabelecida com sucesso.
+Na aba do **PowerShell** em que o container **Kali Linux** estava acessado, o comando `chmod 600 ~/.ssh/id_rsa_defensor` foi executado para ajustar as permissões da chave importada. Em seguida, o comando `ssh -i ~/.ssh/id_rsa_defensor defensor@172.20.0.10` foi utilizado para estabelecer a conexão com o container **Ubuntu**, especificando o usuário (`defensor`), o endereço IP de destino e o caminho do arquivo de chave privada para autenticação. A imagem 11 mostra a conexão estabelecida com sucesso, agora com autenticação por par de chaves.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img11.png" alt="img11"><br>
     <figcaption>Imagem 11.</figcaption>
 </figure></div><br>
 
-A etapa seguinte consistiu na desativação do login com `root` e da autenticação por senha. No container **Ubuntu**, o arquivo de configuração do SSH foi aberto no editor de texto **Nano** pelo comando `nano /etc/ssh/sshd_config`. As opções `PermitRootLogin no` e `PasswordAuthentication no` foram editadas ou adicionadas, caso não existissem. Em seguida, o serviço SSH foi reiniciado com o comando `service ssh restart` para que as alterações entrassem em vigor, garantindo que o acesso direto como `root` fosse bloqueado e que apenas autenticação por chave fosse permitida.
+A etapa seguinte consistiu na desativação do login com `root` e da autenticação por senha. No container **Ubuntu**, o arquivo de configuração do SSH foi aberto no editor de texto **Nano** pelo comando `nano /etc/ssh/sshd_config`, caso não houvesse o **Nano**, poderia ser utilizado qualquer outro editor de texto como **Vi** ou **Vim**. As opções `PermitRootLogin no` e `PasswordAuthentication no` foram editadas ou adicionadas, caso não existissem. Em seguida, o serviço SSH foi reiniciado com o comando `service ssh restart` para que as alterações entrassem em vigor, garantindo que o acesso direto como `root` fosse bloqueado e que apenas autenticação por chave fosse permitida. Pode ser que ao reiniciar o serviço SSH, o container seja derrubado, neste caso basta iniciá-lo com o comando `docker start ubuntu_lab_2` e acessá-lo novamente.
 
-As três técnicas de hardening restantes aplicadas foram: ativar o firewall, remover serviços desnecessários e restringir permissões inadequadas. Para remover serviços desnecessários, o software **Telnet** foi desinstalado com o comando `apt remove telnet -y`. O Telnet é um protocolo de comunicação que transmite dados, incluindo senhas, em texto puro, sendo considerado inseguro. Para restringir permissões inadequadas, a permissão do arquivo `/etc/shadow` foi ajustada com o comando `chmod 640 /etc/shadow`, protegendo as senhas dos usuários contra leitura por usuários não autorizados. O arquivo `/etc/shadow` é onde o **Linux** armazena as senhas dos usuários de forma segura. Ele contém informações sensíveis de cada conta do sistema, como nome de usuário, a senha criptografada, entre outros. Por fim, o firewall **UFW** foi instalado com `apt update && apt install -y ufw`, a permissão para conexões SSH foi liberada com `ufw allow OpenSSH` e o firewall foi ativado de forma forçada com `ufw --force enable`, garantindo que apenas os serviços permitidos fossem acessíveis.
+As três técnicas de hardening restantes aplicadas foram: ativar o firewall, remover serviços desnecessários e restringir permissões inadequadas. Para remover serviços desnecessários, o software **Telnet** foi desinstalado com o comando `apt remove telnet -y`. O Telnet é um protocolo de comunicação que transmite dados, incluindo senhas, em texto puro, sendo considerado inseguro. Para restringir permissões inadequadas, a permissão do arquivo `/etc/shadow` foi ajustada com o comando `chmod 640 /etc/shadow`, protegendo as senhas dos usuários contra leitura por usuários não autorizados. O arquivo `/etc/shadow` é onde o **Linux** armazena as senhas dos usuários de forma segura. Ele contém informações sensíveis de cada conta do sistema, como nome de usuário, a senha criptografada, entre outros. Por fim, o firewall **UFW** foi instalado com `apt update && apt install -y ufw`, a permissão para conexões SSH foi liberada com `ufw allow OpenSSH` e o firewall foi ativado de forma forçada com `ufw --force enable`, garantindo que apenas os serviços permitidos fossem acessíveis. Pode ser que neste último comando apareça uma mensagem de erro que é relativa a aplicação das regras para o IPv6, contudo como o ambiente é executado em containers **Docker**, ele não foi configurado para trabalhar com IPv6. Dessa forma, a mensagem pôde ser ignorada, pois funcionou para o IPv4, que era o que o **Docker** estava usando.
 
 Para finalizar, o **PowerShell** com o container de ataque acessado foi utilizado para executar os testes finais. Primeiramente, foram realizadas duas tentativas de conexão SSH com a máquina **Ubuntu**, utilizando os comandos `ssh root@172.20.0.10` e `ssh defensor@172.20.0.10`. Em cada comando, o usuário que tentava logar era diferente. Em ambos os casos, a conexão falhou corretamente, pois o SSH não permitia mais autenticação por senha, então nenhuma senha era solicitada e a conexão não era estabelecida. Por fim, o comando `ssh -i ~/.ssh/id_rsa_defensor defensor@172.20.0.10` foi utilizado, empregando o usuário criado `defensor` e sua respectiva chave privada, que havia sido previamente gerada e transferida para o container **Kali Linux**. A imagem 12 evidencia o funcionamento correto de todas as técnicas de hardening aplicadas.
 
@@ -224,9 +212,67 @@ Para finalizar, o **PowerShell** com o container de ataque acessado foi utilizad
 <a name="item1.3"><h4>1.3 Firewall & ACL</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_3)
 
+No laboratório anterior, o tema de firewall foi abordado de forma superficial como uma das técnicas de hardening. Neste terceiro laboratório, o objetivo foi aprofundar os conhecimentos sobre controle de acesso à rede utilizando o software **iptables** no sistema **Linux**. A proposta foi configurar um firewall diretamente na máquina de defesa para bloquear apenas a conexão SSH proveniente da máquina atacante, mantendo liberado o tráfego legítimo, como requisições HTTP, conexões já estabelecidas e acessos SSH originados de máquinas administrativas.
 
-Neste terceiro laboratório, o objetivo foi aprimorar os conhecimentos de firewall e controle de acesso à rede utilizando o software **iptables** no **Linux**. Foram construídas regras de firewall para proteção dos sistemas, bloqueando ataques maliciosos e permitindo o tráfego legítimo e essencial. Também foram gerados logs para auditoria e diagnóstico, além do teste e validação dessas configurações de segurança.
+O ambiente **Docker** construído para este laboratório, conforme ilustrado na imagem 13, era composto pelos três seguintes containers: `kali_lab_19`, atuando como máquina de ataque (IP `192.168.100.11`); `ubuntu_lab_19`, atuando como servidor alvo (IP `192.168.100.10`); e `ubuntu_gui`, que representa uma estação de trabalho com interface gráfica (IP `192.168.100.12`) e que poderia, caso necessário, ser utilizada como alvo em vez do `ubuntu_lab_19`.
 
+<div align="center"><figure>
+    <img src="../0-aux/md2-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+Caso fosse utilizada a máquina **Ubuntu** com interface gráfica, havia duas formas de acesso. A primeira era por meio do navegador, acessando a porta `6080` da instância do PWD (`http://localhost:6080`). A segunda consistia em instalar o software **VNC Viewer** e criar uma conexão com a instância na porta `5901`. Em ambos os casos, era necessário liberar previamente a porta correspondente no **Play With Docker**. Para autenticação, era utilizado o usuário `root`, cuja senha era `kenseilab`. A imagem 14 mostra o acesso remoto gráfico realizado por meio do navegador.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+No shell desta máquina `ubuntu_gui`, o comando `sudo iptables -L` foi executado para verificar as regras do firewall **iptables**. Este mesmo comando também foi usado no shell aberto com o container `ubuntu_lab_19`. 
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
+</figure></div><br>
+
+Antes de configurar o firewall na máquina de defesa, o container **Kali Linux** foi acessado para testar a conectividade com o servidor **Ubuntu**. Embora o teste pudesse ser realizado com qualquer um dos dois servidores, foi utilizado o `ubuntu_lab_19`. Inicialmente, o comando `ping -c 3 192.168.100.10` foi utilizado para verificar a comunicação entre as máquinas. Em seguida, `ssh root@192.168.100.10` foi executado para estabelecer uma conexão SSH via **OpenSSH**. Como o acesso ainda estava liberado, a conexão foi estabelecida com sucesso e finalizada com `exit` para continuar os testes. O comando `nmap -sS -p- 192.168.100.10` foi então utilizado para identificar portas abertas no servidor de defesa. Por fim, o comando `curl http://192.168.100.10` foi executado para testar a conectividade via HTTP. A imagem 16 mostra os resultados desses comandos.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+Com o container de defesa acessado, os comandos `iptables -F` e `iptables -L` foram executados para limpar todas as regras existentes no firewall **iptables**. Em seguida, três comandos foram utilizados para definir a política padrão, adotando negação total de acordo com o princípio do menor privilégio:
+- `iptables -P INPUT DROP`: bloqueia todas as conexões de entrada por padrão (nenhum pacote recebido é aceito, a menos que haja uma regra específica permitindo).  
+- `iptables -P FORWARD DROP`: descarta todo o tráfego roteado (pacotes que passam "através" da máquina, como em um roteador).  
+- `iptables -P OUTPUT ACCEPT`: permite todas as conexões de saída iniciadas pela própria máquina (a menos que exista uma regra proibindo).
+
+Resumindo, todo tráfego de entrada é bloqueado, o tráfego de saída é permitido e nada é encaminhado/roteado. As conexões já estabelecidas foram autorizadas com o comando `iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT`. O tráfego local (loopback) foi liberado pelo comando `iptables -A INPUT -i lo -j ACCEPT`. As quatro regras seguintes definiam permissões específicas para portas ou IPs:
+- `iptables -A INPUT -p tcp --dport 80 -j ACCEPT`: permite o tráfego TCP na porta 80 (HTTP).  
+- `iptables -A INPUT -s 192.168.100.11 -p tcp --dport 22 -j DROP`: bloqueia conexões SSH (porta 22) vindas do IP `192.168.100.11` (máquina atacante).  
+- `iptables -A INPUT -p tcp --dport 22 -j ACCEPT`: permite conexões SSH na porta 22 vindas de qualquer outro IP.  
+- `iptables -A INPUT -s 192.168.100.11 -j LOG --log-prefix "BLOCKED_KALI: "`: registra no log todos os pacotes vindos do IP `192.168.100.11` com o prefixo `BLOCKED_KALI`.
+
+Para verificar as regras configuradas, foram utilizados os comandos:
+- `iptables -L -v -n`: exibe todas as regras com estatísticas e IPs numericamente.  
+- `iptables -L --line-numbers`: mostra as regras com numeração de linhas.  
+- `iptables -L -v`: exibe estatísticas detalhadas do tráfego processado pelas regras.
+
+A imagem 17 ilustra a saída desses comandos.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+De volta ao container de ataque, `kali_lab_19`, o teste para verificar se as regras estavam funcionando foram realizados. Primeiro foi executado uma tentativa de conexão SSH, exatamente igual ao feito antes da aplicação das regras (`ssh root@192.168.100.10`) e o resultado foi que a conexão não foi estabelecida, pois o IP dessa máquina estava bloqueado para conexões na porta `22`, que é a porta padrão do SSH. O comando `ping -c 3 192.168.100.10` foi utilizado para mostrar que existia conectividade entre as máquinas, pois a regra afetava apenas a porta `22`. Com o comando `curl http://192.168.100.10`, a requisição HTTP foi efetuada com sucesso, exatamente pelo mesmo motivo. Por fim, o escaneamento de portas foi realizado com o comando `nmap -sS -p- 192.168.100.10`. A imagem 18 exibe o output dos comandos, evidenciado que as configurações no firewall funcionaram corretamente.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
+Para mostrar
 
 
 
@@ -237,7 +283,6 @@ Neste terceiro laboratório, o objetivo foi aprimorar os conhecimentos de firewa
 
 <a name="item1.4"><h4>1.4 IDS e IPS</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_4)
-
 
 
 
