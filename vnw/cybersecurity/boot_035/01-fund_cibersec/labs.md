@@ -106,10 +106,173 @@ Para executar os arquivos e iniciar o ambiente de laboratório, a sequência de 
 
 Os laboratórios de cibersegurança são organizados em máquinas de ataque, geralmente uma **Kali Linux**, e máquinas alvo ou de defesa, que são os sistemas onde os ataques são realizados. Pode haver múltiplas máquinas de cada tipo, sendo comum que algumas máquinas de defesa sejam propositalmente vulneráveis, incluindo aplicações web criadas para testes. Como o ambiente é simulado via **Docker**, termos como máquina, container ou host frequentemente se referem aos containers que representam as máquinas simuladas. Além disso, é importante ter em mente que existem outras duas camadas no ambiente: a máquina física, no caso meu computador pessoal **Windows**, e a máquina virtual fornecida pela **AWS** ou pelo **Play With Docker (PWD)**, que hospeda e executa os containers do **Docker**.
 
+Outra parte importante dos laboratórios foram os *Capture The Flag (CTF)*, que são desafios técnicos utilizados na área de cibersegurança para desenvolver e validar conhecimento prático. Cada desafio apresenta um cenário específico (como exploração de vulnerabilidade, análise de tráfego, OSINT ou engenharia reversa) e exige que o participante encontre uma *flag*, que é um código ou string que comprova que o objetivo foi alcançado com sucesso. Ao longo dos laboratórios do curso, diversos CTFs foram incorporados ao ambiente simulado, servindo como etapas práticas de validação do conteúdo e permitindo aplicar, de forma objetiva, os conceitos aprendidos. Dessa forma, os laboratórios não apenas simularam cenários reais de ataque e defesa, como também proporcionaram desafios progressivos que reforçaram o raciocínio lógico, a análise técnica e a consolidação do conhecimento.
+
 <a name="item1.1"><h4>1.1 Conceitos básicos de segurança</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_1)
 
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>ubuntu_lab:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo `Dockerfile.ubuntu` como receita de construção.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como `ubuntu_lab`.</li>
+              <li><code>entrypoint: ["/bin/bash", "-c"]</code>: Sobrescreve o ponto de entrada padrão do container, garantindo que o shell <strong>Bash</strong> seja usado para interpretar os comandos passados pelo <code>command</code>.</li>
+              <li><code>command: bash -c "\ ... "</code>: Sobrescreve o comando padrão do container para executar uma sequência de instruções durante a inicialização:
+                <ul>
+                  <li><code>apt update && apt install -y iputils-ping openssl</code>: atualiza os repositórios e instala ferramentas básicas (<strong>ping</strong> e <strong>OpenSSL</strong>).</li>
+                  <li><code>cp /flag/id_rsa.pem /root/id_rsa.pem</code>: copia um arquivo de chave privada para o diretório <code>/root</code>, simulando uma credencial sensível presente na máquina.</li>
+                  <li><code>echo '&lt;base64&gt;' | base64 -d &gt; /root/FLAG.txt</code>: decodifica uma string Base64 e grava o conteúdo no arquivo <code>/root/FLAG.txt</code>, que representa a flag a ser encontrada no laboratório.</li>
+                  <li><code>bash</code>: mantém o container ativo com um shell interativo após executar os comandos anteriores.</li>
+                </ul>
+              </li>
+              <li><strong>volumes:</strong> <code>.:/flag:ro</code> - monta o diretório local do lab dentro do container como somente leitura, permitindo que arquivos (como a chave privada usada na cópia acima) fiquem disponíveis no container.</li>
+              <li><strong>tty:</strong> <code>true</code> - permite alocar um terminal interativo, facilitando o acesso ao container via <code>docker exec -it</code>.</li>
+              <li><strong>networks:</strong> conecta o container à rede <code>cyberlab</code> e define o IP estático <code>172.28.1.10</code> dentro dessa rede.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>kali_lab:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo <code>Dockerfile.kali</code> como receita de construção.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>kali_lab</code>.</li>
+              <li><code>tty: true</code>: Permite alocar um terminal interativo, facilitando o acesso ao container via <code>docker exec -it</code> e mantendo-o ativo.</li>
+              <li><strong>cap_add:</strong> Adiciona capacidades especiais ao container, ampliando o controle sobre a rede e pacotes:
+                <ul>
+                  <li><code>NET_ADMIN</code>: Permite executar comandos de administração de rede dentro do container (ex: configuração de interfaces, roteamento, etc.).</li>
+                  <li><code>NET_RAW</code>: Permite a criação de pacotes de rede brutos, essencial para testes e ataques de cibersegurança.</li>
+                </ul>
+              </li>
+              <li><strong>security_opt:</strong>
+                <ul>
+                  <li><code>seccomp:unconfined</code>: Desativa o perfil de segurança padrão <em>seccomp</em>, permitindo que o container execute operações normalmente restritas por segurança.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>cyberlab</code> e define o IP estático <code>172.28.1.20</code> dentro dessa rede.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>dvwa_lab:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo <code>Dockerfile.dvwa</code> como receita de construção.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>dvwa_lab</code>.</li>
+              <li><strong>ports:</strong>
+                <ul>
+                  <li><code>"8080:80"</code>: Mapeia a porta 80 do container (onde o servidor web DVWA roda) para a porta 8080 da máquina host, permitindo acessar a aplicação via navegador.</li>
+                </ul>
+              </li>
+              <li><strong>environment:</strong>
+                <ul>
+                  <li><code>MYSQL_PASS=p@ssw0rd</code>: Define a variável de ambiente que configura a senha do banco de dados MySQL utilizado pelo DVWA.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>cyberlab</code> e define o IP estático <code>172.28.1.30</code> dentro dessa rede.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>cyberlab:</strong></summary>
+            <ul>
+              <li><code>driver: bridge</code>: Define que a rede é do tipo <em>bridge</em>, funcionando como um switch virtual interno que conecta os containers entre si dentro do mesmo host, permitindo comunicação isolada entre eles.</li>
+              <li><strong>ipam:</strong>
+                <ul>
+                  <li><strong>config:</strong>
+                    <ul>
+                      <li><code>subnet: 172.28.0.0/16</code>: Define o intervalo de endereços IP disponíveis na rede, permitindo atribuição de IPs estáticos ou automáticos aos containers conectados.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul> 
+        <li><details><summary><strong>Dockerfile.ubuntu</strong></summary>
+          <ul>
+            <li><code>FROM ubuntu:20.04</code>: Define a imagem base do container como Ubuntu 20.04.</li>
+            <li><code>RUN apt update && apt install -y iputils-ping net-tools iproute2</code>: Atualiza os repositórios e instala ferramentas essenciais de rede, como <strong>ping</strong>, <strong>net-tools</strong> e <strong>iproute2</strong>.</li>
+            <li><code>CMD ["bash"]</code>: Define o comando padrão do container, iniciando um shell interativo <strong>Bash</strong> quando o container é executado.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+            <ul>
+              <li><code>FROM kalilinux/kali-rolling:latest</code>: Define a imagem base do container como a versão mais recente do Kali Linux Rolling.</li>
+              <li><code>RUN echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware' > /etc/apt/sources.list</code>: Configura os repositórios oficiais do Kali Linux para permitir a instalação de pacotes.</li>
+              <li><code>RUN</code>:
+                <ul>
+                  <li><code>apt update</code>: Atualiza os repositórios do sistema, garantindo que a lista de pacotes disponíveis esteja atualizada.</li>
+                  <li><code>apt install -y iputils-ping net-tools curl nmap dnsutils tcpdump wireshark netcat-traditional whois iproute2</code>: Instala os pacotes essenciais para testes de rede e segurança.</li>
+                  <li><code>apt clean && rm -rf /var/lib/apt/lists/*</code>: Limpa o cache de pacotes e remove listas temporárias para reduzir o tamanho da imagem.</li>
+                </ul>
+              </li>
+              <li><code>CMD ["bash"]</code>: Define o comando padrão do container, iniciando um shell interativo <strong>Bash</strong> quando o container é executado.</li>
+            </ul>
+        </details></li>
+        <li><details><summary><strong>Dockerfile.dvwa</strong></summary>
+          <ul>
+            <li><code>FROM vulnerables/web-dvwa:latest</code>: Define a imagem base do container como a versão mais recente do DVWA (Damn Vulnerable Web Application), pronta para testes de segurança.</li>
+            <li><code>RUN echo 'FLAG{sql_injection_realizada_com_sucesso}' &gt; /var/www/html/flag.txt</code>: Cria um arquivo de flag dentro do container, simulando um objetivo que o participante precisa encontrar durante o laboratório.</li>
+            <li><code>CMD ["bash"]</code>: Define o comando padrão do container, iniciando um shell interativo <strong>Bash</strong> quando o container é executado.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
+
 Apesar da primeira aula ter sido referente ao setup e preparação do ambiente de laboratório, este primeiro laboratório já foi mão na massa. O objetivo desse laborátorio foi dar um overview de como funcionariam os laboratórios cibersegurança desse curso já apresentando um pouco do conteúdo que seria abordado ao longo do curso. 
+
+
+
+
+<!-- - ubuntu_lab:
+  - build: Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo `Dockerfile.ubuntu` como receita de construção.
+  - container_name: Define o nome do container de forma explícita como `ubuntu_lab`.
+  - `entrypoint: ["/bin/bash", "-c"]`: Sobrescreve o ponto de entrada padrão do container, garantindo que o shell **Bash** seja usado para interpretar os comandos passados pelo `command`.
+  - `command: bash -c "\ ... "`: Sobrescrevem o comando padrão do container para executar uma sequência de instruções durante a inicialização:  
+    - `apt update && apt install -y iputils-ping openssl`: atualiza os repositórios e instala ferramentas básicas (**ping** e **OpenSSL**).  
+    - `cp /flag/id_rsa.pem /root/id_rsa.pem`: copia um arquivo de chave privada para o diretório `/root`, simulando uma credencial sensível presente na máquina.  
+    - `echo '<base64>' | base64 -d > /root/FLAG.txt`: decodifica uma string Base64 e grava o conteúdo no arquivo `/root/FLAG.txt`, que representa a flag a ser encontrada no laboratório.  
+    - `bash`: mantém o container ativo com um shell interativo após executar os comandos anteriores.
+  - volumes: 
+    - `.:/flag:ro`: Monta o diretório local do lab dentro do container como somente leitura, permitindo que arquivos (como a chave privada usada na cópia acima) fiquem disponíveis no container.
+  - `tty: true`: Permite alocar um terminal interativo, facilitando o acesso ao container via `docker exec -it`.
+  - networks: Conecta o container à rede `cyberlab` e define o IP estático `172.28.1.10` dentro dessa rede.
+
+- kali_lab:
+  - build: Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo `Dockerfile.kali` como receita de construção.
+  - container_name: Define o nome do container de forma explícita como `kali_lab`.
+  - `tty: true`: Permite alocar um terminal interativo, facilitando o acesso ao container via `docker exec -it` e mantendo-o ativo.
+  - cap_add: Adiciona capacidades especiais ao container, ampliando o controle sobre a rede e pacotes:
+    - `NET_ADMIN`: Permite executar comandos de administração de rede dentro do container (ex: configuração de interfaces, roteamento, etc.).
+    - `NET_RAW`: Permite a criação de pacotes de rede brutos, essencial para testes e ataques de cibersegurança.
+  - security_opt:
+    - `seccomp:unconfined`: Desativa o perfil de segurança padrão *seccomp*, permitindo que o container execute operações normalmente restritas por segurança.
+  - networks: Conecta o container à rede `cyberlab` e define o IP estático `172.28.1.20` dentro dessa rede.
+
+- dvwa_lab:
+  - build: Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo `Dockerfile.dvwa` como receita de construção.
+  - container_name: Define o nome do container de forma explícita como `dvwa_lab`.
+  - ports:
+    - `"8080:80"`: Mapeia a porta 80 do container (onde o servidor web DVWA roda) para a porta 8080 da máquina host, permitindo acessar a aplicação via navegador.
+  - environment:
+    - `MYSQL_PASS=p@ssw0rd`: Define a variável de ambiente que configura a senha do banco de dados MySQL utilizado pelo DVWA.
+  - networks: Conecta o container à rede `cyberlab` e define o IP estático `172.28.1.30` dentro dessa rede.
+
+- cyberlab:
+  - `driver: bridge`: Define que a rede é do tipo *bridge*, funcionando como um switch virtual interno que conecta os containers entre si dentro do mesmo host, permitindo comunicação isolada entre eles.
+  - ipam:
+    - config:
+      - `subnet: 172.28.0.0/16`: Define o intervalo de endereços IP disponíveis na rede, permitindo atribuição de IPs estáticos ou automáticos aos containers conectados.
+ -->
+
+
+
+
+
+
+
+
 
 
 
