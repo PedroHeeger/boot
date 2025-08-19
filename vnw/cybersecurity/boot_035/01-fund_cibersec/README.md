@@ -2,7 +2,7 @@
 
 ### Repository: [boot](../../../../)   
 ### Platform: <a href="../../../">vnw   <img src="https://github.com/PedroHeeger/my_tech_journey/blob/main/platforms/img/vnw.jpeg" alt="vnw" width="auto" height="25"></a>
-### Software/Subject: <a href="../../">cybersecurity   <img src="https://github.com/PedroHeeger/main/tree/main/0-aux/logos/content/cybersecurity.jpg" alt="cybersecurity" width="auto" height="25"></a>
+### Software/Subject: <a href="../../">cybersecurity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/cybersecurity.jpg" alt="cybersecurity" width="auto" height="25"></a>
 ### Bootcamp: <a href="../">boot_035 (Formação Cybersec)   <img src="../0-aux/logo_boot.png" alt="boot_035" width="auto" height="25"></a>
 ### Module: 1. Fundamentos de Cibersegurança
 
@@ -58,7 +58,8 @@ Estabelecer uma base técnica sólida em redes, sistemas operacionais e nos prin
 ### Development:
 Este módulo foi estruturado em aulas, cada uma dedicada a um tema específico. Na maioria delas, foram realizados laboratórios práticos relacionados ao conteúdo abordado. Este arquivo README contempla exclusivamente a parte teórica, enquanto o arquivo [labs.md](./labs.md), também em Markdown, apresenta a resolução de todos os laboratórios do módulo.
 
-<a name="item1.1"><h4>1.1 Setup e Preparação do Ambiente</h4></a>[Back to summary](#item1)
+<a name="item1.1"><h4>1.1 Setup e Preparação do Ambiente</h4></a>[Back to summary](#item1)   
+[Lab01](labs.md#item1.1)
 
 A primeira aula deste módulo teve como objetivo a configuração do ambiente de laboratório que foi utilizado ao longo do curso. Nesse ambiente foram realizadas simulações práticas de segurança, de forma segura, utilizando containers **Docker**. A prática *hands-on* é indispensável para consolidar os conceitos de segurança, e por isso o primeiro passo foi preparar todas as ferramentas necessárias para execução dos laboratórios. Abaixo são apresentadas as ferramentas utilizadas:
 - **Docker**: plataforma de criação e gerenciamento de containers que serviu como base de todos os laboratórios.
@@ -92,6 +93,7 @@ Alguns outros comandos básicos do **Docker** que podiam ser utilizados são lis
 - `docker exec`: Executa comandos dentro de um container.
 
 <a name="item1.2"><h4>1.2 Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</h4></a>[Back to summary](#item1)
+[Lab02](labs.md#item1.2)
 
 A segunda aula abordou o modelo *CIA* (Confidencialidade, Integridade e Disponibilidade), com o objetivo de aprofundar o conhecimento sobre esses três princípios essenciais da segurança da informação.
 
@@ -126,6 +128,7 @@ Para exemplificar, o vazamento de dados da plataforma **Steam**, que expôs info
 A tríade *CIA* evidencia que os controles de segurança precisam equilibrar os três pilares. Focar somente na confidencialidade pode proteger dados sensíveis, mas sem disponibilidade o serviço fica inacessível. Garantir integridade sem controle de acesso pode permitir que informações corretas sejam visualizadas ou modificadas por pessoas não autorizadas. O equilíbrio entre confidencialidade, integridade e disponibilidade é, portanto, essencial para uma estratégia de segurança eficaz.
 
 <a name="item1.3"><h4>1.3 Ameaças, ataques e vulnerabilidades</h4></a>[Back to summary](#item1)
+[Lab03](labs.md#item1.3)
 
 A compreensão de como ataques cibernéticos acontecem é fundamental para a cibersegurança, pois permite analisar de forma estruturada as etapas que um invasor percorre, desde o planejamento inicial até a execução de suas ações maliciosas. Estudar essas etapas ajuda a identificar vetores de ataque, pontos críticos de vulnerabilidade e medidas de proteção adequadas para mitigar riscos e fortalecer sistemas.
 
@@ -154,6 +157,7 @@ Uma análise comparativa entre *Cyber Kill Chain* e *MITRE ATT&CK* evidencia dif
 Por outro lado, o *MITRE ATT&CK*, desenvolvido a partir de 2013, é uma base detalhada de táticas, técnicas e procedimentos (TTPs) que reflete o comportamento real de atacantes após o comprometimento inicial. Sua abordagem é não linear e comportamental, com alto nível de detalhamento, permitindo mapear ações específicas em múltiplas plataformas, incluindo redes corporativas, nuvem, dispositivos móveis e sistemas industriais (ICS). Enquanto a Kill Chain fornece uma visão macro e sequencial, o MITRE ATT&CK oferece informações granulares para análise de ameaças, investigação de incidentes e planejamento de respostas mais precisas.
 
 <a name="item1.4"><h4>1.4 Reconhecimento & Footprinting</h4></a>[Back to summary](#item1)
+[Lab04](labs.md#item1.4)
 
 O objetivo deste aula foi apresentar o conceito de *OSINT (Open-Source Intelligence)* e como ele é aplicado na segurança da informação. Foram exploradas as diferenças entre *Reconhecimento Passivo*, que coleta informações sem interagir diretamente com o alvo, e *Footprinting Ativo*, que envolve sondagens e verificações de sistemas. O ciclo de inteligência, desde a coleta até a análise dos dados, foi abordado, assim como as principais fontes, técnicas e ferramentas de OSINT. Além disso, foram apresentadas práticas que permitiram reduzir a exposição de informações sensíveis por meio de medidas de mitigação e monitoramento.
 
@@ -209,6 +213,7 @@ O Checklist de Mitigação reúne práticas essenciais para reduzir a exposiçã
 - Detecção de Intrusão: Configurar sistemas de proteção, como WAF e NIDS, para detectar e bloquear tentativas de reconhecimento e varreduras incomuns, reforçando a segurança do perímetro.
 
 <a name="item1.5"><h4>1.5 Infraestrutura de Rede - Conceitos e Componentes</h4></a>[Back to summary](#item1)
+[Lab05](labs.md#item1.5)
 
 A quinta aula teve como objetivo apresentar os fundamentos de redes, permitindo compreender como ocorre a comunicação digital de forma prática e detalhada, conectando o que é observado na superfície com os processos que acontecem nos bastidores. Foram destacados os componentes-chave de uma rede, incluindo cabos, roteadores, firewalls e balanceadores de carga, mostrando seu papel na infraestrutura e na segurança. Também foi abordado o Modelo *OSI/TCP-IP*, detalhando como os dados transitam pelas diferentes camadas e o que acontece em cada uma durante a comunicação. Por fim, o conteúdo relacionou a infraestrutura de rede com estratégias de defesa.
 
@@ -294,6 +299,7 @@ A relação entre rede e segurança é essencial para proteger sistemas e dados,
 - Resposta a Incidentes: Conhecer a infraestrutura facilita a contenção de sistemas comprometidos e a restauração rápida da operação normal.
 
 <a name="item1.6"><h4>1.6 Ferramentas: Kali Linux, Nmap, Wireshark</h4></a>[Back to summary](#item1)
+[Lab06](labs.md#item1.6)
 
 O propósito desta aula foi apresentar os fundamentos da análise de tráfego de rede com foco em cibersegurança. Abordou-se a importância de compreender como os dados transitam pelas redes e como ferramentas como o **Wireshark** podem ser utilizadas para detectar ameaças e realizar troubleshooting. Também foram explorados conceitos teóricos sobre o handshake TCP/IP e o fluxo HTTP, além da identificação de padrões normais e anomalias no tráfego de rede, destacando como a análise detalhada de pacotes contribui para a segurança e monitoramento das redes.
 
@@ -342,25 +348,25 @@ Para tornar a análise viável em grandes volumes de pacotes, filtros são essen
 A análise de tráfego com ferramentas como o **Wireshark** é uma competência essencial para profissionais de cibersegurança, pois transforma a rede, que muitas vezes é percebida como uma "caixa preta", em algo visível e compreensível. Essa visibilidade permite realizar diagnósticos precisos e conduzir investigações detalhadas. Dominar o **Wireshark** oferece um verdadeiro diferencial, proporcionando a capacidade de monitorar o tráfego em profundidade, identificar ameaças e vulnerabilidades e agir de forma proativa antes que ocorram danos significativos.
 
 <a name="item1.7"><h4>1.7 Endereçamento IP & Subnetting</h4></a>[Back to summary](#item1)
-
+[Lab07](labs.md#item1.7)
 
 
 
 
 
 <a name="item1.8"><h4>1.8 Seu Dojo de Ataque no Kali Linux (CLI & GUI)</h4></a>[Back to summary](#item1)
-
+[Lab08](labs.md#item1.8)
 
 
 
 <a name="item1.9"><h4>1.9 Ports/Portas</h4></a>[Back to summary](#item1)
-
+[Lab09](labs.md#item1.9)
 
 
 
 
 <a name="item1.10"><h4>1.10 Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</h4></a>[Back to summary](#item1)
-
+[Lab10](labs.md#item1.10)
 
 
 
