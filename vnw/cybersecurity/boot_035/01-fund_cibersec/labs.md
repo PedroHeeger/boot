@@ -42,6 +42,8 @@ Esta pasta refere-se ao módulo 1 **Fundamentos de Cibersegurança** do bootcamp
   - AWS Command Line Interface (CLI)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/cloud/aws_cli.svg" alt="aws_cli" width="auto" height="25">
   - Bash e Sh   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash_sh" width="auto" height="25">
 - Tools:
+  - Advanced Package Tool (Apt)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt.png" alt="apt" width="auto" height="25">
+  - Advanced Package Tool (Apt-Get)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/apt-get.jpg" alt="apt-get" width="auto" height="25">
   - Curl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
 - Network:
   - Arp-scan   <img src="" alt="arp-scan" width="auto" height="25">
@@ -54,7 +56,16 @@ Esta pasta refere-se ao módulo 1 **Fundamentos de Cibersegurança** do bootcamp
   - Ping   <img src="" alt="iputils" width="auto" height="25">
   - Rustscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rustscan.png" alt="rustscan" width="auto" height="25">
 - Offensive Security:
+  - Damn Vulnerable Web Application (DVWA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dvwa.png" alt="dvwa" width="auto" height="25">
+  - gobuster   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gobuster.svg" alt="gobuster" width="auto" height="25">
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+
+
+sha256sum
+CyberChef
+  - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
+
+
 
 ---
 
@@ -106,7 +117,7 @@ Para executar os arquivos e iniciar o ambiente de laboratório, a sequência de 
 
 Os laboratórios de cibersegurança são organizados em máquinas de ataque, geralmente uma **Kali Linux**, e máquinas alvo ou de defesa, que são os sistemas onde os ataques são realizados. Pode haver múltiplas máquinas de cada tipo, sendo comum que algumas máquinas de defesa sejam propositalmente vulneráveis, incluindo aplicações web criadas para testes. Como o ambiente é simulado via **Docker**, termos como máquina, container ou host frequentemente se referem aos containers que representam as máquinas simuladas. Além disso, é importante ter em mente que existem outras duas camadas no ambiente: a máquina física, no caso meu computador pessoal **Windows**, e a máquina virtual fornecida pela **AWS** ou pelo **Play With Docker (PWD)**, que hospeda e executa os containers do **Docker**.
 
-Outra parte importante dos laboratórios foram os *Capture The Flag (CTF)*, que são desafios técnicos utilizados na área de cibersegurança para desenvolver e validar conhecimento prático. Cada desafio apresenta um cenário específico (como exploração de vulnerabilidade, análise de tráfego, OSINT ou engenharia reversa) e exige que o participante encontre uma *flag*, que é um código ou string que comprova que o objetivo foi alcançado com sucesso. Ao longo dos laboratórios do curso, diversos CTFs foram incorporados ao ambiente simulado, servindo como etapas práticas de validação do conteúdo e permitindo aplicar, de forma objetiva, os conceitos aprendidos. Dessa forma, os laboratórios não apenas simularam cenários reais de ataque e defesa, como também proporcionaram desafios progressivos que reforçaram o raciocínio lógico, a análise técnica e a consolidação do conhecimento.
+Outra parte importante dos laboratórios foram os *Capture The Flag (CTF)*, desafios técnicos amplamente utilizados na área de cibersegurança para desenvolver e validar conhecimento prático. Cada desafio apresenta um cenário específico — como exploração de vulnerabilidades, análise de tráfego, OSINT ou engenharia reversa — e exige que o participante realize uma ação ou resolva um problema para obter a flag. A flag não se limita a uma string ou código a ser encontrado, ela representa a prova de que o objetivo do desafio foi cumprido com sucesso. Ao longo dos laboratórios do curso, diversos CTFs foram incorporados ao ambiente simulado, servindo como etapas práticas de validação do conteúdo e permitindo aplicar, de forma objetiva, os conceitos aprendidos. Dessa forma, os laboratórios não apenas simularam cenários reais de ataque e defesa, como também proporcionaram desafios progressivos que reforçaram o raciocínio lógico, a análise técnica e a consolidação do conhecimento.
 
 <a name="item1.1"><h4>1.1 Conceitos básicos de segurança</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_1)
@@ -220,7 +231,60 @@ Outra parte importante dos laboratórios foram os *Capture The Flag (CTF)*, que 
   </ul>
 </details>
 
-Apesar da primeira aula ter sido referente ao setup e preparação do ambiente de laboratório, este primeiro laboratório já foi mão na massa. O objetivo desse laborátorio foi dar um overview de como funcionariam os laboratórios cibersegurança desse curso já apresentando um pouco do conteúdo que seria abordado ao longo do curso. 
+Apesar da primeira aula ter sido voltada à preparação do ambiente de laboratório, este primeiro laboratório já trouxe uma abordagem prática. O objetivo foi fornecer um overview de como os laboratórios de cibersegurança seriam conduzidos ao longo do curso, apresentando os tipos de máquinas normalmente utilizados – neste caso, simuladas por containers. Foram apresentados três tipos distintos:  
+(1) uma máquina de ataque, baseada no **Kali Linux**, sistema operacional amplamente utilizado para testes ofensivos e análise de segurança;  
+(2) um servidor **Ubuntu**, representando uma máquina comum presente em ambientes corporativos; e  
+(3) a aplicação web vulnerável **Damn Vulnerable Web Application (DVWA)**, utilizada para estudos e testes de exploração.
+
+Cada container possuía uma flag que precisava ser capturada. A primeira flag consistia em localizar o arquivo `/root/FLAG.txt` dentro do container **Ubuntu** e descriptografar seu conteúdo através da execução do arquivo de script `verificar_flag.sh` que utilizava o arquivo de chave privada `id_rsa.pem` para descriptografia. A segunda flag exigia o uso da máquina atacante (**Kali Linux**) para identificar a rede interna utilizada pelos containers, realizar uma varredura e descobrir quais hosts estavam ativos, identificando o endereço IP do container que executava o **DVWA**. Por fim, a terceira flag tinha como objetivo acessar a aplicação **DVWA** pelo navegador e executar uma injeção SQL simples, comprovando a exploração com sucesso.
+
+Com o ambiente deste laboratório configurado, o container `ubuntu_lab` foi acessado utilizando o comando `docker exec -it ubuntu_lab /bin/bash`. Dentro do container, no diretório `/root`, foi executado o comando `ls` para listar os arquivos presentes. O primeiro arquivo encontrado foi o `id_rsa.pem`, que havia sido copiado da máquina host, a instância **Amazon EC2**, para o container por meio de um volume montado pelo **Docker Compose** (`.:/flag:ro`). Esse volume mapeava o diretório local do host para o ponto de montagem `/flag` no container, garantindo que todo conteúdo do diretório do host fosse sincronizado com o container e vice-versa. A partir desse ponto de montagem, o arquivo `id_rsa.pem` foi copiado para o diretório `/root` do container usando o comando `cp`.
+
+O outro arquivo presente no diretório `/root` do container era o `FLAG.txt`, criado a partir da decodificação de uma string em **Base64**, resultando em um código binário cifrado, conhecido como ciphertext. Esse ciphertext correspondia à mensagem original (plaintext) — neste caso, a flag do container — que foi criptografada previamente utilizando a chave pública do par de chaves. O par de chaves, composto pela chave pública e pela chave privada, foi gerado antes da criptografia da mensagem, empregando o algoritmo de criptografia **RSA**. Entretanto, isso já tinha sido realizado pelo instrutor do curso.
+
+Para acessar a flag contida no ciphertext e visualizar a mensagem original (plaintext), foi necessário realizar o processo de descriptografia. O instrutor forneceu, na pasta do laboratório, o script `verificar_flag.sh`, que primeiramente verificava se um arquivo de flag foi informado como argumento, depois checava se tanto o arquivo da flag quanto o arquivo da chave privada existiam no diretório corrente, e finalmente executa o comando `openssl rsautl -decrypt -inkey "$KEY_FILE" -in "$FLAG_FILE" 2>/dev/null`. Esse comando utilizava o **OpenSSL** para descriptografar a flag com a chave privada, descartando mensagens de erro para que apenas a saída descriptografada, ou seja, a flag, fosse exibida.
+
+Para que o script funcionasse, foi necessário mover o arquivo `verificar_flag.sh` do ponto de montagem `/flag` no container para o diretório `/root`, utilizando o comando `mv /flag/verificar_flag.sh /root/verificar_flag.sh`. Dessa forma, os três arquivos necessários — a flag, a chave privada e o script — ficaram centralizados na pasta `/root` dentro do container. Além disso, a variável `KEY_FILE` dentro do `verificar_flag.sh` precisou ser alterada de `private_key.pem` para `id_rsa.pem`, correspondendo ao nome real do arquivo de chave privada. Por fim, ao executar `./verificar_flag.sh FLAG.txt`, a mensagem original da flag foi exibida, conforme evidenciada na imagem 01.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img01.png" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
+
+Para efeito didático desta questão de criptografia, o processo de descriptografia foi novamente realizado, agora utilizando o site [CyberChef](https://gchq.github.io/CyberChef/). O **CyberChef** é uma ferramenta online que permite realizar operações de codificação, decodificação, criptografia, descriptografia e transformação de dados de forma visual, arrastando “receitas” de funções. É amplamente utilizada para análise de dados, segurança da informação e manipulação de formatos sem necessidade de programação.
+
+No `Input`, foi inserida a string em **Base64** abaixo, visualizada no **Docker Compose**. Na `Recipe`, primeiro aplicou-se `From Base64` para decodificar o conteúdo de **Base64** para ciphertext (código binário cifrado). Em seguida, foi adicionado o `RSA Decrypt`, já que o algoritmo de criptografia do par de chaves era **RSA**. Configurou-se `RSA Private Key (PEM)` com o conteúdo do arquivo de chave privada `id_rsa.pem`, mantendo o `Key Password` vazio, pois o par de chaves foi construído sem senha, e selecionou-se `RSAES-PKCS1-V1_5` em `Encryption Scheme`. Dessa forma, o output forneceu a mensagem original da flag: `FLAG{acesso_completo}`, conforme ilustrado na imagem 02.
+
+```base64
+Xl2SvVlv+e4QkLk5LoG4a2ZiavwJGy43rGDHwnCwZnpYLJ02pZvk+ihTMqFkdD4U9QbwKsqTpesmFxcKUliwWWSYrkLFAgyfMPbiLsstdiwz95O46cw5s8Fl+KNvfxPkwIoSMQJMgZQ5bEh1RIlXys1aGdAOTwy8yECscnjy9Juu21xVcRhUiQH2Gnw2PnCSfJ2S44Zc3Ebj3ZT04durWZ5IdO/nBbFQASHwegzPOnXOkyvOWKjnk6ly0Ef+LfJt60BP2CiJijZoq0S6hzZd957uV2AC5G9FOVwlyXIkMVOchavjpIbJajotVzNnAVUdnGIc2pqqJYvspvXp97zHrg==
+```
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
+
+Para capturar a segunda flag, foi necessário encerrar o acesso ao container `ubuntu_lab` e, em seguida, executar o comando `docker exec -it kali_lab /bin/bash`, acessando a máquina de ataque. Embora o **Docker Compose** já revelasse os IPs da rede e dos hosts, o procedimento foi conduzido como se essas informações não fossem conhecidas. Assim, utilizou-se o comando `ip a` para listar as interfaces de rede e seus respectivos endereços IP. Caso a ferramenta **IP** não estivesse disponível, o mesmo resultado poderia ser obtido com o comando `ifconfig`. 
+
+Com o IP da interface identificado (`172.28.1.20`), foi possível inferir que o CIDR da rede era `172.28.0.0/16`. A partir disso, executou-se `nmap -sn 172.28.0.0/16` para mapear os hosts ativos. Como os containers estavam na mesma rede, o escaneamento revelou os endereços `172.28.1.10` para o servidor **Ubuntu** e `172.28.1.30` para o container da aplicação vulnerável **DVWA**. A imagem 03 exibe a saída do **Nmap**, confirmando a descoberta do IP associado à aplicação **DVWA**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+A última flag foi obtida de forma diferente, pois, em vez de acessar diretamente o container da aplicação vulnerável **DVWA**, a interação ocorreu via navegador na máquina física. Isso foi possível porque o container `dvwa_lab` estava configurado com um port forward: o tráfego da porta `80` do container era redirecionado para a porta `8080` do host, no caso, a instância **Amazon EC2**. Assim, a aplicação executava internamente na porta `80`, mas ficava disponível externamente pela porta `8080` da EC2. Para permitir o acesso, foi necessário criar uma regra de entrada no security group associado à instância, liberando a porta `8080` apenas para o IP público da máquina física **Windows**. Dessa forma, apenas minha máquina conseguia acessar a aplicação **DVWA** pelo navegador utilizando o IP ou DNS público da instância EC2 na porta `8080`, como mostrado na imagem 04.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
+
+A primeira tela exibida era de login, onde foi necessário passar o login e senha para acessar a aplicação. O login foi identificado em dos arquivos de instrução do lab, que indicava que o padrão era `admin`. A senha 
+
+
+
+
 
 
 
@@ -285,29 +349,279 @@ Apesar da primeira aula ter sido referente ao setup e preparação do ambiente d
 <a name="item1.2"><h4>1.2 Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_2)
 
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>target:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório <code>./target</code> utilizando o arquivo <code>Dockerfile</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>lab_target</code>.</li>
+              <li><strong>ports:</strong>
+                <ul>
+                  <li><code>"8000:80"</code>: Mapeia a porta 80 do container (onde a aplicação Python roda) para a porta 8000 da máquina host, permitindo acesso via navegador ou ferramentas externas.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>labnet</code>, permitindo comunicação interna com outros containers conectados à mesma rede.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>kali:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório <code>./kali-full</code> utilizando o arquivo <code>Dockerfile</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>lab_kali</code>.</li>
+              <li><code>tty: true</code>: Permite alocar um terminal interativo, facilitando o acesso ao container via <code>docker exec -it</code> e mantendo-o ativo.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>labnet</code>, permitindo comunicação interna com o container alvo.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>labnet:</strong></summary>
+            <ul>
+              <li><code>driver: bridge</code>: Define que a rede é do tipo <em>bridge</em>, funcionando como um switch virtual interno que conecta os containers entre si dentro do mesmo host, permitindo comunicação isolada entre eles.</li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul> 
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como a versão rolling do Kali Linux.</li>
+            <li><code>RUN</code>: 
+              <ul>
+                <li><code>apt update</code>: Atualiza os repositórios do sistema.</li>
+                <li><code>apt install -y iputils-ping curl nmap gobuster dirb seclists</code>: Instala ferramentas essenciais de rede e segurança como <strong>ping</strong>, <strong>curl</strong>, <strong>nmap</strong>, <strong>gobuster</strong>, <strong>dirb</strong> e a coleção <strong>SecLists</strong>.</li>
+                <li><code>apt clean</code>: Limpa caches e arquivos temporários, reduzindo o tamanho final da imagem.</li>
+              </ul>
+            </li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Dockerfile.target</strong></summary>
+          <ul>
+            <li><code>FROM python:3.11-slim</code>: Define a imagem base como Python 3.11 em versão minimalista (<em>slim</em>).</li>
+            <li><code>WORKDIR /app</code>: Define o diretório de trabalho como <code>/app</code> dentro do container.</li>
+            <li><code>COPY requirements.txt .</code>: Copia o arquivo <code>requirements.txt</code> para o diretório de trabalho.</li>
+            <li><code>RUN pip install --no-cache-dir -r requirements.txt</code>: Instala as dependências da aplicação listadas no <code>requirements.txt</code>, sem armazenar caches.</li>
+            <li><code>COPY app.py .</code>: Copia o arquivo <code>app.py</code> para dentro do diretório de trabalho no container.</li>
+            <li><code>EXPOSE 80</code>: Expõe a porta 80 do container, que será usada pela aplicação Python.</li>
+            <li><code>CMD ["python", "app.py"]</code>: Define o comando padrão que executa a aplicação Python quando o container é iniciado.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul> 
+        <li><strong>requirements.txt</strong>: Lista as bibliotecas Python necessárias para a aplicação, contendo a dependência do framework web Flask na versão 3.0.1.</li>
+        <li><strong>app.py</strong>: Implementa a aplicação Flask, expondo rotas para exibir informações do host e retornar um token recebido via parâmetro.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
+Este segundo laboratório contou apenas com dois containers: a máquina de ataque (`lab_kali`) e o container alvo (`lab_target`). O objetivo foi utilizar a máquina atacante para realizar o reconhecimento do alvo por meio de quatro ferramentas: **ping**, **Nmap**, **curl** e **Gobuster**. Para isso, foi realizado o acesso ao container `lab_kali` com o comando `docker exec -it lab_kali /bin/bash`. No shell aberto, executou-se o primeiro comando: `ping -c1 lab_target`, que enviava um único pacote ICMP para verificar se o host `lab_target` estava acessível. O ICMP é um protocolo utilizado para testar a conectividade entre dispositivos. A imagem 08 mostra que o pacote foi recebido, confirmando que o host alvo estava ativo na rede.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
 
+O segundo comando executado foi `nmap -sS -sV -O lab_target`, utilizado para identificar portas abertas, serviços em execução (como HTTP) e o sistema operacional do alvo. O argumento `-O` realizava a detecção do sistema operacional, `-sV` identificava as versões dos serviços, e `-sS` executava uma varredura stealth (SYN scan). Nessa técnica, o **Nmap** envia apenas pacotes SYN, que são o primeiro passo na abertura de uma conexão TCP, e aguarda a resposta do host. Se a porta estiver aberta, o alvo retorna um pacote SYN-ACK, indicando que poderia iniciar a conexão, mas o **Nmap** não completa o handshake, encerrando a comunicação com um pacote RST. Se a porta estiver fechada, o host responde com um RST diretamente. Esse funcionamento torna a varredura mais discreta, pois não estabelece conexões completas que poderiam ser registradas em logs de rede ou disparar alertas de sistemas de detecção de intrusão. A imagem 09 mostra que o container `lab_target` possuía a porta `80` aberta, onde estava rodando uma aplicação web no protocolo HTTP, além de indicar que o sistema operacional era um **Linux**.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
 
+O terceiro comando executado foi `curl -I http://lab_target`, que enviava uma requisição HTTP do tipo HEAD para retornar apenas os cabeçalhos da resposta. Esses cabeçalhos forneciam informações relevantes sobre o servidor e as tecnologias utilizadas na aplicação web. A imagem 10 mostra que a resposta recebeu o código `200`, indicando que a requisição foi bem-sucedida, além de revelar o servidor e as tecnologias em uso, como **Werkzeug** e **Python**.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
+
+O último comando de reconhecimento executado foi `gobuster dir -u http://lab_target/ -w /usr/share/dirb/wordlists/common.txt`, que realizava uma força bruta (*brute-force*) em diretórios e arquivos do site, com o objetivo de descobrir rotas ocultas como: `/admin`, `/secret`, `/login`. No caso deste laboratório, a rota `/secret` foi identificada, conforme evidenciado na imagem 11.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
 
 <a name="item1.3"><h4>1.3 Ameaças, ataques e vulnerabilidades</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3)
-
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3) 
 
 
 
 
 
 <a name="item1.4"><h4>1.4 Reconhecimento & Footprinting</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_4)
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3)
 
+<!-- 3 -->
 
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>kali_lab_5:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório <code>./kali</code> utilizando o arquivo <code>Dockerfile</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>kali_lab_5</code>.</li>
+              <li><code>tty: true</code>: Permite alocar um terminal interativo, facilitando o acesso ao container via <code>docker exec -it</code> e mantendo-o ativo.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>labnet</code>, permitindo comunicação interna com o container alvo.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>lab_target:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório <code>./lab_target</code> utilizando o arquivo <code>Dockerfile</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>lab_target</code>.</li>
+              <li><strong>ports:</strong>
+                <ul>
+                  <li><code>"8080:80"</code>: Mapeia a porta 80 do container (onde o servidor Apache roda) para a porta 8080 da máquina host, permitindo acesso via navegador.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>labnet</code>, permitindo comunicação interna com outros containers conectados à mesma rede.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>labnet:</strong></summary>
+            <ul>
+              <li><code>driver: bridge</code>: Define que a rede é do tipo <em>bridge</em>, funcionando como um switch virtual interno que conecta os containers entre si dentro do mesmo host, permitindo comunicação isolada entre eles.</li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul> 
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como a versão rolling do Kali Linux.</li>
+            <li><code>ENV DEBIAN_FRONTEND=noninteractive</code>: Configura o ambiente para instalação automática de pacotes sem interação.</li>
+            <li><code>ENV PIP_BREAK_SYSTEM_PACKAGES=1</code>: Permite que o pip seja usado sem alterar pacotes do sistema.</li>
+            <li><code>RUN apt update &amp;&amp; apt install -y nmap dnsutils sublist3r theharvester gobuster dirb wordlists curl iputils-ping python3-pip &amp;&amp; pip3 install googlesearch-python shodan</code>: Instala ferramentas de rede, enumeração e coleta de informações essenciais para testes de segurança.</li>
+            <li><code>CMD ["/bin/bash"]</code>: Mantém o container ativo com um terminal interativo.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Dockerfile.lab_target</strong></summary>
+          <ul>
+            <li><code>FROM httpd:2.4-alpine</code>: Define a imagem base como Apache HTTP Server em versão Alpine leve.</li>
+            <li><code>COPY resources /usr/local/apache2/htdocs/</code>: Copia os recursos estáticos do diretório <code>resources</code> para o DocumentRoot do servidor.</li>
+            <li><code>EXPOSE 80</code>: Expõe a porta 80 do container, usada pelo servidor Apache.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul> 
+        <li><strong>/resources/vault/flag.txt</strong>: Contém a flag do laboratório, no formato <code>FLAG-{RECON-STARTS-WITH-OSINT}</code>.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
+Neste terceiro laboratório, a máquina de ataque `kali_lab_5` foi utilizada para praticar técnicas de enumeração e OSINT no container alvo (`lab_target`), com o objetivo de localizar o arquivo de flag. Para isso, o acesso ao container atacante foi realizado com o comando `docker exec -it kali_lab_5 /bin/bash`. No shell aberto, foram executados comandos como `curl -I http://lab_target` e `ping lab_target` para verificar se o alvo estava respondendo. 
+
+Com a ferramenta **Gobuster**, realizou-se a enumeração de diretórios (*footprinting ativo*) utilizando o comando `gobuster dir -u http://lab_target/ -w /usr/share/wordlists/dirb/common.txt -t 20`. Esse comando utilizava um arquivo padrão de wordlist e permitiu descobrir a pasta `/vault/`. Em seguida, foi enviada uma requisição GET para o arquivo da flag com `curl http://lab_target/vault/flag.txt`, obtendo a flag `FLAG-{RECON-STARTS-WITH-OSINT}`. Por fim, a flag foi criptografada utilizando a ferramenta **sha256sum** com o comando `echo -n "FLAG-{RECON-STARTS-WITH-OSINT}" | sha256sum`. A imagem 12 exibe o resultado desses comandos executados.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+O OSINT e o footprinting correspondem às primeiras fases da Cyber Kill Chain, focadas no reconhecimento do alvo. O OSINT caracteriza-se como reconhecimento passivo, pois envolve a coleta de informações a partir de fontes públicas ou observação do alvo sem gerar tráfego direto, tornando a detecção menos provável. Já o footprinting ativo ocorre quando há interação direta com a máquina, como varreduras de portas, serviços ou diretórios, permitindo obter informações mais detalhadas, mas aumentando o risco de ser detectado. A validação de integridade via hash permite verificar se um arquivo ou dado não foi alterado, garantindo a integridade e contribuindo para a confidencialidade dentro do modelo CIA.
 
 <a name="item1.5"><h4>1.5 Infraestrutura de Rede - Conceitos e Componentes</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_5)
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_4)
+
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>kali_lab_6:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório <code>./kali-custom</code> utilizando o arquivo <code>Dockerfile</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>kali_lab_6</code>.</li>
+              <li><code>tty: true</code>: Permite alocar um terminal interativo, facilitando o acesso ao container via <code>docker exec -it</code> e mantendo-o ativo.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>aula6_network</code>, atribuindo o IP fixo <code>172.18.0.10</code>.</li>
+              <li><strong>volumes:</strong> Monta o diretório local <code>./kali-data</code> no container como <code>/root</code>, permitindo persistência de arquivos.</li>
+              <li><strong>cap_add:</strong> Adiciona capacidades de rede especiais: <code>NET_ADMIN</code> e <code>NET_RAW</code>, essenciais para testes de segurança.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>web_server_target_lab_6:</strong></summary>
+            <ul>
+              <li><strong>image:</strong> Usa a imagem oficial <code>nginx:alpine</code> para o container alvo.</li>
+              <li><strong>container_name:</strong> Define o nome do container como <code>web_server_target_lab_6</code>.</li>
+              <li><strong>ports:</strong>
+                <ul>
+                  <li><code>"8080:80"</code>: Mapeia a porta 80 do container para a porta 8080 da máquina host, permitindo acesso via navegador.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>aula6_network</code>, atribuindo o IP fixo <code>172.18.0.20</code>.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>dns_server_lab_6:</strong></summary>
+            <ul>
+              <li><strong>image:</strong> Usa a imagem oficial <code>coredns/coredns:latest</code>.</li>
+              <li><strong>container_name:</strong> Define o nome do container como <code>dns_server_lab_6</code>.</li>
+              <li><strong>command:</strong> Configura o CoreDNS para usar o arquivo <code>/etc/coredns/Corefile</code>.</li>
+              <li><strong>volumes:</strong> Monta o arquivo local <code>./Corefile</code> na pasta <code>/etc/coredns/Corefile</code> do container, permitindo configuração personalizada do DNS.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>aula6_network</code>, atribuindo o IP fixo <code>172.18.0.30</code>.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>aula6_network:</strong></summary>
+            <ul>
+              <li><code>driver: bridge</code>: Define que a rede é do tipo <em>bridge</em>, funcionando como um switch virtual interno.</li>
+              <li><strong>ipam:</strong>
+                <ul>
+                  <li><strong>config:</strong>
+                    <ul>
+                      <li><code>subnet: 172.18.0.0/24</code>: Define a sub-rede disponível para atribuição de IPs fixos aos containers.</li>
+                      <li><code>gateway: 172.18.0.1</code>: Define o gateway padrão da rede Docker.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul> 
+        <li><details><summary><strong>Dockerfile.kali-custom</strong></summary>
+          <ul>
+            <li><code>FROM debian:stable-slim</code>: Define a imagem base como Debian estável minimalista.</li>
+            <li><code>RUN apt update &amp;&amp; apt upgrade -y &amp;&amp; apt install -y sudo iputils-ping dnsutils iproute2 whois netbase traceroute net-tools curl &amp;&amp; rm -rf /var/lib/apt/lists/*</code>: Instala ferramentas de rede essenciais e limpa caches para reduzir o tamanho da imagem.</li>
+            <li><code>RUN useradd -m -s /bin/bash kali &amp;&amp; echo "kali:kali" | chpasswd &amp;&amp; adduser kali sudo</code>: Cria um usuário não-root com permissões de sudo.</li>
+            <li><code>USER kali</code>: Define o usuário padrão do container.</li>
+            <li><code>WORKDIR /home/kali</code>: Define o diretório de trabalho.</li>
+            <li><code>CMD ["/bin/bash"]</code>: Mantém o container ativo com um terminal interativo.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul> 
+      </ul>
+    </details></li>
+  </ul>
+</details>
+
+Este laboratório foi focado 
+
+
+O container `dns_server_lab_6`, baseado na imagem CoreDNS, foi configurado para atuar como servidor DNS dentro da rede **Docker** `aula6_network`. Durante a execução do arquivo `docker-compose.yml`, foi criado um volume que mapeava o arquivo `Corefile` do diretório corrente no host (instância **Amazon EC2**) para o arquivo `/etc/coredns/Corefile` dentro do container. Dessa forma, qualquer modificação no arquivo do host era refletida no container e vice-versa. A instrução `command: -conf /etc/coredns/Corefile` no **Docker Compose** indicava que o CoreDNS devia ler esse arquivo para definir zonas, registros e regras de resolução de nomes. Antes de acessar qualquer container, o arquivo `Corefile` foi revisado para garantir que as configurações desejadas estavam corretas. Em seguida, o container `dns_server_lab_6` foi reiniciado com o comando `docker restart dns_server_lab_6` para que as alterações fossem aplicadas. A seguir, uma descrição de cada comando presente no Corefile:
+- `health`: habilita um endpoint de verificação de saúde, permitindo monitorar se o servidor DNS está ativo.  
+- `ready`: define um endpoint para verificar se o servidor está pronto para receber requisições.  
+- `log`: habilita o registro de todas as requisições DNS processadas pelo servidor.  
+- `errors`: registra mensagens de erro, facilitando a identificação de problemas.  
+- `hosts`: permite mapear manualmente nomes para endereços IP.  
+  - `172.18.0.20 web_server_target_lab_6`: mapeia o nome `web_server_target_lab_6` para o IP do container alvo.  
+  - `fallthrough`: caso um nome consultado não seja encontrado aqui, a consulta é encaminhada para o próximo plugin configurado.  
+- `forward . 8.8.8.8`: encaminha todas as consultas DNS não resolvidas para o servidor DNS público do Google (`8.8.8.8`).
+
+
+
+
+
+
+
+
 
 
 
@@ -315,6 +629,8 @@ Apesar da primeira aula ter sido referente ao setup e preparação do ambiente d
 
 <a name="item1.6"><h4>1.6 Ferramentas: Kali Linux, Nmap, Wireshark</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_6)
+
+
 
 
 
