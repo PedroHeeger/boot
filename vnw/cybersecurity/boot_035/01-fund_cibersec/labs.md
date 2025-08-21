@@ -451,6 +451,10 @@ O último comando de reconhecimento executado foi `gobuster dir -u http://lab_ta
 
 
 
+
+
+
+
 <a name="item1.4"><h4>1.4 Reconhecimento & Footprinting</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3)
 
@@ -587,7 +591,9 @@ O OSINT e o footprinting correspondem às primeiras fases da Cyber Kill Chain, f
           <ul>
             <li><code>FROM debian:stable-slim</code>: Define a imagem base como Debian estável minimalista.</li>
             <li><code>RUN apt update &amp;&amp; apt upgrade -y &amp;&amp; apt install -y sudo iputils-ping dnsutils iproute2 whois netbase traceroute net-tools curl &amp;&amp; rm -rf /var/lib/apt/lists/*</code>: Instala ferramentas de rede essenciais e limpa caches para reduzir o tamanho da imagem.</li>
-            <li><code>RUN useradd -m -s /bin/bash kali &amp;&amp; echo "kali:kali" | chpasswd &amp;&amp; adduser kali sudo</code>: Cria um usuário não-root com permissões de sudo.</li>
+            <li><code>RUN useradd -m -s /bin/bash kali</code>: Cria o usuário não-root <code>kali</code> com diretório home e shell Bash.</li>
+            <li><code>RUN echo "kali:kali" | chpasswd</code>: Define a senha do usuário <code>kali</code> como <code>kali</code>.</li>
+            <li><code>RUN adduser kali sudo</code>: Adiciona o usuário <code>kali</code> ao grupo <code>sudo</code>, permitindo executar comandos com privilégios de administrador.</li>
             <li><code>USER kali</code>: Define o usuário padrão do container.</li>
             <li><code>WORKDIR /home/kali</code>: Define o diretório de trabalho.</li>
             <li><code>CMD ["/bin/bash"]</code>: Mantém o container ativo com um terminal interativo.</li>
@@ -602,8 +608,7 @@ O OSINT e o footprinting correspondem às primeiras fases da Cyber Kill Chain, f
   </ul>
 </details>
 
-Este laboratório foi focado 
-
+Este laboratório teve como foco demonstrar o funcionamento de um servidor de resolução de nomes de domínio (DNS) na prática, incluindo a construção e configuração de um container para esse propósito. Além disso, foi mostrado como o tráfego da máquina de ataque é roteado até o servidor alvo, passando pelo servidor DNS, que realiza a tradução do nome de domínio para o endereço IP correspondente. O laboratório também abordou como realizar o reconhecimento de informações de domínio relevantes, armazenadas no servidor DNS autoritativo do domínio, evidenciando a importância dessas informações para mapear a infraestrutura de rede.
 
 O container `dns_server_lab_6`, baseado na imagem CoreDNS, foi configurado para atuar como servidor DNS dentro da rede **Docker** `aula6_network`. Durante a execução do arquivo `docker-compose.yml`, foi criado um volume que mapeava o arquivo `Corefile` do diretório corrente no host (instância **Amazon EC2**) para o arquivo `/etc/coredns/Corefile` dentro do container. Dessa forma, qualquer modificação no arquivo do host era refletida no container e vice-versa. A instrução `command: -conf /etc/coredns/Corefile` no **Docker Compose** indicava que o CoreDNS devia ler esse arquivo para definir zonas, registros e regras de resolução de nomes. Antes de acessar qualquer container, o arquivo `Corefile` foi revisado para garantir que as configurações desejadas estavam corretas. Em seguida, o container `dns_server_lab_6` foi reiniciado com o comando `docker restart dns_server_lab_6` para que as alterações fossem aplicadas. A seguir, uma descrição de cada comando presente no Corefile:
 - `health`: habilita um endpoint de verificação de saúde, permitindo monitorar se o servidor DNS está ativo.  
@@ -615,20 +620,141 @@ O container `dns_server_lab_6`, baseado na imagem CoreDNS, foi configurado para 
   - `fallthrough`: caso um nome consultado não seja encontrado aqui, a consulta é encaminhada para o próximo plugin configurado.  
 - `forward . 8.8.8.8`: encaminha todas as consultas DNS não resolvidas para o servidor DNS público do Google (`8.8.8.8`).
 
+Em seguida, o container `kali_lab_6` foi acessado com o comando `docker exec -it kali_lab_6 /bin/bash`, e a partir desse ponto todos os comandos foram executados no terminal do Kali. O primeiro deles foi `sudo bash -c 'echo "nameserver 172.18.0.30" > /etc/resolv.conf'`. Esse comando configurava o DNS do **Kali Linux** para utilizar o container `dns_server_lab_6` como servidor de resolução de nomes. O arquivo `/etc/resolv.conf` define quais servidores DNS o sistema deve usar para resolver domínios, e aqui ele foi sobrescrito com a entrada `nameserver 172.18.0.30`, correspondente ao IP do container `dns_server_lab_6`. Como foi utilizado o `sudo`, foi necessário fornecer a senha de superusuário, que neste caso era `kali`.
 
+Com o servidor DNS configurado para mapear o container `web_server_target_lab_6` ao seu respectivo IP e este sendo utilizado na máquina de ataque Kali, foi testada a conectividade entre o `kali_lab_6` e o container alvo por meio do nome de domínio, em vez do endereço IP. Para isso, o comando `ping -c 4 web_server_target_lab_6` foi executado, enviando 4 pacotes ICMP ao alvo para verificar sua resposta. No output do comando, conforme mostrado na imagem 13, ficou comprovado que a resolução DNS e a conectividade estavam funcionando corretamente. Em seguida, o comando `traceroute web_server_target_lab_6` foi utilizado para rastrear o caminho percorrido pelos pacotes até o servidor alvo. Como o ambiente era simulado via **Docker**, foi possível visualizar os saltos internos da rede.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
 
+Os próximos três comandos foram executados com a ferramenta **Domain Information Groper (dig)**, utilizada para consultar servidores DNS e obter informações detalhadas sobre registros de domínio, como endereços IP, MX, NS e outros. Os comandos estão listados abaixo, e seus outputs são exibidos na imagem 14:  
+- `dig google.com A`: consulta o registro **A** (endereço IP) de `google.com`, retornando os endereços IPv4 associados ao domínio.  
+- `dig google.com MX`: consulta os registros **MX** (Mail Exchange) de `google.com`, listando os servidores de e-mail responsáveis por receber mensagens do domínio.  
+- `dig google.com TXT`: consulta registros **TXT**, que podem conter informações adicionais como políticas de autenticação de e-mail (ex.: SPF e DMARC).  
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
 
+Quando esses comandos são executados, é possível obter informações valiosas para o reconhecimento de servidores DNS e do próprio domínio consultado. Esses dados podem revelar endereços IP associados, servidores de e-mail utilizados, além de políticas de autenticação e outras informações de configuração. De modo geral, ao executar o `dig` sem especificar um servidor (`@servidor`), o foco está apenas no domínio; já quando um servidor é definido, é possível analisar também como aquele DNS específico responde à consulta. Em um cenário de segurança, tais informações são frequentemente exploradas na fase de reconhecimento para mapear a infraestrutura de um alvo.
 
+Um domínio é o nome principal de um site utilizado para identificação na internet, formado pelo nome do site mais a extensão, chamada de TLD (Top-Level Domain), como `.com`, `.org` ou `.br`. Além disso, um domínio pode possuir subdomínios, que são prefixos adicionados antes do domínio principal para organizar ou diferenciar serviços, como `mail.google.com` ou `api.openai.com`.
 
-
-
-
-
+Como desafios, o comando `dig` foi utilizado com outro domínio (`vainaweb.com.br`) e o `traceroute` foi executado com duas opções diferentes. Além disso, o **Nmap**, que não era foco deste laboratório, foi instalado no Kali e utilizado para fazer uma varredura no container `web_server_target_lab_6`. Os comandos executados foram:
+- `dig vainaweb.com.br A`: consulta o registro *A* (endereço IP) de `vainaweb.com.br`, retornando os endereços IPv4 associados ao domínio.  
+- `dig vainaweb.com.br MX`: consulta os registros *MX* (Mail Exchange) de `vainaweb.com.br`, listando os servidores de e-mail responsáveis por receber mensagens do domínio.  
+- `dig vainaweb.com.br TXT`: consulta registros *TXT*, que podem conter informações adicionais como políticas de autenticação de e-mail (ex.: SPF e DMARC).  
+- `traceroute -m 5 vainaweb.com.br`: limita o número máximo de saltos a 5 ao rastrear o caminho dos pacotes até o servidor alvo.  
+- `traceroute -n vainaweb.com.br`: realiza o traceroute sem resolver nomes de host, exibindo apenas os endereços IP dos saltos.  
+- `nmap -sS -sV web_server_target_lab_6`: realiza uma varredura stealth (*SYN scan*) no container alvo, identificando portas abertas e serviços em execução, incluindo suas versões.
 
 <a name="item1.6"><h4>1.6 Ferramentas: Kali Linux, Nmap, Wireshark</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_6)
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_5)
+
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>kali-aula7:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório atual (<code>.</code>) utilizando o arquivo <code>Dockerfile.kali</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>kali-aula7</code>.</li>
+              <li><strong>cap_add:</strong>
+                <ul>
+                  <li><code>NET_ADMIN</code>: Permite execução de ferramentas de rede dentro do Kali.</li>
+                </ul>
+              </li>
+              <li><strong>volumes:</strong> Monta o diretório <code>./shared_volume</code> do host dentro do container em <code>/mnt/shared</code>, possibilitando compartilhamento de arquivos.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>kensei_network</code>, garantindo comunicação interna com outros containers na mesma rede.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>web-server-aula7:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório atual (<code>.</code>) utilizando o arquivo <code>Dockerfile.web</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>web-server-aula7</code>.</li>
+              <li><strong>ports:</strong>
+                <ul>
+                  <li><code>"8080:8080"</code>: Mapeia a porta 8080 do container (onde a aplicação Flask roda) para a mesma porta na máquina host, permitindo acesso via navegador.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>kensei_network</code>, garantindo comunicação interna com o Kali.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>kensei_network:</strong></summary>
+            <ul>
+              <li><code>driver: bridge</code>: Define que a rede é do tipo <em>bridge</em>, permitindo comunicação isolada entre os containers dentro do host.</li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul> 
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como a versão rolling do Kali Linux.</li>
+            <li><code>LABEL maintainer="Kensei CyberSec Lab &lt;info@kensei.com&gt;"</code>: Adiciona informações do mantenedor.</li>
+            <li><code>RUN apt update &amp;&amp; apt upgrade -y &amp;&amp; apt install -y wireshark curl dnsutils iputils-ping &amp;&amp; rm -rf /var/lib/apt/lists/*</code>: Atualiza pacotes e instala ferramentas essenciais de rede, incluindo <code>Wireshark</code>.</li>
+            <li><code>WORKDIR /root</code>: Define o diretório de trabalho padrão dentro do container.</li>
+            <li><code>CMD ["tail", "-f", "/dev/null"]</code>: Mantém o container ativo em segundo plano.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Dockerfile.web</strong></summary>
+          <ul>
+            <li><code>FROM python:3.9-slim-buster</code>: Define a imagem base como Python 3.9 em versão slim.</li>
+            <li><code>LABEL maintainer="Kensei CyberSec Lab &lt;info@kensei.com&gt;"</code>: Adiciona informações do mantenedor.</li>
+            <li><code>WORKDIR /app</code>: Define o diretório de trabalho dentro do container.</li>
+            <li><code>COPY requirements.txt .</code> e <code>COPY app.py .</code>: Copia os arquivos da aplicação para o container para o diretório de trabalho.</li>
+            <li><code>RUN pip install --no-cache-dir -r requirements.txt</code>: Instala as dependências listadas no <code>requirements.txt</code>.</li>
+            <li><code>EXPOSE 8080</code>: Expõe a porta 8080 para acesso externo.</li>
+            <li><code>CMD ["python", "app.py"]</code>: Executa a aplicação Flask ao iniciar o container.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul> 
+        <li><strong>requirements.txt</strong>: Lista a biblioteca Python necessária para a aplicação Flask, versão 3.0.0.</li>
+        <li><strong>app.py</strong>: Implementa a aplicação Flask que serve como alvo de testes de captura de tráfego e simulação de interações web. Possui múltiplos endpoints: a página inicial (GET '/') exibe informações do usuário como IP e User-Agent; a página secreta (GET '/secret') mostra conteúdo restrito para testes de acesso; o formulário de login (GET '/login_form') permite simular envio de credenciais; e o endpoint de processamento do login (POST '/do_login') valida as credenciais enviadas, retornando respostas JSON indicando sucesso ou falha. Essa estrutura permite testar diversas técnicas de reconhecimento, exploração de formulários e análise de tráfego HTTP dentro do laboratório.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
+
+Este laboratório foi bastante interessante por introduzir o **Wireshark**, uma das ferramentas mais importantes para profissionais de cibersegurança. Com ele, foi possível capturar e analisar o tráfego de rede em um ambiente simples, composto por dois containers: a máquina de ataque (**Kali Linux**) e um servidor web básico. O **Wireshark** foi instalado na máquina host, que para usuários do **WSL** corresponde à própria máquina física. No meu caso, como utilizei uma instância do **Amazon EC2**, o processo foi diferente, já que a imagem da instância possuía apenas CLI e não incluía ambiente gráfico. Assim, foi necessário instalar o **tshark**, a versão em linha de comando do **Wireshark**. Ainda assim, também instalei o **Wireshark** em minha máquina física **Windows**, a fim de explorar sua interface gráfica e testá-lo de outra forma, sem recorrer aos containers **Docker**.
+
+O **Wireshark** foi baixado do site oficial e instalado junto com a ferramenta **Npcap**, responsável por permitir a captura de pacotes na rede. Em máquinas **Linux** com interface gráfica, a instalação pode ser feita com os comandos `sudo apt update` e `sudo apt install wireshark`. Já em sistemas apenas com linha de comando, como a instância **EC2**, foi necessário instalar o **tshark** utilizando os mesmos comandos, substituindo apenas o pacote (`sudo apt install tshark`). Durante a instalação, foi solicitado se usuários não-superusuário deveriam ter permissão para capturar pacotes, o que foi confirmado com `Yes`. Para usar o **Wireshark** sem `sudo`, foi preciso adicionar o usuário ao grupo `wireshark` com `sudo usermod -a -G wireshark $USER`. Por fim, foi necessário realizar logout e login novamente, ou reiniciar a instância, para que as alterações tivessem efeito.
+
+
+<details><summary>Verificação de Autenticidade do Wireshark</summary>
+  <p>O processo de verificação da autenticidade de um software é essencial para garantir que o instalador realmente foi disponibilizado pelo desenvolvedor e não sofreu adulterações. Geralmente, essa verificação envolve o uso de <strong>hashes</strong> e/ou <strong>assinaturas digitais com GPG (GNU Privacy Guard)</strong>. No caso do <strong>Wireshark</strong>, o próprio site disponibilizava um campo chamado <code>Verify Downloads</code>, onde estavam reunidas as informações necessárias. Esse campo fornecia um arquivo de assinatura que o <strong>Wireshark</strong> publicou. A primeira parte do arquivo (até antes do <code>-----BEGIN PGP SIGNATURE-----</code>) continha o conteúdo assinado, listando os nomes dos arquivos, seus tamanhos e respectivos hashes (SHA256 e SHA1). Já a parte final (<code>BEGIN/END PGP SIGNATURE</code>) correspondia à assinatura <strong>GPG</strong>, que garantia que o conteúdo foi realmente publicado pela equipe do <strong>Wireshark</strong>. Todo esse material foi copiado e salvo em um arquivo nomeado <code>wireshark-4.4.8-SIGNATURES.asc</code>, utilizado como arquivo de assinatura. Além disso, o campo <code>Verify Downloads</code> também informava o ID da chave mais recente utilizada pelo projeto, <code>0xE6FEAEEA</code>. Assim, com três elementos principais — o arquivo instalador, o arquivo de assinatura e a chave pública — foi possível realizar o processo completo de verificação.</p>
+
+  <p>Este processo podia ser realizado tanto via linha de comando (<strong>CLI</strong>) utilizando o <strong>GPG</strong>, quanto por ambiente gráfico com o <strong>Kleopatra</strong>. No meu caso, utilizei ambos os métodos. Primeiro, criei o arquivo de assinaturas vazio no <strong>Windows PowerShell</strong> aberto no <strong>Windows Terminal</strong> com o comando <code>New-Item -Path . -Name "wireshark-4.4.8-SIGNATURES.asc" -ItemType File</code>. Em seguida, copiei todo o conteúdo do arquivo de assinaturas fornecido pelo site do <strong>Wireshark</strong> e visualizado no navegador para dentro desse arquivo. Depois, no <strong>PowerShell</strong>, executei o comando <code>gpg --list-keys</code> para listar todas as chaves já armazenadas. No <strong>Kleopatra</strong>, acessei <code>Arquivo → Procurar no servidor...</code>, inseri o ID da chave fornecido pelo site (<code>0xE6FEAEEA</code>) e cliquei em <strong>Pesquisar</strong>. A chave localizada estava em nome de <strong>Gerald Combs</strong> e foi importada para meu <strong>GPG</strong> via <strong>Kleopatra</strong>. Por fim, na CLI executei o comando <code>gpg --verify wireshark-4.4.8-SIGNATURES.asc</code> e confirmei que o ID da chave obtida correspondia à chave importada no <strong>Kleopatra</strong> (conforme imagem 15), validando assim a autenticidade do arquivo.</p>
+
+  <div align="center"><figure>
+      <img src="../0-aux/md1-img15.png" alt="img15"><br>
+      <figcaption>Imagem 15.</figcaption>
+  </figure></div><br>
+
+  <p>Esse primeiro passo confirmava que o arquivo de assinaturas foi realmente assinado pela chave informada no site. O próximo passo era verificar se o hash do arquivo instalador correspondia a algum dos hashes listados no arquivo de assinaturas. Para isso, no <strong>PowerShell</strong>, executei o comando <code>Get-FileHash Wireshark-4.4.8-x64.exe -Algorithm SHA256</code> para calcular o hash do instalador utilizando o algoritmo <strong>SHA256</strong>. Em seguida, comparei o valor obtido com os hashes presentes no arquivo de assinaturas, confirmando que correspondiam à mesma versão do instalador. A imagem 16 mostra que o hash calculado do arquivo instalador era o mesmo para este mesmo arquivo no arquivo de assinaturas.</p>
+
+  <div align="center"><figure>
+      <img src="../0-aux/md1-img16.png" alt="img16"><br>
+      <figcaption>Imagem 16.</figcaption>
+  </figure></div><br>
+</details>
+
+Após instalação, iniciou-se o processo de capturar de tráfego com **Wireshark** no host, acessando a GUI da ferramenta. Na tela de início, foi visualizado uma lista de interfaces de rede disponíveis como `Wi-Fi`, `Ethernet`, `lo (que é o Loopback)`, `Docker Desktop`. 
+
+
+
+
+
+
+
+
 
 
 
@@ -643,14 +769,27 @@ O container `dns_server_lab_6`, baseado na imagem CoreDNS, foi configurado para 
 
 
 
+
+
+
+
 <a name="item1.8"><h4>1.8 Seu Dojo de Ataque no Kali Linux (CLI & GUI)</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_8)
 
 
 
 
+
+
+
+
+
 <a name="item1.9"><h4>1.9 Ports/Portas</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_9)
+
+
+
+
 
 
 
@@ -663,6 +802,9 @@ O container `dns_server_lab_6`, baseado na imagem CoreDNS, foi configurado para 
 
 
 
+
+
+
 <a name="item1.11"><h4>1.11 Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</h4></a>[Back to summary](#item1)
 
 
@@ -670,7 +812,14 @@ O container `dns_server_lab_6`, baseado na imagem CoreDNS, foi configurado para 
 
 
 
+
+
+
 <a name="item1.12"><h4>1.12 Documentação Técnica Profissional</h4></a>[Back to summary](#item1)
+
+
+
+
 
 
 
