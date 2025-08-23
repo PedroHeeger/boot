@@ -122,6 +122,22 @@ Outra parte importante dos laboratórios foram os *Capture The Flag (CTF)*, desa
 <a name="item1.1"><h4>1.1 Conceitos básicos de segurança</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_1)
 
+
+
+
+
+
+
+
+
+
+
+
+<a name="item1.2"><h4>1.2 Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</h4></a>[Back to summary](#item1)   
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_2)
+
+Obs.: Laboratório registrado como 1, mas documento como #NãoInformado (3) e referente a aula 2.
+
 <details><summary><strong>Ambiente de Laboratório</strong></summary>
   <ul>
     <li><details><summary><strong>Docker Compose</strong></summary>
@@ -288,66 +304,10 @@ A primeira tela exibida era de login, onde foi necessário passar o login e senh
 
 
 
+<a name="item1.3"><h4>1.3 Ameaças, ataques e vulnerabilidades</h4></a>[Back to summary](#item1)   
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3) 
 
-<!-- - ubuntu_lab:
-  - build: Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo `Dockerfile.ubuntu` como receita de construção.
-  - container_name: Define o nome do container de forma explícita como `ubuntu_lab`.
-  - `entrypoint: ["/bin/bash", "-c"]`: Sobrescreve o ponto de entrada padrão do container, garantindo que o shell **Bash** seja usado para interpretar os comandos passados pelo `command`.
-  - `command: bash -c "\ ... "`: Sobrescrevem o comando padrão do container para executar uma sequência de instruções durante a inicialização:  
-    - `apt update && apt install -y iputils-ping openssl`: atualiza os repositórios e instala ferramentas básicas (**ping** e **OpenSSL**).  
-    - `cp /flag/id_rsa.pem /root/id_rsa.pem`: copia um arquivo de chave privada para o diretório `/root`, simulando uma credencial sensível presente na máquina.  
-    - `echo '<base64>' | base64 -d > /root/FLAG.txt`: decodifica uma string Base64 e grava o conteúdo no arquivo `/root/FLAG.txt`, que representa a flag a ser encontrada no laboratório.  
-    - `bash`: mantém o container ativo com um shell interativo após executar os comandos anteriores.
-  - volumes: 
-    - `.:/flag:ro`: Monta o diretório local do lab dentro do container como somente leitura, permitindo que arquivos (como a chave privada usada na cópia acima) fiquem disponíveis no container.
-  - `tty: true`: Permite alocar um terminal interativo, facilitando o acesso ao container via `docker exec -it`.
-  - networks: Conecta o container à rede `cyberlab` e define o IP estático `172.28.1.10` dentro dessa rede.
-
-- kali_lab:
-  - build: Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo `Dockerfile.kali` como receita de construção.
-  - container_name: Define o nome do container de forma explícita como `kali_lab`.
-  - `tty: true`: Permite alocar um terminal interativo, facilitando o acesso ao container via `docker exec -it` e mantendo-o ativo.
-  - cap_add: Adiciona capacidades especiais ao container, ampliando o controle sobre a rede e pacotes:
-    - `NET_ADMIN`: Permite executar comandos de administração de rede dentro do container (ex: configuração de interfaces, roteamento, etc.).
-    - `NET_RAW`: Permite a criação de pacotes de rede brutos, essencial para testes e ataques de cibersegurança.
-  - security_opt:
-    - `seccomp:unconfined`: Desativa o perfil de segurança padrão *seccomp*, permitindo que o container execute operações normalmente restritas por segurança.
-  - networks: Conecta o container à rede `cyberlab` e define o IP estático `172.28.1.20` dentro dessa rede.
-
-- dvwa_lab:
-  - build: Define que a imagem do container será construída a partir do diretório atual (`.`) utilizando o arquivo `Dockerfile.dvwa` como receita de construção.
-  - container_name: Define o nome do container de forma explícita como `dvwa_lab`.
-  - ports:
-    - `"8080:80"`: Mapeia a porta 80 do container (onde o servidor web DVWA roda) para a porta 8080 da máquina host, permitindo acessar a aplicação via navegador.
-  - environment:
-    - `MYSQL_PASS=p@ssw0rd`: Define a variável de ambiente que configura a senha do banco de dados MySQL utilizado pelo DVWA.
-  - networks: Conecta o container à rede `cyberlab` e define o IP estático `172.28.1.30` dentro dessa rede.
-
-- cyberlab:
-  - `driver: bridge`: Define que a rede é do tipo *bridge*, funcionando como um switch virtual interno que conecta os containers entre si dentro do mesmo host, permitindo comunicação isolada entre eles.
-  - ipam:
-    - config:
-      - `subnet: 172.28.0.0/16`: Define o intervalo de endereços IP disponíveis na rede, permitindo atribuição de IPs estáticos ou automáticos aos containers conectados.
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a name="item1.2"><h4>1.2 Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_2)
+Obs.: Laboratório registrado como 2, mas documento como #NãoInformado (4) e referente a aula 3.
 
 <details><summary><strong>Ambiente de Laboratório</strong></summary>
   <ul>
@@ -444,21 +404,10 @@ O último comando de reconhecimento executado foi `gobuster dir -u http://lab_ta
     <figcaption>Imagem 11.</figcaption>
 </figure></div><br>
 
-<a name="item1.3"><h4>1.3 Ameaças, ataques e vulnerabilidades</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3) 
-
-
-
-
-
-
-
-
-
 <a name="item1.4"><h4>1.4 Reconhecimento & Footprinting</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3)
 
-<!-- 3 -->
+Obs.: Laboratório registrado como 3, mas documento como 5 e referente a aula 4.
 
 <details><summary><strong>Ambiente de Laboratório</strong></summary>
   <ul>
@@ -533,6 +482,8 @@ O OSINT e o footprinting correspondem às primeiras fases da Cyber Kill Chain, f
 <a name="item1.5"><h4>1.5 Infraestrutura de Rede - Conceitos e Componentes</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_4)
 
+Obs.: Laboratório registrado como 4, mas documento como 6 e referente a aula 5.
+
 <details><summary><strong>Ambiente de Laboratório</strong></summary>
   <ul>
     <li><details><summary><strong>Docker Compose</strong></summary>
@@ -603,6 +554,7 @@ O OSINT e o footprinting correspondem às primeiras fases da Cyber Kill Chain, f
     </details>
     <li><details><summary><strong>Dependências</strong></summary>
       <ul> 
+        <li><em>Nenhuma dependência neste laboratório.</em></li>
       </ul>
     </details></li>
   </ul>
@@ -653,6 +605,8 @@ Como desafios, o comando `dig` foi utilizado com outro domínio (`vainaweb.com.b
 
 <a name="item1.6"><h4>1.6 Ferramentas: Kali Linux, Nmap, Wireshark</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_5)
+
+Obs.: Laboratório registrado como 5, mas documento como 7 e referente a aula 6.
 
 <details><summary><strong>Ambiente de Laboratório</strong></summary>
   <ul>
@@ -803,7 +757,6 @@ As imagens 22 e 23 mostram o conteúdo filtrado do tráfego capturado, correspon
     <figcaption>Imagem 23.</figcaption>
 </figure></div><br>
 
-
 Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para identificar o tráfego gerado anteriormente e analisar pacotes específicos. Abaixo está a explicação dos filtros realizados:
 - **Filtro 1 — Handshake TCP (pacote SYN):**
   - **Comando na CLI**:
@@ -842,34 +795,453 @@ Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para 
   - **Análise na GUI**:  
     - No **Wireshark**, foram localizadas as requisições do **nslookup** do **Kali Linux**. Selecionando um pacote de consulta e expandindo `Domain Name System (query)` no painel de detalhes, era possível visualizar o nome do domínio consultado. Para os pacotes de resposta, expandindo `Domain Name System (response)` encontrava-se o endereço IP resolvido para o domínio. O argumento `-T fields -e dns.qry.name -e dns.a` no **tshark** reproduzia exatamente essa filtragem.
 
+A imagem 25 exibe o output dos três primeiros filtros, enquanto a imagem 26 mostra os três últimos filtros realizados.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
+</figure></div><br>
+
+Para o desafio proposto, foi utilizado o **Wireshark** na máquina física **Windows**, sem uso de containers **Docker**. Na GUI do **Wireshark**, a captura do tráfego da interface de rede conectada à internet foi iniciada. Em seguida, um site HTTP foi acessado pelo navegador para gerar tráfego. O processo de captura foi pausado e aplicado o seguinte filtro: `ip.addr == 192.168.1.3 && http.request.method == GET`. Esse filtro listava todos os pacotes com requisição HTTP do tipo `GET` originados da máquina física, já que esse era o seu IP privado. 
+
+Vários pacotes foram exibidos, sendo possível localizar aquele cujo path correspondia ao path utilizado no domínio consultado no navegador. O pacote encontrado possuía o IP público do site acessado, e outros pacotes subsequentes para o mesmo IP também foram enviados, o que é esperado, pois sites normalmente geram múltiplas requisições adicionais para carregar corretamente todos os recursos da página. Ao selecionar o primeiro pacote e expandir a seção `Hypertext Transfer Protocol` no painel de detalhes, foi possível identificar o campo `User-Agent`. Esse campo do cabeçalho HTTP indica qual cliente está fazendo a requisição, fornecendo informações como: navegador ou software utilizado (Chrome, Firefox, curl, Postman, etc.), sistema operacional (Windows, Linux, macOS) e versão do navegador ou do motor de renderização. Essas informações são úteis nas etapas de reconhecimento e OSINT.
+
+A última etapa do desafio solicitou capturar e analisar o tráfego DNS. Apesar de ter sido gerado o tráfego pelo container `kali-aula7`, para facilitar a compreensão da GUI do **Wireshark**, optou-se por gerar o tráfego pela própria máquina física **Windows**. Dessa forma, a captura de tráfego foi novamente iniciada para a mesma interface de rede. No **Windows PowerShell** aberto no **Windows Terminal**, foi executado o comando `nslookup kensei.seg.br` para gerar o tráfego DNS. No **Wireshark**, a captura foi interrompida e aplicado o filtro `dns.qry.name == "kensei.seg.br" || dns.resp.name == "kensei.seg.br"` para visualizar simultaneamente consultas e respostas para o domínio `kensei.seg.br`. Quatro pacotes foram filtrados: dois de consultas e dois de respostas. Um par consulta/resposta foi do tipo *A*, que resolvia o domínio para um endereço IPv4. O terceiro pacote foi do tipo *AAAA*, que resolvia o domínio para um endereço IPv6. Por fim, o quarto pacote foi do tipo *SOA (Start of Authority)*, que fornecia informações sobre o servidor DNS autoritativo do domínio, incluindo o responsável pelo domínio, o número de série da zona e timers de atualização.
+
+Por motivos de segurança, optou-se por não registrar prints durante o desenvolvimento deste desafio. Como era a primeira experiência com o **Wireshark**, uma ferramenta de análise de rede, e a captura estava sendo realizada no meu próprio ambiente, não me sentia seguro em compartilhar telas, pois ainda não possuía domínio completo das informações exibidas. Dados sensíveis poderiam ser inadvertidamente expostos, facilitando potenciais ataques à minha máquina. Futuramente, após realizar cursos mais aprofundados de **Wireshark** e adquirir maior familiaridade com a ferramenta, será possível compartilhar algumas imagens de forma segura.
 
 <a name="item1.7"><h4>1.7 Endereçamento IP & Subnetting</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_7)
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_6)
 
+Obs.: Laboratório registrado como 6, mas documento como 8 e referente a aula 7.
 
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>maquina-atacante:</strong></summary>
+            <ul>
+              <li><strong>image:</strong> Define a imagem base como <code>alpine:latest</code>.</li>
+              <li><strong>container_name:</strong> Define o nome do container como <code>maquina-atacante</code>.</li>
+              <li><strong>command:</strong> Mantém o container em execução contínua usando <code>sleep infinity</code>.</li>
+              <li><strong>entrypoint:</strong> Atualiza pacotes e instala ferramentas de rede essenciais, incluindo <code>iproute2</code>, <code>curl</code>, <code>nmap</code>, <code>net-tools</code> e <code>arp-scan</code>, preparando o ambiente de ataque.</li>
+              <li><strong>networks:</strong>
+                <ul>
+                  <li><code>rh_net</code>: Conecta o container à rede do RH com IP fixo <code>172.20.10.100</code>.</li>
+                  <li><code>visitante_net</code>: Conecta o container à rede de visitantes com IP fixo <code>192.168.100.100</code>.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>servidor_rh:</strong></summary>
+            <ul>
+              <li><strong>image:</strong> Usa <code>nginx:alpine</code> como servidor web.</li>
+              <li><strong>container_name:</strong> Define o nome do container como <code>servidor-rh</code>.</li>
+              <li><strong>volumes:</strong> Monta o diretório <code>./rh</code> no host para <code>/usr/share/nginx/html</code> no container, garantindo que os arquivos HTML sejam servidos.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>rh_net</code> com IP fixo <code>172.20.10.10</code>.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>servidor_eng:</strong></summary>
+            <ul>
+              <li><strong>image:</strong> Usa <code>nginx:alpine</code> como servidor web.</li>
+              <li><strong>container_name:</strong> Define o nome do container como <code>servidor-engenharia</code>.</li>
+              <li><strong>volumes:</strong> Monta o diretório <code>./eng</code> no host para <code>/usr/share/nginx/html</code> no container.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>eng_net</code> com IP fixo <code>172.20.20.20</code>.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>impressora_visitante:</strong></summary>
+            <ul>
+              <li><strong>image:</strong> Usa <code>nginx:alpine</code> como servidor web.</li>
+              <li><strong>container_name:</strong> Define o nome do container como <code>impressora-visitantes</code>.</li>
+              <li><strong>volumes:</strong> Monta o diretório <code>./visitantes</code> no host para <code>/usr/share/nginx/html</code> no container.</li>
+              <li><strong>networks:</strong> Conecta o container à rede <code>visitante_net</code> com IP fixo <code>192.168.100.30</code>.</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>redes:</strong></summary>
+            <ul>
+              <li><code>rh_net</code>: Rede do RH, tipo <em>bridge</em>, subnet <code>172.20.10.0/24</code>.</li>
+              <li><code>eng_net</code>: Rede de Engenharia, tipo <em>bridge</em>, subnet <code>172.20.20.0/24</code>.</li>
+              <li><code>visitante_net</code>: Rede de Visitantes, tipo <em>bridge</em>, subnet <code>192.168.100.0/24</code>.</li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><em>Nenhum Dockerfile personalizado neste laboratório.</em></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><strong>eng/index.html</strong>: Página HTML que simula o servidor da rede de Engenharia, exibindo IP e mensagem de acesso restrito.</li>
+        <li><strong>rh/index.html</strong>: Página HTML que simula o servidor da rede de RH, exibindo IP e aviso de acesso restrito.</li>
+        <li><strong>visitantes/index.html</strong>: Página HTML que simula uma impressora de visitantes, exibindo IP e status OK.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
+O laboratório da aula 7 teve como objetivo demonstrar de forma prática como o endereçamento IP e a divisão de redes (subnetting) funcionam para controlar a comunicação e segmentar ambientes. Ferramentas como **ip address (ip a)**, **Nmap** e **arp-scan** foram utilizadas para mapear a conectividade, além de compreender a diferença de performance e uso entre essas ferramentas de descoberta.
 
+Com o ambiente construído, a máquina de ataque `maquina-atacante` foi acessada utilizando o comando `docker exec -it maquina-atacante /bin/sh`. Nesse caso, em vez do shell **Bash**, foi utilizado o **SH**. Dentro do terminal do container, foram executados os comandos `ip addr` (`ip a` ou `ip address`) e `ifconfig` para listar as interfaces de rede disponíveis. A interface `eth0`, com IP `172.20.10.100`, estava conectada à rede de RH, cujo CIDR era `172.20.10.0/24`. Já a interface `eth1`, com IP `192.168.100.100`, fazia parte da rede de Visitantes, com CIDR `192.168.100.0/24`. A imagem 27 abaixo ilustra as interfaces de rede configuradas nesse container.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img27.png" alt="img27"><br>
+    <figcaption>Imagem 27.</figcaption>
+</figure></div><br>
 
+O passo seguinte foi identificar os outros hosts presentes em ambas as redes. Para isso, foram utilizados dois softwares diferentes: o **Nmap** e o **arp-scan**. O **Nmap** é uma ferramenta padrão, versátil e confiável para varredura de redes, enquanto o **arp-scan** é especializado em redes locais e extremamente rápido, pois realiza varredura apenas pelo protocolo ARP. Dessa forma, os seguintes comandos foram executados:  
+- `nmap -sn -T4 172.20.10.0/24`: realizava uma varredura de ping (*ping sweep*) na rede de RH (`172.20.10.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
+- `nmap -sn -T4 192.168.100.0/24`: realizava uma varredura de ping (*ping sweep*) na rede de Visitantes (`192.168.100.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
+- `arp-scan -I eth0 --localnet`: varria a rede local conectada à interface `eth0`, enviando pacotes ARP para descobrir todos os dispositivos ativos rapidamente.  
+- `arp-scan -I eth1 --localnet`: realizava a varredura ARP na rede conectada à interface `eth1`, identificando rapidamente hosts na rede de Visitantes.
 
+A imagem 28 exibe os resultados obtidos com os comandos do **Nmap**, enquanto a imagem 29 mostra os outputs gerados pelos comandos do **arp-scan**. É possível observar que ambos os softwares identificaram os hosts `.10` e `.30`, correspondentes, respectivamente, ao servidor de RH e à impressora.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img28.png" alt="img28"><br>
+    <figcaption>Imagem 28.</figcaption>
+</figure></div><br>
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img29.png" alt="img29"><br>
+    <figcaption>Imagem 29.</figcaption>
+</figure></div><br>
+
+Durante a execução, foi observado que o **arp-scan** era significativamente mais rápido. Isso ocorre porque o **arp-scan** envia pacotes ARP para todos os IPs da sub-rede. Como o ARP é um protocolo de camada 2, ele se comunica diretamente com as placas de rede na rede local, sem precisar passar por camadas mais complexas do modelo OSI, tornando a resposta extremamente rápida. Por outro lado, o **Nmap** com a opção `-sn` realiza um processo mais complexo: envia múltiplos pacotes para garantir a detecção, incluindo ICMP echo requests (ping), pacotes TCP para as portas 80 e 443, além de ARP requests. Toda essa lógica adicional, somada à espera por timeouts de pacotes que não são ARP, torna o processo do **Nmap** mais demorado em comparação ao **arp-scan**.
 
 <a name="item1.8"><h4>1.8 Seu Dojo de Ataque no Kali Linux (CLI & GUI)</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_8)
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_7)
 
+Obs.: Laboratório registrado como 7, mas documento como 9 e referente a aula 8.
 
+<details><summary><strong>Ambiente de Laboratório CLI</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>kensei-kali-cli:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório atual (<code>.</code>) utilizando o <code>Dockerfile</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container de forma explícita como <code>kali_cli_kensei</code>.</li>
+              <li><code>command: tail -f /dev/null</code>: Mantém o container ativo em segundo plano, permitindo acesso interativo via terminal.</li>
+              <li><code>tty: true</code>: Aloca um terminal interativo dentro do container.</li>
+              <li><code>stdin_open: true</code>: Permite entrada interativa pelo terminal.</li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul> 
+        <li><details><summary><strong>Dockerfile.kali-cli</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como a versão rolling do Kali Linux.</li>
+            <li><code>RUN mkdir -p /root/.diretorio_secreto &amp;&amp; echo "KenseiCyberSec{D3s4f10_CLI_C0nclu1d0!}" &gt; /root/.diretorio_secreto/.segredo_dojo</code>: Cria o diretório secreto e adiciona o arquivo com o desafio CLI dentro da imagem durante a construção.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><em>Nenhuma dependência neste laboratório.</em></li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
+<details><summary><strong>Ambiente de Laboratório GUI</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>kali-gui:</strong></summary>
+            <ul>
+              <li><strong>build:</strong> Define que a imagem do container será construída a partir do diretório atual (<code>.</code>) utilizando o arquivo <code>Dockerfile</code> presente nesse diretório.</li>
+              <li><strong>container_name:</strong> Define o nome do container como <code>kali_gui_kensei</code>.</li>
+              <li><strong>ports:</strong>
+                <ul>
+                  <li><code>"5901:5901"</code>: Mapeia a porta 5901 do container (VNC) para a mesma porta no host, permitindo acesso via cliente VNC.</li>
+                </ul>
+              </li>
+              <li><strong>environment:</strong>
+                <ul>
+                  <li><code>VNC_PASSWORD=kensei</code>: Define a senha do VNC, podendo ser alterada conforme necessidade.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><details><summary><strong>Dockerfile.kali-gui</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como Kali Linux rolling.</li>
+            <li><code>RUN echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" &gt; /etc/apt/sources.list</code>: Substitui a lista de repositórios do sistema pelo repositório principal do Kali, garantindo que os pacotes instalados venham de uma fonte estável e confiável, evitando problemas com mirrors instáveis.</li>
+            <li><code>ARG VNC_PASSWORD=kensei</code> e <code>ENV VNC_PASSWORD=${VNC_PASSWORD}</code>: Configura a senha do VNC como variável de build e ambiente.</li>
+            <li><code>ENV USER=root</code>: Define o usuário padrão como root.</li>
+            <li><code>RUN apt-get update &amp;&amp; apt-get install -y kali-desktop-xfce kali-linux-default tightvncserver &amp;&amp; apt-get clean</code>: Instala a interface XFCE, pacotes padrão e servidor VNC.</li>
+            <li><code>RUN mkdir -p /root/.diretorio_secreto &amp;&amp; echo "KenseiCyberSec{D3s4f10_CLI_C0nclu1d0!}" &gt; /root/.diretorio_secreto/.segredo_dojo</code>: Cria o desafio de laboratório no diretório secreto.</li>
+            <li><code>COPY xstartup /root/.vnc/xstartup &amp;&amp; chmod +x /root/.vnc/xstartup</code>: Copia o script de inicialização do XFCE e define permissões de execução.</li>
+            <li><code>COPY startup.sh /startup.sh &amp;&amp; chmod +x /startup.sh</code>: Copia e torna executável o script de inicialização do VNC.</li>
+            <li><code>EXPOSE 5901</code>: Expõe a porta 5901 para conexão VNC.</li>
+            <li><code>CMD ["/startup.sh"]</code>: Executa o script de inicialização do VNC ao iniciar o container.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><strong>xstartup</strong>: Script de inicialização do XFCE para o VNC.</li>
+        <li><strong>startup.sh</strong>: Script que configura a senha VNC, inicia o servidor VNC e mantém o container ativo.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
+O tema deste laboratório foi a configuração e exploração de uma das ferramentas mais essenciais no arsenal de um profissional de segurança: o **Kali Linux**. O objetivo consistiu em explorar o sistema tanto pela interface de linha de comando (CLI) quanto pela interface gráfica do usuário (GUI). Para isso, foram construídos dois ambientes **Docker** distintos, detalhados acima. O primeiro, o Kali em modo CLI, já vinha sendo utilizado nos laboratórios anteriores como máquina de ataque. O segundo, o Kali com interface gráfica, foi introduzido pela primeira vez neste laboratório, permitindo uma exploração mais completa dos recursos disponíveis.
 
+Antes de partir para a prática, é fundamental compreender a importância dessa ferramenta. O **Kali Linux** é uma distribuição de **Linux** baseada em **Debian**, desenvolvida especificamente para tarefas de segurança e testes de penetração (*pentests*). Ele funciona como um verdadeiro canivete suíço, reunindo centenas de ferramentas voltadas para mapeamento de redes, identificação de vulnerabilidades, exploração de falhas, análise de senhas e muito mais. No uso cotidiano, o **Kali Linux** é amplamente operado pela linha de comando (CLI), já que, no mundo real, o acesso a um sistema comprometido ocorre geralmente por meio de um terminal e não de uma área de trabalho gráfica. Além disso, a CLI proporciona maior leveza e velocidade na execução de comandos, além de facilitar a automação de tarefas, permitindo que scripts de ataque ou defesa sejam facilmente aplicados no terminal.
 
+Após clonar o repositório do curso, conforme descrito anteriormente na seção de desenvolvimento ([development](#Development)), a pasta do laboratório foi acessada com o comando  
+`cd formacao-cybersec/modulo2-defesa-monitoramento/lab_7`. Dentro dela, havia duas subpastas, cada uma correspondente a um ambiente **Docker**. O primeiro ambiente era responsável por subir o container `kali_cli_kensei`. Para isso, executou-se o comando `docker compose up -d` dentro da pasta correspondente. Em seguida, o acesso ao container foi feito com:  
+`docker exec -it kali_cli_kensei /bin/bash`. Note que, após a execução desse comando, o prompt mudou para `root@...:/#`.
 
+No container, foram executados alguns comandos básicos de **Linux**, conforme listagem abaixo. A imagem 30 mostra o output desses comandos, confirmando que o container **Kali Linux** com CLI foi acessado com sucesso:
+- `pwd`: exibia o diretório atual. 
+- `ls -la`: listava os arquivos e diretórios com detalhes e itens ocultos.
+- `cd /root`: alterava o diretório para a pasta `/root`. 
+- `mkdir espaco_de_treino`: criava um diretório chamado `espaco_de_treino`.  
+- `echo "texto" > arquivo.txt`: criava o arquivo `arquivo.txt` com o conteúdo `texto`. 
+- `cat arquivo.txt`: mostrava o conteúdo do arquivo *arquivo.txt*.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img30.png" alt="img30"><br>
+    <figcaption>Imagem 30.</figcaption>
+</figure></div><br>
+
+O desafio, ou *Capture the Flag (CTF)*, consistia em localizar o arquivo secreto chamado `.segredo_dojo`, armazenado em uma pasta oculta configurada pelo Dockerfile. O ponto no início do nome (`.`) indicava que se tratava de um arquivo oculto, por isso foi necessário utilizar o comando `ls -la`. Esse primeiro comando revelou a existência de um diretório oculto chamado `.diretorio_secreto`, que foi acessado com `cd .diretorio_secreto`. Dentro dele, o comando `ls -la` foi novamente executado, revelando o arquivo secreto. Por fim, para visualizar o conteúdo do arquivo, foi usado o comando `cat .segredo_dojo`, conforme mostrado na imagem 31.  
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img31.png" alt="img31"><br>
+    <figcaption>Imagem 31.</figcaption>
+</figure></div><br>
+
+Com a primeira etapa concluída, o acesso ao container foi encerrado e o ambiente foi finalizado com o comando `docker compose down`, derrubando o container. Em seguida, a pasta corrente foi alterada para o diretório do segundo ambiente com o comando `cd ../kali-gui`. A partir dessa pasta, o ambiente com interface gráfica foi implantado utilizando o comando `docker compose up -d`. Entretanto, por padrão, os containers **Docker** são *headless* (sem interface gráfica). Para possibilitar a execução de uma GUI dentro do container — neste caso, no **Kali** — foi necessário instalar um servidor gráfico virtual, como o **Xfce**, já configurado no Dockerfile da imagem. Além disso, o **tightvncserver** também foi instalado e configurado, pois ele atua como servidor VNC responsável por disponibilizar o ambiente gráfico do container para acesso remoto, permitindo que o usuário interaja com a interface do **Kali Linux** a partir da máquina host.  
+
+Com essas configurações virtuais concluídas, tornou-se possível acessar o container **Kali Linux** por meio de GUI. Contudo, esse acesso não pôde ser realizado diretamente pela máquina host em uso — a instância **Amazon EC2** —, já que ela também não possuía interface gráfica. Para contornar essa limitação, foi necessário mapear a porta do container utilizada pelo **VNC Viewer** para a mesma porta no host, permitindo o acesso a partir da máquina física **Windows**. Para isso, foi executado o comando `docker run -d -p 5901:5901 kali-vnc`, que subiu um novo container idêntico, mas agora com o *port forward* configurado. Ainda foi necessário adicionar uma regra no security group vinculado a instância permitindo tráfego nesta porta `5901` a partir do IP público da máquina física. Além disso, foi necessário adicionar uma regra no *security group* vinculado à instância, permitindo tráfego nesta porta `5901` a partir do IP público da máquina física.
+
+Na máquina física, foi necessário baixar e instalar o **VNC Viewer**. Após abrir o software, bastava inserir o IP ou DNS público da instância acrescido da porta `5901` para acessar o ambiente (`IP:5901`). Contudo, essa comunicação não é criptografada por padrão, o que representa um risco de segurança. O ideal seria criar um túnel SSH para proteger a conexão e não expor a porta da instância. Para isso, foi utilizado o comando `ssh -L 5901:localhost:5901 ubuntu@ip-da-ec2`. Esse comando estabelecia um túnel SSH da máquina física até a instância **EC2**, redirecionando a porta que o **VNC Viewer** utilizva no container. Assim, ao executar o **VNC Viewer** na máquina física apontando para `localhost:5901`, a conexão passou a ser segura. Ao acessar o ambiente pelo **VNC Viwer** da máquina física, era solicitada a senha configurada no **VNC Viewer** do container, que era `kensei` para o usuário `root`. A imagem 32 registra essa tela de login acessada.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img32.png" alt="img32"><br>
+    <figcaption>Imagem 32.</figcaption>
+</figure></div><br>
+
+No **Kali Linux** com GUI, ao clicar no menu de aplicações (o ícone do dragão do Kali), foi observado que as categorias seguiam as táticas do framework *MITRE ATT&CK*, o padrão da indústria. CONCLUIR...
 
 <a name="item1.9"><h4>1.9 Ports/Portas</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_9)
+
+Obs.: Laboratório registrado como 8, mas documento como 10 e referente a aula 9.
+
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>attacker:</strong></summary>
+            <ul>
+              <li><strong>container_name:</strong> Define o nome do container como <code>attacker-1</code>.</li>
+              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./attacker</code>.</li>
+              <li><strong>platform:</strong> Garante compatibilidade com arquitetura <code>linux/amd64</code>.</li>
+              <li><strong>cap_add:</strong> Adiciona <code>NET_ADMIN</code> para permitir execução de ferramentas de rede avançadas.</li>
+              <li><code>tty: true</code> Mantém o container ativo com terminal interativo.</li>
+              <li><code>stdin_open: true</code> Permite entrada interativa pelo terminal.</li>
+              <li><strong>networks:</strong>
+                <ul>
+                  <li><code>dmz_net</code>: Conecta à rede DMZ com IP fixo <code>172.18.0.100</code>.</li>
+                  <li><code>internal_net</code>: Conecta à rede interna com IP fixo <code>172.19.0.100</code>.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>web_server:</strong></summary>
+            <ul>
+              <li><strong>container_name:</strong> Define o nome do container como <code>web_server</code>.</li>
+              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./services/web_server</code>.</li>
+              <li><strong>platform:</strong> Compatível com <code>linux/amd64</code>.</li>
+              <li><strong>networks:</strong>
+                <ul>
+                  <li><code>dmz_net</code>: Conecta à rede DMZ com IP fixo <code>172.18.0.2</code>.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>mail_server:</strong></summary>
+            <ul>
+              <li><strong>container_name:</strong> Define o nome do container como <code>mail_server</code>.</li>
+              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./services/mail_server</code>.</li>
+              <li><strong>platform:</strong> Compatível com <code>linux/amd64</code>.</li>
+              <li><strong>environment:</strong>
+                <ul>
+                  <li><code>SMTP_SERVER=kensei.lab</code>: Define o servidor SMTP.</li>
+                  <li><code>SERVER_HOSTNAME=kensei.lab</code>: Define o hostname do container.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong>
+                <ul>
+                  <li><code>dmz_net</code>: Conecta à rede DMZ com IP fixo <code>172.18.0.3</code>.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>fileshare_server:</strong></summary>
+            <ul>
+              <li><strong>container_name:</strong> Define o nome do container como <code>fileshare_server</code>.</li>
+              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./services/fileshare_server</code>.</li>
+              <li><strong>platform:</strong> Compatível com <code>linux/amd64</code>.</li>
+              <li><strong>networks:</strong>
+                <ul>
+                  <li><code>internal_net</code>: Conecta à rede interna com IP fixo <code>172.19.0.2</code>.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>database_server:</strong></summary>
+            <ul>
+              <li><strong>container_name:</strong> Define o nome do container como <code>database_server</code>.</li>
+              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./services/database_server</code>.</li>
+              <li><strong>platform:</strong> Compatível com <code>linux/amd64</code>.</li>
+              <li><strong>environment:</strong>
+                <ul>
+                  <li><code>MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes</code>: Permite inicialização sem senha de root.</li>
+                </ul>
+              </li>
+              <li><strong>networks:</strong>
+                <ul>
+                  <li><code>internal_net</code>: Conecta à rede interna com IP fixo <code>172.19.0.3</code>.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>dev_machine:</strong></summary>
+            <ul>
+              <li><strong>container_name:</strong> Define o nome do container como <code>dev_machine</code>.</li>
+              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./services/dev_machine</code>.</li>
+              <li><strong>networks:</strong>
+                <ul>
+                  <li><code>internal_net</code>: Conecta à rede interna com IP fixo <code>172.19.0.4</code>.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>redes:</strong></summary>
+            <ul>
+              <li><code>dmz_net</code>: Rede DMZ, tipo <em>bridge</em>, subnet <code>172.18.0.0/24</code>.</li>
+              <li><code>internal_net</code>: Rede interna, tipo <em>bridge</em>, subnet <code>172.19.0.0/24</code>.</li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><details><summary><strong>attacker/Dockerfile</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como Kali Linux rolling.</li>
+            <li><code>ARG TARGETARCH=amd64</code>: Define a arquitetura alvo do container.</li>
+            <li><code>ENV DEBIAN_FRONTEND=noninteractive</code>: Desativa prompts interativos do apt, permitindo instalação automática de pacotes.</li>
+            <li><strong>RUN</strong>: Instala e configura todas as ferramentas necessárias para exploração e captura de flags:
+              <ul>
+                <li><code>apt-get update</code>: Atualiza a lista de pacotes.</li>
+                <li><code>apt-get install -y wget nmap net-tools iproute2 smbclient default-mysql-client curl netcat-traditional telnet</code>: Instala ferramentas essenciais de rede, scanning e exploração.</li>
+                <li><code>wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb -O /tmp/rustscan.deb</code>: Baixa o pacote do RustScan.</li>
+                <li><code>dpkg -i /tmp/rustscan.deb</code>: Instala o RustScan a partir do pacote baixado.</li>
+                <li><code>apt-get clean</code>: Limpa arquivos temporários do apt.</li>
+                <li><code>rm -rf /var/lib/apt/lists/* /tmp/rustscan.deb</code>: Remove arquivos residuais para reduzir o tamanho da imagem.</li>
+              </ul>
+            </li>
+            <li><code>WORKDIR /root</code>: Define o diretório de trabalho dentro do container.</li>
+            <li><code>CMD ["/bin/bash"]</code>: Mantém o container ativo com terminal interativo.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>services/database_server/Dockerfile</strong></summary>
+          <ul>
+            <li><code>FROM mariadb:10.5</code>: Define a imagem base como MariaDB 10.5.</li>
+            <li><code>COPY init.sql /docker-entrypoint-initdb.d/</code>: Copia o script SQL de inicialização para o diretório padrão do MariaDB que é executado ao iniciar o container.</li>
+            <li><code>RUN chmod 644 /docker-entrypoint-initdb.d/init.sql</code>: Garante que o script tenha permissões adequadas para ser lido e executado pelo MariaDB.</li>
+            <li><code>EXPOSE 3306</code>: Expõe a porta padrão do MariaDB, permitindo conexões externas.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>services/dev_machine/Dockerfile</strong></summary>
+          <ul>
+            <li><code>FROM python:3.9-slim</code>: Define a imagem base como Python 3.9 slim.</li>
+            <li><code>WORKDIR /app</code>: Define o diretório de trabalho dentro do container.</li>
+            <li><code>COPY . .</code>: Copia todos os arquivos do diretório atual para o container.</li>
+            <li><code>RUN pip install Flask==2.0.1 Werkzeug==2.0.3</code>: Instala as dependências Python necessárias para o servidor de aplicação.</li>
+            <li><code>EXPOSE 22 5000 8080 1337</code>: Expõe portas para SSH, Flask e outros serviços de teste.</li>
+            <li><code>CMD python flag_server.py &amp; flask run --host=0.0.0.0 --port=5000</code>: Inicia o servidor de flags e a aplicação Flask.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>services/fileshare_server/Dockerfile</strong></summary>
+          <ul>
+            <li><code>FROM dperson/samba</code>: Define a imagem base como Samba.</li>
+            <li><code>COPY smb.conf /etc/samba/</code>: Substitui a configuração padrão do Samba pelo arquivo personalizado.</li>
+            <li><code>EXPOSE 139 445</code>: Expõe portas SMB para compartilhamento de arquivos.</li>
+            <li><code>RUN mkdir -p /share/.secreto &amp;&amp; echo "KENSEI{SMB_EH_UMA_MAE}" &gt; /share/.secreto/FLAG.txt</code>: Cria diretório oculto com uma flag.</li>
+            <li><code>CMD ["-p", "-s", "public;/share;yes;no;yes"]</code>: Inicializa o Samba com compartilhamento público configurado.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>services/mail_server/Dockerfile</strong></summary>
+          <ul>
+            <li><code>FROM juanluisbaptiste/postfix:latest</code>: Define a imagem base como Postfix.</li>
+            <li><code>RUN echo 'smtpd_banner = KENSEI{SMTP_BANNER_REVELADOR}' &gt;&gt; /etc/postfix/main.cf</code>: Adiciona uma flag no banner SMTP do servidor.</li>
+            <li><code>EXPOSE 25 110 143</code>: Expõe portas padrão de e-mail (SMTP, POP3, IMAP).</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>services/web_server/Dockerfile</strong></summary>
+          <ul>
+            <li><code>FROM nginx:alpine</code>: Define a imagem base como Nginx Alpine.</li>
+            <li><code>COPY index.html /usr/share/nginx/html/</code>: Substitui a página padrão do Nginx por uma página personalizada com flag escondida.</li>
+            <li><code>EXPOSE 80 443</code>: Expõe as portas HTTP e HTTPS.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><strong>services/database_server/init.sql</strong>: Script SQL para criar o banco <code>segredos</code> e a tabela <code>flags</code> com a flag inicial <code>KENSEI{SQL_INJECTION_AVANTE}</code>.</li>
+        <li><strong>services/dev_machine/app.py</strong>: Aplicação Flask simples que retorna uma mensagem de alerta ao acessar a página inicial da máquina de desenvolvimento.</li>
+        <li><strong>services/dev_machine/flag_server.py</strong>: Servidor TCP que fornece a flag <code>KENSEI{D3SC0BR1ND0_P0RT4S_3SC0ND1D4S}</code> quando conectado na porta 1337.</li>
+        <li><strong>services/fileshare_server/smb.conf</strong>: Arquivo de configuração do Samba, definindo compartilhamento público de arquivos com permissões de leitura e escrita, usado na máquina de arquivos.</li>
+        <li><strong>services/web_server/index.html</strong>: Página HTML customizada do servidor web, contendo uma flag escondida no código-fonte <code>KENSEI{CODIGO_FONTE_NAO_MENTE}</code>.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
+
+Este laboratório teve como foco a varredura de portas, aplicando uma metodologia profissional em duas fases para mapear a infraestrutura de uma empresa fictícia, utilizando as ferramentas adequadas para cada etapa. Na primeira fase, foi realizado o reconhecimento inicial, identificando em quais redes o container de ataque estava conectado e, com o uso do **Nmap**, descobrindo rapidamente quais eram os demais hosts ativos em cada segmento de rede. A segunda fase consistiu em utilizar o **Rustscan** para escanear de forma ultra-rápida as portas dos hosts previamente identificados e, em seguida, analisar os resultados para compreender a topologia da rede e os serviços expostos.
+
+Com o ambiente implantado, o comando `docker exec -it attacker-1 /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo de um bom atacante é reconhecer o terreno, ou seja, identificar sua posição e as redes às quais está conectado. Para isso, foi executado o comando `ifconfig`, listando as interfaces de rede e seus respectivos IPs, permitindo deduzir a qual rede cada interface pertencia. Dessa análise, foram identificadas duas redes: a DMZ, com CIDR `172.18.0.0/24`, e a rede interna, com CIDR `172.19.0.0/24`.
+
+A partir das redes descobertas, o **Nmap** foi utilizado para escanear essas redes e identificar rapidamente os hosts ativos em cada segmento. O **Nmap** foi executado no modo *ping scan* (`-sn`), que apenas verifica se os hosts estão ativos sem realizar varredura de portas, tornando o processo mais rápido e eficiente para o mapeamento inicial. Os comandos executados foram:  
+- `nmap -sn -T4 172.18.0.0/24 -oG - | grep "Up"`: realizava o *ping scan* na rede DMZ (`172.18.0.0/24`) com velocidade aumentada (`-T4`), exportando o resultado no formato *grepable* (`-oG -`) e filtrando apenas os hosts que estavam ativos (`grep "Up"`).  
+- `nmap -sn -T4 172.19.0.0/24 -oG - | grep "Up"`: realizava o mesmo procedimento na rede interna (`172.19.0.0/24`), permitindo listar rapidamente os hosts disponíveis nesse segmento.
+
+A imagem 33 exibe os IPs dos hosts descobertos em cada uma das redes.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img33.png" alt="img33"><br>
+    <figcaption>Imagem 33.</figcaption>
+</figure></div><br>
+
+Com a lista de alvos em mão (IPs dos hosts identificados), foi utilizado a velocidade do **Rustscan** para uma varredura de portas profunda, passando os IPs encontrados de cada rede. O resultado das varreduras foram salva em dois arquivos, um para cada scan de cada rede. Os comandos executados foram:
+- `rustscan -a <IP_DMZ_1>,<IP_DMZ_2> -- -A -oN scan_dmz.nmap`:
+- `rustscan -a <IP_INTERNO_1>,<IP_INTERNO_2>... -- -A -oN scan_interna.nmap`: 
+
+
 
 
 
@@ -882,6 +1254,9 @@ Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para 
 <a name="item1.10"><h4>1.10 Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_10)
 
+Obs.: Laboratório registrado como 9, mas documento como 11 e referente a aula 10.
+
+
 
 
 
@@ -890,6 +1265,8 @@ Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para 
 
 
 <a name="item1.11"><h4>1.11 Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</h4></a>[Back to summary](#item1)
+
+
 
 
 
