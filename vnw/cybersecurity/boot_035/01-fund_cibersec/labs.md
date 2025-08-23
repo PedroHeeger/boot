@@ -727,7 +727,6 @@ Este laboratório foi bastante interessante por introduzir o **Wireshark**, uma 
 
 O **Wireshark** foi baixado do site oficial e instalado junto com a ferramenta **Npcap**, responsável por permitir a captura de pacotes na rede. Em máquinas **Linux** com interface gráfica, a instalação pode ser feita com os comandos `sudo apt update` e `sudo apt install wireshark`. Já em sistemas apenas com linha de comando, como a instância **EC2**, foi necessário instalar o **tshark** utilizando os mesmos comandos, substituindo apenas o pacote (`sudo apt install tshark`). Durante a instalação, foi solicitado se usuários não-superusuário deveriam ter permissão para capturar pacotes, o que foi confirmado com `Yes`. Para usar o **Wireshark** sem `sudo`, foi preciso adicionar o usuário ao grupo `wireshark` com `sudo usermod -a -G wireshark $USER`. Por fim, foi necessário realizar logout e login novamente, ou reiniciar a instância, para que as alterações tivessem efeito.
 
-
 <details><summary>Verificação de Autenticidade do Wireshark</summary>
   <p>O processo de verificação da autenticidade de um software é essencial para garantir que o instalador realmente foi disponibilizado pelo desenvolvedor e não sofreu adulterações. Geralmente, essa verificação envolve o uso de <strong>hashes</strong> e/ou <strong>assinaturas digitais com GPG (GNU Privacy Guard)</strong>. No caso do <strong>Wireshark</strong>, o próprio site disponibilizava um campo chamado <code>Verify Downloads</code>, onde estavam reunidas as informações necessárias. Esse campo fornecia um arquivo de assinatura que o <strong>Wireshark</strong> publicou. A primeira parte do arquivo (até antes do <code>-----BEGIN PGP SIGNATURE-----</code>) continha o conteúdo assinado, listando os nomes dos arquivos, seus tamanhos e respectivos hashes (SHA256 e SHA1). Já a parte final (<code>BEGIN/END PGP SIGNATURE</code>) correspondia à assinatura <strong>GPG</strong>, que garantia que o conteúdo foi realmente publicado pela equipe do <strong>Wireshark</strong>. Todo esse material foi copiado e salvo em um arquivo nomeado <code>wireshark-4.4.8-SIGNATURES.asc</code>, utilizado como arquivo de assinatura. Além disso, o campo <code>Verify Downloads</code> também informava o ID da chave mais recente utilizada pelo projeto, <code>0xE6FEAEEA</code>. Assim, com três elementos principais — o arquivo instalador, o arquivo de assinatura e a chave pública — foi possível realizar o processo completo de verificação.</p>
 
@@ -746,17 +745,102 @@ O **Wireshark** foi baixado do site oficial e instalado junto com a ferramenta *
   </figure></div><br>
 </details>
 
-Após instalação, iniciou-se o processo de capturar de tráfego com **Wireshark** no host, acessando a GUI da ferramenta. Na tela de início, foi visualizado uma lista de interfaces de rede disponíveis como `Wi-Fi`, `Ethernet`, `lo (que é o Loopback)`, `Docker Desktop`. 
+Após a instalação, iniciou-se o processo de captura de tráfego com o **Wireshark** no host, acessando a interface gráfica da ferramenta. Na tela inicial, foi exibida uma lista de interfaces de rede disponíveis, como `Wi-Fi`, `Ethernet`, `lo` (Loopback), `Docker Desktop`, entre outras. Nesse momento, foi necessário identificar e selecionar a interface de rede que estava sendo utilizada para conexão com a internet. Essa interface geralmente apresentava um gráfico de atividade (ondas) ou um alto número de pacotes sendo transferidos. No caso da máquina física, a interface utilizada foi a `Ethernet`, que foi selecionada para iniciar a captura de pacotes. Imediatamente, o tráfego em tempo real da máquina passou a ser exibido.
+
+No caso da máquina host dos containers **Docker**, tratava-se de uma instância do **Amazon EC2**, onde foi instalado apenas o **tshark**, a versão em linha de comando do **Wireshark**. Nesse ambiente, primeiro foi necessário listar as interfaces disponíveis com o comando `tshark -D`. Para iniciar a captura, utilizava-se o comando `tshark -i eth0`, passando o nome da interface ou seu número na lista (`tshark -i 1`). A interface escolhida precisava ser a responsável pela conexão com a internet, que neste caso era a `eth0`. A imagem 17 mostra que o processo de captura de tráfego nessa interface foi iniciado com sucesso, imprimindo na tela cada pacote que passava por ela.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+No entanto, o tráfego que seria analisado ainda estava sendo gerado, e ao encerrar o comando, todo o tráfego capturado, incluindo o gerado, seria perdido. Para evitar isso e permitir filtragem posterior, a captura foi encerrada com `Ctrl + C`. Em seguida, uma nova captura foi iniciada com o comando `tshark -i eth0 -w captura_completa.pcap`, que salvava o tráfego no arquivo `captura_completa.pcap` em vez de exibi-lo na tela. Apesar disso, a CLI permanecia aguardando a interrupção do comando, que era realizada com `Ctrl + C`. Com o arquivo gerado, seria possível aplicar filtros diretamente nele para análise detalhada posteriormente.
+
+Com a captura em andamento, foi gerado tráfego a partir dos containers. O container do servidor web foi acessado via navegador, uma vez que havia um mapeamento de portas (port forward) entre a porta `8080` do container e a porta `8080` do host, no caso, a instância **Amazon EC2**. Assim, a aplicação pôde ser acessada pelo navegador da máquina física utilizando o IP ou DNS público da instância na porta `8080` (`site`), desde que existisse uma regra de entrada no grupo de segurança permitindo a comunicação a partir do IP público da máquina física. Após acessar a página inicial da aplicação, uma requisição do tipo GET foi enviada para a página secreta `site/secret`. Na página de login (`site/login_form`), foi feita uma requisição GET para carregá-la e uma requisição POST para enviar o formulário de autenticação. A imagem 18 mostra o acesso à página inicial, a imagem 19 exibe o acesso à página secreta e a imagem 20 evidencia o acesso à página de login.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img19.png" alt="img19"><br>
+    <figcaption>Imagem 19.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
+</figure></div><br>
+
+De volta a instância EC2, o container `kali-aula7` foi acessado com o comando `docker exec -it kali-aula7 /bin/bash` para gerar tráfegos a partir dele. Nele, foi realizando um ping para o servidor web acessado por navegador (`ping -c 3 web-server-aula7`). Uma consulta DNS para um site externo também foi realizada através do comando `nslookup google.com`. O **Wireshark** (**tshark**) no host via a consulta saindo e voltando. Por fim, foi executado `curl http://web-server-aula7:8080/` para enviar uma requisição do tipo GET a página inicial do site, mas utilizando agora o software **Curl**. A imagem 21 exibe os outputs desses comandos executados.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img21.png" alt="img21"><br>
+    <figcaption>Imagem 21.</figcaption>
+</figure></div><br>
+
+De volta ao **tshark**, a captura de tráfego foi interrompida utilizando o atalho `Ctrl + C`, encerrando a execução do comando `tshark -i eth0 -w captura_completa.pcap`. Todo o tráfego capturado, incluindo o gerado, foi armazenado no arquivo `captura_completa.pcap`. O próximo passo foi a análise dos pacotes contidos nesse arquivo.
+
+No **Wireshark**, ou seja, na versão com interface gráfica, o painel superior correspondia ao `Painel de Lista de Pacotes`, onde todos os pacotes capturados eram exibidos com informações resumidas. O painel inferior esquerdo, chamado `Painel de Detalhes do Pacote`, mostrava a estrutura hierárquica do pacote selecionado, exibindo as camadas: Ethernet, IP, TCP, HTTP, DNS, ICMP, entre outras. Já o painel inferior direito, `Painel de Bytes do Pacote`, apresentava o conteúdo bruto do pacote em formato hexadecimal e ASCII. Na barra de filtros de exibição, localizada logo abaixo da barra de ferramentas do **Wireshark**, era possível aplicar filtros para análise específica dos pacotes.
+
+No host (instância **Amazon EC2**), o tráfego capturado estava armazenado no arquivo `captura_completa.pcap`, sendo necessário apenas consultá-lo aplicando os filtros desejados. Para isso, os seguintes comandos foram executados:
+- `tshark -r captura_completa.pcap -Y "tcp and tcp.port == 8080"`: filtrava apenas o tráfego TCP na porta 8080, incluindo o handshake, permitindo analisar todas as conexões da aplicação web.
+- `tshark -r captura_completa.pcap -Y "http and tcp.port == 8080"`: filtrava apenas os pacotes HTTP na porta 8080, mostrando requisições e respostas da aplicação web.  
+- `tshark -r captura_completa.pcap -Y 'http.request.method == "POST" and tcp.port == 8080'`: filtrava apenas requisições HTTP do tipo POST na porta 8080, úteis para analisar envios de formulários ou login.  
+- `tshark -r captura_completa.pcap -Y "icmp"`: filtrava pacotes ICMP, permitindo visualizar tráfego de ping e mensagens de controle de rede.  
+- `tshark -r captura_completa.pcap -Y "dns"`: filtrava pacotes DNS, mostrando consultas e respostas de resolução de nomes de domínio.
+
+As imagens 22 e 23 mostram o conteúdo filtrado do tráfego capturado, correspondente às interações geradas pelos dois containers: o servidor web e o **Kali Linux**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img22.png" alt="img22"><br>
+    <figcaption>Imagem 22.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img23.png" alt="img23"><br>
+    <figcaption>Imagem 23.</figcaption>
+</figure></div><br>
 
 
-
-
-
-
-
-
-
-
+Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para identificar o tráfego gerado anteriormente e analisar pacotes específicos. Abaixo está a explicação dos filtros realizados:
+- **Filtro 1 — Handshake TCP (pacote SYN):**
+  - **Comando na CLI**:
+    - `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -V`: Esse comando filtrava o primeiro pacote do handshake TCP, correspondente ao *SYN (synchronize)*. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+    - Caso fosse necessário filtrar apenas campos específicos, o comando poderia ser: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -T fields -e frame.number -e ip.src -e ip.dst -e tcp.flags -e tcp.seq`.
+    - Para destacar somente as flags TCP, o comando foi: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.
+  - **Análise na GUI**: 
+    - No **Wireshark**, ao expandir a seção `Transmission Control Protocol` nos detalhes do pacote, era possível observar que a flag `[SYN]` estava marcada. Além disso, clicando com o botão direito no primeiro pacote e selecionando `Follow > TCP Stream`, era possível acompanhar todos os pacotes desse handshake, bem como a conversa HTTP subsequente, em uma única janela.
+- **Filtro 2 — Handshake TCP (pacote SYN-ACK):**  
+  - **Comando na CLI**:  
+    - `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 1 and tcp.port == 8080" -V`: Esse comando filtrava o segundo pacote do handshake TCP, correspondente ao *SYN-ACK (synchronize-acknowledge)*. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+    - Para retornar apenas os campos específicos, o comando poderia ser: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 1 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.  
+  - **Análise na GUI**:  
+    - No **Wireshark**, ao expandir a seção `Transmission Control Protocol` nos detalhes do pacote, era possível observar que as flags `[SYN, ACK]` estavam marcadas. Esse pacote representava a resposta do servidor ao cliente, confirmando a solicitação de conexão e preparando o próximo passo do handshake.  
+- **Filtro 3 — Handshake TCP (pacote ACK final):**  
+  - **Comando na CLI**:  
+    - `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 0 and tcp.flags.ack == 1 and tcp.port == 8080" -V`: Esse comando filtrava o terceiro pacote do handshake TCP, correspondente ao *ACK (acknowledge)* final enviado pelo cliente ao servidor. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+    - Para retornar apenas os campos específicos, o comando poderia ser: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 0 and tcp.flags.ack == 1 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.  
+  - **Análise na GUI**:  
+    - No **Wireshark**, ao expandir a seção `Transmission Control Protocol` nos detalhes do pacote, era possível observar que a flag `[ACK]` estava marcada. Esse pacote finalizava o processo de estabelecimento da conexão, confirmando o *three-way handshake* entre cliente e servidor.  
+- **Filtro 4 — Requisições HTTP GET:**  
+  - **Comando na CLI**:  
+    - `tshark -r captura_completa.pcap -Y 'http.request.method == "GET" and tcp.port == 8080' -V`: Esse comando filtrava apenas requisições HTTP do tipo `GET` na porta `8080`. O argumento `-V` imprimia toda a árvore de protocolos decodificados, incluindo Ethernet, IP, TCP e HTTP, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+  - Para retornar apenas campos específicos, o comando foi: `tshark -r captura_completa.pcap -Y 'http.request.method == "GET" and tcp.port == 8080' -T fields -e http.host -e http.user_agent -e http.request.uri -e http.accept_language`, onde `http.host` mostrava o host da requisição, `http.user_agent` indicava o navegador ou cliente, `http.request.uri` trazia o path acessado, e `http.accept_language` exibe o idioma preferencial. Assim, era só procurar um pacote com path `/` ou `/secret`. 
+  - **Análise na GUI**:  
+    - No **Wireshark**, ao localizar e selecionar um pacote com path `/` ou `/secret`, era expandido o protocolo **Hypertext Transfer Protocol** no painel de detalhes, permitindo observar os cabeçalhos da requisição como `Host`, `User-Agent` e `Accept-Language`.  
+- **Filtro 5 — Requisição HTTP POST (envio de formulário):**  
+  - **Comando na CLI**:  
+    - `tshark -r captura_completa.pcap -Y 'http.request.method == "POST" and tcp.port == 8080' -V`: Esse comando filtrava apenas requisições HTTP do tipo `POST` na porta `8080`. O argumento `-V` imprimia toda a árvore de protocolos decodificados, mostrando detalhadamente cada camada, como Ethernet, IP, TCP e HTTP.  
+  - Para retornar apenas campos específicos, o comando foi: `tshark -r captura_completa.pcap -Y 'http.request.method == "POST" and tcp.port == 8080 and http.request.uri == "/do_login"' -T fields -e http.file_data`, que exibia apenas o conteúdo enviado pelo formulário no path `/do_login`, incluindo campos como `username` e `password`.
+  - **Análise na GUI**:  
+    - No **Wireshark**, ao localizar o pacote com path `/do_login`, era expandida a seção `HTML Form URL Encoded` no painel de detalhes, permitindo visualizar o `username` e o `password` enviados em texto claro. Esse exemplo demonstra por que nunca se deve usar HTTP para enviar informações sensíveis em ambientes reais. Em produção, sempre deve ser utilizado HTTPS (HTTP seguro), que criptografa o tráfego, impedindo que atacantes vejam os dados em texto claro. Para tráfego HTTPS, o **Wireshark** só exibiria os pacotes criptografados.
+- **Filtro 6 — Pacotes DNS:**  
+  - **Comando na CLI**:  
+    - `tshark -r captura_completa.pcap -Y "dns" -T fields -e dns.qry.name -e dns.a`: Esse comando filtrava pacotes DNS, exibindo as consultas de nomes de domínio (`dns.qry.name`) e suas respectivas respostas de endereço IP (`dns.a`).  
+  - **Análise na GUI**:  
+    - No **Wireshark**, foram localizadas as requisições do **nslookup** do **Kali Linux**. Selecionando um pacote de consulta e expandindo `Domain Name System (query)` no painel de detalhes, era possível visualizar o nome do domínio consultado. Para os pacotes de resposta, expandindo `Domain Name System (response)` encontrava-se o endereço IP resolvido para o domínio. O argumento `-T fields -e dns.qry.name -e dns.a` no **tshark** reproduzia exatamente essa filtragem.
 
 
 
