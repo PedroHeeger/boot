@@ -1237,36 +1237,523 @@ A imagem 33 exibe os IPs dos hosts descobertos em cada uma das redes.
     <figcaption>Imagem 33.</figcaption>
 </figure></div><br>
 
-Com a lista de alvos em mão (IPs dos hosts identificados), foi utilizado a velocidade do **Rustscan** para uma varredura de portas profunda, passando os IPs encontrados de cada rede. O resultado das varreduras foram salva em dois arquivos, um para cada scan de cada rede. Os comandos executados foram:
-- `rustscan -a <IP_DMZ_1>,<IP_DMZ_2> -- -A -oN scan_dmz.nmap`:
-- `rustscan -a <IP_INTERNO_1>,<IP_INTERNO_2>... -- -A -oN scan_interna.nmap`: 
+Com a lista de alvos em mãos (IPs dos hosts identificados), foi utilizada a velocidade do **Rustscan** para realizar uma varredura de portas detalhada, passando os IPs encontrados em cada rede. Os resultados das varreduras foram salvos em dois arquivos distintos, um para cada rede. Os comandos executados foram:  
+- `rustscan -a 172.18.0.2,172.18.0.3 -- -A -oN scan_dmz.nmap`: escaneava rapidamente os hosts da DMZ (`172.18.0.2` e `172.18.0.3`), realizando uma detecção completa de serviços (`-A`) e salvando a saída no formato `Nmap` no arquivo `scan_dmz.nmap`.  
+- `rustscan -a 172.19.0.2,172.19.0.3,172.19.0.4 -- -A -oN scan_interna.nmap`: escaneava rapidamente os hosts da rede interna, com a mesma detecção de serviços e salvamento da saída em `scan_interna.nmap`.  
 
+Em seguida, a ferramenta **cat** foi utilizada para inspecionar os arquivos de saída e analisar os resultados, permitindo identificar as portas abertas nos hosts, os serviços em execução e suas versões. As imagens 34 e 35 apresentam os resultados obtidos nos dois comandos do **Rustscan**.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img34.png" alt="img34"><br>
+    <figcaption>Imagem 34.</figcaption>
+</figure></div><br>
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img35.png" alt="img35"><br>
+    <figcaption>Imagem 35.</figcaption>
+</figure></div><br>
 
+Este laboratório também incluiu um desafio final de **Capture the Flag (CTF)**, cujo objetivo era utilizar as habilidades de varredura (*scanning*) e enumeração para localizar cinco flags escondidas na infraestrutura. As informações previamente obtidas com o **Rustscan** serviram como base para a resolução, embora em alguns casos fosse necessário realizar escaneamentos mais detalhados de determinados hosts. O primeiro host analisado foi o `web_server`, que possuía a porta `80` aberta, indicando tratar-se de um servidor web. Para inspecionar o conteúdo servido por essa máquina, foi utilizado o comando `curl http://172.18.0.2`, que enviava uma requisição HTTP do tipo GET para o servidor e exibia a resposta retornada. No código HTML retornado pelo servidor, foi localizada a flag `FLAG: KENSEI{CODIGO_FONTE_NAO_MENTE}`, conforme mostrado na imagem 36.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img36.png" alt="img36"><br>
+    <figcaption>Imagem 36.</figcaption>
+</figure></div><br>
 
+O próximo host analisado foi o `mail_server`, que, assim como o `web_server`, também estava na rede `dmz_net`. Este host possuía a porta `25` aberta, utilizada pelo protocolo **Simple Mail Transfer Protocol (SMTP)**, responsável pelo envio de emails. Serviços de texto como o SMTP costumam se identificar através de um *banner* inicial ao estabelecer conexão. Para visualizar esse *banner*, foi utilizada a ferramenta **netcat (nc)**, que permite interagir com portas TCP/UDP. Dessa forma, o comando `nc 172.18.0.3 25` foi executado e, na mensagem retornada pelo servidor, foi identificada a flag `smtpd_banner = KENSEI{SMTP_BANNER_REVELADOR}`, conforme exibido na imagem 37.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img37.png" alt="img37"><br>
+    <figcaption>Imagem 37.</figcaption>
+</figure></div><br>
 
+O terceiro host analisado foi o `fileshare_server`, que possuía portas de compartilhamento de arquivos **SMB** abertas (`139` e `445`). Para listar os compartilhamentos disponíveis sem autenticação, foi utilizado o **smbclient** com o comando `smbclient -L //172.19.0.2 -N`. Ao identificar o compartilhamento chamado `public`, uma conexão foi estabelecida com ele através do comando `smbclient //172.19.0.2/public -N`. Dentro do compartilhamento, foram executados comandos do SMB para navegação e listagem de arquivos. O comando `ls -a` permitiu visualizar todos os diretórios, incluindo ocultos, sendo encontrado o diretório `.secreto`. Com `cd .secreto` o diretório foi acessado, e com `ls` os arquivos foram listados, identificando o arquivo `FLAG.txt`. O arquivo foi baixado para o diretório `/root` do container de ataque (**Kali Linux**) com o comando `get FLAG.txt`. Em seguida, a conexão SMB foi encerrada com `exit` e o conteúdo do arquivo foi lido com `cat FLAG.txt`, revelando a flag `KENSEI{SMB_EH_UMA_MAE}`, conforme mostrado na imagem 38.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img38.png" alt="img38"><br>
+    <figcaption>Imagem 38.</figcaption>
+</figure></div><br>
 
+O quarto host analisado foi o `database_server`, que, assim como o `fileshare_server`, estava na rede `internal_net`. Este host tinha a porta `3306` aberta, utilizada pelo **MySQL Server**, um banco de dados relacional. Servidores de banco de dados são alvos valiosos, portanto foi realizada uma conexão usando o cliente **mysql**, com o usuário `root` e senha em branco (`mysql -h 172.19.0.3 -u root --ssl=0`). De dentro do banco, foram executados alguns comandos para exploração e consulta de dados. O comando `SHOW DATABASES;` listou todos os bancos existentes, e com `USE <nome_do_banco>;` era possível selecionar o banco desejado. Em seguida, `SHOW TABLES;` listou as tabelas desse banco, e o comando `SELECT * FROM <nome_da_tabela>;` exibiu todas as informações da tabela selecionada. Um dos itens dessa tabela continha a flag procurada: `KENSEI{SQL_INJECTION_AVANTE}`, conforme mostrado na imagem 39.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img39.png" alt="img39"><br>
+    <figcaption>Imagem 39.</figcaption>
+</figure></div><br>
+
+O quinto e último host verificado foi o `dev_machine`, que no escaneamento padrão não apresentou muitas informações. Para investigação mais detalhada, foi executado o comando `rustscan -a 172.19.0.4 --range 1-65535 -- -A`, identificando que a porta `1337` estava aberta. Em seguida, foi estabelecida uma conexão com essa porta utilizando `telnet 172.19.0.4 1337` ou `nc 172.19.0.4 1337`, resultando no recebimento imediato da flag disponibilizada pelo serviço em execução, conforme evidenciado na imagem 40. Essa flag era enviada pelo arquivo `flag_server.py` que estava rodando no container nessa porta.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img40.png" alt="img40"><br>
+    <figcaption>Imagem 40.</figcaption>
+</figure></div><br>
 
 <a name="item1.10"><h4>1.10 Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_10)
 
 Obs.: Laboratório registrado como 9, mas documento como 11 e referente a aula 10.
 
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+      <ul>
+        <li><details><summary><strong>alvo-enum:</strong></summary>
+          <ul>
+            <li><strong>build:</strong> Define que a imagem será construída a partir do diretório <code>./alvo</code>, usando o <code>Dockerfile</code> presente nesse diretório.</li>
+            <li><strong>container_name:</strong> Nome explícito do container: <code>alvo-enum</code>.</li>
+            <li><strong>hostname:</strong> Define o hostname do container como <code>kensei-target</code>.</li>
+            <li><strong>networks:</strong> Conecta o container à rede <code>kensei-net</code>, permitindo comunicação com o atacante.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>attacker-enum:</strong></summary>
+          <ul>
+            <li><strong>build:</strong> Define que a imagem será construída a partir do diretório <code>./attacker</code>, usando o <code>Dockerfile</code> presente nesse diretório.</li>
+            <li><strong>container_name:</strong> Nome explícito do container: <code>attacker-enum</code>.</li>
+            <li><code>stdin_open: true</code> Mantém o stdin aberto para interação.</li>
+            <li><code>tty: true</code> Habilita terminal interativo dentro do container.</li>
+            <li><strong>networks:</strong> Conecta o container à rede <code>kensei-net</code>, permitindo comunicação com o alvo.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>kensei-net:</strong></summary>
+          <ul>
+            <li><code>driver: bridge</code>: Rede isolada tipo bridge para comunicação entre containers.</li>
+            <li><strong>ipam:</strong>
+              <ul>
+                <li><code>subnet: 172.20.0.0/24</code>: Faixa de IPs definida para os containers da rede.</li>
+              </ul>
+            </li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><details><summary><strong>attacker/Dockerfile</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como Kali Linux.</li>
+            <li><code>WORKDIR /root</code>: Define o diretório de trabalho dentro do container.</li>
+            <li><code>ENV PATH="/root/.cargo/bin:${PATH}"</code>: Adiciona o caminho dos binários do Cargo para que o RustScan seja executável.</li>
+            <li><strong>RUN</strong>: Instalação e configuração das ferramentas:
+              <ul>
+                <li><code>apt-get update</code>: Atualiza pacotes.</li>
+                <li><code>apt-get install -y nmap enum4linux-ng snmp smbclient ca-certificates cargo</code>: Instala ferramentas de enumeração e Cargo.</li>
+                <li><code>cargo install rustscan</code>: Compila e instala o RustScan.</li>
+                <li><code>apt-get clean &amp;&amp; rm -rf /var/lib/apt/lists/*</code>: Limpa caches do apt para reduzir o tamanho da imagem.</li>
+              </ul>
+            </li>
+            <li><code>CMD ["/bin/bash"]</code>: Mantém o container em terminal interativo.</li>
+          </ul>
+        </details></li>
+    <li><details><summary><strong>alvo/Dockerfile</strong></summary>
+      <ul>
+        <li><code>FROM ubuntu:20.04</code>: Define a imagem base como Ubuntu 20.04.</li>
+        <li><code>ENV DEBIAN_FRONTEND=noninteractive</code>: Evita prompts interativos durante a instalação de pacotes.</li>
+        <li><strong>RUN</strong>: Configuração do ambiente do alvo:
+          <ul>
+            <li><code>apt-get update</code>: Atualiza a lista de pacotes disponíveis.</li>
+            <li><code>apt-get install -y samba</code>: Instala o serviço SMB (Samba) para compartilhamento de arquivos.</li>
+            <li><code>apt-get install -y snmpd</code>: Instala o serviço SNMP para monitoramento de rede.</li>
+            <li><code>rm -rf /var/lib/apt/lists/*</code>: Limpa caches do apt para reduzir o tamanho da imagem.</li>
+            <li><code>mkdir -p /srv/samba/anonymous</code>: Cria o diretório para o compartilhamento SMB anônimo.</li>
+            <li><code>chown nobody:nogroup /srv/samba/anonymous</code>: Define permissões do diretório para acesso anônimo seguro.</li>
+            <li><code>echo "[global]" &gt;&gt; /etc/samba/smb.conf</code>: Inicia a configuração global do Samba.</li>
+            <li><code>echo "    map to guest = bad user" &gt;&gt; /etc/samba/smb.conf</code>: Permite que usuários inválidos sejam tratados como convidados.</li>
+            <li><code>echo "[anonymous]" &gt;&gt; /etc/samba/smb.conf</code>: Cria um compartilhamento chamado "anonymous".</li>
+            <li><code>echo "    path = /srv/samba/anonymous" &gt;&gt; /etc/samba/smb.conf</code>: Define o caminho do compartilhamento.</li>
+            <li><code>echo "    browsable = yes" &gt;&gt; /etc/samba/smb.conf</code>: Permite que o compartilhamento seja visível na rede.</li>
+            <li><code>echo "    writable = no" &gt;&gt; /etc/samba/smb.conf</code>: Define que o compartilhamento é somente leitura.</li>
+            <li><code>echo "    guest ok = yes" &gt;&gt; /etc/samba/smb.conf</code>: Permite acesso anônimo ao compartilhamento.</li>
+            <li><code>echo "rocommunity public" &gt; /etc/snmp/snmpd.conf</code>: Configura a community string padrão do SNMP para leitura.</li>
+            <li><code>echo "agentaddress udp:161" &gt;&gt; /etc/snmp/snmpd.conf</code>: Define a porta de escuta do SNMP (UDP 161).</li>
+            <li><code>echo "Kensei{a_curiosidade_eh_a_chave_do_hacker}" &gt; /srv/samba/anonymous/flag.txt</code>: Cria a flag do laboratório dentro do compartilhamento SMB anônimo.</li>
+          </ul>
+        </li>
+        <li><code>EXPOSE 139 445 161/udp</code>: Expõe as portas SMB (139 e 445) e SNMP (161/udp) para acesso externo.</li>
+        <li><code>CMD service smbd start</code>: Inicia o serviço SMB.</li>
+        <li><code>CMD service nmbd start</code>: Inicia o serviço NetBIOS do Samba.</li>
+        <li><code>CMD /usr/sbin/snmpd -f</code>: Inicia o serviço SNMP em primeiro plano.</li>
+      </ul>
+    </details></li>
+    </details></li>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><strong>infografico.html</strong>: Página HTML interativa explicando SMB e SNMP, vulnerabilidades, mentalidade do atacante e checklist de mitigação, utilizada como referência educativa para o laboratório.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
+O laboratório da aula 10 foi o mais completo realizado até agora, pois simulou um fluxo de trabalho de *pentest* (teste de penetração) real. O processo iniciou-se desde o reconhecimento da rede, passou pela extração de informações detalhadas e culminou na captura da flag. A missão foi organizada em quatro fases principais:
+- **Descoberta**: identificar hosts ativos e suas portas TCP/UDP abertas usando **Nmap** e **Rustscan**.  
+- **Detecção**: analisar os serviços em execução, suas versões e o sistema operacional dos alvos.  
+- **Enumeração**: explorar serviços específicos, como SMB e SNMP, utilizando **enum4linux-ng** e **snmpwalk** para obter informações detalhadas.  
+- **Captura**: utilizar os dados coletados nas fases anteriores para localizar e capturar a flag secreta.
 
+Conforme detalhado no ambiente de laboratório, este laboratório contou com apenas duas máquinas: a `attacker-enum`, um container **Kali Linux** utilizado para realizar os ataques, e a `alvo-enum`, um servidor **Linux** que hospedava serviços SMB e SNMP, além de conter uma flag secreta escondida.
 
+Após implantar o ambiente, o comando `docker exec -it attacker-enum /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo consistiu em identificar a quais redes as interfaces do container estavam conectadas. Ao executar `ip a` ou `ifconfig`, foram visualizadas as interfaces, sendo que a interface `eth0` estava conectada à rede com CIDR `172.20.0.0/24`, já que seu IP nessa rede era `172.20.0.100`. Com o IP da rede identificado, o **Nmap** foi utilizado em modo ping scan (`-sn`) para descobrir os demais hosts ativos, executando o comando `nmap -sn -T4 172.20.0.0/24 -oG - | grep "Up"`. Este comando retornou o IP de um host ativo, `172.20.0.2`, que foi então utilizado para varredura de portas com **Rustscan**. O comando `rustscan -a 172.20.0.3` realizou uma varredura TCP (TCP scan), identificando as portas abertas `139` e `445`. Além disso, uma varredura UDP foi executada com **Nmap** utilizando o comando `nmap -sU -p 161 172.20.0.3`, sendo a porta `161/udp` identificada como `open|filtered`. A imagem 41 apresenta os resultados dessas varreduras.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
+</figure></div><br>
 
+Com as fases de descoberta e detecção já concluídas, a etapa seguinte foi a enumeração. A enumeração consiste em explorar detalhadamente os serviços de um host para coletar informações adicionais, como usuários, grupos, compartilhamentos e outros dados úteis para exploração. Para isso, foi utilizada a ferramenta **enum4linux-ng** com o comando `enum4linux-ng -A 172.20.0.3`. O **enum4linux-ng** é uma versão "next generation" do **enum4linux**, voltada para a enumeração de sistemas **Windows** via SMB/CIFS. O comando buscava extrair o máximo de informações possíveis do host `172.20.0.3` através do SMB, sem autenticação ou utilizando autenticação anônima quando disponível. O resultado apresentou dados sobre usuários, grupos e compartilhamentos, conforme evidenciado na imagem 42.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img42.png" alt="img42"><br>
+    <figcaption>Imagem 42.</figcaption>
+</figure></div><br>
 
+O **snmpwalk** foi outra ferramenta utilizada para consultar informações de dispositivos via SNMP (Simple Network Management Protocol). Essa ferramenta percorre ("walk") toda a árvore de informações disponíveis no dispositivo. O comando executado, `snmpwalk -v2c -c public 172.20.0.3`, coletava informações do sistema e da rede remotamente via SNMP. Com isso, foi obtido um *dump* do sistema, ou seja, uma cópia ou registro do estado do dispositivo em determinado momento, incluindo dados como hostname, rede, uptime, entre outros. A imagem 43 apresenta as informações coletadas.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img43.png" alt="img43"><br>
+    <figcaption>Imagem 43.</figcaption>
+</figure></div><br>
+
+O desafio final foi capturar a flag escondida. Para isso a saída dos dois comandos anteriores foram reanalisados, com intuito de identificar serviços com possíveis brechas ou arquivos acessíveis. O compartilhamento de arquivos `anonymous` foi identificado e o **smbclient** foi utilizado para se conectar a ele. Com o comando `smbclient //172.20.0.3/anonymous` o acesso foi realizado, já que o mesmo permitia login anônimo e sem senha. Com o comando `ls` foi listado o arquivo `flag.txt`, que foi visualizado o conteúdo com o comando `cat flag.txt`, conforme mostrado na imagem 44.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img44.png" alt="img44"><br>
+    <figcaption>Imagem 44.</figcaption>
+</figure></div><br>
 
 <a name="item1.11"><h4>1.11 Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</h4></a>[Back to summary](#item1)
 
+Obs.: Laboratório registrado como 10, mas documento como #NãoInformado (12) e referente a aula 11.
 
+<details><summary><strong>Ambiente de Laboratório: Greenbone Community Edition</strong></summary>
+  <ul>
+    <li><details><summary><strong>docker-compose.yml</strong></summary>
+      <ul>
+        <li><strong>version:</strong> Define a versão do Docker Compose utilizada (<code>3.9</code>).</li>
+        <li><strong>name:</strong> Nome do projeto Docker (<code>greenbone-community-edition</code>).</li>
+        <details><summary><strong>Serviços</strong></summary>
+          <ul>
+            <li><details><summary><strong>vulnerability-tests</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/vulnerability-tests</code>: container para executar testes de vulnerabilidades do Greenbone</li>
+                <li><strong>environment:</strong> FEED_RELEASE=24.10</li>
+                <li><strong>volumes:</strong> vt_data_vol montado em /mnt</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.10 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>notus-data</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/notus-data</code>: container que armazena os feeds de vulnerabilidades Notus</li>
+                <li><strong>volumes:</strong> notus_data_vol montado em /mnt</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.11 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>scap-data</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/scap-data</code>: container que mantém dados SCAP para auditoria e compliance</li>
+                <li><strong>volumes:</strong> scap_data_vol montado em /mnt</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.12 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>cert-bund-data</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/cert-bund-data</code>: container com pacotes de certificados e dados de confiança</li>
+                <li><strong>volumes:</strong> cert_data_vol montado em /mnt</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.13 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>dfn-cert-data</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/dfn-cert-data</code>: container que fornece dados de certificados adicionais, dependente do cert-bund-data</li>
+                <li><strong>volumes:</strong> cert_data_vol montado em /mnt</li>
+                <li><code>depends_on: cert-bund-data</code>: aguarda serviço concluído</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.14 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>data-objects</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/data-objects</code>: container que armazena objetos de dados utilizados pelo GVM</li>
+                <li><strong>environment:</strong> FEED_RELEASE=24.10</li>
+                <li><strong>volumes:</strong> data_objects_vol montado em /mnt</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.15 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>report-formats</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/report-formats</code>: container responsável por fornecer formatos de relatório do GVM</li>
+                <li><strong>environment:</strong> FEED_RELEASE=24.10</li>
+                <li><strong>volumes:</strong> data_objects_vol montado em /mnt</li>
+                <li><code>depends_on: data-objects</code>: aguarda serviço concluído</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.16 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>gpg-data</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/gpg-data</code>: container que mantém chaves GPG para verificação de feeds</li>
+                <li><strong>volumes:</strong> gpg_data_vol montado em /mnt</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.17 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>redis-server</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/redis-server</code>: container de cache Redis utilizado pelo GVM</li>
+                <li><code>restart on-failure:</code>reinicia o container automaticamente se houver falha</li>
+                <li><strong>volumes:</strong> redis_socket_vol montado em /run/redis/</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.18 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>pg-gvm</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/pg-gvm:stable</code>: container PostgreSQL utilizado pelo GVM para banco de dados</li>
+                <li><code>restart on-failure:</code>reinicia o container automaticamente se houver falha</li>
+                <li><strong>volumes:</strong> psql_data_vol em /var/lib/postgresql, psql_socket_vol em /var/run/postgresql</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.19 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>gvmd</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/gvmd:stable</code>: container do Greenbone Vulnerability Management daemon, responsável pelo gerenciamento dos scans e banco de dados de vulnerabilidades</li>
+                <li><code>restart on-failure:</code>reinicia o container automaticamente se houver falha</li>
+                <li><strong>volumes:</strong>
+                  <ul>
+                    <li>gvmd_data_vol → /var/lib/gvm (dados gerais do GVM)</li>
+                    <li>scap_data_vol → /var/lib/gvm/scap-data/ (dados SCAP)</li>
+                    <li>cert_data_vol → /var/lib/gvm/cert-data (certificados de confiança)</li>
+                    <li>data_objects_vol → /var/lib/gvm/data-objects/gvmd (objetos de dados do GVM)</li>
+                    <li>vt_data_vol → /var/lib/openvas/plugins (plugins de vulnerabilidades)</li>
+                    <li>psql_data_vol → /var/lib/postgresql (banco de dados PostgreSQL)</li>
+                    <li>gvmd_socket_vol → /run/gvmd (socket para comunicação com GSA)</li>
+                    <li>ospd_openvas_socket_vol → /run/ospd (socket para comunicação com OSPD)</li>
+                    <li>psql_socket_vol → /var/run/postgresql (socket do PostgreSQL)</li>
+                  </ul>
+                </li>
+                <li><strong>depends_on:</strong>
+                  <ul>
+                    <li>pg-gvm (aguarda serviço iniciado)</li>
+                    <li>scap-data (aguarda serviço concluído com sucesso)</li>
+                    <li>cert-bund-data (aguarda serviço concluído com sucesso)</li>
+                    <li>dfn-cert-data (aguarda serviço concluído com sucesso)</li>
+                    <li>data-objects (aguarda serviço concluído com sucesso)</li>
+                    <li>report-formats (aguarda serviço concluído com sucesso)</li>
+                  </ul>
+                </li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.20 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>gsa</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/gsa:stable</code>: container do Greenbone Security Assistant, fornece a interface web para gerenciamento do GVM</li>
+                <li><code>restart on-failure:</code>reinicia o container automaticamente se houver falha</li>
+                <li><strong>ports:</strong> 127.0.0.1:9392 → 80 (interface web acessível localmente)</li>
+                <li><strong>volumes:</strong> gvmd_socket_vol → /run/gvmd (socket de comunicação com gvmd)</li>
+                <li><strong>depends_on:</strong> gvmd (aguarda serviço gvmd estar pronto)</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.21 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>configure-openvas</strong></summary>
+              <ul>
+                <li><scode>image: registry.community.greenbone.net/community/openvas-scanner:stable</scode>: container do OpenVAS Scanner, responsável pela configuração inicial e preparação do scanner de vulnerabilidades</li>
+                <li><strong>volumes:</strong>
+                  <ul>
+                    <li>openvas_data_vol → /mnt (armazenamento de configuração do OpenVAS)</li>
+                    <li>openvas_log_data_vol → /var/log/openvas (logs do OpenVAS)</li>
+                  </ul>
+                </li>
+                <li><strong>command:</strong>
+                  <ul>
+                    <li><code>printf 'table_driven_lsc = yes\nopenvasd_server = http://openvasd:80\n' > /mnt/openvas.conf</code>
+                      <ul>
+                        <li>Cria o arquivo <code>openvas.conf</code> no volume persistente com configuração do servidor OpenVAS.</li>
+                      </ul>
+                    </li>
+                    <li><code>sed 's/127/128/' /etc/openvas/openvas_log.conf | sed 's/gvm/openvas/' > /mnt/openvas_log.conf</code>
+                      <ul>
+                        <li>Modifica o arquivo de configuração de logs do OpenVAS, ajustando IP e nomes de diretórios, e salva em <code>/mnt</code>.</li>
+                      </ul>
+                    </li>
+                    <li><code>chmod 644 /mnt/openvas.conf</code>
+                      <ul>
+                        <li>Define permissões de leitura/escrita para o proprietário e leitura para outros usuários no arquivo de configuração.</li>
+                      </ul>
+                    </li>
+                    <li><code>chmod 644 /mnt/openvas_log.conf</code>
+                      <ul>
+                        <li>Define permissões de leitura/escrita para o proprietário e leitura para outros usuários no arquivo de configuração de logs.</li>
+                      </ul>
+                    </li>
+                    <li><code>touch /var/log/openvas/openvas.log</code>
+                      <ul>
+                        <li>Cria o arquivo de log <code>openvas.log</code> caso não exista.</li>
+                      </ul>
+                    </li>
+                    <li><code>chmod 666 /var/log/openvas/openvas.log</code>
+                      <ul>
+                        <li>Permite leitura e escrita para todos os usuários no arquivo de log.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.22 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>openvas</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/openvas-scanner:stable</code>: container do OpenVAS Scanner, responsável por executar o scanner de vulnerabilidades e manter logs do serviço</li>
+                <li><code>restart on-failure:</code>reinicia o container automaticamente se houver falha</li>
+                <li><strong>volumes:</strong>
+                  <ul>
+                    <li>openvas_data_vol → /etc/openvas (configurações do OpenVAS)</li>
+                    <li>openvas_log_data_vol → /var/log/openvas (logs do OpenVAS)</li>
+                  </ul>
+                </li>
+                <li><strong>command:</strong>
+                  <ul>
+                    <li><code>cat /etc/openvas/openvas.conf</code>
+                      <ul>
+                        <li>Exibe o conteúdo do arquivo de configuração do OpenVAS para verificação.</li>
+                      </ul>
+                    </li>
+                    <li><code>tail -f /var/log/openvas/openvas.log</code>
+                      <ul>
+                        <li>Mantém o acompanhamento em tempo real do arquivo de log <code>openvas.log</code> para monitorar o funcionamento do scanner.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><code>depends_on: configure-openvas</code>: aguarda a configuração inicial ser concluída com sucesso</li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.23 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>openvasd</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/openvas-scanner:stable</code>: container do OpenVAS Scanner em modo daemon, responsável por fornecer o serviço de varredura de vulnerabilidades via Notus</li>
+                <li><code>restart on-failure:</code>reinicia o container automaticamente se houver falha</li>
+                <li><strong>environment:</strong>
+                  <ul>
+                    <li><code>OPENVASD_MODE: service_notus</code>: define o modo de operação do OpenVASD para serviço Notus</li>
+                    <li><code>GNUPGHOME: /etc/openvas/gnupg</code>: caminho do diretório do GPG utilizado para verificação de feeds e assinaturas</li>
+                    <li><code>LISTENING: 0.0.0.0:80</code>: define que o serviço irá escutar na porta 80 em todas as interfaces de rede do container</li>
+                  </ul>
+                </li>
+                <li><strong>volumes:</strong>
+                  <ul>
+                    <li>openvas_data_vol → /etc/openvas (configurações do OpenVAS)</li>
+                    <li>openvas_log_data_vol → /var/log/openvas (logs do serviço)</li>
+                    <li>gpg_data_vol → /etc/openvas/gnupg (armazenamento de chaves GPG para verificação de feeds)</li>
+                    <li>notus_data_vol → /var/lib/notus (base de dados de vulnerabilidades Notus)</li>
+                  </ul>
+                </li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.24 na rede padrão</li>
+              </ul>
+            </details></li>
+            <li><details><summary><strong>ospd-openvas</strong></summary>
+              <ul>
+                <li><code>image: registry.community.greenbone.net/community/ospd-openvas:stable</code>: container que gerencia a execução do OpenVAS Scanner, integrando o scanner com o gvmd e processando jobs de varredura</li>
+                <li><code>restart on-failure:</code>reinicia o container automaticamente se houver falha</li>
+                <li><code>hostname: ospd-openvas.local</code>: define o hostname interno do container</li>
+                <li><code>cap_add: NET_ADMIN, NET_RAW</code>: adiciona capacidades de rede avançadas necessárias para varreduras</li>
+                <li><code>security_opt: seccomp=unconfined, apparmor=unconfined</code>: desabilita restrições de segurança do kernel para permitir operações do scanner</li>
+                <li><strong>command:</strong> 
+                  <ul>
+                    <li><code>ospd-openvas</code>: inicia o daemon OSPD para gerenciar o OpenVAS Scanner</li>
+                    <li><code>-f</code>: mantém o processo em primeiro plano, necessário para o Docker</li>
+                    <li><code>--config /etc/gvm/ospd-openvas.conf</code>: utiliza o arquivo de configuração personalizado do OSPD</li>
+                    <li><code>--notus-feed-dir /var/lib/notus/advisories</code>: define o diretório onde estão armazenados os feeds de vulnerabilidade Notus</li>
+                    <li><code>-m 666</code>: define permissões de leitura/escrita para sockets de comunicação entre containers</li>
+                  </ul>
+                </li>
+                <li><strong>volumes:</strong>
+                  <ul>
+                    <li>gpg_data_vol → /etc/openvas/gnupg (chaves GPG para verificação de feeds)</li>
+                    <li>vt_data_vol → /var/lib/openvas/plugins (plugins de vulnerabilidades)</li>
+                    <li>notus_data_vol → /var/lib/notus (base de dados de vulnerabilidades)</li>
+                    <li>ospd_openvas_socket_vol → /run/ospd (socket de comunicação do OSPD)</li>
+                    <li>redis_socket_vol → /run/redis (socket do Redis para cache)</li>
+                    <li>openvas_data_vol → /etc/openvas (configurações do OpenVAS)</li>
+                    <li>openvas_log_data_vol → /var/log/openvas (logs do scanner)</li>
+                  </ul>
+                </li>
+                <li><strong>depends_on:</strong>
+                  <ul>
+                    <li>redis-server (aguarda o serviço iniciar)</li>
+                    <li>gpg-data (aguarda o serviço ser concluído com sucesso)</li>
+                    <li>vulnerability-tests (aguarda o serviço ser concluído com sucesso)</li>
+                    <li>configure-openvas (aguarda o serviço ser concluído com sucesso)</li>
+                  </ul>
+                </li>
+                <li><strong>networks:</strong> IP fixo 172.18.0.25 na rede padrão</li>
+              </ul>
+            </details></li>
+          <li><details><summary><strong>gvm-tools</strong></summary>
+            <ul>
+              <li><code>image: registry.community.greenbone.net/community/gvm-tools</code>: Ferramenta cliente para interagir com o GVM (Greenbone Vulnerability Management).</li>
+              <li><strong>volumes:</strong> gvmd_socket_vol → /run/gvmd, ospd_openvas_socket_vol → /run/ospd</li>
+              <li><strong>depends_on:</strong> gvmd, ospd-openvas (aguarda os serviços estarem disponíveis)</li>
+              <li><strong>networks:</strong> IP fixo 172.18.0.26</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>metasploitable</strong></summary>
+            <ul>
+              <li><container>image: tleemcjr/metasploitable2</container>: Container vulnerável usado para testes de penetração.</li>
+              <li><strong>platform:</strong> linux/amd64</li>
+              <li><strong>container_name:</strong> metasploitable-alvo</li>
+              <li><code>stdin_open: true</code>: Mantém o stdin do container aberto, permitindo que o terminal aceite entrada de comandos.</li>
+              <li><code>tty: true</code>: Aloca um terminal virtual (TTY) para o container, garantindo que o terminal interativo funcione corretamente.</li>
+              <li><strong>ports:</strong> Expõe múltiplas portas vulneráveis: 21, 22, 23, 25, 80, 139, 445, 3306, 5432, 5900, 8009, 8180</li>
+              <li><strong>networks:</strong> IP fixo 172.18.0.27</li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>kali</strong></summary>
+            <ul>
+              <li><code>build: Dockerfile.kali</code>: Cria uma imagem personalizada do Kali Linux.</li>
+              <li><strong>container_name:</strong> kali-atacante</li>
+              <li><strong>depends_on:</strong> metasploitable (aguarda o container alvo estar pronto)</li>
+              <li><code>stdin_open: true</code>: Mantém o stdin do container aberto, permitindo que o terminal aceite entrada de comandos.</li>
+              <li><code>tty: true</code>: Aloca um terminal virtual (TTY) para o container, garantindo que o terminal interativo funcione corretamente.</li>
+              <li><code>command: tail -f /dev/null</code>: Mantém o container ativo sem executar outro comando.</li>
+              <li><strong>networks:</strong> IP fixo 172.18.0.28</li>
+            </ul>
+          </details></li>
+          </ul>
+        </details>
+        </li>
+        <li><strong>volumes:</strong> Volumes nomeados para persistência de dados entre serviços (<code>gpg_data_vol, scap_data_vol, cert_data_vol</code>, etc.).</li>
+        <li><strong>networks:</strong> Rede padrão do tipo <code>bridge</code> com subnet <code>172.18.0.0/24</code>.</li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dockerfile.kali</strong></summary>
+      <ul>
+        <li><code>FROM kalilinux/kali-rolling</code>: Imagem base do Kali Linux em versão rolling.</li>
+        <li><strong>RUN</strong>: Instala ferramentas de ataque:
+          <ul>
+            <li><code>apt-get update</code>: Atualiza lista de pacotes.</li>
+            <li><code>DEBIAN_FRONTEND=noninteractive apt-get install -y nmap nikto burpsuite lynis curl net-tools inetutils-ping</code>: Instala utilitários de rede, scanners e ferramentas de análise.</li>
+            <li><code>apt-get clean</code>: Limpa caches do apt para reduzir tamanho da imagem.</li>
+          </ul>
+        </li>
+        <li><code>CMD ["tail", "-f", "/dev/null"]</code>: Mantém o container ativo para interações manuais.</li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><code>setup-and-start-greenbone-community-edition.sh</code>: Inicializa o ambiente Greenbone Community Edition, verificando pré-requisitos, baixando imagens, criando containers e configurando senha do admin.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
+
+Este laboratório foi o último do módulo 1 e teve como foco a ferramenta **OpenVAS**, uma das soluções de análise de vulnerabilidades mais robustas disponíveis. O objetivo foi utilizá-la para inspecionar um sistema-alvo em busca de falhas de segurança e potenciais riscos.
+
+A construção do ambiente **Docker** deste laboratório foi um pouco diferente, pois utilizou o script de automação `setup-and-start-greenbone-community-edition.sh`. Esse script verificava se os softwares **Docker**, **Docker Compose** e **Curl** estavam instalados na máquina host, fazia o pull das imagens necessárias para o **Docker Compose** e, em seguida, implantava o ambiente **Docker**, incluindo os containers do **Greenbone Community Edition (GCE)**. Durante a implantação, era solicitada a criação de uma senha para o usuário `admin` do **Greenbone Security Assistant (GSA)**, utilizada posteriormente para acessar a interface web. Após isso, os feeds de vulnerabilidades eram carregados, um processo que poderia levar de 30 minutos a várias horas, dependendo da sincronização, sendo essencial que os feeds estivessem totalmente atualizados para que os scans apresentassem resultados completos. Por fim, o último comando do script (`xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &`) abria automaticamente o navegador apontando para a interface web do **GSA**.
+
+O **OpenVAS** é um motor de scanner de vulnerabilidades. A distribuição oficial que o inclui é o **Greenbone Community Edition (GCE)**, que vem com diversos componentes: o **gvmd**, que é o gerenciador do **OpenVAS**; o **Greenbone Security Assistant (GSA)**, uma interface web para administrar scans e visualizar relatórios; e os feeds de vulnerabilidade, que são bases de dados utilizadas pelo **OpenVAS** para identificar falhas de segurança.
+
+<!-- Antes de executar o arquivo de script com o comando `./setup-and-start-greenbone-community-edition.sh`, fiz uma alteração no arquivo de `docker_compose.yml` clonado deste lab. No serviço de nome `gsa` que implantaria o container ` -->
+
+Com o ambiente montado, a interface web foi acessada com `http://127.0.0.1:9392`, digitando o usuário `admin` e a senha criada que foi `Senha!@3`. Contudo, a máquina host utilizada era uma instância **Amazon EC2**, logo foi acessada a interface o web com IP ou DNS público dessa instância. Também foi preciso criar uma regra de entrada liberando a porta `9392` para o IP público da máquina física. A imagem 45 exibe o login na interface web do **GCE**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img45.png" alt="img45"><br>
+    <figcaption>Imagem 45.</figcaption>
+</figure></div><br>
 
 
 
