@@ -10,7 +10,7 @@
 
 ---
 
-Esta pasta refere-se ao módulo 1 **Fundamentos de Cibersegurança** do bootcamp [**Formação Cybersec**](../).
+Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegurança** do bootcamp [**Formação Cybersec**](../).
 
 ### Theme:
 - Cybersecurity
@@ -48,22 +48,41 @@ Esta pasta refere-se ao módulo 1 **Fundamentos de Cibersegurança** do bootcamp
 - Network:
   - Arp-scan   <img src="" alt="arp-scan" width="auto" height="25">
   - Domain Information Groper (Dig)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dig.jpeg" alt="dig" width="auto" height="25">
-  - Iproute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iproute.png" alt="iproute" width="auto" height="25">
-  - Iputils-ping; Iputils   <img src="" alt="iputils" width="auto" height="25">
+  - ifconfig   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ifconfig.png" alt="ifconfig" width="auto" height="25">
+  - ip address   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ip_address.webp" alt="ip_address" width="auto" height="25">
+  - ipconfig   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ipconfig.jpeg" alt="ipconfig" width="auto" height="25">
+  - iproute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iproute.png" alt="iproute" width="auto" height="25">
+  - iputils-ping; Iputils   <img src="" alt="iputils" width="auto" height="25">
+  - Netcat (nc)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netcat.jpg" alt="netcat" width="auto" height="25">
   - Netdiscover   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netdiscover.png" alt="netdiscover" width="auto" height="25">
-  - Net-tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net-tools.svg" alt="net-tools" width="auto" height="25">
+  - net-tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net-tools.svg" alt="net-tools" width="auto" height="25">
   - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
-  - Ping   <img src="" alt="iputils" width="auto" height="25">
+  - Npcap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/npcap.webp" alt="npcap" width="auto" height="25">
+  - nslookup   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nslookup.webp" alt="nslookup" width="auto" height="25">
+  - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
+  - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
+  - pfSense   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pfsense.jpg" alt="pfsense" width="auto" height="25">
+  - ping   <img src="" alt="iputils" width="auto" height="25">
   - Rustscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rustscan.png" alt="rustscan" width="auto" height="25">
+  - tcpdump   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tcpdump.jpg" alt="tcpdump" width="auto" height="25">
+  - Telnet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/telnet.png" alt="telnet" width="auto" height="25">
+  - traceroute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/traceroute.png" alt="traceroute" width="auto" height="25">
+  - tshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tshark.png" alt="tshark" width="auto" height="25">
+  - Wireshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wireshark.png" alt="wireshark" width="auto" height="25">
 - Offensive Security:
   - Damn Vulnerable Web Application (DVWA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dvwa.png" alt="dvwa" width="auto" height="25">
   - gobuster   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gobuster.svg" alt="gobuster" width="auto" height="25">
+  - Greenbone Community Edition (GCE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gce.png" alt="gce" width="auto" height="25">
+  - Greenbone Security Assistant (GSA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gsa.png" alt="gsa" width="auto" height="25">
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+  - Metasploit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="metasploit" width="auto" height="25">
+  - Nikto   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nikto.jpg" alt="nikto" width="auto" height="25">
+  - Open Vulnerability Assessment System (OpenVAS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_vas.png" alt="open_vas" width="auto" height="25">
 
 
 sha256sum
 CyberChef
-  - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
+
 
 
 
@@ -71,7 +90,7 @@ CyberChef
 
 ### Bootcamp Module 1 Structure
 1. <a name="item1">Módulo 1: Fundamentos de Cibersegurança<br>
-    1.1. <a href="#item1.1">Conceitos básicos de segurança</a><br>
+    1.1. <a href="#item1.1">Setup e Preparação do Ambiente</a><br>
     1.2. <a href="#item1.2">Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</a><br>
     1.3. <a href="#item1.3">Ameaças, ataques e vulnerabilidades</a><br>
     1.4. <a href="#item1.4">Reconhecimento & Footprinting</a><br>
@@ -91,50 +110,41 @@ CyberChef
 Estabelecer uma base técnica sólida em redes, sistemas operacionais e nos princípios da segurança ofensiva e defensiva, com foco na aplicação prática de conceitos fundamentais de segurança, como o modelo CIA, Cyber Kill Chain e MITRE ATT&CK. O módulo também aborda técnicas essenciais de cibersegurança, incluindo análise de tráfego (**Wireshark**), reconhecimento e OSINT, escaneamento (**Nmap**) e enumeração de serviços.
 
 ### Folder Structure:
-- [README.md](./README.md): Documento escrito em **Markdown**, descrevendo todo conteúdo teórico realizado neste módulo.
+- [README.md](./README.md): Documento escrito em **Markdown** descrevendo todo conteúdo teórico realizado neste módulo.
 - [labs.md](./labs.md): Este documento de README, escrito em **Markdown**, descrevendo todos os laboratórios realizados neste módulo.
 
 ### Development:
-Em cibersegurança, é prática comum e recomendada realizar laboratórios em ambientes controlados e seguros. Por isso, ferramentas como **Docker** ou máquinas virtuais são utilizadas para simular ambientes reais, protegendo a infraestrutura local, uma vez que o uso de ferramentas de ataque ou alterações em configurações de rede poderia comprometer a integridade do sistema. O ambiente de laboratório é estruturado em duas partes: a primeira envolve a instalação dos softwares que constroem o ambiente, como **WSL2**, **Docker** ou **VM VirtualBox**, além de ferramentas de suporte essenciais, como editores de código (**Visual Studio Code (VS Code)**) e sistemas de versionamento (**Git**).  
+Em cibersegurança, é prática comum e recomendada realizar laboratórios em ambientes controlados e seguros. Por isso, ferramentas como **Docker** ou máquinas virtuais são utilizadas para simular ambientes reais, protegendo a infraestrutura local, uma vez que o uso de ferramentas de ataque ou alterações em configurações de rede podem comprometer a integridade do sistema. O ambiente de laboratório é estruturado em duas partes: a primeira envolve a instalação dos softwares que virtualização um ambiente, como **WSL2**, **Docker** ou **VM VirtualBox**, além de ferramentas de suporte essenciais, como editores de código (**Visual Studio Code (VS Code)**) e sistemas de versionamento (**Git**).  
 
-Neste curso, a configuração do ambiente foi realizada principalmente com **Docker** em conjunto com **WSL**. No entanto, para a maioria dos labs utilizei instâncias do **Amazon Elastic Compute Cloud (EC2)**, na nuvem da **Amazon Web Services (AWS)**, como alternativa de execução. Em pequenos casos, para realizar testes, a plataforma **Play With Docker (PWD)** também foi utilizada.
+Neste curso, a virtualização do ambiente foi realizada principalmente com **Docker** em conjunto com **WSL**. No entanto, para a maioria dos labs utilizei o **Docker** em instâncias do **Amazon Elastic Compute Cloud (EC2)**, na nuvem da **Amazon Web Services (AWS)**, como alternativa de execução. Em pequenos casos, para realizar testes, a plataforma **Play With Docker (PWD)** também foi utilizada.
 
-A criação da instância EC2 foi automatizada por meio do script [`ec2Instance.ps1`](../environment/ec2Instance.ps1), desenvolvido em **Windows PowerShell** utilizando comandos da **AWS Command Line Interface (CLI)**. O script está localizado na pasta [`environment`](../environment/) deste curso. A instância foi provisionada com a imagem `ami-020cba7c55df1f615`, baseada no sistema operacional **Linux Ubuntu**, associada a um volume **Amazon Elastic Block Store (EBS)** de `8 GB`, do tipo `gp` (General Purpose). O tipo de instância utilizado foi o `t3.medium`, com 2 vCPUs e 4 GB de memória. Para acesso, foi utilizado o par de chaves `keyPairUniversal`, previamente existente na conta da **AWS**, e o grupo de segurança atribuído à instância foi o `default` da zona de disponibilidade `us-east-1a` (Norte da Virgínia). Um script de *user data* foi utilizado para automatizar a instalação do **Git** e do **Docker** durante o processo de inicialização.
+A criação da instância EC2 foi automatizada por meio do script [`ec2Instance.ps1`](../environment/ec2Instance.ps1), desenvolvido em **Windows PowerShell** utilizando comandos da **AWS Command Line Interface (CLI)**. O script está localizado na pasta [`environment`](../environment/) deste curso, pois foi o mesmo para todos os módulos. A instância foi provisionada com a imagem `ami-020cba7c55df1f615`, baseada no sistema operacional **Linux Ubuntu**, associada a um volume do **Amazon Elastic Block Store (EBS)** de `8 GB`, do tipo `gp` (General Purpose). O tipo de instância utilizado foi o `t3.medium`, com 2 vCPUs e 4 GB de memória. Para acesso, foi utilizado o par de chaves `keyPairUniversal`, previamente existente na conta da **AWS**, e o grupo de segurança atribuído à instância foi o `default` da zona de disponibilidade `us-east-1a` (Norte da Virgínia). Um script de *user data* foi utilizado para automatizar a instalação do **Git** e do **Docker** durante o processo de inicialização.
 
 O acesso à instância podia ser feito tanto pelo console da **AWS** quanto por meio de conexão SSH utilizando o **OpenSSH** no **Windows PowerShell** da máquina local. Neste último caso, era necessário informar o caminho do arquivo de chave privada, o nome do usuário do sistema e o IP ou DNS público da instância. Um exemplo de comando seria: `ssh -i "G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/universal/keyPairUniversal.pem" ubuntu@54.160.249.118`. Além disso, o Security Group associado à instância precisava conter uma regra de entrada liberando a porta `22` para o IP público da máquina física, a fim de permitir o estabelecimento da conexão SSH. As máquinas virtuais do **Play With Docker (PWD)** também foram acessadas via SSH. Nesse caso, o próprio ambiente fornecia o comando necessário para a conexão, que podia ser executado diretamente no **Windows PowerShell**, sem necessidade de autenticação com chave privada ou senha.
 
-A segunda parte consiste na construção do ambiente simulado propriamente dito. No caso do **Docker**, isso envolve a criação de containers, redes e volumes, realizada por meio de dois tipos principais de arquivos. O primeiro é o `docker-compose.yml`, que define de forma serial toda a estrutura a ser criada: quais e quantos containers, suas configurações, as imagens que irão utilizar e as redes que serão estabelecidas. O segundo tipo de arquivo, que pode existir mais de um por laboratório, são os `Dockerfile`, responsáveis por criar imagens específicas para cada container. Essas imagens podem ser enviadas a repositórios de imagens **Docker**, como o **DockerHub**, ou referenciadas diretamente no arquivo do **Docker Compose**.
+A segunda parte do ambiente de laboratório consiste na construção do ambiente simulado propriamente dito. No caso do **Docker**, isso envolve a criação de containers, redes e volumes, realizada por meio de dois tipos principais de arquivos. O primeiro é o `docker-compose.yml`, que define de forma serial toda a estrutura a ser criada: quais e quantos containers, suas configurações, as imagens que irão utilizar e os volumes e redes que serão estabelecidos. O segundo tipo de arquivo, que pode existir mais de um por laboratório, são os `Dockerfile`, responsáveis por criar imagens específicas para cada container. Essas imagens podem ser enviadas a repositórios de imagens **Docker**, como o **DockerHub**, ou referenciadas diretamente no arquivo do **Docker Compose**.
 
-Todos esses arquivos eram preparados pelo instrutor do curso e disponibilizados no [repositório](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/) do curso no perfil da plataforma **Vai na Web** no **GitHub**. O repositório era organizado pelos três módulos do curso, com pastas correspondentes a cada laboratório. Geralmente, o número do laboratório coincidia com o número da aula, embora nem todos os labs seguissem essa sequência e nem todas as aulas tivessem laboratórios. Em cada pasta de laboratório, além dos arquivos `docker-compose.yml` e `Dockerfile`, podiam existir arquivos complementares, como scripts, textos ou documentos **Markdown**, contendo informações relevantes ou conteúdos necessários para a execução do lab. Durante a realização de cada lab, além de executar os exercícios, foi feita uma explicação detalhada sobre a construção dos arquivos de **Docker Compose** e **Docker**, evidenciando como o ambiente foi estruturado.
+Todos esses arquivos eram preparados pelo instrutor do curso e disponibilizados no [repositório](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/) do curso no perfil da plataforma **Vai na Web** no **GitHub**. O repositório era organizado pelos três módulos do curso, com pastas correspondentes a cada laboratório. Geralmente, o número do laboratório coincidia com o número da aula, embora nem todos os labs seguissem essa sequência e nem todas as aulas tivessem laboratórios. Em cada pasta de laboratório, além dos arquivos `docker-compose.yml` e `Dockerfile`, podiam existir arquivos complementares, como scripts, textos ou documentos **Markdown**, contendo informações relevantes ou conteúdos necessários para a execução do lab. Durante a realização de cada lab, além de executar os exercícios, foi feita uma explicação detalhada sobre a construção dos arquivos de **Docker Compose**,  **Docker** e as dependências utilizadas, evidenciando como o ambiente foi estruturado.
 
 Para executar os arquivos e iniciar o ambiente de laboratório, a sequência de comandos utilizada era a seguinte:
 - `git clone https://github.com/Kensei-CyberSec-Lab/formacao-cybersec.git`: Clonagem do repositório do bootcamp para o ambiente local, seja no **WSL**, em máquinas virtuais ou, como no meu caso, em instâncias **Amazon EC2**.
-- `cd formacao-cybersec/modulo2-defesa-monitoramento/lab_1`: Navegação até o diretório do laboratório a ser executado. Para outros labs, bastava alterar as duas últimas pastas do caminho para o módulo e lab correspondentes.
+- `cd formacao-cybersec/modulo1-fundamentos/lab_1`: Navegação até o diretório do laboratório a ser executado. Para outros labs, bastava alterar as duas últimas pastas do caminho para o módulo e lab correspondentes.
 - `docker compose up -d`: Inicialização do ambiente com **Docker Compose**. Este comando deve ser executado na pasta onde o arquivo `docker-compose.yml` está localizado.
 - `docker ps` e `docker network ls`: Verificação dos containers ativos e das redes existentes no ambiente.
 - `docker exec -it kali /bin/bash`: Acesso a um container em execução. Basta substituir `kali` pelo nome do container que se deseja acessar.
 - `docker compose down`: Encerramento do ambiente. Assim como na inicialização, este comando deve ser executado na pasta onde se encontra o arquivo `docker-compose.yml`.
 
-Os laboratórios de cibersegurança são organizados em máquinas de ataque, geralmente uma **Kali Linux**, e máquinas alvo ou de defesa, que são os sistemas onde os ataques são realizados. Pode haver múltiplas máquinas de cada tipo, sendo comum que algumas máquinas de defesa sejam propositalmente vulneráveis, incluindo aplicações web criadas para testes. Como o ambiente é simulado via **Docker**, termos como máquina, container ou host frequentemente se referem aos containers que representam as máquinas simuladas. Além disso, é importante ter em mente que existem outras duas camadas no ambiente: a máquina física, no caso meu computador pessoal **Windows**, e a máquina virtual fornecida pela **AWS** ou pelo **Play With Docker (PWD)**, que hospeda e executa os containers do **Docker**.
+Os laboratórios de cibersegurança são organizados com máquinas de ataque, geralmente uma **Kali Linux**, e máquinas alvo ou de defesa, que são os sistemas onde os ataques são realizados. Pode haver múltiplas máquinas de cada tipo, sendo comum que algumas máquinas de defesa sejam propositalmente vulneráveis, incluindo aplicações web criadas para testes. Como o ambiente é simulado via **Docker**, termos como servidor, máquina, container ou host frequentemente se referem aos containers que representam as máquinas simuladas. Além disso, é importante ter em mente que existem outras duas camadas no ambiente: a máquina física, no caso meu computador pessoal **Windows**, e a máquina virtual fornecida pela **AWS** ou pelo **Play With Docker (PWD)**, que hospeda e executa os containers do **Docker**.
 
 Outra parte importante dos laboratórios foram os *Capture The Flag (CTF)*, desafios técnicos amplamente utilizados na área de cibersegurança para desenvolver e validar conhecimento prático. Cada desafio apresenta um cenário específico — como exploração de vulnerabilidades, análise de tráfego, OSINT ou engenharia reversa — e exige que o participante realize uma ação ou resolva um problema para obter a flag. A flag não se limita a uma string ou código a ser encontrado, ela representa a prova de que o objetivo do desafio foi cumprido com sucesso. Ao longo dos laboratórios do curso, diversos CTFs foram incorporados ao ambiente simulado, servindo como etapas práticas de validação do conteúdo e permitindo aplicar, de forma objetiva, os conceitos aprendidos. Dessa forma, os laboratórios não apenas simularam cenários reais de ataque e defesa, como também proporcionaram desafios progressivos que reforçaram o raciocínio lógico, a análise técnica e a consolidação do conhecimento.
 
-<a name="item1.1"><h4>1.1 Conceitos básicos de segurança</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_1)
+<a name="item1.1"><h4>1.1 Setup e Preparação do Ambiente</h4></a>[Back to summary](#item1)   
+[Configuração do Ambiente de Laboratório](README.md#item1.1)
 
-
-
-
-
-
-
-
-
-
-
+Na primeira aula não houve um laboratório prático, pois o foco esteve na explicação de como configurar o ambiente de laboratório. Essa preparação foi apresentada em conjunto com a parte teórica e registrada no arquivo README do módulo 1.
 
 <a name="item1.2"><h4>1.2 Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_2)
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_1)
 
 Obs.: Laboratório registrado como 1, mas documento como #NãoInformado (3) e referente a aula 2.
 
@@ -247,10 +257,10 @@ Obs.: Laboratório registrado como 1, mas documento como #NãoInformado (3) e re
   </ul>
 </details>
 
-Apesar da primeira aula ter sido voltada à preparação do ambiente de laboratório, este primeiro laboratório já trouxe uma abordagem prática. O objetivo foi fornecer um overview de como os laboratórios de cibersegurança seriam conduzidos ao longo do curso, apresentando os tipos de máquinas normalmente utilizados – neste caso, simuladas por containers. Foram apresentados três tipos distintos:  
-(1) uma máquina de ataque, baseada no **Kali Linux**, sistema operacional amplamente utilizado para testes ofensivos e análise de segurança;  
-(2) um servidor **Ubuntu**, representando uma máquina comum presente em ambientes corporativos; e  
-(3) a aplicação web vulnerável **Damn Vulnerable Web Application (DVWA)**, utilizada para estudos e testes de exploração.
+Como a primeira aula foi voltada à preparação do ambiente de laboratório, os laboratórios começaram de fato a partir da aula 2. O primeiro lab teve como objetivo fornecer um overview de como os laboratórios de cibersegurança seriam conduzidos ao longo do curso, apresentando os tipos de máquinas normalmente utilizados – neste caso, simuladas por containers. Foram apresentados três tipos distintos:  
+- uma máquina de ataque, baseada no **Kali Linux**, sistema operacional amplamente utilizado para testes ofensivos e análise de segurança;  
+- um servidor **Ubuntu**, representando uma máquina comum presente em ambientes corporativos; e  
+- a aplicação web vulnerável **Damn Vulnerable Web Application (DVWA)**, utilizada para estudos e testes de exploração.
 
 Cada container possuía uma flag que precisava ser capturada. A primeira flag consistia em localizar o arquivo `/root/FLAG.txt` dentro do container **Ubuntu** e descriptografar seu conteúdo através da execução do arquivo de script `verificar_flag.sh` que utilizava o arquivo de chave privada `id_rsa.pem` para descriptografia. A segunda flag exigia o uso da máquina atacante (**Kali Linux**) para identificar a rede interna utilizada pelos containers, realizar uma varredura e descobrir quais hosts estavam ativos, identificando o endereço IP do container que executava o **DVWA**. Por fim, a terceira flag tinha como objetivo acessar a aplicação **DVWA** pelo navegador e executar uma injeção SQL simples, comprovando a exploração com sucesso.
 
@@ -260,7 +270,13 @@ O outro arquivo presente no diretório `/root` do container era o `FLAG.txt`, cr
 
 Para acessar a flag contida no ciphertext e visualizar a mensagem original (plaintext), foi necessário realizar o processo de descriptografia. O instrutor forneceu, na pasta do laboratório, o script `verificar_flag.sh`, que primeiramente verificava se um arquivo de flag foi informado como argumento, depois checava se tanto o arquivo da flag quanto o arquivo da chave privada existiam no diretório corrente, e finalmente executa o comando `openssl rsautl -decrypt -inkey "$KEY_FILE" -in "$FLAG_FILE" 2>/dev/null`. Esse comando utilizava o **OpenSSL** para descriptografar a flag com a chave privada, descartando mensagens de erro para que apenas a saída descriptografada, ou seja, a flag, fosse exibida.
 
-Para que o script funcionasse, foi necessário mover o arquivo `verificar_flag.sh` do ponto de montagem `/flag` no container para o diretório `/root`, utilizando o comando `mv /flag/verificar_flag.sh /root/verificar_flag.sh`. Dessa forma, os três arquivos necessários — a flag, a chave privada e o script — ficaram centralizados na pasta `/root` dentro do container. Além disso, a variável `KEY_FILE` dentro do `verificar_flag.sh` precisou ser alterada de `private_key.pem` para `id_rsa.pem`, correspondendo ao nome real do arquivo de chave privada. Por fim, ao executar `./verificar_flag.sh FLAG.txt`, a mensagem original da flag foi exibida, conforme evidenciada na imagem 01.
+Para que o script funcionasse, foi necessário realizar algumas ações. Primeiro, copiar o arquivo `verificar_flag.sh` do ponto de montagem `/flag` no container para o diretório `/root` com o comando `cp /flag/verificar_flag.sh /root/verificar_flag.sh`. Em seguida, dar permissão de execução ao arquivo usando `chmod +x verificar_flag.sh` e verificar as permissões com `ls -l verificar_flag.sh`. Também foi necessário alterar a variável `KEY_FILE` dentro do `verificar_flag.sh` de `private_key.pem` para `id_rsa.pem`, correspondente ao nome real do arquivo de chave privada, utilizando o comando `sed -i 's/private_key\.pem/id_rsa.pem/g' verificar_flag.sh`. Por fim, o software **OpenSSL** precisou ser instalado no container, pois o script utilizava, sendo a instalação realizada com `apt update && apt install -y openssl`.
+
+Dessa forma, os três arquivos necessários — a flag, a chave privada e o script — estavam corretos e centralizados na pasta `/root` dentro do container. Caso, por algum erro do **Docker Compose**, os arquivos `id_rsa.pem` e `FLAG.txt` não fossem copiados ou gerados na pasta `/root`, esse processo precisava ser feito manualmente. Primeiro, o arquivo `id_rsa.pem` foi copiado para `/root` com o comando `cp /flag/id_rsa.pem /root/id_rsa.pem`. Em seguida, com o comando em **Bash** abaixo, o conteúdo em **Base64** era decodificado e salvo no arquivo `FLAG.txt` dentro do diretório `/root`. Assim, foi possível executar o script que descriptografava o conteúdo com `./verificar_flag.sh FLAG.txt`. A imagem 01 exibe a mensagem original da flag.
+
+```bash
+echo 'Xl2SvVlv+e4QkLk5LoG4a2ZiavwJGy43rGDHwnCwZnpYLJ02pZvk+ihTMqFkdD4U9QbwKsqTpesmFxcKUliwWWSYrkLFAgyfMPbiLsstdiwz95O46cw5s8Fl+KNvfxPkwIoSMQJMgZQ5bEh1RIlXys1aGdAOTwy8yECscnjy9Juu21xVcRhUiQH2Gnw2PnCSfJ2S44Zc3Ebj3ZT04durWZ5IdO/nBbFQASHwegzPOnXOkyvOWKjnk6ly0Ef+LfJt60BP2CiJijZoq0S6hzZd957uV2AC5G9FOVwlyXIkMVOchavjpIbJajotVzNnAVUdnGIc2pqqJYvspvXp97zHrg==' | base64 -d > /root/FLAG.txt
+```
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img01.png" alt="img01"><br>
@@ -280,9 +296,9 @@ Xl2SvVlv+e4QkLk5LoG4a2ZiavwJGy43rGDHwnCwZnpYLJ02pZvk+ihTMqFkdD4U9QbwKsqTpesmFxcK
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-Para capturar a segunda flag, foi necessário encerrar o acesso ao container `ubuntu_lab` e, em seguida, executar o comando `docker exec -it kali_lab /bin/bash`, acessando a máquina de ataque. Embora o **Docker Compose** já revelasse os IPs da rede e dos hosts, o procedimento foi conduzido como se essas informações não fossem conhecidas. Assim, utilizou-se o comando `ip a` para listar as interfaces de rede e seus respectivos endereços IP. Caso a ferramenta **IP** não estivesse disponível, o mesmo resultado poderia ser obtido com o comando `ifconfig`. 
+Para capturar a segunda flag, foi necessário encerrar o acesso ao container `ubuntu_lab` e, em seguida, executar o comando `docker exec -it kali_lab /bin/bash`, acessando a máquina de ataque. Embora o **Docker Compose** já revelasse os IPs da rede e dos hosts, o procedimento foi conduzido como se essas informações não fossem conhecidas. Assim, utilizou-se o comando `ip a` para listar as interfaces de rede existentes. Caso a ferramenta **IP** não estivesse disponível, o mesmo resultado poderia ser obtido com o comando `ifconfig`. 
 
-Com o IP da interface identificado (`172.28.1.20`), foi possível inferir que o CIDR da rede era `172.28.0.0/16`. A partir disso, executou-se `nmap -sn 172.28.0.0/16` para mapear os hosts ativos. Como os containers estavam na mesma rede, o escaneamento revelou os endereços `172.28.1.10` para o servidor **Ubuntu** e `172.28.1.30` para o container da aplicação vulnerável **DVWA**. A imagem 03 exibe a saída do **Nmap**, confirmando a descoberta do IP associado à aplicação **DVWA**.
+Apenas duas interfaces foram identificadas: uma era o loopback (`lo`), que é utilizada internamente pelo sistema, e a outra, `eth0`, possuía o IP `172.28.1.20` e a máscara de rede `255.255.0.0`. Dessa forma, foi possível concluir que o CIDR da rede à qual essa interface estava conectada era `172.28.0.0/16`. Com base nisso, foi executado `nmap -sn 172.28.0.0/16` para mapear os hosts ativos. Como os containers estavam na mesma rede, o escaneamento revelou os endereços `172.28.1.10` para o servidor **Ubuntu** e `172.28.1.30` para o container da aplicação vulnerável **DVWA**. A imagem 03 exibe a saída do **Nmap**, confirmando a descoberta do IP associado à aplicação **DVWA**.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img03.png" alt="img03"><br>
@@ -296,16 +312,49 @@ A última flag foi obtida de forma diferente, pois, em vez de acessar diretament
     <figcaption>Imagem 04.</figcaption>
 </figure></div><br>
 
-A primeira tela exibida era de login, onde foi necessário passar o login e senha para acessar a aplicação. O login foi identificado em dos arquivos de instrução do lab, que indicava que o padrão era `admin`. A senha 
+A primeira tela exibida era a de login, onde era necessário informar usuário e senha para acessar a aplicação. As credenciais foram encontradas nos arquivos de instrução do laboratório, indicando que para o usuário `admin` a senha era `password`. Após o login, o próprio **DVWA** sugeria configurar o banco de dados clicando na opção `Create / Reset Database`. Independentemente de o banco de dados já existir ou não, ele seria configurado ou redefinido, e seria necessário efetuar o login novamente. O objetivo deste laboratório não é se aprofundar na aplicação **DVWA**, mas, para contextualizar, segue abaixo uma breve explicação sobre a ferramenta fornecida por ela própria:
 
+> Damn Vulnerable Web Application (DVWA) é uma aplicação web PHP/MySQL extremamente vulnerável. Seu principal objetivo é auxiliar profissionais de segurança a testar suas habilidades e ferramentas em um ambiente legal, ajudar desenvolvedores web a entender melhor os processos de proteção de aplicações web e auxiliar alunos e professores a aprender sobre segurança de aplicações web em um ambiente de sala de aula controlado.
 
+> O objetivo do DVWA é praticar algumas das vulnerabilidades web mais comuns, com vários níveis de dificuldade, com uma interface simples e direta. Observe que existem vulnerabilidades documentadas e não documentadas neste software. Isso é intencional. Você é incentivado a tentar descobrir o máximo de problemas possível.
 
+O objetivo desta terceira flag era executar um ataque de injeção SQL simples e, ao obter sucesso, criar um arquivo de flag dentro do container em `/var/www/html/flag3.txt` contendo a mensagem `FLAG{sql_injection_realizada_com_sucesso}`, comprovando a efetividade do ataque. Para isso, o banco de dados foi criado e o login na aplicação **DVWA** foi realizado novamente. No painel à esquerda havia diversas opções de ataques, incluindo SQL Injection. Antes de iniciar o ataque, foi verificado se o nível de segurança estava configurado como `low`; caso contrário, era necessário ajustá-lo na seção `DVWA Security`. Nessa seção, em `Security Level`, estavam disponíveis outros três níveis de segurança além do `low`.
 
+Com essa configuração, o ataque de SQL Injection foi iniciado acessando a seção `SQL Injection`. No campo `User ID`, foi informado o valor `1` e o formulário enviado. A aplicação retornou três informações, conforme mostrado na imagem 05, revelando que o usuário com ID `1` possuía o primeiro nome (`First name`) `admin` e o sobrenome (`Surname`) `admin`. Um ataque de injeção SQL ocorre quando um usuário malicioso insere comandos SQL em campos de entrada de dados, de forma que o sistema execute essas instruções no banco de dados. No contexto deste laboratório, o ataque permitiu acessar informações sensíveis.
 
+<div align="center"><figure>
+    <img src="../0-aux/md1-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
 
+Este ataque testou o pilar da *Confidencialidade* da tríade CIA, mostrando como informações sensíveis podem ser expostas indevidamente. Outro ataque que também impacta esse mesmo pilar é o *Cross-Site Scripting (XSS)*, que permite a execução de scripts maliciosos no navegador da vítima. Neste laboratório, o ataque XSS refletido foi realizado na seção `XSS (Reflected)` da aplicação, inserindo no único campo disponível (`What's your name?`) o código `<script>alert(document.cookie)</script>` e enviando o formulário. Ao injetar esse script, o navegador executou o **JavaScript** e exibiu em um pop-up os cookies da sessão, conforme evidenciado na imagem 06.  
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
+O comando `document.cookie` em **JavaScript** acessa todos os cookies armazenados pelo navegador para o site que está sendo visitado, neste caso, a aplicação **DVWA**. Cookies são pequenos arquivos de dados que armazenam informações como ID de sessão, preferências do usuário, tokens de autenticação, entre outros. No contexto deste laboratório, os cookies que puderam ser capturados foram:  
+- Cookies do **Google Analytics** (se presentes na aplicação DVWA): `_ga, _gid, _ga_LMD5`, entre outros.  
+- Cookie de sessão PHP (responsável por manter o usuário autenticado): `PHPSESSID=u1nnhccpl3h015lmk8o6i2mp87`.  
+- Cookie que indica o nível de segurança configurado da DVWA (intencionalmente vulnerável, definido como Low): `security=low`.  
+
+Para testar o pilar da *Integridade*, foi executado um ataque de *XSS armazenado (Stored XSS)* na seção `XSS (Stored)`. No campo `Name` foi inserido um nome qualquer (`John`) e no campo `Message` uma mensagem aleatória (`Message`), enviando o formulário com a opção `Sign Guestbook`. Esses dados foram armazenados diretamente no banco de dados sem qualquer autenticação ou validação, conforme mostrado na imagem 07, evidenciando a falta de controle sobre quem poderia inserir informações. Isso significa que qualquer usuário poderia registrar dados arbitrários, inclusive conteúdos maliciosos, comprometendo a integridade das informações armazenadas.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+O último pilar da tríade CIA é a *Disponibilidade*, que neste laboratório foi testada ao encerrar o container da aplicação **DVWA** (`docker stop dvwa_lab`), confirmando que a aplicação não estava mais acessível e, portanto, as informações contidas nela não podiam ser obtidas. Antes desse teste, ainda era necessário criar a flag dentro do container para comprovar que o ataque de SQL Injection havia sido realizado com sucesso. Para isso, o container foi acessado com o comando `docker exec -it dvwa_lab /bin/bash`. Dentro dele, o diretório corrente foi alterado para `/var/www/html` (`cd /var/www/html`) e o arquivo de flag foi criado com o comando `echo 'FLAG{sql_injection_realizada_com_sucesso}' > flag3.txt`. A imagem 08 mostra tanto a flag criada com sucesso como o container interrompido posteriormente.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
 
 <a name="item1.3"><h4>1.3 Ameaças, ataques e vulnerabilidades</h4></a>[Back to summary](#item1)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_3) 
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_2) 
 
 Obs.: Laboratório registrado como 2, mas documento como #NãoInformado (4) e referente a aula 3.
 
@@ -376,32 +425,39 @@ Obs.: Laboratório registrado como 2, mas documento como #NãoInformado (4) e re
   </ul>
 </details>
 
-Este segundo laboratório contou apenas com dois containers: a máquina de ataque (`lab_kali`) e o container alvo (`lab_target`). O objetivo foi utilizar a máquina atacante para realizar o reconhecimento do alvo por meio de quatro ferramentas: **ping**, **Nmap**, **curl** e **Gobuster**. Para isso, foi realizado o acesso ao container `lab_kali` com o comando `docker exec -it lab_kali /bin/bash`. No shell aberto, executou-se o primeiro comando: `ping -c1 lab_target`, que enviava um único pacote ICMP para verificar se o host `lab_target` estava acessível. O ICMP é um protocolo utilizado para testar a conectividade entre dispositivos. A imagem 08 mostra que o pacote foi recebido, confirmando que o host alvo estava ativo na rede.
-
-<div align="center"><figure>
-    <img src="../0-aux/md1-img08.png" alt="img08"><br>
-    <figcaption>Imagem 08.</figcaption>
-</figure></div><br>
-
-O segundo comando executado foi `nmap -sS -sV -O lab_target`, utilizado para identificar portas abertas, serviços em execução (como HTTP) e o sistema operacional do alvo. O argumento `-O` realizava a detecção do sistema operacional, `-sV` identificava as versões dos serviços, e `-sS` executava uma varredura stealth (SYN scan). Nessa técnica, o **Nmap** envia apenas pacotes SYN, que são o primeiro passo na abertura de uma conexão TCP, e aguarda a resposta do host. Se a porta estiver aberta, o alvo retorna um pacote SYN-ACK, indicando que poderia iniciar a conexão, mas o **Nmap** não completa o handshake, encerrando a comunicação com um pacote RST. Se a porta estiver fechada, o host responde com um RST diretamente. Esse funcionamento torna a varredura mais discreta, pois não estabelece conexões completas que poderiam ser registradas em logs de rede ou disparar alertas de sistemas de detecção de intrusão. A imagem 09 mostra que o container `lab_target` possuía a porta `80` aberta, onde estava rodando uma aplicação web no protocolo HTTP, além de indicar que o sistema operacional era um **Linux**.
+Este segundo laboratório contou apenas com dois containers: a máquina de ataque (`lab_kali`) e o container alvo (`lab_target`). O objetivo foi utilizar a máquina atacante para realizar o reconhecimento do alvo por meio de quatro ferramentas: **ping**, **Nmap**, **curl** e **gobuster**. Para isso, foi realizado o acesso ao container `lab_kali` com o comando `docker exec -it lab_kali /bin/bash`. No shell aberto, executou-se o primeiro comando: `ping -c1 lab_target`, que enviava um único pacote ICMP para verificar se o host `lab_target` estava acessível. O ICMP é um protocolo utilizado para testar a conectividade entre dispositivos. A imagem 09 mostra que o pacote foi recebido, confirmando que o host alvo estava ativo na rede.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img09.png" alt="img09"><br>
     <figcaption>Imagem 09.</figcaption>
 </figure></div><br>
 
-O terceiro comando executado foi `curl -I http://lab_target`, que enviava uma requisição HTTP do tipo HEAD para retornar apenas os cabeçalhos da resposta. Esses cabeçalhos forneciam informações relevantes sobre o servidor e as tecnologias utilizadas na aplicação web. A imagem 10 mostra que a resposta recebeu o código `200`, indicando que a requisição foi bem-sucedida, além de revelar o servidor e as tecnologias em uso, como **Werkzeug** e **Python**.
+O segundo comando executado foi `nmap -sS -sV -O lab_target`, utilizado para identificar portas abertas, serviços em execução (como HTTP) e o sistema operacional do alvo. O argumento `-O` realizava a detecção do sistema operacional, `-sV` identificava as versões dos serviços, e `-sS` executava uma varredura stealth (SYN scan). Nessa técnica, o **Nmap** envia apenas pacotes SYN, que são o primeiro passo na abertura de uma conexão TCP, e aguarda a resposta do host. Se a porta estiver aberta, o alvo retorna um pacote SYN-ACK, indicando que poderia iniciar a conexão, mas o **Nmap** não completa o handshake, encerrando a comunicação com um pacote RST. Se a porta estiver fechada, o host responde com um RST diretamente. Esse funcionamento torna a varredura mais discreta, pois não estabelece conexões completas que poderiam ser registradas em logs de rede ou disparar alertas de sistemas de detecção de intrusão. A imagem 10 mostra que o container `lab_target` possuía a porta `80` aberta, onde estava rodando uma aplicação web no protocolo HTTP, além de indicar que o sistema operacional era um **Linux**.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img10.png" alt="img10"><br>
     <figcaption>Imagem 10.</figcaption>
 </figure></div><br>
 
-O último comando de reconhecimento executado foi `gobuster dir -u http://lab_target/ -w /usr/share/dirb/wordlists/common.txt`, que realizava uma força bruta (*brute-force*) em diretórios e arquivos do site, com o objetivo de descobrir rotas ocultas como: `/admin`, `/secret`, `/login`. No caso deste laboratório, a rota `/secret` foi identificada, conforme evidenciado na imagem 11.
+O terceiro comando executado foi `curl -I http://lab_target`, que enviava uma requisição HTTP do tipo HEAD para retornar apenas os cabeçalhos da resposta. Esses cabeçalhos forneciam informações relevantes sobre o servidor e as tecnologias utilizadas na aplicação web. A imagem 11 mostra que a resposta recebeu o código `200`, indicando que a requisição foi bem-sucedida, além de revelar o servidor e as tecnologias em uso, como **Werkzeug** e **Python**.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img11.png" alt="img11"><br>
     <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+O último comando de reconhecimento executado foi `gobuster dir -u http://lab_target/ -w /usr/share/dirb/wordlists/common.txt`, que realizava uma força bruta (*brute-force*) em diretórios e arquivos do site, com o objetivo de descobrir rotas ocultas como: `/admin`, `/secret`, `/login`. No caso deste laboratório, a rota `/secret` foi identificada, conforme evidenciado na imagem 12.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+Com a informação obtida, a rota descoberta foi acessada utilizando o IP ou DNS público da instância na porta `8000`, que correspondia ao port forward configurado para a porta `80` do container. Para que a comunicação fosse possível, foi necessário liberar o tráfego proveniente do IP da máquina física, criando uma regra no security group da instância permitindo acesso à porta `8000`. A imagem 13 exibe a flag encontrada e visualizada pelo navegador da máquina física **Windows**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
 </figure></div><br>
 
 <a name="item1.4"><h4>1.4 Reconhecimento & Footprinting</h4></a>[Back to summary](#item1)   
@@ -468,13 +524,18 @@ Obs.: Laboratório registrado como 3, mas documento como 5 e referente a aula 4.
   </ul>
 </details>
 
-Neste terceiro laboratório, a máquina de ataque `kali_lab_5` foi utilizada para praticar técnicas de enumeração e OSINT no container alvo (`lab_target`), com o objetivo de localizar o arquivo de flag. Para isso, o acesso ao container atacante foi realizado com o comando `docker exec -it kali_lab_5 /bin/bash`. No shell aberto, foram executados comandos como `curl -I http://lab_target` e `ping lab_target` para verificar se o alvo estava respondendo. 
-
-Com a ferramenta **Gobuster**, realizou-se a enumeração de diretórios (*footprinting ativo*) utilizando o comando `gobuster dir -u http://lab_target/ -w /usr/share/wordlists/dirb/common.txt -t 20`. Esse comando utilizava um arquivo padrão de wordlist e permitiu descobrir a pasta `/vault/`. Em seguida, foi enviada uma requisição GET para o arquivo da flag com `curl http://lab_target/vault/flag.txt`, obtendo a flag `FLAG-{RECON-STARTS-WITH-OSINT}`. Por fim, a flag foi criptografada utilizando a ferramenta **sha256sum** com o comando `echo -n "FLAG-{RECON-STARTS-WITH-OSINT}" | sha256sum`. A imagem 12 exibe o resultado desses comandos executados.
+Neste terceiro laboratório, a máquina de ataque `kali_lab_5` foi utilizada para praticar técnicas de enumeração e OSINT no container alvo (`lab_target`), com o objetivo de localizar o arquivo de flag. Para isso, o acesso ao container atacante foi realizado com o comando `docker exec -it kali_lab_5 /bin/bash`. No shell aberto, foram executados comandos como `curl -I http://lab_target` e `ping lab_target` para verificar se o alvo estava respondendo. Este último, após quatro pacotes enviados, foi encerrado com o atalho `Ctrl + C`. A imagem 14 exibe o resultado desses comandos, evidenciando que o alvo estava respondendo.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img12.png" alt="img12"><br>
-    <figcaption>Imagem 12.</figcaption>
+    <img src="../0-aux/md1-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+Com a ferramenta **gobuster**, realizou-se a enumeração de diretórios (*footprinting ativo*) utilizando o comando `gobuster dir -u http://lab_target/ -w /usr/share/wordlists/dirb/common.txt -t 20`. Esse comando utilizava um arquivo padrão de wordlist e permitiu descobrir a pasta `/vault/`. Em seguida, foi enviada uma requisição GET para o arquivo da flag com `curl http://lab_target/vault/flag.txt`, obtendo a flag `FLAG-{RECON-STARTS-WITH-OSINT}`. Por fim, a flag foi criptografada utilizando a ferramenta **sha256sum** com o comando `echo -n "FLAG-{RECON-STARTS-WITH-OSINT}" | sha256sum`. A imagem 15 mostra que a flag foi identificada e criptografada com sucesso.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
 </figure></div><br>
 
 O OSINT e o footprinting correspondem às primeiras fases da Cyber Kill Chain, focadas no reconhecimento do alvo. O OSINT caracteriza-se como reconhecimento passivo, pois envolve a coleta de informações a partir de fontes públicas ou observação do alvo sem gerar tráfego direto, tornando a detecção menos provável. Já o footprinting ativo ocorre quando há interação direta com a máquina, como varreduras de portas, serviços ou diretórios, permitindo obter informações mais detalhadas, mas aumentando o risco de ser detectado. A validação de integridade via hash permite verificar se um arquivo ou dado não foi alterado, garantindo a integridade e contribuindo para a confidencialidade dentro do modelo CIA.
@@ -574,34 +635,39 @@ O container `dns_server_lab_6`, baseado na imagem CoreDNS, foi configurado para 
 
 Em seguida, o container `kali_lab_6` foi acessado com o comando `docker exec -it kali_lab_6 /bin/bash`, e a partir desse ponto todos os comandos foram executados no terminal do Kali. O primeiro deles foi `sudo bash -c 'echo "nameserver 172.18.0.30" > /etc/resolv.conf'`. Esse comando configurava o DNS do **Kali Linux** para utilizar o container `dns_server_lab_6` como servidor de resolução de nomes. O arquivo `/etc/resolv.conf` define quais servidores DNS o sistema deve usar para resolver domínios, e aqui ele foi sobrescrito com a entrada `nameserver 172.18.0.30`, correspondente ao IP do container `dns_server_lab_6`. Como foi utilizado o `sudo`, foi necessário fornecer a senha de superusuário, que neste caso era `kali`.
 
-Com o servidor DNS configurado para mapear o container `web_server_target_lab_6` ao seu respectivo IP e este sendo utilizado na máquina de ataque Kali, foi testada a conectividade entre o `kali_lab_6` e o container alvo por meio do nome de domínio, em vez do endereço IP. Para isso, o comando `ping -c 4 web_server_target_lab_6` foi executado, enviando 4 pacotes ICMP ao alvo para verificar sua resposta. No output do comando, conforme mostrado na imagem 13, ficou comprovado que a resolução DNS e a conectividade estavam funcionando corretamente. Em seguida, o comando `traceroute web_server_target_lab_6` foi utilizado para rastrear o caminho percorrido pelos pacotes até o servidor alvo. Como o ambiente era simulado via **Docker**, foi possível visualizar os saltos internos da rede.
+Com o servidor DNS configurado para mapear o container `web_server_target_lab_6` ao seu respectivo IP e este sendo utilizado na máquina de ataque Kali, foi testada a conectividade entre o `kali_lab_6` e o container alvo por meio do nome de domínio, em vez do endereço IP. Para isso, o comando `ping -c 4 web_server_target_lab_6` foi executado, enviando 4 pacotes ICMP ao alvo para verificar sua resposta. No output do comando, conforme mostrado na imagem 16, ficou comprovado que a resolução DNS e a conectividade estavam funcionando corretamente. Em seguida, o comando `traceroute web_server_target_lab_6` foi utilizado para rastrear o caminho percorrido pelos pacotes até o servidor alvo. Como o ambiente era simulado via **Docker**, foi possível visualizar os saltos internos da rede.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img13.png" alt="img13"><br>
-    <figcaption>Imagem 13.</figcaption>
+    <img src="../0-aux/md1-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
 </figure></div><br>
 
-Os próximos três comandos foram executados com a ferramenta **Domain Information Groper (dig)**, utilizada para consultar servidores DNS e obter informações detalhadas sobre registros de domínio, como endereços IP, MX, NS e outros. Os comandos estão listados abaixo, e seus outputs são exibidos na imagem 14:  
+Os próximos três comandos foram executados com a ferramenta **Domain Information Groper (dig)**, utilizada para consultar servidores DNS e obter informações detalhadas sobre registros de domínio, como endereços IP, MX, NS e outros. Os comandos estão listados abaixo, e seus outputs são exibidos nas imagens 17 e 18:  
 - `dig google.com A`: consulta o registro **A** (endereço IP) de `google.com`, retornando os endereços IPv4 associados ao domínio.  
 - `dig google.com MX`: consulta os registros **MX** (Mail Exchange) de `google.com`, listando os servidores de e-mail responsáveis por receber mensagens do domínio.  
 - `dig google.com TXT`: consulta registros **TXT**, que podem conter informações adicionais como políticas de autenticação de e-mail (ex.: SPF e DMARC).  
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img14.png" alt="img14"><br>
-    <figcaption>Imagem 14.</figcaption>
+    <img src="../0-aux/md1-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
 </figure></div><br>
 
 Quando esses comandos são executados, é possível obter informações valiosas para o reconhecimento de servidores DNS e do próprio domínio consultado. Esses dados podem revelar endereços IP associados, servidores de e-mail utilizados, além de políticas de autenticação e outras informações de configuração. De modo geral, ao executar o `dig` sem especificar um servidor (`@servidor`), o foco está apenas no domínio; já quando um servidor é definido, é possível analisar também como aquele DNS específico responde à consulta. Em um cenário de segurança, tais informações são frequentemente exploradas na fase de reconhecimento para mapear a infraestrutura de um alvo.
 
 Um domínio é o nome principal de um site utilizado para identificação na internet, formado pelo nome do site mais a extensão, chamada de TLD (Top-Level Domain), como `.com`, `.org` ou `.br`. Além disso, um domínio pode possuir subdomínios, que são prefixos adicionados antes do domínio principal para organizar ou diferenciar serviços, como `mail.google.com` ou `api.openai.com`.
 
-Como desafios, o comando `dig` foi utilizado com outro domínio (`vainaweb.com.br`) e o `traceroute` foi executado com duas opções diferentes. Além disso, o **Nmap**, que não era foco deste laboratório, foi instalado no Kali e utilizado para fazer uma varredura no container `web_server_target_lab_6`. Os comandos executados foram:
+Como desafios, o comando `dig` foi utilizado com outro domínio (`vainaweb.com.br`) e o `traceroute` foi executado com duas opções diferentes. Além disso, o **Nmap**, que não era foco deste laboratório, foi instalado no Kali (`sudo apt update && sudo apt install -y nmap`) e utilizado para fazer uma varredura no container `web_server_target_lab_6`. Os comandos executados foram:
 - `dig vainaweb.com.br A`: consulta o registro *A* (endereço IP) de `vainaweb.com.br`, retornando os endereços IPv4 associados ao domínio.  
 - `dig vainaweb.com.br MX`: consulta os registros *MX* (Mail Exchange) de `vainaweb.com.br`, listando os servidores de e-mail responsáveis por receber mensagens do domínio.  
 - `dig vainaweb.com.br TXT`: consulta registros *TXT*, que podem conter informações adicionais como políticas de autenticação de e-mail (ex.: SPF e DMARC).  
 - `traceroute -m 5 vainaweb.com.br`: limita o número máximo de saltos a 5 ao rastrear o caminho dos pacotes até o servidor alvo.  
 - `traceroute -n vainaweb.com.br`: realiza o traceroute sem resolver nomes de host, exibindo apenas os endereços IP dos saltos.  
-- `nmap -sS -sV web_server_target_lab_6`: realiza uma varredura stealth (*SYN scan*) no container alvo, identificando portas abertas e serviços em execução, incluindo suas versões.
+- `sudo nmap -sS -sV web_server_target_lab_6`: realiza uma varredura stealth (*SYN scan*) no container alvo, identificando portas abertas e serviços em execução, incluindo suas versões. Neste scan, foi detectada a porta `80` aberta, executando o servidor HTTP **Nginx**.
 
 <a name="item1.6"><h4>1.6 Ferramentas: Kali Linux, Nmap, Wireshark</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_5)
@@ -888,7 +954,7 @@ Obs.: Laboratório registrado como 6, mas documento como 8 e referente a aula 7.
 
 O laboratório da aula 7 teve como objetivo demonstrar de forma prática como o endereçamento IP e a divisão de redes (subnetting) funcionam para controlar a comunicação e segmentar ambientes. Ferramentas como **ip address (ip a)**, **Nmap** e **arp-scan** foram utilizadas para mapear a conectividade, além de compreender a diferença de performance e uso entre essas ferramentas de descoberta.
 
-Com o ambiente construído, a máquina de ataque `maquina-atacante` foi acessada utilizando o comando `docker exec -it maquina-atacante /bin/sh`. Nesse caso, em vez do shell **Bash**, foi utilizado o **SH**. Dentro do terminal do container, foram executados os comandos `ip addr` (`ip a` ou `ip address`) e `ifconfig` para listar as interfaces de rede disponíveis. A interface `eth0`, com IP `172.20.10.100`, estava conectada à rede de RH, cujo CIDR era `172.20.10.0/24`. Já a interface `eth1`, com IP `192.168.100.100`, fazia parte da rede de Visitantes, com CIDR `192.168.100.0/24`. A imagem 27 abaixo ilustra as interfaces de rede configuradas nesse container.
+Com o ambiente construído, a máquina de ataque `maquina-atacante` foi acessada utilizando o comando `docker exec -it maquina-atacante /bin/sh`. Nesse caso, em vez do shell **Bash**, foi utilizado o **SH**. Dentro do terminal do container, foram executados os comandos `ip addr` (`ip a` ou `ip address`) e `ifconfig` para listar as interfaces de rede disponíveis. A interface `eth0`, com IP `192.168.100.100`, estava conectada à rede de Visitantes, cujo CIDR era `192.168.100.0/24`. Já a interface `eth1`, com IP `172.20.10.100`, fazia parte da rede de RH, com CIDR `172.20.10.0/24`. A imagem 27 abaixo ilustra as interfaces de rede configuradas nesse container.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img27.png" alt="img27"><br>
@@ -896,21 +962,16 @@ Com o ambiente construído, a máquina de ataque `maquina-atacante` foi acessada
 </figure></div><br>
 
 O passo seguinte foi identificar os outros hosts presentes em ambas as redes. Para isso, foram utilizados dois softwares diferentes: o **Nmap** e o **arp-scan**. O **Nmap** é uma ferramenta padrão, versátil e confiável para varredura de redes, enquanto o **arp-scan** é especializado em redes locais e extremamente rápido, pois realiza varredura apenas pelo protocolo ARP. Dessa forma, os seguintes comandos foram executados:  
-- `nmap -sn -T4 172.20.10.0/24`: realizava uma varredura de ping (*ping sweep*) na rede de RH (`172.20.10.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
 - `nmap -sn -T4 192.168.100.0/24`: realizava uma varredura de ping (*ping sweep*) na rede de Visitantes (`192.168.100.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
-- `arp-scan -I eth0 --localnet`: varria a rede local conectada à interface `eth0`, enviando pacotes ARP para descobrir todos os dispositivos ativos rapidamente.  
-- `arp-scan -I eth1 --localnet`: realizava a varredura ARP na rede conectada à interface `eth1`, identificando rapidamente hosts na rede de Visitantes.
+- `nmap -sn -T4 172.20.10.0/24`: realizava uma varredura de ping (*ping sweep*) na rede de RH (`172.20.10.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
+- `arp-scan -I eth0 --localnet`: varria a rede de Visitantes conectada à interface `eth0`, enviando pacotes ARP para descobrir todos os dispositivos ativos rapidamente.  
+- `arp-scan -I eth1 --localnet`: realizava a varredura ARP na rede conectada à interface `eth1`, identificando rapidamente hosts na rede de RH.
 
-A imagem 28 exibe os resultados obtidos com os comandos do **Nmap**, enquanto a imagem 29 mostra os outputs gerados pelos comandos do **arp-scan**. É possível observar que ambos os softwares identificaram os hosts `.10` e `.30`, correspondentes, respectivamente, ao servidor de RH e à impressora.
+A imagem 28 exibe os resultados obtidos tanto com comandos do **Nmap** quanto do **arp-scan**. É possível observar que ambos os softwares identificaram os hosts `.10` e `.30`, correspondentes, respectivamente, ao servidor de RH e à impressora.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img28.png" alt="img28"><br>
     <figcaption>Imagem 28.</figcaption>
-</figure></div><br>
-
-<div align="center"><figure>
-    <img src="../0-aux/md1-img29.png" alt="img29"><br>
-    <figcaption>Imagem 29.</figcaption>
 </figure></div><br>
 
 Durante a execução, foi observado que o **arp-scan** era significativamente mais rápido. Isso ocorre porque o **arp-scan** envia pacotes ARP para todos os IPs da sub-rede. Como o ARP é um protocolo de camada 2, ele se comunica diretamente com as placas de rede na rede local, sem precisar passar por camadas mais complexas do modelo OSI, tornando a resposta extremamente rápida. Por outro lado, o **Nmap** com a opção `-sn` realiza um processo mais complexo: envia múltiplos pacotes para garantir a detecção, incluindo ICMP echo requests (ping), pacotes TCP para as portas 80 e 443, além de ARP requests. Toda essa lógica adicional, somada à espera por timeouts de pacotes que não são ARP, torna o processo do **Nmap** mais demorado em comparação ao **arp-scan**.
