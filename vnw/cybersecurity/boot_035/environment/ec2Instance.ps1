@@ -15,7 +15,7 @@ $so = "ubuntu"
 # $so = "ec2-user"
 $instanceType = "t3.medium"      # Ubuntu Price = U$ 0.0451/h -> 7h = U$ 0.3157 -> R$ 5.6 = R$ 1.77
 # $instanceType = "t3.large"      # Ubuntu Price = U$ 0.0867/h -> 7h = U$ 0.6069 -> R$ 5.6 = R$ 3.40
-$keyPairPath = "G:/Meu Drive/4_PROJ/scripts/aws/.default/secrets/awsKeyPair/universal"
+$keyPairPath = "G:/Meu Drive/4_PROJ/aws_skb/study_material/aws_scripts_model/.default/secrets/awsKeyPair/universal"
 $keyPairName = "keyPairUniversal"
 $userDataPath = "G:/Meu Drive/4_PROJ/boot/vnw/cybersecurity/boot_035/environment/aws_dock"
 $userDataFile = "udFileDeb.sh"
