@@ -56,7 +56,7 @@ Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegura
   - Netcat (nc)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netcat.jpg" alt="netcat" width="auto" height="25">
   - Netdiscover   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netdiscover.png" alt="netdiscover" width="auto" height="25">
   - net-tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net-tools.svg" alt="net-tools" width="auto" height="25">
-  - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
+  - Network Mapper (Nmap)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
   - Npcap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/npcap.webp" alt="npcap" width="auto" height="25">
   - nslookup   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nslookup.webp" alt="nslookup" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
@@ -69,7 +69,8 @@ Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegura
   - traceroute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/traceroute.png" alt="traceroute" width="auto" height="25">
   - tshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tshark.png" alt="tshark" width="auto" height="25">
   - Wireshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wireshark.png" alt="wireshark" width="auto" height="25">
-- Offensive Security:
+- Cibersecurity:
+  - CyberChef   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cyber_chef.png" alt="cyber_chef" width="auto" height="25">
   - Damn Vulnerable Web Application (DVWA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dvwa.png" alt="dvwa" width="auto" height="25">
   - gobuster   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gobuster.svg" alt="gobuster" width="auto" height="25">
   - Greenbone Community Edition (GCE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gce.png" alt="gce" width="auto" height="25">
@@ -77,14 +78,9 @@ Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegura
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
   - Metasploit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="metasploit" width="auto" height="25">
   - Nikto   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nikto.jpg" alt="nikto" width="auto" height="25">
+  - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
   - Open Vulnerability Assessment System (OpenVAS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_vas.png" alt="open_vas" width="auto" height="25">
-
-
-sha256sum
-CyberChef
-
-
-
+  - sha256sum   <img src="" alt="sha256sum" width="auto" height="25">
 
 ---
 
@@ -102,7 +98,6 @@ CyberChef
     1.10. <a href="#item1.10">Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</a><br>
     1.11. <a href="#item1.11">Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</a><br>
     1.12. <a href="#item1.12">Documentação Técnica Profissional</a><br>
-    1.13. <a href="#item1.13">Projeto Final</a><br>
 
 ---
 
@@ -743,61 +738,69 @@ Obs.: Laboratório registrado como 5, mas documento como 7 e referente a aula 6.
   </ul>
 </details>
 
-Este laboratório foi bastante interessante por introduzir o **Wireshark**, uma das ferramentas mais importantes para profissionais de cibersegurança. Com ele, foi possível capturar e analisar o tráfego de rede em um ambiente simples, composto por dois containers: a máquina de ataque (**Kali Linux**) e um servidor web básico. O **Wireshark** foi instalado na máquina host, que para usuários do **WSL** corresponde à própria máquina física. No meu caso, como utilizei uma instância do **Amazon EC2**, o processo foi diferente, já que a imagem da instância possuía apenas CLI e não incluía ambiente gráfico. Assim, foi necessário instalar o **tshark**, a versão em linha de comando do **Wireshark**. Ainda assim, também instalei o **Wireshark** em minha máquina física **Windows**, a fim de explorar sua interface gráfica e testá-lo de outra forma, sem recorrer aos containers **Docker**.
+Este laboratório foi bastante interessante por introduzir o **Wireshark**, uma das ferramentas mais importantes para profissionais de cibersegurança. Com ele, foi possível capturar e analisar o tráfego de rede em um ambiente simples, composto por dois containers: a máquina de ataque (**Kali Linux**) e um servidor web básico. O **Wireshark** foi instalado na máquina host, que para usuários do **WSL** correspondia à própria máquina física. No meu caso, como utilizei uma instância do **Amazon EC2**, o processo foi diferente, já que a imagem da instância possuía apenas CLI e não incluía ambiente gráfico. Assim, foi necessário instalar o **tshark**, a versão em linha de comando do **Wireshark**. Ainda assim, também instalei o **Wireshark** em minha máquina física **Windows**, a fim de explorar sua interface gráfica e testá-lo de outra forma, sem recorrer aos containers **Docker**.
 
 O **Wireshark** foi baixado do site oficial e instalado junto com a ferramenta **Npcap**, responsável por permitir a captura de pacotes na rede. Em máquinas **Linux** com interface gráfica, a instalação pode ser feita com os comandos `sudo apt update` e `sudo apt install wireshark`. Já em sistemas apenas com linha de comando, como a instância **EC2**, foi necessário instalar o **tshark** utilizando os mesmos comandos, substituindo apenas o pacote (`sudo apt install tshark`). Durante a instalação, foi solicitado se usuários não-superusuário deveriam ter permissão para capturar pacotes, o que foi confirmado com `Yes`. Para usar o **Wireshark** sem `sudo`, foi preciso adicionar o usuário ao grupo `wireshark` com `sudo usermod -a -G wireshark $USER`. Por fim, foi necessário realizar logout e login novamente, ou reiniciar a instância, para que as alterações tivessem efeito.
 
-<details><summary>Verificação de Autenticidade do Wireshark</summary>
-  <p>O processo de verificação da autenticidade de um software é essencial para garantir que o instalador realmente foi disponibilizado pelo desenvolvedor e não sofreu adulterações. Geralmente, essa verificação envolve o uso de <strong>hashes</strong> e/ou <strong>assinaturas digitais com GPG (GNU Privacy Guard)</strong>. No caso do <strong>Wireshark</strong>, o próprio site disponibilizava um campo chamado <code>Verify Downloads</code>, onde estavam reunidas as informações necessárias. Esse campo fornecia um arquivo de assinatura que o <strong>Wireshark</strong> publicou. A primeira parte do arquivo (até antes do <code>-----BEGIN PGP SIGNATURE-----</code>) continha o conteúdo assinado, listando os nomes dos arquivos, seus tamanhos e respectivos hashes (SHA256 e SHA1). Já a parte final (<code>BEGIN/END PGP SIGNATURE</code>) correspondia à assinatura <strong>GPG</strong>, que garantia que o conteúdo foi realmente publicado pela equipe do <strong>Wireshark</strong>. Todo esse material foi copiado e salvo em um arquivo nomeado <code>wireshark-4.4.8-SIGNATURES.asc</code>, utilizado como arquivo de assinatura. Além disso, o campo <code>Verify Downloads</code> também informava o ID da chave mais recente utilizada pelo projeto, <code>0xE6FEAEEA</code>. Assim, com três elementos principais — o arquivo instalador, o arquivo de assinatura e a chave pública — foi possível realizar o processo completo de verificação.</p>
+<details><summary>Verificação de Autenticidade do <strong>Wireshark</strong></summary>
+  <br>
+  <p>O processo de verificação da autenticidade de um software é essencial para garantir que o instalador realmente foi disponibilizado pelo desenvolvedor e não sofreu adulterações. Geralmente, essa verificação envolve o uso de hashes e/ou assinaturas digitais com <strong>GNU Privacy Guard (GPG)</strong>. No caso do <strong>Wireshark</strong>, o próprio site disponibilizava um campo chamado <code>Verify Downloads</code>, onde estavam reunidas as informações necessárias. Esse campo fornecia um arquivo de assinatura que o <strong>Wireshark</strong> publicou. A primeira parte do arquivo (até antes do <code>-----BEGIN PGP SIGNATURE-----</code>) continha o conteúdo assinado, listando os nomes dos arquivos, seus tamanhos e respectivos hashes (SHA256 e SHA1). Já a parte final (<code>BEGIN/END PGP SIGNATURE</code>) correspondia à assinatura <strong>GPG</strong>, que garantia que o conteúdo foi realmente publicado pela equipe do <strong>Wireshark</strong>. Todo esse material foi copiado e salvo em um arquivo nomeado <code>wireshark-4.4.8-SIGNATURES.asc</code>, utilizado como arquivo de assinatura. Além disso, o campo <code>Verify Downloads</code> também informava o ID da chave mais recente utilizada pelo projeto, <code>0xE6FEAEEA</code>. Assim, com os três elementos fundamentais — o arquivo instalador, o arquivo de assinatura e a chave pública — foi possível realizar o processo completo de verificação.</p>
 
-  <p>Este processo podia ser realizado tanto via linha de comando (<strong>CLI</strong>) utilizando o <strong>GPG</strong>, quanto por ambiente gráfico com o <strong>Kleopatra</strong>. No meu caso, utilizei ambos os métodos. Primeiro, criei o arquivo de assinaturas vazio no <strong>Windows PowerShell</strong> aberto no <strong>Windows Terminal</strong> com o comando <code>New-Item -Path . -Name "wireshark-4.4.8-SIGNATURES.asc" -ItemType File</code>. Em seguida, copiei todo o conteúdo do arquivo de assinaturas fornecido pelo site do <strong>Wireshark</strong> e visualizado no navegador para dentro desse arquivo. Depois, no <strong>PowerShell</strong>, executei o comando <code>gpg --list-keys</code> para listar todas as chaves já armazenadas. No <strong>Kleopatra</strong>, acessei <code>Arquivo → Procurar no servidor...</code>, inseri o ID da chave fornecido pelo site (<code>0xE6FEAEEA</code>) e cliquei em <strong>Pesquisar</strong>. A chave localizada estava em nome de <strong>Gerald Combs</strong> e foi importada para meu <strong>GPG</strong> via <strong>Kleopatra</strong>. Por fim, na CLI executei o comando <code>gpg --verify wireshark-4.4.8-SIGNATURES.asc</code> e confirmei que o ID da chave obtida correspondia à chave importada no <strong>Kleopatra</strong> (conforme imagem 15), validando assim a autenticidade do arquivo.</p>
+  <p>Este processo podia ser realizado tanto via linha de comando (CLI) utilizando o <strong>GPG</strong>, quanto por ambiente gráfico com o <strong>Kleopatra</strong>. No meu caso, utilizei ambos os métodos. Primeiro, criei o arquivo de assinaturas vazio no <strong>Windows PowerShell</strong> aberto no <strong>Windows Terminal</strong> com o comando <code>New-Item -Path . -Name "wireshark-4.4.8-SIGNATURES.asc" -ItemType File</code>. Em seguida, copiei todo o conteúdo do arquivo de assinaturas fornecido pelo site do <strong>Wireshark</strong> e visualizado no navegador para dentro desse arquivo. Depois, no <strong>PowerShell</strong>, executei o comando <code>gpg --list-keys</code> para listar todas as chaves já armazenadas. No <strong>Kleopatra</strong>, acessei <code>Arquivo → Procurar no servidor...</code>, inseri o ID da chave fornecido pelo site (<code>0xE6FEAEEA</code>) e cliquei em <strong>Pesquisar</strong>. A chave localizada estava em nome de <strong>Gerald Combs</strong> e foi importada para meu <strong>GPG</strong> via <strong>Kleopatra</strong>. Por fim, na CLI executei o comando <code>gpg --verify wireshark-4.4.8-SIGNATURES.asc</code> e confirmei que o ID da chave obtida correspondia à chave importada no <strong>Kleopatra</strong> (conforme imagem 19), validando assim a autenticidade do arquivo.</p>
 
   <div align="center"><figure>
-      <img src="../0-aux/md1-img15.png" alt="img15"><br>
-      <figcaption>Imagem 15.</figcaption>
+      <img src="../0-aux/md1-img19.png" alt="img19"><br>
+      <figcaption>Imagem 19.</figcaption>
   </figure></div><br>
 
-  <p>Esse primeiro passo confirmava que o arquivo de assinaturas foi realmente assinado pela chave informada no site. O próximo passo era verificar se o hash do arquivo instalador correspondia a algum dos hashes listados no arquivo de assinaturas. Para isso, no <strong>PowerShell</strong>, executei o comando <code>Get-FileHash Wireshark-4.4.8-x64.exe -Algorithm SHA256</code> para calcular o hash do instalador utilizando o algoritmo <strong>SHA256</strong>. Em seguida, comparei o valor obtido com os hashes presentes no arquivo de assinaturas, confirmando que correspondiam à mesma versão do instalador. A imagem 16 mostra que o hash calculado do arquivo instalador era o mesmo para este mesmo arquivo no arquivo de assinaturas.</p>
+  <p>Outra forma de realizar essa primeira parte foi utilizando o <strong>CyberChef</strong>. Nele, adicionei no campo <code>Recipe</code> a chave pública do desenvolvedor fornecida pelo próprio <strong>Wireshark</strong>. No campo de input, inseri todo o conteúdo do arquivo de assinatura, que incluía tanto a mensagem quanto a assinatura. No output, foi exibida a parte da mensagem indicando que ela havia sido assinada por <strong>Gerald Combs</strong>, e o ID da chave conferia com o ID da chave importada no <strong>Kleopatra</strong>. A imagem 20 ilustra essa verificação. Vale destacar que o <strong>CyberChef</strong> utilizou <strong>PGP</strong> em vez de <strong>GPG</strong>, mas ambos têm a mesma finalidade.</p>
 
   <div align="center"><figure>
-      <img src="../0-aux/md1-img16.png" alt="img16"><br>
-      <figcaption>Imagem 16.</figcaption>
+      <img src="../0-aux/md1-img20.png" alt="img20"><br>
+      <figcaption>Imagem 20.</figcaption>
+  </figure></div><br>
+
+  <p>Esse primeiro passo confirmava que o arquivo de assinaturas foi realmente assinado pela chave informada no site. O próximo passo era verificar se o hash do arquivo instalador correspondia a algum dos hashes listados no arquivo de assinaturas. Para isso, no <strong>PowerShell</strong>, executei o comando <code>Get-FileHash Wireshark-4.4.8-x64.exe -Algorithm SHA256</code> para calcular o hash do instalador utilizando o algoritmo <strong>SHA256</strong>. Em seguida, comparei o valor obtido com os hashes presentes no arquivo de assinaturas, confirmando que correspondiam à mesma versão do instalador. A imagem 21 mostra que o hash calculado do arquivo instalador era o mesmo para este mesmo arquivo no arquivo de assinaturas.</p>
+
+  <div align="center"><figure>
+      <img src="../0-aux/md1-img21.png" alt="img21"><br>
+      <figcaption>Imagem 21.</figcaption>
   </figure></div><br>
 </details>
 
 Após a instalação, iniciou-se o processo de captura de tráfego com o **Wireshark** no host, acessando a interface gráfica da ferramenta. Na tela inicial, foi exibida uma lista de interfaces de rede disponíveis, como `Wi-Fi`, `Ethernet`, `lo` (Loopback), `Docker Desktop`, entre outras. Nesse momento, foi necessário identificar e selecionar a interface de rede que estava sendo utilizada para conexão com a internet. Essa interface geralmente apresentava um gráfico de atividade (ondas) ou um alto número de pacotes sendo transferidos. No caso da máquina física, a interface utilizada foi a `Ethernet`, que foi selecionada para iniciar a captura de pacotes. Imediatamente, o tráfego em tempo real da máquina passou a ser exibido.
 
-No caso da máquina host dos containers **Docker**, tratava-se de uma instância do **Amazon EC2**, onde foi instalado apenas o **tshark**, a versão em linha de comando do **Wireshark**. Nesse ambiente, primeiro foi necessário listar as interfaces disponíveis com o comando `tshark -D`. Para iniciar a captura, utilizava-se o comando `tshark -i eth0`, passando o nome da interface ou seu número na lista (`tshark -i 1`). A interface escolhida precisava ser a responsável pela conexão com a internet, que neste caso era a `eth0`. A imagem 17 mostra que o processo de captura de tráfego nessa interface foi iniciado com sucesso, imprimindo na tela cada pacote que passava por ela.
+No caso da máquina host dos containers **Docker**, tratava-se de uma instância do **Amazon EC2**, onde foi instalado apenas o **tshark**, a versão em linha de comando do **Wireshark**. Nesse ambiente, primeiro foi necessário listar as interfaces disponíveis com o comando `tshark -D`. Para iniciar a captura, utilizava-se o comando `tshark -i eth0`, passando o nome da interface ou seu número na lista (`tshark -i 1`). A interface escolhida precisava ser a responsável pela conexão com a internet, que neste caso era a `eth0`. A imagem 22 mostra que o processo de captura de tráfego nessa interface foi iniciado com sucesso, imprimindo na tela cada pacote que passava por ela.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img17.png" alt="img17"><br>
-    <figcaption>Imagem 17.</figcaption>
+    <img src="../0-aux/md1-img22.png" alt="img22"><br>
+    <figcaption>Imagem 22.</figcaption>
 </figure></div><br>
 
 No entanto, o tráfego que seria analisado ainda estava sendo gerado, e ao encerrar o comando, todo o tráfego capturado, incluindo o gerado, seria perdido. Para evitar isso e permitir filtragem posterior, a captura foi encerrada com `Ctrl + C`. Em seguida, uma nova captura foi iniciada com o comando `tshark -i eth0 -w captura_completa.pcap`, que salvava o tráfego no arquivo `captura_completa.pcap` em vez de exibi-lo na tela. Apesar disso, a CLI permanecia aguardando a interrupção do comando, que era realizada com `Ctrl + C`. Com o arquivo gerado, seria possível aplicar filtros diretamente nele para análise detalhada posteriormente.
 
-Com a captura em andamento, foi gerado tráfego a partir dos containers. O container do servidor web foi acessado via navegador, uma vez que havia um mapeamento de portas (port forward) entre a porta `8080` do container e a porta `8080` do host, no caso, a instância **Amazon EC2**. Assim, a aplicação pôde ser acessada pelo navegador da máquina física utilizando o IP ou DNS público da instância na porta `8080` (`site`), desde que existisse uma regra de entrada no grupo de segurança permitindo a comunicação a partir do IP público da máquina física. Após acessar a página inicial da aplicação, uma requisição do tipo GET foi enviada para a página secreta `site/secret`. Na página de login (`site/login_form`), foi feita uma requisição GET para carregá-la e uma requisição POST para enviar o formulário de autenticação. A imagem 18 mostra o acesso à página inicial, a imagem 19 exibe o acesso à página secreta e a imagem 20 evidencia o acesso à página de login.
+Com a captura em andamento, foi gerado tráfego a partir dos containers. O container do servidor web foi acessado via navegador, uma vez que havia um mapeamento de portas (port forward) entre a porta `8080` do container e a porta `8080` do host, no caso, a instância **Amazon EC2**. Assim, a aplicação pôde ser acessada pelo navegador da máquina física utilizando o IP ou DNS público da instância na porta `8080` (`site`), desde que existisse uma regra de entrada no grupo de segurança permitindo a comunicação a partir do IP público da máquina física. Após acessar a página inicial da aplicação, uma requisição do tipo GET foi enviada para a página secreta `site/secret`. Na página de login (`site/login_form`), foi feita uma requisição GET para carregá-la e uma requisição POST para enviar o formulário de autenticação. A imagem 23 mostra o acesso à página inicial, a imagem 24 exibe o acesso à página secreta e a imagem 25 evidencia o acesso à página de login.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img18.png" alt="img18"><br>
-    <figcaption>Imagem 18.</figcaption>
+    <img src="../0-aux/md1-img23.png" alt="img23"><br>
+    <figcaption>Imagem 23.</figcaption>
 </figure></div><br>
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img19.png" alt="img19"><br>
-    <figcaption>Imagem 19.</figcaption>
+    <img src="../0-aux/md1-img24.png" alt="img24"><br>
+    <figcaption>Imagem 24.</figcaption>
 </figure></div><br>
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img20.png" alt="img20"><br>
-    <figcaption>Imagem 20.</figcaption>
+    <img src="../0-aux/md1-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
 </figure></div><br>
 
-De volta a instância EC2, o container `kali-aula7` foi acessado com o comando `docker exec -it kali-aula7 /bin/bash` para gerar tráfegos a partir dele. Nele, foi realizando um ping para o servidor web acessado por navegador (`ping -c 3 web-server-aula7`). Uma consulta DNS para um site externo também foi realizada através do comando `nslookup google.com`. O **Wireshark** (**tshark**) no host via a consulta saindo e voltando. Por fim, foi executado `curl http://web-server-aula7:8080/` para enviar uma requisição do tipo GET a página inicial do site, mas utilizando agora o software **Curl**. A imagem 21 exibe os outputs desses comandos executados.
+De volta a instância EC2, o container `kali-aula7` foi acessado com o comando `docker exec -it kali-aula7 /bin/bash` para gerar tráfegos a partir dele. Nele, foi realizando um ping para o servidor web acessado por navegador (`ping -c 3 web-server-aula7`). Uma consulta DNS para um site externo também foi realizada através do comando `nslookup google.com`. O **Wireshark** (**tshark**) no host via a consulta saindo e voltando. Por fim, foi executado `curl http://web-server-aula7:8080/` para enviar uma requisição do tipo GET a página inicial do site, mas utilizando agora o software **Curl**. A imagem 26 exibe os outputs desses comandos executados.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img21.png" alt="img21"><br>
-    <figcaption>Imagem 21.</figcaption>
+    <img src="../0-aux/md1-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
 </figure></div><br>
 
 De volta ao **tshark**, a captura de tráfego foi interrompida utilizando o atalho `Ctrl + C`, encerrando a execução do comando `tshark -i eth0 -w captura_completa.pcap`. Todo o tráfego capturado, incluindo o gerado, foi armazenado no arquivo `captura_completa.pcap`. O próximo passo foi a análise dos pacotes contidos nesse arquivo.
@@ -811,16 +814,16 @@ No host (instância **Amazon EC2**), o tráfego capturado estava armazenado no a
 - `tshark -r captura_completa.pcap -Y "icmp"`: filtrava pacotes ICMP, permitindo visualizar tráfego de ping e mensagens de controle de rede.  
 - `tshark -r captura_completa.pcap -Y "dns"`: filtrava pacotes DNS, mostrando consultas e respostas de resolução de nomes de domínio.
 
-As imagens 22 e 23 mostram o conteúdo filtrado do tráfego capturado, correspondente às interações geradas pelos dois containers: o servidor web e o **Kali Linux**.
+As imagens 27 e 28 mostram o conteúdo filtrado do tráfego capturado, correspondente às interações geradas pelos dois containers: o servidor web e o **Kali Linux**.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img22.png" alt="img22"><br>
-    <figcaption>Imagem 22.</figcaption>
+    <img src="../0-aux/md1-img27.png" alt="img27"><br>
+    <figcaption>Imagem 27.</figcaption>
 </figure></div><br>
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img23.png" alt="img23"><br>
-    <figcaption>Imagem 23.</figcaption>
+    <img src="../0-aux/md1-img28.png" alt="img28"><br>
+    <figcaption>Imagem 28.</figcaption>
 </figure></div><br>
 
 Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para identificar o tráfego gerado anteriormente e analisar pacotes específicos. Abaixo está a explicação dos filtros realizados:
@@ -861,16 +864,16 @@ Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para 
   - **Análise na GUI**:  
     - No **Wireshark**, foram localizadas as requisições do **nslookup** do **Kali Linux**. Selecionando um pacote de consulta e expandindo `Domain Name System (query)` no painel de detalhes, era possível visualizar o nome do domínio consultado. Para os pacotes de resposta, expandindo `Domain Name System (response)` encontrava-se o endereço IP resolvido para o domínio. O argumento `-T fields -e dns.qry.name -e dns.a` no **tshark** reproduzia exatamente essa filtragem.
 
-A imagem 25 exibe o output dos três primeiros filtros, enquanto a imagem 26 mostra os três últimos filtros realizados.
+A imagem 29 exibe o output dos três primeiros filtros, enquanto a imagem 30 mostra os três últimos filtros realizados.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img25.png" alt="img25"><br>
-    <figcaption>Imagem 25.</figcaption>
+    <img src="../0-aux/md1-img29.png" alt="img29"><br>
+    <figcaption>Imagem 29.</figcaption>
 </figure></div><br>
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img26.png" alt="img26"><br>
-    <figcaption>Imagem 26.</figcaption>
+    <img src="../0-aux/md1-img30.png" alt="img30"><br>
+    <figcaption>Imagem 30.</figcaption>
 </figure></div><br>
 
 Para o desafio proposto, foi utilizado o **Wireshark** na máquina física **Windows**, sem uso de containers **Docker**. Na GUI do **Wireshark**, a captura do tráfego da interface de rede conectada à internet foi iniciada. Em seguida, um site HTTP foi acessado pelo navegador para gerar tráfego. O processo de captura foi pausado e aplicado o seguinte filtro: `ip.addr == 192.168.1.3 && http.request.method == GET`. Esse filtro listava todos os pacotes com requisição HTTP do tipo `GET` originados da máquina física, já que esse era o seu IP privado. 
@@ -1826,19 +1829,4 @@ Com o ambiente montado, a interface web foi acessada com `http://127.0.0.1:9392`
 
 <a name="item1.12"><h4>1.12 Documentação Técnica Profissional</h4></a>[Back to summary](#item1)
 
-
-
-
-
-
-
-
-<a name="item1.13"><h4>1.13 Projeto Final</h4></a>[Back to summary](#item1)
-
-O objetivo deste projeto foi consolidar os conhecimentos adquiridos ao longo deste módulo, aplicando na prática os conceitos de reconhecimento, mapeamento de rede e segurança da informação. A proposta visou desenvolver o pensamento estratégico e analítico, estimular a documentação técnica com clareza e profissionalismo, além de entregar soluções com foco em impacto real. Seja por meio da análise de uma rede simulada em ambiente **Docker** ou da criação de uma proposta técnica para um cliente fictício, este projeto representou o primeiro passo concreto na atuação como analista de segurança.
-
-Para a realização deste projeto final, foi possível escolher entre duas abordagens distintas:
-- [Opção 1 – Projeto Técnico:](./13-projeto_final_1/) Consistiu na análise prática de uma rede simulada em um ambiente **Docker**. O desafio envolveu identificar ativos e sub-redes, mapear a infraestrutura, detectar exposições e elaborar um relatório técnico completo com recomendações e plano de ação.
-- [Opção 2 – Projeto Conceitual:](./13-projeto_final_2/) Envolveu a elaboração de uma proposta técnica para um cliente fictício, focando na criação de uma arquitetura lógica de rede segura e segmentada, com justificativas técnicas e comunicação executiva adequada ao cenário corporativo.
-
-Ambas as opções seguem a mesma estrutura de documentação e podiam ser entregues em formato `.md` ou `.pdf`.
+Esta aula foi sobre documentação técnica profissional e não houve a realização de uma laboratório prático.
