@@ -81,6 +81,18 @@ Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegura
   - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
   - Open Vulnerability Assessment System (OpenVAS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_vas.png" alt="open_vas" width="auto" height="25">
   - sha256sum   <img src="" alt="sha256sum" width="auto" height="25">
+- Cryptography:
+  - GNU Privacy Guard (GPG)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gpg.png" alt="gpg" width="auto" height="25">
+  - GNU Privacy Guard (GnuPG)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gnupg.png" alt="gnupg" width="auto" height="25">
+  - GPG Suite   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gpg_suite.jpeg" alt="gpg_suite" width="auto" height="25">
+  - HashTab   <img src="" alt="hash_tab" width="auto" height="25">
+  - keys.openpgp   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/keys_openpgp.svg" alt="keys_openpgp" width="auto" height="25">
+  - Kleopatra   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kleopatra.png" alt="kleopatra" width="auto" height="25">
+  - Online Tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/online_tools.svg" alt="online_tools" width="auto" height="25">
+  - Pretty Good Privacy (PGP)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pgp.jpg" alt="pgp" width="auto" height="25">
+  - PGP Desktop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pgp_desktop.jpg" alt="pgp_desktop" width="auto" height="25">
+  - sha256sum   <img src="" alt="sha256sum" width="auto" height="25">
+  - WinHasher   <img src="" alt="win_hasher" width="auto" height="25">
 
 ---
 
@@ -128,6 +140,8 @@ Para executar os arquivos e iniciar o ambiente de laboratório, a sequência de 
 - `docker ps` e `docker network ls`: Verificação dos containers ativos e das redes existentes no ambiente.
 - `docker exec -it kali /bin/bash`: Acesso a um container em execução. Basta substituir `kali` pelo nome do container que se deseja acessar.
 - `docker compose down`: Encerramento do ambiente. Assim como na inicialização, este comando deve ser executado na pasta onde se encontra o arquivo `docker-compose.yml`.
+- `docker system prune -f`: Remoção containers parados, redes não usadas, imagens dangling (imagens sem tags) e caches de build.
+- `docker system prune -a`: Remoção containers parados, redes não usadas, imagens dangling (imagens sem tags) e caches de build, além de remoção de todas as imagens não usadas por containers.
 
 Os laboratórios de cibersegurança são organizados com máquinas de ataque, geralmente uma **Kali Linux**, e máquinas alvo ou de defesa, que são os sistemas onde os ataques são realizados. Pode haver múltiplas máquinas de cada tipo, sendo comum que algumas máquinas de defesa sejam propositalmente vulneráveis, incluindo aplicações web criadas para testes. Como o ambiente é simulado via **Docker**, termos como servidor, máquina, container ou host frequentemente se referem aos containers que representam as máquinas simuladas. Além disso, é importante ter em mente que existem outras duas camadas no ambiente: a máquina física, no caso meu computador pessoal **Windows**, e a máquina virtual fornecida pela **AWS** ou pelo **Play With Docker (PWD)**, que hospeda e executa os containers do **Docker**.
 
@@ -740,7 +754,7 @@ Obs.: Laboratório registrado como 5, mas documento como 7 e referente a aula 6.
 
 Este laboratório foi bastante interessante por introduzir o **Wireshark**, uma das ferramentas mais importantes para profissionais de cibersegurança. Com ele, foi possível capturar e analisar o tráfego de rede em um ambiente simples, composto por dois containers: a máquina de ataque (**Kali Linux**) e um servidor web básico. O **Wireshark** foi instalado na máquina host, que para usuários do **WSL** correspondia à própria máquina física. No meu caso, como utilizei uma instância do **Amazon EC2**, o processo foi diferente, já que a imagem da instância possuía apenas CLI e não incluía ambiente gráfico. Assim, foi necessário instalar o **tshark**, a versão em linha de comando do **Wireshark**. Ainda assim, também instalei o **Wireshark** em minha máquina física **Windows**, a fim de explorar sua interface gráfica e testá-lo de outra forma, sem recorrer aos containers **Docker**.
 
-O **Wireshark** foi baixado do site oficial e instalado junto com a ferramenta **Npcap**, responsável por permitir a captura de pacotes na rede. Em máquinas **Linux** com interface gráfica, a instalação pode ser feita com os comandos `sudo apt update` e `sudo apt install wireshark`. Já em sistemas apenas com linha de comando, como a instância **EC2**, foi necessário instalar o **tshark** utilizando os mesmos comandos, substituindo apenas o pacote (`sudo apt install tshark`). Durante a instalação, foi solicitado se usuários não-superusuário deveriam ter permissão para capturar pacotes, o que foi confirmado com `Yes`. Para usar o **Wireshark** sem `sudo`, foi preciso adicionar o usuário ao grupo `wireshark` com `sudo usermod -a -G wireshark $USER`. Por fim, foi necessário realizar logout e login novamente, ou reiniciar a instância, para que as alterações tivessem efeito.
+O **Wireshark** foi baixado do site oficial e instalado junto com a ferramenta **Npcap**, responsável por permitir a captura de pacotes na rede. Em máquinas **Linux** com interface gráfica, a instalação pode ser feita com os comandos `sudo apt update` e `sudo apt install wireshark`. Já em sistemas apenas com linha de comando, como a instância **EC2**, foi necessário instalar o **tshark** utilizando os mesmos comandos, substituindo apenas o pacote (`sudo apt install tshark`). Durante a instalação, foi solicitado se usuários não-superusuário deveriam ter permissão para capturar pacotes, o que foi confirmado com `Yes`. Para usar o **Wireshark** sem `sudo`, foi preciso adicionar o usuário ao grupo `wireshark` com `sudo usermod -a -G wireshark $USER` e verificar se foi adicionado com o comando `cat /etc/group`. Por fim, foi necessário realizar logout e login novamente, ou reiniciar a instância, para que as alterações tivessem efeito.
 
 <details><summary>Verificação de Autenticidade do <strong>Wireshark</strong></summary>
   <br>
@@ -770,16 +784,16 @@ O **Wireshark** foi baixado do site oficial e instalado junto com a ferramenta *
 
 Após a instalação, iniciou-se o processo de captura de tráfego com o **Wireshark** no host, acessando a interface gráfica da ferramenta. Na tela inicial, foi exibida uma lista de interfaces de rede disponíveis, como `Wi-Fi`, `Ethernet`, `lo` (Loopback), `Docker Desktop`, entre outras. Nesse momento, foi necessário identificar e selecionar a interface de rede que estava sendo utilizada para conexão com a internet. Essa interface geralmente apresentava um gráfico de atividade (ondas) ou um alto número de pacotes sendo transferidos. No caso da máquina física, a interface utilizada foi a `Ethernet`, que foi selecionada para iniciar a captura de pacotes. Imediatamente, o tráfego em tempo real da máquina passou a ser exibido.
 
-No caso da máquina host dos containers **Docker**, tratava-se de uma instância do **Amazon EC2**, onde foi instalado apenas o **tshark**, a versão em linha de comando do **Wireshark**. Nesse ambiente, primeiro foi necessário listar as interfaces disponíveis com o comando `tshark -D`. Para iniciar a captura, utilizava-se o comando `tshark -i eth0`, passando o nome da interface ou seu número na lista (`tshark -i 1`). A interface escolhida precisava ser a responsável pela conexão com a internet, que neste caso era a `eth0`. A imagem 22 mostra que o processo de captura de tráfego nessa interface foi iniciado com sucesso, imprimindo na tela cada pacote que passava por ela.
+No caso da máquina host dos containers **Docker**, tratava-se de uma instância do **Amazon EC2**, na qual foi instalado apenas o **tshark**, versão em linha de comando do **Wireshark**. Nesse ambiente, o primeiro passo foi listar as interfaces disponíveis com o comando `tshark -D`. Em seguida, foi necessário identificar qual interface de rede possuía conexão com a internet. Para isso, executou-se o comando `ip a`, que permitiu verificar que a interface `ens5` era a responsável pela conectividade. Essa `ens5` corresponde a uma nomenclatura do sistema operacional **Linux** para a interface de rede elástica (**Elastic Network Interface (ENI)**) associada à instância. A captura de tráfego foi iniciada com o comando `tshark -i ens5`, sendo possível também especificar o número da interface na lista (`tshark -i 1`). A imagem 22 mostra o processo de captura em andamento nessa interface, exibindo em tempo real os pacotes que passavam por ela.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img22.png" alt="img22"><br>
     <figcaption>Imagem 22.</figcaption>
 </figure></div><br>
 
-No entanto, o tráfego que seria analisado ainda estava sendo gerado, e ao encerrar o comando, todo o tráfego capturado, incluindo o gerado, seria perdido. Para evitar isso e permitir filtragem posterior, a captura foi encerrada com `Ctrl + C`. Em seguida, uma nova captura foi iniciada com o comando `tshark -i eth0 -w captura_completa.pcap`, que salvava o tráfego no arquivo `captura_completa.pcap` em vez de exibi-lo na tela. Apesar disso, a CLI permanecia aguardando a interrupção do comando, que era realizada com `Ctrl + C`. Com o arquivo gerado, seria possível aplicar filtros diretamente nele para análise detalhada posteriormente.
+No entanto, o tráfego que seria analisado ainda seria gerado, e ao encerrar o comando, todo o tráfego capturado, incluindo o gerado, seria perdido. Para evitar isso e permitir filtragem posterior, a captura foi encerrada com `Ctrl + C`. Em seguida, uma nova captura foi iniciada com o comando `tshark -i ens5 -w captura1.pcap`, que salvava o tráfego no arquivo `captura1.pcap` em vez de exibi-lo na tela. Apesar disso, a CLI permanecia aguardando a interrupção do comando, que era realizada com `Ctrl + C`. Com o arquivo gerado, seria possível aplicar filtros diretamente nele para análise detalhada posteriormente.
 
-Com a captura em andamento, foi gerado tráfego a partir dos containers. O container do servidor web foi acessado via navegador, uma vez que havia um mapeamento de portas (port forward) entre a porta `8080` do container e a porta `8080` do host, no caso, a instância **Amazon EC2**. Assim, a aplicação pôde ser acessada pelo navegador da máquina física utilizando o IP ou DNS público da instância na porta `8080` (`site`), desde que existisse uma regra de entrada no grupo de segurança permitindo a comunicação a partir do IP público da máquina física. Após acessar a página inicial da aplicação, uma requisição do tipo GET foi enviada para a página secreta `site/secret`. Na página de login (`site/login_form`), foi feita uma requisição GET para carregá-la e uma requisição POST para enviar o formulário de autenticação. A imagem 23 mostra o acesso à página inicial, a imagem 24 exibe o acesso à página secreta e a imagem 25 evidencia o acesso à página de login.
+Com a captura em andamento, foi gerado tráfego a partir dos containers. O container do servidor web foi acessado via navegador, uma vez que havia um mapeamento de portas (port forward) entre a porta `8080` do container e a porta `8080` do host, no caso, a instância **Amazon EC2**. Assim, a aplicação pôde ser acessada pelo navegador da máquina física utilizando o IP ou DNS público da instância na porta `8080`, desde que existisse uma regra de entrada no grupo de segurança permitindo a comunicação a partir do IP público da máquina física. Após acessar a página inicial da aplicação, uma requisição do tipo GET foi enviada para a página secreta `site/secret`. Na página de login (`site/login_form`), foi feita uma requisição GET para carregá-la e uma requisição POST para enviar o formulário de autenticação. A imagem 23 mostra o acesso à página inicial, a imagem 24 exibe o acesso à página secreta e a imagem 25 evidencia o acesso à página de login.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img23.png" alt="img23"><br>
@@ -803,16 +817,16 @@ De volta a instância EC2, o container `kali-aula7` foi acessado com o comando `
     <figcaption>Imagem 26.</figcaption>
 </figure></div><br>
 
-De volta ao **tshark**, a captura de tráfego foi interrompida utilizando o atalho `Ctrl + C`, encerrando a execução do comando `tshark -i eth0 -w captura_completa.pcap`. Todo o tráfego capturado, incluindo o gerado, foi armazenado no arquivo `captura_completa.pcap`. O próximo passo foi a análise dos pacotes contidos nesse arquivo.
+De volta ao **tshark**, a captura de tráfego foi interrompida utilizando o atalho `Ctrl + C`, encerrando a execução do comando `tshark -i ens5 -w captura1.pcap`. Todo o tráfego capturado, incluindo o gerado, foi armazenado no arquivo `captura1.pcap`. O próximo passo foi a análise dos pacotes contidos nesse arquivo.
 
 No **Wireshark**, ou seja, na versão com interface gráfica, o painel superior correspondia ao `Painel de Lista de Pacotes`, onde todos os pacotes capturados eram exibidos com informações resumidas. O painel inferior esquerdo, chamado `Painel de Detalhes do Pacote`, mostrava a estrutura hierárquica do pacote selecionado, exibindo as camadas: Ethernet, IP, TCP, HTTP, DNS, ICMP, entre outras. Já o painel inferior direito, `Painel de Bytes do Pacote`, apresentava o conteúdo bruto do pacote em formato hexadecimal e ASCII. Na barra de filtros de exibição, localizada logo abaixo da barra de ferramentas do **Wireshark**, era possível aplicar filtros para análise específica dos pacotes.
 
-No host (instância **Amazon EC2**), o tráfego capturado estava armazenado no arquivo `captura_completa.pcap`, sendo necessário apenas consultá-lo aplicando os filtros desejados. Para isso, os seguintes comandos foram executados:
-- `tshark -r captura_completa.pcap -Y "tcp and tcp.port == 8080"`: filtrava apenas o tráfego TCP na porta 8080, incluindo o handshake, permitindo analisar todas as conexões da aplicação web.
-- `tshark -r captura_completa.pcap -Y "http and tcp.port == 8080"`: filtrava apenas os pacotes HTTP na porta 8080, mostrando requisições e respostas da aplicação web.  
-- `tshark -r captura_completa.pcap -Y 'http.request.method == "POST" and tcp.port == 8080'`: filtrava apenas requisições HTTP do tipo POST na porta 8080, úteis para analisar envios de formulários ou login.  
-- `tshark -r captura_completa.pcap -Y "icmp"`: filtrava pacotes ICMP, permitindo visualizar tráfego de ping e mensagens de controle de rede.  
-- `tshark -r captura_completa.pcap -Y "dns"`: filtrava pacotes DNS, mostrando consultas e respostas de resolução de nomes de domínio.
+No host (instância **Amazon EC2**), o tráfego capturado estava armazenado no arquivo `captura1.pcap`, sendo necessário apenas consultá-lo aplicando os filtros desejados. Para isso, os seguintes comandos foram executados:
+- `tshark -r captura1.pcap -Y "tcp and tcp.port == 8080"`: filtrava apenas o tráfego TCP na porta 8080, incluindo o handshake, permitindo analisar todas as conexões da aplicação web. 
+- `tshark -r captura1.pcap -Y "http and tcp.port == 8080"`: filtrava apenas os pacotes HTTP na porta 8080, mostrando requisições e respostas da aplicação web.  
+- `tshark -r captura1.pcap -Y 'http.request.method == "POST" and tcp.port == 8080'`: filtrava apenas requisições HTTP do tipo POST na porta 8080, úteis para analisar envios de formulários ou login.  
+- `tshark -r captura1.pcap -Y "icmp"`: filtrava pacotes ICMP, permitindo visualizar tráfego de ping e mensagens de controle de rede. Esse não exibiu nada, pois como essa comunicação era entre os dois containers, o tráfego foi interno e utilizou outra interface de rede, provavelmente a `docker0`. 
+- `tshark -r captura1.pcap -Y "dns"`: filtrava pacotes DNS, mostrando consultas e respostas de resolução de nomes de domínio.
 
 As imagens 27 e 28 mostram o conteúdo filtrado do tráfego capturado, correspondente às interações geradas pelos dois containers: o servidor web e o **Kali Linux**.
 
@@ -829,38 +843,38 @@ As imagens 27 e 28 mostram o conteúdo filtrado do tráfego capturado, correspon
 Após o primeiro grupo de filtros, foram aplicados filtros mais detalhados para identificar o tráfego gerado anteriormente e analisar pacotes específicos. Abaixo está a explicação dos filtros realizados:
 - **Filtro 1 — Handshake TCP (pacote SYN):**
   - **Comando na CLI**:
-    - `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -V`: Esse comando filtrava o primeiro pacote do handshake TCP, correspondente ao *SYN (synchronize)*. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
-    - Caso fosse necessário filtrar apenas campos específicos, o comando poderia ser: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -T fields -e frame.number -e ip.src -e ip.dst -e tcp.flags -e tcp.seq`.
-    - Para destacar somente as flags TCP, o comando foi: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.
+    - `tshark -r captura1.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -V`: Esse comando filtrava o primeiro pacote do handshake TCP, correspondente ao *SYN (synchronize)*. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+    - Caso fosse necessário filtrar apenas campos específicos, o comando poderia ser: `tshark -r captura1.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -T fields -e frame.number -e ip.src -e ip.dst -e tcp.flags -e tcp.seq`.
+    - Para destacar somente as flags TCP, o comando foi: `tshark -r captura1.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.
   - **Análise na GUI**: 
     - No **Wireshark**, ao expandir a seção `Transmission Control Protocol` nos detalhes do pacote, era possível observar que a flag `[SYN]` estava marcada. Além disso, clicando com o botão direito no primeiro pacote e selecionando `Follow > TCP Stream`, era possível acompanhar todos os pacotes desse handshake, bem como a conversa HTTP subsequente, em uma única janela.
 - **Filtro 2 — Handshake TCP (pacote SYN-ACK):**  
   - **Comando na CLI**:  
-    - `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 1 and tcp.port == 8080" -V`: Esse comando filtrava o segundo pacote do handshake TCP, correspondente ao *SYN-ACK (synchronize-acknowledge)*. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
-    - Para retornar apenas os campos específicos, o comando poderia ser: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 1 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.  
+    - `tshark -r captura1.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 1 and tcp.port == 8080" -V`: Esse comando filtrava o segundo pacote do handshake TCP, correspondente ao *SYN-ACK (synchronize-acknowledge)*. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+    - Para retornar apenas os campos específicos, o comando poderia ser: `tshark -r captura1.pcap -Y "tcp.flags.syn == 1 and tcp.flags.ack == 1 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.  
   - **Análise na GUI**:  
     - No **Wireshark**, ao expandir a seção `Transmission Control Protocol` nos detalhes do pacote, era possível observar que as flags `[SYN, ACK]` estavam marcadas. Esse pacote representava a resposta do servidor ao cliente, confirmando a solicitação de conexão e preparando o próximo passo do handshake.  
 - **Filtro 3 — Handshake TCP (pacote ACK final):**  
   - **Comando na CLI**:  
-    - `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 0 and tcp.flags.ack == 1 and tcp.port == 8080" -V`: Esse comando filtrava o terceiro pacote do handshake TCP, correspondente ao *ACK (acknowledge)* final enviado pelo cliente ao servidor. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
-    - Para retornar apenas os campos específicos, o comando poderia ser: `tshark -r captura_completa.pcap -Y "tcp.flags.syn == 0 and tcp.flags.ack == 1 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.  
+    - `tshark -r captura1.pcap -Y "tcp.flags.syn == 0 and tcp.flags.ack == 1 and tcp.port == 8080" -V`: Esse comando filtrava o terceiro pacote do handshake TCP, correspondente ao *ACK (acknowledge)* final enviado pelo cliente ao servidor. O argumento `-V` imprimia toda a árvore de protocolos decodificados, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+    - Para retornar apenas os campos específicos, o comando poderia ser: `tshark -r captura1.pcap -Y "tcp.flags.syn == 0 and tcp.flags.ack == 1 and tcp.port == 8080" -T fields -e tcp.flags -e tcp.flags.syn -e tcp.flags.ack`.  
   - **Análise na GUI**:  
     - No **Wireshark**, ao expandir a seção `Transmission Control Protocol` nos detalhes do pacote, era possível observar que a flag `[ACK]` estava marcada. Esse pacote finalizava o processo de estabelecimento da conexão, confirmando o *three-way handshake* entre cliente e servidor.  
 - **Filtro 4 — Requisições HTTP GET:**  
   - **Comando na CLI**:  
-    - `tshark -r captura_completa.pcap -Y 'http.request.method == "GET" and tcp.port == 8080' -V`: Esse comando filtrava apenas requisições HTTP do tipo `GET` na porta `8080`. O argumento `-V` imprimia toda a árvore de protocolos decodificados, incluindo Ethernet, IP, TCP e HTTP, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
-  - Para retornar apenas campos específicos, o comando foi: `tshark -r captura_completa.pcap -Y 'http.request.method == "GET" and tcp.port == 8080' -T fields -e http.host -e http.user_agent -e http.request.uri -e http.accept_language`, onde `http.host` mostrava o host da requisição, `http.user_agent` indicava o navegador ou cliente, `http.request.uri` trazia o path acessado, e `http.accept_language` exibe o idioma preferencial. Assim, era só procurar um pacote com path `/` ou `/secret`. 
+    - `tshark -r captura1.pcap -Y 'http.request.method == "GET" and tcp.port == 8080' -V`: Esse comando filtrava apenas requisições HTTP do tipo `GET` na porta `8080`. O argumento `-V` imprimia toda a árvore de protocolos decodificados, incluindo Ethernet, IP, TCP e HTTP, similar ao que é exibido ao expandir pacotes no **Wireshark**.  
+  - Para retornar apenas campos específicos, o comando foi: `tshark -r captura1.pcap -Y 'http.request.method == "GET" and tcp.port == 8080' -T fields -e http.host -e http.user_agent -e http.request.uri -e http.accept_language`, onde `http.host` mostrava o host da requisição, `http.user_agent` indicava o navegador ou cliente, `http.request.uri` trazia o path acessado, e `http.accept_language` exibe o idioma preferencial. Assim, era só procurar um pacote com path `/` ou `/secret`. 
   - **Análise na GUI**:  
     - No **Wireshark**, ao localizar e selecionar um pacote com path `/` ou `/secret`, era expandido o protocolo **Hypertext Transfer Protocol** no painel de detalhes, permitindo observar os cabeçalhos da requisição como `Host`, `User-Agent` e `Accept-Language`.  
 - **Filtro 5 — Requisição HTTP POST (envio de formulário):**  
   - **Comando na CLI**:  
-    - `tshark -r captura_completa.pcap -Y 'http.request.method == "POST" and tcp.port == 8080' -V`: Esse comando filtrava apenas requisições HTTP do tipo `POST` na porta `8080`. O argumento `-V` imprimia toda a árvore de protocolos decodificados, mostrando detalhadamente cada camada, como Ethernet, IP, TCP e HTTP.  
-  - Para retornar apenas campos específicos, o comando foi: `tshark -r captura_completa.pcap -Y 'http.request.method == "POST" and tcp.port == 8080 and http.request.uri == "/do_login"' -T fields -e http.file_data`, que exibia apenas o conteúdo enviado pelo formulário no path `/do_login`, incluindo campos como `username` e `password`.
+    - `tshark -r captura1.pcap -Y 'http.request.method == "POST" and tcp.port == 8080' -V`: Esse comando filtrava apenas requisições HTTP do tipo `POST` na porta `8080`. O argumento `-V` imprimia toda a árvore de protocolos decodificados, mostrando detalhadamente cada camada, como Ethernet, IP, TCP e HTTP.  
+  - Para retornar apenas campos específicos, o comando foi: `tshark -r captura1.pcap -Y 'http.request.method == "POST" and tcp.port == 8080 and http.request.uri == "/do_login"' -T fields -e http.file_data`, que exibia apenas o conteúdo enviado pelo formulário no path `/do_login`, incluindo campos como `username` e `password`. O conteúdo retornado estava em hexadecimal e foi convertido para ASCII com o comando `echo 757365726e616d653d74657374757365722670617373776f72643d7465737470617373 | xxd -r -p`
   - **Análise na GUI**:  
     - No **Wireshark**, ao localizar o pacote com path `/do_login`, era expandida a seção `HTML Form URL Encoded` no painel de detalhes, permitindo visualizar o `username` e o `password` enviados em texto claro. Esse exemplo demonstra por que nunca se deve usar HTTP para enviar informações sensíveis em ambientes reais. Em produção, sempre deve ser utilizado HTTPS (HTTP seguro), que criptografa o tráfego, impedindo que atacantes vejam os dados em texto claro. Para tráfego HTTPS, o **Wireshark** só exibiria os pacotes criptografados.
 - **Filtro 6 — Pacotes DNS:**  
   - **Comando na CLI**:  
-    - `tshark -r captura_completa.pcap -Y "dns" -T fields -e dns.qry.name -e dns.a`: Esse comando filtrava pacotes DNS, exibindo as consultas de nomes de domínio (`dns.qry.name`) e suas respectivas respostas de endereço IP (`dns.a`).  
+    - `tshark -r captura1.pcap -Y "dns" -T fields -e dns.qry.name -e dns.a`: Esse comando filtrava pacotes DNS, exibindo as consultas de nomes de domínio (`dns.qry.name`) e suas respectivas respostas de endereço IP (`dns.a`).  
   - **Análise na GUI**:  
     - No **Wireshark**, foram localizadas as requisições do **nslookup** do **Kali Linux**. Selecionando um pacote de consulta e expandindo `Domain Name System (query)` no painel de detalhes, era possível visualizar o nome do domínio consultado. Para os pacotes de resposta, expandindo `Domain Name System (response)` encontrava-se o endereço IP resolvido para o domínio. O argumento `-T fields -e dns.qry.name -e dns.a` no **tshark** reproduzia exatamente essa filtragem.
 
@@ -876,13 +890,21 @@ A imagem 29 exibe o output dos três primeiros filtros, enquanto a imagem 30 mos
     <figcaption>Imagem 30.</figcaption>
 </figure></div><br>
 
-Para o desafio proposto, foi utilizado o **Wireshark** na máquina física **Windows**, sem uso de containers **Docker**. Na GUI do **Wireshark**, a captura do tráfego da interface de rede conectada à internet foi iniciada. Em seguida, um site HTTP foi acessado pelo navegador para gerar tráfego. O processo de captura foi pausado e aplicado o seguinte filtro: `ip.addr == 192.168.1.3 && http.request.method == GET`. Esse filtro listava todos os pacotes com requisição HTTP do tipo `GET` originados da máquina física, já que esse era o seu IP privado. 
+Para o desafio proposto, foi utilizado o **Wireshark** na máquina física **Windows**, sem o uso de containers **Docker**. Na GUI do **Wireshark**, a captura do tráfego da interface de rede conectada à internet foi iniciada. Em seguida, um site HTTP foi acessado pelo navegador para gerar tráfego. Neste caso, a aplicação web fornecida pelos containers foi utilizada apenas para gerar tráfego entre a máquina física e o host dos containers (instância EC2). Após a captura, o processo foi pausado e aplicado o seguinte filtro: `ip.addr == 192.168.1.3 && http.request.method == GET`. Esse filtro exibia todos os pacotes com requisição HTTP do tipo `GET` originados da máquina física, considerando que esse era seu IP privado. A imagem 31 apresenta a captura e a filtragem realizadas com sucesso.
 
-Vários pacotes foram exibidos, sendo possível localizar aquele cujo path correspondia ao path utilizado no domínio consultado no navegador. O pacote encontrado possuía o IP público do site acessado, e outros pacotes subsequentes para o mesmo IP também foram enviados, o que é esperado, pois sites normalmente geram múltiplas requisições adicionais para carregar corretamente todos os recursos da página. Ao selecionar o primeiro pacote e expandir a seção `Hypertext Transfer Protocol` no painel de detalhes, foi possível identificar o campo `User-Agent`. Esse campo do cabeçalho HTTP indica qual cliente está fazendo a requisição, fornecendo informações como: navegador ou software utilizado (Chrome, Firefox, curl, Postman, etc.), sistema operacional (Windows, Linux, macOS) e versão do navegador ou do motor de renderização. Essas informações são úteis nas etapas de reconhecimento e OSINT.
+<div align="center"><figure>
+    <img src="../0-aux/md1-img31.png" alt="img31"><br>
+    <figcaption>Imagem 31.</figcaption>
+</figure></div><br>
 
-A última etapa do desafio solicitou capturar e analisar o tráfego DNS. Apesar de ter sido gerado o tráfego pelo container `kali-aula7`, para facilitar a compreensão da GUI do **Wireshark**, optou-se por gerar o tráfego pela própria máquina física **Windows**. Dessa forma, a captura de tráfego foi novamente iniciada para a mesma interface de rede. No **Windows PowerShell** aberto no **Windows Terminal**, foi executado o comando `nslookup kensei.seg.br` para gerar o tráfego DNS. No **Wireshark**, a captura foi interrompida e aplicado o filtro `dns.qry.name == "kensei.seg.br" || dns.resp.name == "kensei.seg.br"` para visualizar simultaneamente consultas e respostas para o domínio `kensei.seg.br`. Quatro pacotes foram filtrados: dois de consultas e dois de respostas. Um par consulta/resposta foi do tipo *A*, que resolvia o domínio para um endereço IPv4. O terceiro pacote foi do tipo *AAAA*, que resolvia o domínio para um endereço IPv6. Por fim, o quarto pacote foi do tipo *SOA (Start of Authority)*, que fornecia informações sobre o servidor DNS autoritativo do domínio, incluindo o responsável pelo domínio, o número de série da zona e timers de atualização.
+Vários pacotes foram exibidos, todos com requisição `GET` para a página principal. Contudo, dependendo do site acessado, requisições subsequentes podiam ser realizadas para carregar todos os recursos da página. Ao selecionar o primeiro pacote e expandir a seção `Hypertext Transfer Protocol` no painel de detalhes, foi possível identificar o campo `User-Agent`. Esse campo do cabeçalho HTTP indica qual cliente está fazendo a requisição, fornecendo informações como navegador ou software utilizado (Chrome, Firefox, curl, Postman, etc.), sistema operacional (Windows, Linux, macOS) e versão do navegador ou do motor de renderização. Essas informações são especialmente úteis nas etapas de reconhecimento e em atividades de OSINT.
 
-Por motivos de segurança, optou-se por não registrar prints durante o desenvolvimento deste desafio. Como era a primeira experiência com o **Wireshark**, uma ferramenta de análise de rede, e a captura estava sendo realizada no meu próprio ambiente, não me sentia seguro em compartilhar telas, pois ainda não possuía domínio completo das informações exibidas. Dados sensíveis poderiam ser inadvertidamente expostos, facilitando potenciais ataques à minha máquina. Futuramente, após realizar cursos mais aprofundados de **Wireshark** e adquirir maior familiaridade com a ferramenta, será possível compartilhar algumas imagens de forma segura.
+A última etapa do desafio solicitou capturar e analisar o tráfego DNS. Apesar de ter sido gerado o tráfego pelo container `kali-aula7`, para facilitar a compreensão da GUI do **Wireshark**, optou-se por gerar o tráfego pela própria máquina física **Windows**. Dessa forma, a captura de tráfego foi novamente iniciada para a mesma interface de rede. No **Windows PowerShell** aberto no **Windows Terminal**, foi executado o comando `nslookup kensei.seg.br` para gerar o tráfego DNS. No **Wireshark**, a captura foi interrompida e aplicado o filtro `dns.qry.name == "kensei.seg.br" || dns.resp.name == "kensei.seg.br"` para visualizar simultaneamente consultas e respostas para o domínio `kensei.seg.br`. Quatro pacotes foram filtrados: dois de consultas e dois de respostas. Um par consulta/resposta foi do tipo *A*, que resolvia o domínio para um endereço IPv4. O terceiro pacote foi do tipo *AAAA*, que resolvia o domínio para um endereço IPv6. Por fim, o quarto pacote foi do tipo *SOA (Start of Authority)*, que fornecia informações sobre o servidor DNS autoritativo do domínio, incluindo o responsável pelo domínio, o número de série da zona e timers de atualização. A imagem 32 exibe os resultados desse filtro.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img32.png" alt="img32"><br>
+    <figcaption>Imagem 32.</figcaption>
+</figure></div><br>
 
 <a name="item1.7"><h4>1.7 Endereçamento IP & Subnetting</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_6)
@@ -957,24 +979,24 @@ Obs.: Laboratório registrado como 6, mas documento como 8 e referente a aula 7.
 
 O laboratório da aula 7 teve como objetivo demonstrar de forma prática como o endereçamento IP e a divisão de redes (subnetting) funcionam para controlar a comunicação e segmentar ambientes. Ferramentas como **ip address (ip a)**, **Nmap** e **arp-scan** foram utilizadas para mapear a conectividade, além de compreender a diferença de performance e uso entre essas ferramentas de descoberta.
 
-Com o ambiente construído, a máquina de ataque `maquina-atacante` foi acessada utilizando o comando `docker exec -it maquina-atacante /bin/sh`. Nesse caso, em vez do shell **Bash**, foi utilizado o **SH**. Dentro do terminal do container, foram executados os comandos `ip addr` (`ip a` ou `ip address`) e `ifconfig` para listar as interfaces de rede disponíveis. A interface `eth0`, com IP `192.168.100.100`, estava conectada à rede de Visitantes, cujo CIDR era `192.168.100.0/24`. Já a interface `eth1`, com IP `172.20.10.100`, fazia parte da rede de RH, com CIDR `172.20.10.0/24`. A imagem 27 abaixo ilustra as interfaces de rede configuradas nesse container.
+Com o ambiente construído, a máquina de ataque `maquina-atacante` foi acessada utilizando o comando `docker exec -it maquina-atacante /bin/sh`. Nesse caso, em vez do shell **Bash**, foi utilizado o **SH**. Dentro do terminal do container, foram executados os comandos `ip addr` (`ip a` ou `ip address`) e `ifconfig` para listar as interfaces de rede disponíveis. A interface `eth0`, com IP `192.168.100.100`, estava conectada à rede de Visitantes, cujo CIDR era `192.168.100.0/24`. Já a interface `eth1`, com IP `172.20.10.100`, fazia parte da rede de RH, com CIDR `172.20.10.0/24`. A imagem 33 abaixo ilustra as interfaces de rede configuradas nesse container.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img27.png" alt="img27"><br>
-    <figcaption>Imagem 27.</figcaption>
+    <img src="../0-aux/md1-img33.png" alt="img33"><br>
+    <figcaption>Imagem 33.</figcaption>
 </figure></div><br>
 
 O passo seguinte foi identificar os outros hosts presentes em ambas as redes. Para isso, foram utilizados dois softwares diferentes: o **Nmap** e o **arp-scan**. O **Nmap** é uma ferramenta padrão, versátil e confiável para varredura de redes, enquanto o **arp-scan** é especializado em redes locais e extremamente rápido, pois realiza varredura apenas pelo protocolo ARP. Dessa forma, os seguintes comandos foram executados:  
-- `nmap -sn -T4 192.168.100.0/24`: realizava uma varredura de ping (*ping sweep*) na rede de Visitantes (`192.168.100.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
-- `nmap -sn -T4 172.20.10.0/24`: realizava uma varredura de ping (*ping sweep*) na rede de RH (`172.20.10.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
+- `nmap -sn -T4 192.168.100.0/24`: realizava uma varredura de ping (*ping scan*/*ping sweep*) na rede de Visitantes (`192.168.100.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
+- `nmap -sn -T4 172.20.10.0/24`: realizava uma varredura de ping (*ping scan*/*ping sweep*) na rede de RH (`172.20.10.0/24`) para identificar hosts ativos, sem tentar portas, utilizando a política de tempo `T4` para acelerar o processo.  
 - `arp-scan -I eth0 --localnet`: varria a rede de Visitantes conectada à interface `eth0`, enviando pacotes ARP para descobrir todos os dispositivos ativos rapidamente.  
 - `arp-scan -I eth1 --localnet`: realizava a varredura ARP na rede conectada à interface `eth1`, identificando rapidamente hosts na rede de RH.
 
-A imagem 28 exibe os resultados obtidos tanto com comandos do **Nmap** quanto do **arp-scan**. É possível observar que ambos os softwares identificaram os hosts `.10` e `.30`, correspondentes, respectivamente, ao servidor de RH e à impressora.
+A imagem 34 exibe os resultados obtidos tanto com comandos do **Nmap** quanto do **arp-scan**. É possível observar que ambos os softwares identificaram os hosts `.10` e `.30`, correspondentes, respectivamente, ao servidor de RH e à impressora.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img28.png" alt="img28"><br>
-    <figcaption>Imagem 28.</figcaption>
+    <img src="../0-aux/md1-img34.png" alt="img34"><br>
+    <figcaption>Imagem 34.</figcaption>
 </figure></div><br>
 
 Durante a execução, foi observado que o **arp-scan** era significativamente mais rápido. Isso ocorre porque o **arp-scan** envia pacotes ARP para todos os IPs da sub-rede. Como o ARP é um protocolo de camada 2, ele se comunica diretamente com as placas de rede na rede local, sem precisar passar por camadas mais complexas do modelo OSI, tornando a resposta extremamente rápida. Por outro lado, o **Nmap** com a opção `-sn` realiza um processo mais complexo: envia múltiplos pacotes para garantir a detecção, incluindo ICMP echo requests (ping), pacotes TCP para as portas 80 e 443, além de ARP requests. Toda essa lógica adicional, somada à espera por timeouts de pacotes que não são ARP, torna o processo do **Nmap** mais demorado em comparação ao **arp-scan**.
@@ -1071,38 +1093,37 @@ O tema deste laboratório foi a configuração e exploração de uma das ferrame
 Antes de partir para a prática, é fundamental compreender a importância dessa ferramenta. O **Kali Linux** é uma distribuição de **Linux** baseada em **Debian**, desenvolvida especificamente para tarefas de segurança e testes de penetração (*pentests*). Ele funciona como um verdadeiro canivete suíço, reunindo centenas de ferramentas voltadas para mapeamento de redes, identificação de vulnerabilidades, exploração de falhas, análise de senhas e muito mais. No uso cotidiano, o **Kali Linux** é amplamente operado pela linha de comando (CLI), já que, no mundo real, o acesso a um sistema comprometido ocorre geralmente por meio de um terminal e não de uma área de trabalho gráfica. Além disso, a CLI proporciona maior leveza e velocidade na execução de comandos, além de facilitar a automação de tarefas, permitindo que scripts de ataque ou defesa sejam facilmente aplicados no terminal.
 
 Após clonar o repositório do curso, conforme descrito anteriormente na seção de desenvolvimento ([development](#Development)), a pasta do laboratório foi acessada com o comando  
-`cd formacao-cybersec/modulo2-defesa-monitoramento/lab_7`. Dentro dela, havia duas subpastas, cada uma correspondente a um ambiente **Docker**. O primeiro ambiente era responsável por subir o container `kali_cli_kensei`. Para isso, executou-se o comando `docker compose up -d` dentro da pasta correspondente. Em seguida, o acesso ao container foi feito com:  
-`docker exec -it kali_cli_kensei /bin/bash`. Note que, após a execução desse comando, o prompt mudou para `root@...:/#`.
+`cd formacao-cybersec/modulo2-defesa-monitoramento/lab_7`. Dentro dela, havia duas subpastas, cada uma correspondente a um ambiente **Docker**. O primeiro ambiente era responsável por subir o container `kali_cli_kensei`. Para isso, executou-se o comando `docker compose up -d` dentro da pasta correspondente (`cd kali-cli`). Em seguida, o acesso ao container foi feito com: `docker exec -it kali_cli_kensei /bin/bash`. Note que, após a execução desse comando, o prompt mudou para `root@...:/#`.
 
-No container, foram executados alguns comandos básicos de **Linux**, conforme listagem abaixo. A imagem 30 mostra o output desses comandos, confirmando que o container **Kali Linux** com CLI foi acessado com sucesso:
+No container, foram executados alguns comandos básicos de **Linux**, conforme listagem abaixo. A imagem 35 mostra o output desses comandos, confirmando que o container **Kali Linux** com CLI foi acessado com sucesso:
 - `pwd`: exibia o diretório atual. 
 - `ls -la`: listava os arquivos e diretórios com detalhes e itens ocultos.
 - `cd /root`: alterava o diretório para a pasta `/root`. 
 - `mkdir espaco_de_treino`: criava um diretório chamado `espaco_de_treino`.  
 - `echo "texto" > arquivo.txt`: criava o arquivo `arquivo.txt` com o conteúdo `texto`. 
-- `cat arquivo.txt`: mostrava o conteúdo do arquivo *arquivo.txt*.
+- `cat arquivo.txt`: mostrava o conteúdo do arquivo `arquivo.txt`.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img30.png" alt="img30"><br>
-    <figcaption>Imagem 30.</figcaption>
+    <img src="../0-aux/md1-img35.png" alt="img35"><br>
+    <figcaption>Imagem 35.</figcaption>
 </figure></div><br>
 
-O desafio, ou *Capture the Flag (CTF)*, consistia em localizar o arquivo secreto chamado `.segredo_dojo`, armazenado em uma pasta oculta configurada pelo Dockerfile. O ponto no início do nome (`.`) indicava que se tratava de um arquivo oculto, por isso foi necessário utilizar o comando `ls -la`. Esse primeiro comando revelou a existência de um diretório oculto chamado `.diretorio_secreto`, que foi acessado com `cd .diretorio_secreto`. Dentro dele, o comando `ls -la` foi novamente executado, revelando o arquivo secreto. Por fim, para visualizar o conteúdo do arquivo, foi usado o comando `cat .segredo_dojo`, conforme mostrado na imagem 31.  
+O desafio, ou *Capture the Flag (CTF)*, consistia em localizar o arquivo secreto chamado `.segredo_dojo`, armazenado em uma pasta oculta configurada pelo Dockerfile. O ponto no início do nome (`.`) indicava que se tratava de um arquivo oculto, por isso foi necessário utilizar o comando `ls -a`. Esse primeiro comando revelou a existência de um diretório oculto chamado `.diretorio_secreto`, que foi acessado com `cd .diretorio_secreto`. Dentro dele, o comando `ls -a` foi novamente executado, revelando o arquivo secreto. Por fim, para visualizar o conteúdo do arquivo, foi usado o comando `cat .segredo_dojo`, conforme mostrado na imagem 36.  
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img31.png" alt="img31"><br>
-    <figcaption>Imagem 31.</figcaption>
+    <img src="../0-aux/md1-img36.png" alt="img36"><br>
+    <figcaption>Imagem 36.</figcaption>
 </figure></div><br>
 
 Com a primeira etapa concluída, o acesso ao container foi encerrado e o ambiente foi finalizado com o comando `docker compose down`, derrubando o container. Em seguida, a pasta corrente foi alterada para o diretório do segundo ambiente com o comando `cd ../kali-gui`. A partir dessa pasta, o ambiente com interface gráfica foi implantado utilizando o comando `docker compose up -d`. Entretanto, por padrão, os containers **Docker** são *headless* (sem interface gráfica). Para possibilitar a execução de uma GUI dentro do container — neste caso, no **Kali** — foi necessário instalar um servidor gráfico virtual, como o **Xfce**, já configurado no Dockerfile da imagem. Além disso, o **tightvncserver** também foi instalado e configurado, pois ele atua como servidor VNC responsável por disponibilizar o ambiente gráfico do container para acesso remoto, permitindo que o usuário interaja com a interface do **Kali Linux** a partir da máquina host.  
 
 Com essas configurações virtuais concluídas, tornou-se possível acessar o container **Kali Linux** por meio de GUI. Contudo, esse acesso não pôde ser realizado diretamente pela máquina host em uso — a instância **Amazon EC2** —, já que ela também não possuía interface gráfica. Para contornar essa limitação, foi necessário mapear a porta do container utilizada pelo **VNC Viewer** para a mesma porta no host, permitindo o acesso a partir da máquina física **Windows**. Para isso, foi executado o comando `docker run -d -p 5901:5901 kali-vnc`, que subiu um novo container idêntico, mas agora com o *port forward* configurado. Ainda foi necessário adicionar uma regra no security group vinculado a instância permitindo tráfego nesta porta `5901` a partir do IP público da máquina física. Além disso, foi necessário adicionar uma regra no *security group* vinculado à instância, permitindo tráfego nesta porta `5901` a partir do IP público da máquina física.
 
-Na máquina física, foi necessário baixar e instalar o **VNC Viewer**. Após abrir o software, bastava inserir o IP ou DNS público da instância acrescido da porta `5901` para acessar o ambiente (`IP:5901`). Contudo, essa comunicação não é criptografada por padrão, o que representa um risco de segurança. O ideal seria criar um túnel SSH para proteger a conexão e não expor a porta da instância. Para isso, foi utilizado o comando `ssh -L 5901:localhost:5901 ubuntu@ip-da-ec2`. Esse comando estabelecia um túnel SSH da máquina física até a instância **EC2**, redirecionando a porta que o **VNC Viewer** utilizva no container. Assim, ao executar o **VNC Viewer** na máquina física apontando para `localhost:5901`, a conexão passou a ser segura. Ao acessar o ambiente pelo **VNC Viwer** da máquina física, era solicitada a senha configurada no **VNC Viewer** do container, que era `kensei` para o usuário `root`. A imagem 32 registra essa tela de login acessada.
+Na máquina física, foi necessário baixar e instalar o **VNC Viewer**. Após abrir o software, bastava inserir o IP ou DNS público da instância acrescido da porta `5901` para acessar o ambiente (`IP:5901`). Contudo, essa comunicação não é criptografada por padrão, o que representa um risco de segurança. O ideal seria criar um túnel SSH para proteger a conexão e não expor a porta da instância. Para isso, foi utilizado o comando `ssh -L 5901:localhost:5901 ubuntu@ip-da-ec2`. Esse comando estabelecia um túnel SSH da máquina física até a instância **EC2**, redirecionando a porta que o **VNC Viewer** utilizva no container. Assim, ao executar o **VNC Viewer** na máquina física apontando para `localhost:5901`, a conexão passou a ser segura. Ao acessar o ambiente pelo **VNC Viwer** da máquina física, era solicitada a senha configurada no **VNC Viewer** do container, que era `kensei` para o usuário `root`. A imagem 37 registra essa tela de login acessada.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img32.png" alt="img32"><br>
-    <figcaption>Imagem 32.</figcaption>
+    <img src="../0-aux/md1-img37.png" alt="img37"><br>
+    <figcaption>Imagem 37.</figcaption>
 </figure></div><br>
 
 No **Kali Linux** com GUI, ao clicar no menu de aplicações (o ícone do dragão do Kali), foi observado que as categorias seguiam as táticas do framework *MITRE ATT&CK*, o padrão da indústria. CONCLUIR...
@@ -1288,68 +1309,58 @@ Obs.: Laboratório registrado como 8, mas documento como 10 e referente a aula 9
 
 Este laboratório teve como foco a varredura de portas, aplicando uma metodologia profissional em duas fases para mapear a infraestrutura de uma empresa fictícia, utilizando as ferramentas adequadas para cada etapa. Na primeira fase, foi realizado o reconhecimento inicial, identificando em quais redes o container de ataque estava conectado e, com o uso do **Nmap**, descobrindo rapidamente quais eram os demais hosts ativos em cada segmento de rede. A segunda fase consistiu em utilizar o **Rustscan** para escanear de forma ultra-rápida as portas dos hosts previamente identificados e, em seguida, analisar os resultados para compreender a topologia da rede e os serviços expostos.
 
-Com o ambiente implantado, o comando `docker exec -it attacker-1 /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo de um bom atacante é reconhecer o terreno, ou seja, identificar sua posição e as redes às quais está conectado. Para isso, foi executado o comando `ifconfig`, listando as interfaces de rede e seus respectivos IPs, permitindo deduzir a qual rede cada interface pertencia. Dessa análise, foram identificadas duas redes: a DMZ, com CIDR `172.18.0.0/24`, e a rede interna, com CIDR `172.19.0.0/24`.
+Com o ambiente implantado, o comando `docker exec -it attacker-1 /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo de um bom atacante é reconhecer o terreno, ou seja, identificar sua posição e as redes às quais está conectado. Para isso, foi executado o comando `ifconfig`, listando as interfaces de rede e seus respectivos IPs, permitindo deduzir a qual rede cada interface pertencia. Dessa análise, foram identificadas duas redes: a rede interna, com CIDR `172.19.0.0/24`, e a DMZ, com CIDR `172.18.0.0/24`.
 
 A partir das redes descobertas, o **Nmap** foi utilizado para escanear essas redes e identificar rapidamente os hosts ativos em cada segmento. O **Nmap** foi executado no modo *ping scan* (`-sn`), que apenas verifica se os hosts estão ativos sem realizar varredura de portas, tornando o processo mais rápido e eficiente para o mapeamento inicial. Os comandos executados foram:  
+- `nmap -sn -T4 172.19.0.0/24 -oG - | grep "Up"`: realizava o *ping scan* na rede interna (`172.19.0.0/24`) com velocidade aumentada (`-T4`), exportando o resultado no formato *grepable* (`-oG -`) e filtrando apenas os hosts que estavam ativos (`grep "Up"`).  
 - `nmap -sn -T4 172.18.0.0/24 -oG - | grep "Up"`: realizava o *ping scan* na rede DMZ (`172.18.0.0/24`) com velocidade aumentada (`-T4`), exportando o resultado no formato *grepable* (`-oG -`) e filtrando apenas os hosts que estavam ativos (`grep "Up"`).  
-- `nmap -sn -T4 172.19.0.0/24 -oG - | grep "Up"`: realizava o mesmo procedimento na rede interna (`172.19.0.0/24`), permitindo listar rapidamente os hosts disponíveis nesse segmento.
 
-A imagem 33 exibe os IPs dos hosts descobertos em cada uma das redes.
+A imagem 41 exibe os IPs dos hosts descobertos em cada uma das redes.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img33.png" alt="img33"><br>
-    <figcaption>Imagem 33.</figcaption>
+    <img src="../0-aux/md1-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
 </figure></div><br>
 
-Com a lista de alvos em mãos (IPs dos hosts identificados), foi utilizada a velocidade do **Rustscan** para realizar uma varredura de portas detalhada, passando os IPs encontrados em cada rede. Os resultados das varreduras foram salvos em dois arquivos distintos, um para cada rede. Os comandos executados foram:  
-- `rustscan -a 172.18.0.2,172.18.0.3 -- -A -oN scan_dmz.nmap`: escaneava rapidamente os hosts da DMZ (`172.18.0.2` e `172.18.0.3`), realizando uma detecção completa de serviços (`-A`) e salvando a saída no formato `Nmap` no arquivo `scan_dmz.nmap`.  
-- `rustscan -a 172.19.0.2,172.19.0.3,172.19.0.4 -- -A -oN scan_interna.nmap`: escaneava rapidamente os hosts da rede interna, com a mesma detecção de serviços e salvamento da saída em `scan_interna.nmap`.  
+Com a lista de alvos em mãos (IPs dos hosts identificados), foi utilizada a velocidade do **Rustscan** para realizar uma varredura de portas detalhada, passando os IPs encontrados em cada rede. Os resultados das varreduras foram salvos em dois arquivos distintos, um para cada rede. Os comandos executados foram: 
+- `rustscan -a 172.19.0.2,172.19.0.3,172.19.0.4 -- -A -oN scan_interna.nmap --append-output`: escaneava rapidamente os hosts da rede interna (`172.19.0.2`, `172.19.0.3` e `172.19.0.4`), realizando uma detecção completa de serviços (`-A`) e salvando a saída no formato `Nmap` no arquivo `scan_interna.nmap`.
+- `rustscan -a 172.18.0.2,172.18.0.3 -- -A -oN scan_dmz.nmap --append-output`: escaneava rapidamente os hosts da DMZ (`172.18.0.2` e `172.18.0.3`), realizando uma detecção completa de serviços (`-A`) e salvando a saída no formato `Nmap` no arquivo `scan_dmz.nmap`.  
 
-Em seguida, a ferramenta **cat** foi utilizada para inspecionar os arquivos de saída e analisar os resultados, permitindo identificar as portas abertas nos hosts, os serviços em execução e suas versões. As imagens 34 e 35 apresentam os resultados obtidos nos dois comandos do **Rustscan**.
+Em seguida, a ferramenta **cat** foi utilizada para inspecionar os arquivos de saída e analisar os resultados, permitindo identificar as portas abertas nos hosts, os serviços em execução e suas versões. Contudo, como o conteúdo do arquivo era grande, foram utilizados os comandos `grep -E "^[0-9]+/tcp|^PORT|^Nmap scan report" scan_interna.nmap` e `grep -E "^[0-9]+/tcp|^PORT|^Nmap scan report" scan_dmz.nmap` passando o nome dos arquivos, para filtrar apenas as informações mais relevantes. A imagem 42 e 43 apresenta os resultados obtidos nos dois comandos do **Rustscan**.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img34.png" alt="img34"><br>
-    <figcaption>Imagem 34.</figcaption>
+    <img src="../0-aux/md1-img42.png" alt="img42"><br>
+    <figcaption>Imagem 42.</figcaption>
 </figure></div><br>
 
+Este laboratório também incluiu um desafio final de **Capture the Flag (CTF)**, cujo objetivo era utilizar as habilidades de varredura (*scanning*) e enumeração para localizar cinco flags escondidas na infraestrutura. As informações previamente obtidas com o **Rustscan** serviram como base para a resolução, embora em alguns casos fosse necessário realizar escaneamentos mais detalhados de determinados hosts. O primeiro host analisado foi o `web_server`, que possuía a porta `80` aberta, indicando tratar-se de um servidor web. Para inspecionar o conteúdo servido por essa máquina, foi utilizado o comando `curl http://172.18.0.2`, que enviava uma requisição HTTP do tipo GET para o servidor e exibia a resposta retornada. No código HTML retornado pelo servidor, foi localizada a flag `FLAG: KENSEI{CODIGO_FONTE_NAO_MENTE}`.
+
+O próximo host analisado foi o `mail_server`, que, assim como o `web_server`, também estava na rede `dmz_net`. Este host possuía a porta `25` aberta, utilizada pelo protocolo **Simple Mail Transfer Protocol (SMTP)**, responsável pelo envio de emails. Serviços de texto como o SMTP costumam se identificar através de um *banner* inicial ao estabelecer conexão. Para visualizar esse *banner*, foi utilizada a ferramenta **netcat (nc)**, que permite interagir com portas TCP/UDP. Dessa forma, o comando `nc 172.18.0.3 25` foi executado e, na mensagem retornada pelo servidor, foi identificada a flag `smtpd_banner = KENSEI{SMTP_BANNER_REVELADOR}`. A imagem 43 comprova as duas capturas de flags realizadas.
+
 <div align="center"><figure>
-    <img src="../0-aux/md1-img35.png" alt="img35"><br>
-    <figcaption>Imagem 35.</figcaption>
+    <img src="../0-aux/md1-img43.png" alt="img43"><br>
+    <figcaption>Imagem 43.</figcaption>
 </figure></div><br>
 
-Este laboratório também incluiu um desafio final de **Capture the Flag (CTF)**, cujo objetivo era utilizar as habilidades de varredura (*scanning*) e enumeração para localizar cinco flags escondidas na infraestrutura. As informações previamente obtidas com o **Rustscan** serviram como base para a resolução, embora em alguns casos fosse necessário realizar escaneamentos mais detalhados de determinados hosts. O primeiro host analisado foi o `web_server`, que possuía a porta `80` aberta, indicando tratar-se de um servidor web. Para inspecionar o conteúdo servido por essa máquina, foi utilizado o comando `curl http://172.18.0.2`, que enviava uma requisição HTTP do tipo GET para o servidor e exibia a resposta retornada. No código HTML retornado pelo servidor, foi localizada a flag `FLAG: KENSEI{CODIGO_FONTE_NAO_MENTE}`, conforme mostrado na imagem 36.
+O terceiro host analisado foi o `fileshare_server`, que possuía portas de compartilhamento de arquivos **SMB** abertas (`139` e `445`). Para listar os compartilhamentos disponíveis sem autenticação, foi utilizado o **smbclient** com o comando `smbclient -L //172.19.0.2 -N`. Ao identificar o compartilhamento chamado `public`, uma conexão foi estabelecida com ele através do comando `smbclient //172.19.0.2/public -N`. Dentro do compartilhamento, foram executados comandos do SMB para navegação e listagem de arquivos. O comando `ls` permitiu visualizar todos os diretórios, incluindo ocultos, sendo encontrado o diretório `.secreto`. Com `cd .secreto` o diretório foi acessado, e com `ls` os arquivos foram listados, identificando o arquivo `FLAG.txt`. O arquivo foi baixado para o diretório `/root` do container de ataque (**Kali Linux**) com o comando `get FLAG.txt`. Em seguida, a conexão SMB foi encerrada com `exit` e o conteúdo do arquivo foi lido com `cat FLAG.txt`, revelando a flag `KENSEI{SMB_EH_UMA_MAE}`, conforme mostrado na imagem 44.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img36.png" alt="img36"><br>
-    <figcaption>Imagem 36.</figcaption>
+    <img src="../0-aux/md1-img44.png" alt="img44"><br>
+    <figcaption>Imagem 44.</figcaption>
 </figure></div><br>
 
-O próximo host analisado foi o `mail_server`, que, assim como o `web_server`, também estava na rede `dmz_net`. Este host possuía a porta `25` aberta, utilizada pelo protocolo **Simple Mail Transfer Protocol (SMTP)**, responsável pelo envio de emails. Serviços de texto como o SMTP costumam se identificar através de um *banner* inicial ao estabelecer conexão. Para visualizar esse *banner*, foi utilizada a ferramenta **netcat (nc)**, que permite interagir com portas TCP/UDP. Dessa forma, o comando `nc 172.18.0.3 25` foi executado e, na mensagem retornada pelo servidor, foi identificada a flag `smtpd_banner = KENSEI{SMTP_BANNER_REVELADOR}`, conforme exibido na imagem 37.
+O quarto host analisado foi o `database_server`, que, assim como o `fileshare_server`, estava na rede `internal_net`. Este host tinha a porta `3306` aberta, utilizada pelo **MySQL Server**, um banco de dados relacional. Servidores de banco de dados são alvos valiosos, portanto foi realizada uma conexão usando o cliente **mysql**, com o usuário `root` e senha em branco (`mysql -h 172.19.0.3 -u root --ssl=0`). De dentro do banco, foram executados alguns comandos para exploração e consulta de dados. O comando `SHOW DATABASES;` listou todos os bancos existentes, e com `USE segredos;` foi possível selecionar o banco desejado. Em seguida, `SHOW TABLES;` listou as tabelas desse banco, e o comando `SELECT * FROM flags;` exibiu todas as informações da tabela selecionada. Um dos itens dessa tabela continha a flag procurada: `KENSEI{SQL_INJECTION_AVANTE}`, conforme mostrado na imagem 45.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img37.png" alt="img37"><br>
-    <figcaption>Imagem 37.</figcaption>
+    <img src="../0-aux/md1-img45.png" alt="img45"><br>
+    <figcaption>Imagem 45.</figcaption>
 </figure></div><br>
 
-O terceiro host analisado foi o `fileshare_server`, que possuía portas de compartilhamento de arquivos **SMB** abertas (`139` e `445`). Para listar os compartilhamentos disponíveis sem autenticação, foi utilizado o **smbclient** com o comando `smbclient -L //172.19.0.2 -N`. Ao identificar o compartilhamento chamado `public`, uma conexão foi estabelecida com ele através do comando `smbclient //172.19.0.2/public -N`. Dentro do compartilhamento, foram executados comandos do SMB para navegação e listagem de arquivos. O comando `ls -a` permitiu visualizar todos os diretórios, incluindo ocultos, sendo encontrado o diretório `.secreto`. Com `cd .secreto` o diretório foi acessado, e com `ls` os arquivos foram listados, identificando o arquivo `FLAG.txt`. O arquivo foi baixado para o diretório `/root` do container de ataque (**Kali Linux**) com o comando `get FLAG.txt`. Em seguida, a conexão SMB foi encerrada com `exit` e o conteúdo do arquivo foi lido com `cat FLAG.txt`, revelando a flag `KENSEI{SMB_EH_UMA_MAE}`, conforme mostrado na imagem 38.
+O quinto e último host verificado foi o `dev_machine`, que no escaneamento padrão não apresentou muitas informações. Para investigação mais detalhada, foi executado o comando `rustscan -a 172.19.0.4 --range 1-65535 -- -A`, identificando que a porta `1337` estava aberta. Em seguida, foi estabelecida uma conexão com essa porta utilizando `telnet 172.19.0.4 1337` ou `nc 172.19.0.4 1337`, resultando no recebimento imediato da flag disponibilizada pelo serviço em execução, conforme evidenciado na imagem 46. Essa flag era enviada pelo arquivo `flag_server.py` que estava rodando no container nessa porta.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img38.png" alt="img38"><br>
-    <figcaption>Imagem 38.</figcaption>
-</figure></div><br>
-
-O quarto host analisado foi o `database_server`, que, assim como o `fileshare_server`, estava na rede `internal_net`. Este host tinha a porta `3306` aberta, utilizada pelo **MySQL Server**, um banco de dados relacional. Servidores de banco de dados são alvos valiosos, portanto foi realizada uma conexão usando o cliente **mysql**, com o usuário `root` e senha em branco (`mysql -h 172.19.0.3 -u root --ssl=0`). De dentro do banco, foram executados alguns comandos para exploração e consulta de dados. O comando `SHOW DATABASES;` listou todos os bancos existentes, e com `USE <nome_do_banco>;` era possível selecionar o banco desejado. Em seguida, `SHOW TABLES;` listou as tabelas desse banco, e o comando `SELECT * FROM <nome_da_tabela>;` exibiu todas as informações da tabela selecionada. Um dos itens dessa tabela continha a flag procurada: `KENSEI{SQL_INJECTION_AVANTE}`, conforme mostrado na imagem 39.
-
-<div align="center"><figure>
-    <img src="../0-aux/md1-img39.png" alt="img39"><br>
-    <figcaption>Imagem 39.</figcaption>
-</figure></div><br>
-
-O quinto e último host verificado foi o `dev_machine`, que no escaneamento padrão não apresentou muitas informações. Para investigação mais detalhada, foi executado o comando `rustscan -a 172.19.0.4 --range 1-65535 -- -A`, identificando que a porta `1337` estava aberta. Em seguida, foi estabelecida uma conexão com essa porta utilizando `telnet 172.19.0.4 1337` ou `nc 172.19.0.4 1337`, resultando no recebimento imediato da flag disponibilizada pelo serviço em execução, conforme evidenciado na imagem 40. Essa flag era enviada pelo arquivo `flag_server.py` que estava rodando no container nessa porta.
-
-<div align="center"><figure>
-    <img src="../0-aux/md1-img40.png" alt="img40"><br>
-    <figcaption>Imagem 40.</figcaption>
+    <img src="../0-aux/md1-img46.png" alt="img46"><br>
+    <figcaption>Imagem 46.</figcaption>
 </figure></div><br>
 
 <a name="item1.10"><h4>1.10 Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</h4></a>[Back to summary](#item1)   
@@ -1455,32 +1466,32 @@ O laboratório da aula 10 foi o mais completo realizado até agora, pois simulou
 
 Conforme detalhado no ambiente de laboratório, este laboratório contou com apenas duas máquinas: a `attacker-enum`, um container **Kali Linux** utilizado para realizar os ataques, e a `alvo-enum`, um servidor **Linux** que hospedava serviços SMB e SNMP, além de conter uma flag secreta escondida.
 
-Após implantar o ambiente, o comando `docker exec -it attacker-enum /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo consistiu em identificar a quais redes as interfaces do container estavam conectadas. Ao executar `ip a` ou `ifconfig`, foram visualizadas as interfaces, sendo que a interface `eth0` estava conectada à rede com CIDR `172.20.0.0/24`, já que seu IP nessa rede era `172.20.0.100`. Com o IP da rede identificado, o **Nmap** foi utilizado em modo ping scan (`-sn`) para descobrir os demais hosts ativos, executando o comando `nmap -sn -T4 172.20.0.0/24 -oG - | grep "Up"`. Este comando retornou o IP de um host ativo, `172.20.0.2`, que foi então utilizado para varredura de portas com **Rustscan**. O comando `rustscan -a 172.20.0.3` realizou uma varredura TCP (TCP scan), identificando as portas abertas `139` e `445`. Além disso, uma varredura UDP foi executada com **Nmap** utilizando o comando `nmap -sU -p 161 172.20.0.3`, sendo a porta `161/udp` identificada como `open|filtered`. A imagem 41 apresenta os resultados dessas varreduras.
+Após implantar o ambiente, o comando `docker exec -it attacker-enum /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo consistiu em identificar a quais redes as interfaces do container estavam conectadas. Ao executar `ip a` (`apt-get install -y iproute2`) ou `ifconfig` (`apt-get install -y net-tools`), foram visualizadas as interfaces, sendo que a interface `eth0` estava conectada à rede com CIDR `172.20.0.0/24`, já que seu IP nessa rede era `172.20.0.2`. Com o IP da rede identificado, o **Nmap** foi utilizado em modo ping scan (`-sn`) para descobrir os demais hosts ativos, executando o comando `nmap -sn -T4 172.20.0.0/24 -oG - | grep "Up"`. Este comando retornou o IP de um host ativo, `172.20.0.3`, que foi então utilizado para varredura de portas com **Rustscan**. O comando `rustscan -a 172.20.0.3` realizou uma varredura TCP (TCP scan), identificando as portas abertas `139` e `445`. Além disso, uma varredura UDP foi executada com **Nmap** utilizando o comando `nmap -sU -p 161 172.20.0.3`, sendo a porta `161/udp` identificada como `open|filtered`. A imagem 47 apresenta os resultados dessas varreduras.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img41.png" alt="img41"><br>
-    <figcaption>Imagem 41.</figcaption>
+    <img src="../0-aux/md1-img47.png" alt="img47"><br>
+    <figcaption>Imagem 47.</figcaption>
 </figure></div><br>
 
-Com as fases de descoberta e detecção já concluídas, a etapa seguinte foi a enumeração. A enumeração consiste em explorar detalhadamente os serviços de um host para coletar informações adicionais, como usuários, grupos, compartilhamentos e outros dados úteis para exploração. Para isso, foi utilizada a ferramenta **enum4linux-ng** com o comando `enum4linux-ng -A 172.20.0.3`. O **enum4linux-ng** é uma versão "next generation" do **enum4linux**, voltada para a enumeração de sistemas **Windows** via SMB/CIFS. O comando buscava extrair o máximo de informações possíveis do host `172.20.0.3` através do SMB, sem autenticação ou utilizando autenticação anônima quando disponível. O resultado apresentou dados sobre usuários, grupos e compartilhamentos, conforme evidenciado na imagem 42.
+Com as fases de descoberta e detecção já concluídas, a etapa seguinte foi a enumeração. A enumeração consiste em explorar detalhadamente os serviços de um host para coletar informações adicionais, como usuários, grupos, compartilhamentos e outros dados úteis para exploração. Para isso, foi utilizada a ferramenta **enum4linux-ng** com o comando `enum4linux-ng -A 172.20.0.3`. O **enum4linux-ng** é uma versão "next generation" do **enum4linux**, voltada para a enumeração de sistemas **Windows** via SMB/CIFS. O comando buscava extrair o máximo de informações possíveis do host `172.20.0.3` através do SMB, sem autenticação ou utilizando autenticação anônima quando disponível. O resultado apresentou dados sobre usuários, grupos e compartilhamentos, conforme evidenciado na imagem 48.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img42.png" alt="img42"><br>
-    <figcaption>Imagem 42.</figcaption>
+    <img src="../0-aux/md1-img48.png" alt="img48"><br>
+    <figcaption>Imagem 48.</figcaption>
 </figure></div><br>
 
-O **snmpwalk** foi outra ferramenta utilizada para consultar informações de dispositivos via SNMP (Simple Network Management Protocol). Essa ferramenta percorre ("walk") toda a árvore de informações disponíveis no dispositivo. O comando executado, `snmpwalk -v2c -c public 172.20.0.3`, coletava informações do sistema e da rede remotamente via SNMP. Com isso, foi obtido um *dump* do sistema, ou seja, uma cópia ou registro do estado do dispositivo em determinado momento, incluindo dados como hostname, rede, uptime, entre outros. A imagem 43 apresenta as informações coletadas.
+O **snmpwalk** foi outra ferramenta utilizada para consultar informações de dispositivos via SNMP (Simple Network Management Protocol). Essa ferramenta percorre ("walk") toda a árvore de informações disponíveis no dispositivo. O comando executado, `snmpwalk -v2c -c public 172.20.0.3`, coletava informações do sistema e da rede remotamente via SNMP. Com isso, foi obtido um *dump* do sistema, ou seja, uma cópia ou registro do estado do dispositivo em determinado momento, incluindo dados como hostname, rede, uptime, entre outros. A imagem 49 apresenta as informações coletadas.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img43.png" alt="img43"><br>
-    <figcaption>Imagem 43.</figcaption>
+    <img src="../0-aux/md1-img49.png" alt="img49"><br>
+    <figcaption>Imagem 49.</figcaption>
 </figure></div><br>
 
-O desafio final foi capturar a flag escondida. Para isso a saída dos dois comandos anteriores foram reanalisados, com intuito de identificar serviços com possíveis brechas ou arquivos acessíveis. O compartilhamento de arquivos `anonymous` foi identificado e o **smbclient** foi utilizado para se conectar a ele. Com o comando `smbclient //172.20.0.3/anonymous` o acesso foi realizado, já que o mesmo permitia login anônimo e sem senha. Com o comando `ls` foi listado o arquivo `flag.txt`, que foi visualizado o conteúdo com o comando `cat flag.txt`, conforme mostrado na imagem 44.
+O desafio final foi capturar a flag escondida. Para isso a saída dos dois comandos anteriores foram reanalisados, com intuito de identificar serviços com possíveis brechas ou arquivos acessíveis. O compartilhamento de arquivos `anonymous` foi identificado e o **smbclient** foi utilizado para se conectar a ele. Com o comando `smbclient //172.20.0.3/anonymous` o acesso foi realizado, já que o mesmo permitia login anônimo e sem senha. Com o comando `ls` foi listado o arquivo `flag.txt`, no qual o conteúdo foi baixado para o diretório corrente na máquina com o comando `get flag.txt` e foi visualizado com o comando `cat flag.txt`, conforme mostrado na imagem 50.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img44.png" alt="img44"><br>
-    <figcaption>Imagem 44.</figcaption>
+    <img src="../0-aux/md1-img50.png" alt="img50"><br>
+    <figcaption>Imagem 50.</figcaption>
 </figure></div><br>
 
 <a name="item1.11"><h4>1.11 Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</h4></a>[Back to summary](#item1)
@@ -1806,7 +1817,7 @@ Obs.: Laboratório registrado como 10, mas documento como #NãoInformado (12) e 
 
 Este laboratório foi o último do módulo 1 e teve como foco a ferramenta **OpenVAS**, uma das soluções de análise de vulnerabilidades mais robustas disponíveis. O objetivo foi utilizá-la para inspecionar um sistema-alvo em busca de falhas de segurança e potenciais riscos.
 
-A construção do ambiente **Docker** deste laboratório foi um pouco diferente, pois utilizou o script de automação `setup-and-start-greenbone-community-edition.sh`. Esse script verificava se os softwares **Docker**, **Docker Compose** e **Curl** estavam instalados na máquina host, fazia o pull das imagens necessárias para o **Docker Compose** e, em seguida, implantava o ambiente **Docker**, incluindo os containers do **Greenbone Community Edition (GCE)**. Durante a implantação, era solicitada a criação de uma senha para o usuário `admin` do **Greenbone Security Assistant (GSA)**, utilizada posteriormente para acessar a interface web. Após isso, os feeds de vulnerabilidades eram carregados, um processo que poderia levar de 30 minutos a várias horas, dependendo da sincronização, sendo essencial que os feeds estivessem totalmente atualizados para que os scans apresentassem resultados completos. Por fim, o último comando do script (`xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &`) abria automaticamente o navegador apontando para a interface web do **GSA**.
+A construção do ambiente **Docker** deste laboratório foi um pouco diferente, pois utilizou o script de automação `setup-and-start-greenbone-community-edition.sh`. Esse script verificava se os softwares **Docker**, **Docker Compose** e **Curl** estavam instalados na máquina host, fazia o pull das imagens necessárias para o **Docker Compose** e, em seguida, implantava o ambiente **Docker**, incluindo os containers do **Greenbone Community Edition (GCE)**. Durante a implantação, era solicitada a criação de uma senha para o usuário `admin` (`Senha!@3`) do **Greenbone Security Assistant (GSA)**, utilizada posteriormente para acessar a interface web. Após isso, os feeds de vulnerabilidades eram carregados, um processo que poderia levar de 30 minutos a várias horas, dependendo da sincronização, sendo essencial que os feeds estivessem totalmente atualizados para que os scans apresentassem resultados completos. Por fim, o último comando do script (`xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &`) abria automaticamente o navegador apontando para a interface web do **GSA**.
 
 O **OpenVAS** é um motor de scanner de vulnerabilidades. A distribuição oficial que o inclui é o **Greenbone Community Edition (GCE)**, que vem com diversos componentes: o **gvmd**, que é o gerenciador do **OpenVAS**; o **Greenbone Security Assistant (GSA)**, uma interface web para administrar scans e visualizar relatórios; e os feeds de vulnerabilidade, que são bases de dados utilizadas pelo **OpenVAS** para identificar falhas de segurança.
 
