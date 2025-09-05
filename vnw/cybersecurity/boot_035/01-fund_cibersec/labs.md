@@ -64,14 +64,19 @@ Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegura
   - pfSense   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pfsense.jpg" alt="pfsense" width="auto" height="25">
   - ping   <img src="" alt="iputils" width="auto" height="25">
   - Rustscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rustscan.png" alt="rustscan" width="auto" height="25">
+  - snmpwalk   <img src="" alt="snmpwalk" width="auto" height="25">
   - tcpdump   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tcpdump.jpg" alt="tcpdump" width="auto" height="25">
   - Telnet   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/telnet.png" alt="telnet" width="auto" height="25">
   - traceroute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/traceroute.png" alt="traceroute" width="auto" height="25">
   - tshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tshark.png" alt="tshark" width="auto" height="25">
   - Wireshark   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/wireshark.png" alt="wireshark" width="auto" height="25">
+- Remote Desktop:
+  - RealVNC Viewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/realvnc.png" alt="realvnc_viewer" width="auto" height="25">
+  - TightVNC Server   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tightvnc.png" alt="tightvnc_server" width="auto" height="25">
 - Cibersecurity:
   - CyberChef   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/cyber_chef.png" alt="cyber_chef" width="auto" height="25">
   - Damn Vulnerable Web Application (DVWA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dvwa.png" alt="dvwa" width="auto" height="25">
+  - enum4linux   <img src="" alt="enum4linux" width="auto" height="25">
   - gobuster   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gobuster.svg" alt="gobuster" width="auto" height="25">
   - Greenbone Community Edition (GCE)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gce.png" alt="gce" width="auto" height="25">
   - Greenbone Security Assistant (GSA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gsa.png" alt="gsa" width="auto" height="25">
@@ -93,6 +98,8 @@ Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegura
   - PGP Desktop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/pgp_desktop.jpg" alt="pgp_desktop" width="auto" height="25">
   - sha256sum   <img src="" alt="sha256sum" width="auto" height="25">
   - WinHasher   <img src="" alt="win_hasher" width="auto" height="25">
+- SysAdm:
+  - Xfce   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xfce.svg" alt="xfce" width="auto" height="25">
 
 ---
 
@@ -533,21 +540,21 @@ Obs.: Laboratório registrado como 3, mas documento como 5 e referente a aula 4.
   </ul>
 </details>
 
-Neste terceiro laboratório, a máquina de ataque `kali_lab_5` foi utilizada para praticar técnicas de enumeração e OSINT no container alvo (`lab_target`), com o objetivo de localizar o arquivo de flag. Para isso, o acesso ao container atacante foi realizado com o comando `docker exec -it kali_lab_5 /bin/bash`. No shell aberto, foram executados comandos como `curl -I http://lab_target` e `ping lab_target` para verificar se o alvo estava respondendo. Este último, após quatro pacotes enviados, foi encerrado com o atalho `Ctrl + C`. A imagem 14 exibe o resultado desses comandos, evidenciando que o alvo estava respondendo.
+Neste terceiro laboratório, a máquina de ataque `kali_lab_5` foi utilizada para praticar técnicas de *footprinting ativo* no container alvo (`lab_target`), com o objetivo de localizar o arquivo de flag. Para isso, o acesso ao container atacante foi realizado com o comando `docker exec -it kali_lab_5 /bin/bash`. No shell aberto, foram executados comandos como `curl -I http://lab_target` e `ping lab_target` para verificar se o alvo estava respondendo. Este último, após quatro pacotes enviados, foi encerrado com o atalho `Ctrl + C`. A imagem 14 exibe o resultado desses comandos, evidenciando que o alvo estava respondendo.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img14.png" alt="img14"><br>
     <figcaption>Imagem 14.</figcaption>
 </figure></div><br>
 
-Com a ferramenta **gobuster**, realizou-se a enumeração de diretórios (*footprinting ativo*) utilizando o comando `gobuster dir -u http://lab_target/ -w /usr/share/wordlists/dirb/common.txt -t 20`. Esse comando utilizava um arquivo padrão de wordlist e permitiu descobrir a pasta `/vault/`. Em seguida, foi enviada uma requisição GET para o arquivo da flag com `curl http://lab_target/vault/flag.txt`, obtendo a flag `FLAG-{RECON-STARTS-WITH-OSINT}`. Por fim, a flag foi criptografada utilizando a ferramenta **sha256sum** com o comando `echo -n "FLAG-{RECON-STARTS-WITH-OSINT}" | sha256sum`. A imagem 15 mostra que a flag foi identificada e criptografada com sucesso.
+Com a ferramenta **gobuster**, realizou-se a enumeração de diretórios utilizando o comando `gobuster dir -u http://lab_target/ -w /usr/share/wordlists/dirb/common.txt -t 20`. Esse comando utilizava um arquivo padrão de wordlist e permitiu descobrir a pasta `/vault/`. Em seguida, foi enviada uma requisição GET para o arquivo da flag com `curl http://lab_target/vault/flag.txt`, obtendo a flag `FLAG-{RECON-STARTS-WITH-OSINT}`. Por fim, a flag foi criptografada utilizando a ferramenta **sha256sum** com o comando `echo -n "FLAG-{RECON-STARTS-WITH-OSINT}" | sha256sum`. A imagem 15 mostra que a flag foi identificada e criptografada com sucesso.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img15.png" alt="img15"><br>
     <figcaption>Imagem 15.</figcaption>
 </figure></div><br>
 
-O OSINT e o footprinting correspondem às primeiras fases da Cyber Kill Chain, focadas no reconhecimento do alvo. O OSINT caracteriza-se como reconhecimento passivo, pois envolve a coleta de informações a partir de fontes públicas ou observação do alvo sem gerar tráfego direto, tornando a detecção menos provável. Já o footprinting ativo ocorre quando há interação direta com a máquina, como varreduras de portas, serviços ou diretórios, permitindo obter informações mais detalhadas, mas aumentando o risco de ser detectado. A validação de integridade via hash permite verificar se um arquivo ou dado não foi alterado, garantindo a integridade e contribuindo para a confidencialidade dentro do modelo CIA.
+O reconhecimento do alvo corresponde às primeiras fases da *Cyber Kill Chain* e pode ser realizado de formas diferentes. O *OSINT (Open Source Intelligence)* caracteriza-se como *reconhecimento passivo*, pois envolve a coleta de informações a partir de fontes públicas, sem gerar tráfego direto no alvo, tornando a detecção menos provável. Já o *footprinting ativo* ocorre quando há interação direta com o sistema, como varreduras de portas, serviços ou enumeração de diretórios, permitindo obter informações mais detalhadas, mas aumentando o risco de ser detectado. Além disso, a validação de integridade via hash permite verificar se um arquivo ou dado não foi alterado, garantindo a integridade e contribuindo para a confidencialidade dentro do modelo *CIA*.
 
 <a name="item1.5"><h4>1.5 Infraestrutura de Rede - Conceitos e Componentes</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_4)
@@ -1093,7 +1100,7 @@ O tema deste laboratório foi a configuração e exploração de uma das ferrame
 Antes de partir para a prática, é fundamental compreender a importância dessa ferramenta. O **Kali Linux** é uma distribuição de **Linux** baseada em **Debian**, desenvolvida especificamente para tarefas de segurança e testes de penetração (*pentests*). Ele funciona como um verdadeiro canivete suíço, reunindo centenas de ferramentas voltadas para mapeamento de redes, identificação de vulnerabilidades, exploração de falhas, análise de senhas e muito mais. No uso cotidiano, o **Kali Linux** é amplamente operado pela linha de comando (CLI), já que, no mundo real, o acesso a um sistema comprometido ocorre geralmente por meio de um terminal e não de uma área de trabalho gráfica. Além disso, a CLI proporciona maior leveza e velocidade na execução de comandos, além de facilitar a automação de tarefas, permitindo que scripts de ataque ou defesa sejam facilmente aplicados no terminal.
 
 Após clonar o repositório do curso, conforme descrito anteriormente na seção de desenvolvimento ([development](#Development)), a pasta do laboratório foi acessada com o comando  
-`cd formacao-cybersec/modulo2-defesa-monitoramento/lab_7`. Dentro dela, havia duas subpastas, cada uma correspondente a um ambiente **Docker**. O primeiro ambiente era responsável por subir o container `kali_cli_kensei`. Para isso, executou-se o comando `docker compose up -d` dentro da pasta correspondente (`cd kali-cli`). Em seguida, o acesso ao container foi feito com: `docker exec -it kali_cli_kensei /bin/bash`. Note que, após a execução desse comando, o prompt mudou para `root@...:/#`.
+`cd formacao-cybersec/modulo1-fundamentos/lab_7`. Dentro dela, havia duas subpastas, cada uma correspondente a um ambiente **Docker**. O primeiro ambiente era responsável por subir o container `kali_cli_kensei`. Para isso, executou-se o comando `docker compose up -d` dentro da pasta correspondente (`cd kali-cli`). Em seguida, o acesso ao container foi feito com: `docker exec -it kali_cli_kensei /bin/bash`. Note que, após a execução desse comando, o prompt mudou para `root@...:/#`.
 
 No container, foram executados alguns comandos básicos de **Linux**, conforme listagem abaixo. A imagem 35 mostra o output desses comandos, confirmando que o container **Kali Linux** com CLI foi acessado com sucesso:
 - `pwd`: exibia o diretório atual. 
@@ -1115,18 +1122,37 @@ O desafio, ou *Capture the Flag (CTF)*, consistia em localizar o arquivo secreto
     <figcaption>Imagem 36.</figcaption>
 </figure></div><br>
 
-Com a primeira etapa concluída, o acesso ao container foi encerrado e o ambiente foi finalizado com o comando `docker compose down`, derrubando o container. Em seguida, a pasta corrente foi alterada para o diretório do segundo ambiente com o comando `cd ../kali-gui`. A partir dessa pasta, o ambiente com interface gráfica foi implantado utilizando o comando `docker compose up -d`. Entretanto, por padrão, os containers **Docker** são *headless* (sem interface gráfica). Para possibilitar a execução de uma GUI dentro do container — neste caso, no **Kali** — foi necessário instalar um servidor gráfico virtual, como o **Xfce**, já configurado no Dockerfile da imagem. Além disso, o **tightvncserver** também foi instalado e configurado, pois ele atua como servidor VNC responsável por disponibilizar o ambiente gráfico do container para acesso remoto, permitindo que o usuário interaja com a interface do **Kali Linux** a partir da máquina host.  
+Com a primeira etapa concluída, o acesso ao container foi encerrado e o ambiente foi finalizado com o comando `docker compose down`, derrubando o container. Antes de iniciar essa segunda parte, foi necessário aumentar o volume do **Amazon EBS** que a instância **Amazon EC2** utilizava de `8` para `40` gigas, ou simplesmente criar uma nova instância já com esse volume de armazenamento. No segundo caso, foi necessário clonar o repositório novamente e acessar a pasta do lab. 
 
-Com essas configurações virtuais concluídas, tornou-se possível acessar o container **Kali Linux** por meio de GUI. Contudo, esse acesso não pôde ser realizado diretamente pela máquina host em uso — a instância **Amazon EC2** —, já que ela também não possuía interface gráfica. Para contornar essa limitação, foi necessário mapear a porta do container utilizada pelo **VNC Viewer** para a mesma porta no host, permitindo o acesso a partir da máquina física **Windows**. Para isso, foi executado o comando `docker run -d -p 5901:5901 kali-vnc`, que subiu um novo container idêntico, mas agora com o *port forward* configurado. Ainda foi necessário adicionar uma regra no security group vinculado a instância permitindo tráfego nesta porta `5901` a partir do IP público da máquina física. Além disso, foi necessário adicionar uma regra no *security group* vinculado à instância, permitindo tráfego nesta porta `5901` a partir do IP público da máquina física.
+De dentro da pasta do lab foi acessada a outra sub-pasta do segundo ambiente com o comando `cd kali-gui`. A partir dessa pasta, o ambiente com interface gráfica foi implantado utilizando o comando `docker compose up -d`. Entretanto, por padrão, os containers **Docker** são *headless* (sem interface gráfica). Para possibilitar a execução de uma GUI dentro do container — neste caso, no **Kali** — foi necessário instalar um servidor gráfico virtual, como o **Xfce**, já configurado no Dockerfile da imagem. Além disso, o **tightvncserver** também foi instalado e configurado, pois ele atua como servidor VNC responsável por disponibilizar o ambiente gráfico do container para acesso remoto, permitindo que o usuário interaja com a interface do **Kali Linux** a partir da máquina host.  
 
-Na máquina física, foi necessário baixar e instalar o **VNC Viewer**. Após abrir o software, bastava inserir o IP ou DNS público da instância acrescido da porta `5901` para acessar o ambiente (`IP:5901`). Contudo, essa comunicação não é criptografada por padrão, o que representa um risco de segurança. O ideal seria criar um túnel SSH para proteger a conexão e não expor a porta da instância. Para isso, foi utilizado o comando `ssh -L 5901:localhost:5901 ubuntu@ip-da-ec2`. Esse comando estabelecia um túnel SSH da máquina física até a instância **EC2**, redirecionando a porta que o **VNC Viewer** utilizva no container. Assim, ao executar o **VNC Viewer** na máquina física apontando para `localhost:5901`, a conexão passou a ser segura. Ao acessar o ambiente pelo **VNC Viwer** da máquina física, era solicitada a senha configurada no **VNC Viewer** do container, que era `kensei` para o usuário `root`. A imagem 37 registra essa tela de login acessada.
+Com essas configurações virtuais concluídas, tornou-se possível acessar o container **Kali Linux** por meio de GUI. Todavia, esse acesso não pôde ser realizado diretamente pela máquina host em uso, a instância **Amazon EC2**, já que ela também não possuía interface gráfica. Para contornar essa limitação, foi utilizado o mapeamento de portas definido no **Docker Compose**, que mapeava a porta `5901` do container, utilizada pelo **RealVNC Viewer**, para a mesma porta no host, permitindo o acesso a partir da máquina física **Windows**. Além disso, também foi preciso adicionar uma regra no security group vinculado a instância permitindo tráfego nesta porta `5901` a partir do IP público da máquina física. 
+
+Na máquina física, foi necessário baixar e instalar o **RealVNC Viewer** e criar uma conta na plataforma. Após abrir o software e efetuar login com as credenciais da conta criada, bastava inserir o IP ou DNS público da instância acrescido da porta `5901` para acessar o ambiente (`3.94.198.241:5901`). Contudo, essa comunicação não era criptografada por padrão, o que representava um risco de segurança. O próprio **RealVNC Viewer** alertava que se tratava de uma conexão sem criptografia. Para garantir maior segurança, foi criado um tunelamento SSH no **Windows PowerShell** da máquina física. O tunelamento SSH, ou túnel SSH, consiste em redirecionar uma porta local da máquina do usuário para uma porta remota na instância, encapsulando o tráfego de outra aplicação (neste caso, o VNC) dentro de um canal SSH seguro e criptografado. Dessa forma, todo o tráfego que normalmente trafegaria pela porta `5901` era enviado através da porta `22`, garantindo que a sessão gráfica fique protegida e sem exposição direta à internet. 
+
+O túnel foi criado com o comando `ssh -i "G:/Meu Drive/4_PROJ/aws_skb/study_material/aws_scripts_model/.default/secrets/awsKeyPair/universal\keyPairUniversal.pem" -L 5901:localhost:5901 ubuntu@3.94.198.241` passando o caminho do arquivo de chave privada para autenticação. Com o túnel ativo, o **RealVNC Viewer** conectou-se ao endereço `localhost:5901`, em vez do IP ou DNS público da instância, fazendo com que todo o tráfego da sessão gráfica viajasse protegido pelo SSH. Assim, não foi mais necessário liberar a porta `5901` no security group, mitigando riscos de interceptação e aumentando significativamente a segurança da conexão remota. O alerta do **RealVNC Viewer** ainda aparecia, pois ele não reconhecia que o tráfego estava passando por um túnel SSH, sendo necessário apenas clicar em `Continuar`. A senha do usuário `root` (`kensei`) foi solicitada e, após inseri-la, o acesso foi realizado com sucesso, conforme imagem 37.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img37.png" alt="img37"><br>
     <figcaption>Imagem 37.</figcaption>
 </figure></div><br>
 
-No **Kali Linux** com GUI, ao clicar no menu de aplicações (o ícone do dragão do Kali), foi observado que as categorias seguiam as táticas do framework *MITRE ATT&CK*, o padrão da indústria. CONCLUIR...
+No **Kali Linux** com GUI, ao clicar no menu de aplicações (ícone do dragão do Kali), foi possível observar que as categorias seguiam as táticas do framework *MITRE ATT&CK*, um padrão amplamente utilizado na indústria. Em cada categoria selecionada, eram exibidas ferramentas relacionadas, por exemplo:
+- **01 - Reconnaissance (Reconhecimento)**: softwares **Nmap** e **Maltego** (Imagem 38).  
+- **03 - Initial Access (Acesso Inicial)** e **04 - Execution (Execução)**: software **metasploit-framework**.  
+- **08 - Credential Access (Acesso a Credenciais)**: ferramentas de quebra de senhas, como **hashcat** e **john**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img38.png" alt="img38"><br>
+    <figcaption>Imagem 38.</figcaption>
+</figure></div><br>
+
+O último passo consistiu em realizar o *Capture the Flag* dentro do **Kali Linux** com ambiente gráfico. Para isso, o terminal foi aberto e o comando `ls` foi utilizado para listar todos os diretórios da raiz. Em seguida, com `cd root`, o diretório `root` foi acessado, e `ls -a` foi executado para exibir todos os arquivos, incluindo os ocultos. Nesse processo, foi identificado o diretório `.diretorio_secreto`, que foi acessado com `cd .diretorio_secreto`. Novamente, `ls -a` revelou a presença do arquivo `.segredo_dojo`. Para visualizar seu conteúdo, foi utilizado o comando `cat .segredo_dojo`, exibindo a flag, conforme evidenciado na imagem 39.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img39.png" alt="img39"><br>
+    <figcaption>Imagem 39.</figcaption>
+</figure></div><br>
 
 <a name="item1.9"><h4>1.9 Ports/Portas</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_9)
@@ -1315,52 +1341,52 @@ A partir das redes descobertas, o **Nmap** foi utilizado para escanear essas red
 - `nmap -sn -T4 172.19.0.0/24 -oG - | grep "Up"`: realizava o *ping scan* na rede interna (`172.19.0.0/24`) com velocidade aumentada (`-T4`), exportando o resultado no formato *grepable* (`-oG -`) e filtrando apenas os hosts que estavam ativos (`grep "Up"`).  
 - `nmap -sn -T4 172.18.0.0/24 -oG - | grep "Up"`: realizava o *ping scan* na rede DMZ (`172.18.0.0/24`) com velocidade aumentada (`-T4`), exportando o resultado no formato *grepable* (`-oG -`) e filtrando apenas os hosts que estavam ativos (`grep "Up"`).  
 
-A imagem 41 exibe os IPs dos hosts descobertos em cada uma das redes.
+A imagem 40 exibe os IPs dos hosts descobertos em cada uma das redes.
 
 <div align="center"><figure>
-    <img src="../0-aux/md1-img41.png" alt="img41"><br>
-    <figcaption>Imagem 41.</figcaption>
+    <img src="../0-aux/md1-img40.png" alt="img40"><br>
+    <figcaption>Imagem 40.</figcaption>
 </figure></div><br>
 
 Com a lista de alvos em mãos (IPs dos hosts identificados), foi utilizada a velocidade do **Rustscan** para realizar uma varredura de portas detalhada, passando os IPs encontrados em cada rede. Os resultados das varreduras foram salvos em dois arquivos distintos, um para cada rede. Os comandos executados foram: 
 - `rustscan -a 172.19.0.2,172.19.0.3,172.19.0.4 -- -A -oN scan_interna.nmap --append-output`: escaneava rapidamente os hosts da rede interna (`172.19.0.2`, `172.19.0.3` e `172.19.0.4`), realizando uma detecção completa de serviços (`-A`) e salvando a saída no formato `Nmap` no arquivo `scan_interna.nmap`.
 - `rustscan -a 172.18.0.2,172.18.0.3 -- -A -oN scan_dmz.nmap --append-output`: escaneava rapidamente os hosts da DMZ (`172.18.0.2` e `172.18.0.3`), realizando uma detecção completa de serviços (`-A`) e salvando a saída no formato `Nmap` no arquivo `scan_dmz.nmap`.  
 
-Em seguida, a ferramenta **cat** foi utilizada para inspecionar os arquivos de saída e analisar os resultados, permitindo identificar as portas abertas nos hosts, os serviços em execução e suas versões. Contudo, como o conteúdo do arquivo era grande, foram utilizados os comandos `grep -E "^[0-9]+/tcp|^PORT|^Nmap scan report" scan_interna.nmap` e `grep -E "^[0-9]+/tcp|^PORT|^Nmap scan report" scan_dmz.nmap` passando o nome dos arquivos, para filtrar apenas as informações mais relevantes. A imagem 42 e 43 apresenta os resultados obtidos nos dois comandos do **Rustscan**.
+Em seguida, a ferramenta **cat** foi utilizada para inspecionar os arquivos de saída e analisar os resultados, permitindo identificar as portas abertas nos hosts, os serviços em execução e suas versões. Contudo, como o conteúdo do arquivo era grande, foram utilizados os comandos `grep -E "^[0-9]+/tcp|^PORT|^Nmap scan report" scan_interna.nmap` e `grep -E "^[0-9]+/tcp|^PORT|^Nmap scan report" scan_dmz.nmap` passando o nome dos arquivos, para filtrar apenas as informações mais relevantes. A imagem 41 apresenta os resultados obtidos nos dois comandos do **Rustscan**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
+</figure></div><br>
+
+Este laboratório também incluiu um desafio final de **Capture the Flag (CTF)**, cujo objetivo era utilizar as habilidades de varredura (*scanning*) e enumeração para localizar cinco flags escondidas na infraestrutura. As informações previamente obtidas com o **Rustscan** serviram como base para a resolução, embora em alguns casos fosse necessário realizar escaneamentos mais detalhados de determinados hosts. O primeiro host analisado foi o `web_server`, que possuía a porta `80` aberta, indicando tratar-se de um servidor web. Para inspecionar o conteúdo servido por essa máquina, foi utilizado o comando `curl http://172.18.0.2`, que enviava uma requisição HTTP do tipo GET para o servidor e exibia a resposta retornada. No código HTML retornado pelo servidor, foi localizada a flag `FLAG: KENSEI{CODIGO_FONTE_NAO_MENTE}`.
+
+O próximo host analisado foi o `mail_server`, que, assim como o `web_server`, também estava na rede `dmz_net`. Este host possuía a porta `25` aberta, utilizada pelo protocolo **Simple Mail Transfer Protocol (SMTP)**, responsável pelo envio de emails. Serviços de texto como o SMTP costumam se identificar através de um *banner* inicial ao estabelecer conexão. Para visualizar esse *banner*, foi utilizada a ferramenta **netcat (nc)**, que permite interagir com portas TCP/UDP. Dessa forma, o comando `nc 172.18.0.3 25` foi executado e, na mensagem retornada pelo servidor, foi identificada a flag `smtpd_banner = KENSEI{SMTP_BANNER_REVELADOR}`. A imagem 42 comprova as duas capturas de flags realizadas.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img42.png" alt="img42"><br>
     <figcaption>Imagem 42.</figcaption>
 </figure></div><br>
 
-Este laboratório também incluiu um desafio final de **Capture the Flag (CTF)**, cujo objetivo era utilizar as habilidades de varredura (*scanning*) e enumeração para localizar cinco flags escondidas na infraestrutura. As informações previamente obtidas com o **Rustscan** serviram como base para a resolução, embora em alguns casos fosse necessário realizar escaneamentos mais detalhados de determinados hosts. O primeiro host analisado foi o `web_server`, que possuía a porta `80` aberta, indicando tratar-se de um servidor web. Para inspecionar o conteúdo servido por essa máquina, foi utilizado o comando `curl http://172.18.0.2`, que enviava uma requisição HTTP do tipo GET para o servidor e exibia a resposta retornada. No código HTML retornado pelo servidor, foi localizada a flag `FLAG: KENSEI{CODIGO_FONTE_NAO_MENTE}`.
-
-O próximo host analisado foi o `mail_server`, que, assim como o `web_server`, também estava na rede `dmz_net`. Este host possuía a porta `25` aberta, utilizada pelo protocolo **Simple Mail Transfer Protocol (SMTP)**, responsável pelo envio de emails. Serviços de texto como o SMTP costumam se identificar através de um *banner* inicial ao estabelecer conexão. Para visualizar esse *banner*, foi utilizada a ferramenta **netcat (nc)**, que permite interagir com portas TCP/UDP. Dessa forma, o comando `nc 172.18.0.3 25` foi executado e, na mensagem retornada pelo servidor, foi identificada a flag `smtpd_banner = KENSEI{SMTP_BANNER_REVELADOR}`. A imagem 43 comprova as duas capturas de flags realizadas.
+O terceiro host analisado foi o `fileshare_server`, que possuía portas de compartilhamento de arquivos **SMB** abertas (`139` e `445`). Para listar os compartilhamentos disponíveis sem autenticação, foi utilizado o **smbclient** com o comando `smbclient -L //172.19.0.2 -N`. Ao identificar o compartilhamento chamado `public`, uma conexão foi estabelecida com ele através do comando `smbclient //172.19.0.2/public -N`. Dentro do compartilhamento, foram executados comandos do SMB para navegação e listagem de arquivos. O comando `ls` permitiu visualizar todos os diretórios, incluindo ocultos, sendo encontrado o diretório `.secreto`. Com `cd .secreto` o diretório foi acessado, e com `ls` os arquivos foram listados, identificando o arquivo `FLAG.txt`. O arquivo foi baixado para o diretório `/root` do container de ataque (**Kali Linux**) com o comando `get FLAG.txt`. Em seguida, a conexão SMB foi encerrada com `exit` e o conteúdo do arquivo foi lido com `cat FLAG.txt`, revelando a flag `KENSEI{SMB_EH_UMA_MAE}`, conforme mostrado na imagem 43.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img43.png" alt="img43"><br>
     <figcaption>Imagem 43.</figcaption>
 </figure></div><br>
 
-O terceiro host analisado foi o `fileshare_server`, que possuía portas de compartilhamento de arquivos **SMB** abertas (`139` e `445`). Para listar os compartilhamentos disponíveis sem autenticação, foi utilizado o **smbclient** com o comando `smbclient -L //172.19.0.2 -N`. Ao identificar o compartilhamento chamado `public`, uma conexão foi estabelecida com ele através do comando `smbclient //172.19.0.2/public -N`. Dentro do compartilhamento, foram executados comandos do SMB para navegação e listagem de arquivos. O comando `ls` permitiu visualizar todos os diretórios, incluindo ocultos, sendo encontrado o diretório `.secreto`. Com `cd .secreto` o diretório foi acessado, e com `ls` os arquivos foram listados, identificando o arquivo `FLAG.txt`. O arquivo foi baixado para o diretório `/root` do container de ataque (**Kali Linux**) com o comando `get FLAG.txt`. Em seguida, a conexão SMB foi encerrada com `exit` e o conteúdo do arquivo foi lido com `cat FLAG.txt`, revelando a flag `KENSEI{SMB_EH_UMA_MAE}`, conforme mostrado na imagem 44.
+O quarto host analisado foi o `database_server`, que, assim como o `fileshare_server`, estava na rede `internal_net`. Este host tinha a porta `3306` aberta, utilizada pelo **MySQL Server**, um banco de dados relacional. Servidores de banco de dados são alvos valiosos, portanto foi realizada uma conexão usando o cliente **mysql**, com o usuário `root` e senha em branco (`mysql -h 172.19.0.3 -u root --ssl=0`). De dentro do banco, foram executados alguns comandos para exploração e consulta de dados. O comando `SHOW DATABASES;` listou todos os bancos existentes, e com `USE segredos;` foi possível selecionar o banco desejado. Em seguida, `SHOW TABLES;` listou as tabelas desse banco, e o comando `SELECT * FROM flags;` exibiu todas as informações da tabela selecionada. Um dos itens dessa tabela continha a flag procurada: `KENSEI{SQL_INJECTION_AVANTE}`, conforme mostrado na imagem 44.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img44.png" alt="img44"><br>
     <figcaption>Imagem 44.</figcaption>
 </figure></div><br>
 
-O quarto host analisado foi o `database_server`, que, assim como o `fileshare_server`, estava na rede `internal_net`. Este host tinha a porta `3306` aberta, utilizada pelo **MySQL Server**, um banco de dados relacional. Servidores de banco de dados são alvos valiosos, portanto foi realizada uma conexão usando o cliente **mysql**, com o usuário `root` e senha em branco (`mysql -h 172.19.0.3 -u root --ssl=0`). De dentro do banco, foram executados alguns comandos para exploração e consulta de dados. O comando `SHOW DATABASES;` listou todos os bancos existentes, e com `USE segredos;` foi possível selecionar o banco desejado. Em seguida, `SHOW TABLES;` listou as tabelas desse banco, e o comando `SELECT * FROM flags;` exibiu todas as informações da tabela selecionada. Um dos itens dessa tabela continha a flag procurada: `KENSEI{SQL_INJECTION_AVANTE}`, conforme mostrado na imagem 45.
+O quinto e último host verificado foi o `dev_machine`, que no escaneamento padrão não apresentou muitas informações. Para investigação mais detalhada, foi executado o comando `rustscan -a 172.19.0.4 --range 1-65535 -- -A`, identificando que a porta `1337` estava aberta. Em seguida, foi estabelecida uma conexão com essa porta utilizando `telnet 172.19.0.4 1337` ou `nc 172.19.0.4 1337`, resultando no recebimento imediato da flag disponibilizada pelo serviço em execução, conforme evidenciado na imagem 45. Essa flag era enviada pelo arquivo `flag_server.py` que estava rodando no container nessa porta.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img45.png" alt="img45"><br>
     <figcaption>Imagem 45.</figcaption>
-</figure></div><br>
-
-O quinto e último host verificado foi o `dev_machine`, que no escaneamento padrão não apresentou muitas informações. Para investigação mais detalhada, foi executado o comando `rustscan -a 172.19.0.4 --range 1-65535 -- -A`, identificando que a porta `1337` estava aberta. Em seguida, foi estabelecida uma conexão com essa porta utilizando `telnet 172.19.0.4 1337` ou `nc 172.19.0.4 1337`, resultando no recebimento imediato da flag disponibilizada pelo serviço em execução, conforme evidenciado na imagem 46. Essa flag era enviada pelo arquivo `flag_server.py` que estava rodando no container nessa porta.
-
-<div align="center"><figure>
-    <img src="../0-aux/md1-img46.png" alt="img46"><br>
-    <figcaption>Imagem 46.</figcaption>
 </figure></div><br>
 
 <a name="item1.10"><h4>1.10 Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</h4></a>[Back to summary](#item1)   
@@ -1466,32 +1492,32 @@ O laboratório da aula 10 foi o mais completo realizado até agora, pois simulou
 
 Conforme detalhado no ambiente de laboratório, este laboratório contou com apenas duas máquinas: a `attacker-enum`, um container **Kali Linux** utilizado para realizar os ataques, e a `alvo-enum`, um servidor **Linux** que hospedava serviços SMB e SNMP, além de conter uma flag secreta escondida.
 
-Após implantar o ambiente, o comando `docker exec -it attacker-enum /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo consistiu em identificar a quais redes as interfaces do container estavam conectadas. Ao executar `ip a` (`apt-get install -y iproute2`) ou `ifconfig` (`apt-get install -y net-tools`), foram visualizadas as interfaces, sendo que a interface `eth0` estava conectada à rede com CIDR `172.20.0.0/24`, já que seu IP nessa rede era `172.20.0.2`. Com o IP da rede identificado, o **Nmap** foi utilizado em modo ping scan (`-sn`) para descobrir os demais hosts ativos, executando o comando `nmap -sn -T4 172.20.0.0/24 -oG - | grep "Up"`. Este comando retornou o IP de um host ativo, `172.20.0.3`, que foi então utilizado para varredura de portas com **Rustscan**. O comando `rustscan -a 172.20.0.3` realizou uma varredura TCP (TCP scan), identificando as portas abertas `139` e `445`. Além disso, uma varredura UDP foi executada com **Nmap** utilizando o comando `nmap -sU -p 161 172.20.0.3`, sendo a porta `161/udp` identificada como `open|filtered`. A imagem 47 apresenta os resultados dessas varreduras.
+Após implantar o ambiente, o comando `docker exec -it attacker-enum /bin/bash` foi utilizado para acessar a máquina de ataque. O primeiro passo consistiu em identificar a quais redes as interfaces do container estavam conectadas. Ao executar `ip a` (`apt-get install -y iproute2`) ou `ifconfig` (`apt-get install -y net-tools`), foram visualizadas as interfaces, sendo que a interface `eth0` estava conectada à rede com CIDR `172.20.0.0/24`, já que seu IP nessa rede era `172.20.0.2`. Com o IP da rede identificado, o **Nmap** foi utilizado em modo ping scan (`-sn`) para descobrir os demais hosts ativos, executando o comando `nmap -sn -T4 172.20.0.0/24 -oG - | grep "Up"`. Este comando retornou o IP de um host ativo, `172.20.0.3`, que foi então utilizado para varredura de portas com **Rustscan**. O comando `rustscan -a 172.20.0.3` realizou uma varredura TCP (TCP scan), identificando as portas abertas `139` e `445`. Além disso, uma varredura UDP foi executada com **Nmap** utilizando o comando `nmap -sU -p 161 172.20.0.3`, sendo a porta `161/udp` identificada como `open|filtered`. A imagem 46 apresenta os resultados dessas varreduras.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img46.png" alt="img46"><br>
+    <figcaption>Imagem 46.</figcaption>
+</figure></div><br>
+
+Com as fases de descoberta e detecção já concluídas, a etapa seguinte foi a enumeração. A enumeração consiste em explorar detalhadamente os serviços de um host para coletar informações adicionais, como usuários, grupos, compartilhamentos e outros dados úteis para exploração. Para isso, foi utilizada a ferramenta **enum4linux-ng** com o comando `enum4linux-ng -A 172.20.0.3`. O **enum4linux-ng** é uma versão "next generation" do **enum4linux**, voltada para a enumeração de sistemas **Windows** via SMB/CIFS. O comando buscava extrair o máximo de informações possíveis do host `172.20.0.3` através do SMB, sem autenticação ou utilizando autenticação anônima quando disponível. O resultado apresentou dados sobre usuários, grupos e compartilhamentos, conforme evidenciado na imagem 47.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img47.png" alt="img47"><br>
     <figcaption>Imagem 47.</figcaption>
 </figure></div><br>
 
-Com as fases de descoberta e detecção já concluídas, a etapa seguinte foi a enumeração. A enumeração consiste em explorar detalhadamente os serviços de um host para coletar informações adicionais, como usuários, grupos, compartilhamentos e outros dados úteis para exploração. Para isso, foi utilizada a ferramenta **enum4linux-ng** com o comando `enum4linux-ng -A 172.20.0.3`. O **enum4linux-ng** é uma versão "next generation" do **enum4linux**, voltada para a enumeração de sistemas **Windows** via SMB/CIFS. O comando buscava extrair o máximo de informações possíveis do host `172.20.0.3` através do SMB, sem autenticação ou utilizando autenticação anônima quando disponível. O resultado apresentou dados sobre usuários, grupos e compartilhamentos, conforme evidenciado na imagem 48.
+O **snmpwalk** foi outra ferramenta utilizada para consultar informações de dispositivos via SNMP (Simple Network Management Protocol). Essa ferramenta percorre ("walk") toda a árvore de informações disponíveis no dispositivo. O comando executado, `snmpwalk -v2c -c public 172.20.0.3`, coletava informações do sistema e da rede remotamente via SNMP. Com isso, foi obtido um *dump* do sistema, ou seja, uma cópia ou registro do estado do dispositivo em determinado momento, incluindo dados como hostname, rede, uptime, entre outros. A imagem 48 apresenta as informações coletadas.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img48.png" alt="img48"><br>
     <figcaption>Imagem 48.</figcaption>
 </figure></div><br>
 
-O **snmpwalk** foi outra ferramenta utilizada para consultar informações de dispositivos via SNMP (Simple Network Management Protocol). Essa ferramenta percorre ("walk") toda a árvore de informações disponíveis no dispositivo. O comando executado, `snmpwalk -v2c -c public 172.20.0.3`, coletava informações do sistema e da rede remotamente via SNMP. Com isso, foi obtido um *dump* do sistema, ou seja, uma cópia ou registro do estado do dispositivo em determinado momento, incluindo dados como hostname, rede, uptime, entre outros. A imagem 49 apresenta as informações coletadas.
+O desafio final foi capturar a flag escondida. Para isso a saída dos dois comandos anteriores foram reanalisados, com intuito de identificar serviços com possíveis brechas ou arquivos acessíveis. O compartilhamento de arquivos `anonymous` foi identificado e o **smbclient** foi utilizado para se conectar a ele. Com o comando `smbclient //172.20.0.3/anonymous` o acesso foi realizado, já que o mesmo permitia login anônimo e sem senha. Com o comando `ls` foi listado o arquivo `flag.txt`, no qual o conteúdo foi baixado para o diretório corrente na máquina com o comando `get flag.txt` e foi visualizado com o comando `cat flag.txt`, conforme mostrado na imagem 49.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img49.png" alt="img49"><br>
     <figcaption>Imagem 49.</figcaption>
-</figure></div><br>
-
-O desafio final foi capturar a flag escondida. Para isso a saída dos dois comandos anteriores foram reanalisados, com intuito de identificar serviços com possíveis brechas ou arquivos acessíveis. O compartilhamento de arquivos `anonymous` foi identificado e o **smbclient** foi utilizado para se conectar a ele. Com o comando `smbclient //172.20.0.3/anonymous` o acesso foi realizado, já que o mesmo permitia login anônimo e sem senha. Com o comando `ls` foi listado o arquivo `flag.txt`, no qual o conteúdo foi baixado para o diretório corrente na máquina com o comando `get flag.txt` e foi visualizado com o comando `cat flag.txt`, conforme mostrado na imagem 50.
-
-<div align="center"><figure>
-    <img src="../0-aux/md1-img50.png" alt="img50"><br>
-    <figcaption>Imagem 50.</figcaption>
 </figure></div><br>
 
 <a name="item1.11"><h4>1.11 Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</h4></a>[Back to summary](#item1)
