@@ -30,7 +30,7 @@ Esta pasta refere-se ao módulo 1 **Fundamentos de Cibersegurança** do bootcamp
 
 ---
 
-### Bootcamp Module 1 Structure
+### Bootcamp Module 1 Structure:
 1. <a name="item1">Módulo 1: Fundamentos de Cibersegurança<br>
     1.1. <a href="#item1.1">Setup e Preparação do Ambiente</a><br>
     1.2. <a href="#item1.2">Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</a><br>
