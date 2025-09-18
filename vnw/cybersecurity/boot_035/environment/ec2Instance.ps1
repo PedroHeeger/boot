@@ -38,7 +38,7 @@ if ($resposta.ToLower() -eq 'y') {
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"
         Write-Output "Listando o IP público da instância ativa $tagNameInstance"
-        $instanceIp = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running"  
+        $instanceIp = aws ec2 describe-instances --filters "Name=tag:Name,Values=$tagNameInstance" "Name=instance-state-name,Values=running" --query "Reservations[].Instances[].NetworkInterfaces[].Association[].PublicIp" --output text
         Write-Output $instanceIp
 
         Write-Output "-----//-----//-----//-----//-----//-----//-----"

@@ -32,24 +32,24 @@ Esta pasta refere-se ao módulo 1 **Fundamentos de Cibersegurança** do bootcamp
 
 ### Bootcamp Module 1 Structure:
 1. <a name="item1">Módulo 1: Fundamentos de Cibersegurança<br>
-    1.1. <a href="#item1.1">Setup e Preparação do Ambiente</a><br>
-    1.2. <a href="#item1.2">Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</a><br>
-    1.3. <a href="#item1.3">Ameaças, ataques e vulnerabilidades</a><br>
-    1.4. <a href="#item1.4">Reconhecimento & Footprinting</a><br>
-    1.5. <a href="#item1.5">Infraestrutura de Rede - Conceitos e Componentes</a><br>
-    1.6. <a href="#item1.6">Ferramentas: Kali Linux, Nmap, Wireshark</a><br>
-    1.7. <a href="#item1.7">Endereçamento IP & Subnetting</a><br>
-    1.8. <a href="#item1.8">Seu Dojo de Ataque no Kali Linux (CLI & GUI)</a><br>
-    1.9. <a href="#item1.9">Ports/Portas</a><br>
-    1.10. <a href="#item1.10">Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</a><br>
-    1.11. <a href="#item1.11">Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</a><br>
-    1.12. <a href="#item1.12">Documentação Técnica Profissional</a><br>
-    1.13. <a href="#item1.13">Projeto Final</a><br>
+    1.1 <a href="#item1.1">Setup e Preparação do Ambiente</a><br>
+    1.2 <a href="#item1.2">Modelo CIA (Confidencialidade, Integridade, Disponibilidade)</a><br>
+    1.3 <a href="#item1.3">Ameaças, ataques e vulnerabilidades</a><br>
+    1.4 <a href="#item1.4">Reconhecimento & Footprinting</a><br>
+    1.5 <a href="#item1.5">Infraestrutura de Rede - Conceitos e Componentes</a><br>
+    1.6 <a href="#item1.6">Ferramentas: Kali Linux, Nmap, Wireshark</a><br>
+    1.7 <a href="#item1.7">Endereçamento IP & Subnetting</a><br>
+    1.8 <a href="#item1.8">Seu Dojo de Ataque no Kali Linux (CLI & GUI)</a><br>
+    1.9 <a href="#item1.9">Ports/Portas</a><br>
+    1.10 <a href="#item1.10">Desvendando SMB e SNMP: Os Pilares e as Fraquezas da Rede</a><br>
+    1.11 <a href="#item1.11">Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</a><br>
+    1.12 <a href="#item1.12">Documentação Técnica Profissional</a><br>
+    1.13 <a href="#item1.13">Projeto Final</a><br>
 
 ---
 
 ### Objective:
-Estabelecer uma base técnica sólida em redes, sistemas operacionais e nos princípios da segurança ofensiva e defensiva, com foco na aplicação prática de conceitos fundamentais de segurança, como o modelo CIA, Cyber Kill Chain e MITRE ATT&CK. O módulo também aborda técnicas essenciais de cibersegurança, incluindo análise de tráfego (**Wireshark**), reconhecimento e OSINT, escaneamento (**Nmap**) e enumeração de serviços.
+Estabelecer uma base técnica sólida em redes, sistemas operacionais e nos princípios da segurança ofensiva e defensiva, com foco na aplicação prática de conceitos fundamentais de segurança, como o modelo CIA, Cyber Kill Chain e MITRE ATT&CK O módulo também aborda técnicas essenciais de cibersegurança, incluindo análise de tráfego (**Wireshark**), reconhecimento e OSINT, escaneamento (**Nmap**) e enumeração de serviços.
 
 ### Folder Structure:
 - [README.md](./README.md): Este documento de README, escrito em **Markdown**, descrevendo todo conteúdo teórico realizado neste módulo.
@@ -542,6 +542,7 @@ Um documento técnico deve conter:
 - Evitar jargão técnico sem explicação; o documento deve ser compreendido por outro profissional, não apenas demonstrar conhecimento técnico.
 
 <a name="item1.13"><h4>1.13 Projeto Final</h4></a>[Back to summary](#item1)
+[Material do Projeto](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/projeto-final)
 
 O objetivo deste projeto foi consolidar os conhecimentos adquiridos ao longo deste módulo, aplicando na prática os conceitos de reconhecimento, mapeamento de rede e segurança da informação. A proposta visou desenvolver o pensamento estratégico e analítico, estimular a documentação técnica com clareza e profissionalismo, além de entregar soluções com foco em impacto real. Seja por meio da análise de uma rede simulada em ambiente **Docker** ou da criação de uma proposta técnica para um cliente fictício, este projeto representou o primeiro passo concreto na atuação como analista de segurança.
 

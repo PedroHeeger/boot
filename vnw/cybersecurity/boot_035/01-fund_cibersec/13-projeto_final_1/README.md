@@ -58,12 +58,12 @@ Esta pasta refere-se ao projeto final opção 1 do módulo 1 **Fundamentos de Ci
 
 ### Bootcamp Module 1 Final Project 1 Structure
 1. <a name="item1">Opção 1 – Projeto Técnico: Mapeamento de Rede em Docker<br>
-    1.1. <a href="#item1.1">Reconhecimento Técnico da Infraestrutura</a><br>
-    1.2. <a href="#item1.2">Análise de Serviços e Exposição de Ativos</a><br>
-    1.3. <a href="#item1.3">Avaliação de Riscos e Exposição</a><br>
-    1.4. <a href="#item1.4">Inventário Técnico e Classificação dos Ativos de Rede</a><br>
-    1.5. <a href="#item1.5">Diagnóstico e Recomendações</a><br>
-    1.6. <a href="#item1.6">Documentação Técnica</a><br>
+    1.1 <a href="#item1.1">Reconhecimento Técnico da Infraestrutura</a><br>
+    1.2 <a href="#item1.2">Análise de Serviços e Exposição de Ativos</a><br>
+    1.3 <a href="#item1.3">Avaliação de Riscos e Exposição</a><br>
+    1.4 <a href="#item1.4">Inventário Técnico e Classificação dos Ativos de Rede</a><br>
+    1.5 <a href="#item1.5">Diagnóstico e Recomendações</a><br>
+    1.6 <a href="#item1.6">Documentação Técnica</a><br>
 
 ---
 
@@ -121,7 +121,7 @@ Como foi identificado tanto no arquivo do **Docker Compose** quanto na imagem 01
 
 #TODO: ESTOU CONCLUÍDO ESSE MATERIAL - PREVISÃO DE FINALIZAÇÃO: 10/08/25
 
-<a name="item1.1"><h4>1.1. Reconhecimento Técnico da Infraestrutura</h4></a> [Back to summary](#item1)
+<a name="item1.1"><h4>1.1 Reconhecimento Técnico da Infraestrutura</h4></a> [Back to summary](#item1)
 
 Com o ambiente construído, os primeiros comandos foram executados de dentro do container `analyst` para realizar o reconhecimento inicial. A maioria desses comandos pertencia a ferramentas já instaladas no container, cuja imagem base era o **Kali Linux** — portanto, o sistema operacional utilizado também era o Kali. Os comandos `ip a`, `ip addr` ou `ip address`, pertencentes ao pacote **Iproute2**, juntamente com o comando `ifconfig`, do pacote **Net-tools**, foram os primeiros utilizados, exibindo todas as interfaces de rede às quais o container estava conectado. O comando `ip a | grep inet > recon-redes.txt` foi utilizado para capturar essa saída e armazená-la em um arquivo de texto nomeado [recon-redes](./outputs/recon-redes.txt). As imagens 02 e 03 mostram os outputs desses comandos, que apresentaram os mesmos resultados.
 
@@ -193,7 +193,7 @@ Analisando os outputs, identificou-se que a sub-rede `10.10.10.0` (`corp_net`) p
     <figcaption>Imagem 10.</figcaption>
 </figure></div><br>
 
-<a name="item1.2"><h4>1.2. Análise de Serviços e Exposição de Ativos</h4></a> [Back to summary](#item1)
+<a name="item1.2"><h4>1.2 Análise de Serviços e Exposição de Ativos</h4></a> [Back to summary](#item1)
 
 Até o momento, foi realizado o reconhecimento da rede interna da empresa, com foco em uma abordagem ativa — ou seja, a máquina de análise enviou pacotes diretamente aos alvos. Com isso, foi possível identificar a segmentação da rede e mapear os hosts presentes em cada sub-rede. Também foi executada a varredura de rede (network scanning), que permitiu descobrir os dispositivos ativos. Esses processos forneceram os primeiros dados essenciais para a construção do inventário técnico.
 
@@ -343,7 +343,7 @@ Um novo scan com o **Nmap** foi realizado em cada uma dessas portas, utilizando 
     <figcaption>Imagem 26.</figcaption>
 </figure></div><br>
 
-<a name="item1.3"><h4>1.3. Avaliação de Riscos e Exposição</h4></a>[Back to summary](#item1)
+<a name="item1.3"><h4>1.3 Avaliação de Riscos e Exposição</h4></a>[Back to summary](#item1)
 
 Nesta terceira etapa, os resultados obtidos nos comandos anteriores foram avaliados com o objetivo de verificar o nível de risco e exposição de cada serviço identificado em cada porta dos hosts analisados.
 
@@ -393,14 +393,14 @@ Além disso, foi executado o comando `zabbix_get -s 10.10.30.117 -p 10051 -k age
     <figcaption>Imagem 31.</figcaption>
 </figure></div><br>
 
-<a name="item1.4"><h4>1.4. Inventário Técnico e Classificação dos Ativos de Rede</h4></a>[Back to summary](#item1)
+<a name="item1.4"><h4>1.4 Inventário Técnico e Classificação dos Ativos de Rede</h4></a>[Back to summary](#item1)
 
 Bom, basicamente a partir daqui a parte prática/técnica já foi finalizada, aqui se inicia a construção do relatório técnico e dos elementos nele presente. Um dos elementos muito importante é o inventário técnico que reune todas as informações de redes, hosts, ip, portas e serviços. É aqui que acontece a classificação ou mapeamento dos ativos da rede, esses ativos são justamente esses elementos citados. 
 
 
 
 
-<a name="item1.5"><h4>1.5. Diagnóstico e Recomendações</h4></a>[Back to summary](#item1)
+<a name="item1.5"><h4>1.5 Diagnóstico e Recomendações</h4></a>[Back to summary](#item1)
 
 
 | Porta       | Serviço          | Riscos Identificados                     | Observações                          | Recomendações           |
@@ -420,7 +420,7 @@ Bom, basicamente a partir daqui a parte prática/técnica já foi finalizada, aq
 | 10051/10052 | Zabbix Proxy/Agent | Possibilidade de acesso remoto não autorizado ao agente | Agente Zabbix com restrições de acesso configuradas (boa prática) | Limitar acesso via firewall |
 | 10051/10052 | Zabbix Proxy/Agent | Vulnerabilidades devido a software desatualizado | - | Manter software atualizado |
 
-<a name="item1.6"><h4>1.6. Documentação Técnica</h4></a>[Back to summary](#item1)
+<a name="item1.6"><h4>1.6 Documentação Técnica</h4></a>[Back to summary](#item1)
 
 
 
