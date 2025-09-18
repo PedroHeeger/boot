@@ -27,6 +27,8 @@ Esta pasta refere-se ao projeto final opção 1 do módulo 2 **Defesa & Monitora
 - Containerization: 
   - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
   - Docker Compose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_compose.png" alt="docker_compose" width="auto" height="25">
+- Observability:
+  - Dozzle   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dozzle.svg" alt="dozzle" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
@@ -43,14 +45,11 @@ Esta pasta refere-se ao projeto final opção 1 do módulo 2 **Defesa & Monitora
   - Curl   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/curl.png" alt="curl" width="auto" height="25">
 - Network:
   - Arp-scan   <img src="" alt="arp-scan" width="auto" height="25">
-  - Domain Information Groper (Dig)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dig.jpeg" alt="dig" width="auto" height="25">
-  - Iproute   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/iproute.png" alt="iproute" width="auto" height="25">
-  - Iputils-ping; Iputils   <img src="" alt="iputils" width="auto" height="25">
   - Netdiscover   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netdiscover.png" alt="netdiscover" width="auto" height="25">
   - Net-tools   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/net-tools.svg" alt="net-tools" width="auto" height="25">
   - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
+  - OWASP ModSecurity Core Rule Set (OWASP ModSecurity CRS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/owasp_modesecurity_crs.png" alt="owasp_modesecurity_crs" width="auto" height="25">
   - Ping   <img src="" alt="iputils" width="auto" height="25">
-  - Rustscan   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/rustscan.png" alt="rustscan" width="auto" height="25">
 - Offensive Security:
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
 
@@ -72,7 +71,7 @@ Esta pasta refere-se ao projeto final opção 1 do módulo 2 **Defesa & Monitora
 ### Objective
 O objetivo deste projeto foi elaborar um relatório técnico completo para documentar a execução de um laboratório controlado em ambiente **Docker**. Esse relatório deveria conter: capa, sumário executivo (1 página), objetivo, escopo, metodologia, diagrama/arquitetura, evidências/diagnóstico, recomendações, plano de ação, conclusão e anexos. Os anexos incluíram prints das ações executadas, arquivos de texto com outputs de comandos ou outros materiais que comprovassem a execução bem-sucedida do laboratório.  
 
-No laboratório, o objetivo foi construir um ambiente defensivo utilizando a aplicação vulnerável **DVWA** protegida por um Web Application Firewall (WAF) **OWASP**. Foram testados os modos de detecção e de bloqueio frente a ataques de SQL Injection (SQLi), Cross-Site Scripting (XSS), Command Injection e File Inclusion. Para o monitoramento, foi empregado o **Dozzle**, permitindo a visualização e análise dos logs do WAF em tempo real.  
+No laboratório, o objetivo foi construir um ambiente defensivo utilizando a aplicação vulnerável **DVWA** protegida por um Web Application Firewall (WAF) **OWASP ModSecurity CRS**. Foram testados os modos de detecção e de bloqueio frente a ataques de SQL Injection (SQLi), Cross-Site Scripting (XSS), Command Injection e File Inclusion. Para o monitoramento, foi empregado o **Dozzle**, permitindo a visualização e análise dos logs do WAF em tempo real.  
 
 ### Folder Structure:
 - Este documento de README, escrito em **Markdown**, descreve todo o desenvolvimento do projeto. Embora não seja um artefato entregável, complementa o projeto.
@@ -209,54 +208,9 @@ A imagem 01 abaixo mostra todos os containers em execução na instância do **A
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
-
-🎯 Configuração do DVWA
-1. Acessar DVWA no Navegador
-2. Fazer Login
-3. Configurar Banco de Dados
-4. Configurar Nível de Segurança
-
-🔍 Reconhecimento (Nmap)
-1. Entrar no Container Kali
-2. Executar Scan Nmap
-3. Sair do Container
-
-🕵️ Teste no Modo Detecção
-1. Configurar WAF para Modo Detecção
-2. Recriar o Container WAF
-3. Testar Ataque SQLi (Deve Passar)
-4. Testar Ataque XSS (Deve Passar)
-
-🚫 Teste no Modo Blocking
-1. Configurar WAF para Modo Blocking
-2. Recriar o Container WAF
-3. Testar Ataque SQLi (Deve ser Bloqueado)
-4. Testar Ataque XSS (Deve ser Bloqueado)
-
-📊 Monitoramento com Dozzle
-1. Acessar Interface Dozzle
-2. Fazer Login no Dozzle
-3. Visualizar Logs do WAF
-4. Analisar Logs Estruturados
-
-📋 Coleta de Evidências
-1. Capturar Logs Detalhados
-2. Fazer Screenshots
-3. Documentar Timeline NIST IR
-
-
-
-- Rede interna x externa, Kali desprezivel?
-
-- WAF <> Iptables <> Segurança do DVWA
-  - Pra que iptables, não já tenho WAF defendendo, seria só uma proteção a mais ne?
-
-- XSS Armazenado <> XSS Refletido
-
-
 <a name="item1.1"><h4>1.1 Configuração do DVWA</h4></a> [Back to summary](#item1)
 
-O primeiro passo deste laboratório foi a configuração da aplicação web **DVWA**. Em vez de acessar o container diretamente, o mapeamento de portas (port forwarding) foi realizado no container WAF, que direcionava o tráfego para a aplicação, mantendo-a protegida. Observando o **Docker Compose**, nota-se que havia o port forwarding `"8080:8080"` no WAF, ou seja, a porta do container era mapeada para a porta correspondente no host (instância EC2). Dessa forma, o fluxo de comunicação era: container `dvwa` → container `waf_modsec` → instância EC2. Assim, ao criar uma regra no security group da instância, liberando a porta `8080` para o IP da máquina física **Windows**, era possível acessar a aplicação vulnerável **DVWA** pelo navegador daa máquina física, como mostrado na imagem 02.
+O primeiro passo deste laboratório foi a configuração da aplicação web **DVWA**. Em vez de acessar o container diretamente, o mapeamento de portas (port forwarding) foi realizado no container WAF, que direcionava o tráfego para a aplicação, mantendo-a protegida. Observando o **Docker Compose**, nota-se que havia o port forwarding `"8080:8080"` no WAF, ou seja, a porta do container era mapeada para a porta correspondente no host (instância EC2). Dessa forma, o fluxo de comunicação era: container `dvwa` → container `waf_modsec` → instância EC2. Assim, ao criar uma regra no security group da instância, liberando a porta `8080` para o IP da máquina física **Windows**, era possível acessar a aplicação vulnerável **DVWA** pelo navegador da máquina física, como mostrado na imagem 02.
 
 <div align="center"><figure>
     <img src="./img/img02.png" alt="img02"><br>
@@ -306,7 +260,7 @@ A partir deste ponto, iniciou-se a execução dos quatro ataques. Como eles seri
 curl -s "http://waf_modsec:8080/vulnerabilities/sqli/?id=1'+OR+'1'='1'--+-&Submit=Submit" -H "Host: dvwa" -H "Cookie: PHPSESSID=test; security=low" -w "Status: %{http_code}\n"
 ```
 
-Basicamente, este comando acessava o endpoint `/vulnerabilities/sqli/` da aplicação web vulnerável **DVWA** através do container do WAF, enviando o payload `?id=1'+OR+'1'='1'--+-` no formulário junto com o parâmetro `&Submit=Submit`, que simulava o envio do formulário na aplicação. O cabeçalho `-H "Host: dvwa"` indicava que o host alvo era o container **DVWA**, enquanto o cabeçalho `-H "Cookie: PHPSESSID=test; security=low"` fornecia a sessão da aplicação e definia o nível de segurança como baixo. O parâmetro `-w "Status: %{http_code}\n"` apenas formatava a saída do comando. O payload manipulava o parâmetro `id` com uma condição específica e adicionava uma segunda condição que sempre retornava verdadeira (`'1'='1'`), garantindo que todos os dados fossem exibidos, desprezando os filtros definidos. A imagem 05 evidencia que o ataque realizado foi detectado pelo WAF, mas não foi bloqueado
+Basicamente, este comando acessava o endpoint `/vulnerabilities/sqli/` da aplicação web vulnerável **DVWA** através do container do WAF, enviando o payload `?id=1'+OR+'1'='1'--+-` no formulário junto com o parâmetro `&Submit=Submit`, que simulava o envio do formulário na aplicação. O cabeçalho `-H "Host: dvwa"` indicava que o host alvo era o container **DVWA**, enquanto o cabeçalho `-H "Cookie: PHPSESSID=test; security=low"` fornecia a sessão da aplicação e definia o nível de segurança como baixo. O parâmetro `-w "Status: %{http_code}\n"` apenas formatava a saída do comando. O payload manipulava o parâmetro `id` com uma condição específica e adicionava uma segunda condição que sempre retornava verdadeira (`'1'='1'`), garantindo que todos os dados fossem exibidos, desprezando os filtros definidos. A imagem 05 evidencia que o ataque realizado foi detectado pelo WAF, retornando o status 302.
 
 <div align="center"><figure>
     <img src="./img/img05.png" alt="img05"><br>
@@ -334,7 +288,7 @@ O segundo ataque realizado foi um Cross-Site Scripting (XSS) refletido, também 
 - `-H "Cookie: security=low"`: Cabeçalho HTTP com cookie que define o nível de segurança da DVWA como baixo, permitindo que o ataque seja executado.  
 - `-w "Status: %{http_code}\n"`: Formata a saída exibindo o código HTTP retornado pela requisição, permitindo confirmar se a requisição foi processada com sucesso.  
 
-A execução deste ataque foi semelhante ao anterior, pois ambos utilizavam requisições HTTP para explorar a aplicação web vulnerável **DVWA**. A diferença principal foi o endpoint alvo, que neste caso era `/vulnerabilities/xss_r/`, e o payload, que consistia em `?name=%3Cscript%3Ealert%28%22XSS%22%29%3C/script%3E`. Não houve necessidade de enviar dados via formulário, já que a requisição não era do tipo POST. No cabeçalho HTTP, não foi preciso incluir a sessão da aplicação, sendo definido apenas o nível de segurança como `low`, requisito importante, pois níveis mais altos da **DVWA** impediriam a execução do ataque mesmo sem intervenção do WAF. O payload inserido no campo `name` continha o código **JavaScript** `<script>alert("XSS")</script>`, utilizado apenas para testar se a página refletia o input do usuário sem escape, confirmando a vulnerabilidade e permitindo a execução de comandos. A imagem 07 demonstra que o WAF detectou o ataque, mas não o bloqueou, mantendo o modo de detecção ativo.
+A execução deste ataque foi semelhante ao anterior, pois ambos utilizavam requisições HTTP para explorar a aplicação web vulnerável **DVWA**. A diferença principal foi o endpoint alvo, que neste caso era `/vulnerabilities/xss_r/`, e o payload, que consistia em `?name=%3Cscript%3Ealert%28%22XSS%22%29%3C/script%3E`. Não houve necessidade de enviar dados via formulário, já que a requisição não era do tipo POST. No cabeçalho HTTP, não foi preciso incluir a sessão da aplicação, sendo definido apenas o nível de segurança como `low`, requisito importante, pois níveis mais altos da **DVWA** impediriam a execução do ataque mesmo sem intervenção do WAF. O payload inserido no campo `name` continha o código **JavaScript** `<script>alert("XSS")</script>`, utilizado apenas para testar se a página refletia o input do usuário sem escape, confirmando a vulnerabilidade e permitindo a execução de comandos. A imagem 07 demonstra que o WAF detectou o ataque, retornando o código de status 302.
 
 <div align="center"><figure>
     <img src="./img/img07.png" alt="img07"><br>
@@ -347,8 +301,6 @@ Esse mesmo ataque também foi realizado através da interface gráfica, acessand
     <img src="./img/img08.png" alt="img08"><br>
     <figcaption>Imagem 08.</figcaption>
 </figure></div><br>
-
-O terceiro ataque foi o de Command Injection que... Ele também foi executado com o **Curl** no container de ataque através do comando `curl -s "http://waf_modsec:8080/vulnerabilities/command/?ip=127.0.0.1;ls" -H "Host: dvwa" -H "Cookie: security=low" -w "Status: %{http_code}\n"`. A explicação detalhada do comando é listada abaixo:
 
 O terceiro ataque foi o de Command Injection, que também foi executado com o **Curl** no container de ataque através do comando `curl -s "http://waf_modsec:8080/vulnerabilities/command/?ip=127.0.0.1;ls" -H "Host: dvwa" -H "Cookie: security=low" -w "Status: %{http_code}\n"`. A explicação detalhada do comando é listada abaixo:
 - `curl`: Ferramenta de linha de comando para enviar requisições HTTP.  
@@ -363,7 +315,7 @@ O terceiro ataque foi o de Command Injection, que também foi executado com o **
 - `-H "Cookie: security=low"`: Cabeçalho HTTP definindo o nível de segurança da DVWA como baixo, permitindo que o ataque seja executado.  
 - `-w "Status: %{http_code}\n"`: Formata a saída exibindo o código HTTP retornado pela requisição, permitindo verificar se o ataque foi processado com sucesso.
 
-Assim como os dois ataques anteriores, este também foi realizado por meio de uma requisição HTTP, alterando apenas o endpoint para a seção apropriada do site (`/vulnerabilities/command/`) e o payload para `?ip=127.0.0.1;ls`. Esse payload preenchia o campo de IP com o endereço `127.0.0.1`, que correspondia ao localhost do container `dvwa`, e incluía um comando adicional. O valor do campo era utilizado como alvo em uma execução do comando `ping` no servidor, mas devido ao comando injetado `ls`, após o ping o servidor também listava os arquivos presentes no diretório da aplicação web vulnerável. A imagem 09 mostra o output do comando, evidenciando tanto o ping quanto a listagem de arquivos.
+Assim como os dois ataques anteriores, este também foi realizado por meio de uma requisição HTTP, alterando apenas o endpoint para a seção apropriada do site (`/vulnerabilities/command/`) e o payload para `?ip=127.0.0.1;ls`. Esse payload preenchia o campo de IP com o endereço `127.0.0.1`, que correspondia ao localhost do container `dvwa`, e incluía um comando adicional. O valor do campo era utilizado como alvo em uma execução do comando `ping` no servidor, mas devido ao comando injetado `ls`, após o ping o servidor também listava os arquivos presentes no diretório da aplicação web vulnerável. A imagem 09 mostra o status 302 (redirecionamento), indicando que o ataque foi detectado, mas não bloqueado.
 
 <div align="center"><figure>
     <img src="./img/img09.png" alt="img09"><br>
@@ -377,26 +329,55 @@ Na interface gráfica, o mesmo ataque foi realizado acessando a seção `Command
     <figcaption>Imagem 10.</figcaption>
 </figure></div><br>
 
+O quarto ataque foi o de File Inclusion, realizado com **Curl** no container de ataque através do comando: `curl -s "http://waf_modsec:8080/vulnerabilities/fi/?page=../../../../etc/passwd" -H "Host: dvwa" -H "Cookie: security=low" -w "Status: %{http_code}\n"`. A explicação detalhada do comando é listada abaixo:
+- `curl`: Ferramenta de linha de comando para enviar requisições HTTP.  
+- `-s`: Modo silencioso (silent), que suprime o progresso da requisição e mensagens de erro, mantendo a saída limpa.  
+- `"http://waf_modsec:8080/vulnerabilities/fi/?page=../../../../etc/passwd"`: URL alvo da requisição, contendo:  
+  - `waf_modsec:8080`: host e porta do container WAF que encaminha para a aplicação DVWA.  
+  - `/vulnerabilities/fi/`: endpoint da aplicação vulnerável a File Inclusion.  
+  - `?page=../../../../etc/passwd`: payload de inclusão de arquivo que manipula o parâmetro `page` para tentar ler arquivos arbitrários no servidor.  
+- `-H "Host: dvwa"`: Cabeçalho HTTP definindo o host como `dvwa`, necessário para o roteamento correto dentro do Docker.  
+- `-H "Cookie: security=low"`: Cabeçalho HTTP definindo o nível de segurança da DVWA como baixo, permitindo que o ataque seja executado.  
+- `-w "Status: %{http_code}\n"`: Formata a saída exibindo o código HTTP retornado pela requisição, permitindo verificar se o ataque foi processado com sucesso.
 
-
-
-
-
+Para este ataque, o processo foi o mesmo, alterando apenas o endpoint para `/vulnerabilities/fi/` e o payload para `?page=../../../../etc/passwd`. O objetivo desse payload era tentar ler o arquivo `/etc/passwd` no servidor da aplicação web vulnerável **DVWA**. A imagem 11 exibe o status 302 de redirecionamento, confirmando que o ataque foi detectado pelo container do WAF, mas não bloqueado.
 
 <div align="center"><figure>
     <img src="./img/img11.png" alt="img11"><br>
     <figcaption>Imagem 11.</figcaption>
 </figure></div><br>
 
+Pela interface gráfica acessada no navegador, a seção no **DVWA** foi alternada para `File Inclusion` ... A imagem 12 evidencia o ataque pela GUI.
+
 <div align="center"><figure>
     <img src="./img/img12.png" alt="img12"><br>
     <figcaption>Imagem 12.</figcaption>
 </figure></div><br>
 
+<a name="item1.4"><h4>1.4 Teste no Modo Blocking</h4></a>[Back to summary](#item1)
+
+Após testar o modo de detecção no container do **OWASP ModSecurity CRS**, o passo seguinte foi alternar para o modo de bloqueio. Para isso foi necessário acessar o host que executava os containers — a instância **Amazon EC2** — e editar o arquivo `docker-compose.yml`. Na edição, a variável `MODSEC_RULE_ENGINE=DetectionOnly` foi comentada e `MODSEC_RULE_ENGINE=On` foi ativada. Em seguida, para aplicar a alteração apenas ao container do WAF, foi executado o comando `docker compose up -d --force-recreate waf_modsec`, recriando o container `waf_modsec` com as novas configurações.
+
+De volta a máquina de ataque **Kali Linux**, cada um dos quatro ataques foi novamente realizado com o **Curl**. Os comandos foram executados nessa ordem:
+- SQLi: `curl -s "http://waf_modsec:8080/vulnerabilities/sqli/?id=1'+OR+'1'='1'--+-&Submit=Submit" -H "Host: dvwa" -H "Cookie: PHPSESSID=test; security=low" -w "Status: %{http_code}\n"`;
+- XSS: `curl -s "http://waf_modsec:8080/vulnerabilities/xss_r/?name=%3Cscript%3Ealert%28%22XSS%22%29%3C/script%3E`;
+- Command Injection: `curl -s "http://waf_modsec:8080/vulnerabilities/command/?ip=127.0.0.1;ls" -H "Host: dvwa" -H "Cookie: security=low" -w "Status: %{http_code}\n"`;
+- File Inclusion: `curl -s "http://waf_modsec:8080/vulnerabilities/fi/?page=../../../../etc/passwd" -H "Host: dvwa" -H "Cookie: security=low" -w "Status: %{http_code}\n"`;
+
+A imagem 13 mostra que o output de cada comando retornou o código de status **403 (Forbidden)**, indicando que o WAF bloqueou os ataques com sucesso.
+
 <div align="center"><figure>
     <img src="./img/img13.png" alt="img13"><br>
     <figcaption>Imagem 13.</figcaption>
 </figure></div><br>
+
+Os ataques também foram executados via interface gráfica do **DVWA**, seguindo o mesmo procedimento utilizado quando o WAF estava em modo de detecção. Caso a GUI não estivesse aberta, bastava acessar o IP ou DNS público da instância EC2 na porta `8080` — que estava mapeada para o container `waf_modsec`, o qual encaminhava o tráfego ao container `dvwa`. O grupo de segurança da instância já permitia o acesso na porta `8080` a partir do IP da máquina física **Windows**. Cada ataque foi realizado na sua respectiva seção do **DVWA**:
+- SQLi: `1'+OR+'1'='1'--+-`  
+- XSS (Reflected): `<script>alert("XSS")</script>`  
+- Command Injection: `127.0.0.1;ls`  
+- File Inclusion: `?page=../../../../etc/passwd`
+
+As quatro imagens seguintes (14, 15, 16 e 17) evidenciam as tentativas de ataque realizadas pela interface gráfica, que foram bloqueadas pelo container WAF.
 
 <div align="center"><figure>
     <img src="./img/img14.png" alt="img14"><br>
@@ -418,14 +399,20 @@ Na interface gráfica, o mesmo ataque foi realizado acessando a seção `Command
     <figcaption>Imagem 17.</figcaption>
 </figure></div><br>
 
+<a name="item1.5"><h4>1.5 Monitoramento com Dozzle</h4></a>[Back to summary](#item1)
 
+Com a finalização dos testes do firewall de aplicação web **OWASP ModSecurity CRS** em ambos os modos (detecção e bloqueio), o passo seguinte foi a análise dos logs. Para isso, utilizou-se o **Dozzle**, uma interface web leve que permite visualizar, em tempo real, os logs de contêineres **Docker**. Na configuração do container `dozzle` no **Docker Compose**, foi definido um mapeamento de volume, onde o arquivo de logs de todos os containers do host (instância EC2), localizado em `/var/run/docker.sock`, era compartilhado com o diretório equivalente no container `/var/run/docker.sock`. Dessa forma, o container **Dozzle** tinha acesso centralizado aos logs de todos os containers da instância.
+
+No container `dozzle` também foi configurado um port forwarding, mapeando a porta `9999` do host para a porta `8080` do container, onde o serviço estava em execução. Com isso, era possível acessar a interface gráfica do **Dozzle** externamente pelo navegador da máquina física, utilizando o IP ou DNS público da instância na porta `9999`. As credenciais de autenticação definidas foram `admin` para usuário e `admin` para senha. Entretanto, foi necessário acrescentar uma nova regra ao security group da instância, liberando a porta `9999` para o IP público da máquina física **Windows**. A imagem 18 exibe o acesso autenticado a interface do **Dozzle**.
 
 <div align="center"><figure>
     <img src="./img/img18.png" alt="img18"><br>
     <figcaption>Imagem 18.</figcaption>
 </figure></div><br>
 
-
+Dentro do **Dozzle**, foi selecionado o container `waf_modsec` para análise dos logs. Foram aplicados dois filtros principais:  
+- `"secrules_engine":"DetectionOnly"`: exibia os quatro ataques detectados pelo WAF quando apenas o modo de detecção estava ativo, sem bloqueio.  
+- `"secrules_engine":"Enabled"`: mostrava os mesmos ataques, mas desta vez tanto detectados quanto bloqueados pelo WAF.  
 
 <div align="center"><figure>
     <img src="./img/img19.png" alt="img19"><br>
@@ -447,86 +434,22 @@ Na interface gráfica, o mesmo ataque foi realizado acessando a seção `Command
     <figcaption>Imagem 22.</figcaption>
 </figure></div><br>
 
+<a name="item1.6"><h4>1.6 Coleta de Evidências</h4></a>[Back to summary](#item1)
+
+Na etapa de coleta de evidências, foram utilizadas as mesmas imagens capturadas para esse arquivo README. Em cada execução do laboratório, um print foi registrado para comprovar a execução, servindo como evidência a ser anexada ao relatório técnico. Todo o processo foi documentado, desde o reconhecimento com **Nmap**, passando pelos testes dos quatro tipos de ataques em modo de detecção e, posteriormente, em modo de bloqueio, até a análise dos logs desses ataques no **Dozzle**.  
+
+Além disso, foi realizada uma coleta adicional de evidências: a criação de um arquivo contendo os logs do container do WAF. Essa ação foi feita diretamente no host com o comando: `docker logs waf_modsec --tail 50 > logs_waf_evidencias.txt`. A imagem 23 exibe essa coleta sendo realizada.
+
 <div align="center"><figure>
     <img src="./img/img23.png" alt="img23"><br>
     <figcaption>Imagem 23.</figcaption>
 </figure></div><br>
 
-<div align="center"><figure>
-    <img src="./img/img24.png" alt="img24"><br>
-    <figcaption>Imagem 24.</figcaption>
-</figure></div><br>
-
-<div align="center"><figure>
-    <img src="./img/img25.png" alt="img25"><br>
-    <figcaption>Imagem 25.</figcaption>
-</figure></div><br>
-
-<div align="center"><figure>
-    <img src="./img/img26.png" alt="img26"><br>
-    <figcaption>Imagem 26.</figcaption>
-</figure></div><br>
-
-
-
-
-<div align="center"><figure>
-    <img src="./img/img27.png" alt="img27"><br>
-    <figcaption>Imagem 27.</figcaption>
-</figure></div><br>
-
-
-
-<div align="center"><figure>
-    <img src="./img/img28.png" alt="img28"><br>
-    <figcaption>Imagem 28.</figcaption>
-</figure></div><br>
-
-
-
-<div align="center"><figure>
-    <img src="./img/img29.png" alt="img29"><br>
-    <figcaption>Imagem 29.</figcaption>
-</figure></div><br>
-
-
-
-<div align="center"><figure>
-    <img src="./img/img30.png" alt="img30"><br>
-    <figcaption>Imagem 30.</figcaption>
-</figure></div><br>
-
-
-
-<div align="center"><figure>
-    <img src="./img/img31.png" alt="img31"><br>
-    <figcaption>Imagem 31.</figcaption>
-</figure></div><br>
-
-<a name="item1.4"><h4>1.4 Teste no Modo Blocking</h4></a>[Back to summary](#item1)
-
-
-
-
-
-
-
-
-<a name="item1.5"><h4>1.5 Monitoramento com Dozzle</h4></a>[Back to summary](#item1)
-
-
-
-
-
-<a name="item1.6"><h4>1.6 Coleta de Evidências</h4></a>[Back to summary](#item1)
-
-
-
 <a name="item1.7"><h4>1.7 Documentação Técnica</h4></a>[Back to summary](#item1)
 
-Após finalização do laboratório, chegou o momento de construir a documentação técnica. Este arquivo de README é a documentação padrão que realizo em todos meus projetos no meu GitHub, ela basicamente narra toda a forma como a atividade (bootcamp, curso, aula, laboratório, desafio, projeto) foi desenvolvida. Já a documentação técnica do projeto consistia no artefato principal entregável, bem como seus anexos. Este artefato foi o relatório técnico que documentava de forma técnica e estruturada o laboratório realizado, onde em anexos outros documentos parte do projeto podiam ser vinculados.
+Após a conclusão do laboratório, iniciou-se a construção da documentação técnica. Este arquivo de README utilizado é o padrão que mantenho em todos os projetos no GitHub, servindo para narrar detalhadamente como cada atividade (bootcamp, curso, aula, laboratório, desafio ou projeto) foi desenvolvida.  
 
-Um relatório técnico de segurança normalmente segue uma estrutura lógica e hierárquica, que garante clareza tanto para leitores técnicos quanto para a gestão. A ordem pode variar um pouco conforme a instituição (ex.: NIST, ISO, frameworks de IR), mas o modelo mais aceito é algo assim:
+A documentação técnica do projeto, por sua vez, constitui o artefato principal a ser entregue, incluindo seus anexos. Esse artefato foi o relatório técnico de nome [relatorio_tecnico.md](./relatorio_tecnico.md), que registrou de forma estruturada e detalhada todo o laboratório realizado, permitindo que outros documentos ou evidências relevantes fossem vinculados como anexos. 
 
 Um relatório técnico de segurança é elaborado para documentar, analisar e comunicar informações sobre a proteção de sistemas, redes ou aplicações. A estrutura recomendada garante clareza, rastreabilidade e utilidade tanto para profissionais técnicos quanto para gestores. A seguir, uma descrição detalhada dos elementos mais comuns:
 1. **Capa:** A capa identifica o relatório, contendo o título, autor(es), data e organização responsável. Serve para formalizar o documento e indicar sua autoria.
@@ -535,11 +458,11 @@ Um relatório técnico de segurança é elaborado para documentar, analisar e co
 4. **Escopo:** O escopo delimita o que está incluído e excluído do estudo ou teste. Exemplos: sistemas, redes, aplicações, períodos de análise, tipo de ataques simulados ou segmentos de infraestrutura.
 5. **Metodologia:** A metodologia detalha os procedimentos, frameworks e ferramentas utilizados. Exemplos: frameworks de resposta a incidentes como NIST IR, técnicas de ataque simuladas, ferramentas de monitoramento, logs analisados. Permite que outros profissionais reproduzam ou verifiquem o trabalho.
 6. **Diagrama / Arquitetura:** Diagramas ou representações visuais do ambiente analisado ajudam a compreender a infraestrutura, relações entre sistemas, fluxos de dados e pontos de vulnerabilidade.  
-7. **Evidências e Diagnóstico:** Nesta seção, são apresentados os dados coletados: prints, logs, outputs de comandos e achados técnicos. Também inclui análise e interpretação das evidências, mostrando como os incidentes foram detectados, contidos e solucionados.
-8. **Recomendações:** Sugestões para corrigir vulnerabilidades e melhorar a segurança, priorizando ações críticas ou de maior impacto. Deve ser prática e aplicável.
-9. **Plano de Ação:** Indica como implementar as recomendações, com ações detalhadas, responsáveis, prazos e prioridades, facilitando a execução e acompanhamento das melhorias.
-10. **Conclusão:** Síntese dos resultados do relatório, reforçando o estado final do ambiente, os principais aprendizados e eventuais limitações do estudo.
-11. **Anexos:** Materiais complementares, como configurações completas, scripts, logs extensos, outputs detalhados ou qualquer arquivo que comprove as atividades executadas. Garantem rastreabilidade e permitem verificação detalhada.
-
-
-
+7. **Execução:** A seção de execução descreve as ações realizadas durante o laboratório ou teste, detalhando passo a passo como os procedimentos planejados foram aplicados. Inclui a sequência de operações, o uso de ferramentas, a realização de ataques simulados, a interação com os sistemas-alvo e a aplicação de medidas de defesa. O objetivo é mostrar de forma clara e objetiva o que foi feito na prática, permitindo que outro profissional compreenda e, se necessário, reproduza o experimento.
+8. **Evidências:** A seção de evidências apresenta os materiais que suportam as informações do relatório. Inclui arquivos, prints de tela, logs, resultados de testes, outputs de comandos e qualquer documentação que comprove ou registre o trabalho realizado. O objetivo é fornecer base concreta para a análise e permitir verificação independente.
+9. **Análise e Diagnóstico:** Esta seção interpreta e avalia as informações coletadas nas evidências. Deve apresentar uma análise crítica, apontando problemas, falhas ou comportamentos observados, relacionando-os com os objetivos do relatório. O diagnóstico permite tirar conclusões fundamentadas e identificar recomendações ou ajustes necessários.
+10. **Resposta a Incidente (NIST IR) (Opcional)**: Se aplicável, esta seção descreve como um incidente seria tratado seguindo um framework formal, como o NIST SP 800-61r2. Organiza as ações em etapas: Detecção, Contenção, Erradicação, Recuperação e Lições Aprendidas. O objetivo é demonstrar a aplicação de boas práticas de resposta a incidentes e a forma estruturada de lidar com problemas identificados.
+11. **Recomendações:** Sugestões para corrigir vulnerabilidades e melhorar a segurança, priorizando ações críticas ou de maior impacto. Deve ser prática e aplicável.
+12. **Plano de Ação (80/20):** Indica como implementar as recomendações, com ações detalhadas, responsáveis, prazos e prioridades, facilitando a execução e acompanhamento das melhorias.
+13. **Conclusão:** Síntese dos resultados do relatório, reforçando o estado final do ambiente, os principais aprendizados e eventuais limitações do estudo.
+14. **Anexos:** Materiais complementares, como configurações completas, scripts, logs extensos, outputs detalhados ou qualquer arquivo que comprove as atividades executadas. Garantem rastreabilidade e permitem verificação detalhada.
