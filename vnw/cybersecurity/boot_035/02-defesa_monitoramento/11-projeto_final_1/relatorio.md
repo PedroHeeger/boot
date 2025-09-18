@@ -257,4 +257,4 @@ O relatório fornece uma base sólida para futuras análises de segurança, ajus
 ## 14. Anexos
 Nesta seção estão incluídos materiais complementares que comprovam a execução do laboratório e permitem verificação detalhada das atividades:
 - [Prints da execução do lab](./img/): pasta com todas as imagens que evidenciam a execução do laboratório.
-- [Arquivo de log do WAF](./): arquivo exportado contendo os registros de log do container de WAF.   
+- [Arquivo de log do WAF](./logs_waf_bloqueio): arquivo exportado contendo os últimos 50 registros de log do container de WAF em modo de bloqueio.
