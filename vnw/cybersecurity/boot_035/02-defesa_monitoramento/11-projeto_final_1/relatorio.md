@@ -8,26 +8,30 @@
 **Instituição**: Vai na Web  
 **Curso**: Formação Cybersec  
 **Módulo:** Defesa e Monitoramento  
-**Contexto**: Projeto Final do Módulo (Opção 1)
+**Contexto**: Projeto Final do Módulo 2 (Opção 1)
 
 ---
 
 ## 1. Sumário Executivo
-Este relatório apresenta a execução de um laboratório de segurança focado na proteção da aplicação web vulnerável **DVWA** utilizando o **ModSecurity CRS** como WAF, em um ambiente controlado com containers Docker sobre uma instância EC2. O monitoramento em tempo real foi realizado via **Dozzle**, permitindo observar a atuação do WAF frente a ataques simulados.
+Este relatório descreve a execução de um laboratório de segurança voltado para proteger a aplicação web vulnerável **DVWA** utilizando o **ModSecurity CRS** como firewall de aplicação web (WAF). Todo o ambiente foi montado em containers **Docker**, executados dentro de uma instância **EC2 da AWS**. O acompanhamento em tempo real foi feito com o **Dozzle**, que permitiu visualizar de forma prática como o WAF reagia frente a ataques simulados.
 
-Os principais ataques testados foram: **SQL Injection (SQLi), Cross-Site Scripting (XSS), Command Injection e File Inclusion**. Os testes demonstraram que o WAF foi capaz de detectar e bloquear todas as tentativas maliciosas, garantindo a integridade da aplicação e fornecendo visibilidade completa das tentativas de ataque.
+Foram aplicados quatro tipos de ataques comuns em sistemas web: **SQL Injection (SQLi), Cross-Site Scripting (XSS), Command Injection e File Inclusion**. O resultado mostrou que o WAF conseguiu detectar e bloquear três desses ataques, impedindo que a aplicação fosse comprometida. Apenas o ataque de *File Inclusion* não foi identificado, revelando um ponto de atenção.
 
-Principais achados:  
-- O ambiente defensivo configurado em modo detecção permitiu identificar todos os ataques sem interromper o funcionamento da aplicação.  
-- A alteração para o modo bloqueio resultou na prevenção efetiva da execução de ações maliciosas, com códigos HTTP 403 confirmando a rejeição dos ataques.  
-- O monitoramento em tempo real via Dozzle facilitou a visualização imediata dos eventos, evidenciando a eficácia do WAF.  
+### Principais achados
+- Em modo de **detecção**, o ambiente identificou 75% dos ataques sem afetar o funcionamento da aplicação.  
+- Em modo de **bloqueio**, os ataques foram impedidos, retornando o código **403** (acesso negado).  
+- O ataque de **File Inclusion** não foi detectado nem bloqueado, evidenciando uma vulnerabilidade crítica que permanece aberta.  
+- O uso do **Dozzle** possibilitou acompanhar em tempo real as tentativas de ataque e a resposta do WAF.  
 
-Recomendações:  
-- Manter monitoramento contínuo e alertas automáticos para incidentes críticos.  
-- Realizar revisões periódicas das regras do WAF e testes regulares de segurança.  
-- Isolar containers em sub-redes distintas e atualizar periodicamente o software utilizado.  
+### Recomendações
+- Ajustar ou criar regras específicas para que ataques de **File Inclusion** também sejam detectados e bloqueados.  
+- Implantar **monitoramento contínuo** e alertas automáticos para eventos críticos.  
+- Revisar e atualizar periodicamente as **regras do WAF** para garantir que continuem eficazes contra novas ameaças.  
+- Realizar **testes de penetração recorrentes** para validar a eficácia das defesas frente a diferentes vetores de ataque.  
+- **Segregar os containers** em diferentes sub-redes e manter todos os softwares sempre atualizados.  
 
-O estudo confirma que a combinação de WAF e monitoramento em tempo real fornece uma base sólida para proteção de aplicações web em ambientes similares.
+### Conclusão
+O estudo mostrou que a combinação de um **WAF bem configurado** com **monitoramento em tempo real** é uma estratégia eficaz para proteger aplicações web. Entretanto, a falha em detectar e bloquear o ataque de **File Inclusion** reforça que nenhuma defesa é infalível e que é essencial revisar continuamente as regras, aplicar correções e manter uma postura ativa de segurança.  
 
 ---
 
@@ -40,7 +44,7 @@ Busca-se analisar a eficácia do WAF frente a ataques simulados, incluindo:
 - **Command Injection:** execução não autorizada de comandos no servidor;  
 - **File Inclusion:** exploração para acessar ou executar arquivos do sistema indevidamente.  
 
-Durante o laboratório, os logs gerados pelo WAF foram monitorados com o Dozzle, permitindo registrar e analisar como cada ataque foi detectado ou bloqueado, servindo como evidência do desempenho do sistema de proteção.
+Durante o laboratório, os logs gerados pelo WAF foram monitorados com o Dozzle, permitindo registrar e analisar se e como cada ataque foi detectado ou bloqueado, servindo como evidência do desempenho do sistema de proteção.
 
 ---
 
@@ -69,7 +73,11 @@ Fora do escopo:
 ---
 
 ## 4. Metodologia
-A metodologia do laboratório descreve o planejamento e os procedimentos adotados para avaliar a eficácia do WAF frente a ataques simulados, permitindo que outro profissional reproduza ou verifique o trabalho.  
+
+<p align="justify">
+   A metodologia do laboratório descreve o planejamento e os procedimentos adotados para avaliar a eficácia do WAF frente a ataques simulados, permitindo que outro profissional reproduza ou verifique o trabalho.  
+</p>
+
 1. **Planejamento do ambiente:**  
    - Seleção de uma infraestrutura baseada em **Docker** sobre uma **instância EC2**.  
    - Definição dos containers necessários: DVWA (aplicação vulnerável), Kali Linux (máquina de ataque), ModSecurity CRS (WAF) e Dozzle (monitoramento de logs).
@@ -89,13 +97,21 @@ A metodologia do laboratório descreve o planejamento e os procedimentos adotado
    - Planejamento do uso do **Dozzle** para observar os eventos gerados pelo WAF.  
    - Definição dos tipos de evidências a serem coletadas: prints de tela, logs de container e outputs de comandos, para análise posterior.
 
-Esta metodologia estabelece os **procedimentos conceituais e critérios de avaliação**, servindo de base para a execução prática do laboratório e posterior análise das evidências.
+<p align="justify">
+   Esta metodologia estabelece os **procedimentos conceituais e critérios de avaliação**, servindo de base para a execução prática do laboratório e posterior análise das evidências.
+</p>
 
 ---
 
 ## 5. Diagrama / Arquitetura
 
-![Arquitetura do Laboratório](assets/diagrama_laboratorio.png)
+<p align="justify">
+   O diagrama abaixo representa a arquitetura lógica do ambiente configurado no laboratório. Ele mostra que todos os containers Docker — <strong>Máquina de Ataque (Kali Linux)</strong>, <strong>WAF ModSecurity CRS</strong>, <strong>Aplicação Vulnerável (DVWA)</strong> e <strong>Monitoramento (Dozzle)</strong> — foram executados dentro de uma instância <strong>Amazon EC2</strong>. Também está representada a <strong>máquina física</strong> utilizada para interação gráfica por meio do navegador, acessando o ambiente através dos mapeamentos de portas. Esse mapeamento visual evidencia como o tráfego era roteado pela rede Docker, a posição do WAF na inspeção e bloqueio das requisições e a forma como os logs eram coletados e visualizados no Dozzle.
+</p>
+
+<div align="center">
+    <img src="./diagrama.png" alt="diagrama" style="max-width: 100%; height: auto;">
+</div>
 
 ---
 
@@ -133,26 +149,124 @@ A execução do laboratório foi realizada seguindo a sequência detalhada abaix
 ## 8. Evidências
 Nesta seção são apresentadas as evidências coletadas durante o laboratório:
 
-| ID       | Link da Evidência | Descrição |
-|----------|-----------------|-----------|
-| evd_0001 | [img01](/img/img01.png) | Todos os quatro containers em execução |
-| evd_0002 | [img03](/img/img03.png) | Acesso ao DVWA via navegador e configuração de segurança para nível low |
-| evd_0003 | [img04](/img/img04.png) | Varredura do Nmap na DVWA identificando duas portas abertas |
-| evd_0004 | [img05](/img/img05.png) | SQLi executado pelo Kali Linux, detectado pelo WAF (302) |
-| evd_0005 | [img06](/img/img06.png) | SQLi executado via interface gráfica da DVWA, detectado pelo WAF (302) |
-| evd_0006 | [img07](/img/img07.png) | XSS executado pelo Kali Linux, detectado pelo WAF (302) |
-| evd_0007 | [img08](/img/img08.png) | XSS executado via interface gráfica da DVWA, detectado pelo WAF (302) |
-| evd_0008 | [img09](/img/img09.png) | Command Injection executado pelo Kali Linux, detectado pelo WAF (302) |
-| evd_0009 | [img10](/img/img10.png) | Command Injection via interface gráfica da DVWA, detectado pelo WAF (302) |
-| evd_0010 | [img11](/img/img11.png) | File Inclusion executado pelo Kali Linux, detectado pelo WAF (302) |
-| evd_0011 | [img12](/img/img12.png) | File Inclusion via interface gráfica da DVWA, detectado pelo WAF (302) |
-| evd_0012 | [img13](/img/img13.png) | Execução dos 4 ataques em modo bloqueio, todos interceptados pelo WAF (403) |
-| evd_0013 | [img14](/img/img14.png) | SQLi via DVWA bloqueado pelo WAF (403) |
-| evd_0014 | [img15](/img/img15.png) | XSS via DVWA bloqueado pelo WAF (403) |
-| evd_0015 | [img16](/img/img16.png) | Command Injection via DVWA bloqueado pelo WAF (403) |
-| evd_0016 | [img17](/img/img17.png) | File Inclusion via DVWA bloqueado pelo WAF (403) |
-| evd_0017 | [img18](/img/img18.png) | Acesso à interface gráfica do Dozzle via navegador para monitoramento de logs |
-| evd_0018 | [img19](/img/img19.png)       |          |
+<div align="center">
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">ID</th>
+                <th style="padding: 5px; text-align: center;">Link da Evidência</th>
+                <th style="padding: 5px; text-align: center;">Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div align="center">evd_0001</div></td>
+                <td><div align="center"><a href="/img/img01.png">img01</a></div></td>
+                <td><div align="justify">Todos os quatro containers estão em execução.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0002</div></td>
+                <td><div align="center"><a href="/img/img03.png">img03</a></div></td>
+                <td><div align="justify">Acesso à DVWA pelo navegador com nível de segurança configurado como Low.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0003</div></td>
+                <td><div align="center"><a href="/img/img04.png">img04</a></div></td>
+                <td><div align="justify">Varredura Nmap na DVWA identificando portas abertas: 8080 e 8443.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0004</div></td>
+                <td><div align="center"><a href="/img/img06.png">img06</a></div></td>
+                <td><div align="justify">Execução dos quatro ataques em modo detecção, todos retornando código 302 (Redirecionamento).</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0005</div></td>
+                <td><div align="center"><a href="/img/img07.png">img07</a></div></td>
+                <td><div align="justify">SQL Injection executado via interface gráfica da DVWA, retornando código 302.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0006</div></td>
+                <td><div align="center"><a href="/img/img08.png">img08</a></div></td>
+                <td><div align="justify">XSS executado via interface gráfica da DVWA, retornando código 302.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0007</div></td>
+                <td><div align="center"><a href="/img/img09.png">img09</a></div></td>
+                <td><div align="justify">Command Injection executado via interface gráfica da DVWA, retornando código 302.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0008</div></td>
+                <td><div align="center"><a href="/img/img10.png">img10</a></div></td>
+                <td><div align="justify">File Inclusion executado via interface gráfica da DVWA, retornando código 302.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0009</div></td>
+                <td><div align="center"><a href="/img/img11.png">img11</a></div></td>
+                <td><div align="justify">Execução dos quatro ataques em modo bloqueio: SQLi, XSS e Command Injection retornam código 403; File Inclusion retorna 302.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0010</div></td>
+                <td><div align="center"><a href="/img/img12.png">img12</a></div></td>
+                <td><div align="justify">SQL Injection via interface gráfica da DVWA, retornando código 403 (bloqueado).</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0011</div></td>
+                <td><div align="center"><a href="/img/img13.png">img13</a></div></td>
+                <td><div align="justify">XSS via interface gráfica da DVWA, retornando código 403 (bloqueado).</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0012</div></td>
+                <td><div align="center"><a href="/img/img14.png">img14</a></div></td>
+                <td><div align="justify">Command Injection via interface gráfica da DVWA, retornando código 403 (bloqueado).</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0013</div></td>
+                <td><div align="center"><a href="/img/img15.png">img15</a></div></td>
+                <td><div align="justify">File Inclusion via interface gráfica da DVWA executado com sucesso, retornando código 200.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0014</div></td>
+                <td><div align="center"><a href="/img/img17.png">img17</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque SQLi via Curl detectado pelo firewall.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0015</div></td>
+                <td><div align="center"><a href="/img/img18.png">img18</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque XSS via Curl detectado pelo firewall.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0016</div></td>
+                <td><div align="center"><a href="/img/img19.png">img19</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque Command Injection via Curl detectado pelo firewall.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0017</div></td>
+                <td><div align="center"><a href="/img/img20.png">img20</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque File Inclusion via Curl passou pelo firewall como requisição normal.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0018</div></td>
+                <td><div align="center"><a href="/img/img21.png">img21</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque SQLi via navegador bloqueado pelo firewall.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0019</div></td>
+                <td><div align="center"><a href="/img/img22.png">img22</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque XSS via navegador bloqueado pelo firewall.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0020</div></td>
+                <td><div align="center"><a href="/img/img23.png">img23</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque Command Injection via navegador bloqueado pelo firewall.</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">evd_0021</div></td>
+                <td><div align="center"><a href="/img/img24.png">img24</a></div></td>
+                <td><div align="justify">Log do WAF no Dozzle: ataque File Inclusion via navegador passou pelo firewall como requisição normal.</div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ---
 
@@ -223,15 +337,70 @@ Com base nas evidências coletadas e na análise realizada, recomenda-se:
 
 ## 12. Plano de Ação (80/20)
 
-| Ação | Descrição | Responsável | Prioridade | Prazo |
-|------|-----------|------------|------------|-------|
-| Configuração de alertas críticos | Configurar alertas automáticos para eventos críticos detectados pelo WAF, permitindo resposta rápida a incidentes | Analista de Segurança | Alta | Contínuo |
-| Monitoramento contínuo | Realizar monitoramento diário dos logs no Dozzle | Analista de Segurança | Alta | Contínuo |
-| Segregação de rede | Isolar os containers em sub-redes distintas para reduzir impacto de ataques | Administrador de Infraestrutura | Alta | 2 semanas |
-| Treinamento e boas práticas | Capacitar operadores para interpretar logs, configurar o WAF e responder a incidentes | Gestor de Segurança | Média | 1 mês |
-| Atualização dos containers | Atualizar DVWA, Kali Linux, ModSecurity CRS e Dozzle para versões mais recentes com patches de segurança | Administrador de Infraestrutura | Média | Mensal |
-| Revisão periódica das regras do WAF | Realizar revisões periódicas das regras do ModSecurity CRS para garantir atualização e adequação às necessidades da aplicação | Administrador de Segurança | Média | Contínuo |
-| Testes regulares de segurança | Executar ataques simulados periodicamente para validar a eficácia do WAF | Analista de Segurança | Média | Trimestral |
+<div align="center">
+    <table border="1" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th style="padding: 5px; text-align: center;">Ação</th>
+                <th style="padding: 5px; text-align: center;">Descrição</th>
+                <th style="padding: 5px; text-align: center;">Responsável</th>
+                <th style="padding: 5px; text-align: center;">Prioridade</th>
+                <th style="padding: 5px; text-align: center;">Prazo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div align="center">Configuração de alertas críticos</div></td>
+                <td><div align="justify">Configurar alertas automáticos para eventos críticos detectados pelo WAF, permitindo resposta rápida a incidentes</div></td>
+                <td><div align="center">Analista de Segurança</div></td>
+                <td><div align="center">Alta</div></td>
+                <td><div align="center">Contínuo</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">Monitoramento contínuo</div></td>
+                <td><div align="justify">Realizar monitoramento diário dos logs no Dozzle</div></td>
+                <td><div align="center">Analista de Segurança</div></td>
+                <td><div align="center">Alta</div></td>
+                <td><div align="center">Contínuo</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">Segregação de rede</div></td>
+                <td><div align="justify">Isolar os containers em sub-redes distintas para reduzir impacto de ataques</div></td>
+                <td><div align="center">Administrador de Infraestrutura</div></td>
+                <td><div align="center">Alta</div></td>
+                <td><div align="center">2 semanas</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">Treinamento e boas práticas</div></td>
+                <td><div align="justify">Capacitar operadores para interpretar logs, configurar o WAF e responder a incidentes</div></td>
+                <td><div align="center">Gestor de Segurança</div></td>
+                <td><div align="center">Média</div></td>
+                <td><div align="center">1 mês</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">Atualização dos containers</div></td>
+                <td><div align="justify">Atualizar DVWA, Kali Linux, ModSecurity CRS e Dozzle para versões mais recentes com patches de segurança</div></td>
+                <td><div align="center">Administrador de Infraestrutura</div></td>
+                <td><div align="center">Média</div></td>
+                <td><div align="center">Mensal</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">Revisão periódica das regras do WAF</div></td>
+                <td><div align="justify">Realizar revisões periódicas das regras do ModSecurity CRS para garantir atualização e adequação às necessidades da aplicação</div></td>
+                <td><div align="center">Administrador de Segurança</div></td>
+                <td><div align="center">Média</div></td>
+                <td><div align="center">Contínuo</div></td>
+            </tr>
+            <tr>
+                <td><div align="center">Testes regulares de segurança</div></td>
+                <td><div align="justify">Executar ataques simulados periodicamente para validar a eficácia do WAF</div></td>
+                <td><div align="center">Analista de Segurança</div></td>
+                <td><div align="center">Média</div></td>
+                <td><div align="center">Trimestral</div></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ---
 
@@ -257,4 +426,4 @@ O relatório fornece uma base sólida para futuras análises de segurança, ajus
 ## 14. Anexos
 Nesta seção estão incluídos materiais complementares que comprovam a execução do laboratório e permitem verificação detalhada das atividades:
 - [Prints da execução do lab](./img/): pasta com todas as imagens que evidenciam a execução do laboratório.
-- [Arquivo de log do WAF](./logs_waf_bloqueio): arquivo exportado contendo os últimos 50 registros de log do container de WAF em modo de bloqueio.
+- [Arquivo de log do WAF](./logs_waf_bloqueio.txt): arquivo exportado contendo os últimos 50 registros de log do container de WAF em modo de bloqueio.

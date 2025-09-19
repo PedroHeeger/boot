@@ -71,7 +71,7 @@ O objetivo deste projeto foi elaborar um relatório técnico completo para docum
 No laboratório, o objetivo foi construir um ambiente defensivo utilizando a aplicação vulnerável **DVWA** protegida por um Web Application Firewall (WAF) **OWASP ModSecurity CRS**. Foram testados os modos de detecção e de bloqueio frente a ataques de SQL Injection (SQLi), Cross-Site Scripting (XSS), Command Injection e File Inclusion. Para o monitoramento, foi empregado o **Dozzle**, permitindo a visualização e análise dos logs do WAF em tempo real.  
 
 ### Folder Structure:
-- Este documento de README, escrito em **Markdown**, descreve todo o desenvolvimento do projeto. Embora não seja um artefato entregável, complementa o projeto.
+- [README.md](./README.md): Este documento de README, escrito em **Markdown**, descreve todo o desenvolvimento do projeto. Embora não seja um artefato entregável, complementa o projeto.
 - [relatorio.md](./relatorio.md): Relatório técnico da execução do laboratório. É o principal artefato entregável.
 - [logs_waf_bloqueio.txt](./logs_waf_bloqueio.txt): Arquivo de texto com os últimos 50 registros de logs do WAF no modo de bloqueio.
 - [img](./img): Pasta com imagens (prints) dos outputs dos comandos executados. É um anexo do relatório técnico e utilizado neste arquivo de README.
@@ -440,18 +440,13 @@ O segundo filtro aplicado foi o `secrules_engine:"Enabled"` (`Enabled`), que exi
 
 Na etapa de coleta de evidências, foram utilizadas as imagens capturadas ao longo do laboratório para compor este README. Em cada execução, um print foi registrado para comprovar a realização das atividades, servindo como evidência a ser anexada ao relatório técnico. Todo o processo foi documentado, desde o reconhecimento com **Nmap**, passando pelos testes dos quatro tipos de ataques em modo de detecção e, posteriormente, em modo de bloqueio, executados tanto via **Curl** quanto pela interface gráfica do **DVWA** no navegador, até a análise dos logs desses ataques no **Dozzle**, permitindo confirmar quais ataques eram detectados e bloqueados e quais não eram.
 
-Além das capturas de tela, foi realizada uma coleta adicional de evidências: a geração de um arquivo contendo os últimos 50 logs do container do WAF em modo de bloqueio. Essa ação foi executada diretamente no host com o comando `docker logs waf_modsec --tail 50 > logs_waf_bloqueio.txt`. A imagem 25 mostra o momento dessa coleta.
-
-<div align="center"><figure>
-    <img src="./img/img25.png" alt="img25"><br>
-    <figcaption>Imagem 25.</figcaption>
-</figure></div><br>
+Além das capturas de tela, foi realizada uma coleta adicional de evidências: a geração de um arquivo contendo os últimos 50 logs do container do WAF em modo de bloqueio. Essa ação foi executada diretamente no host com o comando `docker logs waf_modsec --tail 50 > logs_waf_bloqueio.txt`. 
 
 <a name="item1.7"><h4>1.7 Documentação Técnica</h4></a>[Back to summary](#item1)
 
 Após a conclusão do laboratório, iniciou-se a construção da documentação técnica. Este arquivo de README utilizado é o padrão que mantenho em todos os projetos no GitHub, servindo para narrar detalhadamente como cada atividade (bootcamp, curso, aula, laboratório, desafio ou projeto) foi desenvolvida.  
 
-A documentação técnica do projeto, por sua vez, constitui o artefato principal a ser entregue, incluindo seus anexos. Esse artefato foi o relatório técnico de nome [relatorio.md](./relatorio.md), que registrou de forma estruturada e detalhada todo o laboratório realizado, permitindo que outros documentos ou evidências relevantes fossem vinculados como anexos. 
+A documentação técnica do projeto, por sua vez, constituíu o artefato principal a ser entregue, incluindo seus anexos. Esse artefato foi o relatório técnico de nome [relatorio.md](./relatorio.md), que registrou de forma estruturada e detalhada todo o laboratório realizado, permitindo que outros documentos ou evidências relevantes fossem vinculados como anexos. 
 
 Um relatório técnico de segurança é elaborado para documentar, analisar e comunicar informações sobre a proteção de sistemas, redes ou aplicações. A estrutura recomendada garante clareza, rastreabilidade e utilidade tanto para profissionais técnicos quanto para gestores. A seguir, uma descrição detalhada dos elementos mais comuns:
 1. **Capa:** A capa identifica o relatório, contendo o título, autor(es), data e organização responsável. Serve para formalizar o documento e indicar sua autoria.
