@@ -30,16 +30,19 @@ Esta pasta refere-se ao módulo 2 **Defesa & Monitoramento (Blue Team)** do boot
 
 ---
 
-### Bootcamp Module 2 Structure
-1. <a name="item1">Módulo 2: Defesa & Monitoramento (Blue Team)<br>
-    1.1. <a href="#item1.1">Arquitetura em Camadas</a><br>
-    1.2. <a href="#item1.2">Hardening de Servidores Linux</a><br>
-    1.3. <a href="#item1.3">Firewall & ACL</a><br>
-    1.4. <a href="#item1.4">IDS e IPS</a><br>
-    1.5. <a href="#item1.5"></a><br>
-    1.6. <a href="#item1.6"></a>Monitoramento de Logs<br>
-    1.7. <a href="#item1.7"></a>Patch Management<br>
-    1.8. <a href="#item1.8"></a>Cloud Security<br>
+### Bootcamp Module 2 Structure:
+2. <a name="item1">Módulo 2: Defesa & Monitoramento (Blue Team)<br>
+  2.1 <a href="#item2.1">Arquitetura em Camadas</a><br>
+  2.2 <a href="#item2.2">Hardening de Servidores Linux</a><br>
+  2.3 <a href="#item2.3">Firewall & ACL</a><br>
+  2.4 <a href="#item2.4">IDS e IPS</a><br>
+  2.5 <a href="#item2.5">Monitoramento de Logs</a><br>
+  2.6 <a href="#item2.6">Patch Management</a><br>
+  2.7 <a href="#item2.7">Cloud Security</a><br>
+  2.8 <a href="#item2.8">IAM e Permissionamento</a><br>
+  2.9 <a href="#item2.9">Container Security Docker Bench & Trivy</a><br>
+  2.10 <a href="#item2.10">NIST & Resposta a Incidentes</a><br>
+  2.11 <a href="#item2.11">Projeto Final</a><br>
 
 ---
 
@@ -53,8 +56,8 @@ Implementar estratégias de defesa em profundidade e monitoramento contínuo de 
 ### Development:
 Este módulo foi estruturado em aulas, cada uma dedicada a um tema específico. Na maioria delas, foram realizados laboratórios práticos relacionados ao conteúdo abordado. Este arquivo README contempla exclusivamente a parte teórica, enquanto o arquivo [labs.md](./labs.md), também em **Markdown**, apresenta a resolução de todos os laboratórios do módulo.
 
-<a name="item1.1"><h4>1.1 Arquitetura em Camadas</h4></a>[Back to summary](#item1)   
-[Lab01](labs.md#item1.1)
+<a name="item2.1"><h4>2.1 Arquitetura em Camadas</h4></a>[Back to summary](#item2)   
+[Lab01](labs.md#item2.1)
 
 A primeira aula abordou a construção de arquiteturas resilientes com base no conceito de Defesa em Profundidade, destacando a importância da aplicação de múltiplos mecanismos de proteção distribuídos por diferentes camadas da infraestrutura. Também foram apresentados exemplos práticos de controles por camada, além de estudos de caso que ilustram falhas e estratégias bem-sucedidas de defesa.
 
@@ -92,8 +95,8 @@ O ransomware segue uma sequência bem estruturada com o objetivo de causar máxi
 📉 Exemplo de Falha por Ausência de Camadas   
 Um cenário crítico pode ser observado quando há ausência de controles distribuídos: um firewall mal configurado, ausência de segmentação de rede, senhas fracas e backups armazenados no mesmo ambiente. Em uma situação como essa, a entrada de um ransomware resultaria na criptografia completa dos dados, inclusive das cópias de segurança, comprometendo toda a estrutura sem chance de recuperação rápida. A falta de camadas torna a exposição total e o impacto devastador.
 
-<a name="item1.2"><h4>1.2 Hardening de Servidores Linux</h4></a>[Back to summary](#item1)   
-[Lab02](labs.md#item1.2)
+<a name="item2.2"><h4>2.2 Hardening de Servidores Linux</h4></a>[Back to summary](#item2)   
+[Lab02](labs.md#item2.2)
 
 Na segunda aula, o foco esteve na introdução ao conceito de *Hardening*, destacando sua relevância no fortalecimento da segurança de sistemas. Foram apresentados os principais objetivos dessa prática, como a redução da superfície de ataque, a aplicação de medidas básicas de proteção em um servidor **Ubuntu**, e a conexão entre essas ações e os pilares da segurança da informação: *Confidencialidade, Integridade e Disponibilidade (CIA)*.
 
@@ -140,8 +143,8 @@ Diversos guias e padrões de hardening são utilizados como referência para ref
 - **Ferramentas de automação:**  
   - **Ansible**, **CIS-CAT** e **OpenSCAP** permitem automatizar verificação e aplicação dos padrões em larga escala.
 
-<a name="item1.3"><h4>1.3 Firewall & ACL</h4></a>[Back to summary](#item1)   
-[Lab03](labs.md#item1.3)
+<a name="item2.3"><h4>2.3 Firewall & ACL</h4></a>[Back to summary](#item2)   
+[Lab03](labs.md#item2.3)
 
 A terceira aula teve como objetivo compreender o conceito de firewall, seu funcionamento e as diferentes formas de implementação, diferenciando um firewall de host de um firewall de borda. Também foram abordadas as listas de controle de acesso (ACLs) e a aplicação prática de regras com **iptables** no **Ubuntu**, além da utilização do **pfSense** para simular um firewall de rede.
 
@@ -162,46 +165,50 @@ Já o **pfSense**, baseado em **FreeBSD**, oferece uma solução de firewall de 
 ⚖️ Comparação   
 Enquanto o **iptables** é mais técnico e voltado para administração local via linha de comando, o **pfSense** fornece uma abordagem visual e centralizada para a proteção de redes inteiras. Em ambos os casos, o monitoramento por meio de logs e ferramentas de análise, como **tcpdump**, **nmap** e **Wireshark**, é fundamental para manter a visibilidade e o controle sobre o tráfego.
 
-<a name="item1.4"><h4>1.4 IDS e IPS</h4></a>[Back to summary](#item1)   
-[Lab04](labs.md#item1.4)
+<a name="item2.4"><h4>2.4 IDS e IPS</h4></a>[Back to summary](#item2)   
+[Lab04](labs.md#item2.4)
 
 A quarta aula foi dedicada ao estudo dos IDS (Intrusion Detection System) e IPS (Intrusion Prevention System), abordando suas funções, diferenças, aplicações e exemplos reais de uso. A proposta foi compreender como essas tecnologias contribuem para a defesa de redes e sistemas, quando utilizar cada uma e de que forma podem ser combinadas para uma proteção mais completa.
 
-👁️ Sentinelas   
+👁️ Sentinelas da Rede   
 Para entender melhor o papel do IDS e do IPS, é possível imaginar uma rede como uma fortaleza: existem várias entradas — portas, janelas e passagens escondidas — e o fluxo de pessoas é constante. No mundo digital, ataques podem ocorrer sem serem percebidos, e essas ferramentas funcionam como sentinelas: o IDS observa e alerta sobre movimentos suspeitos, enquanto o IPS intervém e impede a ação maliciosa.
 
-O IDS tem como objetivo identificar tráfego suspeito ou malicioso, mas não interfere diretamente na comunicação. Atua como um vigia que observa e reporta incidentes. Pode ser classificado em:
-- NIDS (Network IDS), que monitora toda a rede;
-- HIDS (Host IDS), que acompanha a atividade de um único sistema.
+🛡️ IDS – O Vigia da Rede   
+O IDS tem como objetivo identificar tráfego suspeito ou malicioso, mas não interfere diretamente na comunicação. Atua como um vigia que observa e reporta incidentes. Pode ser classificado em:  
+- NIDS (Network IDS): monitora toda a rede;  
+- HIDS (Host IDS): acompanha a atividade de um único sistema.  
 
-A detecção pode ser feita por assinaturas, comparando pacotes com padrões conhecidos, ou por análise de anomalias, que busca comportamentos fora do padrão. Entre os exemplos práticos estão ferramentas como **Snort**, **Suricata** e **Zeek**, capazes de detectar desde um simples port scan até tentativas de exploração mais elaboradas.
+A detecção pode ser feita por:  
+- Assinaturas: compara pacotes com padrões conhecidos;  
+- Anomalias: identifica comportamentos fora do padrão.  
 
-O IPS, por sua vez, atua de forma inline — o tráfego passa por ele antes de chegar ao destino —, o que permite não apenas detectar como também bloquear ameaças em tempo real. Embora ofereça uma camada adicional de segurança, pode gerar falsos positivos, bloqueando tráfego legítimo, além de adicionar latência à rede. Soluções como **Suricata** em modo IPS, **Cisco Firepower** e **Palo Alto Threat Prevention** exemplificam seu uso.
+Exemplos práticos: Snort, Suricata, Zeek.
 
-De forma resumida:
-- IDS: fora da linha de tráfego, apenas alerta, não afeta o fluxo de dados, mas não impede ataques;
-- IPS: na linha de tráfego, bloqueia automaticamente, pode impactar a performance e, em casos de configuração incorreta, interromper comunicações legítimas;
-- Melhor prática: utilizar ambos, combinando visibilidade e prevenção.
+⚡ IPS – O Interceptor de Ameaças   
+O IPS atua de forma inline — o tráfego passa por ele antes de chegar ao destino — permitindo detectar e bloquear ameaças em tempo real. Pode gerar falsos positivos e adicionar latência à rede. Exemplos: Suricata em modo IPS, Cisco Firepower, Palo Alto Threat Prevention.
 
-Entretanto, adversários experientes desenvolvem técnicas de evasão para tentar driblar esses sistemas, como fragmentar pacotes, usar portas não convencionais, ofuscar o código malicioso ou adotar ataques lentos que passam despercebidos. Ferramentas modernas como **Suricata** e **Snort** já incorporam mecanismos para mitigar tais estratégias.
+📊 Resumo das Diferenças   
+- IDS: fora da linha de tráfego, apenas alerta; não impede ataques;  
+- IPS: bloqueia automaticamente na linha de tráfego; pode impactar performance;  
+- Melhor prática: usar ambos, combinando visibilidade e prevenção.
 
-No contexto corporativo, é comum empregar IPS na borda para filtrar ameaças externas e IDS internamente para monitorar movimentos laterais e comportamentos anômalos dentro da rede. Em ambientes menos críticos, pode-se adotar apenas IDS para garantir visibilidade sem riscos de interrupção, enquanto em setores que demandam alta disponibilidade e segurança, o IPS torna-se indispensável.
+🕵️ Táticas de Evasão   
+Adversários experientes podem:  
+- Fragmentar pacotes;  
+- Usar portas não convencionais;  
+- Ofuscar código malicioso;  
+- Realizar ataques lentos.  
 
-<a name="item1.5"><h4>1.5 </h4></a>[Back to summary](#item1)   
-[Lab05](labs.md#item1.5)
+Ferramentas modernas como Suricata e Snort já mitigam muitas dessas estratégias.
 
+🏢 Aplicações no Ambiente Corporativo   
+- IPS na borda: filtra ameaças externas;  
+- IDS interno: monitora movimentos laterais e comportamentos anômalos;  
+- Ambientes menos críticos: pode-se usar apenas IDS;  
+- Setores de alta disponibilidade: IPS é indispensável.
 
-
-
-
-
-
-
-
-
-
-<a name="item1.6"><h4>1.6 Monitoramento de Logs</h4></a>[Back to summary](#item1)   
-[Lab06](labs.md#item1.6)
+<a name="item2.5"><h4>2.5 Monitoramento de Logs</h4></a>[Back to summary](#item2)   
+[Lab05](labs.md#item2.5)
 
 A aula abordou conceitos e práticas de monitoramento de logs e eventos, destacando a importância de registrar, centralizar e analisar atividades de sistemas, redes e aplicações para detecção de incidentes e suporte a auditorias. Foram apresentados os tipos de logs, a diferença entre logs e eventos, desafios de monitoramento e as principais ferramentas e plataformas utilizadas, incluindo SIEMs e stacks open-source como **Wazuh** e **ELK**.
 
@@ -247,8 +254,8 @@ A integração **Wazuh** + **ELK** permite transformar logs coletados em informa
 🏁 Conclusão   
 Logs e eventos representam a memória digital de uma infraestrutura. Ferramentas como **Wazuh** e **ELK** permitem transformar dados brutos em insights estratégicos de segurança, essenciais para detecção de ataques, resposta rápida a incidentes e conformidade regulatória.
 
-<a name="item1.7"><h4>1.7 Patch Management</h4></a>[Back to summary](#item1)   
-[Lab07](labs.md#item1.7)
+<a name="item2.6"><h4>2.6 Patch Management</h4></a>[Back to summary](#item2)   
+[Lab06](labs.md#item2.6)
 
 Esta aula tratou da gestão de patches, explicando sua importância para a segurança, os desafios de aplicá-los em ambientes heterogêneos e como a automação otimiza o processo. Foram apresentados ciclos, ferramentas, boas práticas e casos reais que evidenciam os riscos de falhas no Patch Management.
 
@@ -300,8 +307,8 @@ Políticas corporativas devem tornar o Patch Management mandatório, definindo r
 🏁 Conclusão   
 Patch Management automatizado significa segurança contínua. Atrasos na aplicação de patches representam riscos críticos, enquanto a automação reduz MTTP, evita crises e assegura conformidade.
 
-<a name="item1.8"><h4>1.8 Cloud Security</h4></a>[Back to summary](#item1)   
-[Lab08](labs.md#item1.8)
+<a name="item2.7"><h4>2.7 Cloud Security</h4></a>[Back to summary](#item2)   
+[Lab07](labs.md#item2.7)
 
 A aula explorou os conceitos essenciais de segurança em ambientes de nuvem, destacando o modelo de responsabilidade compartilhada, riscos de má configuração e controles de acesso e rede em um ambiente simulado.
 
@@ -342,7 +349,170 @@ Embora a nuvem traga escalabilidade e custos reduzidos, mais de 70% dos incident
 - **Proteção de Dados:** criptografia em trânsito e em repouso;  
 - **Monitoramento e Auditoria:** logs, alertas e conformidade regulatória.
 
+<a name="item2.8"><h4>2.8 IAM e Permissionamento</h4></a>[Back to summary](#item2)   
+[Lab08](labs.md#item2.8)
 
+Esta aula abordou o gerenciamento de identidades e permissões na nuvem, destacando boas práticas de IAM, configuração de redes seguras na AWS e defesa em camadas para proteção de recursos.
 
+🔑 IAM – A Chave da Nuvem   
+No mundo digital, o IAM (Identity and Access Management) funciona como a chave que abre portas: define quem pode acessar recursos, o que pode fazer e onde pode atuar. Um mau gerenciamento de permissões pode comprometer toda a infraestrutura.  
 
+Componentes Fundamentais do IAM:   
+- **Usuários:** identidades individuais;  
+- **Grupos:** coleções de permissões aplicadas a vários usuários;  
+- **Roles:** credenciais temporárias para serviços;  
+- **Policies:** regras em JSON que definem ações permitidas ou negadas.  
 
+**Princípio do Menor Privilégio (PoLP):** forneça apenas o acesso necessário, nada além.  
+
+⚠️ Armadilhas Comuns:   
+- Políticas excessivamente amplas (`"Action": "*"` e `"Resource": "*"`);
+- Senhas fracas;
+- Ausência de MFA;
+- Chaves de acesso expostas em repositórios públicos;
+- Uso diário da conta root.
+
+🌐 Redes na AWS – A Cidade Murada   
+A infraestrutura de rede na nuvem deve ser planejada como uma cidade segura:  
+- **VPC (Virtual Private Cloud):** a cidade murada que abriga seus recursos;  
+- **Subnets:** bairros públicos e privados;  
+- **Security Groups:** guardas que protegem cada instância, atuando como firewalls stateful.  
+
+🚫 Más práticas comuns:   
+- Banco de dados em subnet pública;
+- Security Groups com acesso 0.0.0.0/0 para SSH ou RDP;
+- Uso exclusivo do root user;
+- Permissões administrativas aplicadas a todos os usuários.
+
+🛡️ Defesa em Camadas na Nuvem   
+A segurança eficaz na AWS depende de múltiplas barreiras interconectadas:  
+- **IAM:** define com precisão quem pode acessar quais recursos;  
+- **Security Groups:** controlam o tráfego permitido e negado por instância;  
+- **NACLs (Network Access Control Lists):** firewalls stateless em nível de subnet, filtrando tráfego antes de chegar aos Security Groups;  
+- **MFA, Logs e Monitoramento:** autenticação multifator, registros detalhados (CloudTrail, VPC Flow Logs) e monitoramento contínuo (CloudWatch, GuardDuty) permitem detecção e resposta rápida a incidentes.
+
+📖 Caso Real de Falha   
+Um desenvolvedor júnior configurou rapidamente um banco de dados em subnet pública, liberou acesso completo via SG e aplicou uma policy IAM ampla. Um scanner automatizado detectou a vulnerabilidade, e credenciais expostas no GitHub foram exploradas, resultando na exfiltração de dados críticos. Moral: a pressa na nuvem pode custar milhões.
+
+✅ Boas Práticas Recomendadas:   
+- Banco de dados em subnet privada;  
+- Aplicações web em subnet pública com Security Groups restritos;  
+- IAM Developer com permissões mínimas (ex.: apenas listar e ler S3);  
+- IAM Admin protegido com MFA, nunca hardcoded;  
+- Logs no CloudTrail para rastreabilidade completa.  
+
+💡 Conclusão:   
+O IAM é a chave da nuvem, redes seguras são os muros da cidade e a segurança na AWS depende da combinação de pessoas, processos e tecnologia.
+
+<a name="item2.9"><h4>2.9 Container Security Docker Bench & Trivy</h4></a>[Back to summary](#item2)   
+[Lab09](labs.md#item2.9)
+
+A aula explicou sobre a segurança de containers, destacando riscos comuns, boas práticas, integração com DevSecOps e ferramentas para proteger hosts e imagens.
+
+🐳 Containers – Agilidade com Riscos   
+Containers são rápidos, leves e práticos, mas não garantem segurança automática. É fundamental aplicar controles, monitoramento e boas práticas para reduzir vulnerabilidades.
+
+⚠️ Problemas Comuns em Containers:   
+- Imagens com vulnerabilidades conhecidas (CVEs);  
+- Containers rodando como root;  
+- Imagens antigas sem updates;  
+- Secrets expostos no código ou variáveis de ambiente;  
+- Configuração fraca do host Docker.
+
+🔄 Segurança no Ciclo de Vida – DevSecOps   
+A proteção de containers deve ser integrada ao ciclo de vida da aplicação:  
+- Escaneamento automático de imagens no pipeline CI/CD;  
+- Monitoramento contínuo de CVEs;  
+- Reforço de configurações do host Docker;  
+- Auditoria e atualização periódica.
+
+🛠️ Ferramentas de Segurança   
+- **Docker Bench for Security**: 
+  - Ferramenta oficial que avalia a configuração do host e do daemon baseada no CIS Docker Benchmark.
+  - Exemplos de checagens:  
+    - Containers não rodando como root;  
+    - Namespaces habilitados;  
+    - Logging configurado corretamente.
+
+- **Trivy**: 
+  - Scanner open-source da **Aqua Security** que verifica:  
+    - Imagens de containers;  
+    - Repositórios de código;  
+    - Configurações IaC e Kubernetes;  
+    - Secrets expostos.  
+  - Trivy usa **CVSS** para classificar vulnerabilidades.
+
+⚖️ Docker Bench vs. Trivy   
+- **Docker Bench:** foco na configuração do host/daemon e segurança do ambiente;  
+- **Trivy:** foco em vulnerabilidades de imagens e segurança da aplicação;  
+- **Complementares:** host seguro + imagem segura = proteção completa.
+
+✅ Boas Práticas Recomendadas:   
+- Usar imagens oficiais e minimalistas (Alpine, Distroless);  
+- Rodar containers como usuário não-root;  
+- Aplicar scans automáticos no pipeline CI/CD;  
+- Monitorar CVEs críticos (CVSS ≥ 9);  
+- Atualizar imagens e rebuildar periodicamente.
+
+💡 Conclusão:   
+Containers oferecem agilidade e escalabilidade, mas precisam de segurança dedicada. Docker Bench fortalece o host, Trivy reduz riscos nas imagens, e a segurança de containers é um processo contínuo.
+
+<a name="item2.10"><h4>2.10 NIST & Resposta a Incidentes</h4></a>[Back to summary](#item2)   
+[Lab10](labs.md#item2.10)
+
+A última aula do módulo mostrou como aplicar conceitos de resposta a incidentes na prática, seguindo frameworks reconhecidos, como os do NIST, e como isso impacta a atuação profissional em cibersegurança.
+
+📘 NIST – Referência em Segurança da Informação   
+O **National Institute of Standards and Technology (NIST)** é uma autoridade global em padrões e boas práticas de cibersegurança. Suas publicações servem como guia para empresas e governos, ajudando a estruturar processos de proteção e resposta.  
+
+Principais Guias:  
+- **Cybersecurity Framework (CSF):** ajuda a gerenciar riscos de segurança;  
+- **SP 800-53:** catálogo de controles de segurança;  
+- **SP 800-61:** guia de tratamento e resposta a incidentes.
+
+🚨 Por que a resposta a incidentes é essencial?   
+Incidentes de segurança acontecem em qualquer organização, independentemente do porte. O fator crítico é a forma como são tratados:  
+- Sem um plano estruturado: a organização enfrenta desorganização, perdas de dados e prejuízos financeiros significativos;  
+- Com processos definidos: é possível conter rapidamente os danos, aprender com a ocorrência e reforçar os controles de segurança.  
+
+Incidentes não são uma questão de “se”, mas de “quando” vão ocorrer, tornando a preparação essencial.
+
+🔄 Ciclo de Resposta a Incidentes do NIST   
+O framework propõe um ciclo em quatro etapas, que se reforçam mutuamente:  
+1. **Preparação**: políticas, treinamento, ferramentas prontas e exercícios simulados;  
+2. **Detecção e Análise**: identificar incidentes, validar alertas, classificar tipo e impacto, priorizar ações;  
+3. **Contenção, Erradicação e Recuperação**: isolar sistemas afetados, remover ameaças e restaurar serviços com segurança;  
+4. **Lições Aprendidas**: revisar ações, corrigir falhas e aprimorar políticas e processos.
+
+🛠️ Detalhes do Ciclo   
+- **Preparação:** preparar playbooks, treinar equipes, ter ferramentas como SIEM, EDR e SOAR operacionais;  
+- **Detecção & Análise:** monitorar alertas, confirmar se é incidente real, avaliar impacto e urgência;  
+- **Contenção, Erradicação & Recuperação:** bloquear acessos comprometidos, eliminar malwares e restaurar sistemas com monitoramento reforçado;  
+- **Lições Aprendidas:** reuniões pós-incidente para avaliar acertos e erros, melhorar processos e documentar evidências para auditoria.
+
+🏢 Carreiras e Ferramentas   
+- **Locais de atuação:** SOCs, CSIRTs, CERTs e consultorias especializadas.  
+- **Perfis comuns:** Analista SOC, Forense Digital, Threat Hunter e Gerente de IR.  
+- **Ferramentas:** SIEM (Splunk, ELK, Wazuh), EDR/XDR (CrowdStrike, SentinelOne), IDS/IPS (Snort, Suricata), SOAR.
+
+📊 Tendências de Mercado   
+- Crescente demanda por profissionais de IR;  
+- Regulamentações obrigando respostas estruturadas (LGPD, ISO 27035);  
+- Uso crescente de IA e automação em SOCs;  
+- Expansão do modelo de IR as a Service.
+
+💡 Conclusão   
+O NIST fornece a estrutura necessária para organizar a resposta a incidentes. Seguir o ciclo de preparação, detecção, contenção e aprendizado transforma caos em controle e fortalece a maturidade em segurança. Profissionais capacitados nesse processo são cada vez mais valorizados.
+
+<a name="item2.11"><h4>2.11 Projeto Final</h4></a>[Back to summary](#item2)   
+[Material do Projeto](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/projeto-final)
+
+O desafio final deste módulo teve como objetivo consolidar os conhecimentos adquiridos, colocando em prática a capacidade de defesa, monitoramento e resposta a incidentes. Foram disponibilizadas duas opções de abordagem — uma prática e outra conceitual — além de um desafio bônus. Em todas as alternativas, o principal entregável foi um documento técnico, ao qual deveriam estar vinculados todos os anexos. Esse documento, em formato **Markdown** ou **PDF**, precisava seguir requisitos mínimos de estrutura e qualidade:  
+- **Estrutura mínima:** capa, sumário executivo, objetivo, escopo, metodologia, diagrama, evidências/diagnóstico, recomendações, plano de ação, conclusão e anexos.  
+- **Clareza executiva:** obrigatoriedade de 1 página dedicada ao sumário executivo.  
+- **Rastreabilidade:** referência a prints e logs (com data/hora) e inclusão de arquivos de configuração como anexos.  
+
+Projetos: 
+- [Opção 1 – Projeto Técnico](./11-projeto_final_1/): Criação de um ambiente defensivo, simulação de ataques controlados e validação da defesa, monitoramento e resposta com evidências documentadas.  
+- [Opção 2 – Projeto Conceitual](./11-projeto_final_2/): Atuação como consultor Blue Team em um cenário fictício, elaborando defesa em profundidade, plano de monitoramento e resposta a incidentes baseado no NIST.  
+- [Desafio Bônus](./11-desafio_bonus/): Atividade complementar para reforçar a aplicação prática e aprofundar os conceitos do módulo.  
