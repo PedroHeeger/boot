@@ -56,8 +56,8 @@
   2.8. [IAM e Permissionamento](https://github.com/PedroHeeger/boot/tree/main/vnw/cybersecurity/boot_035/02-defesa_monitoramento#item2.8)   
   2.9. [Container Security Docker Bench & Trivy](https://github.com/PedroHeeger/boot/tree/main/vnw/cybersecurity/boot_035/02-defesa_monitoramento#item2.9)   
   2.10. [NIST & Resposta a Incidentes](https://github.com/PedroHeeger/boot/tree/main/vnw/cybersecurity/boot_035/02-defesa_monitoramento#item2.10)   
-  2.11. [Projeto Final - Opção 1](./02-defesa_monitoramento/13-projeto_final_1/)   
-  2.11. [Projeto Final - Opção 2](./02-defesa_monitoramento/13-projeto_final_2/)   
+  2.11. [Projeto Final - Opção 1](./02-defesa_monitoramento/11-projeto_final_1/)   
+  2.11. [Projeto Final - Opção 2](./02-defesa_monitoramento/11-projeto_final_2/)   
 3. <a name="item3">Módulo 3: Ethical Hacking (Red Team)<br>
   3.1. []()   
   3.2. []()   
