@@ -54,9 +54,16 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
   - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
   - Uncomplicated Firewall (UFW)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ufw.webp" alt="ufw" width="auto" height="25">
-- Offensive Security:
+- Remote Desktop:
+  - RealVNC Viewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/realvnc.png" alt="realvnc_viewer" width="auto" height="25">
+- Cibersecurity:
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+  - Trivy   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/trivy.png" alt="trivy" width="auto" height="25">
+- SysAdm:
+  - Xfce   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xfce.svg" alt="xfce" width="auto" height="25">
 
+
+Makefile
 ---
 
 ### Bootcamp Module 2 Structure:
@@ -208,8 +215,6 @@ Obs.: Laboratório registrado como 1, documento como 1 e referente a aula 1.
 
 O primeiro laboratório executado neste módulo consistiu em um ambiente composto pelos seguintes containers: a aplicação web vulnerável **OWASP Juice Shop**, que simula um site de vendas de sucos (`juice_shop`); uma máquina **Ubuntu**, configurada como servidor **Linux** para aplicação de hardening (`ubuntu_host`); e uma máquina com sistema **Kali Linux**, equipada com ferramentas para ataque (`kali_host`). 
 
-<!-- Neste estágio, os sistemas ainda não contava com nenhuma camada de proteção ou hardening, que foram sendo adicionadas gradualmente nos laboratórios seguintes. -->
-
 Como a primeira aula abordava o tema de arquitetura em camadas, o propósito deste laboratório foi introduzir o conceito de defesa em profundidade, observando como cada camada poderia contribuir para a segurança do sistema. Assim, o foco foi analisar os sistemas intencionalmente vulneráveis, representado pelo servidor web **Juice Shop** e pelo servidor **Ubuntu**, antes da aplicação de qualquer mecanismo de defesa — com o objetivo de identificar riscos e compreender a perspectiva de um atacante. 
 
 Para isso, os dois sistemas alvo — a aplicação web e o servidor **Ubuntu** — foram acessados. O primeiro, por meio do navegador da máquina física, foi utilizado para a exploração das páginas da aplicação. O segundo foi acessado diretamente pelo container, com o objetivo de listar e identificar os serviços ativos. O container de ataque, que correspondia ao **Kali Linux**, foi utilizado posteriormente para realizar varreduras nos dois sistemas de defesa, com o intuito de identificar possíveis vulnerabilidades.
@@ -237,8 +242,6 @@ Ao acessar a área da conta do usuário (`Account`), diversas funcionalidades ad
 
 Com a análise do primeiro sistema, foi acessado o segundo, correspondente ao servidor **Ubuntu**, por meio do comando `docker exec -it ubuntu_host /bin/bash`. Dentro do container, foi executado o comando `ps aux` com o objetivo de listar todos os processos em execução. A saída retornou apenas três processos: um relacionado à execução do próprio `ps aux`, outro referente ao processo `/bin/bash`, iniciado pelo comando **Docker** para interação via shell, e o processo `sleep infinity` gerado pelo **Docker Compose** e responsável por manter o container ativo. Em seguida, foi utilizado o comando `netstat -tulnp` para verificar as conexões de rede em modo de escuta. A saída indicou duas conexões locais: uma utilizando o protocolo TCP na porta `46830` do IP `127.0.0.11`, e outra via protocolo UDP na porta `56529`, também no mesmo IP. Essas conexões estavam associadas ao sistema de DNS interno do **Docker** e não representam serviços de rede típicos, como servidores HTTP ou SSH. Isso indicava que não havia serviços expostos ou em execução em portas padrão. A imagem 04 apresenta a saída dos comandos descritos.
 
-<!-- Esse segundo sistema consistia em um servidor **Ubuntu** básico, que seria utilizado nos próximos exercícios para aplicação e teste de técnicas de hardening. A imagem 04 apresenta a saída dos comandos descritos. -->
-
 <div align="center"><figure>
     <img src="../0-aux/md2-img04.png" alt="img04"><br>
     <figcaption>Imagem 04.</figcaption>
@@ -252,7 +255,6 @@ Após a análise inicial dos sistemas concluída, o passo seguinte foi utilizar 
 </figure></div><br>
 
 Agora que os IPs de cada sistema foram identificados, o próximo passo foi escanear individualmente cada um deles para descobrir quais portas estavam abertas e quais serviços estavam em execução. Para isso, foram utilizados os comandos `nmap -sS -sV 172.20.0.2` e `nmap -sS -sV 172.20.0.4`. A imagem 06 evidencia a execução da primeira varredura, pois foi a única que apresentou resultados significativos.
-<!-- , evidenciados nas imagens 06 e 07. -->
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img06.png" alt="img06"><br>
@@ -574,17 +576,17 @@ Obs.: Laboratório registrado como 3, documento como 3 e referente a aula 3.
 
 No laboratório anterior, o tema de firewall foi abordado de forma superficial como uma das técnicas de *hardening*. Neste terceiro laboratório, o objetivo foi aprofundar os conhecimentos sobre controle de acesso à rede utilizando o software **iptables** no sistema **Linux**. A proposta consistiu em configurar um firewall diretamente na máquina alvo para bloquear especificamente conexões SSH provenientes da máquina atacante, ao mesmo tempo em que se mantinha liberado o tráfego legítimo, como requisições HTTP, conexões já estabelecidas e acessos SSH originados de máquinas administrativas.
 
-O ambiente **Docker** criado para este laboratório, conforme ilustrado na imagem 12, foi implantando em uma instância **Amazon EC2** da **AWS** e era composto pelos seguintes containers:  
+O ambiente **Docker** criado para este laboratório, conforme ilustrado na imagem 12, foi implantando em uma instância **Amazon EC2** da **AWS**, com volume **Amazon EBS** de no mínimo 15 gigas, e era composto pelos seguintes containers:  
 - `kali_lab_19`: máquina de ataque (IP `192.168.100.11`).  
 - `ubuntu_lab_19`: servidor alvo (IP `192.168.100.10`).  
-- `ubuntu_gui`: estação de trabalho com interface gráfica (IP `192.168.100.12`), que poderia, se necessário, ser utilizada como alvo em substituição ao `ubuntu_lab_19`. Além disso, foi usada para estabelecer conexões SSH com o servidor alvo, representando tráfego legítimo.
+- `ubuntu_gui`: estação de trabalho com interface gráfica (IP `192.168.100.12`), utilizada para estabelecer conexões SSH com o servidor alvo, representando tráfego legítimo, uma vez que o IP da máquina **Kali Linux** iria ser bloqueado para acessos SSH durante o lab.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img12.png" alt="img12"><br>
     <figcaption>Imagem 12.</figcaption>
 </figure></div><br>
 
-Para acesso gráfico à máquina **Ubuntu** com interface gráfica, havia duas opções. A primeira era por meio do navegador, acessando o IP ou DNS público da instância **EC2** na porta `6080`. A segunda consistia em instalar o software **VNC Viewer** e criar uma conexão com o IP ou DNS público da instância na porta `5901`. Em ambos os casos, foi necessário adicionar regras ao security group da instância **Amazon EC2**, liberando as portas `6080` e `5901` para o IP público da máquina física **Windows**. Para autenticação, era utilizado o usuário `root`, cuja senha era `kenseilab`. A imagem 13 mostra o acesso remoto gráfico realizado por meio do navegador, enquanto a imagem 14 exibe o acesso pelo software **VNC Viewer** instalado na máquina física. 
+Para acesso gráfico à máquina **Ubuntu** com interface gráfica (`ubuntu_gui`), havia duas opções. A primeira era por meio do navegador, acessando o IP ou DNS público da instância **EC2** na porta `6080`. A segunda consistia em instalar o software **RealVNC Viewer** e criar uma conexão com o IP ou DNS público da instância na porta `5901`. Em ambos os casos, foi necessário adicionar regras ao security group da instância **Amazon EC2**, liberando as portas `6080` e `5901` para o IP público da máquina física **Windows**. Para autenticação, era utilizado o usuário `root`, cuja senha era `kenseilab`. A imagem 13 mostra o acesso remoto gráfico realizado por meio do navegador, enquanto a imagem 14 exibe o acesso pelo software **VNC Viewer** instalado na máquina física. 
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img13.png" alt="img13"><br>
@@ -596,78 +598,69 @@ Para acesso gráfico à máquina **Ubuntu** com interface gráfica, havia duas o
     <figcaption>Imagem 14.</figcaption>
 </figure></div><br>
 
-O container `ubuntu_gui` foi configurado no **Docker Compose** utilizando uma imagem da distribuição **Ubuntu** com o ambiente de desktop **XFCE**, que é leve e adequado para máquinas virtuais e containers, e com o **VNC Server**, que permite a conexão remota da interface gráfica via protocolo VNC. No shell desta máquina, o comando `sudo iptables -L` foi executado para verificar as regras do firewall **iptables**. Este mesmo comando também foi usado no shell aberto com o container `ubuntu_lab_19`, após acessar o container com o comando `docker exec -it ubuntu_lab_19 bash`. A imagem 15 mostra as regras de firewalls em cada uma das máquinas.
+O container `ubuntu_gui` foi configurado no **Docker Compose** a partir de uma imagem da distribuição **Ubuntu** com o ambiente de desktop **XFCE**, leve e adequado para máquinas virtuais e containers, além do **VNC Server**, que possibilita a conexão remota à interface gráfica via protocolo VNC.  
+
+No acesso remoto à instância **Amazon EC2**, o container **Ubuntu** em linha de comando foi aberto com `docker exec -it ubuntu_lab_19 bash`. Em seguida, executou-se o comando `sudo iptables -L` para inspecionar as regras do firewall **iptables** dessa máquina, que representava o servidor alvo. A imagem 15 mostra que, naquele momento, não havia nenhuma regra configurada. Também foi verificado o funcionamento dos serviços SSH com `service ssh status` e Apache com `service apache2 status`. Caso não estivessem em execução, eles deveriam ser iniciado manualmente com `service ssh start` e `service apache2 start`.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img15.png" alt="img15"><br>
     <figcaption>Imagem 15.</figcaption>
 </figure></div><br>
 
-Antes de configurar o firewall na máquina alvo, o container **Kali Linux** foi acessado para testar a conectividade com o servidor **Ubuntu**, utilizando o comando `docker exec -it kali_lab_19 bash` em um outro acesso remoto à instância EC2 pelo **PowerShell**. Inicialmente, o comando `ping -c 3 192.168.100.10` foi utilizado para verificar a comunicação entre as máquinas. Em seguida, `ssh root@192.168.100.10` estabeleceu uma conexão SSH via **OpenSSH**, que foi concluída com sucesso, sendo finalizada posteriormente com `exit` para prosseguir com os testes. O comando `nmap -sS -p- 192.168.100.10` identificou as portas abertas no servidor alvo, e `curl http://192.168.100.10` testou a conectividade via HTTP. A imagem 16 exibe os resultados desses comandos.
+Antes de configurar o firewall na máquina alvo, o container **Kali Linux** foi acessado para testar a conectividade com o servidor **Ubuntu**, utilizando o comando `docker exec -it kali_lab_19 bash` em um outro acesso remoto à instância EC2 pelo **PowerShell**. Inicialmente, o comando `ping -c 3 192.168.100.10` foi utilizado para verificar a comunicação entre as máquinas. Em seguida, `ssh root@192.168.100.10` com a senha `root` estabeleceu uma conexão SSH via **OpenSSH**, que foi concluída com sucesso, sendo finalizada posteriormente com `exit` para prosseguir com os testes. O comando `nmap -sS -p- 192.168.100.10` identificou as portas abertas no servidor alvo, e `curl http://192.168.100.10` testou a conectividade via HTTP. A imagem 16 exibe os resultados desses comandos.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img16.png" alt="img16"><br>
     <figcaption>Imagem 16.</figcaption>
 </figure></div><br>
 
-No **Dockerfile** do container, algumas instruções criaram um script automatizado localizado em `/opt/lab-tools/test-lab.sh`, que realizava todos os testes de conectividade de forma automática. Para executá-lo, bastava rodar o comando `./opt/lab-tools/test-lab.sh`.
+No **Dockerfile** do container, algumas instruções criaram um script automatizado localizado em `/opt/lab-tools/test-lab.sh`, que realizava todos os testes de conectividade de forma automática. Para executá-lo, bastava rodar o comando `./opt/lab-tools/test-lab.sh`. 
 
-Os mesmos testes foram realizados manualmente a partir da máquina de ataque para o servidor **Ubuntu** com interface gráfica, utilizando os seguintes comandos:
-- `ping -c 3 192.168.100.12`: verificava a conectividade com o servidor.  
-- `ssh root@192.168.100.12`: estabelecia uma conexão SSH via **OpenSSH**.  
-- `nmap -sS -p- 192.168.100.12`: realizava uma varredura de portas TCP abertas.  
-- `curl http://192.168.100.12`: testava a conectividade HTTP com o servidor.
+O container alvo foi novamente acesso, agora para configurar o firewall **iptables**. Para isso, os comandos `iptables -F` e `iptables -L` foram executados, respectivamente, para limpar todas as regras existentes, se hovesse, e listar o estado atual do firewall. Após a limpeza, três comandos definiram a política padrão do firewall, adotando a negação total conforme o princípio do menor privilégio:
+- `iptables -P INPUT DROP`: bloqueiava todas as conexões de entrada por padrão, aceitando apenas pacotes explicitamente permitidos por regras adicionais.  
+- `iptables -P FORWARD DROP`: descartava todo o tráfego roteado através da máquina, impedindo que pacotes passassem de uma rede para outra.  
+- `iptables -P OUTPUT ACCEPT`: permitia todas as conexões de saída iniciadas pela própria máquina, a menos que regras adicionais restritivas fossem aplicadas.
 
-A imagem 17 evidencia os resultados desses comandos para esta máquina.
+Resumindo, todo tráfego de entrada era bloqueado, o tráfego de saída era permitido e nada era encaminhado/roteado. As conexões já estabelecidas foram autorizadas com o comando `iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT`. O tráfego local (loopback) foi liberado pelo comando `iptables -A INPUT -i lo -j ACCEPT`. As quatro regras seguintes definiam permissões específicas para portas ou IPs:
+- `iptables -A INPUT -p tcp --dport 80 -j ACCEPT`: permitia o tráfego TCP na porta 80 (HTTP).  
+- `iptables -A INPUT -s 192.168.100.11 -p tcp --dport 22 -j DROP`: bloqueiava conexões SSH (porta 22) vindas do IP `192.168.100.11` (máquina atacante).  
+- `iptables -A INPUT -p tcp --dport 22 -j ACCEPT`: permitia conexões SSH na porta 22 vindas de qualquer outro IP.  
+- `iptables -A INPUT -s 192.168.100.11 -j LOG --log-prefix "BLOCKED_KALI: "`: registrava no log todos os pacotes vindos do IP `192.168.100.11` com o prefixo `BLOCKED_KALI`.
+
+Para verificar as regras configuradas, foram utilizados os comandos:
+- `iptables -L -v -n`: exibia todas as regras com estatísticas e IPs numericamente.  
+- `iptables -L --line-numbers`: mostrava as regras com numeração de linhas.  
+- `iptables -L -v`: exibe estatísticas detalhadas do tráfego processado pelas regras.
+
+As imagem 17 e 18 ilustram a saída desses comandos.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img17.png" alt="img17"><br>
     <figcaption>Imagem 17.</figcaption>
 </figure></div><br>
 
-Com o container alvo acessado, primeiro foi verificado se o serviço de SSH estava em execução com o comando `service ssh status`. Caso o serviço não estivesse ativo, era necessário executá-lo com `service ssh start`. Em seguida, iniciou-se a configuração do firewall **iptables**. Para isso, os comandos `iptables -F` e `iptables -L` foram executados, respectivamente, para limpar todas as regras existentes e listar o estado atual do firewall. Após a limpeza, três comandos definiram a política padrão do firewall, adotando a negação total conforme o princípio do menor privilégio:
-- `iptables -P INPUT DROP`: bloqueia todas as conexões de entrada por padrão, aceitando apenas pacotes explicitamente permitidos por regras adicionais.  
-- `iptables -P FORWARD DROP`: descarta todo o tráfego roteado através da máquina, impedindo que pacotes passem de uma rede para outra.  
-- `iptables -P OUTPUT ACCEPT`: permite todas as conexões de saída iniciadas pela própria máquina, a menos que regras adicionais restritivas sejam aplicadas.
-
-Resumindo, todo tráfego de entrada é bloqueado, o tráfego de saída é permitido e nada é encaminhado/roteado. As conexões já estabelecidas foram autorizadas com o comando `iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT`. O tráfego local (loopback) foi liberado pelo comando `iptables -A INPUT -i lo -j ACCEPT`. As quatro regras seguintes definiam permissões específicas para portas ou IPs:
-- `iptables -A INPUT -p tcp --dport 80 -j ACCEPT`: permite o tráfego TCP na porta 80 (HTTP).  
-- `iptables -A INPUT -s 192.168.100.11 -p tcp --dport 22 -j DROP`: bloqueia conexões SSH (porta 22) vindas do IP `192.168.100.11` (máquina atacante).  
-- `iptables -A INPUT -p tcp --dport 22 -j ACCEPT`: permite conexões SSH na porta 22 vindas de qualquer outro IP.  
-- `iptables -A INPUT -s 192.168.100.11 -j LOG --log-prefix "BLOCKED_KALI: "`: registra no log todos os pacotes vindos do IP `192.168.100.11` com o prefixo `BLOCKED_KALI`.
-
-Para verificar as regras configuradas, foram utilizados os comandos:
-- `iptables -L -v -n`: exibe todas as regras com estatísticas e IPs numericamente.  
-- `iptables -L --line-numbers`: mostra as regras com numeração de linhas.  
-- `iptables -L -v`: exibe estatísticas detalhadas do tráfego processado pelas regras.
-
-A imagem 18 ilustra a saída desses comandos.
-
 <div align="center"><figure>
     <img src="../0-aux/md2-img18.png" alt="img18"><br>
     <figcaption>Imagem 18.</figcaption>
 </figure></div><br>
 
-No acesso remoto gráfico ao container `ubuntu_gui`, seja pelo navegador ou pelo **VNC Viewer**, o mesmo procedimento de configuração de firewall com **iptables** realizado no servidor **Ubuntu** via linha de comando foi replicado. Todos os comandos foram executados na mesma ordem no **Ubuntu** com interface gráfica, garantindo que as regras fossem aplicadas de forma consistente. A imagem 19 exibe as configurações de firewall estabelecidas.
+De volta ao container de ataque `kali_lab_19`, foram realizados testes para verificar o funcionamento das regras do firewall. Inicialmente, tentou-se estabelecer uma conexão SSH com `ssh root@192.168.100.10`, igual ao teste anterior à aplicação das regras, mas a conexão não foi estabelecida, pois o IP dessa máquina estava bloqueado para a porta `22`, padrão do SSH. Em seguida, o comando `ping -c 3 192.168.100.10` foi executado para verificar a conectividade entre as máquinas. Como não havia uma regra no **iptables** liberando pacotes ICMP (utilizados pelo **ping**), essa comunicação também foi bloqueada, devido à política padrão de rejeição de pacotes. Para permitir novamente o **ping**, foi adicionada a regra `iptables -I INPUT 2 -p icmp --icmp-type echo-request -j ACCEPT` no firewall do servidor alvo.
+
+A requisição HTTP foi testada com `curl http://192.168.100.10` e executada com sucesso, pois a porta `80` não havia sido bloqueada. Por fim, um escaneamento de portas foi realizado com `nmap -sS -p- 192.168.100.10`, identificando apenas a porta `80` aberta. A imagem 19 exibe os resultados desses comandos, evidenciando que as regras do firewall estavam corretamente aplicadas.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img19.png" alt="img19"><br>
     <figcaption>Imagem 19.</figcaption>
 </figure></div><br>
 
-De volta ao container de ataque, `kali_lab_19`, o teste para verificar se as regras estavam funcionando foram realizados nos dois servidores **Ubuntu**. Primeiro foi executado uma tentativa de conexão SSH, exatamente igual ao feito antes da aplicação das regras (`ssh root@192.168.100.10` e `ssh root@192.168.100.12`) e o resultado foi que a conexão não foi estabelecida, pois o IP dessa máquina estava bloqueado para conexões na porta `22`, que é a porta padrão do SSH. Os comandos `ping -c 3 192.168.100.10` e `ping -c 3 192.168.100.12` foam utilizados para mostrar que existia conectividade entre as máquinas, pois a regra afetava apenas a porta `22`. Com os comandos `curl http://192.168.100.10` e `curl http://192.168.100.12`, a requisição HTTP foi efetuada com sucesso, exatamente pelo mesmo motivo. Por fim, o escaneamento de portas foi realizado com o comando `nmap -sS -p- 192.168.100.10` e `nmap -sS -p- 192.168.100.12`. A imagem 20 exibe o output dos comandos, evidenciado que as configurações no firewall funcionaram corretamente.
+Para finalizar, o container **Ubuntu** com interface gráfica (`ubuntu_gui`) foi novamente acessado para comprovar que uma conexão SSH a partir de outra máquina, ou seja, de um IP diferente, funcionava corretamente no servidor alvo. Entretanto, este container apresentava algumas limitações: a autenticação era feita com um usuário não root, e não havia instalação do **sudo** nem do **OpenSSH**.  
+
+Para contornar essas limitações, a máquina foi acessada via container com o comando `docker exec -it -u 0 ubuntu_gui bash`, definindo o usuário como root (UID 0). Em seguida, foram atualizadas as listas de repositórios em `/etc/apt/sources.list` e instalados os pacotes **sudo** e **OpenSSH**. Após essas configurações, retornou-se à interface gráfica, onde no terminal aberto foi executado o comando `ssh root@192.168.100.10`, utilizando a senha `root`, permitindo o acesso remoto ao servidor alvo, conforme evidenciado na imagem 20.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img20.png" alt="img20"><br>
     <figcaption>Imagem 20.</figcaption>
 </figure></div><br>
-
-
-
-
-
-
-
 
 <a name="item2.4"><h4>2.4 IDS e IPS</h4></a>[Back to summary](#item2)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento)
@@ -778,47 +771,63 @@ Obs.: Laboratório registrado como 4, documento como 4 e referente a aula 6.
   </ul>
 </details>
 
-Este laboratório teve como objetivo demonstrar o processo de identificação e correção de vulnerabilidades em containers de forma automatizada, utilizando o **Trivy** aliado a scripts que simulavam patches de segurança. Para isso, foi empregado um **Makefile**, com a função de centralizar e simplificar a execução dos comandos necessários: desde o build das imagens **Docker** e a criação dos containers até a varredura com o **Trivy** e a aplicação dos patches. O primeiro script executado integrava o **Trivy** ao processo, enquanto os demais eram responsáveis pela aplicação dos patches de segurança.  
+Este laboratório teve como objetivo demonstrar o processo de identificação e correção de vulnerabilidades em containers de forma automatizada, utilizando o **Trivy** aliado a scripts que simulavam patches de segurança. Para isso, foi empregado um **Makefile**, com a função de centralizar e simplificar a execução dos comandos necessários: desde o build das imagens **Docker** e a criação dos containers até a varredura com o **Trivy** e a aplicação dos patches. O primeiro script executado integrava o **Trivy** ao processo, enquanto os demais eram responsáveis pela aplicação dos patches de segurança. 
 
 A ferramenta **Makefile** é um utilitário tradicional de automação que permite agrupar e padronizar comandos em alvos específicos, facilitando a execução de tarefas repetitivas de forma consistente e organizada. O **Trivy** é uma ferramenta de segurança open source amplamente utilizada para realizar varreduras em imagens de contêiner, sistemas de arquivos e repositórios de código, identificando vulnerabilidades conhecidas e falhas de configuração. Sua aplicação permite detectar problemas antes do deploy em ambientes de produção, fortalecendo a segurança das aplicações containerizadas. Já os **patches** consistem em correções aplicadas a sistemas ou aplicações com o objetivo de mitigar vulnerabilidades, remover falhas ou ajustar configurações inseguras.
 
-Dessa forma, o laboratório foi entregue de forma bastante automatizada, sendo necessário apenas executar os comandos definidos no arquivo `Makefile`. O primeiro comando utilizado era o `make build`, que correspondia a `docker compose build --no-cache`. Esse comando construía a imagem especificada no **Docker Compose**, que, neste caso, era apenas o container `lab27_app`. A imagem era gerada a partir do Dockerfile localizado em `./app/Dockerfile.bullseye` e, ao final do build, recebia o nome `lab27_app:local`.  
+Antes de iniciar a implantação do ambiente, assim como no laboratório anterior, foi necessário garantir pelo menos 15 GB de armazenamento no host, correspondendo a um volume do **Amazon EBS** com essa capacidade mínima. Caso a instância tenha sido criada com apenas 8 GB, seria necessário expandir o volume e ajustar a configuração da instância.
+
+O laboratório foi entregue de forma bastante automatizada, sendo necessário apenas executar os comandos definidos no arquivo `Makefile`, incluindo o comando para subir o ambiente **Docker**. Para isso, foi preciso instalar o **Makefile** com `sudo apt install -y make`. O primeiro comando executado foi `make build`, equivalente a `docker compose build --no-cache`. Esse comando construía a imagem especificada no **Docker Compose** — neste caso, apenas do container `lab27_app`. A imagem era gerada a partir do Dockerfile localizado em `./app/Dockerfile.bullseye` e, ao final do build, recebia o nome `lab27_app:local`.
 
 O Dockerfile utilizava como base a imagem `python:3.11-bullseye`, propositalmente mais suscetível a vulnerabilidades conhecidas (CVEs). Além disso, copiava para dentro do container o arquivo `requirements.txt`, contendo as dependências da aplicação **Python**, que eram `flask==3.0.2` e `gunicorn==21.2.0`. A versão do **Gunicorn** também foi escolhida propositalmente antiga para simular um cenário vulnerável, assim como a própria imagem base do container. Os comandos subsequentes do **Makefile** permitiam atualizar tanto a imagem quanto o arquivo de dependências para versões mais recentes e seguras, reduzindo a exposição a vulnerabilidades.
 
-O próximo comando do **Makefile** foi o `make up`, correspondente a `docker compose up -d`, que implantava efetivamente o container. Em seguida, o comando `make scan`, equivalente a `bash scripts/scan.sh`, acionava o script `scan.sh`, responsável por executar o **Trivy** para a análise de vulnerabilidades. O script começava verificando se o **Trivy** estava instalado localmente no host; caso não estivesse, um container oficial `aquasec/trivy:latest` era iniciado para realizar a varredura. A análise era dividida em duas etapas: a primeira verificava vulnerabilidades críticas e altas na imagem do container `lab27_app:local`, interrompendo o processo caso alguma fosse detectada; a segunda inspecionava o sistema de arquivos do projeto, incluindo dependências e o `Dockerfile`, em busca de vulnerabilidades, segredos e falhas de configuração. Os resultados de ambas as análises eram automaticamente salvos em relatórios na pasta `./reports`, com nomes versionados por timestamp. As imagens 21 e 22 mostram os resultados obtidos pela varredura realizada pelo **Trivy**.
+O próximo comando do **Makefile** foi o `make up`, correspondente a `docker compose up -d`, que implantava efetivamente o container. Em seguida, o comando `make scan`, equivalente a `bash scripts/scan.sh`, acionava o script `scan.sh`, responsável por executar o **Trivy** para a análise de vulnerabilidades. O script começava verificando se o **Trivy** estava instalado localmente no host; caso não estivesse, um container oficial `aquasec/trivy:latest` era iniciado para realizar a varredura. A análise era dividida em duas etapas: a primeira verificava vulnerabilidades críticas e altas na imagem do container `lab27_app:local`, interrompendo o processo caso alguma fosse detectada; a segunda inspecionava o sistema de arquivos do projeto, incluindo dependências e o `Dockerfile`, em busca de vulnerabilidades, segredos e falhas de configuração. Os resultados de ambas as análises eram automaticamente salvos em relatórios na pasta `./reports`, com nomes versionados por timestamp. A imagem 21 exibe o final do comando do scan do **Trivy** e a primeira parte do relatório ao visualizá-lo com o comando `cat ./reports/image-20250922-190514.txt`.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img21.png" alt="img21"><br>
     <figcaption>Imagem 21.</figcaption>
 </figure></div><br>
 
+Analisando essa primeira parte do relatório, foram identificadas 94 vulnerabilidades conhecidas na imagem `lab27_app:local`, criada a partir da base `python:3.11-bullseye`. Dessas, 30 eram críticas e 64 de alto risco. Além disso, foram detectadas 2 vulnerabilidades na versão `21.2.0` do **Gunicorn** e 2 na versão `65.6.1` do **SetupTools**, todas de alto risco. O relatório apresentava detalhadamente cada uma das 94 vulnerabilidades da imagem, assim como as 4 vulnerabilidades presentes nas dependências, conforme evidenciado nas imagens 22 e 23.
+
 <div align="center"><figure>
     <img src="../0-aux/md2-img22.png" alt="img22"><br>
     <figcaption>Imagem 22.</figcaption>
 </figure></div><br>
-
-O comando seguinte foi o `make patch`, equivalente a `bash scripts/patch.sh`, que acionava o script responsável pela aplicação do patch. Esse script alterava o Dockerfile utilizado pelo **Docker Compose** de `Dockerfile.bullseye` para `Dockerfile.patched`, ambos localizados na pasta `./app`. A principal diferença entre esses arquivos era a imagem base do container: a anterior utilizava `python:3.11-slim`, enquanto o `Dockerfile.patched` utilizava uma versão mais recente da mesma imagem. O arquivo de dependências `requirements.txt` permaneceu inalterado, ou seja, apenas a imagem do container foi atualizada. Outras diferenças de configuração existentes no Dockerfile não impactavam o laboratório, servindo apenas como estrutura do container.
-
-O comando `make rebuild` correspondia à execução sequencial de três comandos do **Makefile**: `down`, `build` e `up`. O comando `make down`, equivalente a `docker compose down`, encerrava os containers em execução. Em seguida, `make build` reconstruía as imagens e `make up` implantava os containers novamente. Dessa forma, todo o processo de atualização do container após a aplicação do patch era automatizado. A imagem 23 mostra a execução desses comandos e a aplicação final do patch na imagem do container.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img23.png" alt="img23"><br>
     <figcaption>Imagem 23.</figcaption>
 </figure></div><br>
 
-Para verificar se as vulnerabilidades haviam sido corrigidas, o comando `make scan` foi executado novamente, acionando o script do **Trivy**. A imagem 24 mostra os resultados salvos na pasta `./reports`. Pode-se observar que as vulnerabilidades relacionadas à imagem base do **Docker** foram corrigidas, enquanto aquelas provenientes da versão do **Gunicorn** ainda permaneciam.
+O comando seguinte foi o `make patch`, equivalente a `bash scripts/patch.sh`, que acionava o script responsável pela aplicação do patch. Esse script alterava o Dockerfile utilizado pelo **Docker Compose** de `Dockerfile.bullseye` para `Dockerfile.patched`, ambos localizados na pasta `./app`. A principal diferença entre esses arquivos era a imagem base do container: a anterior utilizava `python:3.11-bullseye`, enquanto o `Dockerfile.patched` utilizava uma versão mais recente da mesma imagem (`python:3.11-slim`). O arquivo de dependências `requirements.txt` permaneceu inalterado, ou seja, apenas a imagem do container foi atualizada. Outras diferenças de configuração existentes no Dockerfile não impactavam o laboratório, servindo apenas como estrutura do container.
+
+O comando `make rebuild` correspondia à execução sequencial de três comandos do **Makefile**: `down`, `build` e `up`. O comando `make down`, equivalente a `docker compose down`, encerrava os containers em execução. Em seguida, `make build` reconstruía as imagens e `make up` implantava os containers novamente. Dessa forma, todo o processo de atualização do container após a aplicação do patch era automatizado. A imagem 24 mostra a execução desses comandos e a aplicação final do patch na imagem do container.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img24.png" alt="img24"><br>
     <figcaption>Imagem 24.</figcaption>
 </figure></div><br>
 
-O comando responsável por aplicar o patch nas dependências **Python** era o `make python-fix`, que correspondia a `bash scripts/python-fix.sh`, acionando o arquivo de script `python-fix.sh`. Esse script primeiro realizava um backup do arquivo `docker-compose.yml` e, em seguida, alterava o Dockerfile no Compose para `Dockerfile.zero-cves`, também localizado na pasta `./app`. Esse novo Dockerfile mantinha a imagem base `python:3.11-slim` e substituía o arquivo de dependências para `requirements-fixed.txt`, que continha `flask==3.0.2` e `gunicorn==23.0.0`, atualizando assim a versão do **Gunicorn** para corrigir vulnerabilidades conhecidas. Após essas alterações, era executado o comando `make rebuild` para reconstruir a imagem e subir um novo container em substituição ao anterior. Por fim, uma nova varredura com o **Trivy** era realizada ao executar o comando `make scan`. A imagem 25 evidencia que nenhuma vulnerabilidade crítica ou alta foi encontrada, atingindo o objetivo do laboratório.
+Para verificar se as vulnerabilidades haviam sido corrigidas, o comando `make scan` foi executado novamente, acionando o script do **Trivy**. A imagem 25 apresenta os resultados do novo relatório, salvo na pasta `./reports` e visualizado com o comando `cat ./reports/image-20250922-184921.txt`. Observa-se que as 94 vulnerabilidades relacionadas à imagem base do **Docker** foram corrigidas, enquanto as 4 vulnerabilidades provenientes das dependências (**Gunicorn** e **SetupTools**) permaneciam.
 
 <div align="center"><figure>
     <img src="../0-aux/md2-img25.png" alt="img25"><br>
     <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
+
+O comando responsável por aplicar o patch nas dependências **Python** era o `make python-fix`, correspondente a `bash scripts/python-fix.sh`, acionando o arquivo de script `python-fix.sh`. Esse script iniciava realizando um backup do arquivo `docker-compose.yml` e, em seguida, alterava o Dockerfile no Compose para `Dockerfile.zero-cves`, também localizado na pasta `./app`. Esse novo Dockerfile mantinha a imagem base `python:3.11-slim` e substituía o arquivo de dependências por `requirements-fixed.txt`, que incluía `flask==3.0.2` e `gunicorn==23.0.0`, atualizando a versão do **Gunicorn** para corrigir suas duas vulnerabilidades conhecidas. Além disso, era incluído o comando `pip install --upgrade pip setuptools==78.1.1` na instrução `RUN` do Dockerfile, atualizando o **SetupTools** para a versão `78.1.1` e corrigindo as duas vulnerabilidades associadas a essa ferramenta.
+
+Após essas alterações, o comando `make rebuild` era executado para reconstruir a imagem e subir um novo container em substituição ao anterior, conforme imagem 26. Por fim, uma nova varredura com o **Trivy** era realizada ao executar `make scan`. A imagem 27 evidencia que nenhuma vulnerabilidade crítica ou alta foi encontrada, conforme registrado no novo relatório visualizado com `cat ./reports/image-20250922-190514.txt`. Assim, o objetivo do laboratório era atendido com sucesso.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img27.png" alt="img27"><br>
+    <figcaption>Imagem 27.</figcaption>
 </figure></div><br>
 
 <a name="item2.7"><h4>2.7 Cloud Security</h4></a>[Back to summary](#item2)   
