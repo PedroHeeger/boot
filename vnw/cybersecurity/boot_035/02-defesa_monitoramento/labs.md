@@ -778,9 +778,48 @@ Obs.: Laboratório registrado como 4, documento como 4 e referente a aula 6.
   </ul>
 </details>
 
+Este laboratório teve como objetivo demonstrar o processo de identificação e correção de vulnerabilidades em containers de forma automatizada, utilizando o **Trivy** aliado a scripts que simulavam patches de segurança. Para isso, foi empregado um **Makefile**, com a função de centralizar e simplificar a execução dos comandos necessários: desde o build das imagens **Docker** e a criação dos containers até a varredura com o **Trivy** e a aplicação dos patches. O primeiro script executado integrava o **Trivy** ao processo, enquanto os demais eram responsáveis pela aplicação dos patches de segurança.  
 
+A ferramenta **Makefile** é um utilitário tradicional de automação que permite agrupar e padronizar comandos em alvos específicos, facilitando a execução de tarefas repetitivas de forma consistente e organizada. O **Trivy** é uma ferramenta de segurança open source amplamente utilizada para realizar varreduras em imagens de contêiner, sistemas de arquivos e repositórios de código, identificando vulnerabilidades conhecidas e falhas de configuração. Sua aplicação permite detectar problemas antes do deploy em ambientes de produção, fortalecendo a segurança das aplicações containerizadas. Já os **patches** consistem em correções aplicadas a sistemas ou aplicações com o objetivo de mitigar vulnerabilidades, remover falhas ou ajustar configurações inseguras.
 
+Dessa forma, o laboratório foi entregue de forma bastante automatizada, sendo necessário apenas executar os comandos definidos no arquivo `Makefile`. O primeiro comando utilizado era o `make build`, que correspondia a `docker compose build --no-cache`. Esse comando construía a imagem especificada no **Docker Compose**, que, neste caso, era apenas o container `lab27_app`. A imagem era gerada a partir do Dockerfile localizado em `./app/Dockerfile.bullseye` e, ao final do build, recebia o nome `lab27_app:local`.  
 
+O Dockerfile utilizava como base a imagem `python:3.11-bullseye`, propositalmente mais suscetível a vulnerabilidades conhecidas (CVEs). Além disso, copiava para dentro do container o arquivo `requirements.txt`, contendo as dependências da aplicação **Python**, que eram `flask==3.0.2` e `gunicorn==21.2.0`. A versão do **Gunicorn** também foi escolhida propositalmente antiga para simular um cenário vulnerável, assim como a própria imagem base do container. Os comandos subsequentes do **Makefile** permitiam atualizar tanto a imagem quanto o arquivo de dependências para versões mais recentes e seguras, reduzindo a exposição a vulnerabilidades.
+
+O próximo comando do **Makefile** foi o `make up`, correspondente a `docker compose up -d`, que implantava efetivamente o container. Em seguida, o comando `make scan`, equivalente a `bash scripts/scan.sh`, acionava o script `scan.sh`, responsável por executar o **Trivy** para a análise de vulnerabilidades. O script começava verificando se o **Trivy** estava instalado localmente no host; caso não estivesse, um container oficial `aquasec/trivy:latest` era iniciado para realizar a varredura. A análise era dividida em duas etapas: a primeira verificava vulnerabilidades críticas e altas na imagem do container `lab27_app:local`, interrompendo o processo caso alguma fosse detectada; a segunda inspecionava o sistema de arquivos do projeto, incluindo dependências e o `Dockerfile`, em busca de vulnerabilidades, segredos e falhas de configuração. Os resultados de ambas as análises eram automaticamente salvos em relatórios na pasta `./reports`, com nomes versionados por timestamp. As imagens 21 e 22 mostram os resultados obtidos pela varredura realizada pelo **Trivy**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img21.png" alt="img21"><br>
+    <figcaption>Imagem 21.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img22.png" alt="img22"><br>
+    <figcaption>Imagem 22.</figcaption>
+</figure></div><br>
+
+O comando seguinte foi o `make patch`, equivalente a `bash scripts/patch.sh`, que acionava o script responsável pela aplicação do patch. Esse script alterava o Dockerfile utilizado pelo **Docker Compose** de `Dockerfile.bullseye` para `Dockerfile.patched`, ambos localizados na pasta `./app`. A principal diferença entre esses arquivos era a imagem base do container: a anterior utilizava `python:3.11-slim`, enquanto o `Dockerfile.patched` utilizava uma versão mais recente da mesma imagem. O arquivo de dependências `requirements.txt` permaneceu inalterado, ou seja, apenas a imagem do container foi atualizada. Outras diferenças de configuração existentes no Dockerfile não impactavam o laboratório, servindo apenas como estrutura do container.
+
+O comando `make rebuild` correspondia à execução sequencial de três comandos do **Makefile**: `down`, `build` e `up`. O comando `make down`, equivalente a `docker compose down`, encerrava os containers em execução. Em seguida, `make build` reconstruía as imagens e `make up` implantava os containers novamente. Dessa forma, todo o processo de atualização do container após a aplicação do patch era automatizado. A imagem 23 mostra a execução desses comandos e a aplicação final do patch na imagem do container.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img23.png" alt="img23"><br>
+    <figcaption>Imagem 23.</figcaption>
+</figure></div><br>
+
+Para verificar se as vulnerabilidades haviam sido corrigidas, o comando `make scan` foi executado novamente, acionando o script do **Trivy**. A imagem 24 mostra os resultados salvos na pasta `./reports`. Pode-se observar que as vulnerabilidades relacionadas à imagem base do **Docker** foram corrigidas, enquanto aquelas provenientes da versão do **Gunicorn** ainda permaneciam.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img24.png" alt="img24"><br>
+    <figcaption>Imagem 24.</figcaption>
+</figure></div><br>
+
+O comando responsável por aplicar o patch nas dependências **Python** era o `make python-fix`, que correspondia a `bash scripts/python-fix.sh`, acionando o arquivo de script `python-fix.sh`. Esse script primeiro realizava um backup do arquivo `docker-compose.yml` e, em seguida, alterava o Dockerfile no Compose para `Dockerfile.zero-cves`, também localizado na pasta `./app`. Esse novo Dockerfile mantinha a imagem base `python:3.11-slim` e substituía o arquivo de dependências para `requirements-fixed.txt`, que continha `flask==3.0.2` e `gunicorn==23.0.0`, atualizando assim a versão do **Gunicorn** para corrigir vulnerabilidades conhecidas. Após essas alterações, era executado o comando `make rebuild` para reconstruir a imagem e subir um novo container em substituição ao anterior. Por fim, uma nova varredura com o **Trivy** era realizada ao executar o comando `make scan`. A imagem 25 evidencia que nenhuma vulnerabilidade crítica ou alta foi encontrada, atingindo o objetivo do laboratório.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
 
 <a name="item2.7"><h4>2.7 Cloud Security</h4></a>[Back to summary](#item2)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_7)
