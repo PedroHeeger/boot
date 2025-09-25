@@ -844,17 +844,333 @@ A aula 8 não teve nenhum laboratório ou o laboratório ainda não foi constru�
 <a name="item2.9"><h4>2.9 Container Security Docker Bench & Trivy</h4></a>[Back to summary](#item2)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_5)
 
+Obs.: Laboratório registrado como 5, documento como 31 e referente a aula 9.
 
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+      <ul>
+        <li><details><summary><strong>juice_shop:</strong></summary>
+          <ul>
+            <li><code>image: bkimminich/juice-shop</code>: Usa a imagem oficial do OWASP Juice Shop, intencionalmente vulnerável.</li>
+            <li><code>container_name: juice_shop</code>: Define o nome do container.</li>
+            <li><strong>ports:</strong>
+              <ul>
+                <li><code>"3000:3000"</code>: Expõe a aplicação na porta <code>3000</code> do host.</li>
+              </ul>
+            </li>
+            <li><strong>networks:</strong> Conecta à rede <code>lab31_net</code> com IP estático <code>172.31.0.10</code>.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>kali_lab_31:</strong></summary>
+          <ul>
+            <li><strong>build:</strong> Constrói a imagem a partir de <code>Dockerfile.kali</code>.</li>
+            <li><code>container_name: kali_lab_31</code>: Nome do container.</li>
+            <li><code>tty: true</code>: Mantém o terminal alocado para interação contínua.</li>
+            <li><code>stdin_open: true</code>: Mantém a entrada padrão aberta para aceitar comandos.</li>
+            <li><strong>volumes:</strong> <code>./reports:/root/reports</code> — monta diretório de relatórios do host dentro do container.</li>
+            <li><strong>networks:</strong> Conecta à rede <code>lab31_net</code> com IP estático <code>172.31.0.11</code>.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Rede lab31_net:</strong></summary>
+          <ul>
+            <li><code>driver: bridge</code>: Rede em modo bridge.</li>
+            <li><code>subnet: 172.31.0.0/24</code>: Faixa de IPs para os containers.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como Kali Linux Rolling.</li>
+            <li><strong>RUN apt-get update && apt-get install -y ...</strong>
+              <ul>
+                <li><code>apt-get update</code>: Atualiza os índices de pacotes.</li>
+                <li><code>apt-get install -y wget apt-transport-https gnupg lsb-release curl jq python3 python3-pip pandoc</code>: Instala dependências e utilitários necessários do sistema.</li>
+                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove caches do apt para reduzir o tamanho da imagem.</li>
+              </ul>
+            </li>
+            <li><strong>RUN pip3 install --no-cache-dir --break-system-packages jinja2 markdown plotly pandas</strong>
+              <ul>
+                <li><code>pip3 install --no-cache-dir --break-system-packages</code>: Instala bibliotecas Python sem usar cache e sem isolar do sistema (permite integração com pacotes do SO).</li>
+                <li><code>jinja2</code>: Biblioteca de templates para relatórios.</li>
+                <li><code>markdown</code>: Converte textos Markdown em HTML.</li>
+                <li><code>plotly</code>: Gera gráficos interativos.</li>
+                <li><code>pandas</code>: Manipulação e análise de dados.</li>
+              </ul>
+            </li>
+            <li><strong>RUN wget -qO - ... && echo ... && apt-get update && apt-get install -y trivy && rm -rf /var/lib/apt/lists/*</strong>
+              <ul>
+                <li><code>wget -qO - ... | gpg --dearmor | tee /usr/share/keyrings/trivy.gpg</code>: Baixa e converte a chave pública do Trivy, salvando em <code>/usr/share/keyrings/trivy.gpg</code> para validação de pacotes.</li>
+                <li><code>echo "deb [...]" | tee -a /etc/apt/sources.list.d/trivy.list</code>: Adiciona o repositório oficial do Trivy ao diretório <code>/etc/apt/sources.list.d/</code>, permitindo que o APT reconheça e instale pacotes do Trivy de forma confiável.</li>
+                <li><code>apt-get update</code>: Atualiza os índices de pacotes após adicionar o repositório.</li>
+                <li><code>apt-get install -y trivy</code>: Instala o Trivy, ferramenta de análise de vulnerabilidades.</li>
+                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove caches para reduzir o tamanho da imagem.</li>
+              </ul>
+            </li>
+            <li><code>COPY scripts/ /root/scripts/</code>: Copia os scripts locais para dentro do container.</li>
+            <li><code>RUN chmod +x /root/scripts/*.sh /root/scripts/*.py</code>: Concede permissão de execução aos scripts.</li>
+            <li><code>RUN mkdir -p /root/reports</code>: Cria o diretório para armazenar relatórios.</li>
+            <li><code>ENV PATH="/root/scripts:${PATH}"</code>: Adiciona o diretório de scripts ao <code>PATH</code>.</li>
+            <li><code>WORKDIR /root</code>: Define o diretório de trabalho como <code>/root</code>.</li>
+            <li><code>CMD ["tail", "-f", "/dev/null"]</code>: Mantém o container rodando em segundo plano.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><strong>cleanup.sh</strong>: Script para limpar o ambiente. Remove containers, imagens, redes, volumes e relatórios gerados.</li>
+        <li><strong>docker-bench.sh</strong>: Executa o <em>Docker Bench for Security</em> para verificar configurações de segurança do Docker, gerando relatório da auditoria.</li>
+        <li><strong>run_lab.sh</strong>: Sobe o laboratório com <code>docker compose up</code> e exibe instruções para rodar o <strong>Trivy</strong> e analisar vulnerabilidades da imagem.</li>
+        <li><strong>view_reports.sh</strong>: Permite visualizar relatórios (<code>HTML</code>, <code>JSON</code>, <code>CSV</code>, <code>TXT</code>), resume vulnerabilidades e pode iniciar um servidor web local para abrir no navegador.</li>
+        <li><strong>generate_report.py</strong>: Script Python que executa scan de imagens Docker usando Trivy, gera estatísticas e produz relatórios em HTML, JSON e CSV, incluindo análises de vulnerabilidades críticas e recomendações de segurança.</li>
+        <li><strong>trivy_report.sh</strong>: Script Bash que automatiza a execução do Trivy Scanner, gerando relatórios nos formatos HTML, JSON, CSV e TXT, com suporte a diferentes níveis de severidade, diretórios de saída personalizados e opção de scan rápido.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
+O quinto laboratório focou em demonstrar como avaliar a segurança de containers **Docker** utilizando duas ferramentas complementares. O **Docker Bench for Security** foi empregado para analisar a configuração do host **Docker** (instância EC2) e identificar possíveis falhas de segurança na infraestrutura, enquanto o **Trivy** foi utilizado para escanear as imagens de containers, detectando vulnerabilidades conhecidas, falhas de configuração (misconfigs) e possíveis secrets expostos.
 
+O laboratório foi estruturado com dois containers em uma rede isolada do **Docker** (`172.31.0.0/24`). Um deles era o container de ataque, representado pela máquina **Kali Linux** (`kali_lab_31`), e o outro hospedava a aplicação web vulnerável **OWASP Juice Shop** (`juice_shop`). O ambiente **Docker** deste laboratório foi construído na instância **Amazon EC2** e podia ser implantado de duas formas: manualmente, executando os comandos individualmente, ou de maneira automatizada, por meio de quatro scripts fornecidos pelo instrutor do curso que simplificavam a execução de diversas tarefas.  
 
+O **OWASP Juice Shop** é uma aplicação intencionalmente insegura, projetada para servir como ambiente de aprendizado de segurança em aplicações web, permitindo que usuários explorem vulnerabilidades comuns como injeção de SQL, cross-site scripting (XSS), falhas de autenticação, controle de acesso inadequado, entre outras. Ele oferece desafios práticos e cenários realistas, sendo amplamente utilizado em treinamentos de *pentest* e laboratórios de segurança cibernética para testar técnicas de ataque e ferramentas de auditoria de forma segura, sem comprometer sistemas reais.
 
+Após clonar o repositório, a pasta do laboratório foi acessada com o comando `cd formacao-cybersec/modulo2-defesa-monitoramento/lab_5`. Dentro dessa pasta, além do `docker-compose.yml` e do Dockerfile, havia diversos scripts auxiliares. O primeiro script executado foi `./run_lab.sh`. Ele tinha como funções principais verificar se o **Docker** estava ativo na instância EC2 (host) e, caso positivo, executar `docker compose up -d --build` para implantar os containers. Em seguida, o script rodava `docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"`, similar ao `docker ps`, para listar os containers implantados, só que em formato de tabela. Por fim, o script exibia uma série de comandos `docker exec` destinados ao container `kali_lab_31` para realizar scans básicos com o **Trivy**, mas a execução real desses comandos ficava a cargo do próximo script. A imagem 28 mostra que o script foi executado e os containers foram implantados com sucesso.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img28.png" alt="img28"><br>
+    <figcaption>Imagem 28.</figcaption>
+</figure></div><br>
+
+Como o container da aplicação web vulnerável **OWASP Juice Shop** tinha o mapeamento de portas `3000:3000`, era possível acessar a aplicação diretamente no navegador da máquina física utilizando o IP ou DNS público da instância **Amazon EC2** nessa porta. No entanto, foi necessário adicionar uma regra de entrada no grupo de segurança associado à instância, liberando a porta `3000` para o IP público da máquina física. A imagem 29 ilustra a aplicação web sendo acessada pelo navegador.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img29.png" alt="img29"><br>
+    <figcaption>Imagem 29.</figcaption>
+</figure></div><br>
+
+O próximo passo consistiu em executar o **Trivy**. Ao finalizar, o script `run_lab.sh` exibiu quatro comandos `docker exec` que deveriam ser executados no container `kali_lab_31`. Esses comandos podiam ser rodados diretamente do host utilizando `docker exec` ou acessando o container com `docker exec -it kali_lab_31 bash` e executando os comandos **Trivy** internamente. A seguir, são detalhados os quatro comandos apresentados e algumas outras opções disponíveis:
+- `docker exec -it kali_lab_31 trivy image bkimminich/juice-shop` ou `trivy image bkimminich/juice-shop`: realizava uma varredura básica da imagem do container **Juice Shop**, identificando vulnerabilidades em todos os pacotes e dependências. Imagens 30 e 31.
+- `docker exec -it kali_lab_31 trivy image --severity HIGH,CRITICAL bkimminich/juice-shop` ou `trivy image --severity HIGH,CRITICAL bkimminich/juice-shop`: realizava a varredura focando apenas em vulnerabilidades de severidade alta ou crítica, permitindo priorizar rapidamente os problemas mais graves. Imagem 32.
+- `docker exec -it kali_lab_31 trivy_report.sh --format html bkimminich/juice-shop` ou `trivy_report.sh --format html bkimminich/juice-shop`: gerava um relatório em formato HTML, facilitando a visualização das vulnerabilidades em navegador, com uma apresentação mais organizada e amigável. Imagem 33.
+- `docker exec -it kali_lab_31 trivy_report.sh --format all bkimminich/juice-shop` ou `trivy_report.sh --format all bkimminich/juice-shop`: criava relatórios em múltiplos formatos simultaneamente, como TXT, JSON e HTML, permitindo diferentes formas de análise e integração com outras ferramentas. Imagem 34.
+- `docker exec -it kali_lab_31 trivy_report.sh --quick bkimminich/juice-shop` ou `trivy_report.sh --quick bkimminich/juice-shop` realizava uma varredura rápida, focando apenas em vulnerabilidades críticas e altas (equivalente a `-severity HIGH,CRITICAL`), sendo ideal para verificações ágeis e gerando automaticamente o relatório no formato padrão. Imagem 35.
+- `docker exec -it kali_lab_31 generate_report.py bkimminich/juice-shop --format all` ou `generate_report.py bkimminich/juice-shop --format all`: executava um script **Python** que coletava os dados da varredura e gerava relatórios completos em todos os formatos suportados, incluindo tabelas e gráficos consolidados, permitindo análises detalhadas e documentadas. Imagem 36.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img30.png" alt="img30"><br>
+    <figcaption>Imagem 30.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img31.png" alt="img31"><br>
+    <figcaption>Imagem 31.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img32.png" alt="img32"><br>
+    <figcaption>Imagem 32.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img33.png" alt="img33"><br>
+    <figcaption>Imagem 33.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img34.png" alt="img34"><br>
+    <figcaption>Imagem 34.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img35.png" alt="img35"><br>
+    <figcaption>Imagem 35.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img36.png" alt="img36"><br>
+    <figcaption>Imagem 36.</figcaption>
+</figure></div><br>
+
+Em alguns comandos, o arquivo de script `trivy_report.sh` foi utilizado. Esse script tinha como função automatizar a execução de scans com **Trivy**, simplificando a configuração de parâmetros e a geração de relatórios. Ao ser executado, ele recebia a imagem **Docker** a ser analisada, verificava se a imagem havia sido fornecida corretamente, criava o diretório de saída e definia a nomenclatura dos relatórios. O script permitia gerar relatórios em múltiplos formatos, como HTML, CSV, JSON e TXT, ou em todos os formatos simultaneamente. Quando o formato não era especificado, o padrão era HTML, motivo pelo qual em alguns comandos era necessário indicar explicitamente a opção `--format html` ou `--format all`. O scan era realizado dentro de cada função de geração de relatório, garantindo que os resultados fossem consistentes e completos. Além disso, outras opções de configuração podiam ser utilizadas:  
+- `-o DIR` (`--output DIR`): define o diretório de saída dos relatórios. Padrão: `/root/reports`.  
+- `-s LEVELS` (`--severity LEVELS`): define os níveis de severidade a serem considerados na varredura. Padrão: `LOW,MEDIUM,HIGH,CRITICAL`.  
+- `-q` (`--quick`): realiza um scan rápido, considerando apenas vulnerabilidades de nível HIGH e CRITICAL.  
+- `-h` (`--help`): exibe a ajuda do script, detalhando todas as opções disponíveis.
+
+Quanto aos formatos de relatório disponíveis, eram quatro:  
+- **HTML**: Relatório visual com gráficos, tabelas e análise de risco detalhada.  
+- **JSON**: Dados estruturados ideais para processamento automático ou integração com outras ferramentas.  
+- **CSV**: Tabela que pode ser manipulada em planilhas para análise personalizada.  
+- **TXT**: Relatório em texto simples, direto e legível no terminal.  
+
+Por padrão, todos os relatórios eram salvos no diretório `/root/reports` dentro do container `kali_lab_31`. Esse diretório foi mapeado no **Docker Compose** usando a instrução `./reports:/root/reports`, garantindo que os relatórios também ficassem disponíveis no host, no diretório `./reports`. Dessa forma, mesmo executando os comandos `docker exec` a partir do host, era possível acessar os relatórios gerados sem precisar entrar no container. Caso fosse passado outro diretório como saída, os relatórios não apareceriam no host.
+
+No último comando de scan, foi utilizado o arquivo `generate_report.py` em vez do `trivy_report.sh`. Ambos estavam localizados na pasta `scripts` e foram copiados para o container `kali_lab_31` pela instrução `COPY scripts/ /root/scripts/` do Dockerfile. O `generate_report.py` realiza as mesmas funções do `trivy_report.sh`, mas foi desenvolvido em **Python** e adotava uma abordagem orientada a objetos, com classes, métodos e tratamento de exceções. Além disso, o relatório **HTML** gerado era mais elaborado e estilizado, embora o script não produzisse relatórios em formato TXT. Durante a execução, o script exibia um resumo do scan realizado, mostrando a imagem escaneada, o total de vulnerabilidades encontradas, o total de vulnerabilidades por nível e as secrets detectadas.
+
+Observe novamente as imagens 30 a 36. Nos dois primeiros comandos, o **Trivy** foi executado diretamente, sem uso de script, portanto não houve geração de relatório, sendo as informações exibidas apenas na tela durante a execução. Os três comandos intermediários utilizavam o script `trivy_report.sh` e todos produziam relatórios, sendo que o quarto comando gerava relatórios para cada um dos quatro formatos disponíveis. O último comando utilizava o script `generate_report.py`, que, como mencionado anteriormente, realizava basicamente as mesmas funções do `trivy_report.sh`, porém de forma aprimorada. Nos quatro comandos que utilizavam scripts, tanto em **SH** quanto em **Python**, após a varredura eram exibidas instruções detalhadas sobre como acessar e visualizar os arquivos de relatório. Esse é justamente o próximo passo a ser seguido.
+
+Para facilitar a visualização dos relatórios gerados, foi criado o script `view_reports.sh`, que podia ser executado no host (fora do container **Kali Linux**) com o comando `./view_reports.sh`. O script listava, utilizando `ls -la reports/`, os relatórios disponíveis por formato e fornecia um resumo da quantidade de arquivos **HTML**, **JSON**, **CSV** e **TXT**, conforme mostrado na imagem 37. Além disso, apresentava instruções para visualização dos arquivos e perguntava se o usuário desejava iniciar um servidor web para acessar os relatórios **HTML**. Caso a opção fosse aceita, o script executava o comando **Python** `python3 -m http.server 8080 --directory reports`, iniciando o servidor na porta `8080`. Embora esse passo pudesse ser realizado manualmente, era necessário executá-lo no host, já que, se feito dentro do container sem o devido mapeamento de portas, o servidor web funcionaria, mas apenas o container conseguiria acessá-lo.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img37.png" alt="img37"><br>
+    <figcaption>Imagem 37.</figcaption>
+</figure></div><br>
+
+O script também fornecia comandos como `open reports/*.html` e `open reports/*.csv` para abrir todos os relatórios nos formatos HTML e CSV. Porém, ambos exigem uma interface gráfica que a instância **Amazon EC2** **Linux Ubuntu** provisionada não possuía. Ele ainda fornecia o comando **Python** para iniciar o servidor web e também o comando para visualizar os arquivos por terminal que era `cat reports/*.csv | head -10`. Esse comando mostrava as dez primeiras linhas de todos os relatórios no formato CSV combinados. O mesmo poderia ser feito para os outros formatos só modificando a extensão: `cat reports/*.json | head -10`, `cat reports/*.html | head -10` e `cat reports/*.txt | head -10`. Contudo, as formatações não eram muito legíveis por terminal, exceto o formato TXT, que foi consultado de forma completa com o comando `cat reports/trivy_report_20250925_150325.txt`. As imagens 38 e 39 exibem partes da visualização desse relatório.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img38.png" alt="img38"><br>
+    <figcaption>Imagem 38.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img39.png" alt="img39"><br>
+    <figcaption>Imagem 39.</figcaption>
+</figure></div><br>
+
+Para visualizar os relatórios em HTML, foi necessário atualizar o sistema e instalar o **Python3** com o comando `sudo apt update && sudo apt install -y python3`. Em seguida, executou-se `python3 -m http.server 8080 --directory reports` para iniciar o servidor web na porta `8080` da instância **Amazon EC2**. Para permitir o acesso pelo navegador da máquina física **Windows**, criou-se uma regra de entrada no *security group* da instância liberando a porta `8080` para o IP público da máquina física. Assim, tornou-se possível acessar a pasta `reports` diretamente pelo navegador, conforme mostra a imagem 40, e selecionar o relatório desejado para visualização.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img40.png" alt="img40"><br>
+    <figcaption>Imagem 40.</figcaption>
+</figure></div><br>
+
+Foram gerados quatro relatórios em formato HTML, sendo três criados pelo script em **SH** (`trivy_report_20250925_150220.html`, `trivy_report_20250925_150325.html` e `trivy_report_20250925_150355.html`) e um pelo script em **Python** (`security_report_20250925_151317.html`), este último utilizado para a visualização. As imagens 41 e 42 exibem o relatório. O comando `python3 -m http.server 8080 --directory reports` permanecia em execução no terminal até ser finalizado manualmente.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img42.png" alt="img42"><br>
+    <figcaption>Imagem 42.</figcaption>
+</figure></div><br>
+
+Na sequência, o terceiro script do host foi executado com o comando `sudo ./cleanup.sh`. Sua função principal era limpar completamente o ambiente do laboratório, removendo containers, imagens, volumes, redes do **Docker** e também os relatórios gerados. O script organizava diversos comandos do **Docker** de forma automatizada, tornando o processo de limpeza mais rápido e seguro. Ele oferecia diferentes opções de execução e, no caso em questão, foi utilizado `sudo ./cleanup.sh --all`, que realizava a limpeza completa do ambiente, garantindo que nenhum resíduo permanecesse. Durante a execução, o script ainda questionava se os elementos do **Docker** e os relatórios deveriam ser removidos. A imagem 43 apresenta o output do processo. O uso do `sudo` foi necessário, pois os relatórios tinham como proprietário o usuário `root`, exigindo privilégios administrativos para que fossem devidamente excluídos.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img43.png" alt="img43"><br>
+    <figcaption>Imagem 43.</figcaption>
+</figure></div><br>
+
+A última etapa consistiu em executar um container do **Docker Bench** no host para realizar uma auditoria de segurança no ambiente **Docker** do host (instância EC2). Esse processo também podia ser automatizado por meio do quarto script fornecido pelo professor do curso, `./docker-bench.sh`. O script foi desenvolvido para realizar uma auditoria de segurança no ambiente **Docker**, verificando configurações de containers, imagens, volumes, redes e o daemon do **Docker**. Ele utiliza diferentes métodos de execução:  
+- **Método oficial**: executava o **Docker Bench** diretamente do container oficial `docker/docker-bench-security`.  
+- **Método alternativo**: clonava o repositório do **Docker Bench** e executava o script com `sudo`, salvando o relatório na pasta `reports`.  
+- **Análise manual simplificada**: quando os métodos automáticos falhavam, realizava verificações básicas dos containers, imagens e configurações do daemon, gerando um relatório em TXT com recomendações de segurança. 
+
+O script organizava os resultados de forma clara, incluindo: containers rodando como root, processos ativos, vulnerabilidades potenciais das imagens, configuração do Docker daemon, redes e volumes. Também adicionava recomendações de segurança categorizadas por criticidade e comandos úteis para análises futuras. Dessa forma, a execução de `./docker-bench.sh` automatizou a auditoria e exibiu os resultados diretamente no terminal, permitindo a análise imediata da segurança do ambiente **Docker**. As imagens 44, 45 e 46 mostram a saída completa do relatório no console.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img44.png" alt="img44"><br>
+    <figcaption>Imagem 44.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img45.png" alt="img45"><br>
+    <figcaption>Imagem 45.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img46.png" alt="img46"><br>
+    <figcaption>Imagem 46.</figcaption>
+</figure></div><br>
 
 <a name="item2.10"><h4>2.10 NIST & Resposta a Incidentes</h4></a>[Back to summary](#item2)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_10)
 
+Obs.: Laboratório registrado como 6, documento como 31 e referente a aula 10.
 
-
-
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+      <ul>
+        <li><details><summary><strong>juice_shop:</strong></summary>
+          <ul>
+            <li><code>image: bkimminich/juice-shop</code>: Usa a imagem oficial do OWASP Juice Shop, intencionalmente vulnerável.</li>
+            <li><code>container_name: juice_shop</code>: Define o nome do container.</li>
+            <li><strong>ports:</strong>
+              <ul>
+                <li><code>"3000:3000"</code>: Expõe a aplicação na porta <code>3000</code> do host.</li>
+              </ul>
+            </li>
+            <li><strong>networks:</strong> Conecta à rede <code>lab31_net</code> com IP estático <code>172.31.0.10</code>.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>kali_lab_31:</strong></summary>
+          <ul>
+            <li><strong>build:</strong> Constrói a imagem a partir de <code>Dockerfile.kali</code>.</li>
+            <li><code>container_name: kali_lab_31</code>: Nome do container.</li>
+            <li><code>tty: true</code>: Mantém o terminal alocado para interação contínua.</li>
+            <li><code>stdin_open: true</code>: Mantém a entrada padrão aberta para aceitar comandos.</li>
+            <li><strong>volumes:</strong> <code>./reports:/root/reports</code> — monta diretório de relatórios do host dentro do container.</li>
+            <li><strong>networks:</strong> Conecta à rede <code>lab31_net</code> com IP estático <code>172.31.0.11</code>.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Rede lab31_net:</strong></summary>
+          <ul>
+            <li><code>driver: bridge</code>: Rede em modo bridge.</li>
+            <li><code>subnet: 172.31.0.0/24</code>: Faixa de IPs para os containers.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como Kali Linux Rolling.</li>
+            <li><strong>RUN apt-get update && apt-get install -y ...</strong>
+              <ul>
+                <li><code>apt-get update</code>: Atualiza os índices de pacotes.</li>
+                <li><code>apt-get install -y wget apt-transport-https gnupg lsb-release curl jq python3 python3-pip pandoc</code>: Instala dependências e utilitários necessários do sistema.</li>
+                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove caches do apt para reduzir o tamanho da imagem.</li>
+              </ul>
+            </li>
+            <li><strong>RUN pip3 install --no-cache-dir --break-system-packages jinja2 markdown plotly pandas</strong>
+              <ul>
+                <li><code>pip3 install --no-cache-dir --break-system-packages</code>: Instala bibliotecas Python sem usar cache e sem isolar do sistema (permite integração com pacotes do SO).</li>
+                <li><code>jinja2</code>: Biblioteca de templates para relatórios.</li>
+                <li><code>markdown</code>: Converte textos Markdown em HTML.</li>
+                <li><code>plotly</code>: Gera gráficos interativos.</li>
+                <li><code>pandas</code>: Manipulação e análise de dados.</li>
+              </ul>
+            </li>
+            <li><strong>RUN wget -qO - ... && echo ... && apt-get update && apt-get install -y trivy && rm -rf /var/lib/apt/lists/*</strong>
+              <ul>
+                <li><code>wget -qO - ... | gpg --dearmor | tee /usr/share/keyrings/trivy.gpg</code>: Baixa e converte a chave pública do Trivy, salvando em <code>/usr/share/keyrings/trivy.gpg</code> para validação de pacotes.</li>
+                <li><code>echo "deb [...]" | tee -a /etc/apt/sources.list.d/trivy.list</code>: Adiciona o repositório oficial do Trivy ao diretório <code>/etc/apt/sources.list.d/</code>, permitindo que o APT reconheça e instale pacotes do Trivy de forma confiável.</li>
+                <li><code>apt-get update</code>: Atualiza os índices de pacotes após adicionar o repositório.</li>
+                <li><code>apt-get install -y trivy</code>: Instala o Trivy, ferramenta de análise de vulnerabilidades.</li>
+                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove caches para reduzir o tamanho da imagem.</li>
+              </ul>
+            </li>
+            <li><code>COPY scripts/ /root/scripts/</code>: Copia os scripts locais para dentro do container.</li>
+            <li><code>RUN chmod +x /root/scripts/*.sh /root/scripts/*.py</code>: Concede permissão de execução aos scripts.</li>
+            <li><code>RUN mkdir -p /root/reports</code>: Cria o diretório para armazenar relatórios.</li>
+            <li><code>ENV PATH="/root/scripts:${PATH}"</code>: Adiciona o diretório de scripts ao <code>PATH</code>.</li>
+            <li><code>WORKDIR /root</code>: Define o diretório de trabalho como <code>/root</code>.</li>
+            <li><code>CMD ["tail", "-f", "/dev/null"]</code>: Mantém o container rodando em segundo plano.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+    <li><details><summary><strong>Dependências</strong></summary>
+      <ul>
+        <li><strong>cleanup.sh</strong>: Script para limpar o ambiente. Remove containers, imagens, redes, volumes e relatórios gerados.</li>
+        <li><strong>docker-bench.sh</strong>: Executa o <em>Docker Bench for Security</em> para verificar configurações de segurança do Docker, gerando relatório da auditoria.</li>
+        <li><strong>run_lab.sh</strong>: Sobe o laboratório com <code>docker compose up</code> e exibe instruções para rodar o <strong>Trivy</strong> e analisar vulnerabilidades da imagem.</li>
+        <li><strong>view_reports.sh</strong>: Permite visualizar relatórios (<code>HTML</code>, <code>JSON</code>, <code>CSV</code>, <code>TXT</code>), resume vulnerabilidades e pode iniciar um servidor web local para abrir no navegador.</li>
+        <li><strong>generate_report.py</strong>: Script Python que executa scan de imagens Docker usando Trivy, gera estatísticas e produz relatórios em HTML, JSON e CSV, incluindo análises de vulnerabilidades críticas e recomendações de segurança.</li>
+        <li><strong>trivy_report.sh</strong>: Script Bash que automatiza a execução do Trivy Scanner, gerando relatórios nos formatos HTML, JSON, CSV e TXT, com suporte a diferentes níveis de severidade, diretórios de saída personalizados e opção de scan rápido.</li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
 
 
