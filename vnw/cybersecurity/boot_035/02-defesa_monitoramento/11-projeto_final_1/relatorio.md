@@ -17,16 +17,16 @@
 - [1. Sumário Executivo](#1-sum%C3%A1rio-executivo)
 - [2. Objetivo](#2-objetivo)
 - [3. Escopo](#3-escopo)
-- [4. Diagrama](#4-diagrama)
-- [5. Metodologia](#5-metodologia)
-- [6. Execução](#6-execucao)
-- [7. Evidências](#7-evidencias)
-- [8. Análise e Diagnóstico](#8-analise-e-diagnostico)
+- [4. Metodologia](#4-metodologia)
+- [5. Diagrama](#5-diagrama)
+- [6. Execução](#6-execução)
+- [7. Evidências](#7-evidências)
+- [8. Análise e Diagnóstico](#8-análise-e-diagnóstico)
 - [9. Resposta a Incidente (NIST IR)](#9-resposta-a-incidente-nist-ir)
-- [10. Recomendações](#10-recomendacoes)
-- [11. Plano de Ação](#11-plano-de-acao)
-- [12. Conclusão](#12-conclusao)
-- [13. Apêndices](#13-apendices)
+- [10. Recomendações](#10-recomendações)
+- [11. Plano de Ação](#11-plano-de-ação-8020)
+- [12. Conclusão](#12-conclusão)
+- [13. Apêndices](#13-apêndices)
 
 ---
 
@@ -457,7 +457,7 @@ Com base nas evidências coletadas e na análise realizada, recomenda-se:
 
 ---
 
-## 13. Conclusão
+## 12. Conclusão
 O laboratório demonstrou a implementação de um ambiente defensivo para a aplicação web vulnerável **DVWA**, utilizando o **ModSecurity CRS** como WAF e o **Dozzle** para monitoramento em tempo real.  
 
 Os testes de ataques simulados — **SQL Injection (SQLi), Cross-Site Scripting (XSS), Command Injection e File Inclusion** — confirmaram que o WAF foi capaz de detectar e bloquear a maioria das tentativas maliciosas (**SQLi, XSS e Command Injection**), garantindo a integridade da aplicação frente a esses ataques. Entretanto, o ataque de **File Inclusion** não foi detectado nem bloqueado pelas regras existentes, evidenciando uma lacuna na proteção implementada.  
@@ -477,7 +477,7 @@ Este relatório fornece uma base sólida para futuras análises de segurança, a
 
 ---
 
-## 14. Anexos
+## 13. Apêndices
 Nesta seção estão incluídos materiais complementares que comprovam a execução do laboratório e permitem verificação detalhada das atividades:
 - [Prints da execução do lab](./img/): pasta com todas as imagens que evidenciam a execução do laboratório.
 - [Arquivo de log do WAF](./logs_waf_bloqueio.txt): arquivo exportado contendo os últimos 50 registros de log do container de WAF em modo de bloqueio.
