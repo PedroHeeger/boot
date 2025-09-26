@@ -8,7 +8,7 @@
 
 ---
 
-Esta pasta refere-se ao projeto final opção 1 do módulo 1 **Fundamentos de Cibersegurança** do bootcamp [**Formação Cybersec**](../../). O artefato entregável principal foi o relatório da análise técnica construído no arquivo [relatorio.md](./relatorio.md). Os demais artefáteis entregáveis fizeram parte do projeto e também estão disponíveis nessa pasta e anexados ao relatório.
+Esta pasta refere-se ao projeto final opção 1 do módulo 1 **Fundamentos de Cibersegurança** do bootcamp [**Formação Cybersec**](../../). O artefato entregável principal foi o relatório da análise técnica construído no arquivo [relatorio.md](./relatorio.md). Os demais artefatos entregáveis fizeram parte do projeto e estavam disponíveis nesta pasta, assim como anexados ao relatório.
 
 ### Theme:
 - Cybersecurity
@@ -71,7 +71,7 @@ Esta pasta refere-se ao projeto final opção 1 do módulo 1 **Fundamentos de Ci
 O objetivo deste projeto foi aplicar, de forma prática, os conhecimentos adquiridos sobre reconhecimento, varredura de rede e análise de exposição, por meio da investigação de uma rede corporativa simulada em ambiente **Docker**. A proposta consistiu em assumir o papel de um analista de segurança em uma empresa fictícia e conduzir um mapeamento completo dos ativos e sub-redes, elaborando um diagnóstico técnico preciso das exposições encontradas, bem como suas respectivas soluções. Ao final, toda a análise foi consolidada em um relatório técnico estruturado, contendo o inventário dos ativos, o diagrama da rede, os diagnósticos e recomendações das exposições identificadas, além de um plano de ação baseado na estratégia 80/20.
 
 ### Folder Structure:
-- Este documento de README, escrito em **Markdown**, descreve todo o desenvolvimento do projeto. Embora não seja um artefato entregável, complementa o projeto.
+- [README.md](./README.md): Este documento de README, escrito em **Markdown**, descreve todo o desenvolvimento do projeto. Embora não seja um artefato entregável, complementa o projeto.
 - [relatorio.md](./relatorio.md): Relatório de análise técnica da rede interna da empresa fictícia. É o principal artefato entregável.
 - [softwares.md](./softwares.md): Documento em **Markdown** contendo informações relevantes sobre todos os softwares e ferramentas utilizados na análise técnica. É um anexo do relatório técnico.
 - [cmds.md](./cmds.md): Documento em **Markdown** com os comandos executados durante a análise técnica. É um anexo do relatório técnico.
