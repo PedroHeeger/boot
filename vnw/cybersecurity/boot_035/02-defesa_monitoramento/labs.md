@@ -63,6 +63,7 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
 - Cibersecurity:
   - Docker Bench for Security   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_bench_for_security.png" alt="docker_bench_for_security" width="auto" height="25">
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+  - Sqlmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sqlmap.png" alt="sqlmap" width="auto" height="25">
   - Trivy   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/trivy.png" alt="trivy" width="auto" height="25">
 - SysAdm:
   - Xfce   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xfce.svg" alt="xfce" width="auto" height="25">
