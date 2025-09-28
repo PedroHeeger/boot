@@ -30,6 +30,8 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
   - Docker   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="docker" width="auto" height="25">
   - Docker Compose   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_compose.png" alt="docker_compose" width="auto" height="25">
   - Docker Playground; Play With Docker (PWD)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/docker_playground.jpg" alt="docker_playground" width="auto" height="25">
+- Build Automation:
+  - Make   <img src="" alt="make" width="auto" height="25">
 - Language:
   - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
   - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
@@ -53,17 +55,18 @@ Esta pasta refere-se aos laboratórios do módulo 2 **Defesa & Monitoramento (Bl
   - netstat   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/netstat.webp" alt="netstat" width="auto" height="25">
   - Nmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nmap.png" alt="nmap" width="auto" height="25">
   - OpenSSH   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssh.png" alt="openssh" width="auto" height="25">
+  - OWASP Juice Shop   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/sites/owasp_juice_shop.png" alt="owasp_juice_shop" width="auto" height="25">
+  - OWASP ModSecurity Core Rule Set (OWASP ModSecurity CRS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/owasp_modesecurity_crs.png" alt="owasp_modesecurity_crs" width="auto" height="25">
   - Uncomplicated Firewall (UFW)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/ufw.webp" alt="ufw" width="auto" height="25">
 - Remote Desktop:
   - RealVNC Viewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/realvnc.png" alt="realvnc_viewer" width="auto" height="25">
 - Cibersecurity:
+  - Docker Bench for Security   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_bench_for_security.png" alt="docker_bench_for_security" width="auto" height="25">
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
   - Trivy   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/trivy.png" alt="trivy" width="auto" height="25">
 - SysAdm:
   - Xfce   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xfce.svg" alt="xfce" width="auto" height="25">
 
-
-Makefile
 ---
 
 ### Bootcamp Module 2 Structure:
@@ -1082,95 +1085,153 @@ O script organizava os resultados de forma clara, incluindo: containers rodando 
 </figure></div><br>
 
 <a name="item2.10"><h4>2.10 NIST & Resposta a Incidentes</h4></a>[Back to summary](#item2)   
-[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_10)
+[Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/lab_6)
 
-Obs.: Laboratório registrado como 6, documento como 31 e referente a aula 10.
+Obs.: Laboratório registrado como 6, documento como #NãoInformado e referente a aula 10.
 
 <details><summary><strong>Ambiente de Laboratório</strong></summary>
   <ul>
     <li><details><summary><strong>Docker Compose</strong></summary>
       <ul>
-        <li><details><summary><strong>juice_shop:</strong></summary>
+        <li><details><summary><strong>Rede nist_ir_net:</strong></summary>
           <ul>
-            <li><code>image: bkimminich/juice-shop</code>: Usa a imagem oficial do OWASP Juice Shop, intencionalmente vulnerável.</li>
-            <li><code>container_name: juice_shop</code>: Define o nome do container.</li>
+            <li><code>driver: bridge</code>: Define a rede como bridge, permitindo comunicação entre os containers.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>juice-shop:</strong></summary>
+          <ul>
+            <li><code>image: bkimminich/juice-shop:latest</code>: Usa a imagem oficial e vulnerável do OWASP Juice Shop.</li>
+            <li><code>container_name: juice_shop</code>: Nome atribuído ao container.</li>
+            <li><code>restart: unless-stopped</code>: Garante que o container reinicie automaticamente, exceto se parado manualmente.</li>
+            <li><strong>environment:</strong>
+              <ul>
+                <li><code>NODE_ENV=production</code>: Define o ambiente de execução do Node.js para produção.</li>
+              </ul>
+            </li>
+            <li><strong>networks:</strong> Conecta à rede <code>nist_ir_net</code>.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>waf:</strong></summary>
+          <ul>
+            <li><code>image: owasp/modsecurity-crs:nginx</code>: Usa imagem com Nginx + ModSecurity + Core Rule Set.</li>
+            <li><code>container_name: waf_proxy</code>: Nome dado ao container.</li>
+            <li><code>user: "0:0"</code>: Executa como root para permitir escrita em arquivos do Nginx.</li>
+            <li><strong>volumes:</strong>
+              <ul>
+                <li><code>./nginx/conf.d/juice.conf:/etc/nginx/conf.d/juice.conf:ro</code>: Monta configuração personalizada do Nginx para proxy reverso do Juice Shop.</li>
+                <li><code>./modsecurity/modsecurity-override.conf:/etc/nginx/templates/modsecurity.d/modsecurity-override.conf.template:ro</code>: Aplica ajustes na configuração do ModSecurity.</li>
+              </ul>
+            </li>
             <li><strong>ports:</strong>
               <ul>
-                <li><code>"3000:3000"</code>: Expõe a aplicação na porta <code>3000</code> do host.</li>
+                <li><code>"8080:80"</code>: Expõe o WAF na porta <code>8080</code> do host.</li>
               </ul>
             </li>
-            <li><strong>networks:</strong> Conecta à rede <code>lab31_net</code> com IP estático <code>172.31.0.10</code>.</li>
+            <li><strong>networks:</strong> Conecta à rede <code>nist_ir_net</code>.</li>
+            <li><code>restart: unless-stopped</code>: Reinicia automaticamente, exceto se parado manualmente.</li>
           </ul>
         </details></li>
-        <li><details><summary><strong>kali_lab_31:</strong></summary>
+        <li><details><summary><strong>kali:</strong></summary>
           <ul>
-            <li><strong>build:</strong> Constrói a imagem a partir de <code>Dockerfile.kali</code>.</li>
-            <li><code>container_name: kali_lab_31</code>: Nome do container.</li>
-            <li><code>tty: true</code>: Mantém o terminal alocado para interação contínua.</li>
-            <li><code>stdin_open: true</code>: Mantém a entrada padrão aberta para aceitar comandos.</li>
-            <li><strong>volumes:</strong> <code>./reports:/root/reports</code> — monta diretório de relatórios do host dentro do container.</li>
-            <li><strong>networks:</strong> Conecta à rede <code>lab31_net</code> com IP estático <code>172.31.0.11</code>.</li>
+            <li><code>image: kalilinux/kali-rolling</code>: Usa a imagem oficial do Kali Linux (modo rolling release).</li>
+            <li><code>container_name: kali_attacker</code>: Nome do container.</li>
+            <li><code>tty: true</code>: Mantém terminal alocado para uso interativo.</li>
+            <li><code>command: ["/bin/bash"]</code>: Inicia o container no Bash.</li>
+            <li><strong>networks:</strong> Conecta à rede <code>nist_ir_net</code>.</li>
           </ul>
         </details></li>
-        <li><details><summary><strong>Rede lab31_net:</strong></summary>
+        <li><details><summary><strong>Volumes</strong></summary>
           <ul>
-            <li><code>driver: bridge</code>: Rede em modo bridge.</li>
-            <li><code>subnet: 172.31.0.0/24</code>: Faixa de IPs para os containers.</li>
-          </ul>
-        </details></li>
-      </ul>
-    </details></li>
-    <li><details><summary><strong>Dockerfile</strong></summary>
-      <ul>
-        <li><details><summary><strong>Dockerfile.kali</strong></summary>
-          <ul>
-            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como Kali Linux Rolling.</li>
-            <li><strong>RUN apt-get update && apt-get install -y ...</strong>
-              <ul>
-                <li><code>apt-get update</code>: Atualiza os índices de pacotes.</li>
-                <li><code>apt-get install -y wget apt-transport-https gnupg lsb-release curl jq python3 python3-pip pandoc</code>: Instala dependências e utilitários necessários do sistema.</li>
-                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove caches do apt para reduzir o tamanho da imagem.</li>
-              </ul>
-            </li>
-            <li><strong>RUN pip3 install --no-cache-dir --break-system-packages jinja2 markdown plotly pandas</strong>
-              <ul>
-                <li><code>pip3 install --no-cache-dir --break-system-packages</code>: Instala bibliotecas Python sem usar cache e sem isolar do sistema (permite integração com pacotes do SO).</li>
-                <li><code>jinja2</code>: Biblioteca de templates para relatórios.</li>
-                <li><code>markdown</code>: Converte textos Markdown em HTML.</li>
-                <li><code>plotly</code>: Gera gráficos interativos.</li>
-                <li><code>pandas</code>: Manipulação e análise de dados.</li>
-              </ul>
-            </li>
-            <li><strong>RUN wget -qO - ... && echo ... && apt-get update && apt-get install -y trivy && rm -rf /var/lib/apt/lists/*</strong>
-              <ul>
-                <li><code>wget -qO - ... | gpg --dearmor | tee /usr/share/keyrings/trivy.gpg</code>: Baixa e converte a chave pública do Trivy, salvando em <code>/usr/share/keyrings/trivy.gpg</code> para validação de pacotes.</li>
-                <li><code>echo "deb [...]" | tee -a /etc/apt/sources.list.d/trivy.list</code>: Adiciona o repositório oficial do Trivy ao diretório <code>/etc/apt/sources.list.d/</code>, permitindo que o APT reconheça e instale pacotes do Trivy de forma confiável.</li>
-                <li><code>apt-get update</code>: Atualiza os índices de pacotes após adicionar o repositório.</li>
-                <li><code>apt-get install -y trivy</code>: Instala o Trivy, ferramenta de análise de vulnerabilidades.</li>
-                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove caches para reduzir o tamanho da imagem.</li>
-              </ul>
-            </li>
-            <li><code>COPY scripts/ /root/scripts/</code>: Copia os scripts locais para dentro do container.</li>
-            <li><code>RUN chmod +x /root/scripts/*.sh /root/scripts/*.py</code>: Concede permissão de execução aos scripts.</li>
-            <li><code>RUN mkdir -p /root/reports</code>: Cria o diretório para armazenar relatórios.</li>
-            <li><code>ENV PATH="/root/scripts:${PATH}"</code>: Adiciona o diretório de scripts ao <code>PATH</code>.</li>
-            <li><code>WORKDIR /root</code>: Define o diretório de trabalho como <code>/root</code>.</li>
-            <li><code>CMD ["tail", "-f", "/dev/null"]</code>: Mantém o container rodando em segundo plano.</li>
+            <li><code>waf_logs</code>: Volume nomeado reservado (ainda não montado em nenhum serviço).</li>
           </ul>
         </details></li>
       </ul>
     </details></li>
     <li><details><summary><strong>Dependências</strong></summary>
       <ul>
-        <li><strong>cleanup.sh</strong>: Script para limpar o ambiente. Remove containers, imagens, redes, volumes e relatórios gerados.</li>
-        <li><strong>docker-bench.sh</strong>: Executa o <em>Docker Bench for Security</em> para verificar configurações de segurança do Docker, gerando relatório da auditoria.</li>
-        <li><strong>run_lab.sh</strong>: Sobe o laboratório com <code>docker compose up</code> e exibe instruções para rodar o <strong>Trivy</strong> e analisar vulnerabilidades da imagem.</li>
-        <li><strong>view_reports.sh</strong>: Permite visualizar relatórios (<code>HTML</code>, <code>JSON</code>, <code>CSV</code>, <code>TXT</code>), resume vulnerabilidades e pode iniciar um servidor web local para abrir no navegador.</li>
-        <li><strong>generate_report.py</strong>: Script Python que executa scan de imagens Docker usando Trivy, gera estatísticas e produz relatórios em HTML, JSON e CSV, incluindo análises de vulnerabilidades críticas e recomendações de segurança.</li>
-        <li><strong>trivy_report.sh</strong>: Script Bash que automatiza a execução do Trivy Scanner, gerando relatórios nos formatos HTML, JSON, CSV e TXT, com suporte a diferentes níveis de severidade, diretórios de saída personalizados e opção de scan rápido.</li>
+        <li><strong>modsecurity-override.conf</strong>: Arquivo de configuração para o ModSecurity. Contém a configuração inicial do motor de regras (<code>SecRuleEngine Off</code>) e ajustes de log (<code>SecAuditEngine RelevantOnly</code>, <code>SecDebugLogLevel 0</code>).
+        </li>
+        <li><strong>juice.conf</strong>: Configuração do Nginx para o proxy reverso do Juice Shop. Define o <code>upstream</code> do Juice Shop, habilita ModSecurity, e configura headers e proxy_pass.
+        </li>
+        <li><strong>demo_report.html</strong>: Página HTML que apresenta o relatório de segurança do ModSecurity WAF. Inclui estatísticas de ataques bloqueados, detectados, regras ativadas e tipos de ataque. Possui gráficos interativos usando <code>Chart.js</code>, timeline de eventos, logs detalhados e filtros para análise dos dados coletados pelo WAF.
+        </li>
+        <li><strong>generate_report.py</strong>: Script Python que coleta e processa os logs do ModSecurity WAF do container <code>waf_proxy</code>. Analisa eventos de segurança, conta regras ativadas, tipos de ataque, bloqueios e detecções, gera estatísticas, e produz um relatório HTML interativo (<code>modsecurity_report.html</code>) com gráficos usando <code>Chart.js</code>, timeline de eventos, logs detalhados e filtros para facilitar a análise de ataques SQL injection e outros. 
+        </li>
       </ul>
     </details></li>
   </ul>
 </details>
 
+Neste último laboratório do módulo, o foco foi avaliar o comportamento de um Web Application Firewall (WAF) posicionado à frente de uma aplicação web vulnerável, testando seus modos de detecção e bloqueio e analisando os logs gerados. A aplicação alvo escolhida foi o **OWASP Juice Shop**, uma aplicação propositalmente insegura para treinamento, e o WAF utilizado foi o **OWASP ModSecurity Core Rule Set (CRS)** — um conjunto de regras para o **ModSecurity** que ajuda a identificar e bloquear ataques comuns como SQLi, XSS, Command Injection, File Inclusion e outros.
 
+Após subir o ambiente, a aplicação foi acessada pelo navegador da máquina física **Windows** por meio do WAF. Isso foi possível graças ao mapeamento de portas definido no `docker-compose.yml`, que expunha a porta `80` do WAF no host como a porta `8080` (`8080:80`), ou seja, o tráfego para `http://<IP-EC2>:8080` era encaminhado pelo WAF para o container `juice_shop`. Também foi necessário adicionar uma regra de entrada no Security Group da instância **Amazon EC2** liberando a porta `8080` para o IP público da máquina física. Desta forma o WAF atuou como proxy reverso, inspecionando e roteando as requisições para a aplicação. A imagem 47 ilustra o acesso à aplicação via navegador.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img47.png" alt="img47"><br>
+    <figcaption>Imagem 47.</figcaption>
+</figure></div><br>
+
+Antes de iniciar os ataques, verificaram‑se os logs do container do WAF (`waf_proxy`) a partir do acesso remoto à instância EC2, executando os comandos `docker logs -f waf_proxy` (seguimento em tempo real, cancelado com `Ctrl + C`) e `docker logs --tail 20 waf_proxy` (últimas 20 linhas). A imagem 48 apresenta os trechos de log obtidos nesse momento, que foram usados como referência para confirmar o funcionamento e o comportamento do WAF antes dos testes.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img48.png" alt="img48"><br>
+    <figcaption>Imagem 48.</figcaption>
+</figure></div><br>
+
+Para realizar o ataque, primeiro acessou‑se o container de ataque com o comando `docker exec -it kali_attacker bash`. No shell **Bash** do container, atualizou‑se o index de pacotes e instalaram‑se as ferramentas necessárias com `apt update && apt -y install sqlmap curl`. Em seguida, o **sqlmap** foi utilizado para executar um teste de SQL injection contra o endpoint que passava pelo WAF com o comando: `sqlmap -u "http://waf_proxy/rest/products/search?q=1" --batch --risk=3 --level=5 --dbs`. Abaixo está a explicação dos parâmetros usados nesse comando:
+- `-u "http://waf_proxy/rest/products/search?q=1"`: URL alvo do teste; `waf_proxy` é o nome do container WAF, portanto a requisição atravessa o WAF até a aplicação vulnerável. O parâmetro `q=1` é o ponto de injeção testado.  
+- `--batch`: modo não interativo — assume as respostas padrão para prompts do **sqlmap**, útil em automações e execuções sem intervenção humana.  
+- `--risk=3`: define o *risk level* (1 a 3); níveis maiores ativam testes mais agressivos/“arrasadores” (por exemplo payloads que fazem mais requisições ou comandos mais intrusivos).  
+- `--level=5`: define o *test level* (1 a 5); níveis mais altos fazem o **sqlmap** executar um conjunto mais amplo de testes e técnicas (mais parâmetros, mais payloads), aumentando a cobertura mas também o volume de tráfego gerado.  
+- `--dbs`: instrui o **sqlmap** a enumerar/listar os bancos de dados encontrados caso consiga explorar a injeção (fase de enumeração pós‑explotação). Essa opção foi a única que não deu certo, não foi enumerado as tabelas. Isso aconteceu porque o sistema de gerenciamento de banco de dados utilizado era **SQLite**, que utiliza `--tables` ao invés `--dbs`. Ao realizar essa troca, foram listadas todas as tabelas do sistema.
+- `--dbs`: instruía o **sqlmap** a enumerar os bancos de dados disponíveis caso a injeção fosse explorada com sucesso (fase de enumeração). Contudo, essa opção não retornou o esperado no ambiente do lab — a enumeração de bancos não ocorreu. O motivo foi o SGBD utilizado pela aplicação: **SQLite**. Diferentemente de servidores como MySQL ou PostgreSQL, onde `--dbs` costuma listar facilmente as bases de dados, em aplicações que usam **SQLite** a estrutura é diferente (banco embutido num ficheiro e metadados gerenciados na tabela especial `sqlite_master`). Por isso, a estratégia correta para obter as tabelas foi trocar o alvo da enumeração para as tabelas do banco: em vez de `--dbs`, utilizou‑se `--tables`. Após a mudança para `--tables`, o sqlmap listou as tabelas do banco SQLite corretamente, permitindo continuar a enumeração.
+
+**Observações:** usar `--risk=3` e `--level=5` aumenta a probabilidade de sucesso do teste, mas também torna as requisições mais ruidosas e mais detectáveis pelo WAF. O **Curl** foi instalado para permitir testes manuais rápidos ou para reproduzir requisições específicas quando necessário. As imagens 49 e 50 mostram o sucesso da exploração. 
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img49.png" alt="img49"><br>
+    <figcaption>Imagem 49.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img50.png" alt="img50"><br>
+    <figcaption>Imagem 50.</figcaption>
+</figure></div><br>
+
+A verificação do teste de exploração foi realizada a partir dos logs do container do WAF. Para isso foram executados comandos que extraíam e filtravam apenas as entradas relevantes relacionadas a detecção de SQLi. Isso foi realizado fora do container, no host (instância EC2). Exemplos usados:
+- `docker logs waf_proxy | grep -E "942|SQL Injection" | head -n 40`: listava os logs do container `waf_proxy`, filtrava linhas que continham `942` (ID de regra comum do CRS) ou a expressão `SQL Injection`, e mostrava as primeiras 40 linhas — útil para obter as entradas mais recentes e legíveis relacionadas ao evento.  
+- `docker logs waf_proxy | grep -o '"ruleId":"942[0-9]*"' | sort | uniq -c | sort -nr`: extraía apenas os campos `ruleId` que começavam com `942` (usando `grep -o`), ordenava (`sort`), contava ocorrências únicas (`uniq -c`) e ordenava por frequência decrescente (`sort -nr`) — isso mostrava quais variantes de regras da família `942` foram acionadas e com que frequência, ajudando a identificar quais regras do CRS dispararam mais vezes.
+
+A imagem 51 evidenciava as regras que detectaram o ataque de injeção SQL. Como o WAF estava configurado no modo DetectionOnly, ele registrou sobre o ataque sem bloqueá‑lo, permitindo que a exploração fosse bem‑sucedida.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img51.png" alt="img51"><br>
+    <figcaption>Imagem 51.</figcaption>
+</figure></div><br>
+
+O passo seguinte consistiu em alterar o modo de operação do **OWASP ModSecurity CRS** para bloqueio. Para isso, foi modificada a diretiva `SecRuleEngine` no arquivo de configuração do **ModSecurity** (`modsecurity/modsecurity-override.conf`), alterando seu valor de `Off` para `On`. Após salvar a alteração, o container do WAF foi reiniciado com o comando `docker compose restart waf` para que a nova configuração fosse aplicada, conforme ilustrado na imagem 52.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img52.png" alt="img52"><br>
+    <figcaption>Imagem 52.</figcaption>
+</figure></div><br>
+
+O teste seguinte foi realizado via **Curl** na instância EC2. Primeiro verificou‑se a disponibilidade da aplicação através de: `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080`, que retornou `200`, confirmando que a aplicação respondia corretamente via WAF. Em seguida foi enviado o payload de teste para explorar uma possível SQL Injection: `curl -s -w "%{http_code}\n" "http://localhost:8080/rest/products/search?q=1' UNION SELECT 1,2,3--"`. O payload `UNION SELECT 1,2,3--` tentava concatenar (via `UNION`) uma linha controlada pelo atacante ao resultado da query original, permitindo identificar colunas retornadas pela aplicação e, potencialmente, exfiltrar dados. O `--` no final iniciava um comentário em SQL, descartando o restante da query original para evitar erros de sintaxe. A imagem 53 registra a execução desse teste: o retorno foi o código `403` (Forbidden). Isso indicava que, com o WAF no modo bloqueio, a requisição maliciosa foi interceptada e não roteada para a aplicação — ou seja, o WAF impediu a exploração bem‑sucedida.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img53.png" alt="img53"><br>
+    <figcaption>Imagem 53.</figcaption>
+</figure></div><br>
+
+Durante os testes houve um problema com o **Curl**: a URL `http://localhost:8080/rest/products/search?q=1' UNION SELECT 1,2,3--` foi considerada malformada por causa dos espaços. Para contornar isso, apenas os espaços foram URL‑encoded (substituídos por `%20`), mantendo o payload intacto. O comando final utilizado foi: `curl -s -w "%{http_code}\n" "http://localhost:8080/rest/products/search?q=1'%20UNION%20SELECT%201,2,3--"`. Ao codificar os espaços, a URL passou a ser transmitida corretamente sem alterar os apóstrofos (`'`) ou o comentário SQL (`--`), permitindo que o WAF/servidor recebesse o payload exatamente como pretendido.
+
+Para confirmar a efetividade do bloqueio, os logs do container `waf_proxy` foram consultados com: `docker logs --tail 10 waf_proxy | grep "403 Forbidden"`. A imagem 54 evidencia que o WAF interceptou e bloqueou a requisição de ataque de SQL Injection, retornando o código `403 Forbidden`.
+
+<div align="center"><figure>
+    <img src="../0-aux/md2-img54.png" alt="img54"><br>
+    <figcaption>Imagem 54.</figcaption>
+</figure></div><br>
+
+Por fim, opcionalmente, dois arquivos fornecidos pelo instrutor podiam ser utilizados:
+- `demo_report.html`: relatório já gerado que servia como modelo e podia ser visualizado em um navegador com o comando `open demo_report.html`. Como a instância utilizada era **Linux Ubuntu** sem interface gráfica, a visualização foi feita através da CLI com `cat demo_report.html`.
+- `python3 generate_report.py`: script em **Python** capaz de gerar um relatório em **HTML** com os logs atuais do ambiente **Docker**. Para utilizá-lo, era necessário ter o **Python** instalado na instância **Amazon EC2**.
