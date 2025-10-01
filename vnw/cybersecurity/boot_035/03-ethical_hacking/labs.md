@@ -128,105 +128,190 @@ Obs.: Laboratório registrado como 1, documento como 1 e referente a aula 1.
   <ul>
     <li><details><summary><strong>Docker Compose</strong></summary>
         <ul>
-          <li><details><summary><strong>juice_shop:</strong></summary>
+          <li><details><summary><strong>services:</strong></summary>
             <ul>
-              <li><strong>image:</strong> Define a imagem do container como <code>bkimminich/juice-shop</code>.</li>
-              <li><strong>plataform:</strong> Define a plataforma como <code>linux/amd64</code>.</li>
-              <li><strong>container_name:</strong> Define o nome do container como <code>juice_shop</code>.</li>
-              <li><strong>ports:</strong>
+              <li><details><summary><strong>kali:</strong></summary>
                 <ul>
-                  <li><code>"3001:3000"</code>: Mapeia a porta 3000 do container (onde o Juice Shop roda) para a porta 3001 do host, permitindo acesso em <code>http://localhost:3001</code>.</li>
+                  <li><strong>build:</strong>
+                    <ul>
+                      <li><code>context: .</code>: Contexto da build é o diretório atual.</li>
+                      <li><code>dockerfile: kali.Dockerfile</code>: Usa o arquivo <code>kali.Dockerfile</code> para construir a imagem.</li>
+                    </ul>
+                  </li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_kali</code>.</li>
+                  <li><code>tty: true</code>: Permite alocar um terminal interativo para o container.</li>
+                  <li><code>stdin_open: true</code>: Mantém o STDIN aberto para uso com <code>docker exec -it</code>.</li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./labs:/home/kali/labs</code>: Monta o diretório local <code>./labs</code> dentro do container em <code>/home/kali/labs</code>, facilitando desenvolvimento e uso de scripts.</li>
+                    </ul>
+                  </li>
+                  <li><strong>command:</strong> <code>/bin/bash</code>: Inicia o shell Bash, mantendo o container pronto para uso.</li>
+                </ul>
+              </details></li>
+              <li><details><summary><strong>spiderfoot:</strong></summary>
+                <ul>
+                  <li><strong>build:</strong>
+                    <ul>
+                      <li><code>context: .</code>: Define o diretório atual como contexto da build.</li>
+                      <li><code>dockerfile: Dockerfile.spiderfoot</code>: Usa o Dockerfile dedicado do SpiderFoot para construir a imagem.</li>
+                    </ul>
+                  </li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_spiderfoot</code>.</li>
+                  <li><strong>ports:</strong>
+                    <ul>
+                      <li><code>"5001:5001"</code>: Expõe a interface web do SpiderFoot na porta 5001 do host.</li>
+                    </ul>
+                  </li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./spiderfoot-data:/root/.spiderfoot</code>: Monta o diretório local <code>./spiderfoot-data</code> dentro do container em <code>/root/.spiderfoot</code>, garantindo que configurações, resultados e dados do SpiderFoot sejam persistidos entre reinicializações do container.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </details></li>
+              <li><details><summary><strong>neo4j:</strong></summary>
+                <ul>
+                  <li><strong>image:</strong> Usa a imagem oficial <code>neo4j:4.4</code>.</li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_neo4j</code>.</li>
+                  <li><strong>environment:</strong>
+                    <ul>
+                      <li><code>NEO4J_AUTH=neo4j/test</code>: Define usuário e senha iniciais (<code>neo4j</code> / <code>test</code>).</li>
+                      <li><code>NEO4J_dbms_memory_heap_initial__size=512m</code>: Define o tamanho inicial do heap de memória do Neo4j como 512 MB.</li>
+                      <li><code>NEO4J_dbms_memory_heap_max__size=1g</code>: Define o tamanho máximo do heap de memória do Neo4j como 1 GB.</li>
+                    </ul>
+                  </li>
+                  <li><strong>ports:</strong>
+                    <ul>
+                      <li><code>"7474:7474"</code>: Mapeia a porta 7474 do container para a porta 7474 do host, permitindo acesso à interface web do Neo4j via navegador.</li>
+                      <li><code>"7687:7687"</code>: Mapeia a porta 7687 do container para a porta 7687 do host, utilizada pelo Bolt protocol para conexão de drivers e aplicações ao Neo4j.</li>
+                    </ul>
+                  </li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./neo4j-data:/data</code>: Monta o diretório local <code>./neo4j-data</code> dentro do container em <code>/data</code>, garantindo que o banco de dados Neo4j seja persistido no host entre reinicializações do container.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </details></li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>networks:</strong></summary>
+            <ul>
+              <li><code>default:</code>
+                <ul>
+                  <li><strong>name:</strong> <code>kensei_lab_net</code>: Nomeia a rede padrão usada pelos serviços, garantindo comunicação entre containers dentro dessa rede.</li>
                 </ul>
               </li>
-              <li><strong>networks:</strong> Conecta o container à rede <code>cyberlab_net</code>, permitindo comunicação com outros containers do laboratório.</li>
-            </ul>
-          </details></li>
-          <li><details><summary><strong>ubuntu_host:</strong></summary>
-            <ul>
-              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./ubuntu_host</code>, utilizando o arquivo de Dockerfile.</li>
-              <li><strong>container_name:</strong> Define o nome do container como <code>ubuntu_host</code>.</li>
-              <li><code>command: sleep infinity</code>: Mantém o container ativo em execução contínua, permitindo acesso interativo.</li>
-              <li><code>tty: true</code>: Permite alocar um terminal interativo para o container.</li>
-              <li><strong>networks:</strong> Conecta o container à rede <code>cyberlab_net</code>, permitindo comunicação interna com Kali e Juice Shop.</li>
-            </ul>
-          </details></li>
-          <li><details><summary><strong>kali:</strong></summary>
-            <ul>
-              <li><strong>build:</strong> Constrói a imagem a partir do diretório <code>./kali</code>, utilizando o arquivo Dockerfile.</li>
-              <li><strong>container_name:</strong> Define o nome do container como <code>kali_host</code>.</li>
-              <li><code>command: sleep infinity</code>: Mantém o container ativo, permitindo uso interativo das ferramentas instaladas.</li>
-              <li><code>tty: true</code>: Permite alocar um terminal interativo para sessões com <code>docker exec -it</code>.</li>
-              <li><strong>networks:</strong> Conecta o container à rede <code>cyberlab_net</code>, permitindo comunicação interna com os outros containers.</li>
-            </ul>
-          </details></li>
-          <li><details><summary><strong>cyberlab_net:</strong></summary>
-            <ul>
-              <li><code>driver: bridge</code>: Define a rede como <em>bridge</em>, permitindo que os containers se comuniquem de forma isolada dentro do host.</li>
             </ul>
           </details></li>
         </ul>
       </details></li>
     <li><details><summary><strong>Dockerfile</strong></summary>
-      <ul> 
+      <ul>
         <li><details><summary><strong>Dockerfile.kali</strong></summary>
           <ul>
-            <li><code>FROM kalilinux/kali-rolling</code>: Define a imagem base como Kali Linux (rolling).</li>
-            <li><code>ENV DEBIAN_FRONTEND=noninteractive</code>: Configura para instalação de pacotes sem interação do usuário.</li>
-            <li><strong>RUN:</strong> Executa a instalação de ferramentas necessárias:
+            <li><code>FROM kalilinux/kali-rolling</code>: Imagem base Kali Rolling.</li>
+            <li><strong>RUN:</strong> Executa a instalação de ferramentas essenciais e limpa o cache para reduzir o tamanho da imagem:
               <ul>
-                <li><code>apt update</code>: Atualiza a lista de pacotes.</li>
-                <li><code>apt install -y nmap netcat-traditional curl dnsutils vim python3 whois git</code>: Instala ferramentas essenciais de rede e pentest.</li>
-                <li><code>apt clean</code>: Remove arquivos temporários e limpa cache.</li>
+                <li><code>apt-get update</code>: Atualiza a lista de pacotes disponíveis.</li>
+                <li><code>apt-get install -y git curl jq python3-pip build-essential golang-go amass</code>: Instala ferramentas essenciais de desenvolvimento, rede e pentest.</li>
+                <li><code>apt-get clean && rm -rf /var/lib/apt/lists/*</code>: Remove arquivos temporários e limpa cache do apt.</li>
               </ul>
             </li>
-            <li><code>CMD ["/bin/bash"]</code>: Mantém o container ativo com shell Bash interativo.</li>
+            <li><code>ENV GOPATH=/root/go</code>: Define a variável <code>GOPATH</code> apontando para <code>/root/go</code>, diretório onde o Go instalará pacotes e binários do usuário.</li>
+            <li><code>ENV PATH=$PATH:/root/go/bin</code>: Adiciona <code>/root/go/bin</code> ao <code>PATH</code>, permitindo executar ferramentas instaladas via <code>go install</code>.</li>
+            <li><code>RUN mkdir -p $GOPATH</code>: Cria diretório do GOPATH.</li>
+            <li><strong>RUN:</strong> Instala ferramentas Go no <code>GOPATH</code> utilizando <code>go install ...@latest</code> e disponibiliza os binários em <code>/root/go/bin</code>:
+              <ul>
+                <li><code>go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest</code>: Instala o <strong>subfinder</strong>, usado para descoberta de subdomínios.</li>
+                <li><code>go install github.com/projectdiscovery/httpx/cmd/httpx@latest</code>: Instala o <strong>httpx</strong>, utilizado para verificação e coleta de informações HTTP (status, headers, títulos, etc.).</li>
+                <li><code>go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest</code>: Instala o <strong>nuclei</strong>, motor de scan de vulnerabilidades baseado em templates.</li>
+                <li><code>go install github.com/hakluke/hakrawler@latest</code>: Instala o <strong>hakrawler</strong>, um crawler rápido para descoberta de endpoints e conteúdo web.</li>
+                <li><code>go install github.com/zricethezav/gitleaks/v8@latest</code>: Instala o <strong>gitleaks</strong>, ferramenta para detecção de segredos e chaves em repositórios.</li>
+              </ul>
+            </li>
+            <li><code>COPY scripts /home/kali/scripts</code>: Copia scripts locais para dentro do container.</li>
+            <li><code>WORKDIR /home/kali</code>: Define diretório de trabalho.</li>
+            <li><code>CMD ["/bin/bash"]</code>: Inicia o shell Bash.</li>
           </ul>
         </details></li>
-        <li><details><summary><strong>Dockerfile.ubuntu_host</strong></summary>
+        <li><details><summary><strong>Dockerfile.spiderfoot</strong></summary>
           <ul>
-            <li><code>FROM ubuntu:20.04</code>: Define a imagem base como Ubuntu 20.04.</li>
-            <li><code>ENV DEBIAN_FRONTEND=noninteractive</code>: Impede prompts interativos durante a instalação de pacotes.</li>
-            <li><strong>RUN:</strong> Executa a instalação de ferramentas necessárias:
+            <li><code>FROM python:3.10-slim</code>: Usa a imagem base Python 3.10 slim como ambiente inicial.</li>
+            <li><strong>RUN</strong>:
               <ul>
-                <li><code>apt update</code>: Atualiza a lista de pacotes.</li>
-                <li><code>apt install -y net-tools iputils-ping curl vim openssh-server ufw sudo</code>: Instala utilitários de rede, SSH, firewall e sudo.</li>
-                <li><code>apt clean</code>: Limpa cache do apt.</li>
-              </ul>
-            <li><strong>RUN:</strong> Executa comandos:
-              <ul>
-                <li><code>useradd -m aluno && echo "aluno:senha123" | chpasswd && adduser aluno sudo</code>: Cria usuário não-root (<code>aluno</code>) com senha e privilégios de sudo.</li>
-              </ul>
-            <li><strong>RUN:</strong> Executa comandos:
-              <ul>
-                <li><code>mkdir /var/run/sshd</code>: Cria o diretório necessário para o SSH.</li>
-                <li><code>sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config</code>: Edita o arquivo de configuração do SSH para desabilitar login com root.</li>
-                <li><code>sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config</code>: Edita o arquivo de configuração do SSH para permitir autenticação por senha.</li>
+                <li><code>apt-get update</code>: Atualiza a lista de pacotes.</li>
+                <li><code>apt-get install -y --no-install-recommends git build-essential python3-dev libyaml-dev curl ca-certificates gcc g++ make libffi-dev libssl-dev</code>: Instala dependências do sistema necessárias para compilar e executar as dependências Python do SpiderFoot.</li>
+                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove listas de pacotes para reduzir o tamanho final da imagem.</li>
               </ul>
             </li>
-            <li><code>EXPOSE 22</code>: Expõe a porta SSH (22) para conexões internas.</li>
-            <li><code>CMD ["/bin/bash"]</code>: Mantém o container ativo com shell Bash.</li>
+            <li><code>RUN pip3 install -U pip setuptools wheel cython</code>: Atualiza o gerenciador de pacotes Python e instala ferramentas de build (necessárias para compilar extensões como PyYAML).</li>
+            <li><code>WORKDIR /app</code>: Define o diretório de trabalho para os comandos seguintes.</li>
+            <li><code>RUN git clone --depth=1 --branch v4.0 https://github.com/smicallef/spiderfoot /app</code>: Clona a versão 4.0 do repositório SpiderFoot diretamente para <code>/app</code>.</li>
+            <li><code>RUN sed -i 's/pyyaml>=5.4.1,<6/pyyaml>=6.0/' requirements.txt</code>: Altera a especificação do PyYAML no <code>requirements.txt</code> para uma versão compatível (quando necessário) antes da instalação das dependências.</li>
+            <li><code>RUN pip3 install -r requirements.txt</code>: Instala as dependências Python do SpiderFoot listadas em <code>requirements.txt</code>.</li>
+            <li><code>EXPOSE 5001</code>: Expõe a porta 5001, usada pela interface web do SpiderFoot.</li>
+            <li><code>CMD ["python3", "sf.py", "-l", "0.0.0.0:5001"]</code>: Comando padrão para iniciar o SpiderFoot, fazendo-o escutar em todas as interfaces na porta 5001.</li>
           </ul>
         </details></li>
-      </ul>
-    </details></li>
-    <li><details><summary><strong>Dependências</strong></summary>
-      <ul>
-        <li><strong>package-lock.json</strong>: Arquivo de bloqueio de dependências Node.js. Neste caso, está vazio e serve apenas como placeholder para controle de pacotes.</li>
       </ul>
     </details></li>
   </ul>
 </details>
 
+O primeiro laboratório desse curso consistiu em executar um pentest em uma sistema vulneravel de uma empresa fictícia de nome Acme Corp, passando por várias etapas: reconhecimento, descoberta, exploração, enumeração, análise avançada, documentação. Esse sistma foi construído na **AWS** pelo instrutor do curso e teve seu acesso controlado apenas aos alunos do curso, evitando assim que 
+
+O ambiente **Docker** foi implantado em uma instância **Amazon EC2** na **AWS** e é composto pelos três containers seguintes:
+- `kensei_kali`: Kali Linux utilizado para ataque e reconhecimento. Contém ferramentas como **Subfinder**, **Httpx**, **Nuclei**, **Hakrawler**, **Gitleaks**, além de softwares como: **Python**, **curl**, **git**, **jq**, **build-essential**, **Golang** e **Amass**.
+- `kensei_spiderfoot`: container executando o **SpiderFoot**.
+- `kensei_neo4j`: container executando o **Neo4j**.
+
+Antes de iniciar a primeira etapa, o reconhecimento, foi realizado o acesso ao container **Kali Linux** a partir da instância remota, utilizando o comando `docker exec -it kensei_kali /bin/bash`. Dentro do container, foi criada a pasta de trabalho `acme-corp` com `mkdir -p /home/kali/investigations/acme-corp` e em seguida acessado o diretório com `cd /home/kali/investigations/acme-corp`.
+
+🔍 Fase 1 — Reconhecimento   
+Na Fase 1, o objetivo foi enumerar todos os subdomínios associados ao domínio da Acme Corp (`acme-corp-lab.com`). A partir da máquina de ataque, acessada no container Kali, foi executado o **Subfinder** com o comando `subfinder -d acme-corp-lab.com -o subdomains.txt`, que coletou os subdomínios e salvou o resultado no arquivo `subdomains.txt`, dentro do diretório criado `/home/kali/investigations/acme-corp`. Em seguida, verificou‑se o conteúdo gerado com `cat /home/kali/investigations/acme-corp/subdomains.txt` para confirmar os subdomínios encontrados, conforme ilustrado na imagem 01.
 
 <div align="center"><figure>
-    <img src="../0-aux/md2-img01.png" alt="img01"><br>
+    <img src="../0-aux/md3-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
+Um dos subdomínios identificados apresentava o prefixo `old`, indicando tratar‑se de um sistema legado — normalmente mais suscetível a vulnerabilidades. Em seguida, executou‑se o **Amass** com tempo limitado para execução usando: `timeout 300 amass enum -passive -d acme-corp-lab.com -o amass_results.txt -v || echo "Amass timeout - continuando com Subfinder"`, de modo que quaisquer resultados fossem gravados em `amass_results.txt`. Por fim, verificou‑se o conteúdo retornado pelo Amass com o comando abaixo.
+
+```bash
+if [ -f amass_results.txt ]; then
+    echo "=== RESULTADOS DO AMASS ==="
+    cat amass_results.txt
+else
+    echo "Amass não completou - usando apenas resultados do Subfinder"
+fi
+```
+
+O **Amass** demorou muito e não trouxe novas descobertas; por isso, foram utilizados apenas os resultados do **Subfinder**. Como alguns subdomínios poderiam não estar ativos, foi necessário verificar quais dos quatro listados respondiam. Para isso, executou-se o comando `cat subdomains.txt | dnsx -resp -silent -o resolved_subdomains.txt`, que consultou cada subdomínio e salvou as entradas resolvidas em `resolved_subdomains.txt`. Os resultados, conforme imagem 02, indicaram que todos os subdomínios resolviam para endereços IP distintos — situação que pode indicar uma infraestrutura distribuída ou a presença de balanceamento de carga.
+
 <div align="center"><figure>
-    <img src="../0-aux/md2-img02.png" alt="img02"><br>
+    <img src="../0-aux/md3-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
+
+Na sequência, foi utilizado o **httpx** para identificar os serviços expostos por cada subdomínio. O comando executado foi: `cat subdomains.txt | httpx -title -tech-detect -status-code -o live_web_services.txt`. Esse comando consultou cada subdomínio e gerou um relatório contendo o título da página, as tecnologias detectadas e o código de status HTTP, salvando todas as informações em `live_web_services.txt`. Ao verificar o conteúdo do arquivo com `cat live_web_services.txt`, conforme mostrado na imagem 03, foram obtidos os seguintes resultados:
+- `www.acme-corp-lab.com`: site estático hospedado no **Amazon S3**, típico para o site principal.
+- `admin.acme-corp-lab.com`: painel **WordPress**, alvo comum em testes de segurança a painéis administrativos.
+- `old.acme-corp-lab.com`: retornou HTTP 301, indicando um redirecionamento.
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+🎯 Fase 2: - Descoberta   
+Na fase de descoberta, foi realizado uma investigação aprofundada do subdomínio `old`, que era um redirecionamento. Muitas vezes redirecionamentos revelam informações interessantes. Dessa forma, foi executado o comando `curl -L -s http://old.acme-corp-lab.com/ > legacy_page.html` para seguir todos os redirecionamentos e na página final copiar o HTML dela para o arquivo `legacy_page.html`.
+
+
+
+
+
 
 
 
