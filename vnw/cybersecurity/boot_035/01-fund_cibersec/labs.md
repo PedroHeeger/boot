@@ -82,6 +82,7 @@ Esta pasta refere-se aos laboratórios do módulo 1 **Fundamentos de Cibersegura
   - Greenbone Security Assistant (GSA)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gsa.png" alt="gsa" width="auto" height="25">
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
   - Metasploit   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="metasploit" width="auto" height="25">
+  - Metasploitable   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/metasploit.png" alt="metasploitable" width="auto" height="25">
   - Nikto   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nikto.jpg" alt="nikto" width="auto" height="25">
   - OpenSSL   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/openssl.png" alt="openssl" width="auto" height="25">
   - Open Vulnerability Assessment System (OpenVAS)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/open_vas.png" alt="open_vas" width="auto" height="25">
@@ -1522,7 +1523,7 @@ O desafio final foi capturar a flag escondida. Para isso a saída dos dois coman
 <a name="item1.11"><h4>1.11 Introdução a Scanners de Vulnerabilidade com OpenVAS/Greenbone</h4></a>[Back to summary](#item1)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo1-fundamentos/lab_10)
 
-Obs.: Laboratório registrado como 10, mas documento como #NãoInformado (12) e referente a aula 11.
+Obs.: Laboratório registrado como 10, mas documento como #NãoInformado (12) e referente a aula 11. O clone do repositório foi no perfil do GitHub de um dos instrutores do curso (`git clone https://github.com/GilsonJunio/formacao-cybersec.git`).
 
 <details><summary><strong>Ambiente de Laboratório: Greenbone Community Edition</strong></summary>
   <ul>
@@ -1846,7 +1847,7 @@ Este laboratório encerrou o módulo 1 e teve como foco a ferramenta **OpenVAS**
 - **Greenbone Security Assistant (GSA)**: interface web para configurar scans e visualizar relatórios;  
 - **Feeds de vulnerabilidade**: bases de dados constantemente atualizadas que permitem ao **OpenVAS** identificar falhas de segurança.  
 
-A construção do ambiente em **Docker** neste laboratório foi feita de forma diferenciada, utilizando o script de automação `setup-and-start-greenbone-community-edition.sh`. Esse script realizava três etapas iniciais: verificava a presença dos softwares **Docker**, **Docker Compose** e **Curl** na máquina host; fazia o download das imagens necessárias; e implantava o ambiente **Docker**, incluindo os containers do **Greenbone Community Edition (GCE)**.  
+A construção do ambiente em **Docker** neste laboratório foi realizada por meio do script de automação `setup-and-start-greenbone-community-edition.sh`. O script executa três etapas iniciais: verifica a presença dos softwares **Docker**, **Docker Compose** e **Curl** no host; faz o download das imagens necessárias; e implanta o ambiente **Docker**, incluindo os containers do **Greenbone Community Edition (GCE)** e do **Metasploitable**. O **Metasploitable** é uma máquina virtual propositalmente vulnerável, distribuída como imagem para fins de teste, treinamento e desenvolvimento de ferramentas de segurança. No laboratório, o **Metasploitable** foi executado em container e utilizado como alvo das varreduras.
 
 Durante a implantação, era solicitado ao usuário que definisse uma senha para a conta `admin` do **Greenbone Security Assistant (GSA)**, credencial usada posteriormente para acessar a interface web. Em seguida, iniciava-se o carregamento dos feeds de vulnerabilidades — processo que poderia durar de 30 minutos a várias horas, dependendo da sincronização. Essa etapa era essencial, pois somente com os feeds atualizados os scans apresentavam resultados completos e confiáveis. Por fim, o script executava o comando `xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &`, que abria automaticamente o navegador já apontando para a interface web do **GSA**.
 
@@ -1854,51 +1855,81 @@ Isso funcionava para quem utilizava a própria máquina física como host dos co
 
 Enquanto os dados eram carregados, foi necessário ajustar a forma de acesso ao **Greenbone Security Assistant (GSA)** devido ao fato de o host ser uma instância **EC2**. O port forwarding configurado pelo **Docker Compose** para o container do **GSA** estava definido como `127.0.0.1:9392:80`. Isso significava que a porta `80` do container, onde a interface do **GSA** era executada, foi mapeada para a porta `9392` do IP `127.0.0.1` — o localhost da própria instância. Nesse cenário, o redirecionamento parava dentro da instância, de modo que o IP ou DNS público da máquina na porta `9392` não conseguia se comunicar diretamente com a interface do **GSA**. Apenas a própria instância tinha acesso, evidenciado pelo sucesso da requisição com `curl 127.0.0.1:9392`. O problema adicional era que a instância **EC2** não possuía interface gráfica. Por esse motivo, o último comando do script (`xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &`), que deveria abrir automaticamente o navegador para acessar a interface web do **GSA**, não funcionou.  
 
-Duas soluções poderiam ser aplicadas. A primeira consistia em rodar novamente todo o ambiente, mas alterando o port forwarding no **Docker Compose** para `9392:80`. Assim, em vez de restringir o mapeamento apenas ao localhost (`127.0.0.1`), o acesso seria aberto para qualquer IP, permitindo que a instância fosse acessada externamente e o tráfego chegasse ao container do **GSA**. A segunda solução, que foi a adotada, foi realizar um tunelamento **SSH**, redirecionando o tráfego da porta `9392` pela própria conexão SSH entre a máquina física e a instância. Dentro da instância, esse tráfego alcançava o mapeamento de portas configurado no container do **GSA**. Para isso, foi executado o seguinte comando `ssh -i "G:/Meu Drive/4_PROJ/aws_skb/study_material/aws_scripts_model/.default/secrets/awsKeyPair/universal\keyPairUniversal.pem" -L 9392:localhost:9392 ubuntu@54.167.44.27`. Após estabelecer o túnel, a interface web do **GSA** pôde ser acessada diretamente pelo navegador da máquina física, através do endereço `127.0.0.1:9392`, conforme mostrado na imagem 50.  
+Duas soluções poderiam ser aplicadas. A primeira consistia em rodar novamente todo o ambiente, mas alterando o port forwarding no **Docker Compose** para `9392:80`. Assim, em vez de restringir o mapeamento apenas ao localhost (`127.0.0.1`), o acesso seria aberto para qualquer IP, permitindo que a instância fosse acessada externamente e o tráfego chegasse ao container do **GSA**. A segunda solução, que foi a adotada, foi realizar um tunelamento **SSH**, redirecionando o tráfego da porta `9392` pela própria conexão SSH entre a máquina física e a instância. Dentro da instância, esse tráfego alcançava o mapeamento de portas configurado no container do **GSA**. Para isso, foi executado o seguinte comando `ssh -i "G:/Meu Drive/4_PROJ/aws_skb/study_material/aws_scripts_model/.default/secrets/awsKeyPair/universal\keyPairUniversal.pem" -L 9392:localhost:9392 ubuntu@54.92.218.88`. Após estabelecer o túnel, a interface web do **GSA** pôde ser acessada diretamente pelo navegador da máquina física, através do endereço `127.0.0.1:9392`, conforme mostrado na imagem 50.  
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img50.png" alt="img50"><br>
     <figcaption>Imagem 50.</figcaption>
 </figure></div><br>
 
-A primeira página acessada foi a de login, onde foram inseridas as credenciais do usuário `admin` para entrar na plataforma do **Greenbone** pelo **GSA**. Dentro da interface, na barra de menu lateral, foram selecionadas as opções `Configuration` e `Targets`. Nessa seção, clicando no ícone de quadrado no canto superior esquerdo, foi criado um novo alvo (`target`). Na janela de configuração do novo target, o campo `Name` foi definido como `Alvo Metasploitable2`, e em `Hosts` foi escolhida a opção `Manual`, informando o IP `172.18.0.27`, correspondente ao container `metasploitable` na rede. A imagem 51 mostra o novo alvo criado com sucesso.
+A primeira página acessada foi a de login, onde as credenciais do usuário `admin` foram utilizadas para acessar a plataforma **Greenbone** pelo **GSA**. Na interface, na barra de menu lateral, foram selecionadas as opções `Administration` e `Feed Status` para verificar o andamento do download do feed de vulnerabilidades. A imagem 51 mostra que os feeds ainda estavam sendo baixados das bases de dados.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img51.png" alt="img51"><br>
     <figcaption>Imagem 51.</figcaption>
 </figure></div><br>
 
-Com o alvo criado, o próximo passo foi criar e executar a tarefa de scan. Na barra lateral, foram acessadas as opções `Scans` e `Tasks` para abrir a seção correspondente. Ao clicar no ícone de quadrado, foram exibidas duas opções, sendo selecionada `New Task` (nova tarefa). A configuração da tarefa foi definida da seguinte forma: em `Name` foi inserido `Scan Completo no Alvo`, em `Scan Targets` foi selecionado o alvo criado (`Alvo Metasploitable2`) e, em `Scan Config`, foi escolhida a opção `Full and fast`. Essa última configuração só se tornou disponível após a sincronização completa do feed de vulnerabilidades. Portanto, antes de concluir a criação da tarefa, foram acessadas as opções `Administration` e `Feed Status` para acompanhar o progresso do feed. A imagem 52 evidencia que ele ainda estava sendo atualizado.
+Para confirmar que os downloads estavam de fato sendo realizados, no host do **Docker** foi executado o comando `docker compose logs -f gvmd` para visualizar os logs do container do **GVMD**, responsável por gerenciar o feed de vulnerabilidades. A imagem 52 evidencia, nos logs, que o processo de download estava em execução.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img52.png" alt="img52"><br>
     <figcaption>Imagem 52.</figcaption>
 </figure></div><br>
 
-Após a conclusão, a tarefa foi criada e, para executá-la, bastou clicar em `Play`, iniciando o scan. A imagem 53 mostra a tarefa criada e em execução. Infelizmente, não foi possível aguardar a sincronização completa do feed de vulnerabilidades devido a limitações de memória na instância **Amazon EC2**. Por esse motivo, os três últimos prints não puderam ser capturados, mas o procedimento de execução está documentado aqui.
+Durante o processo, surgiram diversos problemas com o feed, exigindo alterações no tipo da instância diversas vezes, sendo a última configuração `t3a.large`, com 8 GB de RAM e 2 vCPU. Também foi necessário expandir o volume do **Amazon EBS** para `40` GB, tipo `gp3`, mantendo IOPS e throughput padrão de `3000` e `125`, respectivamente. Houve dificuldades de acesso remoto à instância, e a CPU chegou a atingir 100% de uso. A instância precisou ser parada para que o tipo fosse alterado sem interrupções indevidas. Após a reinicialização, os containers subiram automaticamente, e o download do feed foi retomado de onde havia sido interrompido. Com paciência e monitoramento constante, a atualização do feed foi concluída, conforme mostrado na imagem 53. Durante esse processo, foram utilizados os comandos `docker compose logs -f gvmd` e `docker ps` para acompanhar, respectivamente, os logs do download do feed de vulnerabilidades e o estado dos containers.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img53.png" alt="img53"><br>
     <figcaption>Imagem 53.</figcaption>
 </figure></div><br>
 
-Com a varredura finalizada, indicada no campo `Status` como `Done`, foi clicado no link correspondente à data do relatório para explorar os resultados por severidade. Primeiro, foram analisadas as vulnerabilidades críticas (`High`), em seguida as vulnerabilidades relevantes (`Medium`) e, por último, as vulnerabilidades de menor impacto (`Low/Log`). A imagem 54 mostra o relatório gerado e acessado com sucesso.
+Após baixar todo o feed de vulnerabilidades, as opções `Configuration` e `Targets` foram acessadas. Nessa seção, clicando no ícone de quadrado no canto superior esquerdo, foi criado um novo alvo (`target`). Na janela de configuração do novo target, o campo `Name` foi definido como `Alvo Metasploitable2`, e em `Hosts` foi escolhida a opção `Manual`, informando o IP `172.20.0.27`, correspondente ao container `metasploitable` na rede. A imagem 54 mostra o novo alvo criado com sucesso.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img54.png" alt="img54"><br>
     <figcaption>Imagem 54.</figcaption>
 </figure></div><br>
 
-Para finalizar, uma das vulnerabilidades críticas foi selecionada para analisar os detalhes dos seguintes campos:
-- `Summary`: apresentava um resumo da vulnerabilidade, descrevendo o problema de segurança detectado.
-- `Detection Result`: indicava o resultado da detecção para o alvo, ou seja, se a vulnerabilidade foi encontrada e em qual contexto.
-- `Solution`: fornecia recomendações ou passos para corrigir ou mitigar a vulnerabilidade identificada.
-
-A imagem 55 exibe as informações relatadas para essa vulnerabilidade selecionada.
+Com o alvo criado, o passo seguinte foi a criação e execução da tarefa de scan. Na barra lateral, acessaram‑se as opções `Scans` → `Tasks` para abrir a seção correspondente. Ao clicar no ícone de quadrado, surgiram duas opções; foi selecionada `New Task`. A tarefa foi configurada da seguinte forma: em `Name` foi definido `Scan Completo no Alvo`; em `Scan Targets` foi selecionado o alvo criado (`Alvo Metasploitable2`); e em `Scan Config` foi escolhida a opção `Full and fast`. Essa configuração só se tornou disponível após a sincronização completa do feed de vulnerabilidades. As demais opções permaneceram com os valores padrão. A imagem 55 exibe a tarefa criada.
 
 <div align="center"><figure>
     <img src="../0-aux/md1-img55.png" alt="img55"><br>
     <figcaption>Imagem 55.</figcaption>
+</figure></div><br>
+
+A execução da tarefa foi realizada clicando em `Play`, iniciando o scan. A varredura levou alguns minutos para ser concluída, sendo influenciada pela configuração `Full and fast`, que realiza uma varredura completa. Posteriormente, foi criada uma nova tarefa, cujo nome foi `teste`, com configuração idêntica, alterando apenas o tipo de scan para `Base`, correspondente a uma varredura básica, com execução mais rápida. A imagem 56 ilustra as varreduras ocorrendo simultaneamente.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img56.png" alt="img56"><br>
+    <figcaption>Imagem 56.</figcaption>
+</figure></div><br>
+
+Ao final da varredura, um link para o relatório era disponibilizado. O relatório referente à varredura completa foi selecionado, apresentando diversas informações organizadas em abas, como `Information`, `Results`, `Hosts`, `Ports`, `Applications`, `Operating Systems`, `CVEs`, entre outras. Na aba de resultados, as vulnerabilidades eram listadas e podiam ser ordenadas por severidade: críticas (`High`), relevantes (`Medium`) e de menor impacto (`Low`). A imagem 57 apresenta essa aba do relatório.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img57.png" alt="img57"><br>
+    <figcaption>Imagem 57.</figcaption>
+</figure></div><br>
+
+A primeira vulnerabilidade da lista, ordenada por severidade (`rlogin Passwordless Login`), foi selecionada para análise detalhada dos seguintes campos:
+- `Summary`: apresentava um resumo da vulnerabilidade, descrevendo o problema de segurança identificado.  
+- `Detection Result`: indicava o resultado da detecção no alvo, informando se a vulnerabilidade foi encontrada e em qual contexto.  
+- `Detection Method`: detalhava o método utilizado para identificar a vulnerabilidade.  
+- `Impact`: descrevia as consequências ou riscos associados à vulnerabilidade.  
+- `Solution`: fornecia recomendações ou passos para corrigir ou mitigar a vulnerabilidade identificada.  
+
+A imagem 58 exibe as informações detalhadas referentes a essa vulnerabilidade selecionada, que permitia acesso root sem senha.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img58.png" alt="img58"><br>
+    <figcaption>Imagem 58.</figcaption>
+</figure></div><br>
+
+O **Greenbone Community Edition (GCE)** oferece diversos recursos para varredura de vulnerabilidades. No entanto, como o objetivo do laboratório já havia sido alcançado e o foco não era aprofundar-se na ferramenta, esses recursos não foram explorados. O propósito foi apenas apresentar o funcionamento básico da ferramenta. Estudos futuros permitirão um conhecimento mais detalhado sobre o software. Por fim, a imagem 59 exibe o dashboard da interface **GSA**, após o download do feed de vulnerabilidades e a execução das tarefas de scan.
+
+<div align="center"><figure>
+    <img src="../0-aux/md1-img59.png" alt="img59"><br>
+    <figcaption>Imagem 59.</figcaption>
 </figure></div><br>
 
 <a name="item1.12"><h4>1.12 Documentação Técnica Profissional</h4></a>[Back to summary](#item1)
