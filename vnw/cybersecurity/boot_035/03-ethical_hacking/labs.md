@@ -61,9 +61,15 @@ Esta pasta refere-se aos laboratórios do módulo 3 **Ethical Hacking (Red Team)
 - Remote Desktop:
   - RealVNC Viewer   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/realvnc.png" alt="realvnc_viewer" width="auto" height="25">
 - Cibersecurity:
-  - Docker Bench for Security   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/docker_bench_for_security.png" alt="docker_bench_for_security" width="auto" height="25">
+  - Amass   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/amass.png" alt="amass" width="auto" height="25">
+  - dnsx   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/dnsx.png" alt="dnsx" width="auto" height="25">
+  - Gitleaks   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/gitleaks.png" alt="gitleaks" width="auto" height="25">
+  - Hakrawler   <img src="" alt="hakrawler" width="auto" height="25">
+  - httpx   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/httpx.png" alt="httpx" width="auto" height="25">
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+  - Nuclei   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/nuclei.png" alt="nuclei" width="auto" height="25">
   - Sqlmap   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/sqlmap.png" alt="sqlmap" width="auto" height="25">
+  - Subfinder   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/subfinder.svg" alt="subfinder" width="auto" height="25">
   - Trivy   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/trivy.png" alt="trivy" width="auto" height="25">
 - SysAdm:
   - Xfce   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/xfce.svg" alt="xfce" width="auto" height="25">
@@ -260,24 +266,24 @@ Obs.: Laboratório registrado como 1, documento como 1 e referente a aula 1.
   </ul>
 </details>
 
-O primeiro laboratório desse curso consistiu em executar um pentest em uma sistema vulneravel de uma empresa fictícia de nome Acme Corp, passando por várias etapas: reconhecimento, descoberta, exploração, enumeração, análise avançada, documentação. Esse sistma foi construído na **AWS** pelo instrutor do curso e teve seu acesso controlado apenas aos alunos do curso, evitando assim que 
+O primeiro laboratório desse curso consistiu em executar um pentest em uma sistema vulneravel de uma empresa fictícia de nome Acme Corp, passando por várias etapas: reconhecimento, descoberta, exploração, enumeração, análise avançada, documentação. Esse sistma foi construído na **AWS** pelo instrutor do curso e teve seu acesso controlado apenas aos alunos do curso, evitando assim que pessoas más intencionadas explorassem a vulnerabilidade do sistema.
 
-O ambiente **Docker** foi implantado em uma instância **Amazon EC2** na **AWS** e é composto pelos três containers seguintes:
-- `kensei_kali`: Kali Linux utilizado para ataque e reconhecimento. Contém ferramentas como **Subfinder**, **Httpx**, **Nuclei**, **Hakrawler**, **Gitleaks**, além de softwares como: **Python**, **curl**, **git**, **jq**, **build-essential**, **Golang** e **Amass**.
+O ambiente **Docker** foi implantado em uma instância **Amazon EC2** na **AWS** e era composto pelos três containers seguintes:
+- `kensei_kali`: **Kali Linux** utilizado para ataque e reconhecimento. Continha ferramentas como **Subfinder**, **Httpx**, **Nuclei**, **Hakrawler**, **Gitleaks**, além de softwares como: **Python**, **curl**, **git**, **jq**, **build-essential**, **Golang** e **Amass**.
 - `kensei_spiderfoot`: container executando o **SpiderFoot**.
 - `kensei_neo4j`: container executando o **Neo4j**.
 
-Antes de iniciar a primeira etapa, o reconhecimento, foi realizado o acesso ao container **Kali Linux** a partir da instância remota, utilizando o comando `docker exec -it kensei_kali /bin/bash`. Dentro do container, foi criada a pasta de trabalho `acme-corp` com `mkdir -p /home/kali/investigations/acme-corp` e em seguida acessado o diretório com `cd /home/kali/investigations/acme-corp`.
+Antes do início da primeira etapa, o reconhecimento, foi feito o acesso ao container **Kali Linux** a partir da instância remota utilizando o comando `docker exec -it kensei_kali /bin/bash`. Dentro do container, foi criada a pasta de trabalho `acme-corp` com `mkdir -p /home/kali/investigations/acme-corp` e, em seguida, acessado o diretório com `cd /home/kali/investigations/acme-corp`. A maior parte dos comandos executados teve seus outputs salvos em arquivos dentro dessa pasta. Uma pasta idêntica, com a cópia desses arquivos, foi criada na pasta desse módulo, chamada [acme-corp](./acme-corp/).
 
 🔍 Fase 1 — Reconhecimento   
-Na Fase 1, o objetivo foi enumerar todos os subdomínios associados ao domínio da Acme Corp (`acme-corp-lab.com`). A partir da máquina de ataque, acessada no container Kali, foi executado o **Subfinder** com o comando `subfinder -d acme-corp-lab.com -o subdomains.txt`, que coletou os subdomínios e salvou o resultado no arquivo `subdomains.txt`, dentro do diretório criado `/home/kali/investigations/acme-corp`. Em seguida, verificou‑se o conteúdo gerado com `cat /home/kali/investigations/acme-corp/subdomains.txt` para confirmar os subdomínios encontrados, conforme ilustrado na imagem 01.
+Na Fase 1, o objetivo foi enumerar todos os subdomínios associados ao domínio da empresa Acme Corp (`acme-corp-lab.com`). A partir do container de ataque Kali, foi executado o **Subfinder** com o comando `subfinder -d acme-corp-lab.com -o subdomains.txt`, que coletou os subdomínios e salvou o resultado no arquivo [subdomains.txt](./acme-corp/subdomains.txt), dentro do diretório criado em `/home/kali/investigations/acme-corp`. Em seguida, verificou-se o conteúdo gerado com `cat /home/kali/investigations/acme-corp/subdomains.txt` para confirmar os subdomínios encontrados, conforme ilustrado na imagem 01.
 
 <div align="center"><figure>
     <img src="../0-aux/md3-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
-Um dos subdomínios identificados apresentava o prefixo `old`, indicando tratar‑se de um sistema legado — normalmente mais suscetível a vulnerabilidades. Em seguida, executou‑se o **Amass** com tempo limitado para execução usando: `timeout 300 amass enum -passive -d acme-corp-lab.com -o amass_results.txt -v || echo "Amass timeout - continuando com Subfinder"`, de modo que quaisquer resultados fossem gravados em `amass_results.txt`. Por fim, verificou‑se o conteúdo retornado pelo Amass com o comando abaixo.
+Um dos subdomínios identificados apresentava o prefixo `old`, indicando tratar-se de um sistema legado — normalmente mais suscetível a vulnerabilidades. Entretanto, o reconhecimento continuou com a execução do **Amass** com tempo limitado usando `timeout 300 amass enum -passive -d acme-corp-lab.com -o amass_results.txt -v || echo "Amass timeout - continuando com Subfinder"`, de modo que quaisquer resultados fossem gravados em [amass_results.txt](./acme-corp/amass_results.txt). Por fim, verificou-se o conteúdo retornado pelo **Amass** com `cat /home/kali/investigations/acme-corp/amass_results.txt`.
 
 ```bash
 if [ -f amass_results.txt ]; then
@@ -288,35 +294,149 @@ else
 fi
 ```
 
-O **Amass** demorou muito e não trouxe novas descobertas; por isso, foram utilizados apenas os resultados do **Subfinder**. Como alguns subdomínios poderiam não estar ativos, foi necessário verificar quais dos quatro listados respondiam. Para isso, executou-se o comando `cat subdomains.txt | dnsx -resp -silent -o resolved_subdomains.txt`, que consultou cada subdomínio e salvou as entradas resolvidas em `resolved_subdomains.txt`. Os resultados, conforme imagem 02, indicaram que todos os subdomínios resolviam para endereços IP distintos — situação que pode indicar uma infraestrutura distribuída ou a presença de balanceamento de carga.
+O **Amass** demorou muito e não trouxe novas descobertas; por isso, foram utilizados apenas os resultados do **Subfinder**. O **Amass** é uma ferramenta valiosa, pois agrega informações de várias fontes. Porém, como o domínio era recente e criado exclusivamente para o laboratório, não havia muita informação pública disponível sobre ele.
+
+Ainda dentro do reconhecimento, o próximo passo foi utilizar o **dnsx** para verificar nos servidores DNS se cada um dos quatro subdomínios descobertos possuía algum registro válido. Registros DNS podem ser do tipo A (IPv4), AAAA (IPv6) ou outros, como CNAME. Encontrar um registro DNS indicava que o domínio estava ativo; caso contrário, o domínio não estava configurado ou registrado em um servidor DNS. Dessa forma, executou-se `cat subdomains.txt | dnsx -resp -silent -o resolved_subdomains.txt`, que consultou cada subdomínio e salvou as entradas resolvidas no arquivo [resolved_subdomains.txt](./acme-corp/resolved_subdomains.txt). Os resultados, conforme imagem 02, mostraram que todos os subdomínios possuíam múltiplos registros do tipo A, indicando que cada subdomínio resolvia para vários endereços IP distintos. Esse cenário sugeria a existência de uma infraestrutura distribuída ou a utilização de balanceamento de carga.
 
 <div align="center"><figure>
     <img src="../0-aux/md3-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
 </figure></div><br>
 
-Na sequência, foi utilizado o **httpx** para identificar os serviços expostos por cada subdomínio. O comando executado foi: `cat subdomains.txt | httpx -title -tech-detect -status-code -o live_web_services.txt`. Esse comando consultou cada subdomínio e gerou um relatório contendo o título da página, as tecnologias detectadas e o código de status HTTP, salvando todas as informações em `live_web_services.txt`. Ao verificar o conteúdo do arquivo com `cat live_web_services.txt`, conforme mostrado na imagem 03, foram obtidos os seguintes resultados:
-- `www.acme-corp-lab.com`: site estático hospedado no **Amazon S3**, típico para o site principal.
-- `admin.acme-corp-lab.com`: painel **WordPress**, alvo comum em testes de segurança a painéis administrativos.
+Na sequência, foi utilizado o **httpx** para realizar requisições HTTP/HTTPS em cada um dos subdomínios descobertos, identificando informações como título da página, tecnologias utilizadas e código de status. O comando executado foi `cat subdomains.txt | httpx -title -tech-detect -status-code -o live_web_services.txt`, e os resultados foram salvos no arquivo [live_web_services.txt](./live_web_services.txt) dentro do diretório `/home/kali/investigations/acme-corp/`. A imagem 03 apresenta os resultados, permitindo identificar o seguinte:
+- `www.acme-corp-lab.com`: site estático hospedado no **Amazon S3**, típico do site principal.
+- `admin.acme-corp-lab.com`: painel **WordPress**, alvo comum em testes de segurança de interfaces administrativas.
 - `old.acme-corp-lab.com`: retornou HTTP 301, indicando um redirecionamento.
+
+#TROCAR AQUI
 
 <div align="center"><figure>
     <img src="../0-aux/md3-img03.png" alt="img03"><br>
     <figcaption>Imagem 03.</figcaption>
 </figure></div><br>
 
-🎯 Fase 2: - Descoberta   
-Na fase de descoberta, foi realizado uma investigação aprofundada do subdomínio `old`, que era um redirecionamento. Muitas vezes redirecionamentos revelam informações interessantes. Dessa forma, foi executado o comando `curl -L -s http://old.acme-corp-lab.com/ > legacy_page.html` para seguir todos os redirecionamentos e na página final copiar o HTML dela para o arquivo `legacy_page.html`.
+🎯 Fase 2 — Descoberta   
+A fase de descoberta foi realizada acessando cada domínio no navegador da máquina física **Windows** ou via **Curl** no container de ataque **Kali Linux**. Ao acessar `www.acme-corp-lab.com` em ambos os ambientes, a resposta HTTP foi 200 e o conteúdo exibido correspondia ao domínio raiz `acme-corp-lab.com`. Isso indicava que a distribuição do **Amazon CloudFront** estava configurada para servir tanto o subdomínio `www.acme-corp-lab.com` quanto o domínio raiz `acme-corp-lab.com` a partir da mesma infraestrutura — com o **CloudFront** posicionado na frente do **Amazon S3** que hospedava o site estático — em vez de retornar um redirecionamento HTTP explícito. A imagem 04 mostra o acesso a `www.acme-corp-lab.com` no navegador.
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
 
+O domínio era público, pois o laboratório exigia um domínio acessível para que o processo de OSINT pudesse ser realizado por ferramentas de coleta de informações públicas. Os demais subdomínios não estavam expostos publicamente, já que seriam alvos de exploração controlada e, portanto, exigiam regras de acesso restritas. Um dos instrutores foi responsável por autorizar o acesso dos alunos — provavelmente adicionando o endereço IP público de cada aluno a um grupo de segurança com permissão para acessar esses subdomínios.
 
+Após a autorização do IP público da minha instância `Amazon EC2` (host do ambiente `Docker`), acessou-se o subdomínio `admin.acme-corp-lab.com` sem obter resultados relevantes. Em seguida, acessou-se `old.acme-corp-lab.com`, que redirecionou para o IP `3.94.82.59` e exibiu uma página intitulada `Legacy System` com três links de interesse (conforme imagem 05). Antes de abrir os links no navegador, repetiu-se o mesmo procedimento via **Curl** no container de ataque: `curl -L -s http://old.acme-corp-lab.com/ > old_acme_page.html`, que seguiu a cadeia de redirecionamentos até a página final e salvou o conteúdo em [old_acme_page.html](./acme-corp/old_acme_page.html). Como o IP final do redirecionamento já era conhecido, também foi possível obter a mesma página diretamente com `curl -s http://3.94.82.59/ > legacy_page.html`, salvando o mesmo conteúdo HTML no arquivo [legacy_page.html](./acme-corp/legacy_page.html).
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
 
+Com os resultados obtidos, foi possível inferir que a página funcionava como um hub central, encaminhando para outros serviços por meio dos três links identificados. Embora os comentários HTML no final da página não fossem visíveis diretamente no navegador, eles apareceram ao salvar o conteúdo com **Curl**. Para extrair esses comentários utilizou-se `awk '/^<!--/,/-->$/' legacy_page.html`, que isolou os blocos de comentários HTML no arquivo, e esses comentários revelaram duas URLs públicas do **Amazon S3**, conforme evidenciado na imagem 06.
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
 
+Com os dois comandos a seguir foram baixados os arquivos do S3: `curl -s https://acme-corp-lab-public-files-6nssymq7.s3.us-east-1.amazonaws.com/company_info.txt` e `curl -s https://acme-corp-lab-public-files-6nssymq7.s3.us-east-1.amazonaws.com/employees.csv`. Ambos foram salvos no diretório de trabalho `/home/kali/investigations/acme-corp/`. O arquivo [company_info.txt](./acme-corp/company_info.txt) continha informações sobre a infraestrutura da empresa, endereços de escritórios e servidores de e-mail e DNS. Já o arquivo [employees.csv](./acme-corp/employees.csv) trazia uma lista completa de funcionários com endereços de e-mail e números de telefone. Ou seja, essa empresa estava vazando informações sensíveis.
+
+🔍 Fase 3 — Exploração   
+Na fase de exploração, testaram-se os dois subdomínios que não haviam retornado resultados (`admin.acme-corp-lab.com` e `dev.acme-corp-lab.com`) utilizando também o endpoint genérico da **AWS** para buckets com site estático na região `us-east-1` (Norte Virgínia): `s3-website-us-east-1.amazonaws.com`. Nesse cenário, o nome do subdomínio é usado como nome do bucket e o domínio torna-se o endpoint da **AWS**. Os testes foram realizados via **Curl** com `curl -I http://admin.acme-corp-lab.com.s3-website-us-east-1.amazonaws.com` e `curl -I http://dev.acme-corp-lab.com.s3-website-us-east-1.amazonaws.com` (imagem 07), além de verificações pelo navegador na máquina física **Windows** (imagens 09 e 10).
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img08.png" alt="img08"><br>
+    <figcaption>Imagem 08.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img09.png" alt="img09"><br>
+    <figcaption>Imagem 09.</figcaption>
+</figure></div><br>
+
+Como mostrado nas imagens, essas URLs redirecionavam diretamente para endereços IP — algo comum na infraestrutura da **AWS**. As páginas desses IPs eram exibidas normalmente no navegador, mas para acessá-las via **Curl** foi necessário executar `curl -I http://54.152.245.201:80/` e `curl -s http://34.207.53.34:3000/ | head -5`. Os IPs acessados foram `54.152.245.201:80`, que correspondia a um serviço administrativo, e `34.207.53.34:3000`, relacionado a uma API chamada Dev. Lembra dos três links na página do subdomínio `old.acme-corp-lab.com`? Os dois últimos (`Admin Panel` e `API`) redirecionavam exatamente para esses serviços. O serviço administrativo exibiu informações sobre **WordPress**, enquanto a API apresentou quatro endpoints: `/api/health`, `/api/system-info`, `/api/users` e `/api/config`.
+
+Na segurança da informação, APIs são sempre alvos valiosos. Por isso, os quatro endpoints identificados foram testados via **Curl** com os comandos: `curl -s http://34.207.53.34:3000/api/health`, `curl -s http://34.207.53.34:3000/api/system-info`, `curl -s http://34.207.53.34:3000/api/users` e `curl -s http://34.207.53.34:3000/api/config`, conforme imagem 10. Os mesmos acessos também foram realizados pelo navegador da máquina física, e as imagens 11 a 14 mostram os resultados de cada endpoint.
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img10.png" alt="img10"><br>
+    <figcaption>Imagem 10.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img11.png" alt="img11"><br>
+    <figcaption>Imagem 11.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img12.png" alt="img12"><br>
+    <figcaption>Imagem 12.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img13.png" alt="img13"><br>
+    <figcaption>Imagem 13.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img14.png" alt="img14"><br>
+    <figcaption>Imagem 14.</figcaption>
+</figure></div><br>
+
+O endpoint `/api/system-info` revelou dados sensíveis de configuração, incluindo a porta `3306` (indicando um **MySQL**), nome de usuário, senha e nome do banco, além de chaves de API para **Stripe**, **Sendgrid**, **AWS** e **GitHub**. Em um ambiente de produção, essas informações poderiam ser utilizadas para comprometer a base de dados e outras partes da infraestrutura, permitindo exfiltração de dados, execução de comandos remotos via serviços em nuvem ou uso indevido das integrações com terceiros.
+
+🔍 Fase 4 — Enumeração   
+Na fase de enumeração utilizou-se o IP do serviço administrativo (`54.152.245.201:80`), previamente identificado como um **WordPress**, com o objetivo de mapear diretórios e descobrir caminhos interessantes. Foi criada uma wordlist personalizada com `echo -e 'admin\napi\nbackup\nconfig\ndev\ngit\nlogin\nphpinfo\nphpmyadmin\ntest\nwww\nwp-admin\nwp-content\nwp-includes\nuploads\nfiles\nimages\ncss\njs\nassets' > /home/kali/investigations/acme-corp/custom_wordlist.txt`, que gerou o arquivo [custom_wordlist.txt](./acme-corp/custom_wordlist.txt) contendo nomes de diretórios potenciais a serem verificados. Em seguida, realizou-se a enumeração com o **Gobuster** usando `gobuster dir -u http://54.152.245.201:80 -w /home/kali/investigations/acme-corp/custom_wordlist.txt -o /home/kali/investigations/acme-corp/gobuster_results.txt -q`. Os resultados foram gravados em [gobuster_results.txt](./acme-corp/gobuster_results.txt). A imagem 15 exibe os achados obtidos durante essa varredura.
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img15.png" alt="img15"><br>
+    <figcaption>Imagem 15.</figcaption>
+</figure></div><br>
+
+Três diretórios foram encontrados: `wp-admin`, `wp-content` e `wp-includes`. Cada um correspondia a um endpoint acessível tanto via **Curl** quanto pelo navegador. No navegador foram abertos `http://54.152.245.201:80/wp-admin`, `http://54.152.245.201:80/wp-content` e `http://54.152.245.201:80/wp-includes`. O diretório `wp-content` não revelou conteúdo relevante, enquanto `wp-includes` e `wp-admin` expuseram diversas informações sobre a estrutura interna do **WordPress**, facilitando a identificação de rotas, arquivos e potenciais pontos de interesse para exploração. As imagens 16 e 17 exibem o acesso a essas páginas.
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img16.png" alt="img16"><br>
+    <figcaption>Imagem 16.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img17.png" alt="img17"><br>
+    <figcaption>Imagem 17.</figcaption>
+</figure></div><br>
+
+🔍 Fase 5 — Análise   
+Na fase cinco, uma análise avançada foi realizado com a ferramenta **SpiderFoot** que foi implantada em um dos containers. A interface web foi acessada pelo navegador da máquina física **Windows** usando o IP ou DNS público da instância na porta `5001`. Para permitir esse acesso, foi criada uma regra no security group da instância liberando a porta `5001` apenas para o IP público da máquina física, e o acesso ao container só foi possível porque o **Docker Compose** estava configurado com o mapeamento de portas `5001:5001`. A imagem 18 evidencia o acesso ao **SpiderFoot**.
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img18.png" alt="img18"><br>
+    <figcaption>Imagem 18.</figcaption>
+</figure></div><br>
+
+O passo seguinte foi criar um scan para o domínio `acme-corp-lab.com`, selecionando módulos relevantes para DNS, HTTP e outras fontes de dados. Assim, o **SpiderFoot** coletava dados de fontes que não foi possível acessar manualmente. A imagem 19 mostra....
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img19.png" alt="img19"><br>
+    <figcaption>Imagem 19.</figcaption>
+</figure></div><br>
+
+📊 Fase 6 - Documentação   
+A fase final desse laboratório foi a documentação de tudo que foi descoberto. Para isso foi criado o arquivo em **Markdown** [investigation_report.md](./acme-corp/investigation_report.md), contendo as informações que foram obtidas durante o lab.
 
 <a name="item3.2"><h4>3.2 Hardening de Servidores Linux</h4></a>[Back to summary](#item3)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo3-ethical-hacking/lab_2)
+
+
+
+
+
+
+
 
 
 
