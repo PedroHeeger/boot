@@ -79,7 +79,7 @@ Esta pasta refere-se aos laboratórios do módulo 3 **Ethical Hacking (Red Team)
 ### Bootcamp Module 3 Structure:
 3. <a name="item3">Módulo 3: Ethical Hacking (Red Team)<br>
   3.1 <a href="#item3.1">Pentest: Metodologia & Regras de Engajamento</a><br>
-  3.2 <a href="#item3.2">Hardening de Servidores Linux</a><br>
+  3.2 <a href="#item3.2">Lab 2: Descobrindo os Segredos dos Servidores Web</a><br>
   3.3 <a href="#item3.3">Firewall & ACL</a><br>
   3.4 <a href="#item3.4">IDS e IPS</a><br>
   3.5 <a href="#item3.5">Monitoramento de Logs</a><br>
@@ -266,7 +266,9 @@ Obs.: Laboratório registrado como 1, documento como 1 e referente a aula 1.
   </ul>
 </details>
 
-O primeiro laboratório desse curso consistiu em executar um pentest em uma sistema vulneravel de uma empresa fictícia de nome Acme Corp, passando por várias etapas: reconhecimento, descoberta, exploração, enumeração, análise avançada, documentação. Esse sistma foi construído na **AWS** pelo instrutor do curso e teve seu acesso controlado apenas aos alunos do curso, evitando assim que pessoas más intencionadas explorassem a vulnerabilidade do sistema.
+Os laboratórios do módulo três, na maioria das vezes, seguiram uma sequência interligada: um processo realizado em um laboratório anterior servia como base para o próximo. Neste módulo, o foco foi o ataque — o objetivo era explorar sistemas em níveis que iam do introdutório ao avançado, permitindo compreender os processos gradualmente. Era terminantemente proibido comprometer sistemas reais; foram utilizados apenas sistemas criados pelo instrutor para fins de aprendizado, com acesso e ações estritamente controlados pelos instrutores. Esses sistemas foram gerenciados na **AWS** e envolveram variados serviços. Na maioria dos labs foi utilizado um único sistema, cujo nível de dificuldade aumentava progressivamente; em outros, existiram sistemas distintos destinados a finalidades específicas.
+
+O primeiro laboratório consistiu em executar OSINT — com footprinting passivo e ativo — em um dos sistemas fornecidos pelo instrutor. O alvo era um sistema de uma empresa fictícia de logística, denominado Acme Corp. O objetivo foi realizar o reconhecimento, descobrir e documentar informações sobre a infraestrutura e realizar uma exploração leve e controlada (footprinting ativo) sem causar impacto ao ambiente. Todo o processo teve caráter investigativo: analisar o sistema e registrar as observações para embasar e orientar as etapas subsequentes em outros laboratórios.
 
 O ambiente **Docker** foi implantado em uma instância **Amazon EC2** na **AWS** e era composto pelos três containers seguintes:
 - `kensei_kali`: **Kali Linux** utilizado para ataque e reconhecimento. Continha ferramentas como **Subfinder**, **Httpx**, **Nuclei**, **Hakrawler**, **Gitleaks**, além de softwares como: **Python**, **curl**, **git**, **jq**, **build-essential**, **Golang** e **Amass**.
@@ -425,11 +427,182 @@ O passo seguinte foi criar um scan para o domínio `acme-corp-lab.com`, selecion
     <figcaption>Imagem 19.</figcaption>
 </figure></div><br>
 
-📊 Fase 6 - Documentação   
-A fase final desse laboratório foi a documentação de tudo que foi descoberto. Para isso foi criado o arquivo em **Markdown** [investigation_report.md](./acme-corp/investigation_report.md), contendo as informações que foram obtidas durante o lab.
+📊 Fase 6 — Documentação   
+A fase final deste laboratório consistiu em registrar todas as descobertas. Foi criado o arquivo em **Markdown** [investigation_report.md](./acme-corp/investigation_report.md), contendo o relatório detalhado das informações obtidas durante o lab. Além disso, gerou-se o arquivo [target_ips.txt](./acme-corp/target_ips.txt), com o mapeamento dos IPs descobertos, que serviria como referência para o próximo laboratório. Ambos os arquivos foram armazenados no diretório `acme-corp`.
 
-<a name="item3.2"><h4>3.2 Hardening de Servidores Linux</h4></a>[Back to summary](#item3)   
+Neste laboratório, o processo de OSINT foi conduzido principalmente pelo container de ataque **Kali Linux** no ambiente **Docker**, recorrendo ao navegador em alguns casos para melhor visualização das informações. Todos os comandos executados no Kali tiveram seus outputs salvos em arquivos — uma prática recomendada para documentação. Para organizar esses arquivos, foi criada a pasta `acme-corp` dentro do diretório `investigations`. Esse diretório poderia, em outros laboratórios, abrigar pastas de investigação de sistemas de outras empresas. Por enquanto, trabalhou-se apenas com a Acme Corp. O diretório de investigação foi localizado em `/home/kali` dentro do container.
+
+A mesma estrutura foi replicada na pasta do módulo, criando o diretório [acme-corp](./acme-corp/) e copiando para ele todos os arquivos gerados no container. A seguir está a estrutura de arquivos com uma breve descrição de cada item:
+- [acme-corp](./acme-corp/):
+  - [amass_results.txt](./acme-corp/amass_results.txt): resultados da enumeração do **Amass**.
+  - [company_info.txt](./acme-corp/company_info.txt): arquivo obtido do bucket público do **Amazon S3**, contendo informações sobre a empresa, infraestrutura e servidores (e‑mail e DNS).
+  - [custom_wordlist.txt](./acme-corp/custom_wordlist.txt): wordlist personalizada usada pelo **Gobuster**.
+  - [employees.csv](./acme-corp/employees.csv): arquivo baixado do mesmo bucket público do **Amazon S3**, contendo uma lista de funcionários com endereços de e‑mail e números de telefone.
+  - [gobuster_results.txt](./acme-corp/gobuster_results.txt): resultados da enumeração de diretórios pelo **Gobuster**.
+  - [investigation_report.md](./acme-corp/investigation_report.md): relatório final em Markdown com as descobertas do lab.
+  - [legacy_page.html](./acme-corp/legacy_page.html): cópia da página final obtida a partir do redirecionamento do subdomínio `old`.
+  - [live_web_services.txt](./acme-corp/live_web_services.txt): saída do **httpx** com serviços web ativos (títulos, tecnologias e status).
+  - [old_acme_page.html](./acme-corp/old_acme_page.html): cópia da página original de `old.acme-corp-lab.com` — idêntica a `legacy_page.html`, pois redirecionava para essa página.
+  - [resolved_subdomains.txt](./acme-corp/resolved_subdomains.txt): subdomínios que resolveram em registros DNS válidos (saída do **dnsx**).
+  - [subdomains.txt](./acme-corp/subdomains.txt): lista de subdomínios identificados com o **Subfinder**.
+  - [target_ips.txt](./acme-corp/target_ips.txt): mapeamento dos IPs descobertos, usado como referência para labs subsequentes.
+
+<a name="item3.2"><h4>3.2 Lab 2: Descobrindo os Segredos dos Servidores Web</h4></a>[Back to summary](#item3)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo3-ethical-hacking/lab_2)
+
+Obs.: Laboratório registrado como 2, documento como 2 e referente a aula 2.
+
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>services:</strong></summary>
+            <ul>
+              <li><details><summary><strong>kali:</strong></summary>
+                <ul>
+                  <li><strong>build:</strong>
+                    <ul>
+                      <li><code>context: .</code>: Contexto da build é o diretório atual.</li>
+                      <li><code>dockerfile: kali.Dockerfile</code>: Usa o arquivo <code>kali.Dockerfile</code> para construir a imagem.</li>
+                    </ul>
+                  </li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_kali</code>.</li>
+                  <li><code>tty: true</code>: Permite alocar um terminal interativo para o container.</li>
+                  <li><code>stdin_open: true</code>: Mantém o STDIN aberto para uso com <code>docker exec -it</code>.</li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./labs:/home/kali/labs</code>: Monta o diretório local <code>./labs</code> dentro do container em <code>/home/kali/labs</code>, facilitando desenvolvimento e uso de scripts.</li>
+                    </ul>
+                  </li>
+                  <li><strong>command:</strong> <code>/bin/bash</code>: Inicia o shell Bash, mantendo o container pronto para uso.</li>
+                </ul>
+              </details></li>
+              <li><details><summary><strong>spiderfoot:</strong></summary>
+                <ul>
+                  <li><strong>build:</strong>
+                    <ul>
+                      <li><code>context: .</code>: Define o diretório atual como contexto da build.</li>
+                      <li><code>dockerfile: Dockerfile.spiderfoot</code>: Usa o Dockerfile dedicado do SpiderFoot para construir a imagem.</li>
+                    </ul>
+                  </li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_spiderfoot</code>.</li>
+                  <li><strong>ports:</strong>
+                    <ul>
+                      <li><code>"5001:5001"</code>: Expõe a interface web do SpiderFoot na porta 5001 do host.</li>
+                    </ul>
+                  </li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./spiderfoot-data:/root/.spiderfoot</code>: Monta o diretório local <code>./spiderfoot-data</code> dentro do container em <code>/root/.spiderfoot</code>, garantindo que configurações, resultados e dados do SpiderFoot sejam persistidos entre reinicializações do container.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </details></li>
+              <li><details><summary><strong>neo4j:</strong></summary>
+                <ul>
+                  <li><strong>image:</strong> Usa a imagem oficial <code>neo4j:4.4</code>.</li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_neo4j</code>.</li>
+                  <li><strong>environment:</strong>
+                    <ul>
+                      <li><code>NEO4J_AUTH=neo4j/test</code>: Define usuário e senha iniciais (<code>neo4j</code> / <code>test</code>).</li>
+                      <li><code>NEO4J_dbms_memory_heap_initial__size=512m</code>: Define o tamanho inicial do heap de memória do Neo4j como 512 MB.</li>
+                      <li><code>NEO4J_dbms_memory_heap_max__size=1g</code>: Define o tamanho máximo do heap de memória do Neo4j como 1 GB.</li>
+                    </ul>
+                  </li>
+                  <li><strong>ports:</strong>
+                    <ul>
+                      <li><code>"7474:7474"</code>: Mapeia a porta 7474 do container para a porta 7474 do host, permitindo acesso à interface web do Neo4j via navegador.</li>
+                      <li><code>"7687:7687"</code>: Mapeia a porta 7687 do container para a porta 7687 do host, utilizada pelo Bolt protocol para conexão de drivers e aplicações ao Neo4j.</li>
+                    </ul>
+                  </li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./neo4j-data:/data</code>: Monta o diretório local <code>./neo4j-data</code> dentro do container em <code>/data</code>, garantindo que o banco de dados Neo4j seja persistido no host entre reinicializações do container.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </details></li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>networks:</strong></summary>
+            <ul>
+              <li><code>default:</code>
+                <ul>
+                  <li><strong>name:</strong> <code>kensei_lab_net</code>: Nomeia a rede padrão usada pelos serviços, garantindo comunicação entre containers dentro dessa rede.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Imagem base Kali Rolling.</li>
+            <li><strong>RUN:</strong> Executa a instalação de ferramentas essenciais e limpa o cache para reduzir o tamanho da imagem:
+              <ul>
+                <li><code>apt-get update</code>: Atualiza a lista de pacotes disponíveis.</li>
+                <li><code>apt-get install -y git curl jq python3-pip build-essential golang-go amass</code>: Instala ferramentas essenciais de desenvolvimento, rede e pentest.</li>
+                <li><code>apt-get clean && rm -rf /var/lib/apt/lists/*</code>: Remove arquivos temporários e limpa cache do apt.</li>
+              </ul>
+            </li>
+            <li><code>ENV GOPATH=/root/go</code>: Define a variável <code>GOPATH</code> apontando para <code>/root/go</code>, diretório onde o Go instalará pacotes e binários do usuário.</li>
+            <li><code>ENV PATH=$PATH:/root/go/bin</code>: Adiciona <code>/root/go/bin</code> ao <code>PATH</code>, permitindo executar ferramentas instaladas via <code>go install</code>.</li>
+            <li><code>RUN mkdir -p $GOPATH</code>: Cria diretório do GOPATH.</li>
+            <li><strong>RUN:</strong> Instala ferramentas Go no <code>GOPATH</code> utilizando <code>go install ...@latest</code> e disponibiliza os binários em <code>/root/go/bin</code>:
+              <ul>
+                <li><code>go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest</code>: Instala o <strong>subfinder</strong>, usado para descoberta de subdomínios.</li>
+                <li><code>go install github.com/projectdiscovery/httpx/cmd/httpx@latest</code>: Instala o <strong>httpx</strong>, utilizado para verificação e coleta de informações HTTP (status, headers, títulos, etc.).</li>
+                <li><code>go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest</code>: Instala o <strong>nuclei</strong>, motor de scan de vulnerabilidades baseado em templates.</li>
+                <li><code>go install github.com/hakluke/hakrawler@latest</code>: Instala o <strong>hakrawler</strong>, um crawler rápido para descoberta de endpoints e conteúdo web.</li>
+                <li><code>go install github.com/zricethezav/gitleaks/v8@latest</code>: Instala o <strong>gitleaks</strong>, ferramenta para detecção de segredos e chaves em repositórios.</li>
+              </ul>
+            </li>
+            <li><code>COPY scripts /home/kali/scripts</code>: Copia scripts locais para dentro do container.</li>
+            <li><code>WORKDIR /home/kali</code>: Define diretório de trabalho.</li>
+            <li><code>CMD ["/bin/bash"]</code>: Inicia o shell Bash.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Dockerfile.spiderfoot</strong></summary>
+          <ul>
+            <li><code>FROM python:3.10-slim</code>: Usa a imagem base Python 3.10 slim como ambiente inicial.</li>
+            <li><strong>RUN</strong>:
+              <ul>
+                <li><code>apt-get update</code>: Atualiza a lista de pacotes.</li>
+                <li><code>apt-get install -y --no-install-recommends git build-essential python3-dev libyaml-dev curl ca-certificates gcc g++ make libffi-dev libssl-dev</code>: Instala dependências do sistema necessárias para compilar e executar as dependências Python do SpiderFoot.</li>
+                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove listas de pacotes para reduzir o tamanho final da imagem.</li>
+              </ul>
+            </li>
+            <li><code>RUN pip3 install -U pip setuptools wheel cython</code>: Atualiza o gerenciador de pacotes Python e instala ferramentas de build (necessárias para compilar extensões como PyYAML).</li>
+            <li><code>WORKDIR /app</code>: Define o diretório de trabalho para os comandos seguintes.</li>
+            <li><code>RUN git clone --depth=1 --branch v4.0 https://github.com/smicallef/spiderfoot /app</code>: Clona a versão 4.0 do repositório SpiderFoot diretamente para <code>/app</code>.</li>
+            <li><code>RUN sed -i 's/pyyaml>=5.4.1,<6/pyyaml>=6.0/' requirements.txt</code>: Altera a especificação do PyYAML no <code>requirements.txt</code> para uma versão compatível (quando necessário) antes da instalação das dependências.</li>
+            <li><code>RUN pip3 install -r requirements.txt</code>: Instala as dependências Python do SpiderFoot listadas em <code>requirements.txt</code>.</li>
+            <li><code>EXPOSE 5001</code>: Expõe a porta 5001, usada pela interface web do SpiderFoot.</li>
+            <li><code>CMD ["python3", "sf.py", "-l", "0.0.0.0:5001"]</code>: Comando padrão para iniciar o SpiderFoot, fazendo-o escutar em todas as interfaces na porta 5001.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
+
+Este segundo laboratório foi sequência do laboratório anterior e montou o ambiente conforme tinha sido finalizado o lab anterior. Ou seja, os arquivos já criados estavam todos no container e o mesmo diretótio, `acme-corp`, seria utilizado para armazenar novos arquivos gerados. O ambiente **Docker** teve algumas alterações que não influenciavam a execução ou continuação do lab. Apenas o container **Kali Linux** era utilizado nesse lab, enquanto os demais não foram implantados pois não era necessários.
+
+Com a execução do OSINT (footprinting passivo e ativo, de forma não agressiva) foram coletadas apenas informações públicas. Neste lab, aprofundou-se a investigação no sistema da Acme Corp para identificar serviços e vetores potenciais — etapa que marca o limiar entre ações permitidas e não permitidas em ambientes reais. Em produção, qualquer verificação intrusiva exige autorização do responsável pelo sistema; neste caso, por se tratar de um laboratório controlado, a continuação foi autorizada pelos instrutores do curso.
+
+A lista de IPs dos três servidores descobertos, juntamente com o domínio do site principal, ([target_ips.txt](./acme-corp/target_ips.txt)), serviu de base para um reconhecimento mais agressivo — ou seja, atividades que exercem maior interação com o alvo e podem ser detectadas por sistemas de defesa. Para cada IP realizou-se varredura de portas (identificação de portas abertas, serviços, versões, banners e possível sistema operacional), enumeração de diretórios e análise dos endpoints de API. Toda nova informação obtida foi registrada no relatório já existente [investigation_report.md](./acme-corp/investigation_report.md).
+
+
+
+- Criar o diretório `results` dentro de acme-corp;
+- Criar um diretório para cada um dos IPs dentro de `results`;
+
+
+
+
+
 
 
 
