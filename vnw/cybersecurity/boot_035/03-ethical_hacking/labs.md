@@ -588,19 +588,168 @@ Obs.: Laboratório registrado como 2, documento como 2 e referente a aula 2.
   </ul>
 </details>
 
+
+
 Este segundo laboratório foi sequência do laboratório anterior e montou o ambiente conforme tinha sido finalizado o lab anterior. Ou seja, os arquivos já criados estavam todos no container e o mesmo diretótio, `acme-corp`, seria utilizado para armazenar novos arquivos gerados. O ambiente **Docker** teve algumas alterações que não influenciavam a execução ou continuação do lab. Apenas o container **Kali Linux** era utilizado nesse lab, enquanto os demais não foram implantados pois não era necessários.
 
 Com a execução do OSINT (footprinting passivo e ativo, de forma não agressiva) foram coletadas apenas informações públicas. Neste lab, aprofundou-se a investigação no sistema da Acme Corp para identificar serviços e vetores potenciais — etapa que marca o limiar entre ações permitidas e não permitidas em ambientes reais. Em produção, qualquer verificação intrusiva exige autorização do responsável pelo sistema; neste caso, por se tratar de um laboratório controlado, a continuação foi autorizada pelos instrutores do curso.
 
-A lista de IPs dos três servidores descobertos, juntamente com o domínio do site principal, ([target_ips.txt](./acme-corp/target_ips.txt)), serviu de base para um reconhecimento mais agressivo — ou seja, atividades que exercem maior interação com o alvo e podem ser detectadas por sistemas de defesa. Para cada IP realizou-se varredura de portas (identificação de portas abertas, serviços, versões, banners e possível sistema operacional), enumeração de diretórios e análise dos endpoints de API. Toda nova informação obtida foi registrada no relatório já existente [investigation_report.md](./acme-corp/investigation_report.md).
+Antes de executar os comandos, acessou-se o container de ataque com `docker exec -it kensei_kali /bin/bash` e navegou-se até a pasta de investigação da Acme Corp com `cd /home/kali/investigations/acme-corp`, onde já estavam os arquivos gerados durante o primeiro lab. Para confirmar a existência do arquivo `target_ips.txt`, executou-se `ls -la target_ips.txt`; se nada fosse listado, o arquivo não existia e era necessário criar um com os três IPs dos servidores identificados e o domínio `www.acme-corp-lab.com`.
+
+Em seguida, dentro de `acme-corp` criou-se o diretório [results](./acme-corp/results/) e, nele, uma pasta para cada alvo, nomeada com o IP ou domínio correspondente. Para simplificar a organização e evitar nomes longos, adicionou-se ao `target_ips.txt` um mapeamento que relacionava cada IP/domínio a uma nomenclatura padrão e sucinta (ex.: `ip1`, `ip2`, ...). A criação de pastas, subpastas e arquivos foi baseada nesse mapeamento. A estrutura ficou assim:
+- [acme-corp](./acme-corp/):
+  - [results](./acme-corp/results/) (`mkdir -p results`):
+    - [ip1](./acme-corp/results/ip1/) (`mkdir -p results/ip1`): `www.acme-corp-lab.com` — domínio do site principal.
+    - [ip2](./acme-corp/results/ip2/) (`mkdir -p results/ip2`): `3.94.82.59` — IP do servidor do sistema Legacy.
+    - [ip3](./acme-corp/results/ip3/) (`mkdir -p results/ip3`): `34.207.53.34` — IP do servidor de desenvolvimento.
+    - [ip4](./acme-corp/results/ip4/) (`mkdir -p results/ip4`): `54.152.245.201` — IP do servidor de administração.
+
+O arquivo [target_ips.txt](./acme-corp/target_ips.txt) trazia o mapeamento dos três IPs dos servidores descobertos, além do domínio do site principal. Esse arquivo serviu de base para um reconhecimento mais agressivo — ou seja, atividades com maior interação sobre os alvos, passíveis de detecção por sistemas de defesa. Para cada IP realizou-se varredura de portas (identificação de portas abertas, serviços, versões, banners e possível sistema operacional), enumeração de diretórios e análise dos endpoints de API. Todas as novas informações foram registradas no relatório existente ([investigation_report.md](./acme-corp/investigation_report.md)), e os arquivos gerados foram salvos na pasta correspondente a cada alvo.
+
+🚀 Passo 1 - Reconhecimento Rápido de Portas   
+Para o scan de portas foram utilizado três estratégias. A primeira delas com o **Nmap** para uma varredura das 1.000 portas mais comuns (rápido e eficiente). A estratégia 2 foi utilizando o **Rustscan** para descoberta rápida de portas não-padrão/altas. Enquanto a última foi novamente com o **Nmap** focando em portas web comuns, útil para pentesting de aplicações web. Abaixo seguem os comandos executados, separados por alvo:
+- **3.94.82.59 (ip2)**:
+  - Estratégia 1: `nmap -sT --top-ports 1000 3.94.82.59 -oN results/ip2/nmap_top1000_ip2.txt`
+  - Estratégia 2: `rustscan -a 3.94.82.59 --ulimit 5000 -- -sT -T4 -oA results/ip2/rustscan_ip2.txt`
+  - Estratégia 3: `nmap -sT -T4 -p 80,443,3000,8080,8443,8000,9000 3.94.82.59 -oN results/ip2/nmap_web_ip2.txt`
+- **34.207.53.34 (ip3)**:
+  - Estratégia 1: `nmap -sT --top-ports 1000 34.207.53.34 -oN results/ip3/nmap_top1000_ip3.txt`
+  - Estratégia 2: `rustscan -a 34.207.53.34 --ulimit 5000 -- -sT -T4 -oA results/ip3/rustscan_ip3.txt`
+  - Estratégia 3: `nmap -sT -T4 -p 80,443,3000,8080,8443,8000,9000 34.207.53.34 -oN results/ip3/nmap_web_ip3.txt`
+- **54.152.245.201 (ip4)**:
+  - Estratégia 1: `nmap -sT --top-ports 1000 54.152.245.201 -oN results/ip4/nmap_top1000_ip4.txt`
+  - Estratégia 2: `rustscan -a 54.152.245.201 --ulimit 5000 -- -sT -T4 -oA results/ip4/rustscan_ip4.txt`
+  - Estratégia 3: `nmap -sT -T4 -p 80,443,3000,8080,8443,8000,9000 54.152.245.201 -oN results/ip4/nmap_web_ip4.txt`
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img20.png" alt="img20"><br>
+    <figcaption>Imagem 20.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img25.png" alt="img25"><br>
+    <figcaption>Imagem 25.</figcaption>
+</figure></div><br>
+
+Cada comando gerou um arquivo — como foram três comandos por alvo e quatro alvos, isso resultou em 12 arquivos no total. Para visualizar o conteúdo de qualquer um deles, foi utilizado o **Cat** passando o caminho para o arquivo. A seguir está a lista dos arquivos gerados, os comandos para visualização e os principais resultados obtidos:
+- **3.94.82.59 (ip2)**:
+  - `nmap_top1000_ip2.txt` (`cat results/ip2/nmap_top1000_ip2.txt`): 
+  - `rustscan_ip2.txt` (`cat results/ip2/rustscan_ip2.txt`): 
+  - `nmap_web_ip2.txt` (`cat results/ip2/nmap_web_ip2.txt`): 
+- **34.207.53.34 (ip3)**:
+  - `nmap_top1000_ip3.txt` (`cat results/ip3/nmap_top1000_ip3.txt`): 
+  - `rustscan_ip3.txt` (`cat results/ip3/rustscan_ip3.txt`): 
+  - `nmap_web_ip3.txt` (`cat results/ip3/nmap_web_ip3.txt`): 
+- **54.152.245.201 (ip4)**:
+  - `nmap_top1000_ip4.txt` (`cat results/ip4/nmap_top1000_ip4.txt`):
+  - `rustscan_ip4.txt` (`cat results/ip4/rustscan_ip4.txt`):
+  - `nmap_web_ip4.txt` (`cat results/ip4/nmap_web_ip4.txt`):
 
 
+🔍 Passo 2 — Scan Detalhado de Serviços   
+Com as portas abertas e serviços identificados, o próximo passo foi executar varreduras detalhadas nessas portas para obter informações mais precisas e potenciais vetores de exploração. Para isso utilizou-se o **Nmap** com scripts e detecção de versão: `nmap -sC -sV -p <portas> <alvo>`, onde `-sC` executava os scripts NSE padrão (verificação de banners, checks rápidos e detecção de problemas conhecidos) e `-sV` tenta identificar versões exatas dos serviços em execução. Os resultados permitiram confirmar serviços, versões e possíveis vulnerabilidades a serem investigadas nas etapas subsequentes. A lista abaixo exibe os comandos executados:
+- **3.94.82.59 (ip2)**  
+  - `nmap -sC -sV -p <ports> 3.94.82.59 -oN results/ip2/nmap_ip2_port.txt`
+- **34.207.53.34 (ip3)**  
+  - `nmap -sC -sV -p <ports> 34.207.53.34 -oN results/ip3/nmap_ip3_port.txt`
+- **54.152.245.201 (ip4)**  
+  - `nmap -sC -sV -p <ports> 54.152.245.201 -oN results/ip4/nmap_ip4_port.txt`
 
-- Criar o diretório `results` dentro de acme-corp;
-- Criar um diretório para cada um dos IPs dentro de `results`;
+<div align="center"><figure>
+    <img src="../0-aux/md3-img26.png" alt="img26"><br>
+    <figcaption>Imagem 26.</figcaption>
+</figure></div><br>
 
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img30.png" alt="img30"><br>
+    <figcaption>Imagem 30.</figcaption>
+</figure></div><br>
 
+Novamente, cada comando gerou um arquivo — agora com resultado por alvo e pelas portas especificadas. A seguir está a lista dos arquivos gerados, o comando para visualização e um resumo dos principais achados extraídos desses arquivos:
+- **3.94.82.59 (ip2)**  
+  - `nmap_ip2_port.txt` (`cat results/ip2/nmap_ip2_port.txt`): 
+- **34.207.53.34 (ip3)**  
+  - `nmap_ip3_port.txt` (`cat results/ip3/nmap_ip3_port.txt`): 
+- **54.152.245.201 (ip4)**  
+  - `nmap_ip4_port.txt` (`cat results/ip4/nmap_ip4_port.txt`): 
+
+🌐 Passo 3 - Análise Detalhada de Serviços HTTP/HTTPS   
+Nessa etapa, o foco foi nos serviços web identificados nas varreduras anteriores. Com as portas e serviços mapeados, separaram-se os servidores que estavam executando serviços HTTP/HTTPS e foram usadas ferramentas para identificar tecnologias, títulos e códigos de status, além de obter impressões mais detalhadas sobre frameworks e versões. Utilizou-se **httpx** para detecção rápida de tecnologias (PHP, Node.js, etc.), título da página e código HTTP, e **whatweb** para uma fingerprinting mais aprofundada (versões de CMS, frameworks e bibliotecas). A lista abaixo mostra os comandos executados por alvo:
+- **3.94.82.59 (ip2)**  
+  - `httpx -u http://3.94.82.59 -title -tech-detect -status-code -o results/ip2/httpx_ip2.txt`
+  - `whatweb -a 3 http://3.94.82.59 > results/ip2/whatweb_ip2.txt`
+- **34.207.53.34 (ip3)**  
+  - `httpx -u http://34.207.53.34 -title -tech-detect -status-code -o results/ip3/httpx_ip3.txt`
+  - `whatweb -a 3 http://34.207.53.34 > results/ip3/whatweb_ip3.txt`
+- **54.152.245.201 (ip4)**  
+  - `httpx -u http://54.152.245.201 -title -tech-detect -status-code -o results/ip4/httpx_ip4.txt`
+  - `whatweb -a 3 http://54.152.245.201 > results/ip4/whatweb_ip4.txt`
+
+A seguir apresenta-se a lista dos arquivos gerados por esses comandos, o comando para visualização de cada um e um resumo das principais informações extraídas de cada arquivo:
+- **3.94.82.59 (ip2)**  
+  - `httpx_ip2.txt` (`cat results/ip2/httpx_ip2.txt`): 
+  - `whatweb_ip2.txt` (`cat results/ip2/whatweb_ip2.txt`): 
+- **34.207.53.34 (ip3)**  
+  - `httpx_ip3.txt` (`cat results/ip3/httpx_ip3.txt`): 
+  - `whatweb_ip3.txt` (`cat results/ip3/whatweb_ip3.txt`): 
+- **54.152.245.201 (ip4)**  
+  - `httpx_ip4.txt` (`cat results/ip4/httpx_ip4.txt`): 
+  - `whatweb_ip4.txt` (`cat results/ip4/whatweb_ip4.txt`): 
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img31.png" alt="img31"><br>
+    <figcaption>Imagem 31.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img35.png" alt="img35"><br>
+    <figcaption>Imagem 35.</figcaption>
+</figure></div><br>
+
+📁 Passo 4 — Enumeração de Diretórios e Arquivos   
+Aplicações web frequentemente expõem diretórios e arquivos sensíveis (backups, logs, arquivos de configuração e até código‑fonte). Nesta etapa realizou‑se a enumeração de diretórios e arquivos com **Gobuster**, que permite descobrir caminhos acessíveis diretamente, mas não listados publicamente. Foram adotadas três abordagens complementares: (1) uso da wordlist padrão do **Gobuster**; (2) uso de uma wordlist personalizada; (3) busca por extensões específicas com o parâmetro `-x` para localizar arquivos como `.conf`, `.ini`, `.bak`, `.htaccess`, `robots.txt` e `sitemap.xml`, que frequentemente contêm dados sensíveis.
+
+Como já havia uma `custom_wordlist.txt` criada em etapa anterior, gerou‑se uma segunda wordlist (para evitar sobrescrever a original) chamada `custom_wordlist_extended.txt` com:  
+`echo -e 'admin\napi\nbackup\nconfig\ndev\ngit\nlogin\nphpinfo\nphpmyadmin\ntest\nwww\nwp-admin\nwp-content\nwp-includes\nuploads\nfiles\nimages\ncss\njs\nassets\n.htaccess\nrobots.txt\nsitemap.xml' > custom_wordlist_extended.txt`.
+
+A seguir, os comandos executados por alvo são listados:
+- **3.94.82.59 (ip2)**  
+  - `gobuster dir -u http://3.94.82.59 -w /usr/share/wordlists/dirb/common.txt -o results/ip2/gobuster_ip2.txt -q`
+  - `gobuster dir -u http://3.94.82.59 -w custom_wordlist.txt -o results/ip2/gobuster_custom_ip2.txt -q`
+  - `gobuster dir -u http://3.94.82.59 -w /usr/share/wordlists/dirb/common.txt -x php,html,txt,conf,ini,bak,log -o results/ip2/gobuster_files_ip2.txt -q`
+- **34.207.53.34 (ip3)**  
+  - `gobuster dir -u http://34.207.53.34 -w /usr/share/wordlists/dirb/common.txt -o results/ip3/gobuster_ip3.txt -q`
+  - `gobuster dir -u http://34.207.53.34 -w custom_wordlist.txt -o results/ip3/gobuster_custom_ip3.txt -q`
+  - `gobuster dir -u http://34.207.53.34 -w /usr/share/wordlists/dirb/common.txt -x php,html,txt,conf,ini,bak,log -o results/ip3/gobuster_files_ip3.txt -q`
+- **54.152.245.201 (ip4)**  
+  - `gobuster dir -u http://54.152.245.201 -w /usr/share/wordlists/dirb/common.txt -o results/ip4/gobuster_ip4.txt -q`
+  - `gobuster dir -u http://54.152.245.201 -w custom_wordlist.txt -o results/ip4/gobuster_custom_ip4.txt -q`
+  - `gobuster dir -u http://54.152.245.201 -w /usr/share/wordlists/dirb/common.txt -x php,html,txt,conf,ini,bak,log -o results/ip4/gobuster_files_ip4.txt -q`
+
+Essas abordagens permitiram mapear diretórios públicos, localizar arquivos úteis para investigação e identificar potenciais fontes de credenciais e configurações expostas. Como de costume, cada comando gerava um arquivo diferente. A lista abaixo mostra os arquivos gerados o comando para visualização de cada um e um resumo das principais informações extraídas de cada arquivo:
+- **3.94.82.59 (ip2)**  
+  - `gobuster_ip2.txt` (`cat results/ip2/gobuster_ip2.txt`): 
+  - `gobuster_custom_ip2.txt` (`cat results/ip2/gobuster_custom_ip2.txt`): 
+  - `gobuster_files_ip2.txt` (`cat results/ip2/gobuster_files_ip2.txt`): 
+- **34.207.53.34 (ip3)**  
+  - `gobuster_ip3.txt` (`cat results/ip3/gobuster_ip3.txt`): 
+  - `gobuster_custom_ip3.txt` (`cat results/ip3/gobuster_custom_ip3.txt`): 
+  - `gobuster_files_ip3.txt` (`cat results/ip3/gobuster_files_ip3.txt`): 
+- **54.152.245.201 (ip4)**  
+  - `gobuster_ip4.txt` (`cat results/ip4/gobuster_ip4.txt`): 
+  - `gobuster_custom_ip4.txt` (`cat results/ip4/gobuster_custom_ip4.txt`): 
+  - `gobuster_files_ip4.txt` (`cat results/ip4/gobuster_files_ip4.txt`): 
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img36.png" alt="img36"><br>
+    <figcaption>Imagem 36.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img40.png" alt="img40"><br>
+    <figcaption>Imagem 40.</figcaption>
+</figure></div><br>
 
 
 
