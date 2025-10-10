@@ -4,10 +4,27 @@
 Investigação revelou múltiplas vulnerabilidades críticas de segurança...
 
 ## Achados Principais
-1. **Exposição de Credenciais**: API dev expõe credenciais de banco de dados
-2. **Arquivos Públicos S3**: Informações sensíveis da empresa expostas
-3. **Sistema Legacy**: Página legacy serve como hub central desprotegido
-4. **WordPress Exposto**: Painel administrativo acessível publicamente
+- **Subdomínios Expostos**: Subdomínios identificados, incluindo `old.acme-corp-lab.com`.
+- **Buckets S3 com site estático expostos**:
+    - `old.acme-corp-lab.com`: Site estático configurado para redirecionar para o servidor Legacy (`3.94.82.59:80`), funcionando como um hub central desprotegido.
+    - `admin.acme-corp-lab.com`: Site estático configurado para redirecionar para o servidor de administração (`54.152.245.201:80`).
+    - `dev.acme-corp-lab.com`: Site estático configurado para redirecionar para o servidor de desenvolvimento (`34.207.53.34:3000`).
+- **Sites estáticos redirecionando para servidores com exposição de IPs**:
+    - `old.acme-corp-lab.com` → `3.94.82.59:80`
+    - `admin.acme-corp-lab.com` → `54.152.245.201:80`
+    - `dev.acme-corp-lab.com` → `34.207.53.34:3000`
+- **Sistema Legacy expondo arquivos públicos em bucket do S3**:
+    - `company_info.txt`: informações sobre a empresa, infraestrutura e servidores (e-mail e DNS).
+    - `employees.csv`: lista de funcionários com endereços de e-mail e números de telefone.
+- **Servidor Dev expondo endpoints de API**:
+    - `/api/health`: informações de saúde da API.
+    - `/api/system-info`: credenciais de banco de dados, chaves de serviços em nuvem e outros segredos.
+    - `/api/users`: lista de usuários da API.
+    - `/api/config`: configuração da API.
+- **Servidor Admin expondo diretórios WordPress**:
+    - `wp-includes`: expõe arquivos da estrutura interna do WordPress.
+    - `wp-admin`: painel administrativo acessível, mostrando rotas e arquivos sensíveis.
+    - `wp-content`: não expõe informações relevantes.
 
 ## Recomendações Críticas
 1. Remover credenciais da API de desenvolvimento

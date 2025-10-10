@@ -80,7 +80,7 @@ Esta pasta refere-se aos laboratórios do módulo 3 **Ethical Hacking (Red Team)
 3. <a name="item3">Módulo 3: Ethical Hacking (Red Team)<br>
   3.1 <a href="#item3.1">Pentest: Metodologia & Regras de Engajamento</a><br>
   3.2 <a href="#item3.2">Lab 2: Descobrindo os Segredos dos Servidores Web</a><br>
-  3.3 <a href="#item3.3">Firewall & ACL</a><br>
+  3.3 <a href="#item3.3">HACKER STORY — Aula 40: Metasploit básico</a><br>
   3.4 <a href="#item3.4">IDS e IPS</a><br>
   3.5 <a href="#item3.5">Monitoramento de Logs</a><br>
   3.6 <a href="#item3.6">Patch Management</a><br>
@@ -590,6 +590,8 @@ Obs.: Laboratório registrado como 2, documento como 2 e referente a aula 2.
 
 
 
+
+
 Este segundo laboratório foi sequência do laboratório anterior e montou o ambiente conforme tinha sido finalizado o lab anterior. Ou seja, os arquivos já criados estavam todos no container e o mesmo diretótio, `acme-corp`, seria utilizado para armazenar novos arquivos gerados. O ambiente **Docker** teve algumas alterações que não influenciavam a execução ou continuação do lab. Apenas o container **Kali Linux** era utilizado nesse lab, enquanto os demais não foram implantados pois não era necessários.
 
 Com a execução do OSINT (footprinting passivo e ativo, de forma não agressiva) foram coletadas apenas informações públicas. Neste lab, aprofundou-se a investigação no sistema da Acme Corp para identificar serviços e vetores potenciais — etapa que marca o limiar entre ações permitidas e não permitidas em ambientes reais. Em produção, qualquer verificação intrusiva exige autorização do responsável pelo sistema; neste caso, por se tratar de um laboratório controlado, a continuação foi autorizada pelos instrutores do curso.
@@ -727,7 +729,7 @@ A seguir, os comandos executados por alvo são listados:
   - `gobuster dir -u http://54.152.245.201 -w custom_wordlist.txt -o results/ip4/gobuster_custom_ip4.txt -q`
   - `gobuster dir -u http://54.152.245.201 -w /usr/share/wordlists/dirb/common.txt -x php,html,txt,conf,ini,bak,log -o results/ip4/gobuster_files_ip4.txt -q`
 
-Essas abordagens permitiram mapear diretórios públicos, localizar arquivos úteis para investigação e identificar potenciais fontes de credenciais e configurações expostas. Como de costume, cada comando gerava um arquivo diferente. A lista abaixo mostra os arquivos gerados o comando para visualização de cada um e um resumo das principais informações extraídas de cada arquivo:
+Essas abordagens permitiram mapear diretórios públicos, localizar arquivos úteis para investigação e identificar potenciais fontes de credenciais e configurações expostas. Como de costume, cada comando gerava um arquivo diferente. A lista abaixo mostra os arquivos gerados, o comando para visualização de cada um e um resumo das principais informações extraídas de cada arquivo:
 - **3.94.82.59 (ip2)**  
   - `gobuster_ip2.txt` (`cat results/ip2/gobuster_ip2.txt`): 
   - `gobuster_custom_ip2.txt` (`cat results/ip2/gobuster_custom_ip2.txt`): 
@@ -751,22 +753,377 @@ Essas abordagens permitiram mapear diretórios públicos, localizar arquivos út
     <figcaption>Imagem 40.</figcaption>
 </figure></div><br>
 
+🔌 Passo 5 - Análise de APIs e Endpoints   
+APIs modernas frequentemente expõem endpoints sensíveis, métodos HTTP perigosos e até credenciais em respostas JSON. Nesta etapa utilizou-se o **Gobuster** para descobrir endpoints de API, adotando duas abordagens complementares: (1) varredura com uma wordlist padrão enquanto se especificavam extensões relevantes via `-x` (`json,php,py,js`) para captar arquivos e endpoints com essas extensões; (2) varredura com uma wordlist personalizada focada em caminhos de API, sem usar `-x`, para encontrar endpoints `REST/GraphQL/Swagger` mais semânticos. A wordlist personalizada foi gerada com `echo -e 'api\nv1\nv2\nrest\ngraphql\nswagger\ndocs\nopenapi\nendpoints\n' > api_wordlist.txt`. Os comandos executados são apresentados abaixo:
+- **3.94.82.59 (ip2)**  
+  - `gobuster dir -u http://3.94.82.59 -w /usr/share/wordlists/dirb/common.txt -x json,php,py,js -o results/ip2/api_endpoints_ip2.txt -q`
+  - `gobuster dir -u http://3.94.82.59 -w api_wordlist.txt -o results/ip2/api_discovery_ip2.txt -q`
+- **34.207.53.34 (ip3)**  
+  - `gobuster dir -u http://34.207.53.34 -w /usr/share/wordlists/dirb/common.txt -x json,php,py,js -o results/ip3/api_endpoints_ip3.txt -q`
+  - `gobuster dir -u http://34.207.53.34 -w api_wordlist.txt -o results/ip3/api_discovery_ip3.txt -q`
+- **54.152.245.201 (ip4)**  
+  - `gobuster dir -u http://54.152.245.201 -w /usr/share/wordlists/dirb/common.txt -x json,php,py,js -o results/ip4/api_endpoints_ip4.txt -q`
+  - `gobuster dir -u http://54.152.245.201 -w api_wordlist.txt -o results/ip4/api_discovery_ip4.txt -q`
+
+APIs costumam adotar caminhos padronizados como `/api/`, `/v1/` e `/rest/`; identificar esses endpoints é o primeiro passo para explorar a superfície da API. A descoberta permite, em seguida, validar respostas com **Curl**/**httpx**, verificar métodos HTTP permitidos e inspecionar payloads JSON em busca de dados sensíveis. A seguir, listam-se os arquivos gerados pela enumeração de APIs, o comando para visualização e um resumo das informações obtidas em cada saída:
+- **3.94.82.59 (ip2)**  
+  - `api_endpoints_ip2.txt` (`cat results/ip2/api_endpoints_ip2.txt`): 
+  - `api_discovery_ip2.txt` (`cat results/ip2/api_discovery_ip2.txt`): 
+- **34.207.53.34 (ip3)**  
+  - `api_endpoints_ip3.txt` (`cat results/ip3/api_endpoints_ip3.txt`): 
+  - `api_discovery_ip3.txt` (`cat results/ip3/api_discovery_ip3.txt`):  
+- **54.152.245.201 (ip4)**  
+  - `api_endpoints_ip4.txt` (`cat results/ip4/api_endpoints_ip4.txt`): 
+  - `api_discovery_ip4.txt` (`cat results/ip4/api_discovery_ip4.txt`): 
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img41.png" alt="img41"><br>
+    <figcaption>Imagem 41.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img45.png" alt="img45"><br>
+    <figcaption>Imagem 45.</figcaption>
+</figure></div><br>
+
+Com os endpoints descobertos, testaram-se métodos HTTP que podem alterar o estado da aplicação (`PUT`, `DELETE`, `PATCH`) e o método `OPTIONS`, que revela os métodos permitidos pelo servidor. Abaixo estão os comandos executados para testar o endpoint `/api/` em cada alvo.
+- **3.94.82.59 (ip2)**  
+  - `curl -X OPTIONS http://3.94.82.59/api/ -v > results/ip2/http_options_ip2.txt 2>&1`
+  - `curl -X GET http://3.94.82.59/api/ -v >> results/ip2/http_get_ip2.txt 2>&1`
+  - `curl -X POST http://3.94.82.59/api/ -v >> results/ip2/http_post_ip2.txt 2>&1`
+- **34.207.53.34 (ip3)**  
+  - `curl -X OPTIONS http://34.207.53.34/api/ -v > results/ip3/http_options_ip3.txt 2>&1`
+  - `curl -X GET http://34.207.53.34/api/ -v >> results/ip3/http_get_ip3.txt 2>&1`
+  - `curl -X POST http://34.207.53.34/api/ -v >> results/ip3/http_post_ip3.txt 2>&1`
+- **54.152.245.201 (ip4)**  
+  - `curl -X OPTIONS http://54.152.245.201/api/ -v > results/ip4/http_options_ip4.txt 2>&1`
+  - `curl -X GET http://54.152.245.201/api/ -v >> results/ip4/http_get_ip4.txt 2>&1`
+  - `curl -X POST http://54.152.245.201/api/ -v >> results/ip4/http_post_ip4.txt 2>&1`
+
+Na sequência são listados os arquivos gerados por esses testes, os comandos de visualização e as informações obtidas em cada um:
+- **3.94.82.59 (ip2)**  
+  - `http_options_ip2.txt` (`cat results/ip2/http_options_ip2.txt`): 
+  - `http_get_ip2.txt` (`cat results/ip2/http_get_ip2.txt`): 
+  - `http_post_ip2.txt` (`cat results/ip2/http_post_ip2.txt`): 
+- **34.207.53.34 (ip3)**  
+  - `http_options_ip3.txt` (`cat results/ip3/http_options_ip3.txt`): 
+  - `http_get_ip3.txt` (`cat results/ip3/http_get_ip3.txt`):  
+  - `http_post_ip3.txt` (`cat results/ip3/http_post_ip3.txt`):  
+- **54.152.245.201 (ip4)**  
+  - `http_options_ip4.txt` (`cat results/ip4/http_options_ip4.txt`): 
+  - `http_get_ip4.txt` (`cat results/ip4/http_get_ip4.txt`): 
+  - `http_post_ip4.txt` (`cat results/ip4/http_post_ip4.txt`): 
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img46.png" alt="img46"><br>
+    <figcaption>Imagem 46.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img50.png" alt="img50"><br>
+    <figcaption>Imagem 50.</figcaption>
+</figure></div><br>
+
+Ainda dentro do passo cinco, as respostas JSON de endpoints específicos foram analisadas para identificar possíveis informações sensíveis ou comportamentos inesperados. Os comandos executados estão listados abaixo:
+- **3.94.82.59 (ip2)**  
+  - `curl -s http://3.94.82.59/api/health | jq . > results/ip2/api_health_ip2.json`
+  - `curl -s http://3.94.82.59/api/system-info | jq . > results/ip2/api_system_ip2.json`
+- **34.207.53.34 (ip3)**  
+  - `curl -s http://34.207.53.34/api/health | jq . > results/ip3/api_health_ip3.json`
+  - `curl -s http://34.207.53.34/api/system-info | jq . > results/ip3/api_system_ip3.json`
+- **54.152.245.201 (ip4)**  
+  - `curl -s http://54.152.245.201/api/health | jq . > results/ip4/api_health_ip4.json`
+  - `curl -s http://54.152.245.201/api/system-info | jq . > results/ip4/api_system_ip4.json`
+
+A seguir são exibidos os arquivos gerados, assim como os comandos de visualização e as informações obtidas:
+- **3.94.82.59 (ip2)**  
+  - `api_health_ip2.json` (`cat results/ip2/api_health_ip2.json`): 
+  - `api_system_ip2.json` (`cat results/ip2/api_system_ip2.json`): 
+- **34.207.53.34 (ip3)**  
+  - `api_health_ip3.json` (`cat results/ip3/api_health_ip3.json`): 
+  - `api_system_ip3.json` (`cat results/ip3/api_system_ip3.json`):  
+- **54.152.245.201 (ip4)**  
+  - `api_health_ip4.json` (`cat results/ip4/api_health_ip4.json`): 
+  - `api_system_ip4.json` (`cat results/ip4/api_system_ip4.json`): 
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img51.png" alt="img51"><br>
+    <figcaption>Imagem 51.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img55.png" alt="img55"><br>
+    <figcaption>Imagem 55.</figcaption>
+</figure></div><br>
+
+Para finalizar essa etapa foi utilizado a ferramenta **grep** para procurar padrões sensíveis nas respostas. Ou seja, em cada arquivo com prefixo `api_` no início e extensão JSON, o **grep** atuava para procurar as palavras `password`, `secret`, `key` e `token`. Os comandos executados são mostrados abaixo e eles não geraram arquivos.
+
+Para finalizar essa etapa, utilizou-se **grep** para procurar padrões sensíveis nas respostas das APIs: foram inspecionados todos os arquivos com prefixo `api_` e extensão `.json` nas pastas de resultados, buscando termos indicativos de segredos como `password`, `secret`, `key` e `token`. Os comandos executados abaixo não geraram arquivos, apenas exibiram resultados no terminal.
+- **3.94.82.59 (ip2)**  
+  - `grep -i "password\|secret\|key\|token" results/ip2/api_*.json`
+- **34.207.53.34 (ip3)**  
+  - `grep -i "password\|secret\|key\|token" results/ip3/api_*.json`
+- **54.152.245.201 (ip4)**  
+  - `grep -i "password\|secret\|key\|token" results/ip4/api_*.json`
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img56.png" alt="img56"><br>
+    <figcaption>Imagem 56.</figcaption>
+</figure></div><br>
+
+<div align="center"><figure>
+    <img src="../0-aux/md3-img60.png" alt="img60"><br>
+    <figcaption>Imagem 60.</figcaption>
+</figure></div><br>
+
+🔌 Passo 6 - Banner Grabbing e Headers Detalhados   
+Nem todo serviço web responde bem a ferramentas automatizadas. Banner grabbing manual e análise detalhada de headers podem revelar informações adicionais. Banner grabbing é o processo.... Banners revelam versões exatas de software, que podem ser pesquisadas em bancos de dados de vulnerabilidades (CVE). Já análise detalhada de headers consiste em.... Headers HTTP revelam servidor web (Apache, IIS, nginx), versões, frameworks (PHP, ASP.NET), e configurações de segurança.
+
+Primeiro foi executado o banner grabbing com o **Netcat (nc)** nas portas `80`, `22` e `3000` dos IPs alvos. Em seguida foi realizada a análise detalhada de headers HTTP com o **Curl**. Os comandos executados são apresentados abaixo:
 
 
+🔌 Passo 6 - Banner Grabbing e Headers Detalhados   
+Nem todo serviço web responde completamente a scanners automatizados; por isso realizou-se banner grabbing manual e inspeção detalhada de headers para extrair informações adicionais úteis à identificação de versões e vetores de ataque. Banner grabbing consiste em abrir uma conexão simples ao serviço (TCP) e ler a resposta inicial — frequentemente contém banners que revelam software e versões (por exemplo, `nginx/1.18.0`), dados que podem ser cruzados com bases de CVE. A análise de headers HTTP examina cabeçalhos como `Server`, `X-Powered-By`, `Strict-Transport-Security`, `Content-Security-Policy` e `Set-Cookie`, os quais informam o servidor web (Apache, Nginx, IIS), frameworks (PHP, ASP.NET), versões e configurações de segurança/mitigação.
 
+Primeiro realizou-se banner grabbing com **Netcat (nc)** nas portas `80`, `22` e `3000` dos alvos, e em seguida foi feita a análise detalhada de headers HTTP com **Curl**. Os comandos executados consistirem nos seguintes:
+- **3.94.82.59 (ip2)**  
+  - `timeout 2 bash -c "echo | nc 3.94.82.59 80" > results/ip2/banner_ip2_80.txt`
+  - `timeout 2 bash -c "echo | nc 3.94.82.59 22" > results/ip2/banner_ip2_22.txt`
+  - `timeout 2 bash -c "echo | nc 3.94.82.59 3000" > results/ip2/banner_ip2_3000.txt`
+  - `curl -I http://3.94.82.59 > results/ip2/curl_headers_ip2.txt`
+  - `curl -I -k https://3.94.82.59 > results/ip2/curl_headers_https_ip2.txt`
+  - `curl -I -H "User-Agent: Mozilla/5.0" http://3.94.82.59 > results/ip2/curl_headers_ua_ip2.txt`
+- **34.207.53.34 (ip3)**  
+  - `timeout 2 bash -c "echo | nc 34.207.53.34 80" > results/ip3/banner_ip3_80.txt`
+  - `timeout 2 bash -c "echo | nc 34.207.53.34 22" > results/ip3/banner_ip3_22.txt`
+  - `timeout 2 bash -c "echo | nc 34.207.53.34 3000" > results/ip3/banner_ip3_3000.txt`
+  - `curl -I http://34.207.53.34 > results/ip3/curl_headers_ip3.txt`
+  - `curl -I -k https://34.207.53.34 > results/ip3/curl_headers_https_ip3.txt`
+  - `curl -I -H "User-Agent: Mozilla/5.0" http://34.207.53.34 > results/ip3/curl_headers_ua_ip3.txt`
+- **54.152.245.201 (ip4)**  
+  - `timeout 2 bash -c "echo | nc 54.152.245.201 80" > results/ip4/banner_ip4_80.txt`
+  - `timeout 2 bash -c "echo | nc 54.152.245.201 22" > results/ip4/banner_ip4_22.txt`
+  - `timeout 2 bash -c "echo | nc 54.152.245.201 3000" > results/ip4/banner_ip4_3000.txt`
+  - `curl -I http://54.152.245.201 > results/ip4/curl_headers_ip4.txt`
+  - `curl -I -k https://54.152.245.201 > results/ip4/curl_headers_https_ip4.txt`
+  - `curl -I -H "User-Agent: Mozilla/5.0" http://54.152.245.201 > results/ip4/curl_headers_ua_ip4.txt`
 
+Os arquivos gerados por esses comandos, assim como os comandos de visualização e as informações obtidas são listadas abaixo:
+- **3.94.82.59 (ip2)**  
+  - `banner_ip2_80.txt` (`cat results/ip2/banner_ip2_80.txt`): 
+  - `banner_ip2_22.txt` (`cat results/ip2/banner_ip2_22.txt`): 
+  - `banner_ip2_3000.txt` (`cat results/ip2/banner_ip2_3000.txt`): 
+  - `curl_headers_ip2.txt` (`cat results/ip2/curl_headers_ip2.txt`): 
+  - `curl_headers_https_ip2.txt` (`cat results/ip2/curl_headers_https_ip2.txt`): 
+  - `curl_headers_ua_ip2.txt` (`cat results/ip2/curl_headers_ua_ip2.txt`): 
+- **34.207.53.34 (ip3)**  
+  - `banner_ip3_80.txt` (`cat results/ip3/banner_ip3_80.txt`): 
+  - `banner_ip3_22.txt` (`cat results/ip3/banner_ip3_22.txt`):  
+  - `banner_ip3_3000.txt` (`cat results/ip3/banner_ip3_3000.txt`):  
+  - `curl_headers_ip3.txt` (`cat results/ip3/curl_headers_ip3.txt`):  
+  - `curl_headers_https_ip3.txt` (`cat results/ip3/curl_headers_https_ip3.txt`):  
+  - `curl_headers_ua_ip3.txt` (`cat results/ip3/curl_headers_ua_ip3.txt`):  
+- **54.152.245.201 (ip4)**  
+  - `banner_ip4_80.txt` (`cat results/ip4/banner_ip4_80.txt`): 
+  - `banner_ip4_22.txt` (`cat results/ip4/banner_ip4_22.txt`): 
+  - `banner_ip4_3000.txt` (`cat results/ip4/banner_ip4_3000.txt`): 
+  - `curl_headers_ip4.txt` (`cat results/ip4/curl_headers_ip4.txt`): 
+  - `curl_headers_https_ip4.txt` (`cat results/ip4/curl_headers_https_ip4.txt`): 
+  - `curl_headers_ua_ip4.txt` (`cat results/ip4/curl_headers_ua_ip4.txt`): 
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img61.png" alt="img61"><br>
+    <figcaption>Imagem 61.</figcaption>
+</figure></div><br>
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img65.png" alt="img65"><br>
+    <figcaption>Imagem 65.</figcaption>
+</figure></div><br>
 
+Ainda no Passo 6, utilizou-se o **Nikto** para execução de scans automatizados de vulnerabilidades web. O **Nikto** verifica configurações inseguras, presença de arquivos sensíveis (backups, logs), problemas em cabeçalhos HTTP e entradas conhecidas de vulnerabilidades em aplicações web. Foi executado um único comando por alvo, gravando a saída em um arquivo para análise posterior.
+- **3.94.82.59 (ip2)**  
+  - `nikto -host http://3.94.82.59 -output results/ip2/nikto_ip2.txt`
+- **34.207.53.34 (ip3)**  
+  - `nikto -host http://34.207.53.34 -output results/ip3/nikto_ip3.txt`
+- **54.152.245.201 (ip4)**  
+  - `nikto -host http://54.152.245.201 -output results/ip4/nikto_ip4.txt`
 
+A lista abaixo mostra o arquivo gerado, o comando de visualização e as informações obtidas:
+- **3.94.82.59 (ip2)**  
+  - `anikto_ip2.txt` (`cat results/ip2/anikto_ip2.txt`): 
+- **34.207.53.34 (ip3)**  
+  - `nikto_ip3.txt` (`cat results/ip3/nikto_ip3.txt`): 
+- **54.152.245.201 (ip4)**  
+  - `nikto_ip4.txt` (`cat results/ip4/nikto_ip4.txt`): 
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img66.png" alt="img66"><br>
+    <figcaption>Imagem 66.</figcaption>
+</figure></div><br>
 
+<div align="center"><figure>
+    <img src="../0-aux/md3-img70.png" alt="img70"><br>
+    <figcaption>Imagem 70.</figcaption>
+</figure></div><br>
 
-
-
-
-<a name="item3.3"><h4>3.3 Firewall & ACL</h4></a>[Back to summary](#item3)   
+<a name="item3.3"><h4>3.3 HACKER STORY — Aula 40: Metasploit básico</h4></a>[Back to summary](#item3)   
 [Material do Lab](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo3-ethical-hacking/lab_3)
+
+Obs.: Laboratório registrado como 3, documento como 40 e referente a aula 3.
+
+<details><summary><strong>Ambiente de Laboratório</strong></summary>
+  <ul>
+    <li><details><summary><strong>Docker Compose</strong></summary>
+        <ul>
+          <li><details><summary><strong>services:</strong></summary>
+            <ul>
+              <li><details><summary><strong>kali:</strong></summary>
+                <ul>
+                  <li><strong>build:</strong>
+                    <ul>
+                      <li><code>context: .</code>: Contexto da build é o diretório atual.</li>
+                      <li><code>dockerfile: kali.Dockerfile</code>: Usa o arquivo <code>kali.Dockerfile</code> para construir a imagem.</li>
+                    </ul>
+                  </li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_kali</code>.</li>
+                  <li><code>tty: true</code>: Permite alocar um terminal interativo para o container.</li>
+                  <li><code>stdin_open: true</code>: Mantém o STDIN aberto para uso com <code>docker exec -it</code>.</li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./labs:/home/kali/labs</code>: Monta o diretório local <code>./labs</code> dentro do container em <code>/home/kali/labs</code>, facilitando desenvolvimento e uso de scripts.</li>
+                    </ul>
+                  </li>
+                  <li><strong>command:</strong> <code>/bin/bash</code>: Inicia o shell Bash, mantendo o container pronto para uso.</li>
+                </ul>
+              </details></li>
+              <li><details><summary><strong>spiderfoot:</strong></summary>
+                <ul>
+                  <li><strong>build:</strong>
+                    <ul>
+                      <li><code>context: .</code>: Define o diretório atual como contexto da build.</li>
+                      <li><code>dockerfile: Dockerfile.spiderfoot</code>: Usa o Dockerfile dedicado do SpiderFoot para construir a imagem.</li>
+                    </ul>
+                  </li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_spiderfoot</code>.</li>
+                  <li><strong>ports:</strong>
+                    <ul>
+                      <li><code>"5001:5001"</code>: Expõe a interface web do SpiderFoot na porta 5001 do host.</li>
+                    </ul>
+                  </li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./spiderfoot-data:/root/.spiderfoot</code>: Monta o diretório local <code>./spiderfoot-data</code> dentro do container em <code>/root/.spiderfoot</code>, garantindo que configurações, resultados e dados do SpiderFoot sejam persistidos entre reinicializações do container.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </details></li>
+              <li><details><summary><strong>neo4j:</strong></summary>
+                <ul>
+                  <li><strong>image:</strong> Usa a imagem oficial <code>neo4j:4.4</code>.</li>
+                  <li><strong>container_name:</strong> Define o nome do container como <code>kensei_neo4j</code>.</li>
+                  <li><strong>environment:</strong>
+                    <ul>
+                      <li><code>NEO4J_AUTH=neo4j/test</code>: Define usuário e senha iniciais (<code>neo4j</code> / <code>test</code>).</li>
+                      <li><code>NEO4J_dbms_memory_heap_initial__size=512m</code>: Define o tamanho inicial do heap de memória do Neo4j como 512 MB.</li>
+                      <li><code>NEO4J_dbms_memory_heap_max__size=1g</code>: Define o tamanho máximo do heap de memória do Neo4j como 1 GB.</li>
+                    </ul>
+                  </li>
+                  <li><strong>ports:</strong>
+                    <ul>
+                      <li><code>"7474:7474"</code>: Mapeia a porta 7474 do container para a porta 7474 do host, permitindo acesso à interface web do Neo4j via navegador.</li>
+                      <li><code>"7687:7687"</code>: Mapeia a porta 7687 do container para a porta 7687 do host, utilizada pelo Bolt protocol para conexão de drivers e aplicações ao Neo4j.</li>
+                    </ul>
+                  </li>
+                  <li><strong>volumes:</strong>
+                    <ul>
+                      <li><code>- ./neo4j-data:/data</code>: Monta o diretório local <code>./neo4j-data</code> dentro do container em <code>/data</code>, garantindo que o banco de dados Neo4j seja persistido no host entre reinicializações do container.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </details></li>
+            </ul>
+          </details></li>
+          <li><details><summary><strong>networks:</strong></summary>
+            <ul>
+              <li><code>default:</code>
+                <ul>
+                  <li><strong>name:</strong> <code>kensei_lab_net</code>: Nomeia a rede padrão usada pelos serviços, garantindo comunicação entre containers dentro dessa rede.</li>
+                </ul>
+              </li>
+            </ul>
+          </details></li>
+        </ul>
+      </details></li>
+    <li><details><summary><strong>Dockerfile</strong></summary>
+      <ul>
+        <li><details><summary><strong>Dockerfile.kali</strong></summary>
+          <ul>
+            <li><code>FROM kalilinux/kali-rolling</code>: Imagem base Kali Rolling.</li>
+            <li><strong>RUN:</strong> Executa a instalação de ferramentas essenciais e limpa o cache para reduzir o tamanho da imagem:
+              <ul>
+                <li><code>apt-get update</code>: Atualiza a lista de pacotes disponíveis.</li>
+                <li><code>apt-get install -y git curl jq python3-pip build-essential golang-go amass</code>: Instala ferramentas essenciais de desenvolvimento, rede e pentest.</li>
+                <li><code>apt-get clean && rm -rf /var/lib/apt/lists/*</code>: Remove arquivos temporários e limpa cache do apt.</li>
+              </ul>
+            </li>
+            <li><code>ENV GOPATH=/root/go</code>: Define a variável <code>GOPATH</code> apontando para <code>/root/go</code>, diretório onde o Go instalará pacotes e binários do usuário.</li>
+            <li><code>ENV PATH=$PATH:/root/go/bin</code>: Adiciona <code>/root/go/bin</code> ao <code>PATH</code>, permitindo executar ferramentas instaladas via <code>go install</code>.</li>
+            <li><code>RUN mkdir -p $GOPATH</code>: Cria diretório do GOPATH.</li>
+            <li><strong>RUN:</strong> Instala ferramentas Go no <code>GOPATH</code> utilizando <code>go install ...@latest</code> e disponibiliza os binários em <code>/root/go/bin</code>:
+              <ul>
+                <li><code>go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest</code>: Instala o <strong>subfinder</strong>, usado para descoberta de subdomínios.</li>
+                <li><code>go install github.com/projectdiscovery/httpx/cmd/httpx@latest</code>: Instala o <strong>httpx</strong>, utilizado para verificação e coleta de informações HTTP (status, headers, títulos, etc.).</li>
+                <li><code>go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest</code>: Instala o <strong>nuclei</strong>, motor de scan de vulnerabilidades baseado em templates.</li>
+                <li><code>go install github.com/hakluke/hakrawler@latest</code>: Instala o <strong>hakrawler</strong>, um crawler rápido para descoberta de endpoints e conteúdo web.</li>
+                <li><code>go install github.com/zricethezav/gitleaks/v8@latest</code>: Instala o <strong>gitleaks</strong>, ferramenta para detecção de segredos e chaves em repositórios.</li>
+              </ul>
+            </li>
+            <li><code>COPY scripts /home/kali/scripts</code>: Copia scripts locais para dentro do container.</li>
+            <li><code>WORKDIR /home/kali</code>: Define diretório de trabalho.</li>
+            <li><code>CMD ["/bin/bash"]</code>: Inicia o shell Bash.</li>
+          </ul>
+        </details></li>
+        <li><details><summary><strong>Dockerfile.spiderfoot</strong></summary>
+          <ul>
+            <li><code>FROM python:3.10-slim</code>: Usa a imagem base Python 3.10 slim como ambiente inicial.</li>
+            <li><strong>RUN</strong>:
+              <ul>
+                <li><code>apt-get update</code>: Atualiza a lista de pacotes.</li>
+                <li><code>apt-get install -y --no-install-recommends git build-essential python3-dev libyaml-dev curl ca-certificates gcc g++ make libffi-dev libssl-dev</code>: Instala dependências do sistema necessárias para compilar e executar as dependências Python do SpiderFoot.</li>
+                <li><code>rm -rf /var/lib/apt/lists/*</code>: Remove listas de pacotes para reduzir o tamanho final da imagem.</li>
+              </ul>
+            </li>
+            <li><code>RUN pip3 install -U pip setuptools wheel cython</code>: Atualiza o gerenciador de pacotes Python e instala ferramentas de build (necessárias para compilar extensões como PyYAML).</li>
+            <li><code>WORKDIR /app</code>: Define o diretório de trabalho para os comandos seguintes.</li>
+            <li><code>RUN git clone --depth=1 --branch v4.0 https://github.com/smicallef/spiderfoot /app</code>: Clona a versão 4.0 do repositório SpiderFoot diretamente para <code>/app</code>.</li>
+            <li><code>RUN sed -i 's/pyyaml>=5.4.1,<6/pyyaml>=6.0/' requirements.txt</code>: Altera a especificação do PyYAML no <code>requirements.txt</code> para uma versão compatível (quando necessário) antes da instalação das dependências.</li>
+            <li><code>RUN pip3 install -r requirements.txt</code>: Instala as dependências Python do SpiderFoot listadas em <code>requirements.txt</code>.</li>
+            <li><code>EXPOSE 5001</code>: Expõe a porta 5001, usada pela interface web do SpiderFoot.</li>
+            <li><code>CMD ["python3", "sf.py", "-l", "0.0.0.0:5001"]</code>: Comando padrão para iniciar o SpiderFoot, fazendo-o escutar em todas as interfaces na porta 5001.</li>
+          </ul>
+        </details></li>
+      </ul>
+    </details></li>
+  </ul>
+</details>
+
+No terceiro laboratório, ainda continuando a investigação ao sistema da Acme Corp, o foco foi no uso da ferramenta **Metasploit**. Após subir o container de ataque **Kali Linux** e acessá-lo. A pasta corrente foi alterada para `investigations` com o comando `cd /home/kali/investigations`. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
