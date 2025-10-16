@@ -1,0 +1,278 @@
+# Formação Cybersecurity Specialist - Module 2   <img src="../0-aux/logo_boot.png" alt="boot_036" width="auto" height="45">
+
+### Repository: [boot](../../../../)   
+### Platform: <a href="../../../">dio   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/plataforma/dio.jpeg" alt="dio" width="auto" height="25"></a>   
+### Software/Subject: <a href="../../">cybersecurity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/cybersecurity.jpg" alt="cybersecurity" width="auto" height="25"></a>
+### Bootcamp: <a href="../">boot_036 (Formação Cybersecurity Specialist)   <img src="../0-aux/logo_boot.png" alt="boot_036" width="auto" height="25"></a>
+### Module: 2. Fundamentos de Cibersegurança 
+
+---
+
+This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp [**Formação Cybersecurity Specialist**](../).
+
+### Theme:
+- Cybersecurity
+
+### Used Tools:
+- Operating System (OS): 
+  - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
+  - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
+- Cloud:
+  - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
+- Cloud Services:
+  - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
+- Language:
+  - HTML   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html" width="auto" height="25">
+  - Markdown   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg" alt="markdown" width="auto" height="25">
+- Integrated Development Environment (IDE) and Text Editor:
+  - Visual Studio Code (VS Code)   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="auto" height="25">
+- Versioning: 
+  - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
+- Repository:
+  - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
+
+---
+
+### Bootcamp Module 2 Structure
+2. <a name="item2">Fundamentos de Cibersegurança</a><br>
+  2.1. <a href="#item2.1">Príncipios da Cibersegurança</a><br>
+  2.2. <a href="#item2.2">Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais</a><br>
+  2.3. <a href="#item2.3">Fundamentos de Redes de Computadores</a><br>
+  2.4. <a href="#item2.4">Introdução à Deep Web e Anonimato</a><br>
+  2.5. Materiais Complementares: Fundamentos de Cibersegurança<br>
+
+---
+
+### Objective:
+O objetivo deste módulo do bootcamp foi introduzir conceitos fundamentais para melhor compreensão da Inteligência Articial. Conceitos como IA Geral, IA Restrita, Machine Learning (Aprendizado Profundo), Deep Learning, Redes Neurais, IAs Generativas, Processamento de Linguagem Natural, foram abordados. Também foi detalhado minuciosamente como são divididas as redes neurais e que a partir delas surgem as IAs Generativas.
+
+### Structure:
+A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img01.png" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
+
+### Development:
+O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
+
+<a name="item2.1"><h4>2.1 Príncipios da Cibersegurança</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+
+🛡️ Cibersegurança   
+A cibersegurança tem como foco principal as pessoas, e o seu ativo mais valioso são os dados que elas geram e utilizam. Proteger esses dados é o objetivo central, pois deles dependem a confidencialidade, a integridade e a continuidade das atividades. Tudo o que envolve sistemas, redes e dispositivos funciona como infraestrutura de suporte para garantir que esses dados permaneçam seguros. 
+
+O Brasil está entre os países mais afetados por ataques cibernéticos, com centenas de milhares de tentativas de invasão registradas anualmente — o que equivale a milhares de ataques todos os dias, quase um a cada minuto, mostrando a frequência e a gravidade das ameaças.
+
+🎯 Função da cibersegurança   
+A cibersegurança atua sobre softwares, hardwares e redes com o objetivo principal de proteger os dados, que são o ativo mais valioso das pessoas e organizações. Sua função é prevenir problemas na gestão da informação, evitando vazamentos, alterações indevidas ou perda de dados, garantindo que sistemas e recursos permaneçam confiáveis e seguros.
+
+🧱 Tipos de cibersegurança   
+A cibersegurança atua em diferentes frentes, todas voltadas para proteger os dados, que são o ativo mais importante, garantindo a integridade, confidencialidade e disponibilidade das informações. Entre os principais tipos estão:
+- Segurança operacional: gerencia quem tem acesso aos dados e quais permissões são atribuídas, garantindo que apenas usuários autorizados manipulem informações críticas.
+- Segurança de rede: protege as redes contra acessos indevidos e ataques, como DoS (Denial of Service), mantendo a comunicação segura entre sistemas e dispositivos.
+- Segurança de aplicações: implementa protocolos e práticas de segurança durante o desenvolvimento de softwares, prevenindo vulnerabilidades exploráveis.
+- Educação do usuário final: identifica e corrige comportamentos de risco que possam expor dados ou comprometer a organização.
+- Recuperação de desastres: estabelece procedimentos para restaurar sistemas e dados rapidamente após incidentes, minimizando impactos.
+
+🛠️ Pilares da cibersegurança   
+Independentemente do tipo, toda proteção se baseia em cinco funções essenciais, que constituem o ciclo contínuo da segurança digital:
+- Identificar: mapear ativos e entender os riscos associados a cada um deles.
+- Proteger: implementar medidas de segurança e salvaguardas para reduzir vulnerabilidades.
+- Detectar: monitorar continuamente os sistemas para identificar eventos suspeitos.
+- Responder: agir rapidamente para conter impactos e neutralizar ameaças.
+- Recuperar: restaurar recursos e serviços após incidentes, garantindo a continuidade do negócio.
+
+🕵️‍♂️ Hacking e hackers   
+Hacking refere-se ao ato de explorar ou manipular sistemas, redes, contas e dispositivos digitais. Nem sempre envolve intenções ilícitas; muitas vezes é apenas a aplicação de conhecimento técnico para resolver problemas ou superar desafios de forma criativa. Um hacker é uma pessoa que aplica seus conhecimentos e tecnologias para acessar ou testar sistemas e informações. Quando a invasão é realizada de forma maliciosa, com o objetivo de causar dano ou obter vantagem sem permissão, o termo correto é cracker, diferenciando-se do hacker ético ou autorizado.
+
+Tipos de hackers:
+- White Hat (ético): profissionais autorizados a realizar testes de invasão com o objetivo de identificar e corrigir vulnerabilidades antes que sejam exploradas por criminosos. Trabalham dentro da lei e geralmente atuam em contratos, auditorias ou programas de bug bounty.
+- Black Hat (criminoso): indivíduos que utilizam conhecimentos técnicos para invadir sistemas de forma ilegal, buscando lucro, espionagem, destruição ou notoriedade. Não possuem autorização e suas ações envolvem atividades como roubo de dados, fraudes e extorsão.
+- Grey Hat: atuam em uma zona intermediária. Podem explorar sistemas sem autorização prévia — mas sem intenção direta de causar danos — e depois informar a falha aos responsáveis, às vezes oferecendo a solução em troca de recompensa. Apesar da intenção não ser maliciosa, ainda operam fora dos limites legais.
+
+⚔️ Principais ameaças e formas de ataque   
+Ataques cibernéticos podem explorar tanto falhas técnicas quanto comportamentos humanos, variando em método, motivação e impacto.
+
+Tipos comuns de ataque:
+- Phishing: engana usuários para que revelem senhas ou dados pessoais, normalmente por meio de e-mails ou mensagens falsas.
+- DNS Spoofing: altera o destino de um endereço web, direcionando a vítima para um site falso sem que ela perceba.
+- XSS (Cross-Site Scripting): injeta scripts maliciosos em páginas legítimas para capturar informações de usuários.
+- SQL Injection: manipula bancos de dados ao inserir códigos maliciosos em formulários ou URLs.
+- Roubo de cookies: captura dados de sessão para assumir a identidade de um usuário autenticado.
+
+Origem das ameaças:
+- Estados-nação: ataques com fins geopolíticos ou de espionagem.
+- Criminosos cibernéticos: motivados por lucro financeiro.
+- Hacktivistas: agem por causas ideológicas ou protesto.
+- Funcionários insatisfeitos: ameaças internas por vingança ou abuso de acesso.
+- Aventureiros / Script kiddies: atacam por desafio, diversão ou reconhecimento.
+
+Top ameaças mais recorrentes
+1. Malware: softwares maliciosos como vírus, trojans e worms.
+2. Ataques web: exploração de vulnerabilidades em sites e aplicações online.
+3. Phishing: tentativas de enganar usuários para roubo de dados.
+4. Exploração de aplicativos: falhas em softwares e APIs usadas como porta de entrada.
+5. Spam: envio massivo de mensagens para fraude ou propagação de códigos maliciosos.
+6. DDoS: sobrecarga de sistemas até ficarem indisponíveis.
+7. Roubo de identidade: uso indevido de dados pessoais para se passar pela vítima.
+8. Vazamento de dados: exposição de informações sensíveis.
+9. Ameaça interna: abusos vindos de quem já possui acesso.
+10. Botnets: redes de dispositivos infectados controlados remotamente.
+11. Danos físicos: manipulação direta de equipamentos ou dispositivos.
+12. Exposição de informações: divulgação acidental ou por falha de configuração.
+13. Ransomware: sequestro de dados com exigência de pagamento para liberação.
+14. Ciberespionagem: coleta de informações sigilosas para vantagem estratégica.
+15. Cryptojacking: uso oculto de recursos de hardware para minerar criptomoedas.
+
+✅ Boas práticas essenciais   
+Adotar boas práticas em cibersegurança é fundamental para reduzir riscos e fortalecer a proteção de sistemas e dados. Entre as principais medidas estão:
+- Conscientização de usuários: educar colaboradores para identificar e evitar phishing, golpes e comportamentos de risco.
+- Controle de acessos: aplicar o princípio do privilégio mínimo, garantindo que cada usuário tenha apenas as permissões necessárias.
+- Monitoramento e backup: acompanhar acessos e atividades nos sistemas, além de manter cópias de segurança atualizadas de dados críticos.
+- Autenticação multifator e biometria: aumentar a segurança no acesso a sistemas sensíveis combinando senhas, códigos temporários e dados biométricos.
+- Auditorias e políticas de segurança: realizar revisões periódicas e manter regras claras para garantir a conformidade e o fortalecimento contínuo da proteção.
+
+🛡️ Equipes de defesa e ataque   
+Para enfrentar ameaças sofisticadas, muitas organizações estruturam equipes especializadas com funções complementares:
+- Red Team: especialistas em segurança ofensiva que simulam ataques reais para identificar vulnerabilidades e testar a eficácia das defesas.
+- Blue Team: responsáveis pela defesa, monitoramento contínuo, resposta a incidentes e fortalecimento da infraestrutura de segurança.
+- Purple Team: integra Red e Blue Teams, promovendo colaboração, compartilhamento de informações e otimização das estratégias de defesa e detecção.
+
+🎓 Certificações em cibersegurança   
+Certificações comuns nesse ramo incluem CEH e ECSA, voltadas para quem atua com segurança ofensiva e análise de vulnerabilidades.
+
+<a name="item2.2"><h4>2.2 Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+
+🖥️ Sistema Operacional   
+Um sistema operacional (SO) é o software que faz a ponte entre o usuário e o hardware. Ele interpreta comandos humanos em linguagem de máquina e organiza os recursos do computador para que tudo funcione corretamente — desde a abertura de programas até o reconhecimento de dispositivos como teclado, disco ou rede.
+
+⚙️ Funções essenciais de um Sistema Operacional   
+- Gerenciamento de processos: controla a execução de programas.
+- Gerenciamento de memória: decide onde cada aplicação deve ficar armazenada.
+- Gerenciamento de dispositivos: coordena a comunicação com teclado, disco, impressora etc.
+- Gerenciamento de arquivos: organiza dados em pastas e formatos acessíveis.
+- Segurança e controle de acesso: impede usos não autorizados.
+- Detecção de erros: identifica falhas e tenta corrigi-las.
+- Agendamento de tarefas: define prioridades entre atividades simultâneas.
+
+🧩 Componentes principais de um Sistema Operacional   
+- Shell: É a “porta de entrada” do sistema operacional. Tudo que o usuário faz passa por ele: seja clicar em ícones, abrir janelas ou digitar comandos no terminal. Sua função é traduzir essas ações para algo que o sistema consiga entender e executar.
+- Kernel: É o “coração” do sistema. Ele decide como os recursos do computador serão usados, define quem pode usar a memória, quem acessa o processador e como os dispositivos (como teclado, disco e placa de rede) se comunicam. Nada acontece no sistema sem passar por ele.
+
+🪟 Exemplos de Sistemas Operacionais Populares   
+O Microsoft Windows é predominante no mercado doméstico e corporativo, conhecido por sua interface gráfica intuitiva (GUI) e por ser majoritariamente escrito em C. Suas versões iniciais rodavam em 16 bits — como o Windows 3.11 — até evoluírem para arquiteturas de 32 e 64 bits nas edições mais modernas como XP, 7, 10 e 11. Essa ampla adoção fez com que o sistema se tornasse acessível para milhões de usuários ao redor do mundo, consolidando-se como padrão em empresas, escolas e residências.
+
+Justamente por ser o sistema operacional mais utilizado no planeta, o Windows é também um dos principais alvos de ataques. Ao longo da história, diversos malwares icônicos surgiram especificamente para explorar suas falhas, como Win95.CIH, Win32.Kriz e WinNT.Remote Explorer. Para minimizar o risco, os usuários dependem fortemente de práticas básicas de proteção: atualizar o sistema regularmente, utilizar antivírus confiável e evitar a instalação de softwares e arquivos de origem desconhecida.
+
+Já o Linux, tecnicamente, refere-se apenas ao kernel criado por Linus Torvalds em 1991. No entanto, com o passar dos anos, o termo passou a representar todo um ecossistema baseado nesse núcleo — resultado de sua natureza open source, que permite livre modificação e redistribuição. Esse modelo colaborativo deu origem a dezenas de distribuições, como Ubuntu e Debian para uso geral, Fedora para ambientes corporativos e Kali Linux voltado para segurança ofensiva.
+
+Embora tenha fama de ser mais seguro, o Linux também está longe de ser invulnerável. Em 2022, por exemplo, falhas críticas foram registradas diretamente no kernel, incluindo vulnerabilidades como CVE-2022-0435 (pontuação CVSS 9.0) e outras como CVE-2022-0492 e CVE-2022-28893. Assim como no Windows, a proteção depende mais da disciplina em aplicar atualizações e acompanhar relatórios de segurança do que da simples escolha do sistema operacional.
+
+🖥️ Virtualização e VirtualBox   
+A virtualização permite executar um sistema operacional completo dentro de outro, criando um ambiente isolado que utiliza os recursos da máquina física sem interferir no sistema principal. Essa técnica é essencial para testar softwares, ferramentas ou configurações de forma segura, sem comprometer a máquina real.
+
+O VirtualBox é um dos softwares de virtualização mais populares, originalmente desenvolvido pela Innotek, depois adquirido pela Sun Microsystems e atualmente mantido pela Oracle. Ele é gratuito e amplamente utilizado por estudantes e profissionais que precisam criar ambientes de teste controlados, como laboratórios de segurança ou simulações de redes.
+
+🛡️ Kali Linux e Ferramentas de Segurança   
+O Kali Linux é uma distribuição baseada em Linux voltada para segurança ofensiva e testes de penetração. Muito usada por profissionais e estudantes de cibersegurança, ela já vem equipada com diversas ferramentas para auditoria, análise de redes e investigação digital.
+
+Entre as ferramentas mais conhecidas do Kali estão o Metasploit, para exploração de vulnerabilidades; o Nmap, para varredura de redes e portas; o Wireshark, para análise de tráfego; e o Aircrack-ng, voltado à auditoria de redes Wi-Fi. Além disso, o Kali Linux suporta diferentes interfaces gráficas, como GNOME Shell, XFCE e KDE Plasma, oferecendo flexibilidade para o usuário.
+
+<a name="item2.3"><h4>2.3 Fundamentos de Redes de Computadores</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+
+🌐 Redes de Computadores   
+Redes de computadores são sistemas que permitem a interligação de diversos dispositivos — como computadores, celulares, servidores e equipamentos de comunicação — para que possam trocar informações e compartilhar recursos entre si. Para que essa comunicação funcione, todos os dispositivos seguem regras padronizadas chamadas protocolos, que definem como os dados devem ser enviados e recebidos, seja por cabos físicos ou por conexões sem fio.
+
+Dentro de uma rede, cada equipamento conectado é chamado de nó, enquanto os caminhos pelos quais a informação trafega são os links, que podem ser fios metálicos, fibras ópticas ou ondas de rádio. O modo como esses elementos são organizados define a arquitetura da rede, que estabelece padrões de funcionamento, protocolos e regras de comunicação entre os dispositivos.
+
+🖥️ Modelos de Rede: Cliente-Servidor e Ponto a Ponto   
+Um dos jeitos mais comuns de organizar redes é por meio do modelo cliente-servidor, em que alguns dispositivos ficam responsáveis por oferecer serviços — como armazenamento, banco de dados ou autenticação — enquanto os demais atuam apenas consumindo esses recursos. Esse é o padrão mais utilizado em empresas e sistemas corporativos.
+
+Já no modelo Ponto a Ponto (P2P), todos os dispositivos têm o mesmo nível de autoridade e podem tanto oferecer quanto receber serviços. É uma abordagem mais simples e descentralizada, usada em redes domésticas pequenas ou em sistemas de compartilhamento como torrents.
+
+🔗 Topologias de Rede   
+A forma como os dispositivos são fisicamente conectados entre si é chamada de topologia. Cada estrutura apresenta vantagens e limitações dependendo da necessidade:
+- Barramento: todos os dispositivos compartilham o mesmo meio de comunicação, e os dados circulam em um único sentido. Simples, porém limitada.
+- Anel: cada nó se conecta ao próximo, formando um círculo; os dados percorrem o anel até chegar ao destino. Porém, se um equipamento falhar, toda a rede pode parar.
+- Estrela: todos os dispositivos se ligam a um ponto central — geralmente um switch ou roteador — garantindo maior desempenho e fácil manutenção.
+- Malha: cada nó se conecta a vários outros, oferecendo alta redundância. Em sua forma completa, cada dispositivo possui ligação direta com todos os demais.
+
+🏘️ Tipos de Rede: LAN, MAN e WAN   
+As redes podem ser classificadas conforme a área que abrangem:
+- LAN (Local Area Network): cobre ambientes pequenos, como casas, escritórios ou laboratórios.
+- MAN (Metropolitan Area Network): interliga diversas redes locais dentro de uma cidade ou região metropolitana.
+- WAN (Wide Area Network): abrange grandes distâncias, conectando redes de diferentes países ou continentes — como acontece com a própria internet.
+
+🧱 Modelos de Camadas: OSI e TCP/IP   
+Para que dispositivos diferentes — de fabricantes diferentes — consigam se comunicar sem confusão, o funcionamento das redes foi organizado em camadas, onde cada etapa da comunicação tem um papel específico. O modelo mais conhecido é o OSI (Open Systems Interconnection), dividido em 7 camadas, da mais próxima ao usuário até o nível físico do hardware: Aplicação, Apresentação, Sessão, Transporte, Rede, Enlace e Física. Ele serve principalmente como referência conceitual para entender onde cada protocolo atua.
+
+Na prática, o modelo que realmente é utilizado hoje no mundo todo é o TCP/IP, mais simples e direto, organizado em 4 camadas: Aplicação, Transporte, Internet e Acesso à Rede. Ele unificou algumas funções do OSI e se tornou o padrão das redes modernas — inclusive da internet. Durante uma transmissão, os dados descem camada por camada no emissor e sobem na mesma ordem no receptor, como se fossem “embrulhados” e “desembrulhados” até chegar ao destino correto.
+
+📡 Protocolos e Portas: as Regras da Comunicação   
+Cada serviço que utilizamos na rede — como navegação web, envio de e-mails ou acesso remoto — utiliza um protocolo específico, que define como a informação será estruturada e transmitida. A camada de Aplicação inclui protocolos como HTTP/HTTPS (web), SMTP/POP3 (e-mail), SSH/Telnet (acesso remoto), DNS (tradução de nomes), FTP (transferência de arquivos), RDP (acesso a desktop remoto), entre muitos outros.
+
+Para que um computador saiba qual serviço deve receber cada dado, são usadas as chamadas portas, que funcionam como “canais numerados” dentro do mesmo endereço IP. Por exemplo: porta 80 para HTTP, 443 para HTTPS, 22 para SSH, 25 para SMTP. Assim, dois dispositivos podem realizar diversas conexões simultâneas usando protocolos diferentes sem se misturar.
+
+🧭 Endereço IP, Máscara e Classes   
+Todo dispositivo conectado à rede precisa de um endereço IP para ser identificado — como se fosse um “CPF digital”. No formato mais tradicional (IPv4), ele é composto por quatro números separados por pontos, como 192.168.0.15. Para determinar qual parte do endereço representa a rede e qual identifica o dispositivo (host), utilizamos a máscara de rede, como 255.255.255.0.
+
+Com o crescimento da internet e a limitação dos endereços IPv4, surgiu o IPv6, que utiliza 128 bits e é capaz de gerar trilhões de endereços únicos, em formatos como 2001:db8::3f5a. Além do espaço praticamente ilimitado, ele traz recursos modernos como autoconfiguração automática, melhor segurança e eliminação de muitas das limitações dos modelos antigos de endereçamento.
+
+Antes do uso do CIDR (Classless Inter-Domain Routing), os endereços IPv4 eram distribuídos com base em classes fixas de rede (A, B e C), cada uma com uma máscara padrão e quantidade pré-definida de hosts. Com o tempo, esse modelo se mostrou pouco eficiente, pois muitas redes recebiam mais endereços do que realmente precisavam. Para resolver isso, surgiu o subnetting com CIDR, permitindo criar máscaras mais granulares e definir com precisão quantos hosts e redes serão utilizados. A tabela abaixo mostra exemplos de máscaras, seus prefixos CIDR e a quantidade correspondente de hosts e redes possíveis:
+
+<div align="center">
+  <table border="1" cellpadding="6" cellspacing="0">
+    <tr>
+      <th>MÁSCARA DE SUB-REDE</th>
+      <th>CIDR</th>
+      <th>HOSTS</th>
+      <th>REDES</th>
+    </tr>
+    <tr><td align="center">255.255.255.255</td><td align="center">/32</td><td align="center">1</td><td align="center">256</td></tr>
+    <tr><td align="center">255.255.255.254</td><td align="center">/31</td><td align="center">2</td><td align="center">128</td></tr>
+    <tr><td align="center">255.255.255.252</td><td align="center">/30</td><td align="center">4</td><td align="center">64</td></tr>
+    <tr><td align="center">255.255.255.248</td><td align="center">/29</td><td align="center">8</td><td align="center">32</td></tr>
+    <tr><td align="center">255.255.255.240</td><td align="center">/28</td><td align="center">16</td><td align="center">16</td></tr>
+    <tr><td align="center">255.255.255.224</td><td align="center">/27</td><td align="center">32</td><td align="center">8</td></tr>
+    <tr><td align="center">255.255.255.192</td><td align="center">/26</td><td align="center">64</td><td align="center">4</td></tr>
+    <tr><td align="center">255.255.255.128</td><td align="center">/25</td><td align="center">128</td><td align="center">2</td></tr>
+    <tr><td align="center">255.255.255.0</td><td align="center">/24</td><td align="center">256</td><td align="center">1</td></tr>
+  </table>
+</div>
+
+🚨 Ataques Contra Endereços IP   
+O endereço IP pode ser explorado por agentes mal-intencionados para aplicação de diversas técnicas ofensivas. A engenharia social, por exemplo, pode utilizar o IP como ponto de partida para coletar informações adicionais sobre a vítima e induzi-la a revelar dados sensíveis. Já no caso do ciberstalking, o IP pode ser usado para monitoramento constante da atividade online de um alvo.
+
+Outro risco envolve o uso indevido do IP para realizar o download de conteúdo ilegal, fazendo com que a responsabilidade recaia sobre o verdadeiro proprietário da conexão. Além disso, o IP pode permitir a identificação aproximada da localização física do usuário, abrindo portas para ataques mais direcionados.
+
+Com acesso ao IP, um invasor também pode executar ataques diretamente contra a rede doméstica ou corporativa, explorando portas abertas e serviços vulneráveis. Em situações mais graves, ataques específicos podem ser lançados contra dispositivos conectados, resultando em invasões, roubo de dados ou interrupção do funcionamento.
+
+🛡️ Privacidade e Segurança na Internet: VPN x Proxy   
+Com tantos riscos envolvendo rastreamento e ataques digitais, muitos usuários recorrem a ferramentas de proteção como VPNs e proxies. Embora ambos criem um intermediário entre o dispositivo e a internet, suas funções são diferentes.
+
+Uma VPN (Virtual Private Network) cria um túnel criptografado, protegendo todos os dados enviados e recebidos. Isso impede que provedores, empregadores ou invasores espionem o tráfego, além de permitir acesso seguro mesmo em redes públicas.
+
+Já um proxy atua apenas como intermediário de requisições web, acessando sites em nome do usuário. Ele oculta o IP real, mas não criptografa a conexão, o que o torna menos seguro. É útil para contornar bloqueios simples, mas insuficiente como mecanismo de proteção total.
+
+<a name="item2.4"><h4>2.4 Introdução à Deep Web e Anonimato</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
