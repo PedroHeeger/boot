@@ -41,18 +41,22 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
   2.4. <a href="#item2.4">Introdução à Deep Web e Anonimato</a><br>
   2.5. Materiais Complementares: Fundamentos de Cibersegurança<br>
 
+- Instalar Windows 7 no VM VirtualBox
+- Instalar Windows 11 no VM VirtualBox
+- Instalar Linux no VM VirtualBox
+- Instalar Tails no VM VirtualBox
+
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi introduzir conceitos fundamentais para melhor compreensão da Inteligência Articial. Conceitos como IA Geral, IA Restrita, Machine Learning (Aprendizado Profundo), Deep Learning, Redes Neurais, IAs Generativas, Processamento de Linguagem Natural, foram abordados. Também foi detalhado minuciosamente como são divididas as redes neurais e que a partir delas surgem as IAs Generativas.
+O objetivo deste módulo do bootcamp consistiu em desenvolver compreensão sólida dos fundamentos de cibersegurança e infraestrutura de TI, enfatizando que os dados são o ativo central e que sistemas, redes e ferramentas são suporte para sua proteção. O módulo contextualizou como a cibersegurança é aplicada na prática, explicando o ciclo de defesa (identificar, proteger, detectar, responder e recuperar), os principais domínios de proteção — como redes, aplicações, operações e conscientização do usuário —, além de abordar boas práticas para mitigação de riscos.
 
-### Structure:
-A estrutura das pastas obedeceu a estruturação do bootcamp, ou seja, conforme foi necessário, sub-pastas foram criadas para os cursos específicos deste módulo. Na imagem 01 é exibido a estruturação das pastas. 
+Complementarmente, promoveu domínio prático sobre sistemas operacionais e virtualização (arquitetura, kernel/shell, Windows e Linux, uso de máquinas virtuais), além de fundamentos de redes (topologias, modelos em camadas, endereçamento IP, máscaras, CIDR e protocolos/portas). Apresentou também o panorama de ameaças — técnicas de ataque, vetores e atores — e as estratégias organizacionais de defesa (Red/Blue/Purple teams, monitoramento e resposta a incidentes).
 
-<div align="Center"><figure>
-    <img src="../0-aux/md2-img01.png" alt="img01"><br>
-    <figcaption>Imagem 01.</figcaption>
-</figure></div><br>
+Por fim, forneceu noções de privacidade e anonimato online (Deep Web vs Dark Web, Tor, VPNs, Tails, proxies), destacando riscos e mitigação, e orientou sobre postura responsável, manutenção contínua e práticas de segurança que suportam a resiliência operacional e conformidade.
+
+### Folder Structure:
+- [README.md](./README.md): Este documento de README, escrito em **Markdown**, descrevendo todo conteúdo das aulas desse módulo.
 
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
@@ -64,9 +68,6 @@ A cibersegurança tem como foco principal as pessoas, e o seu ativo mais valioso
 
 O Brasil está entre os países mais afetados por ataques cibernéticos, com centenas de milhares de tentativas de invasão registradas anualmente — o que equivale a milhares de ataques todos os dias, quase um a cada minuto, mostrando a frequência e a gravidade das ameaças.
 
-🎯 Função da cibersegurança   
-A cibersegurança atua sobre softwares, hardwares e redes com o objetivo principal de proteger os dados, que são o ativo mais valioso das pessoas e organizações. Sua função é prevenir problemas na gestão da informação, evitando vazamentos, alterações indevidas ou perda de dados, garantindo que sistemas e recursos permaneçam confiáveis e seguros.
-
 🧱 Tipos de cibersegurança   
 A cibersegurança atua em diferentes frentes, todas voltadas para proteger os dados, que são o ativo mais importante, garantindo a integridade, confidencialidade e disponibilidade das informações. Entre os principais tipos estão:
 - Segurança operacional: gerencia quem tem acesso aos dados e quais permissões são atribuídas, garantindo que apenas usuários autorizados manipulem informações críticas.
@@ -74,6 +75,9 @@ A cibersegurança atua em diferentes frentes, todas voltadas para proteger os da
 - Segurança de aplicações: implementa protocolos e práticas de segurança durante o desenvolvimento de softwares, prevenindo vulnerabilidades exploráveis.
 - Educação do usuário final: identifica e corrige comportamentos de risco que possam expor dados ou comprometer a organização.
 - Recuperação de desastres: estabelece procedimentos para restaurar sistemas e dados rapidamente após incidentes, minimizando impactos.
+
+🎯 Função da cibersegurança   
+A cibersegurança atua sobre softwares, hardwares e redes com o objetivo principal de proteger os dados, que são o ativo mais valioso das pessoas e organizações. Sua função é prevenir problemas na gestão da informação, evitando vazamentos, alterações indevidas ou perda de dados, garantindo que sistemas e recursos permaneçam confiáveis e seguros.
 
 🛠️ Pilares da cibersegurança   
 Independentemente do tipo, toda proteção se baseia em cinco funções essenciais, que constituem o ciclo contínuo da segurança digital:
@@ -257,20 +261,59 @@ Já um proxy atua apenas como intermediário de requisições web, acessando sit
 
 <a name="item2.4"><h4>2.4 Introdução à Deep Web e Anonimato</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
 
+🌐 Camadas da Internet   
+A internet pode ser organizada em camadas conforme o nível de visibilidade e acessibilidade das informações. Cada camada representa um conjunto diferente de conteúdos e formas de acesso, variando desde sites públicos e abertos até redes privadas e anônimas. As principais camadas são:
+- Surface Web (Web de Superfície)
+- Deep Web
+- Dark Web
 
+🔎 Surface Web (Web de Superfície)   
+A Surface Web é a parte visível e acessível da internet — tudo aquilo que pode ser encontrado por meio de motores de busca como Google, Bing ou Yahoo. Inclui sites tradicionais com domínios como .com, .org, .gov e .net, acessíveis diretamente por navegadores comuns (Chrome, Firefox, Edge, etc). É a menor camada da internet, representando menos de 10% de todo o conteúdo existente online.
 
+🌊 Deep Web   
+A Deep Web é a parte da internet que não é indexada por motores de busca tradicionais como Google ou Bing. Isso significa que os sites e conteúdos existentes nela não aparecem em pesquisas comuns, exigindo acesso direto ou credenciais específicas. Ela representa a maior parte da internet — estima-se que cerca de 90% de todo o conteúdo online esteja nessa camada. A Deep Web é utilizada para atividades privadas e legítimas, como bancos de dados acadêmicos, registros governamentais, serviços internos de empresas, fóruns privados e sistemas de autenticação. Contudo, também pode conter conteúdos ilegais, como pirataria ou comércio de materiais ilícitos.
 
+Acesso à Deep Web:   
+A maior parte da Deep Web pode ser acessada com navegadores normais, desde que se tenha o link ou credenciais. Exemplos: e-mail, internet banking, plataformas acadêmicas e sistemas internos de empresas. Esses conteúdos não são indexados por motores de busca, mas não exigem ferramentas especiais.
 
+🕶️ Dark Web   
+A Dark Web é uma porção específica e mais restrita da Deep Web, projetada para oferecer anonimato extremo. Ela abriga tanto projetos legítimos de privacidade e liberdade de expressão, quanto ambientes usados para atividades ilegais, como comércio de drogas, fóruns de hackers e venda de dados roubados.
 
+Acesso à Dark Web:   
+O acesso à Dark Web exige ferramentas específicas voltadas para anonimato. As principais são:
+- Tor (The Onion Router): É a porta de entrada mais popular. Utiliza roteamento em múltiplas camadas para ocultar a identidade do usuário. Permite acesso a sites com domínio .onion, que não funcionam em navegadores tradicionais.
+- I2P (Invisible Internet Project): Focada em comunicação interna anônima, permitindo troca segura de dados entre usuários da própria rede.
+- Freenet: Rede descentralizada que armazena conteúdos distribuídos entre os usuários, com forte resistência à censura.
 
+Riscos e cuidados na Dark Web:   
+Embora existam projetos legítimos na Dark Web — como fóruns de privacidade, bibliotecas digitais e canais de denúncia — esse ambiente também abriga atividades ilegais e conteúdos perigosos. Os principais riscos incluem malware, golpes financeiros, falsos marketplaces e monitoramento governamental. Para reduzir os riscos ao explorar esse tipo de rede:
+- Utilizar VPN antes de abrir o navegador Tor, para ocultar sua conexão do provedor de internet.
+- Manter antivírus e firewall ativos, caso algum arquivo malicioso seja baixado.
+- Preferir máquinas virtuais ou sistemas dedicados, isolando qualquer ameaça do computador principal.
 
+🛡️ Ferramentas de Anonimato e Privacidade Online   
+Para acessar partes mais restritas da internet — como a Dark Web — ou simplesmente proteger a privacidade durante a navegação comum, existem ferramentas que aumentam o anonimato e dificultam o rastreamento das atividades do usuário. Entre as mais conhecidas estão:
+- Tor Browser
+- T.A.I.L.S. Linux
+- Windscribe
+- Proxy
 
+🧅 Tor Browser   
+Baseado na rede Tor (The Onion Router), esse navegador redireciona o tráfego por vários servidores aleatórios (relés) espalhados pelo mundo. Isso oculta o endereço IP real do usuário e permite acessar sites .onion, típicos da Dark Web. Embora ofereça um bom nível de anonimato, pode ser mais lento devido às múltiplas camadas de roteamento.
 
+🐧 T.A.I.L.S. Linux   
+O Tails é um sistema operacional Linux focado em privacidade. Ele roda diretamente de um pendrive, sem alterar o computador. Todo o tráfego é automaticamente redirecionado pela rede Tor e nada é salvo após desligar a máquina, garantindo sigilo total. Ficou famoso por ter sido utilizado por Edward Snowden.
 
+🌬️ Windscribe (VPN)   
+O Windscribe é um serviço de VPN que cria um túnel criptografado entre o dispositivo e a internet. Isso esconde o IP real e impede que provedores, governos ou sites rastreiem a conexão. Ele oferece versão gratuita e paga, sendo bastante usado para navegação segura ou para contornar restrições geográficas.
 
+🔁 Proxy   
+Um proxy atua como intermediário entre o usuário e a internet. Em vez de se conectar diretamente ao site, a solicitação passa por um servidor intermediário que oculta o IP real. Embora ofereça menor segurança que uma VPN ou Tor, pode ser útil para tarefas simples, como driblar bloqueios regionais ou acessar sites de forma rápida e anônima.
 
-
-
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img01.png" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img02.png" alt="img02"><br>
