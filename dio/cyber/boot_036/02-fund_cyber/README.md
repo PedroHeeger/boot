@@ -41,10 +41,13 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
   2.4. <a href="#item2.4">Introdução à Deep Web e Anonimato</a><br>
   2.5. Materiais Complementares: Fundamentos de Cibersegurança<br>
 
-- Instalar Windows 7 no VM VirtualBox
-- Instalar Windows 11 no VM VirtualBox
-- Instalar Linux no VM VirtualBox
-- Instalar Tails no VM VirtualBox
+- 2.2
+  - Instalar Windows 7 no VM VirtualBox
+  - Instalar Windows 11 no VM VirtualBox
+  - Instalar Linux no VM VirtualBox
+  - Instalar Tails no VM VirtualBox
+- 2.4
+  - 
 
 ---
 
