@@ -160,11 +160,21 @@ O meterpreter é um exemplo de payload utilizado em testes de segurança que rod
 
 
 
+
 <a name="item4.3"><h4>4.3 Man in the Middle: Ataques e Mitigações</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
 
 
 
+
+
+
+
+
+
 <a name="item4.4"><h4>4.4 Desafio de projeto: Entendendo um Ransomware na Prática com Python</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+
+
+
 
 
 
