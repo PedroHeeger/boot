@@ -168,10 +168,7 @@ O meterpreter é um exemplo de payload utilizado em testes de segurança que rod
 
 
 
-<div align="Center"><figure>
-    <img src="../0-aux/md4-img01.png" alt="img01"><br>
-    <figcaption>Imagem 01.</figcaption>
-</figure></div><br>
+
 
 
 
@@ -185,7 +182,10 @@ O meterpreter é um exemplo de payload utilizado em testes de segurança que rod
 
 
 
-
+<div align="Center"><figure>
+    <img src="../0-aux/md4-img01.png" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
 
 
 
