@@ -151,7 +151,7 @@ O meterpreter é um exemplo de payload utilizado em testes de segurança que rod
 
 <a name="item4.2"><h4>4.2 Pós-Exploração em Sistemas Comprometidos</h4></a>[Back to summary](#item4) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
 
-✅ Resumo de recomendações gerais   
+
 
 
 
