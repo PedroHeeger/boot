@@ -5,8 +5,7 @@
 ### Software/Subject: <a href="../">cybersecurity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/cybersecurity.jpg" alt="cybersecurity" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_036 (Formação Cybersecurity Specialist)   <img src="./0-aux/logo_boot.png" alt="boot_036" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/03-conclu/cyber/.pdf">Certificate</a>
-
+#### <a href="https://github.com/PedroHeeger/my_tech_journey/tree/main/credentials/certificates/bootcamps/cybersecurity/.pdf">Certificate</a>
 ---
 
 ### Theme:
