@@ -185,6 +185,92 @@ O Kali Linux é uma distribuição baseada em Linux voltada para segurança ofen
 
 Entre as ferramentas mais conhecidas do Kali estão o Metasploit, para exploração de vulnerabilidades; o Nmap, para varredura de redes e portas; o Wireshark, para análise de tráfego; e o Aircrack-ng, voltado à auditoria de redes Wi-Fi. Além disso, o Kali Linux suporta diferentes interfaces gráficas, como GNOME Shell, XFCE e KDE Plasma, oferecendo flexibilidade para o usuário.
 
+##### Parte Prática
+
+A parte prática desta aula consistiu no provisionamento e instalação de quatro máquinas virtuais com diferentes sistemas operacionais. As máquinas foram criadas no **Oracle VM VirtualBox Manager** a partir de imagens ISO. O processo de provisionamento foi executado por meio do script [vms_install.ps1](./vms/vms_install.ps1), escrito em **Windows PowerShell** utilizando comandos CLI do **VirtualBox**. O objetivo foi automatizar a criação das VMs e manter um registro das configurações aplicadas.
+
+Outros softwares, como **Vagrant**, **Terraform** e **Packer**, chegaram a ser considerados. No entanto, os dois primeiros — com os quais já havia familiaridade — não permitem provisionar VMs no **VirtualBox** diretamente a partir de ISOs, apenas a partir de *boxes*, o que não atendia ao propósito desta aula.
+
+Após o provisionamento, foram feitas tentativas de automatizar a instalação dos sistemas com o comando `VBoxManage unattended install`, mas o processo não apresentou os resultados esperados, sendo necessário optar por instalações manuais. Abaixo estão listados os sistemas operacionais instalados, juntamente com as configurações aplicadas em cada instalação:
+- **WindowsXP**:
+  - Concordar com a Licensa: `agree` (F8).
+  - Particionamento: `Particionar em única partição`.
+    - Esquema de Particionamento: `Formatar a partição usando o sistema de arquivo NIFS`.
+  - Nome Completo: `Pedro`.
+  - Organização: `DIO`.
+  - Chave (Key): `MRX3F-47B9T-2487J-KWKMF-RPWBY`.
+  - Senha do Administrador: `Pass@word`.
+  - Data e Hora: `Mantido o padrão`.
+  - Time-Zone: `(GMIT-03:00) Brasília`.
+  - Configurações (Settings): `Configurações Padrão` (Typical Settings).
+  - Grupo de Trabalho: `WORKGROUP`.
+  - Help protect your PC: `Not right now`.
+  - Ready to register with Microsoft: `No, not at this time`.
+  - Users: `Pedro`.
+- **Windows7**:
+  - Linguagem da Instalação: `Português (Brasil)`.
+  - Formato de Tempo e Moeda: `Português (Brasil)`.
+  - Teclado: `Inglês Americano`.
+  - Concordar com a Licensa.
+  - Tipo de Instalação: `Personalizada`.
+    - Local de Instalação: `Disk 0` (Disco Rígido Virtual).
+  - Nome do Usuário: `Pedro`.
+  - Nome do Computador: `Pedro-PC`.
+  - Senha (Password): `Pass@word`.
+  - Dica de Senha: `Password`.
+  - Chave do Produto (Product Key): `Mantido em branco`.
+  - Ativação automática do Windows quando estiver online: `Não`.
+  - Help protect your compute: `Usar as configurações recomendadas`.
+  - Time-Zone: `(UTC-03:00) Brasília`.
+  - Localização Atual do Computador: `Rede Pública`.
+- **Windows10**:
+  - Linguagem da Instalação: `Inglês (Estados Unidos)`.
+  - Formato de Tempo e Moeda: `Português (Brasil)`.
+  - Teclado: `Português (Brasil ABNT2)`.
+  - Chave do Produto (Product Key): `Mantido em branco`.
+  - Sistema Operacional: `Windows 10 Home`.
+  - Concordar com a Licensa.
+  - Tipo de Instalação: `Personalizada`.
+    - Local de Instalação: `Disk 0` (Disco Rígido Virtual).
+  - Região: `Brasil`.
+  - Teclado 1: `Português (Brasil ABNT2)`.
+  - Teclado 2: `Inglês Americano`.
+  - Adicionar Conta: `Mantido em branco`.
+  - Usuário: `Pedro`.
+  - Senha (Password): `Pass@word`.
+  - Criar Pin: `Ignorado`.
+  - Habilitar Localização: `Não`.
+  - Encontrar meu Dispositivo: `Não`.
+  - Enviar Dados de Diagnóstico para a Microsoft: `Enviar dados de diagnóstico obrigatório`.
+  - Aprimorar Escrita e Digitação: `Não`.
+  - Obtenha experiências personalizadas com dados de diagnóstico: `Não`.
+  - Permitir que os aplicativos usem IDs de publicidade: `Não`.
+  - Personalizar sua Experiência: `Pulado`.
+  - Microsoft 365: `Negar`.
+  - OneDrive Storage: `Negar`.
+- **Kali Linux**: 
+  - Linguagem da Instalação: `Português (Brasil)`.
+  - Localização: `Brasil`.
+  - Locale (Time-Zone): `Brasil`.
+  - Teclado: `Inglês Americano`.
+  - Hostname: `kali`.
+  - Domain Name: `Mantido em branco`.
+  - Nome do Usuário Completo: `pedro`.
+    - Usuário: `pedro`.
+    - Senha (Password): `pswd`.
+    - Estado ou Província: `Bahia`.
+  - Método de Particionamento: `Usar o disco inteiro`.
+    - Disco para Particionar: `SCSI (0,0,0) (sda)` (Disco Rígido Virtual).
+    - Esquema de Particionamento: `Todos os arquivos em uma única partição`.
+    - Finalizar particionamento e escrever alterações no disco.
+    - Escrever mudanças no disco: `Sim`.
+  - Instalação do Grub (Carregador de Inicialização): `Sim`.
+    - Dispositivo onde será instalado: `/dev/sda` (Disco Rígido Virtual).
+
+
+
+
+
 <a name="item2.3"><h4>2.3 Fundamentos de Redes de Computadores</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/network/251016...Redes...Computadores_PH_DIO.pdf">Certificate</a>
 
 🌐 Redes de Computadores   
