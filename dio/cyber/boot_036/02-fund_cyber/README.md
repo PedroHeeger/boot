@@ -6,6 +6,8 @@
 ### Bootcamp: <a href="../">boot_036 (Formação Cybersecurity Specialist)   <img src="../0-aux/logo_boot.png" alt="boot_036" width="auto" height="25"></a>
 ### Module: 2. Fundamentos de Cibersegurança 
 
+#### <a href="https://github.com/PedroHeeger/my_tech_journey/tree/main/credentials/certificates/bootcamps/cybersecurity/mod/251017_Mod_Fundamentos...Ciberseguranca_PH_DIO.pdf">Certificate</a>
+
 ---
 
 This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp [**Formação Cybersecurity Specialist**](../).
@@ -42,9 +44,6 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
   2.5. Materiais Complementares: Fundamentos de Cibersegurança<br>
 
 - 2.2
-  - Instalar Windows 7 no VM VirtualBox
-  - Instalar Windows 11 no VM VirtualBox
-  - Instalar Linux no VM VirtualBox
   - Instalar Tails no VM VirtualBox
 - 2.4
   - 
@@ -64,7 +63,7 @@ Por fim, forneceu noções de privacidade e anonimato online (Deep Web vs Dark W
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item2.1"><h4>2.1 Príncipios da Cibersegurança</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+<a name="item2.1"><h4>2.1 Príncipios da Cibersegurança</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251014_Principios...Ciberseguranca_PH_DIO.pdf">Certificate</a>
 
 🛡️ Cibersegurança   
 A cibersegurança tem como foco principal as pessoas, e o seu ativo mais valioso são os dados que elas geram e utilizam. Proteger esses dados é o objetivo central, pois deles dependem a confidencialidade, a integridade e a continuidade das atividades. Tudo o que envolve sistemas, redes e dispositivos funciona como infraestrutura de suporte para garantir que esses dados permaneçam seguros. 
@@ -149,7 +148,7 @@ Para enfrentar ameaças sofisticadas, muitas organizações estruturam equipes e
 🎓 Certificações em cibersegurança   
 Certificações comuns nesse ramo incluem CEH e ECSA, voltadas para quem atua com segurança ofensiva e análise de vulnerabilidades.
 
-<a name="item2.2"><h4>2.2 Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+<a name="item2.2"><h4>2.2 Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/sys_adm/os/251015...Sistemas_Operacionais...VMs_PH_DIO.pdf">Certificate</a>
 
 🖥️ Sistema Operacional   
 Um sistema operacional (SO) é o software que faz a ponte entre o usuário e o hardware. Ele interpreta comandos humanos em linguagem de máquina e organiza os recursos do computador para que tudo funcione corretamente — desde a abertura de programas até o reconhecimento de dispositivos como teclado, disco ou rede.
@@ -186,7 +185,7 @@ O Kali Linux é uma distribuição baseada em Linux voltada para segurança ofen
 
 Entre as ferramentas mais conhecidas do Kali estão o Metasploit, para exploração de vulnerabilidades; o Nmap, para varredura de redes e portas; o Wireshark, para análise de tráfego; e o Aircrack-ng, voltado à auditoria de redes Wi-Fi. Além disso, o Kali Linux suporta diferentes interfaces gráficas, como GNOME Shell, XFCE e KDE Plasma, oferecendo flexibilidade para o usuário.
 
-<a name="item2.3"><h4>2.3 Fundamentos de Redes de Computadores</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+<a name="item2.3"><h4>2.3 Fundamentos de Redes de Computadores</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/network/251016...Redes...Computadores_PH_DIO.pdf">Certificate</a>
 
 🌐 Redes de Computadores   
 Redes de computadores são sistemas que permitem a interligação de diversos dispositivos — como computadores, celulares, servidores e equipamentos de comunicação — para que possam trocar informações e compartilhar recursos entre si. Para que essa comunicação funcione, todos os dispositivos seguem regras padronizadas chamadas protocolos, que definem como os dados devem ser enviados e recebidos, seja por cabos físicos ou por conexões sem fio.
@@ -262,7 +261,7 @@ Uma VPN (Virtual Private Network) cria um túnel criptografado, protegendo todos
 
 Já um proxy atua apenas como intermediário de requisições web, acessando sites em nome do usuário. Ele oculta o IP real, mas não criptografa a conexão, o que o torna menos seguro. É útil para contornar bloqueios simples, mas insuficiente como mecanismo de proteção total.
 
-<a name="item2.4"><h4>2.4 Introdução à Deep Web e Anonimato</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
+<a name="item2.4"><h4>2.4 Introdução à Deep Web e Anonimato</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251017...Deep_Web...Anonimato_PH_DIO.pdf">Certificate</a>
 
 🌐 Camadas da Internet   
 A internet pode ser organizada em camadas conforme o nível de visibilidade e acessibilidade das informações. Cada camada representa um conjunto diferente de conteúdos e formas de acesso, variando desde sites públicos e abertos até redes privadas e anônimas. As principais camadas são:
