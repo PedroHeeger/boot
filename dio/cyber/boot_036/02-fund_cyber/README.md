@@ -189,7 +189,7 @@ Entre as ferramentas mais conhecidas do Kali estão o Metasploit, para exploraç
 
 ##### Parte Prática
 
-A parte prática desta aula consistiu no provisionamento e instalação de quatro máquinas virtuais com diferentes sistemas operacionais. As máquinas foram criadas no **Oracle VM VirtualBox Manager** a partir de imagens ISO. O processo de provisionamento foi executado por meio do script [vms_install.ps1](./vms/vms_install.ps1), escrito em **Windows PowerShell** utilizando comandos CLI do **VirtualBox**. O objetivo foi automatizar a criação das VMs e manter um registro das configurações aplicadas.
+A parte prática desta aula consistiu no provisionamento e instalação de quatro máquinas virtuais com diferentes sistemas operacionais. As máquinas foram criadas no **Oracle VM VirtualBox Manager** a partir de imagens ISO. O processo de provisionamento foi executado por meio do script [vms_install.ps1](./vms_install.ps1), escrito em **Windows PowerShell** utilizando comandos CLI do **VirtualBox**. O objetivo foi automatizar a criação das VMs e manter um registro das configurações aplicadas.
 
 Outros softwares, como **Vagrant**, **Terraform** e **Packer**, chegaram a ser considerados. No entanto, os dois primeiros — com os quais já havia familiaridade — não permitem provisionar VMs no **VirtualBox** diretamente a partir de ISOs, apenas a partir de *boxes*, o que não atendia ao propósito desta aula.
 
