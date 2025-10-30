@@ -33,6 +33,13 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 
+Oracle VM VirtualBox
+Tor Browser
+Tor
+Tails
+Windscribe
+Proton VPN
+
 ---
 
 ### Bootcamp Module 2 Structure
@@ -42,11 +49,6 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
   2.3. <a href="#item2.3">Fundamentos de Redes de Computadores</a><br>
   2.4. <a href="#item2.4">Introdução à Deep Web e Anonimato</a><br>
   2.5. Materiais Complementares: Fundamentos de Cibersegurança<br>
-
-- 2.2
-  - Instalar Tails no VM VirtualBox
-- 2.4
-  - 
 
 ---
 
@@ -267,6 +269,13 @@ Após o provisionamento, foram feitas tentativas de automatizar a instalação d
   - Instalação do Grub (Carregador de Inicialização): `Sim`.
     - Dispositivo onde será instalado: `/dev/sda` (Disco Rígido Virtual).
 
+A imagem 01 mostra as quatro máquinas virtuais provisionadas no **Oracle VM VirtualBox Manager**, cada uma executando um sistema operacional diferente. As VMs com **Windows XP** e **Windows 7** apresentavam conectividade de rede, porém não foi possível navegar na internet, já que o **Internet Explorer** não oferece suporte aos protocolos modernos utilizados atualmente.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img01.png" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
+
 
 
 
@@ -398,12 +407,53 @@ O Windscribe é um serviço de VPN que cria um túnel criptografado entre o disp
 🔁 Proxy   
 Um proxy atua como intermediário entre o usuário e a internet. Em vez de se conectar diretamente ao site, a solicitação passa por um servidor intermediário que oculta o IP real. Embora ofereça menor segurança que uma VPN ou Tor, pode ser útil para tarefas simples, como driblar bloqueios regionais ou acessar sites de forma rápida e anônima.
 
-<div align="Center"><figure>
-    <img src="../0-aux/md2-img01.png" alt="img01"><br>
-    <figcaption>Imagem 01.</figcaption>
-</figure></div><br>
+##### Parte Prática
+
+Na parte prática deste curso, foram exploradas algumas ferramentas voltadas à privacidade e ao anonimato. A primeira delas foi o **Tor Browser**, que utiliza a rede **Tor (The Onion Router)**. Essa rede é amplamente empregada para navegação anônima, especialmente na chamada *Dark Web*, pois permite acessar sites com domínios terminados em **.onion** e ocultar o endereço IP de origem da conexão.  
+
+O funcionamento da rede Tor baseia-se no *onion routing*, um método em que o tráfego é criptografado em múltiplas camadas e roteado por diversos nós voluntários. Cada nó conhece apenas o endereço do nó anterior e o do próximo destino, impossibilitando a identificação completa da rota ou do remetente original.  
+
+Os sites **.onion** fazem parte dos chamados *onion services* (anteriormente “Hidden Services”). Eles não são resolvidos por servidores DNS públicos, mas sim dentro da própria rede Tor. Quando um usuário acessa um endereço `.onion`, o navegador e o serviço Tor estabelecem a comunicação por meio de *introduction points* e *rendezvous points*, criando um canal criptografado direto entre o cliente e o servidor — sem que nenhuma das partes saiba o IP da outra.  
+
+Um aspecto interessante é que o próprio endereço `.onion` de um site é derivado de uma chave pública criptográfica. Isso significa que o domínio funciona como uma espécie de identidade matemática do serviço. Assim, qualquer alteração no par de chaves geraria um novo endereço `.onion`, o que garante autenticidade: se o endereço for o mesmo, é porque pertence àquele serviço legítimo.  
+
+Os endereços antigos (versão 2) eram curtos, mas menos seguros; hoje são utilizados os **endereços v3**, bem mais longos (56 caracteres aleatórios), baseados em criptografia **ed25519**, que aumentam a integridade e dificultam falsificações. Embora o acesso à rede Tor proporcione anonimato e proteção contra rastreamento, é importante lembrar que ela também é utilizada para fins ilícitos — por isso, seu uso deve ser sempre responsável e ético.
+
+Após a instalação do **Tor Browser**, o navegador foi iniciado e configurou automaticamente um circuito Tor, definindo a rota por onde o tráfego seria encaminhado de forma anônima. Em seguida, foi acessado o site **DeepWebLinks.co**, utilizado para consultar uma lista de endereços `.onion` correspondentes a diversos tipos de serviços disponíveis na rede **Tor**, conforme mostrado na imagem 02.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img02.png" alt="img02"><br>
     <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
+
+Alguns desses sites, como **SporeStack**, **DuckDuckGo**, **Mail2Tor**, **Ahmia**, **Proton** e **BlackCloud**, foram visitados para observar seus respectivos domínios `.onion`. Todos operavam integralmente dentro da rede Tor, demonstrando a estrutura de serviços ocultos (*onion services*). A imagem 03 mostra o acesso ao **DuckDuckGo** através de seu endereço `.onion`, confirmando a navegação dentro da rede Tor.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+Outro software apresentado neste curso foi o **Tails**, um sistema operacional baseado em **Linux** desenvolvido com foco em privacidade e anonimato. Ele é considerado um sistema amnésico, pois não armazena dados locais nem mantém histórico após o desligamento — todas as atividades são executadas apenas na memória volátil (RAM), sendo apagadas ao encerrar o sistema.  
+
+O **Tails** é frequentemente utilizado a partir de um pendrive bootável, permitindo ao usuário navegar com segurança em qualquer computador sem deixar rastros. Durante a aula, o sistema foi instalado no **VirtualBox** para fins de demonstração; no entanto, o projeto **Tails** deixou de oferecer suporte oficial a essa virtualização devido a limitações técnicas e falhas de desempenho. Em uma futura etapa, será realizada a instalação do **Tails** em um pendrive físico, documentando todo o processo de configuração e inicialização segura do sistema.
+
+A terceira ferramenta explorada foi o **Windscribe**, um software de VPN (Virtual Private Network). As VPNs criam um túnel criptografado entre o dispositivo do usuário e um servidor remoto, mascarando o endereço IP real e protegendo o tráfego de rede contra interceptações ou monitoramento. Em vez de utilizar o **Windscribe**, foi escolhida a **Proton VPN**, que já estava previamente instalada na máquina física com **Windows**. Essa ferramenta oferece conexões seguras, com suporte a protocolos modernos e servidores distribuídos globalmente. A imagem 04 mostra a **VPN** ativa durante o teste de conexão, mascarando o IP da máquina para um IP com origem na Holanda.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
+
+A última ferramenta explorada foi o uso de proxies, que funcionam como intermediários entre o usuário e a internet. Ao redirecionar o tráfego por um servidor intermediário, o proxy pode ocultar o endereço IP original, oferecer certo nível de anonimato e, em alguns casos, contornar restrições de acesso. Existem diversas maneiras de utilizar proxies: por meio de softwares dedicados, sites especializados, extensões de navegador ou até pela configuração manual de um servidor proxy na máquina física. Neste caso, foi acessado o site **spys.one**, que disponibilizava uma lista de servidores proxy públicos, conforme mostrado na imagem 05. Alguns servidores foram testados até que fosse encontrado um que funcionasse corretamente.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
+
+A configuração do proxy no **Windows** foi bastante simples. Bastou acessar as configurações de Proxy do sistema e ativar a opção `Usar um servidor proxy`. Em seguida, foram inseridos o IP e a porta do servidor obtidos na lista do site **spys.one**. Após aplicar as configurações, o tráfego da máquina passou a ser redirecionado por meio desse servidor intermediário. A imagem 06 demonstra o resultado, mostrando que o endereço IP da máquina foi mascarado e substituído por um IP localizado na **Nicarágua**.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md2-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
 </figure></div><br>
