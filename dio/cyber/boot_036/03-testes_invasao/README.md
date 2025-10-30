@@ -31,6 +31,16 @@ This folder refers to Module 3 **Testes de Invasão e Busca Por Vulnerabilidades
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
 
+Google Dorking
+Exploit-db
+Shodan
+Maltego
+FOCA
+
+Metasploit
+Setoolkit
+
+
 ---
 
 ### Bootcamp Module 3 Structure
@@ -43,17 +53,25 @@ This folder refers to Module 3 **Testes de Invasão e Busca Por Vulnerabilidades
   3.6. <a href="#item3.6">Desafio de projeto: Criação de um Phishing com o Kali Linux</a><br>
   3.5. Materiais Complementares: Fundamentos de Cibersegurança<br>
 
-- Usar o OSINT Framework na Web
-- Usar o Google Hacking na Web
-- Usar o Exploit-db
-- Usar o Maltego no PC
-- Usar o FOCA no PC
+- 3.2:
+  - Usar o OSINT Framework na Web
+  - Usar o Maltego no PC
+  - Usar o FOCA no PC
 
 - 3.4
   - Criar uma VM do Metasploit
   - Fazer varredura e enumeração com Nmap no Kali no Metasploit
 - 3.5
   - Fazer enumeração com Nmap no Kali no Metasploit
+- 3.6
+  - Usar o Setoolkit: Precisa mudar network para modo bridged
+    - 2) Website Attack Vectors
+    - 3) Credential Harvester Attack Method
+    - 2) Site Cloner
+    - Vai rodar um servidor com uma página falsa para isso precisa do IP da máquina
+    - Passar a URL da página: http://www.facebook.com
+    - Pegar o IP da VM e acessar em uma aba anonima no navegador da maquina fisica
+    - Digitar as credenciais
 
 ---
 
@@ -148,6 +166,77 @@ FOCA automatiza busca, download e análise de documentos públicos para extrair 
 - Respeitar legislação e limites éticos (não invadir, não se passar por terceiro).
 - Automatizar onde fizer sentido, mas manter revisão humana dos resultados.
 
+##### Parte Prática
+
+Na parte prática foram utilizadas ferramentas de OSINT com objetivo didático. A primeira abordagem apresentada foi o **Google Dorking** (também chamado **Google Hacking**). Não se trata exatamente de uma ferramenta, mas de uma técnica que consiste em aplicar operadores avançados — chamados *dorks* — diretamente no **Google**. Esses operadores permitem localizar, de forma muito mais rápida e precisa, informações que buscas comuns dificilmente retornariam.
+
+As informações encontradas por *dorks* podem ser variadas e, por vezes, sensíveis ou indevidamente expostas. Entre os tipos de conteúdo que costumam aparecer estão:
+- Documentos (PDF, XLS, DOC) com informações institucionais.  
+- Backups antigos, arquivos de configuração e *dumps* mal armazenados.  
+- Páginas administrativas e painéis (por vezes sem proteção adequada).  
+- Diretórios abertos com listagem de arquivos.  
+- Trechos de código-fonte ou chaves publicadas em repositórios públicos.  
+- Conteúdos úteis para pesquisa (artigos, manuais, whitepapers).
+
+**Observação ética:** buscar informações indexadas publicamente é permitido; explorar vulnerabilidades, acessar ou divulgar dados sensíveis sem autorização é ilegal e antiético. Em auditorias, seguir procedimentos de *responsible disclosure* e obter autorização prévia.
+
+O uso do **Google Dorking** torna-se ainda mais eficiente quando combinado com bases de referência como o **Exploit Database (Exploit-DB)**. O **Exploit-DB** disponibiliza, entre outros conteúdos, o *Google Hacking Database (GHDB)* — um repositório de dorks organizados por tipo e finalidade. A imagem 01 ilustra o GHDB com o filtro aplicado para a dork `intext:"index of" ".sql"`. Essa dork foi copiada e executada no **Google**, os resultados obtidos aparecem na imagem 02.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img01.png" alt="img01"><br>
+    <figcaption>Imagem 01.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img02.png" alt="img02"><br>
+    <figcaption>Imagem 02.</figcaption>
+</figure></div><br>
+
+O segundo filtro foi aplicado usando a dork `intitle:"IIS Windows Server"`, conforme imagem 03. Essa dork também foi pesquisada no **Google**. Por fim, o mesmo procedimento foi realizado para a dork `inurl:"admin/default.aspx"`, os resultados obtidos estão exibidos na imagem 04.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img03.png" alt="img03"><br>
+    <figcaption>Imagem 03.</figcaption>
+</figure></div><br>
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img04.png" alt="img04"><br>
+    <figcaption>Imagem 04.</figcaption>
+</figure></div><br>
+
+Uma outra ferramenta utilizada foi o **Shodan**, frequentemente chamada de "Google dos hackers". Trata‑se de um motor de busca para dispositivos conectados à Internet — servidores, câmeras, roteadores e diversos serviços expostos. O acesso requer criação de conta; embora exista uma versão paga, a plataforma oferece funcionalidades gratuitas suficientes para pesquisas básicas. 
+
+No Shodan, no campo `Filters Cheat Sheet`, foi selecionada a opção `More Examples`, que direcionava para a página `Search Query Examples`. Nessa página era possível escolher diversos filtros conforme o tipo de dispositivo ou serviço a ser pesquisado. A opção selecionada neste exercício foi `Apache web servers`; ao clicar em `SEARCH`, surgiu uma lista de dispositivos que executavam o servidor web Apache, conforme imagem 05 abaixo.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img05.png" alt="img05"><br>
+    <figcaption>Imagem 05.</figcaption>
+</figure></div><br>
+
+Observe que, ao selecionar a opção de Apache, o próprio **Shodan** adicionou automaticamente o filtro `product:Apache`. A plataforma permite a aplicação de diversos tipos de filtros. Neste caso, o filtro foi alterado para `city:Salvador`, com o objetivo de pesquisar dispositivos localizados na cidade de Salvador. Alguns dispositivos de El Salvador também apareceram nos resultados, uma vez que o nome do país contém a palavra "Salvador". A imagem 06 mostra o resultado desse filtro.
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img06.png" alt="img06"><br>
+    <figcaption>Imagem 06.</figcaption>
+</figure></div><br>
+
+Outras duas opções de filtro realizadas foram `"Server: yawcam" "Mime-Type: text/html"` e `"Server: IP Webcam Server" "200 OK"`. O objetivo dessas consultas era identificar interfaces web de câmeras que respondem com páginas HTML acessíveis publicamente. Por fim, executou‑se o filtro `"220" "230 Login successful." port: 22` para localizar respostas associadas a servidores SSH na porta 22 (mensagens que indicam handshake ou login bem‑sucedido).
+
+<div align="Center"><figure>
+    <img src="../0-aux/md3-img07.png" alt="img07"><br>
+    <figcaption>Imagem 07.</figcaption>
+</figure></div><br>
+
+Maltego
+
+FOCA
+
+
+
+
+
+
+
 <a name="item3.3"><h4>3.3 Tópicos em Engenharia Social</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
 
 🧠 Introdução à Engenharia Social   
@@ -232,6 +321,38 @@ O Nmap é uma ferramenta livre e amplamente usada para varredura, mapeamento de 
 - Preferir modos menos agressivos em redes sensíveis (evitar scans que causem sobrecarga).
 - Registrar evidências e resultados de forma organizada para auditoria e correção.
 - Tratar os dados coletados com confidencialidade e usar os resultados para mitigar riscos (fechar portas desnecessárias, atualizar serviços, aplicar políticas).
+
+
+##### Parte Prática
+
+
+- IP: 10.0.2.15
+
+
+
+
+
+- Duas fontes: SourceForge e Rapid7
+
+- Baixar a vm do metasploitable
+- Configurar e iniciar
+- No terminal:
+  - Autenticar com usuário e senha: msfadmin
+  - ifconfig
+
+- nmap -v 192.168.56.0/24
+- nmap -v -sn 192.168.56.100-200
+- nmap -v -sn 192.168.56.100-200 | grep 192.
+- nmap -v -sn 192.168.56.100-200 | grep 192. > varredura.txt
+- ls
+- cat varredura.txt
+
+
+- nmap -v -sU 192.168.56.104 -p 21,22,23,445,3306
+- nmap -v -sU 192.168.56.100-110 -p 21,22,23,445,3306
+
+
+
 
 <a name="item3.5"><h4>3.5 Princípios de Enumeração e Exploração de Vulnerabilidades</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cyber/.pdf">Certificate</a>
 
