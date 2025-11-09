@@ -471,7 +471,7 @@ Outra opção testada foi `nmap -p 80 --script dns-brute.nse nmap.org`, que exec
     <figcaption>Imagem 20.</figcaption>
 </figure></div><br>
 
-<a name="item3.6"><h4>3.6 Desafio de projeto: Criação de um Phishing com o Kali Linux</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/main/blob/main/cert_ti/04-curso/cybersecurity/.pdf">Certificate</a>
+<a name="item3.6"><h4>3.6 Desafio de projeto: Criação de um Phishing com o Kali Linux</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251109_DP...Phishing...Kali_Linux...PH_DIO.pdf">Certificate</a>
 
 Neste desafio de projeto o objetivo foi a criação de um phishing. Para isso a VM **Kali Linux** foi acessada e no terminal dela foi alterado o para super usuário com o comando `sudo su` e passando a senha da máquina (`pswd`). O software utilizado para isso foi o **Social-Engineer Toolkit (SET)** que foi inicializado com o comando `setoolkit`. Ele tem uma interface bem fácil de utilizar, com menus onde é possível realizar as configurações desejadas. Neste caso, foi selecionada a opção 1 (`Social Enginerring Attacks`) para ataques de engenharia social, em seguida, 2 (`Website Attack Vectors`) para vetores de ataque de website.
 
