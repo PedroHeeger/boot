@@ -284,7 +284,7 @@ A imagem 01 mostra as quatro máquinas virtuais provisionadas no **Oracle VM Vir
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
 
-<a name="item2.3"><h4>2.3 Fundamentos de Redes de Computadores</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/network/251016...Redes...Computadores_PH_DIO.pdf">Certificate</a>
+<a name="item2.3"><h4>2.3 Fundamentos de Redes de Computadores</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251017...Deep_Web...Anonimato_PH_DIO.pdf">Certificate</a>
 
 🌐 Redes de Computadores   
 Redes de computadores são sistemas que permitem a interligação de diversos dispositivos — como computadores, celulares, servidores e equipamentos de comunicação — para que possam trocar informações e compartilhar recursos entre si. Para que essa comunicação funcione, todos os dispositivos seguem regras padronizadas chamadas protocolos, que definem como os dados devem ser enviados e recebidos, seja por cabos físicos ou por conexões sem fio.
