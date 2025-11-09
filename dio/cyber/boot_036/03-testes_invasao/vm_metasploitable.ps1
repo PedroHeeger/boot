@@ -18,12 +18,7 @@ if ($executar -eq "S" -or $executar -eq "s") {
 
     Write-Host "Anexando o disco virtual ao controlador SATA"
     # VBoxManage storageattach "mstab" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "C:\Users\pedro\VirtualBox\disk\mstab.vdi"
-    VBoxManage storageattach "mstab" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "G:\Meu Drive\3_PROG\1_Rec\ISOs\metasploit\Metasploitable.vmdk"
-
-
-
-
-    VBoxManage modifyvm "mstab" --ioapic off
+    VBoxManage storageattach "mstab" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "C:\Users\pedro\VirtualBox\other_disk\mstab\Metasploitable.vmdk"
 
     Write-Host "Iniciando a VM com interface gráfica"
     VBoxManage startvm "mstab" --type gui
