@@ -35,7 +35,7 @@ This folder refers to Module 1 **Conhecendo a Formação de Cibersegurança** fr
 ---
 
 ### Bootcamp Module 1 Structure
-1. <a name="item2">Conhecendo a Formação de Cibersegurança</a><br>
+1. <a name="item1">Conhecendo a Formação de Cibersegurança</a><br>
   1.1. <a href="#item1.1">Conhecendo a Formação de Cibersegurança</a><br>
 
 ---
@@ -51,7 +51,7 @@ O módulo também apresentou os principais domínios da cibersegurança — Secu
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em apenas um curso. Abaixo é explicado o que foi desenvolvido nessa atividade.
 
-<a name="item2.1"><h4>2.1 Conhecendo a Formação de Cibersegurança</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251007_Conhecendo...Ciberseguranca_PH_DIO.pdf">Certificate</a>
+<a name="item1.1"><h4>1.1 Conhecendo a Formação de Cibersegurança</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251007_Conhecendo...Ciberseguranca_PH_DIO.pdf">Certificate</a>
 
 🌐 Introdução à Cibersegurança   
 O mundo da cibersegurança apresenta desafios complexos, riscos constantes e uma variedade de oportunidades profissionais. O objetivo deste curso é explorar esses elementos, compreender as técnicas de defesa e ataque, além de analisar o mercado que espera pelos profissionais da área.  
