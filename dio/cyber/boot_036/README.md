@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">cybersecurity   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/content/cybersecurity.jpg" alt="cybersecurity" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_036 (Formação Cybersecurity Specialist)   <img src="./0-aux/logo_boot.png" alt="boot_036" width="auto" height="25"></a>
 
-#### <a href="https://github.com/PedroHeeger/my_tech_journey/tree/main/credentials/certificates/bootcamps/cybersecurity/.pdf">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/my_tech_journey/tree/main/credentials/certificates/bootcamps/cybersecurity/251109_Cert_Formacao_Cybersecurity_Specialist_PH_DIO.pdf">Certificate</a>
 ---
 
 ### Theme:
@@ -32,8 +32,8 @@
 
 ### Bootcamp Structure
 
-1. [Conhecendo a Formação de Cibersegurança]()   
-  1.1. [Conhecendo a Formação de Cibersegurança]()    
+1. [Conhecendo a Formação de Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_036/01-form_cyber)   
+  1.1. [Conhecendo a Formação de Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_036/01-form_cyber#item1.1)    
 2. [Fundamentos de Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_036/02-fund_cyber)   
   2.1. [Príncipios da Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_036/02-fund_cyber#item2.1)   
   2.2. [Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_036/02-fund_cyber#item2.2)   
