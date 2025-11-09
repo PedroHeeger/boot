@@ -18,9 +18,15 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
 ### Used Tools:
 - Operating System (OS): 
   - Linux   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="linux" width="auto" height="25">
+  - Windows 7   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_7.png" alt="windows_7" width="auto" height="25">
+  - Windows 10   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_10.png" alt="windows_10" width="auto" height="25">
   - Windows 11   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows11.png" alt="windows11" width="auto" height="25">
-- Cloud:
-  - AWS   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="auto" height="25">
+  - Windows XP   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windows_xp.jpg" alt="windows_xp" width="auto" height="25">
+- Linux Distribution:
+  - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
+  - The Amnesic Incognito Live System (Tails)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tails.png" alt="tails" width="auto" height="25">
+- Virtualization: 
+  - Oracle VM VirtualBox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
 - Cloud Services:
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -32,13 +38,12 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
   - Git   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="git" width="auto" height="25">
 - Repository:
   - GitHub   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="github" width="auto" height="25">
-
-Oracle VM VirtualBox
-Tor Browser
-Tor
-Tails
-Windscribe
-Proton VPN
+- Network:
+  - Proton VPN   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/proton_vpn.png" alt="proton_vpn" width="auto" height="25">
+  - spys.one   <img src="" alt="spys.one" width="auto" height="25">
+  - The Onion Router (Tor)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tor.png" alt="tor" width="auto" height="25">
+  - Tor Browser   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tor_browser.png" alt="tor_browser" width="auto" height="25">
+  - Windscribe   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/windscribe.jpg" alt="windscribe" width="auto" height="25">
 
 ---
 
@@ -57,10 +62,13 @@ O objetivo deste módulo do bootcamp consistiu em desenvolver compreensão sóli
 
 Complementarmente, promoveu domínio prático sobre sistemas operacionais e virtualização (arquitetura, kernel/shell, Windows e Linux, uso de máquinas virtuais), além de fundamentos de redes (topologias, modelos em camadas, endereçamento IP, máscaras, CIDR e protocolos/portas). Apresentou também o panorama de ameaças — técnicas de ataque, vetores e atores — e as estratégias organizacionais de defesa (Red/Blue/Purple teams, monitoramento e resposta a incidentes).
 
-Por fim, forneceu noções de privacidade e anonimato online (Deep Web vs Dark Web, Tor, VPNs, Tails, proxies), destacando riscos e mitigação, e orientou sobre postura responsável, manutenção contínua e práticas de segurança que suportam a resiliência operacional e conformidade.
+Por fim, o módulo forneceu noções de privacidade e anonimato online (Deep Web vs Dark Web, Tor, VPNs, Tails, proxies), destacando riscos e estratégias de mitigação, e orientou sobre postura responsável, manutenção contínua e práticas de segurança que suportam a resiliência operacional e conformidade.
+
+Como parte prática, foram construídas quatro máquinas virtuais no **Oracle VM VirtualBox** com diferentes sistemas operacionais, utilizadas tanto para realizar ataques quanto para receber ataques: **Kali Linux**, **Windows XP**, **Windows 7** e **Windows 10**. Tecnologias de privacidade, como **Tor Browser** e **Proton VPN**, foram empregadas para navegação anônima, inclusive para acessar sites da *Dark Web* (onion services). Além disso, o site **sys.one** foi utilizado para configurar e testar um proxy.
 
 ### Folder Structure:
 - [README.md](./README.md): Este documento de README, escrito em **Markdown**, descrevendo todo conteúdo das aulas desse módulo.
+- [vms_install.ps1](./vms_install.ps1): Arquivo de script em **Windows PowerShell** para provisionamento das máquinas virtuais no **Oracle VM VirtualBox**.
 
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em quatro cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
@@ -269,16 +277,12 @@ Após o provisionamento, foram feitas tentativas de automatizar a instalação d
   - Instalação do Grub (Carregador de Inicialização): `Sim`.
     - Dispositivo onde será instalado: `/dev/sda` (Disco Rígido Virtual).
 
-A imagem 01 mostra as quatro máquinas virtuais provisionadas no **Oracle VM VirtualBox Manager**, cada uma executando um sistema operacional diferente. As VMs com **Windows XP** e **Windows 7** apresentavam conectividade de rede, porém não foi possível navegar na internet, já que o **Internet Explorer** não oferece suporte aos protocolos modernos utilizados atualmente.
+A imagem 01 mostra as quatro máquinas virtuais provisionadas no **Oracle VM VirtualBox Manager**, cada uma executando um sistema operacional diferente. As VMs com **Windows XP** e **Windows 7** apresentavam conectividade de rede, porém não foi possível navegar na internet, já que o **Internet Explorer (IE)** não oferece suporte aos protocolos modernos utilizados atualmente.
 
 <div align="Center"><figure>
     <img src="../0-aux/md2-img01.png" alt="img01"><br>
     <figcaption>Imagem 01.</figcaption>
 </figure></div><br>
-
-
-
-
 
 <a name="item2.3"><h4>2.3 Fundamentos de Redes de Computadores</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/network/251016...Redes...Computadores_PH_DIO.pdf">Certificate</a>
 
