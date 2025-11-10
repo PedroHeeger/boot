@@ -25,6 +25,7 @@ This folder refers to Module 3 **Testes de Invasão e Busca Por Vulnerabilidades
   - Kali Linux   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/kali_linux.png" alt="kali_linux" width="auto" height="25">
 - Virtualization: 
   - Oracle VM VirtualBox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
+  - VBoxManage   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vboxmanage" width="auto" height="25">
 - Cloud Services:
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -473,25 +474,30 @@ Outra opção testada foi `nmap -p 80 --script dns-brute.nse nmap.org`, que exec
 
 <a name="item3.6"><h4>3.6 Desafio de projeto: Criação de um Phishing com o Kali Linux</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251109_DP...Phishing...Kali_Linux...PH_DIO.pdf">Certificate</a>
 
-Neste desafio de projeto o objetivo foi a criação de um phishing. Para isso a VM **Kali Linux** foi acessada e no terminal dela foi alterado o para super usuário com o comando `sudo su` e passando a senha da máquina (`pswd`). O software utilizado para isso foi o **Social-Engineer Toolkit (SET)** que foi inicializado com o comando `setoolkit`. Ele tem uma interface bem fácil de utilizar, com menus onde é possível realizar as configurações desejadas. Neste caso, foi selecionada a opção 1 (`Social Enginerring Attacks`) para ataques de engenharia social, em seguida, 2 (`Website Attack Vectors`) para vetores de ataque de website.
+Neste desafio de projeto, o objetivo foi criar um phishing: um clone da página do **Facebook** destinado a capturar credenciais fornecidas pelo usuário. A simulação ocorreria em ambiente real (internet), mas em caráter de teste — o único usuário que acessaria o site clonado seria o autor do experimento, utilizando credenciais falsas apenas para demonstrar a captura.
 
-A opção 3 foi selecionada (`Credential Harvester Attack Method`) para método de ataque de colheita de credencial. Na sequência foi escolhido 2 (`Site Cloner`) para clonagem de site. Ele vai rodar um servidor na própria máquina **Kali** com uma página falso do site apenas para capturar as credenciais. Dessa forma, foi necessário definir o IP da máquina 
+Como a página seria exposta na internet, foi necessário adicionar uma interface de rede adicional à máquina **Kali** com o comando `VBoxManage modifyvm "Kali" --nic3 bridged --bridgeadapter3 "Ethernet"`. Ao final do bootcamp, essa máquina disporia de três interfaces de rede — uma para cada finalidade — sendo que apenas uma ficaria conectada por vez, controlado diretamente na VM.
+
+A seguir, a função de cada adaptador de rede utilizado:
+- **NAT:** permitia acesso à internet sem exposição direta do host, usando tradução de endereços (ideal para navegação segura da VM).  
+- **Host-Only:** conectava apenas as máquinas virtuais do **VirtualBox** (rede interna), útil para testes isolados entre VMs.  
+- **Bridged:** conectava a VM à rede física, alocando um IP na mesma sub-rede da máquina host — usado quando a VM precisa ser acessível a partir da rede/internet.
+
+Em seguida, acessou-se a VM **Kali Linux** e, no terminal, trocou-se a interface com `nmcli device connect eth3`. A sessão foi elevada para superusuário com `sudo su` fornecendo a senha da máquina (`pswd`).  
+
+O software usado para criar o clone foi o **Social-Engineer Toolkit (SET)**, iniciado com `setoolkit`. A ferramenta apresenta um menu interativo simples de usar. Para este experimento, navegou-se pelas opções: `1` — Social-Engineering Attacks, `2` — Website Attack Vectors, `3` — Credential Harvester Attack Method e, por fim, `2` — Site Cloner, escolhendo assim o método de clonagem do site.
+
+O SET passou a servir uma página falsa na própria máquina **Kali** com o objetivo exclusivo de capturar as credenciais submetidas. Por isso, foi necessário informar o endereço IP da máquina — ou seja, o IP associado à interface `eth3` — para que o servidor hospedasse corretamente o clone e recebesse as requisições.
+
+Em seguida foi informada a URL a ser clonada, que foi `http://www.facebook.com`.
 
 
-
-, passando a URL do Facebook (`http://www.facebook.com`)
 
 
 
 
 
 - 3.6
-  - Usar o Setoolkit: Precisa mudar network para modo bridged
-    - 2) Website Attack Vectors
-    - 3) Credential Harvester Attack Method
-    - 2) Site Cloner
-    - Vai rodar um servidor com uma página falsa para isso precisa do IP da máquina
-    - Passar a URL da página: http://www.facebook.com
     - Pegar o IP da VM e acessar em uma aba anonima no navegador da maquina fisica
     - Digitar as credenciais
 

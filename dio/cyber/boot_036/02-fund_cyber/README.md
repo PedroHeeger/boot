@@ -27,6 +27,7 @@ This folder refers to Module 2 **Fundamentos de Cibersegurança** from bootcamp 
   - The Amnesic Incognito Live System (Tails)   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/tails.png" alt="tails" width="auto" height="25">
 - Virtualization: 
   - Oracle VM VirtualBox   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vm_virtualbox" width="auto" height="25">
+  - VBoxManage   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/vm_virtualbox.png" alt="vboxmanage" width="auto" height="25">
 - Cloud Services:
   - Google Drive   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/google_drive.png" alt="google_drive" width="auto" height="25">
 - Language:
@@ -220,7 +221,7 @@ Após o provisionamento, foram feitas tentativas de automatizar a instalação d
 - **Windows7**:
   - Linguagem da Instalação: `Português (Brasil)`.
   - Formato de Tempo e Moeda: `Português (Brasil)`.
-  - Teclado: `Inglês Americano`.
+  - Teclado: `Estados Unidos (Internacional)`.
   - Concordar com a Licensa.
   - Tipo de Instalação: `Personalizada`.
     - Local de Instalação: `Disk 0` (Disco Rígido Virtual).
