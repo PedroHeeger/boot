@@ -48,7 +48,7 @@ if ($executar -eq "S" -or $executar -eq "s") {
 
 
 #Windows 7
-$executar = Read-Host "Deseja criar a VM WinXP no VirtualBox? (S/N)"
+$executar = Read-Host "Deseja criar a VM Win7 no VirtualBox? (S/N)"
 if ($executar -eq "S" -or $executar -eq "s") {
     Write-Host "Criando a máquina virtual"
     VBoxManage createvm --name "Win7" --ostype "Windows7_64" --register --basefolder "C:\Users\pedro\VirtualBox\vm"
