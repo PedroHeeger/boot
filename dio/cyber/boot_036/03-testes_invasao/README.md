@@ -476,7 +476,7 @@ Outra opção testada foi `nmap -p 80 --script dns-brute.nse nmap.org`, que exec
 
 Neste desafio de projeto, o objetivo foi criar um phishing: um clone da página do **Facebook** destinado a capturar credenciais fornecidas pelo usuário. A simulação ocorreria em ambiente real (internet), mas em caráter de teste — o único usuário que acessaria o site clonado seria o autor do experimento, utilizando credenciais falsas apenas para demonstrar a captura.
 
-Como a página seria exposta na internet, foi necessário adicionar uma interface de rede adicional à máquina **Kali** com o comando `VBoxManage modifyvm "Kali" --nic3 bridged --bridgeadapter3 "Ethernet"`. Ao final do bootcamp, essa máquina disporia de três interfaces de rede — uma para cada finalidade — sendo que apenas uma ficaria conectada por vez, controlado diretamente na VM.
+Como a página seria exposta na internet, foi necessário adicionar uma interface de rede adicional à máquina **Kali** com o comando `VBoxManage modifyvm "Kali" --nic3 bridged --bridgeadapter3 "Killer E2600 Gigabit Ethernet Controller"`. Ao final do bootcamp, essa máquina disporia de três interfaces de rede — uma para cada finalidade — sendo que apenas uma ficaria conectada por vez, controlado diretamente na VM.
 
 A seguir, a função de cada adaptador de rede utilizado:
 - **NAT:** permitia acesso à internet sem exposição direta do host, usando tradução de endereços (ideal para navegação segura da VM).  
