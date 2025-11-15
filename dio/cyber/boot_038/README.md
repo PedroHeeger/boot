@@ -48,18 +48,18 @@
 1. Princípios de Desenvolvimento Ágil e Colaborativo   
   1.1. Bootcamp DIO: Educação Gratuita e Empregabilidade Juntas!   
   1.2. [Trabalhando em Equipes Ágeis]()    
-  1.3. [Organizando seus Estudos com os Roadmaps DIO e o Notion](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#1.3)    
+  1.3. [Organizando seus Estudos com os Roadmaps DIO e o Notion](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item1.3)    
   1.4. [Versionamento de Código com Git e GitHub](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_027#item1.4)    
   1.5. Desafios de Projetos: Crie Um Portfólio Vencedor   
   1.6. [Desafio de Projeto: Contribuindo em um Projeto Open Source no GitHub](https://github.com/PedroHeeger/boot/tree/main/dio/blockchain/boot_027#item1.6)    
   1.7. Mentoria: Aula Inaugural - Santander Bootcamp Cibersegurança   
 2. A Linguagem é um Detalhe...Aprendendo Lógica com Desafios de Código!   
   2.1. Desafios de Código: Aperfeiçoe Sua Lógica e Pensamento Computacional   
-  2.2. [Desafio de Código: Verificando URL com JavaScript](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#2.2)   
-  2.3. [Desafio de Código: Verificando URL com Python](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#2.3)   
-  2.4. [Desafio de Código: Verificando URL com Kotlin](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#2.4)   
-  2.5. [Desafio de Código: Verificando URL com Java](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#2.5)   
-  2.6. [Desafio de Código: Verificando URL com C#](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#2.6)   
+  2.2. [Desafio de Código: Verificando URL com JavaScript](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item2.2)   
+  2.3. [Desafio de Código: Verificando URL com Python](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item2.3)   
+  2.4. [Desafio de Código: Verificando URL com Kotlin](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item2.4)   
+  2.5. [Desafio de Código: Verificando URL com Java](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item2.5)   
+  2.6. [Desafio de Código: Verificando URL com C#](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item2.6)   
 3. Fundamentos de Cibersegurança   
   3.1. [Príncipios da Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_036/02-fund_cyber#item2.1)   
   3.2. [Conceitos e Práticas de Sistemas Operacionais e Máquinas Virtuais](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_036/02-fund_cyber#item2.2)   
@@ -84,10 +84,10 @@
   5.4 Se Preparando Para Uma Entrevista   
   5.5 Avalie este Bootcamp
 6. Outras Mentorias   
-  6.1. [Mentoria: Como Iniciar uma Carreira em Cibersegurança no Setor Financeiro com Santander](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#6.1)   
+  6.1. [Mentoria: Como Iniciar uma Carreira em Cibersegurança no Setor Financeiro com Santander](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item6.1)   
   6.2. Mentoria: Desenvolvimento Inteligente: Maximizando Sua Produtividade com IA Generativa   
-  6.3. [Mentoria: Os Princípios do Ethical Hacking](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#6.3)   
-  6.4 [Mentoria: O Papel da Inteligência Artificial na Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#6.4)   
+  6.3. [Mentoria: Os Princípios do Ethical Hacking](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item6.3)   
+  6.4 [Mentoria: O Papel da Inteligência Artificial na Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item6.4)   
 
 ---
 
