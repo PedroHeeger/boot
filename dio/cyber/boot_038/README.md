@@ -175,7 +175,7 @@ O quarto desafio utilizou a linguagem **Java**, e o código foi desenvolvido no 
 
 Por fim, o último desafio de código foi desenvolvido utilizando a linguagem **C#**, no arquivo [url_csharp.cs](./resources/url_csharp.cs).
 
-<a name="item4.6"><h4>4.6 Mentoria: Seus Primeiros Passos no Linux</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/online_courses/sys_adm/os/linux/251110_Ment...Primeiros_Passos...Linux_PH_DIO.pdf">Certificate</a>
+<a name="item4.6"><h4>4.6 Mentoria: Seus Primeiros Passos no Linux</h4></a>[Back to summary](#item0) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/sys_adm/os/linux/251110_Ment...Primeiros_Passos...Linux_PH_DIO.pdf">Certificate</a>
 
 Nesta mentoria foi apresentado o **copy.sh**, um site que disponibiliza diversos sistemas operacionais para serem executados diretamente no navegador. Esses sistemas rodam por meio do *v86*, que é o emulador x86 escrito em **JavaScript** utilizado pela plataforma. 
 
