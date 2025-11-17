@@ -1,21 +1,8 @@
-
-
-# Enter - iniciar o boot
-# F8 - concordar com a licença
-# Enter - manter a única partição (C - cria partiçoes)
-# Formatar a partição usando o NIFS file system (Outra opção é com FAT).
-
-# Configuração Windows
-
-
-
-
-
 #Windows XP
 $executar = Read-Host "Deseja criar a VM WinXP no VirtualBox? (S/N)"
 if ($executar -eq "S" -or $executar -eq "s") {
     Write-Host "Criando a máquina virtual"
-    VBoxManage createvm --name "WinXP" --ostype "WindowsXP" --register --basefolder "C:/Users/pedro/virtual_box-vms"
+    VBoxManage createvm --name "WinXP" --ostype "WindowsXP" --register --basefolder "C:\Users\pedro\VirtualBox"
 
     Write-Host "Definindo memória, CPUs e ordem de boot"
     VBoxManage modifyvm "WinXP" --memory 2048 --cpus 2 --boot1 dvd --boot2 disk --boot3 none --boot4 none
@@ -40,7 +27,6 @@ if ($executar -eq "S" -or $executar -eq "s") {
 
     Write-Host "Iniciando a VM com interface gráfica"
     VBoxManage startvm "WinXP" --type gui
-
 } else {
     Write-Host "Execução cancelada pelo usuário."
 }
@@ -73,7 +59,6 @@ if ($executar -eq "S" -or $executar -eq "s") {
 
     Write-Host "Iniciando a VM com interface gráfica"
     VBoxManage startvm "Win7" --type gui
-
 } else {
     Write-Host "Execução cancelada pelo usuário."
 }
@@ -109,7 +94,6 @@ if ($executar -eq "S" -or $executar -eq "s") {
 
     Write-Host "Iniciando a VM com interface gráfica"
     VBoxManage startvm "Win10" --type gui
-
 } else {
     Write-Host "Execução cancelada pelo usuário."
 }
@@ -145,7 +129,6 @@ if ($executar -eq "S" -or $executar -eq "s") {
 
     Write-Host "Iniciando a VM com interface gráfica"
     VBoxManage startvm "Kali" --type gui
-
 } else {
     Write-Host "Execução cancelada pelo usuário."
 }
