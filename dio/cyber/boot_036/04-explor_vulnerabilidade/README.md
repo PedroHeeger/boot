@@ -73,7 +73,9 @@ This folder refers to Module 4 **Exploração de Vulnerabilidade e Pós-Explora�
 ---
 
 ### Objective:
-O objetivo deste módulo do bootcamp foi introduzir conceitos fundamentais para melhor compreensão da Inteligência Articial. Conceitos como IA Geral, IA Restrita, Machine Learning (Aprendizado Profundo), Deep Learning, Redes Neurais, IAs Generativas, Processamento de Linguagem Natural, foram abordados. Também foi detalhado minuciosamente como são divididas as redes neurais e que a partir delas surgem as IAs Generativas.
+O objetivo deste módulo consistiu em compreender como serviços expostos, configurações inseguras e falhas comuns podem ser explorados em ambientes reais, analisando seus impactos, riscos e os mecanismos que permitem acesso não autorizado, execução remota de código, elevação de privilégios, movimentação lateral e persistência. O conteúdo abordou protocolos vulneráveis (como FTP, SMB e RDP), uso de ferramentas ofensivas em ambiente controlado — incluindo **Metasploit**, **Meterpreter** e técnicas de pós-exploração — além de ataques Man in the Middle para capturar credenciais e manipular tráfego. Tudo foi estudado com foco em identificar fragilidades, entender o funcionamento dos ataques e aplicar estratégias práticas de mitigação e defesa, reforçando sempre ética, escopo e responsabilidade profissional.
+
+Além disso, foi realizado um desafio prático simulando o funcionamento de um ataque ransomware, no qual dois scripts em **Python** foram utilizados para criptografar e posteriormente descriptografar um terceiro arquivo, demonstrando na prática a lógica desse tipo de ataque.
 
 ### Folder Structure:
 - [README.md](./README.md): Este documento de README, escrito em **Markdown**, descrevendo todo conteúdo das atividades desse módulo.
