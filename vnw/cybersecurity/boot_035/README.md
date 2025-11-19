@@ -59,26 +59,32 @@
   2.11. [Projeto Final - Opção 1](./02-defesa_monitoramento/11-projeto_final_1/)   
   2.11. [Projeto Final - Opção 2](./02-defesa_monitoramento/11-projeto_final_2/)   
 3. <a name="item3">Módulo 3: Ethical Hacking (Red Team)<br>
-  3.1. []()   
-  3.2. []()   
-  3.3. []()   
-  3.4. []()   
-  3.5. []()   
-  3.6. []()   
-  3.7. []()   
-  3.8. []()   
+  3.1. [Pentest: Metodologia & Regras de Engajamento]()   
+  3.2. [OSINT & Recon Avançado | Enumeração Ativa de Serviços Web]()   
+  3.3. [Lab prático: Histórico do Hacker]()   
+  3.4. [Metasploit]()   
+  3.5. [Burp Suite]()   
+  3.6. [Quebra de Credenciais & Brute Force]()   
+  3.7. [Escalada de Privilégio]()   
+  3.8. [Bypass de AV/EDR Avançada]()   
+  3.9. [C2 Frameworks & Automação de Ataques]()   
+  3.10. [Engenharia Social & Phishing]()   
+  3.11. [Wireless Hacking]()   
+  3.12. [Projeto Final - Opção 1]()   
+  3.12. [Projeto Final - Opção 2]()   
 
 ---
 
 ### Objective:
 O objetivo desse bootcamp é transformar em um profissional de segurança digital com mentalidade prática, base sólida e compromisso ético.
 
-<!-- ### Structure:
-- A estrutura do bootcamp da plataforma **DIO** é dividida em módulos e cada módulo contém cursos e desafios, sendo este último podendo ser **Desafio de Projeto** ou **Desafio de Código**. 
-- Para melhor organização deste bootcamp, a estruturação das pastas acompanhou a estrutura do bootcamp. Dessa forma, foram criadas sub-pastas para cada módulo ou curso desse bootcamp, sendo que nas sub-pastas dos módulos estão contidas as pastas ou arquivos dos desafios ou cursos realizados.
-- Nos arquivos de README de cada módulo ou curso está descrito o que foi realizado em cada um, e podem ser acessado nos links clicáveis na opção **Bootcamp Strucutre**. Os links que não forem clicáveis, são de cursos ou módulos que, na sua maior parte ou inteiramente, foram assuntos teóricos e não possuem materiais.
-- Alguns cursos podem ter sido desenvolvidos em outro bootcamp, já que são os mesmos cursos, portanto, a explicação sobre esses cursos e seus respectivos materiais vão está no outro bootcamp e podem ser acessados através dos links do **Bootcamp Structure**.
-- A sub-pasta **0-aux** foi criada apenas para armazenar imagens auxiliares para a construção dos arquivos de README.md deste bootcamp.
+### Structure:
+- [01-fund_cibersec](./01-fund_cibersec/): Pasta referente ao módulo 1 (Fundamentos de Cibersegurança).
+- [02-defesa_monitoramento](./02-defesa_monitoramento/): Pasta referente ao módulo 2 (Defesa e Monitoramento).
+- [03-ethical_hacking](./03-ethical_hacking/): Pasta referente ao módulo 3 (Ethical Hacking).
+- [0-aux](./0-aux/): Pasta auxiliar com imagens utilizadas na construção dos READMEs de cada módulo.
 
 ### Development:
-Cada desafio ou cursos tiveram seus desenvolvimentos específicos. Portanto, a explicação sobre cada um deles está contida no README da sua respectiva pasta, que podem está armazenadas neste bootcamp ou em outros se já tiverem sido realizados anteriormente. Caso haja poucas atividades restantes a serem feitas para conclusão deste bootcamp, o desenvolvimento dessas atividades estará aqui abaixo, não sendo necessário a criação de sub-pastas. -->
+A Formação Cybersec foi uma parceria entre a **Vai na Web (VNW)** e a **Kensei CyberSec**, realizada ao longo de seis meses, com aulas online e ao vivo. O curso foi estruturado em três frentes de conteúdo — **fundamentos**, **defesa** e **ataque** — e combinava aulas técnicas, aulas de soft skills, monitorias e masterclasses. Todo o material técnico para acompanhamento foi disponibilizado no **GitBook**.
+
+Ao final de cada módulo, um projeto precisava ser entregue, com a possibilidade de escolher entre uma abordagem técnica ou conceitual. Além disso, diversos laboratórios foram executados ao longo da formação, utilizando como infraestrutura: **Docker** com **WSL** ou **Docker** em uma instância **Amazon EC2** na **AWS**.
