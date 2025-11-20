@@ -478,20 +478,22 @@ Outra opção testada foi `nmap -p 80 --script dns-brute.nse nmap.org`, que exec
 
 <a name="item3.6"><h4>3.6 Desafio de projeto: Criação de um Phishing com o Kali Linux</h4></a>[Back to summary](#item3) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/cybersecurity/251109_DP...Phishing...Kali_Linux...PH_DIO.pdf">Certificate</a>
 
-Neste desafio de projeto, o objetivo foi criar um phishing: um clone da página do **Facebook** destinado a capturar credenciais fornecidas pelo usuário. A simulação ocorreria em ambiente real (internet), mas em caráter de teste — o único usuário que acessaria o site clonado seria o autor do experimento, utilizando credenciais falsas apenas para demonstrar a captura.
-
-Como a página seria exposta na internet, foi necessário adicionar uma interface de rede adicional à máquina **Kali** com o comando `VBoxManage modifyvm "Kali" --nic3 bridged --bridgeadapter3 "Killer E2600 Gigabit Ethernet Controller"`. Ao final do bootcamp, essa máquina disporia de três interfaces de rede — uma para cada finalidade — sendo que apenas uma ficaria conectada por vez, controlado diretamente na VM.
+Neste desafio de projeto, o objetivo foi criar um phishing: um clone da página do **Facebook** destinado a capturar credenciais fornecidas pelo usuário. Como o usuário acessaria a página através da máquina host, foi necessário adicionar uma interface de rede adicional à máquina **Kali** com o comando `VBoxManage modifyvm "Kali" --nic3 bridged --bridgeadapter3 "Killer E2600 Gigabit Ethernet Controller"`. Ao final do bootcamp, essa máquina disporia de três interfaces de rede — uma para cada finalidade — sendo que apenas uma ficaria conectada por vez, controlado diretamente na VM.
 
 A seguir, a função de cada adaptador de rede utilizado:
 - **NAT:** permitia acesso à internet sem exposição direta do host, usando tradução de endereços (ideal para navegação segura da VM).  
 - **Host-Only:** conectava apenas as máquinas virtuais do **VirtualBox** (rede interna), útil para testes isolados entre VMs.  
 - **Bridged:** conectava a VM à rede física, alocando um IP na mesma sub-rede da máquina host — usado quando a VM precisa ser acessível a partir da rede/internet.
 
-Em seguida, acessou-se a VM **Kali Linux** e, no terminal, trocou-se a interface com `nmcli device connect eth3`. A sessão foi elevada para superusuário com `sudo su` fornecendo a senha da máquina (`pswd`).  
+Entretanto, como estava com problemas na configuração de adaptador de bridged, optei por usar a interface NAT, construíndo um port forwarding entre a VM **Kali Linux** e a máquina host **Windows**. Este mapeamento de portas foi criado com o comando `VBoxManage modifyvm "Kali" --natpf1 "servidor-web,tcp,,8080,,80"`, que elaborava uma regra TCP, mapeando a porta 80 da VM para a porta 8080 do IP da interface utilizada pelo host.
+
+
+
+Em seguida, acessou-se a VM **Kali Linux** e, no terminal, trocou-se a interface com `nmcli device connect eth0`. A sessão foi elevada para superusuário com `sudo su` fornecendo a senha da máquina (`pswd`), caso não estivesse logado com usuário root.  
 
 O software usado para criar o clone foi o **Social-Engineer Toolkit (SET)**, iniciado com `setoolkit`. A ferramenta apresenta um menu interativo simples de usar. Para este experimento, navegou-se pelas opções: `1` — Social-Engineering Attacks, `2` — Website Attack Vectors, `3` — Credential Harvester Attack Method e, por fim, `2` — Site Cloner, escolhendo assim o método de clonagem do site.
 
-O SET passou a servir uma página falsa na própria máquina **Kali** com o objetivo exclusivo de capturar as credenciais submetidas. Por isso, foi necessário informar o endereço IP da máquina — ou seja, o IP associado à interface `eth3` — para que o servidor hospedasse corretamente o clone e recebesse as requisições.
+O SET passou a servir uma página falsa na própria máquina **Kali** com o objetivo exclusivo de capturar as credenciais submetidas. Por isso, foi necessário informar o endereço IP da máquina — ou seja, o IP associado à interface `eth0` (`10.0.2.15`) — para que o servidor hospedasse corretamente o clone e recebesse as requisições.
 
 Em seguida foi informada a URL a ser clonada, que foi `http://www.facebook.com`.
 
@@ -499,6 +501,8 @@ Em seguida foi informada a URL a ser clonada, que foi `http://www.facebook.com`.
 
 
 
+
+VBoxManage modifyvm "Kali" --natpf1 delete "servidor-web"
 
 
 - 3.6
