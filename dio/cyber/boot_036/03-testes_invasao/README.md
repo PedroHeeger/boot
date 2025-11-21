@@ -485,41 +485,26 @@ A seguir, a função de cada adaptador de rede utilizado:
 - **Host-Only:** conectava apenas as máquinas virtuais do **VirtualBox** (rede interna), útil para testes isolados entre VMs.  
 - **Bridged:** conectava a VM à rede física, alocando um IP na mesma sub-rede da máquina host — usado quando a VM precisa ser acessível a partir da rede/internet.
 
-Entretanto, como estava com problemas na configuração de adaptador de bridged, optei por usar a interface NAT, construíndo um port forwarding entre a VM **Kali Linux** e a máquina host **Windows**. Este mapeamento de portas foi criado com o comando `VBoxManage modifyvm "Kali" --natpf1 "servidor-web,tcp,,8080,,80"`, que elaborava uma regra TCP, mapeando a porta 80 da VM para a porta 8080 do IP da interface utilizada pelo host.
+Entretanto, como havia problemas na configuração do adaptador *bridged*, a alternativa foi utilizar a interface *NAT*, criando um port forwarding entre a VM **Kali Linux** e a máquina host **Windows**. Esse mapeamento foi criado com o comando `VBoxManage modifyvm "Kali" --natpf1 "servidor-web,tcp,,8888,,80"`, que estabelecia uma regra TCP redirecionando a porta 80 da VM para a porta 8888 em todas as interfaces de rede do host.
 
+Em seguida, acessou-se a VM **Kali Linux** e, no terminal, trocou-se a interface conectada com `nmcli device connect eth0`. A sessão foi elevada para superusuário com `sudo su`, fornecendo a senha da máquina (`pswd`), caso não estivesse logado como root. Antes de iniciar o clone da página, verificou-se se o port forwarding estava funcionando. Para isso, um servidor de teste foi iniciado no **Kali** com `sudo python3 -m http.server 80`. Em outra sessão no terminal da VM, foi executado `sudo ss -tlnp | grep :80` para confirmar que o servidor realmente estava ativo na porta 80.
 
-
-Em seguida, acessou-se a VM **Kali Linux** e, no terminal, trocou-se a interface com `nmcli device connect eth0`. A sessão foi elevada para superusuário com `sudo su` fornecendo a senha da máquina (`pswd`), caso não estivesse logado com usuário root.  
-
-O software usado para criar o clone foi o **Social-Engineer Toolkit (SET)**, iniciado com `setoolkit`. A ferramenta apresenta um menu interativo simples de usar. Para este experimento, navegou-se pelas opções: `1` — Social-Engineering Attacks, `2` — Website Attack Vectors, `3` — Credential Harvester Attack Method e, por fim, `2` — Site Cloner, escolhendo assim o método de clonagem do site.
-
-O SET passou a servir uma página falsa na própria máquina **Kali** com o objetivo exclusivo de capturar as credenciais submetidas. Por isso, foi necessário informar o endereço IP da máquina — ou seja, o IP associado à interface `eth0` (`10.0.2.15`) — para que o servidor hospedasse corretamente o clone e recebesse as requisições.
-
-Em seguida foi informada a URL a ser clonada, que foi `http://www.facebook.com`.
-
-
-
-
-
-
-VBoxManage modifyvm "Kali" --natpf1 delete "servidor-web"
-
-
-- 3.6
-    - Pegar o IP da VM e acessar em uma aba anonima no navegador da maquina fisica
-    - Digitar as credenciais
-
-
-
-
-
-
+Na máquina host **Windows**, foi executado o comando `netstat -ano | findstr :8888` para confirmar que a porta 8888 estava sendo escutada. Em seguida, o comando `curl http://127.0.0.1:8888` foi utilizado para acessar o servidor web. A imagem 21 confirma que o port forwarding foi estabelecido com sucesso.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img21.png" alt="img21"><br>
     <figcaption>Imagem 21.</figcaption>
 </figure></div><br>
 
+Após a confirmação, o servidor web foi encerrado. O software utilizado para criar o clone foi o **Social-Engineer Toolkit (SET)**, iniciado com `setoolkit`. A ferramenta apresentava um menu interativo de fácil uso. Para este experimento, foram selecionadas as seguintes opções no menu: `1` — Social-Engineering Attacks, `2` — Website Attack Vectors, `3` — Credential Harvester Attack Method e, por fim, `2` — Site Cloner, definindo assim o método de clonagem do site.
+
+O **SET** passou a servir uma página falsa na própria máquina **Kali**, com o objetivo exclusivo de capturar as credenciais enviadas. Por isso, foi necessário informar o endereço IP da máquina — o IP associado à interface `eth0` (`10.0.2.15`) — para que o servidor hospedasse corretamente o clone e recebesse as requisições. Em seguida, foi indicada a URL a ser clonada, que foi `http://www.facebook.com`.
+
+Após finalizar a configuração, o **SET** iniciou o servidor web e informou que estava pronto para receber conexões. Na máquina host **Windows**, foi aberto um navegador em aba anônima (evitando cache e cookies) e acessado o endereço `http://127.0.0.1:8888/`, onde a página clonada do **Facebook** foi carregada. Contudo, o processo não funcionou como esperado. A maioria dos sites modernos — como o **Facebook** — utiliza JavaScript dinâmico, tokens CSRF, validações avançadas, reCAPTCHA e outros mecanismos que impedem o funcionamento adequado do método de clonagem do **SET**.
+
+Para contornar essa limitação, foi necessário criar um site simples e totalmente estático. Isso foi feito utilizando dois arquivos: [index.html](./3.6-dp_phishing/index.html) e [login.php](./3.6-dp_phishing/login.php), ambos criados dentro da pasta `site` no diretório `/root`. Dentro dessa pasta, o comando `php -S 0.0.0.0:88` foi executado para disponibilizar o site localmente.
+
+Após isso, o **SET** foi executado novamente com a seguinte configuração: `1` — Social-Engineering Attacks, `2` — Website Attack Vectors, `3` — Credential Harvester Attack Method e, por fim, `3` — Custom Import. Nessa etapa, foi informado o IP da máquina virtual (`10.0.2.15`) e o endereço do site de exemplo (`http://10.0.2.15:88`). No host, o endereço `http://127.0.0.1:8888/` foi acessado novamente, preenchendo o email como `teste@gmail.com` e a senha como `phishing`. A imagem 22 demonstra que o **SET** capturou as credenciais corretamente, cumprindo o objetivo do desafio.
 
 <div align="Center"><figure>
     <img src="../0-aux/md3-img22.png" alt="img22"><br>
