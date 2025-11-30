@@ -1,6 +1,5 @@
-# Relatório Técnico - Lab de Segurança WAF + DVWA
+# Relatório Técnico: Desafio Final CTF – Formação em Cibersegurança 
 
-**Laboratório:** Desafio Final CTF – Formação em Cibersegurança 
 **Autor:** Pedro Heeger Costa  
 **Data:** 30/11/2025  
 **Ambiente:** Ambiente criado e controlado pelo instrutor do curso na Amazon Web Services (AWS)  

@@ -33,16 +33,17 @@ Esta pasta refere-se ao módulo 3 **Ethical Hacking (Red Team)** do bootcamp [**
 ### Bootcamp Module 3 Structure:
 3. <a name="item3">Módulo 3: Ethical Hacking (Red Team)<br>
   3.1 <a href="#item3.1">Pentest: Metodologia & Regras de Engajamento</a><br>
-  3.2 <a href="#item3.2">Hardening de Servidores Linux</a><br>
-  3.3 <a href="#item3.3">Firewall & ACL</a><br>
-  3.4 <a href="#item3.4">IDS e IPS</a><br>
-  3.5 <a href="#item3.5">Monitoramento de Logs</a><br>
-  3.6 <a href="#item3.6">Patch Management</a><br>
-  3.7 <a href="#item3.7">Cloud Security</a><br>
-  3.8 <a href="#item3.8">IAM e Permissionamento</a><br>
-  3.9 <a href="#item3.9">Container Security Docker Bench & Trivy</a><br>
-  3.10 <a href="#item3.10">NIST & Resposta a Incidentes</a><br>
-  3.11 <a href="#item3.11">Projeto Final</a><br>
+  3.2 <a href="#item3.2">OSINT & Recon Avançado | Enumeração Ativa de Serviços Web</a><br>
+  3.3 <a href="#item3.3">Lab prático: Histórico do Hacker</a><br>
+  3.4 <a href="#item3.4">Metasploit</a><br>
+  3.5 <a href="#item3.5">Burp Suite</a><br>
+  3.6 <a href="#item3.6">Quebra de Credenciais & Brute Force</a><br>
+  3.7 <a href="#item3.7">Escalada de Privilégio</a><br>
+  3.8 <a href="#item3.8">Bypass de AV/EDR Avançada</a><br>
+  3.9 <a href="#item3.9">C2 Frameworks & Automação de Ataques</a><br>
+  3.10 <a href="#item3.10">Engenharia Social & Phishing</a><br>
+  3.11 <a href="#item3.11">Wireless Hacking</a><br>
+  3.12 <a href="#item3.12">Projeto Final</a><br>
 
 ---
 
@@ -194,11 +195,11 @@ A fase de reconhecimento é crítica e envolve identificar ativos e tecnologias 
 
 
 
-
-
-
-
 <a name="item3.11"><h4>3.11 Projeto Final</h4></a>[Back to summary](#item2)   
+
+
+
+<a name="item3.12"><h4>3.12 Projeto Final</h4></a>[Back to summary](#item2)   
 [Material do Projeto](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo3-ethical-hacking)
 
 Diferentemente dos módulos anteriores, o projeto final deste módulo contou com uma única opção de entrega, baseada na construção de um relatório técnico documentando todos os achados obtidos em uma competição *Capture the Flag* (CTF). Nessa competição, o instrutor criou um ambiente totalmente controlado e com autorização explícita para que os alunos realizassem diversos ataques com o objetivo de encontrar flags ocultas. Cada flag representava uma vulnerabilidade explorável dentro do ambiente. Todas as vulnerabilidades identificadas foram documentadas em um relatório técnico, estruturado nos moldes de um relatório de pentest profissional.
