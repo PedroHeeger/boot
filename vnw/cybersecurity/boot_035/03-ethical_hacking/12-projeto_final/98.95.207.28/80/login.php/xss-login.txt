@@ -1,0 +1,100 @@
+┌──(root㉿kali)-[~]
+└─# curl -sS -L -c /dev/null --data-urlencode "username=user" --data-urlencode "password=password123" "http://98.95.207.28/login.php"                                                                                                      
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TechCorp Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions - Dashboard</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="dashboard.php?page=clients">Clientes</a></li>
+                    <li><a href="dashboard.php?page=projects">Projetos</a></li>
+                                        <li><a href="logout.php">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Bem-vindo, user!</h2>
+            <p>Seu nível de acesso: <strong>user</strong></p>
+
+            
+            <!-- Formulário de Pesquisa (Vulnerável a XSS Reflected) -->
+            <div style="margin: 2rem 0; padding: 1.5rem; background: #fff; border: 1px solid #ddd; border-radius: 6px;">
+                <h3 style="margin-top: 0;">🔍 Pesquisar no Sistema</h3>
+                <form method="GET" action="dashboard.php" style="margin-bottom: 1rem;">
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <input
+                            type="text"
+                            name="search"
+                            value=""
+                            placeholder="Digite sua busca (clientes, projetos, etc...)"
+                            style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;"
+                        >
+                        <button type="submit" class="btn" style="padding: 0.75rem 1.5rem; white-space: nowrap;">
+                            Pesquisar
+                        </button>
+                    </div>
+                </form>
+
+                            </div>
+
+            <!-- Vulnerabilidade XSS via parâmetro page -->
+            <div style="margin: 2rem 0; padding: 1rem; background: #f9f9f9; border-radius: 4px;">
+                <h3>Página atual: home</h3>
+            </div>
+
+                            <div class="features">
+                    <div class="feature-box">
+                        <h3>5</h3>
+                        <p>Projetos Ativos</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>23</h3>
+                        <p>Clientes</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>98%</h3>
+                        <p>Satisfação</p>
+                    </div>
+                </div>
+                    </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+┌──(root㉿kali)-[~]
+└─# curl -i -c /dev/null -d "username=user&password=password123" -X POST http://98.95.207.28/login.php                                                                                                                                     
+HTTP/1.1 302 Found
+Date: Wed, 19 Nov 2025 22:33:21 GMT
+Server: Apache/2.4.54 (Debian)
+X-Powered-By: PHP/7.4.33
+Set-Cookie: PHPSESSID=3d7fc8abee1bda756ec6edfa522db516; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Set-Cookie: admin_secret=FLAG%7Bxss_r3fl3ct3d_vuln3r4b1l1ty%7D; expires=Wed, 19-Nov-2025 23:33:21 GMT; Max-Age=3600; path=/
+Location: dashboard.php
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8

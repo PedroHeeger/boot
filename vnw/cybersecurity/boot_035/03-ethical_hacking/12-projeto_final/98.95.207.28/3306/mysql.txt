@@ -1,0 +1,93 @@
+┌──(root㉿kali)-[~]
+└─# mysql -h 98.95.207.28 --skip-ssl -u techcorp_user -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22727
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| techcorp_db        |
++--------------------+
+3 rows in set (0,112 sec)
+
+MySQL [(none)]> use techcorp_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [techcorp_db]> show tables;
++-----------------------+
+| Tables_in_techcorp_db |
++-----------------------+
+| clients               |
+| contacts              |
+| secret_data           |
+| sensitive_info        |
+| users                 |
++-----------------------+
+5 rows in set (0,113 sec)
+
+MySQL [techcorp_db]> select * from clients;
++----+--------------------+----------------------------+----------------+---------------------+
+| id | name               | email                      | phone          | created_at          |
++----+--------------------+----------------------------+----------------+---------------------+
+|  1 | Empresa ABC Ltda   | contato@empresaabc.com     | (11) 1111-1111 | 2025-11-17 14:30:36 |
+|  2 | Tech Innovation SA | hello@techinnovation.com   | (11) 2222-2222 | 2025-11-17 14:30:36 |
+|  3 | Digital Solutions  | info@digitalsol.com        | (11) 3333-3333 | 2025-11-17 14:30:36 |
+|  4 | Global Services    | contact@globalservices.com | (11) 4444-4444 | 2025-11-17 14:30:36 |
+|  5 | greenposion        | adriel@mail.com            | 2198991332     | 2025-11-17 14:30:36 |
++----+--------------------+----------------------------+----------------+---------------------+
+5 rows in set (0,112 sec)
+
+MySQL [techcorp_db]> select * secret_data;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'secret_data' at line 1
+MySQL [techcorp_db]> select * from secret_data;
++----+---------------+----------------------------------------------+---------------------+
+| id | secret_key    | secret_value                                 | created_at          |
++----+---------------+----------------------------------------------+---------------------+
+|  1 | database_flag | FLAG{sql_1nj3ct10n_m4st3r}                   | 2025-11-17 14:30:36 |
+|  2 | admin_token   | FLAG{h1dd3n_d4t4_1n_d4t4b4s3}                | 2025-11-17 14:30:36 |
+|  3 | api_secret    | sk_prod_A7x9mP2qR5tY8wZ3vC6nB4jK1lM0hG       | 2025-11-17 14:30:36 |
+|  4 | backup_path   | /var/backups/techcorp/backup_20240115.tar.gz | 2025-11-17 14:30:36 |
++----+---------------+----------------------------------------------+---------------------+
+4 rows in set (0,112 sec)
+
+MySQL [techcorp_db]> select * from sensitive_info;
++----------+----------+-------+-------------------------------+
+| username | password | role  | hidden_flag                   |
++----------+----------+-------+-------------------------------+
+| admin    | admin123 | admin | FLAG{v13w_d1sc0v3ry_4dv4nc3d} |
++----------+----------+-------+-------------------------------+
+1 row in set (0,112 sec)
+
+MySQL [techcorp_db]> select * from users;
++----+---------------------+-----------------------------+------------+---------------------+
+| id | username            | password                    | role       | created_at          |
++----+---------------------+-----------------------------+------------+---------------------+
+|  1 | admin               | admin123                    | admin      | 2025-11-17 14:30:36 |
+|  2 | user                | password123                 | user       | 2025-11-17 14:30:36 |
+|  3 | manager             | manager2024                 | manager    | 2025-11-17 14:30:36 |
+|  4 | guest               | guest                       | guest      | 2025-11-17 14:30:36 |
+|  5 | superadmin          | Sup3r@dm1n!2024#Secure      | superadmin | 2025-11-17 19:38:25 |
+|  6 | gilson              | g1ls0n123                   | user       | 2025-11-17 22:52:03 |
+|  7 | cl4ud1o             | https://fakeupdate.net/wnc/ | superadmin | 2025-11-17 22:55:10 |
+|  8 | al1nn3              | estiveaqui,yes              | superadmin | 2025-11-18 14:17:09 |
+|  9 | erick               | bomdiagrupodozap            | superadmin | 2025-11-19 10:16:03 |
+| 10 | Yur1                | gilsonmedeucola             | superadmin | 2025-11-19 23:50:55 |
+| 11 | K4r01               | ~ngmmeviu                   | superadmin | 2025-11-19 23:54:12 |
+| 12 | 4dr13l              | gr33np00s1on                | superadmin | 2025-11-19 13:15:12 |
+| 13 | SAUDADES VAI NA WEB | 2025CYBERSEC                | superadmin | 2025-11-19 13:15:12 |
+| 14 | f3l1p3_m4sc3n4      | demoreimaschegueixD         | superadmin | 2025-11-21 04:23:46 |
++----+---------------------+-----------------------------+------------+---------------------+
+14 rows in set (0,112 sec)
+
+MySQL [techcorp_db]> 

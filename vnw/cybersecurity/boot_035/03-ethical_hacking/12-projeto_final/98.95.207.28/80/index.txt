@@ -1,0 +1,63 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCorp Solutions - Soluções Empresariais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions</h1>
+                <p class="tagline">Inovação e Tecnologia para seu Negócio</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="services.php">Serviços</a></li>
+                    <li><a href="contact.php">Contato</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Transformando Negócios através da Tecnologia</h2>
+            <p>Há mais de 15 anos oferecendo soluções corporativas de excelência</p>
+            <a href="contact.php" class="btn">Entre em Contato</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-box">
+                <h3>Cloud Computing</h3>
+                <p>Soluções em nuvem escaláveis e seguras</p>
+            </div>
+            <div class="feature-box">
+                <h3>Segurança da Informação</h3>
+                <p>Proteção de dados e compliance</p>
+            </div>
+            <div class="feature-box">
+                <h3>Consultoria TI</h3>
+                <p>Expertise técnica para seu negócio</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+            <!-- FLAG{b4s1c_s0urc3_c0d3_1nsp3ct10n} -->
+            <p>Desenvolvido por nossa equipe interna</p>
+        </div>
+    </footer>
+</body>
+</html>

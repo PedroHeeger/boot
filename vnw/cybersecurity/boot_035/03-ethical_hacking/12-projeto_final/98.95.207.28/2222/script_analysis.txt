@@ -1,0 +1,23 @@
+techcorp@024a36a8e6ca:~$ cat /opt/backup_script.sh 
+#!/bin/bash
+# TechCorp Backup Script
+# FLAG{scr1pt_4n4lys1s_sk1ll}
+
+BACKUP_DIR="/var/backups/techcorp"
+DATE=$(date +%Y%m%d)
+DB_USER="root"
+DB_PASS="r00t_P4ssw0rd_2024"
+
+echo "Iniciando backup..."
+
+# Backup do banco de dados
+mysqldump -u $DB_USER -p$DB_PASS techcorp_db > $BACKUP_DIR/db_backup_$DATE.sql
+
+# Backup dos arquivos web
+tar -czf $BACKUP_DIR/web_backup_$DATE.tar.gz /var/www/html
+
+# Enviar para servidor remoto
+# scp $BACKUP_DIR/* backup@backup.techcorp.local:/backups/
+
+echo "Backup concluído!"
+echo "FLAG{b4ckup_scr1pt_f0und}" >> /tmp/backup.log

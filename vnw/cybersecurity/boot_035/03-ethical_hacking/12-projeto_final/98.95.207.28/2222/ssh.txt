@@ -1,0 +1,52 @@
+┌──(root㉿kali)-[~]
+└─# ssh -p 2222 techcorp@98.95.207.28                                                                                                                                                                                                       
+The authenticity of host '[98.95.207.28]:2222 ([98.95.207.28]:2222)' can't be established.
+ED25519 key fingerprint is SHA256:d49wYJQZ3cntL8AMOi3N4kCyxggKn0JH2uY8TKFqhho.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[98.95.207.28]:2222' (ED25519) to the list of known hosts.
+techcorp@98.95.207.28's password: 
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.8.0-1016-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+Last login: Fri Nov 21 21:15:13 2025 from 177.46.0.150
+techcorp@024a36a8e6ca:~$ ls
+secret.txt  todo.txt
+techcorp@024a36a8e6ca:~$ pwd
+/home/techcorp
+techcorp@024a36a8e6ca:~$ cat secret.txt
+TechCorp Solutions - Internal Notes
+====================================
+
+Senhas importantes:
+- Root MySQL: r00t_P4ssw0rd_2024
+- Admin Panel: admin / admin123
+
+Backup Location: /var/backups/techcorp/
+
+API Keys:
+- Production: tc_sk_prod_9Kx7mN2pQ4rT8wY
+- Development: tc_sk_dev_1Aa2Bb3Cc4Dd5Ee
+
+FLAG{ssh_h0m3_d1r3ct0ry_3xpl0r4t10n}
+
+Notas:
+- Fazer backup toda segunda-feira
+- Verificar logs de segurança semanalmente
+- Atualizar certificados SSL em março
+techcorp@024a36a8e6ca:~$ cat todo.txt
+TODO List - TechCorp IT Department
+===================================
+
+[X] Configurar novo servidor web
+[X] Instalar certificado SSL
+[ ] Trocar senha do banco de dados (ainda é T3chC0rp_S3cr3t_2024!)
+[ ] Configurar firewall
+[ ] Revisar acessos FTP
+[ ] Atualizar documentação
+[ ] Fazer backup dos logs
+
+Reunião na sexta às 14h para discutir migração para cloud.
+techcorp@024a36a8e6ca:~$ 

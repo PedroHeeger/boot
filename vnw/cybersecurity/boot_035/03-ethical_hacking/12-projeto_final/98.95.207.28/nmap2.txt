@@ -1,0 +1,45 @@
+techcorp@024a36a8e6ca:~$ nmap 172.20.0.0/24
+Starting Nmap 7.80 ( https://nmap.org ) at 2025-11-21 22:33 UTC
+Nmap scan report for ip-172-20-0-1.ec2.internal (172.20.0.1)
+Host is up (0.0010s latency).
+Not shown: 993 closed ports
+PORT     STATE SERVICE
+20/tcp   open  ftp-data
+21/tcp   open  ftp
+22/tcp   open  ssh
+80/tcp   open  http
+2222/tcp open  EtherNetIP-1
+3306/tcp open  mysql
+8080/tcp open  http-proxy
+
+Nmap scan report for techcorp_database.techcorp-lab_techcorp_network (172.20.0.2)
+Host is up (0.0013s latency).
+Not shown: 999 closed ports
+PORT     STATE SERVICE
+3306/tcp open  mysql
+
+Nmap scan report for techcorp_phpmyadmin.techcorp-lab_techcorp_network (172.20.0.3)
+Host is up (0.0012s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+80/tcp open  http
+
+Nmap scan report for techcorp_web.techcorp-lab_techcorp_network (172.20.0.10)
+Host is up (0.0010s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+80/tcp open  http
+
+Nmap scan report for techcorp_ftp.techcorp-lab_techcorp_network (172.20.0.20)
+Host is up (0.00087s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+21/tcp open  ftp
+
+Nmap scan report for 024a36a8e6ca (172.20.0.30)
+Host is up (0.0011s latency).
+Not shown: 999 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+
+Nmap done: 256 IP addresses (6 hosts up) scanned in 3.13 seconds

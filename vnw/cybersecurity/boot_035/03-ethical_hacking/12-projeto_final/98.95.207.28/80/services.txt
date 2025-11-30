@@ -1,0 +1,73 @@
+┌──(root㉿kali)-[~]
+└─# curl 98.95.207.28/services.php
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - TechCorp Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="services.php">Serviços</a></li>
+                    <li><a href="contact.php">Contato</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+
+            <div class="features">
+                <div class="feature-box">
+                    <h3>Cloud Computing</h3>
+                    <p>Migração para nuvem, gerenciamento de infraestrutura cloud e otimização de custos.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Segurança da Informação</h3>
+                    <p>Auditorias de segurança, implementação de políticas e treinamentos corporativos.</p>                                                                                                                                 
+                </div>                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                            
+                <div class="feature-box">                                                                                                                                                                                                   
+                    <h3>Desenvolvimento de Software</h3>                                                                                                                                                                                    
+                    <p>Soluções customizadas para atender às necessidades específicas do seu negócio.</p>                                                                                                                                   
+                </div>                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                            
+                <div class="feature-box">                                                                                                                                                                                                   
+                    <h3>Consultoria em TI</h3>                                                                                                                                                                                              
+                    <p>Análise de processos, otimização de infraestrutura e planejamento estratégico.</p>                                                                                                                                   
+                </div>                                                                                                                                                                                                                      
+
+                <div class="feature-box">
+                    <h3>Suporte Técnico</h3>
+                    <p>Equipe dedicada 24/7 para suporte técnico especializado.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Backup e Disaster Recovery</h3>
+                    <p>Proteção de dados e planos de continuidade de negócios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

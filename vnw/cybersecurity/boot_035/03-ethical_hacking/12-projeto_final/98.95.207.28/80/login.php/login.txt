@@ -1,0 +1,60 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/login.php
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TechCorp Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="services.php">Serviços</a></li>
+                    <li><a href="contact.php">Contato</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Login do Sistema</h2>
+
+            
+            <form method="POST" action="login.php">
+                <div class="form-group">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+
+            <p style="margin-top: 1rem; color: #666;">
+                Dica: Tente usuário comum: user / password123
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

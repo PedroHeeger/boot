@@ -1,0 +1,3 @@
+┌──(root㉿kali)-[~]
+└─# host 98.95.207.28                                                                                                                                                                                                                       
+28.207.95.98.in-addr.arpa domain name pointer ec2-98-95-207-28.compute-1.amazonaws.com.

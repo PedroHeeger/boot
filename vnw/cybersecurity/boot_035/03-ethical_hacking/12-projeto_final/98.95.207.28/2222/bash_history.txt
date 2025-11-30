@@ -1,0 +1,501 @@
+techcorp@024a36a8e6ca:~$ cat .bash_history 
+/usr/share/doc/git/contrib/update-unicode/update_unicode.sh
+/usr/share/doc/git/contrib/vscode/init.sh
+/usr/share/doc/git/contrib/coverage-diff.sh
+/usr/share/doc/git/contrib/remotes2config.sh
+/usr/share/doc/git/contrib/thunderbird-patch-inline/appp.sh
+/usr/share/doc/git/contrib/git-resurrect.sh
+/usr/share/doc/git/contrib/diff-highlight/t/t9400-diff-highlight.sh
+/usr/share/doc/git/contrib/subtree/t/t7900-subtree.sh
+/usr/share/doc/git/contrib/subtree/git-subtree.sh
+/usr/share/vim/vim81/macros/less.sh
+/usr/share/nmap/scripts/http-backup-finder.nse
+/usr/share/nmap/scripts/http-config-backup.nse
+/opt/backup_script.sh
+/tmp/backup.log
+/etc/profile.d/01-locale-fix.sh
+/etc/init.d/hwclock.sh
+techcorp@024a36a8e6ca:/var/backups$    
+O ChatGPT disse:
+timo! 🚀 Você encontrou um arquivo muito importante:
+/opt/backup_script.sh
+Esse arquivo é exatamente o alvo da flag Script Analysis (30 pts).
+Agora precisamos abrir o conteúdo dele, porque geralmente scripts de backup vazam:
+cat /opt/backup_script.sh
+ou, se estiver grande:
+nano /opt/backup_script.sh
+find / -type d -iname "*backup*" 2>/dev/null
+ls -la /var/
+cd backups
+cd /var/backups
+ls -la
+ls -la /
+cat ss.txt
+find / -type d \( -iname "backup" -o -iname "backups" -o -iname "*bkp*" -o -iname "*backup*" \) 2>/dev/null
+find / -type f \( -iname "*backup*" -o -iname "*.tar.gz" -o -iname "*.zip" -o -iname "*.sql" -o -iname "*.bak" \) 2>/dev/null
+find / -type d -iname "*techcorp*" 2>/dev/null
+find /var/backups -type f 2>/dev/null
+mysql -h 98.95.207.28 -u backup_user -pB4ckup_S3cr3t_2024 --ssl=0
+mysql -h 98.95.207.28 -u backup_user -pB4ckup_S3cr3t_2024
+mysql -h localhost -u backup_user -pB4ckup_S3cr3t_2024
+sudo
+systemctl status mysqld
+service status mysqld
+service status mysql
+top
+ls
+cat secret.txt 
+mysql -h localhost -u root -pr00t_P4ssw0rd_2024
+mysql -h 98.95.207.28 -u root -pr00t_P4ssw0rd_2024
+ls -la
+cat .cache
+cat .config
+cat .local
+cat .mysql_history
+cat .python_history
+cat .ssh
+cat .sudo_as_admin_successful
+cat /usr/local/bin/backup.sh
+cat /etc/cron.daily/backup.sh
+ls -la /var/backup/techcorp/
+cd /var/www/html/
+cd .bash_history
+cat .bash_history
+cd /var/backups/techcorp/backup_20240115.tar.gz
+cd /var/backups/techcorp/
+cd /var/backups/techcorp/backup_20240115.tar.gz
+cd /var/backups/
+ls -la
+cd ..
+ls -la
+cd /www
+cd ..
+cd ..
+ls -la
+cat /var/www/html/admin.php
+cat /home/techcorp/.bash_history
+clear
+find . -type f -name '*.tar.gz'
+clear
+find . -type f -name '*.php'
+clear
+more .sudo_as_admin_successful 
+grep -Ri "password" /var/www 2>/dev/null
+find / -type f \( -name "*.zip" -o -name "*.bak" -o -name "*.tar.gz" \) 2>/dev/null
+tar -xzvf /var/backups/techcorp/backup_20240115.tar.gz -C /tmp/
+clear
+ls -la
+cd dev
+ls -la
+cd ..
+clear
+ls -la
+cd root
+cd usr
+ls -la
+cd bin
+ls -la
+cd ..
+clear
+ls -la
+cd lib
+ls -la
+cd ..
+cd ..
+clear
+find / -type f -name "*.sh" 2>/dev/null
+cat /usr/share/doc/git/contrib/credential/netrc/t-git-credential-netrc.sh
+cat /opt/backup_script.sh
+cat /usr/share/doc/git/contrib/fast-import/git-import.sh
+clear
+find / -type f -name "*.sh" 2>/dev/null
+cat /usr/share/doc/git/contrib/subtree/git-subtree.sh
+cat /usr/share/doc/git/contrib/git-resurrect.sh
+clear
+find / -type f -name "*.sh" 2>/dev/null
+/usr/share/doc/git/contrib/fast-import/git-import.sh
+cat /usr/share/doc/git/contrib/fast-import/git-import.sh
+clear
+find / -type f -name "*.sh" 2>/dev/null
+cd /usr/share/
+ls -la
+cd doc
+ls -la
+cd ..
+clear
+ls -la
+cd sensible-utils
+ls -la
+cd bin
+ls -la
+cd gettext
+car gettext
+cat gettext
+cd ..
+cd ..
+cd ..
+clear
+ls -la
+cd src
+ls -la
+cd ..
+cd local
+ls -la
+cd share
+ls -la
+cd ca-certificates
+ls -la
+cd ..
+cd man
+ls -la
+cd ..
+cd ..
+cd ..
+clear
+ls -la
+ls -la
+get secret.txt
+cat secret.txt
+cat todo.txt
+cd .mysql_history
+cat .mysql_history
+cat .sudo_as_admin_successful
+cat .config
+cat .bash_history
+cat /opt/backup_script.sh
+cat /tmp/backup.log
+ls -la
+cd /
+ls -la
+cd var
+la -ls
+ls -la
+cd ..
+cd home
+ls -la
+cd techcorp
+ls -la
+cd ..
+cd ..
+cd var
+ls -la
+cd backup
+cd backups
+ls -la
+cd ..
+cd cache
+ls -la
+cd private
+cd ldconfig
+cd apt
+ls -la
+cd archives
+ls -la
+cd lock
+cd partial
+cd ..
+cd ..
+cd ..
+ls -la
+cd local
+ls -la
+cd ..
+cd lib
+ls -la
+cd ..
+cd ..
+cd ..
+ls -la
+cat ~/.bash_history
+clear
+ls -la
+cat /var/www/html/admin.php
+cd ..
+cd ..
+cat /var/www/html/admin.php
+cat /var/www/html/.git/config
+cd bin
+ls -la
+cd bash
+cat bash
+clear
+cd ..
+find / -name "admin.php" 2>/dev/null
+grep -R "FLAG{" / 2>/dev/null
+RUN echo "anon_root=/srv" >> /etc/vsftpd.conf
+ls -la /srv
+ls -la /srv/www
+cat /var/log/apache2/access.log
+cat /var/log/apache2/error.log
+cd var
+ls -la
+cd log
+ls -la
+cd ..
+cd ..
+ls -la
+cd tmp
+ls -la
+cd ..
+cd root
+cd tmp
+cat backup.log
+cd ..
+clear
+find / -name ".git-credentials" 2>dev/null
+find / -name ".gitconfig" 2>dev/null
+cd home
+ls -la
+cd techcorp
+ls -la
+cd .config
+ls -la
+cd procps
+ls -la
+cd ..
+cd ..
+cd .cache
+ls -la
+cd motd.legal-displayed
+cat motd.legal-displayed
+cd ..
+clear
+ls -la
+cd .local
+ls -la
+cd share
+ls -la
+cd nano
+ls -la
+cd ..
+cd ..
+cd ..
+cat /home/techcorp/admin.php
+clear
+ls -la
+cd ..
+ls -la
+cd ..
+clear
+ls -la
+cd opt
+ls -la
+cat backup_script.sh
+cd ..
+cd ..
+find / -name ".git*" 2>/dev/null
+find /opt -name ".git*" 2>/dev/null
+clear
+grep "FLAG" ~/.bash_history
+cat ~/.ssh/know_hosts
+cat ~/.ssh/id_rsa
+ls -la
+cd home
+ls -la ~
+clear
+ls -la
+grep "FLAG" ~/.bash_history
+cat .mysql_history
+ls -la
+cd techcorp
+ls -la ~
+cat .mysql_history
+clear
+find ~ -type f -iname "*secret*" 2>/dev/null
+find ~ -type f -iname "*admin*" 2>/dev/null
+find ~ -type f -iname "*credentials*" 2>/dev/null
+cat /home/techcorp/secret.txt
+ls -la
+cat .sudo_as_admin_successful
+cd .sudo_as_admin_successful
+get .sudo_as_admin_successful
+cd ..
+cd ..
+ls -la
+cd var
+ls -la
+cd backups
+ls -la
+cd ..
+cd log
+ls -la
+cd private
+cd ..
+ls -la
+cd ..
+clear
+ls -la
+cd .dockerenv
+cat .dockerenv
+cat Dockerfile
+COPY ./users.conf /etc/vsftpd/virtual_users.txt
+cd etc
+clear
+ls -la
+clear
+cd ..
+clear
+ls -la
+cat ss.txt
+clear
+cd home
+ls -la
+cd techcorp
+ls -la
+ls -la /.config
+cd .config
+ls -la
+cd ..
+cat todo.txt
+cd ..
+cd ..
+cd ..
+cd ..
+clear
+find / -type f -name "*.txt" 2>/dev/null
+cat /ss.txt
+clear
+cat ~/credentials.txt
+cat ~/.sudo_as_Admin_successful
+more ~/.bash_history
+ls
+ls -la
+more .mysql_history 
+mysql
+mysql -u root -p
+mysql -u backup_user -p
+mysql -u techcorp_user -p
+history
+grep -R "FLAG{" / 2>/dev/null
+ls -a
+ls -la
+cd ..
+ls -la
+cd ..
+cd ..
+ls -la
+exit
+cat ~/.bash_history
+cat ~/.bash_history
+cls
+cl
+clear
+cat ~/.bash_history
+/opt/backup_script.sh
+cat /opt/backup_script.sh
+echcorp@024a36a8e6ca:~$ cat /opt/backup_script.sh
+clear
+ftp 98.95.207.28
+ftp 98.95.207.28
+ftp 98.95.207.28
+clear
+ftp 98.95.207.28
+sudo apt install lftp
+ftp 98.95.207.28
+whomai
+exit
+ls -la 
+cat .bash_history 
+cat ~/credentials.txt
+cat .cache
+ls -la
+cd .cache/
+ls -la
+cd
+cat .config/
+cd .config/
+ls -la
+cat procps/
+cd procps/
+ls -la
+cd
+cat .ssh/
+cd .ssh/
+ls -al
+cat known_hosts 
+cd
+cat .local/
+cd .local
+ls -la
+cat share/
+cd share/
+ls -la
+cd nano/
+ls -la
+cd
+ls -la
+cat /home/techcorp/.bash_history
+grep -R "FLAG{" / -n 2>/dev/null
+grep -R "b4sh_h1st0ry" / -n 2>/dev/null
+cat ~/.bash_history
+grep -R "FLAG" / -n 2>/dev/null
+clear
+ls -la
+ cat .bash_history 
+ls -ld /tmp
+v 19 23:38 /tmp
+cd /tmp/
+ls -la
+ cat backup.log 
+cat ~/.bash_history | grep -i flag
+clear
+ls -la
+cd
+ls -la
+cat todo.txt 
+cat  secret.txt 
+cat .sudo_as_admin_successful 
+cat .python_history 
+find / -type f -name "flag.txt" 2>/dev/null
+find /home -type f -iname "*flag*" 2>/dev/null
+find /opt -type f -iname "*flag*" 2>/dev/null
+grep -Ri "FLAG{" / 2>/dev/null
+clear
+cd .
+ls -la
+cd ..
+ls -la
+cd techcorp/
+ls -la
+ cat .mysql_history 
+cd .config/
+ls -la
+cd .
+ls -la
+cd ..
+ls -la
+bash .sudo_as_admin_successful 
+cd .cache/
+ls -la
+cd ..
+cd .local/
+ls -la
+cd share/nano/
+ls -a
+ls -la
+clear
+cd..
+cd
+cd /tmp
+ls -la
+cat tmp.0eL72CHnL8 
+cat tmp.pestX1m53Z
+cat tmp.pestX1m53
+cd tmp.pestX1m53
+cat tmp.pestX1m53
+cat tmp.pestX1m53
+ls -la /tmp
+cd /tmp/tmp.l5i7BBER4v
+ls -la
+sudo -l
+sudo su
+FLAG{b4sh_h1st0ry_l34k}
+cat /.bash_history
+cat ~/.bash_history
+grep -R "b4sh_h1st0ry" / -n 2>/dev/null
+cat ~/.bash_history | grep -i flag
+grep "FLAG" ~/.bash_history
+cat ~/.bash_history | grep -i FLAG
+grep -R "FLAG{" /home/techcorp 2>/dev/null
+echo "FLAG{b4sh_h1st0ry_l34k}" >> ~/.bash_history
+exit

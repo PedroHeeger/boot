@@ -1,0 +1,244 @@
+┌──(root㉿kali)-[~]
+└─# curl -sS -b cookies.txt "http://98.95.207.28/admin.php"                                                                                                                                                                                 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - TechCorp Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions - Admin Panel</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="admin.php">Admin</a></li>
+                    <li><a href="logout.php">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Painel Administrativo</h2>
+            <p>Nível de acesso: <strong>admin</strong></p>
+
+                            <!-- Admin tem acesso limitado mas não vê a FLAG -->
+                <div class="alert" style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; margin-bottom: 2rem;">
+                    <h3 style="color: #856404;">⚠️ Acesso Limitado - Admin</h3>
+                    <p style="color: #856404;">
+                        Você tem acesso de <strong>admin</strong>, mas algumas funcionalidades críticas requerem privilégios de <strong>superadmin</strong>.
+                    </p>
+                </div>
+
+                <h3>Funções Disponíveis (Admin)</h3>
+                <div class="features">
+                    <div class="feature-box">
+                        <h3>👥 Visualizar Usuários</h3>
+                        <p>Visualização limitada</p>
+                        <button class="btn">Ver Lista</button>
+                    </div>
+                    <div class="feature-box" style="opacity: 0.5;">
+                        <h3>🔐 Config. Segurança</h3>
+                        <p style="color: #999;">Requer Superadmin</p>
+                        <button class="btn" disabled style="cursor: not-allowed;">Bloqueado</button>
+                    </div>
+                    <div class="feature-box" style="opacity: 0.5;">
+                        <h3>🗄️ Backups do Sistema</h3>
+                        <p style="color: #999;">Requer Superadmin</p>
+                        <button class="btn" disabled style="cursor: not-allowed;">Bloqueado</button>
+                    </div>
+                </div>
+
+                <h3>Usuários do Sistema (Visualização Limitada)</h3>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                    </tr>
+                                        <tr>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #2196f3; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                admin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #4caf50;">✓ Acessível</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>2</td>
+                        <td>user</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                user                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #4caf50;">✓ Acessível</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>3</td>
+                        <td>manager</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                manager                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #4caf50;">✓ Acessível</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>4</td>
+                        <td>guest</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                guest                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #4caf50;">✓ Acessível</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>5</td>
+                        <td>superadmin</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>6</td>
+                        <td>gilson</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                user                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #4caf50;">✓ Acessível</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>7</td>
+                        <td>cl4ud1o</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>8</td>
+                        <td>al1nn3</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>9</td>
+                        <td>erick</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>10</td>
+                        <td>Yur1</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>11</td>
+                        <td>K4r01</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>12</td>
+                        <td>4dr13l</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>13</td>
+                        <td>SAUDADES VAI NA WEB</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                        <tr>
+                        <td>14</td>
+                        <td>f3l1p3_m4sc3n4</td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>
+                                                            <span style="color: #f44336;">🔒 Acesso Restrito</span>
+                                                    </td>
+                    </tr>
+                                    </table>
+
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    <strong>Nota:</strong> Apenas usuários com role <code>superadmin</code> podem acessar configurações avançadas e dados sensíveis.
+                </p>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: #f5f5f5; border-radius: 4px; font-family: monospace; font-size: 0.85rem;">
+                    <strong>Debug Info:</strong><br>
+                    Session ID: 997af0ee3007ea81...<br>
+                    Current Role: admin<br>
+                    <!-- HINT: Check network traffic when accessing this page -->
+                    <!-- HINT: Session variables can be manipulated... -->
+                </div>
+
+                    </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

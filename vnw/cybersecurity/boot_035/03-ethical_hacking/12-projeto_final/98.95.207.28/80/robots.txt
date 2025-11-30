@@ -1,0 +1,10 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/robots.txt                                                                                                                                                                                                     
+User-agent: *
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /.git/
+Disallow: /config/
+
+# FLAG{r0b0ts_txt_l34k4g3}
+# Arquivo de backup: /backup/database_backup_2024.sql

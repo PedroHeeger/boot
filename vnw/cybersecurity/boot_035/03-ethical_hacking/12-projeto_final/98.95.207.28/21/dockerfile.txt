@@ -1,0 +1,38 @@
+┌──(root㉿kali)-[/]
+└─# curl ftp://anonymous:anonymous@98.95.207.28/Dockerfile
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Instalar vsftpd
+RUN apt-get update && apt-get install -y \
+    vsftpd \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copiar arquivos FTP
+COPY ./welcome.txt /srv/welcome.txt
+COPY ./public /srv/public/
+COPY ./confidential /srv/confidential/
+COPY ./users.conf /etc/vsftpd/virtual_users.txt
+
+# Criar diretórios
+RUN mkdir -p /srv/public /srv/confidential /var/run/vsftpd/empty
+
+# Configurar permissões
+RUN chmod -R 755 /srv/
+
+# Configurar vsftpd para acesso anônimo
+RUN echo "anonymous_enable=YES" >> /etc/vsftpd.conf && \
+    echo "local_enable=NO" >> /etc/vsftpd.conf && \
+    echo "write_enable=NO" >> /etc/vsftpd.conf && \
+    echo "anon_root=/srv" >> /etc/vsftpd.conf && \
+    echo "listen=YES" >> /etc/vsftpd.conf && \
+    echo "listen_ipv6=NO" >> /etc/vsftpd.conf && \
+    echo "seccomp_sandbox=NO" >> /etc/vsftpd.conf && \
+    echo "pasv_enable=YES" >> /etc/vsftpd.conf && \
+    echo "pasv_min_port=21100" >> /etc/vsftpd.conf && \
+    echo "pasv_max_port=21110" >> /etc/vsftpd.conf
+
+EXPOSE 20 21 21100-21110
+
+CMD ["/usr/sbin/vsftpd", "/etc/vsftpd.conf"]

@@ -1,0 +1,76 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/contact.php
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - TechCorp Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="services.php">Serviços</a></li>
+                    <li><a href="contact.php">Contato</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+
+            
+            
+            <form method="POST" action="contact.php">
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="notify" value="1">
+                        Receber notificação por email
+                    </label>
+                </div>
+
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+
+            <div style="margin-top: 2rem;">
+                <h3>Outras formas de contato</h3>
+                <p><strong>Email:</strong> contato@techcorp.local</p>
+                <p><strong>Telefone:</strong> (11) 1234-5678</p>
+                <p><strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo, SP</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

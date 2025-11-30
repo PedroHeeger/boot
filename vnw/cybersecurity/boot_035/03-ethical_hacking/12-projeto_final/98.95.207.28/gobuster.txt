@@ -1,0 +1,32 @@
+┌──(root㉿kali)-[~]
+└─# gobuster dir -u http://98.95.207.28 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,bak,conf,~ -b "404,403" -t 50                                                                          
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://98.95.207.28
+[+] Method:                  GET
+[+] Threads:                 50
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404,403
+[+] User Agent:              gobuster/3.8
+[+] Extensions:              php,txt,bak,conf,~
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/about.php            (Status: 200) [Size: 1728]
+/contact.php          (Status: 200) [Size: 2463]
+/login.php            (Status: 200) [Size: 1812]
+/services.php         (Status: 200) [Size: 2494]
+/index.php            (Status: 200) [Size: 2081]
+/admin.php            (Status: 302) [Size: 0] [--> login.php]
+/logout.php           (Status: 302) [Size: 0] [--> index.php]
+/config               (Status: 301) [Size: 313] [--> http://98.95.207.28/config/]
+/robots.txt           (Status: 200) [Size: 169]
+/dashboard.php        (Status: 302) [Size: 0] [--> login.php]
+/panel.php            (Status: 200) [Size: 1196]
+Progress: 1323348 / 1323348 (100.00%)
+===============================================================
+Finished
+===============================================================

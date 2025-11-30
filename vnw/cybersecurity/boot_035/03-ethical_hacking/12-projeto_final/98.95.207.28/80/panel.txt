@@ -1,0 +1,35 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/panel.php                                                                                                                                                                                                      
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel v2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Admin Panel v2.0 (Beta)</h1>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Sistema de Gerenciamento Avançado</h2>
+
+            <div class="alert alert-success">
+                <strong>Parabéns por encontrar o painel secreto!</strong><br>
+                FLAG{s3cr3t_p4n3l_d1sc0v3ry}
+            </div>
+
+            <h3>Módulos Disponíveis</h3>
+            <ul>
+                <li><a href="?file=logs">Ver Logs do Sistema</a></li>
+                <li><a href="?file=config">Configurações</a></li>
+                <li><a href="?file=users">Gerenciar Usuários</a></li>
+            </ul>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: #f0f0f0; border-radius: 4px;">
+                <br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /var/www/html/panel.php:11) in <b>/var/www/html/dashboard.php</b> on line <b>5</b><br />

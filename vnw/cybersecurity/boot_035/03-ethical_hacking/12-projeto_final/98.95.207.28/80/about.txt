@@ -1,0 +1,54 @@
+┌──(root㉿kali)-[~]
+└─# curl http://98.95.207.28/about.php
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - TechCorp Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCorp Solutions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="services.php">Serviços</a></li>
+                    <li><a href="contact.php">Contato</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Sobre a TechCorp Solutions</h2>
+
+            <p>Fundada em 2009, a TechCorp Solutions é líder em soluções tecnológicas empresariais. Nossa missão é transformar negócios através da inovação tecnológica.</p>
+
+            <h3>Nossa Equipe</h3>
+            <p>Contamos com mais de 50 profissionais especializados em diversas áreas da tecnologia.</p>
+
+            <h3>Nossos Valores</h3>
+            <ul>
+                <li>Inovação constante</li>
+                <li>Compromisso com a excelência</li>
+                <li>Segurança da informação</li>
+                <li>Atendimento personalizado</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TechCorp Solutions. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

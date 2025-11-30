@@ -1,0 +1,203 @@
+┌──(root㉿kali)-[/]
+└─# nmap -F 98.95.207.28
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-18 20:43 -03
+Nmap scan report for ec2-98-95-207-28.compute-1.amazonaws.com (98.95.207.28)
+Host is up (0.13s latency).
+
+PORT      STATE SERVICE
+7/tcp     open  echo
+9/tcp     open  discard
+13/tcp    open  daytime
+21/tcp    open  ftp
+22/tcp    open  ssh
+23/tcp    open  telnet
+25/tcp    open  smtp
+26/tcp    open  rsftp
+37/tcp    open  time
+53/tcp    open  domain
+79/tcp    open  finger
+80/tcp    open  http
+81/tcp    open  hosts2-ns
+88/tcp    open  kerberos-sec
+106/tcp   open  pop3pw
+110/tcp   open  pop3
+111/tcp   open  rpcbind
+113/tcp   open  ident
+119/tcp   open  nntp
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+143/tcp   open  imap
+144/tcp   open  news
+179/tcp   open  bgp
+199/tcp   open  smux
+389/tcp   open  ldap
+427/tcp   open  svrloc
+443/tcp   open  https
+444/tcp   open  snpp                                                                                                                                                                                                                        
+445/tcp   open  microsoft-ds                                                                                                                                                                                                                
+465/tcp   open  smtps                                                                                                                                                                                                                       
+513/tcp   open  login                                                                                                                                                                                                                       
+514/tcp   open  shell                                                                                                                                                                                                                       
+515/tcp   open  printer                                                                                                                                                                                                                     
+543/tcp   open  klogin                                                                                                                                                                                                                      
+544/tcp   open  kshell                                                                                                                                                                                                                      
+548/tcp   open  afp                                                                                                                                                                                                                         
+554/tcp   open  rtsp                                                                                                                                                                                                                        
+587/tcp   open  submission                                                                                                                                                                                                                  
+631/tcp   open  ipp                                                                                                                                                                                                                         
+646/tcp   open  ldp
+873/tcp   open  rsync
+990/tcp   open  ftps
+993/tcp   open  imaps
+995/tcp   open  pop3s
+1025/tcp  open  NFS-or-IIS
+1026/tcp  open  LSA-or-nterm
+1027/tcp  open  IIS
+1028/tcp  open  unknown
+1029/tcp  open  ms-lsa
+1110/tcp  open  nfsd-status
+1433/tcp  open  ms-sql-s
+1720/tcp  open  h323q931
+1723/tcp  open  pptp
+1755/tcp  open  wms
+1900/tcp  open  upnp
+2000/tcp  open  cisco-sccp
+2001/tcp  open  dc
+2049/tcp  open  nfs
+2121/tcp  open  ccproxy-ftp
+2717/tcp  open  pn-requester
+3000/tcp  open  ppp
+3128/tcp  open  squid-http
+3306/tcp  open  mysql
+3389/tcp  open  ms-wbt-server
+3986/tcp  open  mapper-ws_ethd
+4899/tcp  open  radmin
+5000/tcp  open  upnp
+5009/tcp  open  airport-admin
+5051/tcp  open  ida-agent
+5060/tcp  open  sip
+5101/tcp  open  admdog
+5190/tcp  open  aol
+5357/tcp  open  wsdapi
+5432/tcp  open  postgresql
+5631/tcp  open  pcanywheredata
+5666/tcp  open  nrpe
+5800/tcp  open  vnc-http
+5900/tcp  open  vnc
+6000/tcp  open  X11
+6001/tcp  open  X11:1
+6646/tcp  open  unknown
+7070/tcp  open  realserver
+8000/tcp  open  http-alt
+8008/tcp  open  http
+8009/tcp  open  ajp13
+8080/tcp  open  http-proxy
+8081/tcp  open  blackice-icecap
+8443/tcp  open  https-alt
+8888/tcp  open  sun-answerbook
+9100/tcp  open  jetdirect
+9999/tcp  open  abyss
+10000/tcp open  snet-sensor-mgmt
+32768/tcp open  filenet-tms
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49155/tcp open  unknown
+49156/tcp open  unknown
+49157/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 19.11 seconds
+
+
+
+
+
+
+
+┌──(root㉿kali)-[~]
+└─# sudo nmap -sS -Pn --top-ports 100 98.95.207.28                                                                                                                                                                                          
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-21 15:58 -03
+Nmap scan report for ec2-98-95-207-28.compute-1.amazonaws.com (98.95.207.28)
+Host is up (0.10s latency).
+Not shown: 95 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+21/tcp   open  ftp
+53/tcp   open  domain
+80/tcp   open  http
+3306/tcp open  mysql
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 3.31 seconds
+
+
+
+
+
+
+
+┌──(root㉿kali)-[~]
+└─# sudo nmap -sV -sC --top-ports 1000 98.95.207.28
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-21 18:30 -03
+Nmap scan report for ec2-98-95-207-28.compute-1.amazonaws.com (98.95.207.28)
+Host is up (0.028s latency).
+Not shown: 994 filtered tcp ports (no-response)
+PORT     STATE SERVICE    VERSION
+21/tcp   open  ftp        vsftpd 3.0.5
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to 45.226.85.236
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 1
+|      vsFTPd 3.0.5 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_Can't get directory listing: PASV IP 172.20.0.20 is not the same as 98.95.207.28
+53/tcp   open  tcpwrapped
+| dns-nsid: 
+|   id.server: unbound
+|_  bind.version: unbound 1.16.2
+80/tcp   open  http       Apache httpd 2.4.54 ((Debian))
+|_http-title: TechCorp Solutions - Solu\xC3\xA7\xC3\xB5es Empresariais
+| http-robots.txt: 4 disallowed entries 
+|_/admin/ /backup/ /.git/ /config/
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.54 (Debian)
+2222/tcp open  ssh        OpenSSH 8.2p1 Ubuntu 4ubuntu0.13 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 2c:d4:33:a1:e1:a6:4f:4f:c5:42:f5:98:b2:cc:79:a8 (RSA)
+|   256 d6:9f:da:54:8d:db:a6:33:15:64:b4:42:e2:ee:c0:d4 (ECDSA)
+|_  256 ae:f3:eb:cc:6d:cc:29:31:05:06:e1:c6:9b:dd:19:51 (ED25519)
+3306/tcp open  mysql      MySQL 8.0.44
+| mysql-info: 
+|   Protocol: 10
+|   Version: 8.0.44
+|   Thread ID: 22952
+|   Capabilities flags: 65535
+|   Some Capabilities: Support41Auth, FoundRows, SupportsLoadDataLocal, IgnoreSpaceBeforeParenthesis, SwitchToSSLAfterHandshake, LongColumnFlag, SupportsCompression, SupportsTransactions, Speaks41ProtocolOld, ConnectWithDatabase, IgnoreSigpipes, InteractiveClient, Speaks41ProtocolNew, ODBCClient, DontAllowDatabaseTableColumn, LongPassword, SupportsMultipleStatments, SupportsMultipleResults, SupportsAuthPlugins
+|   Status: Autocommit
+|   Salt: jF|,Q\x18uQ\x01\x15yv<l()\\x01rY
+|_  Auth Plugin Name: caching_sha2_password
+| ssl-cert: Subject: commonName=MySQL_Server_8.0.44_Auto_Generated_Server_Certificate
+| Not valid before: 2025-11-17T14:30:28
+|_Not valid after:  2035-11-15T14:30:28
+|_ssl-date: TLS randomness does not represent time
+8080/tcp open  http       Apache httpd 2.4.65 ((Debian))
+| http-robots.txt: 1 disallowed entry 
+|_/
+| http-open-proxy: Potentially OPEN proxy.
+|_Methods supported:CONNECTION
+|_http-server-header: Apache/2.4.65 (Debian)
+|_http-title: phpMyAdmin
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 23.67 seconds

@@ -199,14 +199,16 @@ A fase de reconhecimento é crítica e envolve identificar ativos e tecnologias 
 
 
 <a name="item3.11"><h4>3.11 Projeto Final</h4></a>[Back to summary](#item2)   
-[Material do Projeto](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo2-defesa-monitoramento/projeto-final)
+[Material do Projeto](https://github.com/Kensei-CyberSec-Lab/formacao-cybersec/tree/main/modulo3-ethical-hacking)
 
-O desafio final deste módulo teve como objetivo consolidar os conhecimentos adquiridos, colocando em prática a capacidade de defesa, monitoramento e resposta a incidentes. Foram disponibilizadas duas opções de abordagem — uma prática e outra conceitual — além de um desafio bônus. Em todas as alternativas, o principal entregável foi um documento técnico, ao qual deveriam estar vinculados todos os anexos. Esse documento, em formato **Markdown** ou **PDF**, precisava seguir requisitos mínimos de estrutura e qualidade:  
+Diferentemente dos módulos anteriores, o projeto final deste módulo contou com uma única opção de entrega, baseada na construção de um relatório técnico documentando todos os achados obtidos em uma competição *Capture the Flag* (CTF). Nessa competição, o instrutor criou um ambiente totalmente controlado e com autorização explícita para que os alunos realizassem diversos ataques com o objetivo de encontrar flags ocultas. Cada flag representava uma vulnerabilidade explorável dentro do ambiente. Todas as vulnerabilidades identificadas foram documentadas em um relatório técnico, estruturado nos moldes de um relatório de pentest profissional.
+
+Embora o principal entregável fosse o relatório, diversos anexos complementares também foram produzidos e citados ao longo do documento, incluindo evidências, configurações e logs necessários para assegurar rastreabilidade.
+
+O relatório pôde ser entregue nos formatos **Markdown** ou **PDF**, e precisava seguir requisitos mínimos de estrutura e qualidade:
 - **Estrutura mínima:** capa, sumário executivo, objetivo, escopo, metodologia, diagrama, evidências/diagnóstico, recomendações, plano de ação, conclusão e anexos.  
-- **Clareza executiva:** obrigatoriedade de 1 página dedicada ao sumário executivo.  
-- **Rastreabilidade:** referência a prints e logs (com data/hora) e inclusão de arquivos de configuração como anexos.  
+- **Clareza executiva:** o sumário executivo deveria obrigatoriamente ocupar uma página completa.  
+- **Rastreabilidade:** referência a prints e logs (com data e hora) e inclusão de arquivos de configuração como anexos.  
 
-Projetos: 
-- [Opção 1 – Projeto Técnico](./11-projeto_final_1/): Criação de um ambiente defensivo, simulação de ataques controlados e validação da defesa, monitoramento e resposta com evidências documentadas.  
-- [Opção 2 – Projeto Conceitual](./11-projeto_final_2/): Atuação como consultor Blue Team em um cenário fictício, elaborando defesa em profundidade, plano de monitoramento e resposta a incidentes baseado no NIST.  
-- [Desafio Bônus](./11-desafio_bonus/): Atividade complementar para reforçar a aplicação prática e aprofundar os conceitos do módulo.  
+Projetos:  
+- [Projeto Técnico](./12-projeto_final/): Competição em um ambiente CTF controlado e documentação detalhada das vulnerabilidades/flags identificadas.
