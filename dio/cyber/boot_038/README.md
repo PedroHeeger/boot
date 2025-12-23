@@ -87,7 +87,7 @@
   6.1. [Mentoria: Como Iniciar uma Carreira em Cibersegurança no Setor Financeiro com Santander](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item6.1)   
   6.2. Mentoria: Desenvolvimento Inteligente: Maximizando Sua Produtividade com IA Generativa   
   6.3. [Mentoria: Os Princípios do Ethical Hacking](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item6.3)   
-  6.4 [Mentoria: O Papel da Inteligência Artificial na Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item6.4)   
+  6.4. [Mentoria: O Papel da Inteligência Artificial na Cibersegurança](https://github.com/PedroHeeger/boot/tree/main/dio/cyber/boot_038#item6.4)   
 
 ---
 
