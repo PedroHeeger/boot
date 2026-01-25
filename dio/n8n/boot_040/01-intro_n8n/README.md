@@ -6,7 +6,7 @@
 ### Bootcamp: <a href="../">boot_040 (Bootcamp Santander 2025 - Automação com N8N)   <img src="../0-aux/logo_boot.png" alt="boot_040" width="auto" height="25"></a>
 ### Module: 1. Introdução ao N8N & Workflows 
 
-#### <a href="">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/bootcamps/soft_engineering/n8n/mod/260124_Mod_Intro...N8N...Workflows_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -63,7 +63,7 @@ O objetivo deste módulo do bootcamp consistiu
 ### Development:
 O desenvolvimento deste módulo do bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
-<a name="item1.2"><h4>1.2 Primeiros Passos com N8N: Conceitos e Instalação</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+<a name="item1.2"><h4>1.2 Primeiros Passos com N8N: Conceitos e Instalação</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/soft_engineering/n8n/260121_Primeiros_Passos...N8N...PH_DIO.pdf">Certificate</a>
 
 📈 Eficiência e Negócios de Pessoa Única   
 O modelo de negócio denominado "One Person Business" fundamenta-se na estruturação de um empreendimento digital operado exclusivamente por um único indivíduo. Esta modalidade prioriza uma operação enxuta, de baixa complexidade e alta rentabilidade, frequentemente alinhada a princípios de produtividade extrema, como os explorados na literatura de gestão de tempo e eficiência operacional.
@@ -149,7 +149,7 @@ No contexto de atualizações e suporte técnico, o termo "Migrations" designa a
 - Registros históricos de todas as execuções processadas pela ferramenta.
 - Parâmetros globais de configuração e preferências do sistema.
 
-<a name="item1.3"><h4>1.3 Navegação e Interface do N8N</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+<a name="item1.3"><h4>1.3 Navegação e Interface do N8N</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/soft_engineering/n8n/260123_Navegacao...Interface...N8N_PH_DIO.pdf">Certificate</a>
 
 🧭 Navegação e Interface do n8n   
 A compreensão da interface do n8n é fundamental para a estruturação eficiente de automações. O ambiente é projetado para oferecer uma visão clara dos ativos digitais, facilitando a transição entre a criação de fluxos, a gestão de acessos e o monitoramento de atividades.
@@ -173,7 +173,7 @@ Para ambientes que exigem alta conformidade e segurança, o n8n oferece recursos
 - Log Streaming: Funcionalidade que permite o monitoramento em tempo real dos logs das chamadas de API, essencial para a auditoria e solução de problemas técnicos (troubleshooting).
 - Environments: Estrutura que permite a separação técnica do ambiente, geralmente dividida entre desenvolvimento, homologação e produção, garantindo que testes não afetem fluxos em operação crítica.
 
-<a name="item1.4"><h4>1.4 Criação de Workflows Simples no N8N</h4></a>[Back to summary](#item1) | <a href="">Certificate</a>
+<a name="item1.4"><h4>1.4 Criação de Workflows Simples no N8N</h4></a>[Back to summary](#item1) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/soft_engineering/n8n/260124_Criacao...Workflows_Simples...N8N_PH_DIO.pdf">Certificate</a>
 
 🧩 Anatomia dos Nós (Nodes)   
 Os nós, ou nodes, constituem as unidades fundamentais de construção dentro da plataforma n8n. De forma análoga a peças de um sistema de blocos de montar, cada nó representa uma interação individual e específica com uma aplicação ou serviço digital externo.

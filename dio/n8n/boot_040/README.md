@@ -5,7 +5,7 @@
 ### Software/Subject: <a href="../">n8n   <img src="https://github.com/PedroHeeger/main/blob/main/0-aux/logos/software/n8n.png" alt="n8n" width="auto" height="25"></a>
 ### Bootcamp: <a href="./">boot_040 (Bootcamp Santander 2025 - Automação com N8N)   <img src="./0-aux/logo_boot.png" alt="boot_040" width="auto" height="25"></a>
 
-#### <a href="">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/bootcamps/soft_engineering/n8n/260125_Cert_Boot_Santander...Automacao...N8N_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -31,20 +31,20 @@
 
 <a name="item0"><h3>Bootcamp Structure</h3></a>
 
-1. [Introdução ao N8N & Workflows]()   
+1. [Introdução ao N8N & Workflows](./01-intro_n8n/)   
   1.1. Introdução à Experiência Santander 2025 - 2º Semestre   
-  1.2. [Primeiros Passos com N8N: Conceitos e Instalação]()   
-  1.3. [Navegação e Interface do N8N]()   
-  1.4. [Criação de Workflows Simples no N8N]()   
+  1.2. [Primeiros Passos com N8N: Conceitos e Instalação](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/01-intro_n8n/README.md#item1.2)   
+  1.3. [Navegação e Interface do N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/01-intro_n8n/README.md#item1.3)   
+  1.4. [Criação de Workflows Simples no N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/01-intro_n8n/README.md#item1.4)   
   1.5. Mentoria: Live de Lançamento: Santander Bootcamp 2025 - 2º Semestre   
-2. [Automatização de Processos]()   
-  2.1. [Utilizando Nós Padrão do N8N]()   
-  2.2. [Integração com Serviços Populares no N8N]()   
-  2.3. [Automatizando Processos com N8N]()   
-3. [Boas Práticas e Integrações]()   
-  3.1. [Manipulação de Dados e Variáveis no N8N]()   
-  3.2. [Uso de Webhooks e APIs no N8N]()   
-  3.3. [Desafio de Código: Associando Conceitos Iniciais do N8N]()    
+2. [Automatização de Processos](./02-auto_processos/)   
+  2.1. [Utilizando Nós Padrão do N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/02-auto_processos/README.md#item2.1)   
+  2.2. [Integração com Serviços Populares no N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/02-auto_processos/README.md#item2.2)   
+  2.3. [Automatizando Processos com N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/02-auto_processos/README.md#item2.3)   
+3. [Boas Práticas e Integrações](./03-integracao/)   
+  3.1. [Manipulação de Dados e Variáveis no N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/03-integracao/README.md#item3.1)   
+  3.2. [Uso de Webhooks e APIs no N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/03-integracao/README.md#item3.2)   
+  3.3. [Desafio de Código: Associando Conceitos Iniciais do N8N](https://github.com/PedroHeeger/boot/blob/main/dio/n8n/boot_040/03-integracao/README.md#item3.3)    
 4. Outras Mentorias   
   4.1. [Como usar Lógica de Programação no Dia a Dia]()   
   4.2. [Conhecendo Agentes de IA]()   

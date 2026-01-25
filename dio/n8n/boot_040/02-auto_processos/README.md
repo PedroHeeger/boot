@@ -6,7 +6,7 @@
 ### Bootcamp: <a href="../">boot_040 (Bootcamp Santander 2025 - Automação com N8N)   <img src="../0-aux/logo_boot.png" alt="boot_040" width="auto" height="25"></a>
 ### Module: 2. Automatização de Processos 
 
-#### <a href="">Certificate</a>
+#### <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/bootcamps/soft_engineering/n8n/mod/260124_Mod_Automatizacao...Processos_PH_DIO.pdf">Certificate</a>
 
 ---
 
@@ -62,7 +62,7 @@ O objetivo deste módulo do bootcamp consistiu
 O desenvolvimento deste módulo do bootcamp foi dividido em três cursos. Abaixo é explicado o que foi desenvolvido em cada uma dessas atividades.
 
 
-<a name="item2.1"><h4>2.1 Utilizando Nós Padrão do N8N</h4></a>[Back to summary](#item2) | <a href="">Certificate</a>
+<a name="item2.1"><h4>2.1 Utilizando Nós Padrão do N8N</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/soft_engineering/n8n/260124_Utilizando_Nos_Padrao...N8N_PH_DIO.pdf">Certificate</a>
 
 🏗️ Arquitetura e Classificação de Workflows   
 A estrutura fundamental de um fluxo de trabalho no n8n é constituída por uma sequência lógica de componentes denominados "nodes standard". Esta arquitetura divide-se em três estágios essenciais: o ponto de partida (trigger), as etapas de tratamento de informações (data/processing) e a execução final da tarefa (action).
@@ -222,11 +222,25 @@ Os nós de ação representam a entrega do resultado ou a interação final com 
         Equipe Autotic
 
 
-<a name="item2.2"><h4>2.2 Integração com Serviços Populares no N8N</h4></a>[Back to summary](#item2) | <a href="">Certificate</a>
+<a name="item2.2"><h4>2.2 Integração com Serviços Populares no N8N</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/soft_engineering/n8n/260124_Integracao...Servicos_Populares...N8N_PH_DIO.pdf">Certificate</a>
 
+🔄 Evolução e Arquitetura de Integrações   
+Historicamente, a sincronização de informações entre sistemas distintos dependia de processos manuais exaustivos. Na ausência de interfaces de comunicação automatizadas, a integridade dos dados era mantida por colaboradores responsáveis pelo monitoramento e pela replicação física de registros entre plataformas, o que acarretava baixa eficiência operacional.
 
+🌐 Conceito de API e Arquitetura REST   
+O desenvolvimento das APIs (Interface de Programação de Aplicação) estabeleceu um novo paradigma, permitindo que softwares distintos se comuniquem de maneira autônoma. Uma API funciona como uma interface técnica que define as regras de entrada e saída de dados, possibilitando a troca de informações sem a necessidade de intervenção humana.
 
+A arquitetura REST (Representational State Transfer) destaca-se como um modelo flexível para a integração de sistemas, fundamentado na transferência de estado entre cliente e servidor. Esta comunicação é viabilizada por protocolos que garantem a interoperabilidade entre diferentes tecnologias.
 
+📄 Formatos de Estruturação de Dados   
+Para que a troca de informações ocorra de forma compreensível entre sistemas heterogêneos, utilizam-se formatos padronizados de representação de dados:
+- XML (Extensible Markup Language): Consiste em uma linguagem de marcação utilizada para formatar documentos de modo que sejam interpretados universalmente por diferentes arquiteturas de sistema.
+- JSON (JavaScript Object Notation): Apresenta-se como um formato de texto leve e simplificado, sendo o padrão mais comum em integrações modernas devido à sua facilidade de leitura tanto por humanos quanto por máquinas.
+
+🔌 Tipologias de Integração: Nativas e Não-Nativas   
+Dentro de um ecossistema de automação, a conexão com serviços externos é classificada conforme a disponibilidade de ferramentas pré-configuradas:
+- Integração Nativa: Refere-se ao uso de conectores prontos e otimizados pela plataforma de automação, permitindo a comunicação direta com serviços populares sem a necessidade de configurações manuais complexas.
+- Integração Não-Nativa: Ocorre quando não há um nó específico para o serviço desejado. Nestes cenários, a conexão é estabelecida manualmente através do nó de HTTP Request. A utilização de métodos não-nativos exige que o desenvolvedor realize a montagem da chamada de API, definindo parâmetros, cabeçalhos e métodos conforme a documentação técnica do serviço que se pretende integrar.
 
 
 
@@ -299,9 +313,12 @@ Os nós de ação representam a entrega do resultado ou a interação final com 
 
 
 
-<a name="item2.3"><h4>2.3 Automatizando Processos com N8N</h4></a>[Back to summary](#item2) | <a href="">Certificate</a>
+<a name="item2.3"><h4>2.3 Automatizando Processos com N8N</h4></a>[Back to summary](#item2) | <a href="https://github.com/PedroHeeger/my_tech_journey/blob/main/credentials/certificates/online_courses/soft_engineering/n8n/260124_Automatizando_Processos...N8N_PH_DIO.pdf">Certificate</a>
 
 
+
+
+##### Parte Prática
 
 
 
